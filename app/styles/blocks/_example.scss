@@ -1,0 +1,63 @@
+.example {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+
+    > * {
+        padding: 1rem;
+    }
+
+
+    &__class-names {
+        flex: 0 1 25%;
+    }
+
+    &__class-name {
+        display: block;
+        margin-bottom: .5rem;
+    }
+
+    &__block {
+        fleX: 1;
+    }
+
+    &__element {
+        align-items: center;
+        background-color: #f2f2f2;
+        display: grid;
+        grid-gap: 1rem;
+        padding: 1rem;
+
+        &--dark {
+            background-color: #222;
+        }
+
+        &[cols='5'] {
+            grid-template-columns: repeat(5, minmax(100px, 200px));
+
+            > * {
+                text-align: center;
+            }
+
+        }
+
+    }
+
+    &__code {
+        font-size: $font-size--xxs;
+        padding: 1rem 0;
+
+
+        code {
+            display: block;
+            padding: .5rem 1rem;
+
+            &:nth-child(even) {
+                background-color: #f0f0f0;
+            }
+
+        }
+
+    }
+
+}

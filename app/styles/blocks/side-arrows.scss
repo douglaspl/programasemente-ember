@@ -1,0 +1,38 @@
+.side-arrows {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    &__arrow {
+        color: $color-gray--darkest;
+        flex: 0 0 auto;
+        opacity: .5;
+
+        @include hover {
+            opacity: 1;
+        }
+
+    }
+
+    &__container {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        flex: 1;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
+
+    &__title {
+        // font-size: $font-size--xxs;
+        margin: 0 0 $distance--sm;
+        text-align: center;
+        // text-transform: uppercase;
+        width: 100%;
+
+    }
+
+}

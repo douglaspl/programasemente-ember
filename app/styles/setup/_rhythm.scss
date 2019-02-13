@@ -1,0 +1,50 @@
+//------------------------------------
+// #Rhythm
+//------------------------------------
+ 
+// Recurso para conferir se a página está seguindo um ritmo, padrões de distância ou não.
+// Pequenos desvios os quebras podem ocorrer, desde que conscientes ou controlados.
+$container-max-width: 98vw; //temporário
+ 
+@if $show-rhythm == true {
+    body {
+        position: relative;
+ 
+        &::before,
+        &::after {
+            content: '';
+            height: 100%;
+            left: 50%;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+            width: calc(#{$container-max-width} + 2px);
+            z-index: 9999;
+        }
+ 
+        @if $show-h-rhythm == true {
+            &::before {
+                background-image: repeating-linear-gradient(
+                to right,
+                transparentize($color-error, .8),
+                transparentize($color-error, .8) 1px,
+                transparentize($color-error, 1) 1px,
+                transparentize($color-error, 1) $distance--xs
+                );
+            }
+        }
+ 
+        @if $show-v-rhythm == true {
+            &::after {
+                background-image: repeating-linear-gradient(
+                to bottom,
+                transparentize($color-success, .8),
+                transparentize($color-success, .8) 1px,
+                transparentize($color-success, 1) 1px,
+                transparentize($color-success, 1) $distance--xs
+                );
+            }
+        }
+    }
+}

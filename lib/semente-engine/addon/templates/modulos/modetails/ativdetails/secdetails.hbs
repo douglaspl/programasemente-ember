@@ -1,0 +1,34 @@
+<!-- BERÇO PARA RECEBER TODOS OS CONTEÚDOS -->
+{{!-- <section class="course__content"> --}}
+  <!-- AQUI COMEÇA CONTEÚDO VINDO DO BANCO: QUIZ -->
+  <section id="section_scroll" class="course__content">
+    {{#each sortedConteudos as |conteudo|}}
+    {{conteudo-render transit=(action 'goTransition') goquestao=(action 'goQuestao') gonext=(action 'goNext')
+    html=conteudo.html video=conteudo.video quiz=conteudo.quiz ide=conteudo.id model=model questao=questao
+    upState=upState videoini=videoini questoes_timing=questoes_timing}}
+    {{/each}}
+  </section>
+  {{!--
+</section> --}}
+<!-- FIM DO BERÇO PARA RECEBER TODOS OS CONTEÚDOS -->
+
+
+{{!--Old abaixo --}}
+{{!-- <div id="main_output" class="j-atividade-main-output atividade-main-output atividade-main-output--atividade"
+  data-title="{{activeTitle}}" onscroll={{action 'scrollAction'}} style="font-size: 14px;">
+  {{#each sortedConteudos as |conteudo|}}
+  {{conteudo-render html=conteudo.html video=conteudo.video quiz=conteudo.quiz ide=conteudo.id}}
+  {{/each}}
+  <div class="internal_buttons mobile-show">
+    {{#if reset_desk}}
+    <div class="atividade-main-rightup-buttons-rst desktop-show" {{action 'resetDesk'}}></div>
+    {{else}}
+    <div class="atividade-main-rightup-buttons-exp desktop-show" {{action 'expandDesk'}}></div>
+    {{/if}}
+    {{#if reset_mob}}
+    <div class="atividade-main-rightup-buttons-rst mobile-show" {{action 'resetMob'}}></div>
+    {{else}}
+    {{/if}}
+  </div>
+</div>
+<div style="display: none;">{{setPosition}}</div> --}}

@@ -1,0 +1,60 @@
+.checkbox {
+    $this: &;
+
+    @include check-radio;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $distance--xxs;
+
+    @include media('>sm') {
+        margin-bottom: 0;
+        margin-right: $distance--md;
+    }
+
+    @include media('>md') { margin-right: $distance--sm; }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &__label {
+
+        &::after {
+            color: $color-white;
+            content: '\e905'; //Código do check
+            font-family: 'icomoon';
+            font-size: 1em;
+            font-weight: bold;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            text-rendering: auto;
+            top: 50%;
+            width: calc(#{$input-check-radio-size} + .1rem);
+        }
+
+    }
+
+    &__input:checked ~ &__label {
+
+        &::before {
+            background-color: $color-primary;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+
+    }
+
+    &--white {
+
+        #{$this}__label::before {
+            background-color: $color-white;
+        }
+
+    }
+
+}

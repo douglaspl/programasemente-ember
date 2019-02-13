@@ -1,0 +1,874 @@
+//------------------------------------
+//    #BG AS THUMB
+//------------------------------------
+@mixin bg-as-thumb($size: cover) {
+    background-clip: content-box;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: $size;
+}
+
+
+
+
+
+//------------------------------------
+//    #BUTTON DEFAULT APPEARANCE
+//------------------------------------
+@mixin button {
+    align-items: center;
+    border: 1px solid transparent;
+    display: inline-flex;
+    flex-direction: row;
+    font-size: $font-size--xxs;
+    font-weight: bold;
+    justify-content: center;
+    letter-spacing: $letter-spacing--md;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 300ms;
+    white-space: nowrap;
+}
+
+
+
+
+
+//------------------------------------
+//    #CARD
+//------------------------------------
+@mixin card($theme: false, $padding: false) {
+    border-radius: $radius--md;
+    box-shadow: $shadow-1;
+
+    @if $padding {
+        padding: $padding;
+    }
+
+    @if $theme == 'light' {
+        background-color: $color-white;
+        color: $color-gray--darkest;
+    } @else if $theme == 'dark' {
+        background-color: $color-gray--darkest;
+        color: $color-white;
+    } @else {
+        background-color: $color-gray--lightest;
+        color: $color-gray--darkest;
+    }
+
+
+}
+
+
+
+
+
+//------------------------------------
+//    #CHECK RADIO
+//------------------------------------
+@mixin check-radio($size: 'default') {
+    position: relative;
+
+    &__input {
+        @include input-hide;
+    }
+
+    &__label {
+        align-items: center;
+        cursor: pointer; //Label por padrão não possui o cursor como pointer
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        font-weight: normal; //Como é um label vinculado a check/radio, não deve ser bold(default)
+        letter-spacing: 0;
+        min-height: 2em;
+        padding-left: $input-check-radio-label-margin;
+        position: relative;
+
+        @include target-ie(){
+            flex: 0 0 auto;
+            line-height: 2em;
+        }
+
+        &:active,
+        &:focus {
+            background-color: none;
+        }
+
+        &::before {
+            background-color: $color-gray--lightest;
+            border-radius: $radius;
+            box-shadow: $shadow-1;
+            content: '';
+            cursor: pointer;
+            display: inline-block;
+            height: $input-check-radio-size;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            transform: translateY(-50%);
+            transition: 300ms;
+            top: 50%;
+            width: $input-check-radio-size;
+        }
+
+        &::after {
+            text-shadow: $shadow-2;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-100%);
+            transition: 300ms;
+        }
+
+    }
+
+    &__input:checked ~ &__label::after {
+        transform: translateY(-50%);
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #DIVIDER
+//------------------------------------
+// $color
+// $direction
+// $pos
+// $size
+@mixin divider($color: $light-gray, $direction: 'horizontal', $pos: 'none', $size: 2px, $opacity: .25) {
+    position: relative;
+
+    &::after {
+        background-color: $color;
+        content: '';
+        left: 0;
+        opacity: $opacity;
+        position: absolute;
+
+        @if ($pos == 'top') {
+            bottom: 100%;
+        }
+
+        @if ($pos == 'bottom') {
+            top: 100%;
+        }
+
+        @if ($direction == 'horizontal') {
+            height: $size;
+            width: 100%;
+        }
+
+        @if ($direction == 'vertical') {
+            height: 100%;
+            top: 0;
+            width: $size;
+        }
+
+
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #HAS CAPSULE ON HOVER
+//------------------------------------
+@mixin has-capsule-on-hover {
+    position: relative;
+    overflow: visible;
+
+    &::before {
+        background-color: $color-primary;
+        border-radius: $radius--capsule;
+        box-shadow: $shadow-3;
+        content: '';
+        height: calc(100% + (#{$distance--xs} * 2));
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+
+        visibility: hidden;
+        width: calc(100% + (#{$distance--sm} * 2));
+        z-index: -1;
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: $color-white;
+        text-shadow: 0 0 1px $color-white;
+
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    @include target-ie {
+        border-radius: $radius--capsule;
+        background-color: transparent;
+        padding: $distance--xs $distance--sm;
+
+        &::before {
+            display: none;
+        }
+
+        &:hover {
+            background-color: $color-primary;
+        }
+
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #HOVER
+//------------------------------------
+@mixin hover($self: true, $pseudo: '') {
+    @media (-moz-touch-enabled: 1), (hover:hover), (hover:on-demand) {
+        @if $self == true {
+            &:hover#{$pseudo} {
+                @content;
+            }
+        }
+
+        @if $self == false {
+            @content;
+        }
+
+    }
+
+    @include target-ff {
+        @if $self == true {
+            &:hover#{$pseudo} {
+                @content;
+            }
+        }
+
+        @if $self == false {
+            @content;
+        }
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #ICON
+//------------------------------------
+@mixin icon {
+    color: inherit;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+//------------------------------------
+//    #IMG RESPONSIVE
+//------------------------------------
+@mixin img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
+
+
+
+//------------------------------------
+//    #INPUTS
+//------------------------------------
+@mixin inputs {
+    // appearance: none;
+    background-color: $color-gray--lightest;
+    border: 0 solid transparent;
+    border-radius: $radius;
+    color: $color-gray--darkest;
+    font-size: 1rem;
+    height: $input-height;
+    padding-left: $distance--xs;
+    padding-right: $distance--xs;
+}
+
+
+
+
+
+//------------------------------------
+//    #INPUT HIDE
+//------------------------------------
+@mixin input-hide {
+    // left: -9999px;
+    opacity: 0;
+    position: absolute;
+    // top: -9999px;
+    // visibility: hidden;
+}
+
+
+
+
+
+//------------------------------------
+//    #LINE
+//------------------------------------
+@mixin line($color: $color-primary, $height: .15em, $width: 4rem, $line: 'under') {
+  position: relative;
+
+  &::after {
+      background-color: $color;
+      border-radius: $radius--capsule;
+      content: '';
+      height: $height;
+      left: 0;
+      position: absolute;
+      width: $width;
+
+      @if $line == 'under' {
+        top: calc(100% + .5em);
+      }
+
+      @if $line == 'left' {
+        bottom: $height;
+      }
+
+  }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #N COLUMNS
+//------------------------------------
+@mixin n-columns($min-width, $gutter, $last-equal: false, $max-cols: 5) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -$gutter;
+    margin-top: -$gutter;
+
+    > * {
+        flex: 1 0 $min-width;
+        margin-left: $gutter;
+        margin-top: $gutter;
+
+        @if $last-equal {
+            @for $i from 2 through $max-cols {
+                $screen-width: ($min-width * $i) + ($gutter * $i);
+                $column-width: (100% / $i);
+
+                @media (min-width: $screen-width) {
+                    max-width: calc(#{$column-width} - #{$gutter});
+                }
+            }
+
+            $column-width: (100% / $max-cols);
+
+            @media (min-width: $min-width * $max-cols) {
+                min-width: calc(#{$column-width} - #{$gutter});
+            }
+
+        }
+
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #OVERFLOW Y
+//------------------------------------
+@mixin overflow-y($shadows: false, $bg-color: transparent) {
+    @include scrollbar($shadows, $bg-color);
+
+    max-height: 100%;
+    -webkit-overflow-scrolling: touch; // Melhora comportamento do scroll em iOS;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @media (landscape) {
+        padding-right: .75rem;
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #SCROLLBAR
+//------------------------------------
+// Define estilo da barra de rolagem padrão da aplicação.
+// Por padrão não aplica sombras, uma vez que as sombras só funcionanm em fundos chapados e opacos.
+// PARÂMETROS
+// $shadows: true ou false. Para saber sobre comportamento ver #SCROLLING SHADOWS.
+// $bg-color: cor de fundo do container.
+// EXEMPLO
+//
+// .douglas__list {
+//    @include scrollbar;
+// }
+//
+@mixin scrollbar($shadows: false, $bg-color: transparent) {
+    &::-webkit-scrollbar {
+        width: $scrollbar-width;
+    }
+    // Pista / Track
+    &::-webkit-scrollbar-track {
+        border-radius: $scrollbar-track-radius;
+        box-shadow: $scrollbar-track-shadow;
+    }
+    // Parte clicável / Handle
+    &::-webkit-scrollbar-thumb {
+        background: $scrollbar-handle-bg;
+        border-radius: $scrollbar-handle-radius;
+        box-shadow: $scrollbar-handle-shadow;
+    }
+    // Parte clicável / Handle quando a janela estiver inativa
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: $scrollbar-handle-bg-inactive;
+    }
+
+    @if $shadows == true {
+        @include scrolling-shadows($bg-color);
+    }
+
+}
+
+
+
+
+
+//------------------------------------
+//    #SCROLLING SHADOWS
+//------------------------------------
+@mixin scrolling-shadows($bg-color: $color-white,
+                         $shadow-intensity: 0.2,
+                         $shadow-color: $color-black,
+                         $cover-size: 40px,
+                         $shadow-size: 14px,
+                         $shadow-width: 100%) {
+
+	background:
+		// Shadow covers
+		linear-gradient($bg-color 30%, rgba($bg-color,0)),
+		linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
+
+		// Shadows
+		radial-gradient(farthest-side 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
+		radial-gradient(farthest-side 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+	background:
+		// Shadow covers
+		linear-gradient($bg-color 30%, rgba($bg-color, 0)),
+		linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
+
+		// Shadows
+		radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
+		radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+	background-repeat: no-repeat;
+	background-color: $bg-color;
+	background-size: $shadow-width $cover-size, $shadow-width $cover-size, $shadow-width $shadow-size, $shadow-width $shadow-size;
+
+	// Opera doesn't support this in the shorthand
+	background-attachment: local, local, scroll, scroll;
+}
+
+
+
+
+
+//------------------------------------
+//    #TARGET SAFARI
+//------------------------------------
+// Caso queira atingir exclusivamente navegadores como Safari 9+.
+// @mixin target-safari($selector) {
+//     _::-webkit-full-page-media, _:future, :root $selector {
+//         @content;
+//     }
+// }
+
+
+
+
+
+//------------------------------------
+//    #TARGET WEBKIT
+//------------------------------------
+// Caso queira atingir exclusivamente navegadores como Safari e Chrome.
+@mixin target-webkit {
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        @content;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TARGET EDGE
+//------------------------------------
+// Caso queira atingir exclusivamente o navegador Firefox.
+@mixin target-edge {
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TARGET FIREFOX
+//------------------------------------
+// Caso queira atingir exclusivamente o navegador Firefox.
+@mixin target-ff {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TARGET INTERNET EXPLORER
+//------------------------------------
+// Caso queira atingir exclusivamente o navegador Internet Explorer.
+@mixin target-ie {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TARGET IPAD
+//------------------------------------
+// Caso queira atingir exclusivamente o navegador Internet Explorer.
+@mixin target-ipad {
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+        @content;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TEXT CONTRAST
+//------------------------------------
+
+// EXEMPLO
+//
+// .douglas {
+//    @include text-contrast(#c0ffee);
+// }
+//
+@mixin text-contrast($n) {
+    $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+    $light-color: round((red($color-white) * 299) + (green($color-white) * 587) + (blue($color-white) * 114) / 1000);
+
+    @if abs($color-brightness) < ($light-color / 2){
+        color: $color-white;
+    }  @else {
+        color: $color-gray--darkest;
+    }
+}
+
+
+
+
+
+//------------------------------------
+//    #TITLES
+//------------------------------------
+@mixin title-0( $color: inherit,
+                $size: $font-size--xxl,
+                $size--sm: $font-size--super,
+                $size--lg: $font-size--max,
+                $weight: bold,
+                $letter: $letter-spacing--sm) {
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1;
+    vertical-align: middle;
+
+    @include media('>sm') { font-size: $size--sm; }
+    @include media('>lg') { font-size: $size--lg; }
+    @include media('>xl') { font-size: calc(#{$size--lg} + .5vw); }
+}
+
+@mixin title-1( $color: inherit,
+                $size: $font-size--lg,
+                $size--sm: $font-size--xl,
+                $size--lg: $font-size--xxl,
+                $weight: bold,
+                $letter: $letter-spacing--sm) {
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1;
+    vertical-align: middle;
+
+    @include media('>sm') { font-size: $size; }
+    @include media('>lg') { font-size: $size--sm; }
+    @include media('>xl') { font-size: $size--lg; }
+}
+
+@mixin title-2( $color: $color-gray--darkest,
+                $size: $font-size--md,
+                $size--sm: $font-size--lg,
+                $size--lg: $font-size--xl,
+                $weight: normal,
+                $letter: $letter-spacing--sm) {
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1;
+    vertical-align: middle;
+
+    @include media('>sm') { font-size: $size--sm; }
+    @include media('>lg') { font-size: $size--lg; }
+}
+
+@mixin title-2--u( $color: $color-gray--darkest,
+                   $size: $font-size--sm,
+                   $size--sm: $font-size--md,
+                   $size--lg: $font-size--lg,
+                   $weight: normal,
+                   $letter: $letter-spacing--xl) {
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    @include media('>sm') { font-size: $size--sm; }
+    @include media('>lg') { font-size: $size--lg; }
+}
+
+@mixin title-3( $color: $color-gray--darkest,
+                $size: $font-size--sm,
+                $size--sm: $font-size--md,
+                $size--lg: $font-size--lg,
+                $weight: bold,
+                $letter: $letter-spacing--sm) {
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    vertical-align: middle;
+
+    @include media('>sm') { font-size: $size--sm; }
+    @include media('>lg') { font-size: $size--lg; }
+}
+
+@mixin title-3--alt ( $color: $color-gray--dark,
+                      $size: $font-size--xs,
+                      $size--lg: $font-size--sm,
+                      $weight: bold,
+                      $letter: $letter-spacing--xl) {
+
+    $width: .5em;
+
+    @include line($width: $width, $line: 'left');
+
+    color: $color;
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    padding-left: calc(#{$width} + .25em);
+    text-transform: uppercase;
+    vertical-align: middle;
+
+    @include media('>lg') { font-size: $size--lg; }
+
+}
+
+@mixin title-4( $color: $color-gray--dark,
+                $size: $font-size--xs,
+                $size--lg: $font-size--sm,
+                $weight: normal,
+                $letter: $letter-spacing--sm) {
+
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    vertical-align: middle;
+
+    @include media('>lg') { font-size: $size--lg; }
+}
+
+@mixin title-aux($color: $color-gray--dark,
+                 $display: inline-block,
+                //  $margin-bottom: $distance--xxs,
+                 $weight: 600) {
+
+    color: $color;
+    display: $display;
+    font-size: $font-size--xxs;
+    font-weight: $weight;
+    letter-spacing: $letter-spacing--lg;
+    // margin-bottom: $margin-bottom;
+    opacity: .75;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+
+
+
+
+//------------------------------------
+//    #TITLE
+//------------------------------------
+// $title-color: $color-primary--darkest;
+// $title-font-family: 'Bebas Neue', sans-serif;
+
+// @mixin title-1($color: $title-color,
+//                $family: $title-font-family,
+//                $size: normal,
+//                $weight: $font-weight--lg) {
+//     color: $color;
+//     font-family: $family;
+//     font-size: $size;
+//     font-weight: $weight;
+// }
+
+// @mixin title-2($color: $title-color,
+//                        $family: $title-font-family,
+//                        $size: normal,
+//                        $weight: $font-weight--sm) {
+//     color: $color;
+//     font-family: $family;
+//     font-size: $size;
+//     font-weight: $weight;
+// }
+
+// @mixin title-3($color: $title-color,
+//                        $family: $title-font-family,
+//                        $size: normal,
+//                        $weight: $font-weight--lg) {
+//     color: $color;
+//     font-family: $family;
+//     font-size: $size;
+//     font-weight: $weight;
+// }
+
+// @mixin title-4($color: $title-color,
+//                        $family: $title-font-family,
+//                        $size: normal,
+//                        $weight: $font-weight--md) {
+//     color: $color;
+//     font-family: $family;
+//     font-size: $size;
+//     font-weight: $weight;
+// }
+
+// @mixin title-5($color: $title-color,
+//                        $family: $title-font-family,
+//                        $size: normal,
+//                        $weight: $font-weight--lg) {
+//     color: $color;
+//     font-family: $family;
+//     font-size: $size;
+//     font-weight: $weight;
+// }
+
+
+
+
+
+//------------------------------------
+//    #TRUNCATE (one line)
+//------------------------------------
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
+//------------------------------------
+//    #Z-INDEX
+//------------------------------------
+// Ver possíveis keys em _variables.scss #Z-INDEX
+// EXEMPLO
+//
+// .douglas {
+//    @include z-index(douglas); // z-index: douglas;
+// }
+//
+@mixin z-index($key) {
+    z-index: z-index($key);
+}

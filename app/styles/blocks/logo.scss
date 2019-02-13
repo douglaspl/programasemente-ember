@@ -1,0 +1,11 @@
+.logo {
+    $this: &;
+
+    display: block;
+    height: auto;
+    width: auto;
+
+    &--w100 {
+        max-width: 100px;
+    }
+}

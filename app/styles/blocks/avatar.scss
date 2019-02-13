@@ -1,0 +1,51 @@
+.avatar {
+    $this: &;
+    $avatar-default-size: $avatar--md;
+
+    border-radius: 50%;
+    box-shadow: $shadow-1;
+    display: inline-block;
+    flex: 0 0 auto;
+    height: $avatar-default-size;
+    position: relative;
+    overflow: hidden;
+    width: $avatar-default-size;
+
+    &__img {
+        left: 50%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        &--as-bg {
+            @include bg-as-thumb;
+        }
+
+    }
+
+    &--bordered {
+        border: 2px solid $color-white;
+    }
+
+    &--float {
+        box-shadow: $shadow-3;
+    }
+
+    &--sm {
+        height: $avatar--sm;
+        width: $avatar--sm;
+    }
+
+    &--lg {
+        height: $avatar--lg;
+        width: $avatar--lg;
+    }
+
+    &--xl {
+        height: $avatar--xl;
+        width: $avatar--xl;
+    }
+
+}

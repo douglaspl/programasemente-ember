@@ -1,0 +1,99 @@
+$loader-width: 6px;
+
+$percentages: (40, 65, 100);
+$factor: 20;
+$interval: 0.5;
+$previousAnimation: 0;
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    33%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+@for $i from 1 through 3 {
+  @keyframes bar_animate_#{$i - 1} {
+    @if $i > 2 {
+      $previousAnimation: $previousAnimation + ($factor * nth($percentages, $i - 1) / 100) + $interval;
+      0%, #{($previousAnimation)}% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+     } 
+    }
+    @else if $i == 2 {
+      $previousAnimation: $previousAnimation + ($factor * nth($percentages, $i - 1) / 100) + $interval;
+      0%, #{$previousAnimation}% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+    @else {
+      0% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+      }
+    }
+    
+    #{$previousAnimation + ($factor * nth($percentages, $i) / 100)}%, 100% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+  }
+
+}
+  
+.loader {
+    align-items: center;
+    background-color: transparentize($color-gray--darkest, .1);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 999999999;
+
+    &__bars {
+        align-items: flex-end;
+        animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
+        background-color: $color-primary;
+        border-radius: 50%;
+        box-shadow: $shadow-2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: $loader-width * 16;
+        padding: ($loader-width * 4) ($loader-width * 4.5);
+        width: $loader-width * 16;
+    }
+
+    &__bar {
+        animation-duration: 2s;
+        animation-iteration-count: infinite; 
+        background-color: $color-white;
+        border-radius: $radius--capsule;
+        box-shadow: $shadow-3;
+        flex: 0 0 auto;
+        width: $loader-width;
+        
+        &--1 {
+            animation-name: bar_animate_0;
+            height: 50%;
+            opacity: .4;
+        }
+        
+        &--2 {
+            animation-name: bar_animate_1;
+            height: 85%;
+            opacity: .65;
+        }
+        
+        &--3 {
+            animation-name: bar_animate_2;
+            height: 100%;
+            opacity: 1;
+        }
+    }
+
+}

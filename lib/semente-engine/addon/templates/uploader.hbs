@@ -1,0 +1,261 @@
+<div class="navbar-general desktop-show">
+    <table style="height: 100%; width: 100%;">
+        <tr style="height: 100%; width: 100%;">
+            <td class="top-navbar-logo-placeholder">&nbsp;</td>
+            <td class="top-navbar-header">
+                <small>Você está na área de:</small><br>CRIAÇÃO DE CONTEÚDO
+            </td>
+            <td class="top-navbar-exit">
+                <a href="#" {{action 'logOut'}}>SAIR</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="desktop-show gersistema-wrapper">
+    {{#if (equalstr role 'admin')}}
+        <div class="container-fluid gersistema-container">
+            <div class="row gersistema-content-spacer">
+                <div class="col-xs-3">                
+                    <select class="form-control" {{action 'selectType' on="change"}} id="select_type">
+                        {{#if (equalstr selected_type 'modulo')}}
+                            <option value="none" style="font-style: italic;">Selecione o tipo...</option>
+                            <option value="modulo" selected>Módulo</option>
+                            <option value="aula">Aula</option>                            
+                        {{else if (equalstr selected_type 'aula')}}
+                            <option value="none" style="font-style: italic;">Selecione o tipo...</option>
+                            <option value="modulo">Módulo</option>
+                            <option value="aula" selected>Aula</option>
+                        {{else}}
+                            <option value="none" style="font-style: italic;" selected>Selecione o tipo...</option>
+                            <option value="modulo">Módulo</option>
+                            <option value="aula">Aula</option>
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    {{#if selected_type}}
+                        <select class="form-control" {{action 'selectAction' on="change"}} id="select_action">
+                            {{#if (equalstr selected_action 'editar')}}
+                                <option value="none" style="font-style: italic;">Selecione...</option>
+                                <option value="editar" selected>Editar Existente</option>
+                                <option value="criar">Criar novo</option>
+                            {{else if (equalstr selected_action 'criar')}}
+                                <option value="none" style="font-style: italic;">Selecione...</option>
+                                <option value="editar">Editar Existente</option>
+                                <option value="criar" selected>Criar novo</option>
+                            {{else}}
+                                <option value="none" style="font-style: italic;" selected>Selecione...</option>
+                                <option value="editar">Editar Existente</option>
+                                <option value="criar">Criar novo</option>
+                            {{/if}}
+                        </select>
+                    {{/if}}                    
+                </div>
+                <div class="col-xs-3">
+                    {{#if (equalstr selected_action 'editar')}}
+                        <select class="form-control" {{action 'selectModulo' on="change"}} id="select_modulo">
+                            {{#if selected_modulo}}
+                                <option value="none" style="font-style: italic;">Selecione o modulo</option>
+                            {{else}}
+                                <option value="none" selected style="font-style: italic;">Selecione o modulo</option>
+                            {{/if}}
+                            {{#each model as |modulo|}}
+                                {{#if modulo.atividades}}
+                                    {{#if (equalstr selected_modulo.id modulo.id)}}
+                                        <option value={{modulo.id}} selected>{{modulo.name}}</option>
+                                    {{else}}
+                                        <option value={{modulo.id}}>{{modulo.name}}</option>
+                                    {{/if}}
+                                {{else}}
+                                    <option value={{modulo.id}} disabled>{{modulo.name}}</option>
+                                {{/if}} 
+                            {{/each}}
+                        </select>                        
+                    {{else if (equalstr selected_type 'aula')}}
+                        {{#if selected_action}}
+                            <select class="form-control" {{action 'selectModulo' on="change"}} id="select_modulo">
+                                {{#if selected_modulo}}
+                                    <option value="none" style="font-style: italic;">Selecione o modulo</option>
+                                {{else}}
+                                    <option value="none" selected style="font-style: italic;">Selecione o modulo</option>
+                                {{/if}}
+                                {{#each model as |modulo|}}
+                                    {{#if (equalstr selected_modulo.id modulo.id)}}
+                                        <option value={{modulo.id}} selected>{{modulo.name}}</option>
+                                    {{else}}
+                                        <option value={{modulo.id}}>{{modulo.name}}</option>
+                                    {{/if}}
+                                {{/each}}
+                            </select>
+                        {{/if}}
+                    {{/if}}                    
+                </div>
+                <div class="col-xs-3">
+                    {{#if (equalstr selected_type 'aula')}}
+                        {{#if (equalstr selected_action 'editar')}}
+                            {{#if selected_modulo}}
+                                <select class="form-control" {{action 'selectAula' on="change"}} id="select_aula">
+                                {{#if selected_aula}}
+                                    <option value="none" style="font-style: italic;">Selecione a aula</option>
+                                {{else}}
+                                    <option value="none" selected style="font-style: italic;">Selecione a aula</option>
+                                {{/if}}
+                                {{#each selected_modulo.atividades as |aula|}}
+                                    {{#if (equalstr selected_aula.id aula.id)}}
+                                        <option value={{aula.id}} selected>{{aula.name}}</option>
+                                    {{else}}
+                                        <option value={{aula.id}}>{{aula.name}}</option>
+                                    {{/if}}
+                                {{/each}}
+                                </select>
+                            {{/if}} 
+                        {{/if}}
+                    {{/if}}                   
+                </div>
+            </div>
+            {{#if (equalstr selected_type 'modulo')}}
+                {{#if selected_action}}
+                    <div class="row gersistema-content-spacer">
+                        <div class="col-xs-2">
+                            <strong>Nome: </strong>
+                        </div>
+                        <div class="col-xs-4">
+                            <input class="textbox1" type="textbox" id="new_modulo_name" value={{selected_modulo.name}} style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="row gersistema-content-spacer">
+                        <div class="col-xs-2">
+                            <strong>Descrição: </strong>
+                        </div>
+                        <div class="col-xs-4">
+                            <textarea class="textbox1" id="new_modulo_description" value={{selected_modulo.description}} style="width: 100%; height: 200px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <button class="btn btn-primary" type="submit" {{action 'cancelaSelectionMod'}}>Cancela</button>
+                        </div>
+                        <div class="col-xs-2">
+                            <button class="btn btn-primary" type="submit" {{action 'limpaSelectionMod'}}>Limpa</button>
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="button_conf_mod" class="btn btn-primary" type="submit" {{action 'confirmaMod' selected_modulo.id}}>Confirma</button>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-xs-12" style="color: red;">{{modulo_resultado}}</div>
+                        </div>
+                {{/if}}
+            {{else if (equalstr selected_type 'aula')}}
+                {{#if selected_action}}
+                    {{#if selected_modulo}}
+                        <div class="row gersistema-content-spacer">
+                            <div class="col-xs-2">
+                                <strong>Nome: </strong>
+                            </div>
+                            <div class="col-xs-4">
+                                <input class="textbox1" type="textbox" id="new_aula_name" value={{selected_aula.name}} style="width: 100%;" disabled>
+                            </div>
+                            <div class="col-xs-2">
+                                <strong>Descrição: </strong>
+                            </div>
+                            <div class="col-xs-4">
+                                <textarea class="textbox1" id="new_aula_description" value={{selected_aula.description}} style="width: 100%; height: 100px;" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="row"><hr></div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <button class="btn btn-primary" type="submit" {{action 'editaAula'}}>Editar Atributos da Aula</button>
+                            </div>
+                            <div class="col-xs-4">
+                                <button class="btn btn-primary" type="submit" {{action 'salvaAula'}} disabled><span class="btn__icon icon-save"></span>Salvar</button>
+                            </div>
+                        </div>
+                        <div class="row"><hr></div>
+                        {{#if selected_aula}}
+                            <div class="row gersistema-content-spacer">
+                                <div class="desktop-show activity-nav__container">
+                                    <div class="activity-nav activity_navigation">
+                                        {{#each selected_aula.secoes as |secao|}}
+                                            <a id="act_nav_{{secao.id}}" class="activity-nav__tab activity-nav__tab--actual" {{action 'selSecao' secao.id}}><span class="activity-nav__label-aux">{{secao.nome}}</span></a>
+                                        {{/each}}
+                                        <a id="act_nav_add" class="activity-nav__tab activity-nav__tab--actual" {{action 'addSecao'}}><span class="activity-nav__label-aux"><i class="fa fa-plus-circle fa-1x" title="AdicionaSecao"></i>Adicionar secao</span></a>
+                                    </div>                                
+                                </div>
+                            </div>
+                            {{#each selected_aula.secoes as |secao|}}
+                                <div id="secao_div_{{selected_aula}}_{{secao.id}}" class="row sections_div" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-xs-9">Esta é a seção <strong>{{secao.nome}}</strong></div>
+                                        <div class="col-xs-3"><a href="#" {{action 'removeSecao' secao.id}}><i class="fa fa-trash fa-1x" title="removeSecao"></i> Remover Seção</a></div>
+                                    </div>                                    
+                                    {{#each secao.conteudos as |conteudo| }}
+                                        <div class="row">
+                                            <div class="col-xs-3"><strong>Index: </strong>{{conteudo.idx}}</div>
+                                            <div class="col-xs-9">
+                                                <select id="select_{{selected_aula}}_{{secao.id}}_{{conteudo.id}}" disabled>
+                                                    {{#if conteudo.html}}
+                                                        <option value="html" style="font-style: italic;" selected>HTML</option>
+                                                        <option value="video" style="font-style: italic;">Video</option>
+                                                        <option value="quiz" style="font-style: italic;">Quiz</option>
+                                                    {{else if conteudo.video}}
+                                                        <option value="html" style="font-style: italic;">HTML</option>
+                                                        <option value="video" style="font-style: italic;" selected>Video</option>
+                                                        <option value="quiz" style="font-style: italic;">Quiz</option>
+                                                    {{else if conteudo.quiz}}
+                                                        <option value="html" style="font-style: italic;">HTML</option>
+                                                        <option value="video" style="font-style: italic;">Video</option>
+                                                        <option value="quiz" style="font-style: italic;" selected>Quiz</option>
+                                                    {{/if}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            {{#if conteudo.html}}
+                                                <div class="col-xs-3">Conteudo html:</div><div class="col-xs-9"><textarea class="textbox1" value={{conteudo.html.texto}} style="width: 100%; height: 200px;" id="html_{{selected_aula}}_{{secao.id}}_{{conteudo.id}}" disabled></textarea></div>
+                                            {{else if conteudo.video}}
+                                                <div class="col-xs-3">ID do video:</div><div class="col-xs-9"><input class="textbox1" type="textbox" id="video_{{selected_aula}}_{{secao.id}}_{{conteudo.id}}" value={{conteudo.video.videoId}} style="width: 100%;" disabled></div>
+                                            {{else if conteudo.quiz}}
+                                                <div class="col-xs-12">
+                                                    {{#each conteudo.quiz.questoes as |questao|}}
+                                                        <div class="row">
+                                                            <div class="col-xs-3">Questao {{questao.idx}}</div>
+                                                            <div class="col-xs-9">{{questao.texto}}</div>
+                                                        </div>
+                                                        {{#each questao.alternativas as |alternativa|}}
+                                                            <div class="row">
+                                                                <div class="col-xs-3">Correta: {{alternativa.correta}}</div>
+                                                                <div class="col-xs-6">{{alternativa.texto}}</div>
+                                                                <div class="col-xs-3">Video: {{alternativa.videoId}}</div>
+                                                            </div>
+                                                        {{/each}}
+                                                    {{/each}}
+                                                </div>
+                                            {{/if}}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-primary" type="submit" {{action 'removeConteudo' conteudo.id}}>Remover este Conteudo</button>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-primary" type="submit" {{action 'editaConteudo' conteudo.id}}>Editar este Conteudo</button>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <button class="btn btn-primary" type="submit" {{action 'salvaConteudo' conteudo.id}} disabled>Salvar Conteudo</button>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                    <div class="row"><hr></div>
+                                    <div class="row">
+                                        <div class="col-xs-6"><button class="btn btn-primary" type="submit" {{action 'addConteudo'}}>Adicionar Conteúdo</button></div>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    {{/if}}
+                {{/if}}  
+            {{/if}}
+        </div>
+    {{/if}}
+</div>

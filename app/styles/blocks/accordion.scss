@@ -1,0 +1,78 @@
+.accordion {
+    $this: &;
+
+    &__target {
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        transition: 300ms;
+
+        [class*='is-show'] & {
+            max-height: 1000px;
+        }
+
+        @include media('>sm') {
+
+            &--mob-only {
+                max-height: 100%;
+            }
+
+        }
+
+    }
+
+    &__trigger-block {
+        display: block;
+        background-image: linear-gradient($color-gray--light, transparent);
+        background-position: 0 50%;
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        padding: $distance--sm 0;
+        text-align: center;
+    }
+
+    &__trigger {
+
+
+        &--plus {
+            $size: 40px;
+
+            background-color: white;
+            border: 1px solid $color-gray--light;
+            border-radius: 50%;
+            height: $size;
+            margin: 0 auto;
+            position: relative;
+            width: $size;
+        }
+
+    }
+
+    &__icon {
+        align-items: center;
+        display: inline-flex;
+        height: 100%;
+        justify-content: center;
+        text-align: center;
+        transition: 300ms;
+        width: 100%;
+
+        &[class*='minus'] {
+            display: none;
+
+            [class*='is-show'] & {
+                display: inline-flex;
+            }
+        }
+
+        &[class*='plus'] {
+            display: inline-flex;
+
+            [class*='is-show'] & {
+                display: none;
+            }
+
+        }
+    }
+
+}

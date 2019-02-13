@@ -1,0 +1,471 @@
+<section class="main__section">
+
+  <!-- ---------------------------------------- administration users header -->
+  <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+    <h2 class="main__subtitle">Usuários</h2>
+    <div class="institutions__btn-group">
+      <button class="btn btn--sm btn--ghost m-left--md" {{action 'userModal'}}><span class="btn__icon icon-plus"></span>Novo
+        Usuário</button>
+      <button class="btn btn--sm btn--ghost m-left--md" {{action 'cadastroLote'}}><span class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------ administration users body -->
+  <section class="report__section report-people" id="report-people-gersistema" style="display: block;">
+    <!-- users list search/filter -->
+    <form class="form-group form-group--full-width m-top--sm m-bottom--xs" autocomplete="off" aria-autocomplete="none">
+      <label class="form-group__label" for="search">Busca</label>
+      <div class="form-group__wrapper form-group__wrapper--search">
+        {{input class="form-group__input" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="search_input_pessoas_ger"
+        key-up="livesearch" type="text"}}
+      </div>
+      <button class="btn btn--text" {{action 'exitsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
+    </form>
+    <!-- users list counter -->
+    <span class="report__total-results m-bottom--md">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
+    <!-- users list pagination -->
+    <div class="report__pagination">
+      <div class="form-group form-group--select-wrapper">
+        <label class="form-group__label" for="amount">Exibir</label>
+        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
+          {{action 'setExibir' on='change'}}>
+          <option value="5" selected={{paginationSelected.p5}}>5</option>
+          <option value="10" selected={{paginationSelected.p10}}>10</option>
+          <option value="25" selected={{paginationSelected.p25}}>25</option>
+          <option value="50" selected={{paginationSelected.p50}}>50</option>
+          <option value="100" selected={{paginationSelected.p100}}>100</option>
+          <option value="500" selected={{paginationSelected.p500}}>500</option>
+          <option value="1000" selected={{paginationSelected.p1000}}>1000</option>
+        </select>
+      </div>
+      <div {{action staticAlert 'close'}}>
+        {{page-numbers content=pagedContent}}
+      </div>
+      <div></div>
+    </div>
+
+    <!-- ------------------------------------------------------- users list -->
+    <table class="institutions__table table table--striped table--users">
+      <!-- users list header -->
+      <thead>
+        <tr>
+          <th class="table__check" scope="col">
+            <span class="checkbox">
+              <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
+                {{action 'listItemCheck' 'all' on='change'}}>
+              <label class="checkbox__label" for="usersListCheckAll"></label>
+            </span>
+          </th>
+          <th class="table__name" scope="col">
+            <div {{action 'setSort' 'name'}}>
+              Nome
+              {{#if (equalstr sortCol 'name')}}
+              <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+              {{/if}}
+            </div>
+          </th>
+          <th class="table__email" scope="col">
+            <div {{action 'setSort' 'email'}}>
+              E-mail
+              {{#if (equalstr sortCol 'email')}}
+              <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+              {{/if}}
+            </div>
+          </th>
+          <th class="table__area" scope="col">
+            <div {{action 'setSort' 'area.name'}}>
+              Área
+              {{#if (equalstr sortCol 'area.name')}}
+              <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+              {{/if}}
+            </div>
+          </th>
+          <th class="table__role" scope="col">
+            <div {{action 'setSort' 'role'}}>
+              Perfil
+              {{#if (equalstr sortCol 'role')}}
+              <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+              {{/if}}
+            </div>
+          </th>
+          <th class="table__enabled" scope="col">Hab<span class="hide-on--sm">ilitado</span>
+          </th>
+          <th class="table__sent" scope="col">@
+            <span class="hide-on--sm">enviado</span>
+          </th>
+          <th class="table__courses" scope="col">Cursos</th>
+          <th class="table__actions" scope="col">Ações</th>
+        </tr>
+      </thead>
+      <!-- users list content -->
+      <tbody>
+
+
+
+         <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        {{#if (equalstr gerdataLoaderState 1)}}
+        <div style='display:flex;width:100%;justify-content:center;align-items:center;'>
+          <span style="color:#ffffff; background-color:rgb(140, 0, 255);padding:14px;border:0;border-radius:5px; box-shadow:0px 1px 3px #b1b1b1;">
+            <b>LOADING...</b>
+          </span>
+        </div>
+        {{/if}}
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+
+
+
+        {{#each pessoas_sorted as |pessoa|}}
+        <tr>
+          <td class="table__check">
+            <span class="checkbox">
+              <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
+                {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
+              <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
+            </span>
+          </td>
+          <td class="table__name">{{pessoa.name}}</td>
+          <td class="table__email">{{pessoa.email}}</td>
+          <td class="table__area">{{pessoa.area.name}}</td>
+          <td class="table__role">{{pessoa.role}}</td>
+          <td class="table__icon">
+            <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
+          </td>
+          <td class="table__icon">
+            <span class="{{if pessoa.emailsent 'icon-check icon--success' 'icon-x icon--error'}}"></span>
+          </td>
+          <td class="table__courses">
+            {{pessoa.modulos.length}}
+          </td>
+          <!-- user action -->
+          <td class="table__actions">
+            <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--ghost icon-more_vert"
+              {{action 'userActionDisplay' pessoa.id}}></button>
+            <!-- dropdown user actions list -->
+            <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu submenu--each-animation j-user-action">
+              {{#if (equalstr pessoa.role 'admin')}}
+              {{!--<button class="btn btn--icon btn--primary-lightest btn--disabled icon-trash-2" disabled></button>--}}
+              {{else}}
+              <button class="btn btn--icon btn--primary-lightest icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
+              {{/if}}
+              <button class="btn btn--icon btn--primary-lightest icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
+              <button class="btn btn--icon btn--primary-lightest icon-edit" {{action 'userModal' pessoa.id}}></button>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<!-- -------------------------------------------------- administration users modal -->
+<div class="alert-container">
+
+  <!-- CONFIRMATION || LIST -->
+  <div id="staticAlertUser" class="alert alert--xs alert--primary alert--has-interaction">
+
+    <p class="alert__msg">
+      {{#if staticTxt1}}<strong class="m-right--xs">{{staticTxt1}}</strong>{{/if}}
+      {{#if staticTxt2}}<span>{{staticTxt2}}</span>{{/if}}
+    </p>
+
+    <p class="alert__msg">
+      <!-- mail action -->
+      {{#if selectedToMail}}
+      {{#if mail_single_pessoa}}
+      <strong>{{mail_single_pessoa.email}}</strong>
+      {{/if}}
+      {{/if}}
+
+      <!-- delete user -->
+      {{#if selectedToDelete}}
+      <strong>{{confirm_entity.name}}</strong>
+      {{/if}}
+
+      <!-- reset user progress -->
+      {{#if selectedToReset}}
+      <strong>{{new_user_name}}</strong>
+      {{/if}}
+    </p>
+
+    <ul style="overflow:auto; max-height:60vh;">
+      {{#each staticList as |item|}}
+      <li class="p-v--xxs">{{item.email}}</li>
+      {{/each}}
+    </ul>
+
+    <div class="alert__footer">
+      <!-- check users list -->
+      {{#if (equalstr staticType 'checklist')}}
+      <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Desmarcar todos</button>
+      <button class="btn btn--sm btn--inverted" {{action 'emailAction'}}><span class="btn__icon icon-at-sign"></span>Enviar
+        emails</button>
+      {{/if}}
+      <!-- -->
+      <!-- send email(s) -->
+      {{#if (equalstr staticType 'mail')}}
+      <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
+      <button class="btn btn--inverted" type="submit" {{action 'sendMail'}}>Enviar email{{#if
+        mail_single_pessoa}}{{else}}s{{/if}}</button>
+      {{/if}}
+      <!-- -->
+      <!-- retry failed email -->
+      {{#if (equalstr staticType 'failed')}}
+      <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
+      <button class="btn btn--inverted" {{action 'sendMail'}}>Tentar Novamente</button>
+      {{/if}}
+      <!-- -->
+      <!-- delete user -->
+      {{#if (equalstr staticType 'delete')}}
+      <button class="btn btn--text-inverted" type="submit" {{action 'cancelDel'}}>Cancelar</button>
+      <button class="btn btn--inverted" type="submit" {{action 'confirmDel' confirm_entity}}>Apagar</button>
+      {{/if}}
+      <!-- -->
+      <!-- reset user progress -->
+      {{#if (equalstr staticType 'progress')}}
+      <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit"
+        {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
+      <button class="btn btn--inverted" type="submit" {{action staticAlert 'close'}}>Fechar</button>
+      {{/if}}
+      <!-- -->
+    </div>
+  </div>
+
+  <!-- LOADING || SUCCESS || ERROR -->
+  <div id="timeoutAlertUser" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+    {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
+    {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
+    {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
+    <div style="max-width: 80%;"><strong>{{timeoutTxt}}</strong></div>
+  </div>
+
+</div>
+
+<!-- ----------------------------------------------------- administration user new -->
+<aside id="userModal" class="modal">
+  <div class="modal__overlayer"></div>
+  <div class="modal__content">
+    <header class="modal__header">
+      {{#if new_user_name}}
+      <h3 class="modal__title">Edição de Usuário {{new_user_name}}</h3>
+      {{else}}
+      <h3 class="modal__title">Novo Usuário</h3>
+      {{/if}}
+    </header>
+    <div class="modal__body">
+      <div class="form-group form-group--aired-v form-group--aired-h">
+        <label class="form-group__label" for="new_user_name">Nome</label>
+        <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
+      </div>
+      <div class="form-group form-group--aired-v">
+        <label class="form-group__label">E-mail</label>
+        <input class="form-group__input" type="textbox" id="new_user_email" value={{if new_user_email new_user_email}}>
+      </div>
+      <div class="form-group form-group--aired-v">
+        <div class="form-group form-group--select-wrapper form-group--aired-h">
+          <label class="form-group__label" for="new_user_role">Perfil</label>
+          <select class="form-group__input" id="new_user_role">
+            <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
+            <option value="instrutor" selected={{thisUserRole.instrutor}}>Instrutor</option>
+            <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
+            <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
+            {{#if (equalstr new_user_role 'admin')}}
+            <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
+            {{/if}}
+          </select>
+        </div>
+        <div class="form-group form-group--select-wrapper form-group--aired-h">
+          <label class="form-group__label" for="new_user_area">Área</label>
+          <select class="form-group__input" id="new_user_area">
+            <option value="">Selecione...</option>
+            {{#each inst_selected.areas as |area|}}
+            {{#if (equalstr area.id new_user_area)}}
+            <option value={{area.id}} selected>{{area.name}}</option>
+            {{else}}
+            <option value={{area.id}}>{{area.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group checkbox">
+          <input class="checkbox__input" type="checkbox" id="new_user_enabled">
+          <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
+        </div>
+      </div>
+      <h4 class="modal__subtitle">Cursos</h4>
+      <ul class="list list--img-name-action list--striped">
+        {{#if new_user_email}}
+        <!-- edit user -->
+        {{#each modulos_list as |mod|}}
+        <li class="institutions__course form-group checkbox" style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+          <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+          <h3 class="list__name title-3">{{mod.name}}</h3>
+          <span class="switch switch--institutions">
+            {{#if (isinarray mod user_modulos)}}
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}}
+              disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+            {{else}}
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+            {{/if}}
+            <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+              <span class="switch__inner"></span>
+              <span class="switch__head"></span>
+            </label>
+          </span>
+        </li>
+        {{/each}}
+        {{else}}
+        <!-- new user -->
+        {{#each modulos_list as |mod|}}
+        <li class="institutions__course form-group checkbox" style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+          <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+          <h3 class="list__name title-3">{{mod.name}}</h3>
+          <span class="switch switch--institutions">
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}}>
+            <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+              <span class="switch__inner"></span>
+              <span class="switch__head"></span>
+            </label>
+          </span>
+        </li>
+        {{/each}}
+        {{/if}}
+      </ul>
+      {{#if new_user_email}}
+      <button class="btn btn--primary" type="submit" {{action 'editProgressos' new_user_id}}>Zerar progressos...</button>
+      {{/if}}
+      {{!--
+      <div class="m-top--lg">
+        <div class="form-group form-group--aired-v checkbox">
+          <input class="checkbox__input" type="checkbox" id="new_user_is_taste">
+          <label class="checkbox__label" for="new_user_is_taste">Degustação</label>
+        </div>
+
+        <!-- Somente aparecer se o input estiver marcado -->
+        <div>
+          <div class="form-group form-group--aired-h">
+            <label class="form-group__label" for="user_temp_date_begin">Início</label>
+            <input class="form-group__input" type="date" name="user_temp_date_begin" required>
+            <input class="form-group__input" type="time" name="user_temp__time_begin" min="00:00" max="23:59" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="user_temp_end">Fim</label>
+            <input class="form-group__input" type="date" name="user_temp_date_end" required>
+            <input class="form-group__input" type="time" name="user_temp__time_end" min="00:00" max="23:59" required />
+          </div>
+        </div>
+        <!-- / Somente aparecer se o input estiver marcado -->
+
+      </div>
+      --}}
+    </div>
+    <footer class="modal__footer">
+      <button class="btn btn--text" type="submit" {{action 'closeUserModal'}}>Cancelar</button>
+      {{#if new_user_id}}
+      <button class="btn btn--primary" type="submit" {{action 'userSave' new_user_id}}>Editar</button>
+      {{else}}
+      <button class="btn btn--primary" type="submit" {{action 'userSave'}}>OK</button>
+      {{/if}}
+    </footer>
+  </div>
+</aside>
+
+<aside id="lote_modal" class="modal">
+  <div class="modal__overlayer"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <button class="modal__close btn btn--icon icon-x" type="submit" {{action 'cancelLote'}}></button>
+      <h3 class="modal__title">Cadastro e Matrícula em Lote</h3>
+    </div>
+    <div class="modal__body modal__body--inside-scroll inside-scroll">
+      <div class="inside-scroll__fixed">
+        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos usuários
+          a serem
+          criados ou atualizados no sistema</p>
+        <div class="institutions__mass-enroll institutions__btn-group btn-group">
+          <button class="btn btn-primary" type="submit" {{action 'baixarTemplate'}}>Baixar template</button>
+          <label class="btn btn--primary label_get_lote" for="get_lote">Buscar arquivo</label>
+          <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file" style="display: none;" />
+          {{#if selected_file}}
+          <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
+          {{else}}
+          <button class="btn btn-primary btn--disabled" type="submit" disabled>Importar</button>
+          {{/if}}
+          <div><i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="display: none" id="spinner-importar-lote"></i></div>
+        </div>
+      </div>
+
+      <div class="inside-scroll__scroll">
+        <!-- {{#if selected_file}}
+            <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
+            {{else}}
+            <button class="btn btn-primary btn--disabled" type="submit" disabled>
+                Importar
+            </button>
+            {{/if}} -->
+        {{#if selected_file}}
+        <div class="institutions__attached-file alert alert--sm alert--has-icon">
+          <span class="alert__icon icon-paperclip"></span>
+          <span class="institutions__attached-label">Arquivo selecionado: </span>
+          <strong>{{selected_file}}</strong>
+        </div>
+        {{/if}}
+        {{#if error_lote}}
+        <p>1- {{error_lote}}</p>
+        {{/if}}
+        {{#if wait_lote}}
+        <p>Um momento...</p>
+        {{else if erro_lista}}
+        <p>2- {{erro_lista}}</p>
+        {{else}}
+        <table class="table table--striped table--mass-enroll">
+          <thead class="thead-dark">
+            <tr>
+              <th class="table__enroller" scope="col">Cadastrador</th>
+              <th class="table__file" scope="col">Arquivo</th>
+              <th class="table__import" scope="col">Importação</th>
+              <th class="table__status" scope="col">Status</th>
+              <th class="table__users" scope="col">Usuários</th>
+              <th class="table__processed" scope="col">Processados</th>
+              <th class="table__not-processed" scope="col">Não Processados</th>
+              <th class="table__log" scope="col">Log</th>
+            </tr>
+          </thead>
+          <tbody class="gersistema-user-list-box">
+            {{#each lista_lote as |lista|}}
+            <tr>
+              <td class="table__enroller">
+                {{lista.pessoaNome}}
+              </td>
+              <td class="table__file">{{lista.nomeArquivo}}</td>
+              <td class="table__import">{{lista.data}}</td>
+              <td class="table__status">{{lista.status}}</td>
+              <td class="table__users">{{lista.quantidadeDeUsuarios}}</td>
+              <td class="table__processed">{{lista.usuariosProcessados}}</td>
+              <td class="table__not-processed">{{lista.usuariosNaoProcessados}}</td>
+              <td class="table__log">
+                {{#if lista.link}}
+                <a href={{lista.link}}>
+                  <i class="icon-file-text"></i>
+                </a>
+                {{else}}
+                <i class="fa fa-times-o"></i>
+                {{/if}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="modal__footer">
+    <button class="btn btn-primary" type="submit" {{action 'cancelLote'}}>Fechar</button>
+  </div>
+</aside>

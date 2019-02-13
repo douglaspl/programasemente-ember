@@ -1,0 +1,184 @@
+.transition {
+    $this: &;
+
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $distance--xxl 0 $distance--xs;
+
+    @include media('height<768px') {
+        padding-top: 0;
+    }
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:before {
+        background-color: $color-primary--darkest;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &__header {
+        align-items: center;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: $distance--sm;
+        text-align: center;
+
+        @include media('>md') {
+            align-self: center;
+            max-width: 80%;
+            padding: $distance--md;
+        }
+
+    }
+
+    &__progress {
+        align-items: center;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        margin-top: $distance--sm;
+    }
+
+    &__step {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        > *:last-child {
+            @include title-1;
+        }
+
+    }
+
+    &__arrow {
+        margin: $distance--sm $distance--md 0;
+        opacity: .5;
+    }
+
+    &__former {}
+    &__next {}
+
+    &__whatnext {
+        background-color: $color-primary--darkest;
+        box-shadow: $shadow-5;
+        flex: 0 0 auto;
+        margin-bottom: $distance--super;
+        margin-top: $distance--md;
+        opacity: .85;
+        padding: $distance--lg $distance--xs;
+        text-align: center;
+
+
+        @include media('>md') {
+            margin-top: $distance--xl;
+            padding: $distance--xxl;
+        }
+
+        @include media('height<768px') {
+            margin-bottom: $distance--md;
+            margin-top: 0;
+        }
+
+    }
+
+    &__title {
+        @include title-1($size: calc(#{$font-size--lg} + 1vh),
+                         $size--sm: calc(#{$font-size--xl} + 1vh),
+                         $size--lg: calc(#{$font-size--xxl} + 1vh));
+
+        margin-bottom: $distance--md;
+
+        &:only-child {
+            margin-bottom: 0;
+        }
+
+        @include media('<=sm') {
+
+            > *:first-child {
+                display: block;
+            }
+
+        }
+
+    }
+
+    &__subtitle {
+        @include title-2--u($color: inherit);
+
+        margin-bottom: $distance--xs;
+
+        @include media('>md') {
+            margin-bottom: $distance--md;
+        }
+
+    }
+
+    &__cta-group {
+        display: inline-flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-bottom: $distance--xxs;
+        margin-top: $distance--xs;
+        position: relative;
+    }
+
+    &__cta {
+        flex: 0 0 auto;
+        margin-top: $distance--sm;
+        min-width: 10rem;
+    }
+
+    &__countdown {
+        display: inline-block;
+        font-size: $font-size--xxs;
+        font-style: italic;
+        line-height: 1;
+        margin-top: $distance--xs;
+    }
+
+    &__lecture {
+        color: $color-primary--darkest;
+        cursor: pointer;
+        margin: 0 $distance--xs;
+        position: relative;
+
+        &::before {
+            background-color: $color-white;
+            border-radius: $distance--xxl;
+            content: '';
+            height: calc(100% + #{$distance--xxs});
+            left: 50%;
+            opacity: .85;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            transition: 300ms cubic-bezier(.25, .46, .45, .94); // IE fallback
+            transition: 300ms var(--ease-out-quad);
+
+            width: calc(100% + #{$distance--sm});
+            z-index: -1;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+    }
+
+}

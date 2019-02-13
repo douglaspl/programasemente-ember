@@ -1,0 +1,134 @@
+
+.modal {
+    $this: &;
+
+    -webkit-overflow-scrolling: touch;
+    bottom: 0;
+    display: none;
+    left: 0;
+    height: 100%; // iPad precisa da altura definida. Testado em 04/10/2018 em iPad 2, Safari.
+    outline: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: -1;
+
+    &--is-show {
+        @include z-index(modal);
+
+        display: block;
+        visibility: visible;
+    }
+
+    &__content {
+        background-clip: padding-box;
+        background-color: $color-white;
+        border-radius: $radius--md;
+        box-shadow: $shadow-5;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        max-height: 96%;
+        max-width: 70rem;
+        outline: 0;
+        opacity: 0;
+        padding: $distance--md;
+        position: relative;
+        top: 50%;
+        transform: translateY(-45%);
+        transition: 300ms;
+        width: 96%;
+        z-index: 2;
+
+        [class*='is-show'] & {
+            transition-delay: 100ms;
+            opacity: 1;
+            transform: translateY(-50%);
+        }
+
+        &--sm {
+           max-width: 24rem;
+        }
+
+    }
+
+    &__close {
+        border: 2px solid $color-white;
+        box-shadow: $shadow-3;
+        position: absolute;
+        right: -$distance--xs;
+        top: -$distance--xs;
+    }
+
+    &__header {
+        flex: 0 0 auto;
+        padding-bottom: $distance--lg;
+    }
+
+    &__title {
+        @include title-3;
+    }
+
+    // Acho que está descontinuado...
+    &__subtitle {
+        font-size: $font-size--md;
+        font-weight: normal;
+        margin-top: $distance--xxl;
+    }
+
+    &__body {
+
+        @include overflow-y;
+        padding-right: $distance--md;
+
+        @include target-ipad {
+            flex-basis: auto; // iPad precisa do flex-shrink 0, caso contrário conteúdo some. Testado em 04/10/2018 em iPad 2, Safari.
+        }
+
+        @include target-ie {
+            flex: 1 0 auto;
+            max-height: 60vh;
+        }
+
+        &--inside-scroll {
+            overflow: visible;
+        }
+
+    }
+
+    &__footer {
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-top: $distance--md;
+
+        > *:not(:only-child) {
+            margin-left: $distance--sm;
+        }
+
+        &--center {
+            justify-content: center;
+        }
+
+    }
+
+    &__overlayer {
+        background-color: $color-primary--darkest;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 300ms;
+
+        [class*='is-show'] & {
+            opacity: .95;
+        }
+
+    }
+
+}

@@ -1,0 +1,60 @@
+<div class="loader" id="firstAccessLoader">
+    <div class="loader__bars">
+        <div class="loader__bar loader__bar--1"></div>
+        <div class="loader__bar loader__bar--2"></div>
+        <div class="loader__bar loader__bar--3"></div>
+    </div>
+</div>
+<style> .header { display: none; } </style>
+<div class="first-access {{if goToStepTwo 'first-access--two'}}" id="firstAccess" style="display:none">
+
+    <div class="first-access__step-one">
+
+        <h1 class="first-access__title"><span class="truncate">{{userName}},</span>bem-vindo ao CORESkills!</h1>
+
+        <p class="first-access__lead">É necessário trocar sua senha:</p>
+        <form {{action 'changePw' on="submit"}}>
+            <div class="form-group form-group--vertical form-group--full-width form-group--aired-v">
+                <label class="form-group__label">Senha atual</label>
+                <input id='pwd_old' class="form-group__input" type="password" autocomplete="current-password">
+            </div>
+
+            <div class="first-access__new-pass form-group__container">
+                <span id="msg-caps-on" class="form__msg form__msg--bellow form__msg--error">
+                    <span class="form__msg-icon icon-alert-triangle"></span>CapsLock is on
+                </span>
+                <div class="form-group form-group--vertical form-group--full-width form-group--aired-v">
+                    <label class="form-group__label">Senha nova</label>
+                    <input id='pwd_new' class="form-group__input" type="password" autocomplete="new-password">
+                </div>
+                <div class="form-group form-group--vertical form-group--full-width">
+                    <label class="form-group__label">Confirme a senha nova</label>
+                    <input id='pwd_conf' class="form-group__input" type="password" autocomplete="new-password">
+                </div>
+            </div>
+            <p id="actionTxt"></p>
+            {{#if error_pwd}}
+                <div class="alert alert--sm alert--has-icon alert--error">
+                    <span class="alert__icon icon-x"></span>
+                    <p>{{error_pwd}}</p>
+                </div>
+            {{/if}}
+
+            {{#if success_pwd}}
+                <div class="alert alert--sm alert--has-icon alert--warning">
+                    <span class="alert__icon icon-alert-triangle"></span>
+                    <p>{{success_pwd}}</p>
+                </div>
+            {{/if}}
+
+            <button class="first-access__cta btn" style="align-self: flex-end" type="submit">Mudar Senha</button>
+        </form>
+    </div>
+
+    <div class="first-access__step-two">
+        <h1 class="first-access__title">Ótimo!</h1>
+        <p class="first-access__lead">Agora é só entrar no sistema.</p>
+        {{#link-to 'webapp' class="first-access__cta btn"}}Entrar no sistema{{/link-to}}
+    </div>
+
+</div>

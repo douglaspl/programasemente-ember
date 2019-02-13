@@ -1,0 +1,46 @@
+.report-person {
+    $this: &;
+    
+    > *:not(:first-child) {
+        margin-top: $distance--lg;
+    }
+    
+    &__header {
+        border-bottom: 1px solid $color-gray--light;
+        display: flex;
+        flex-direction: column;
+        margin-top: $distance--sm;
+        padding-bottom: $distance--lg;
+        
+        > *:not(:first-child) {
+            margin-top: $distance--lg;
+        }
+        
+        
+        @include media('>sm') {
+            align-items: center;
+            flex-direction: row;
+            margin-top: 0;
+            
+            > *:not(:first-child) {
+                margin-left: $distance--lg;
+            }
+
+        }
+
+    }
+    
+    &__body {        
+        margin-top: $distance--lg;
+        
+        > *:not(:first-child) {
+            margin-top: $distance--lg;
+        }
+
+    }
+
+    &__class {
+        margin-bottom: $distance--xl;
+    }
+
+}

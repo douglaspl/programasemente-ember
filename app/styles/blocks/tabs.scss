@@ -1,0 +1,36 @@
+$tab-radius: $radius--capsule;
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+
+    &__tab {
+        $bg: $color-primary;
+
+        @include button;
+        @include text-contrast($bg);
+
+
+        background-color: $bg;
+        border-radius: 0;
+        box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.2);
+        padding: 1em 2.5em;
+        transition: 300ms;
+
+        @include media('<md') {
+            font-size: $font-size--xxs;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+
+        &:first-child { border-radius: $tab-radius 0 0 $tab-radius; }
+        &:last-child { border-radius: 0 $tab-radius $tab-radius 0; }
+
+        &--is-active {
+            background-color: $color-primary--lightest;
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4); // inset -6px 0 8px rgba(0, 0, 0, 0.2), inset 6px 0 8px rgba(0, 0, 0, 0.2)
+        }
+
+    }
+
+}

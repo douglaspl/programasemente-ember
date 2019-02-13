@@ -1,0 +1,93 @@
+<section class="course {{if menuIsOpen 'course--nav-is-show'}}" id="ativdetails_main_div">
+  <header id="course-nav" class="course__nav course-nav">
+    <div class="course-nav__title-menu-block">
+
+      <button class="course-nav__menu-toggle" {{action 'toggleMenuStatus'}}>
+        <span class="course-nav__icon-menu icon-menu"></span>
+        <span class="course-nav__icon-close icon-x"></span>
+      </button>
+
+      <h1 class="course-nav__course-title">{{model.modulo.name}}</h1>
+
+      {{#link-to 'modulos.modlist' model.modulo.id class="course-nav__back"}}
+      <span class="icon-chevron-left"></span>
+      Voltar para aulas
+      {{/link-to}}
+
+    </div>
+
+    <!-- Marca da instituição -->
+
+    <!-- Horizontal -->
+    {{#if (equalstr isBradesco 9)}}
+    <img class="course-nav__logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSBhURBxAWFhUWFRkVFxcXGBoYFRYYGRgfFxoaGBsYHiggGBonHhcWITIiJSoyLi8uGSAzPTUvNzQtLisBCgoKDg0OFxAQFS0dHSY3Li0xKy8rKysrLTctNzUtKy0sKysrKzE3Ny0tLi0tNTcvNy0rLi0tLS0rNDctNSsrN//AABEIAIIBhAMBIgACEQEDEQH/xAAcAAEAAwEBAQEBAAAAAAAAAAAABQYHBAMCAQj/xABDEAACAQMCAwQFCQUFCQAAAAABAgADBBEFEgYhMQcTQWEiMlFxkRQWNlRzdIGhshUXgpKzI0JicrEkJiczUlO0weH/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIEAwYF/8QALhEBAAEDAQYDBwUAAAAAAAAAAAECAxEEBRIhMWFxE0HBFTIzUpGhsRQiQ1GB/9oADAMBAAIRAxEAPwDcYiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgVjtHvKlHhdqllUZHD0wGU4OCwBmT/Oi9+uVv5zNR7U/oe/2lP9YmLzLemYqep2Nat1aeZqpieM+XZL/Oi9+uVv5zHzovfrlb+czt4M4Te+rksxSihwzjqT/wBKZ5Z9p8Jb7/SLK1XZbaTcXJHVhTdh8W6/wjErTTVMZy73tRprdzw4txVV0iOHeZUP50Xv1yt/OZ+/Oi9+uVv5zJfUP2dUO25tbiwc8gzKzU8/4lbnj3ASrXluad01N2VipxuQhkbxBUjqMYkTvR5tFmLNz+LE9Yj7TGYXjhbtEqrcrT11t9MkDvOQdPYTj1h7fGauJ/NRHKf0HwvVL8N2z1OrW9In3lAZ2s1zPCXxNs6S3a3blEYzwmEnE5NT1Olb24qajUWmpbaC3TJBOPyMjPnnYfXKXxnd8JPROXTtQpV7XvLCoroSQGXpkcjOqAiIgIiICJw6pq9C2QNqVVaYY4UscZOM4nvZXiVrVato4ZG5qw6Hw5fiDA94iICIiAiQT8YWQ1FqFS6RXU4O7IUEdRvI258szt0bWaN1bmppj71DFCdrKNwGTjcBnqOY5QJCIiAiedxWVKDPXICqCzE9AAMkn8MyF+edh9dpfGBPRODTdZt7jP7Or06mOZCsCQPaR1AnfAREQEREBEitT4jtbevs1G4Sm23dhjz2nOD7uR+ElYCIiAiIgIiICIiAiIgIiICIiBUe1T6Hv9pT/WJj9jXVLgNWpLUAz6Lkhc+BO0gkD2eM2DtU+h7/AGlP9YmLzJe956vYsROlmJ/ufxDUtc16pQ7P7apYbaVSuEP9moVUBXe21eg6Ac/bKSnGN+Dlbyp+IQ/6qZJ3VwLns7pqn/Ms6gDjx7psqrY9nMD+Eyr6bRFXU6VJmxvq06ZIxkB3CkjzwcyK6pzGJddJp7VNFe/REzEznMRPb7YXLTe0ept7viCglemeRwoD/ip9FvyntxRwrb1NGN/wufQxuemM4wPWKg81I8V6cvjEcd8L07B6IoVWfvBUJ34GNmzpgf4z8JMaZW+Qdn1YalkVLrf3VI8m2ugp7iPAdW+HjLcZzTU4VU26Yt39Lw3pxjyq44nh0Z/N/wCEforafdqP9MTAJv8Awj9FLT7tR/prFjnKu3fhUd/RXe2H6Lp94T9Dys8FcH2l3onfajWdX3suA6AYGMcmUmWbth+i6feF/Q8qHCPAC32kd+9xsO9l292G9Xz3D2zW8wuV7qlDRdIo0rZHrI7OQd65HME8wMEc5LPxOo4R/aHdHbtDbMjPNtuM9JRO0zTfk2g2NurbhTFRd2MZ5Lzx4SWrn/g0M/8AaX+qIE3oPGi3Wk3FxToMot1LFSwJbCl+RA5dJEUu1WgbR3q0HDAqFTcpL5znn4AY5nzEhuz36G6l9m39FpzdkFoj6/UauoYpR9HIBAJYAkZ8ccs+ZgW7hftDpXepChVotSds7DuDKxAzjOBg4B+E6OL+OqVjcCktM1auNxUHaEB6bjz5n2YmeWVML2oBaIAAvWAA5ADeeQHsn7d0VrdqDJqHNWutrA9CByVT5YCiMD1424wp6hpNIU6bU6iVCWUnIIKkZVh158ueJduHdXW07NaVzcKzKicwuMndV2DqQOrD/wCyA7X9NoU6du9qio5LIQoC7kAByQOu04H8U6qXECWfZta97RWq1TIRH9TKuW3Ny6KQD78dOsD4XtZXvf7Szbb7RUG74FQD8ZfLDWKNbSRdUHHdFSxZuW0D1t3sIwczL9fu9SueFzW1G3oC2IWopAAdVJG1ky5IzkeHQzjsbhx2U11UnBvAh8lKU3I9xb/WMC0X3atRW4Isrd6ig43FgmfcOZx78SwW3F9N+FXv+5qBEzlTt3EghfROcEZPXyMrnZPo9u+ivWuKSVKhqFDuUNtUAYAz0znPnJ3jDVqOn6Aq07dGDNtp0sAU8g78kY5AdcY646QM++cmnd2adTSf7NmLljVY1cnqQ59Ie4NiajwzcWvzdR9GASgFJ58tuPW35J5g5yST75neuXup3PCzVb+2oC2IDAhcOo3DayZckeHh0M8NJrMvZRdd0TzrhT/lY0w35f6wLBqXatSW4K6fbtUUH12bYG81GCce/En+FONKF8xSkDTqgZKNjmPEqR6wGR7D5Su9jtnTOl16jopqd73eSASECKQPIEs3vxK1QQUO1ILpvJRdhQB0CucOox4Dcw8sQNa4m+jdz9hV/QZj/AXD1C8q1RqlRkCKpG1lXqTnO4H2CbBxN9G7n7Cr+gzGuCuExqFSor1u77sKfU353Z8xjpED60Wj3HaFTp6NV7xVuFQOMelTJHeZxyOF3eXLM0nWuOqdrxCLS5pHHoZqbgFUNzyRjPKUDTGfSeNxRPd1fSSmzbQG2VMc16mm3pcxnnifvaVR38dlAfWFFf5sD/3AvvDHHKXupVadCgyKiFwzMNzAEDmo6Hn7ZBVu1lN/+z2bFfa1QA/AAj85a7qha6bob1qFugFOnt9FVDvnAClsZJZsZJlL07WtSvbB/wBj2VsLcZTYVAXpzXmwzyI6AQLxwrxNSv7MvaAqykB0bG5c9Dy5EHBwfLwlc1ztPpUdRalZ0DVCHaz7gqkjrt5HOPbylZ7KqjCpdmgTkWpI94zj8Z8dk1lSq6+xvVDFKW5AwyM7gCcHqQD+cCJ7QNbp3mpivZggG3VSG6qwL5B8D1HMe2bFxTxPRsbUNeZZmyERcbmx1PPkAM8yfzmSdp9lSo8T1FsVCg01dlXkFdgc8h0yMN/FJDtYqMeMAHGQtKmFHgQWYn4nI/CBYrDtVpNchb+2amhPrht+PMjAOPdmWviPiSjZ6aK1zlt2AirjLkjPLPLGOeZnPEtbUL3T0o19LZBTYFSiPkAKV2jP93BHLyEktX4WubrgizCKe+t1ZTSb0WKkgDr4gIvXwJgdOndqa1L5Kda0ZQ7qgIcE5Y7RkED2+2WrifiajY2oa9JLNnYi83bHXqeQGRkn2zN9P4xuLTZa8R2itTp7RtdNlRVB5MM+i2MZBxzx18Z4dqNbvOLgKrYTuqe0+AVsksPifhGBY7HtVV75ab2b4Zgo2OGfJOB6JAB548ZYOK+NaFi4SorVKpGdikDaPAuT0/MyVs9FtqdGmLahTATBQhVJBHRgcZz15+OTMjWmK/aky6kMqbt1IPQhCQgOeoIVBjzgWnTO1Wi9wF1C3ampON4YOB5sMA492ZodOoGphqZBBAII6EHmCJm/bHZ0xp9CoiqKneFMgAEptJ/EAhfdmWPs1qs3BVA1uo3qP8q1GVfyAH4QLPERICIiAiIgVHtU+h7/AGlP9YmLzcO0ezarwjWFEZK7an4IwZvyBmHzJf8Aeer2HVH6eY6z+IelKsyZ7liNylGwcblPIg+0H2TS7Af7g2H3yj/5JmYS8WnEtuvCdpbuzd5SuKdRxsbAVa5qEg4wTtPQStE4zl32haqri3uU5/dGcf6ke2Jyt3ZtTOCO+IPsINIgzPLu6erXL3bs7nqzHJ/Pw8pbO0jiK3vKtudLct3Yqhsqy43bMesBn1TKdFyc1ThfZtqaNNRFVOKozzjjzkm/cI/RS0+7Uf6azAZv3CP0UtPu1H+mJexzlh278Kjv6I/tC0SreaGtLTgpYVVf0jtGArA8/wARPvgHRqtpoHc6gFD94zeicjBxjnLJE1PMKr2g8MtfaagsyBUpsWXccKwIwy58DyBz5Sm2fA+pPpTUL2rspKGZKW8ENU5lRyyAuefM/hNciMig8I8KXNvw7eULwJvrIQmGyMmmy8zjlzInz2c8J3NlqVR9SCBWphRtbdzDZ9k0CIGZ0uC7scdfKyE7r5S1X1/S2liemOuD0npx7wLVr6mbrRMFmxvTcFO5RgMhPLoB4jmMzSIk5GQ3XAWo17UVdSqhquQqo9TcVTBJy3MZzjkPOTeqcEVq3BdtQBUV6G7ln0GDE5G7wPqkHymhxGRklPhLVq2kGhf1dlKmoFOkzod2CAoymfRA5jceWBy9li4U4OdOEriz1wAd7VLgod2BsQKRy6hkzLzB6RkYdcaRfadrPc6fcKGqKWBWqiB1BwCwqkAHnyz54Jlsv+E7274Rp09UdflNJ2ZCX3b0bqrtjk3mMjkJJ8UcMXN47ofkgRiMVDTY3CIpyFB6Hx8R1MtOm2go6fToqxYU0VAzesdoAyfPlGRltHhLV6ukm3vKmykg9CmzoQxB5DKZO3x9I8sDlLNwdwpUp8M17TXFXFVz6jZ5FQM5xyIIyJdYkZGR/M3VLK7b5vVNyvy3I6KSPDctQ4BGeoz5Sc4G4EqW+o/K9bYGqMlUB3YZurM3i3M9PaevhoEScji1u2aro1alQ9Z6ToueQyykDJ95mVWHA2q0M/IKi09wAbZVK5x0zgec2KJAzDhvs5rjV1uNfqKdriptDF2dgcjcxHTIGeucTq4q4PurjjJbm1Cd2DSJy2D6BBbljymixJyIribSBd6HVty20uBtJ5gMpDKT5ZAmc6Pwlq9MtbUqvc0GOXYOhU5GCVA9MHA8prcSBn3Z1wnc2Wo1G1NU2vS2+i27mGBxjHTGZB6pwBe2+sd5w0cpuJQrUCPTB/utuIyB05ZyJrsRkY5qnZrfOA+9KlR1LVCznk5PTJGW5Y5y6ce8HfLqa1LRgtZBtG71XXOdrEdMEkg+Z/C3xGRlNHStf7vuBVKoBtDGpS6f5gDUlu4s069bS6I0Crtq0yN3pY3jZgj0hhufP0paIgZG3Bmp32oK3EjBQPRLMaZOzOSFWlyz164lp454JF5RR9PYJVprsG71XQdFJHMEc8HzP4XOJORk+j6BrVO4pojladNlID1lNIgHOMKS23wxiSvG3AdSvqPyvRWC1TguhO30h0ZGxyPIdfZnlNDiMjIxwZql7dqeIqm1V5bndGIXx2LTyMn2nHnNT06yShYJRtRhEUKvuHt850xICIiAiIgIiIH4RKFrvZnSq1y+lVe5JOShG6n/AA4wV/MS/RK1UxVzd7Gpu2Kt63Vhk/7rLj6zS+DR+6u4+s0vg01iJTwaW32xqvmj6Qyf91lx9YpfBo/dZcfWaXwaaxEeDSe2NV80fSGT/usuPrNL4NNL0SzNDRqNGoQTTpJTJHQlVC5HlynbEtTRFPJm1OuvaiIi5OcdCIiXZCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiB//9k=">
+
+    <!-- Vertical -->
+    {{!--<img class="course-nav__logo" src="https://s3.amazonaws.com/gatry-static/promocao/imagem/481f035cbc2e9b352810f8e66da719dc.png">--}}
+    {{/if}}
+
+    <div class="course-nav__class">
+      <span class="course-nav__class-order">Aula {{model.idx}}</span>
+      <h2 class="course-nav__class-title">{{model.name}}</h2>
+
+      {{!-- <div class="course-nav__progress progress-container m-top--sm">
+        <span class="progress progress--xs">
+          <span class="progress__bar" style="{{moduloPercentStyle}}"></span>
+        </span>
+        <span class="progress__value">{{moduloPercent}}%</span>
+      </div> --}}
+    </div>
+    <nav id="scroller_menu" class="course-nav__nav">
+      <ul class="course-nav__nodes">
+        {{#each model.secoes as |secao|}}
+        {{#if (isinarray secao secoes_enabled)}}
+        {{#each secao.conteudos as |conteudo|}}
+        {{#if conteudo.quiz}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+        model=model secao=secao conteudo=conteudo}}
+        {{#each conteudo.quiz.questoes as |questao|}}
+        {{#if (isinarray questao questoes_enabled)}}
+        {{#if (isinarray questao questoes_respondidas)}}
+        {{section-link class='course-nav__node course-nav__node--is-done' elementId=(concatenate "li_conteudo_"
+        secao.id "_" conteudo.id "_" questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
+        {{else}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+        questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
+        {{/if}}
+        {{else}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+        questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
+        {{/if}}
+        {{/each}}
+        {{else}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+        model=model secao=secao conteudo=conteudo}}
+        {{/if}}
+        {{/each}}
+        {{else}}
+        {{#each secao.conteudos as |conteudo|}}
+        {{#if conteudo.quiz}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+        model=model secao=secao conteudo=conteudo disabled='disabled'}}
+        {{#each conteudo.quiz.questoes as |questao|}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+        questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
+        {{/each}}
+        {{else}}
+        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+        model=model secao=secao conteudo=conteudo disabled='disabled'}}
+        {{/if}}
+        {{/each}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </nav>
+  </header>
+{{model.acompanhamentosCursoInstituicao}}
+  {{outlet}}
+
+
+
+
+
+</section>

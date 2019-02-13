@@ -1,0 +1,120 @@
+.report-people {
+    $this: &;
+
+    position: relative;
+
+    &__list {
+        margin-top: $distance--md;
+    }
+
+    &__check {
+        width: 100%;
+
+        @include media('>md') {
+            width: auto;
+        }
+
+    }
+
+    &__avatar {
+        display: none;
+
+        @include media('>md') {
+            display: inline-block;
+        }
+    }
+
+    &__person {
+        align-items: flex-start;
+        border-radius: $radius;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: $distance--lg $distance--md;
+
+        &:nth-child(odd) {
+            background-color: $color-gray--lightest;
+        }
+
+        @include media('>md') {
+            align-items: center;
+            text-align: left;
+        }
+
+        > *:not(:last-child) {
+            margin-bottom: $distance--xs;
+
+            @include media('>md') {
+                margin-bottom: 0;
+                margin-right: $distance--md;
+            }
+
+        }
+
+
+        [class*='has-stats'] & {
+            background-color: $color-gray--lightest;
+            border: 3px solid transparent;
+            box-shadow: $shadow-1;
+            flex-wrap: wrap;
+            margin: $distance--sm 0;
+            padding: $distance--xs;
+
+            &--has-completed { border-left-color: $color-success; }
+            &--has-init { border-left-color: $color-warning; }
+            &--has-not-init { border-left-color: $color-error; }
+
+            @include media('>md') {
+                border-radius: $radius--capsule;
+                padding: $distance--sm $distance--md;
+            }
+
+        }
+
+    }
+
+    &__data {
+        align-items: flex-start;
+        border-top: 1px solid $color-gray--light;
+        display: flex;
+        flex-direction: row;
+        margin-top: $distance--xs;
+        padding-bottom: $distance--xxs;
+        padding-top: $distance--xs;
+        width: 100%;
+
+        @include media('>md') {
+            border: 0 solid transparent;
+            margin-top: $distance--xs;
+            padding: 0;
+            width: auto;
+        }
+
+        > * {
+            flex: 1;
+        }
+
+    }
+
+    // Alerta indicando quantos usuários foram selecionados
+    &__selected-users {
+        left: 50%;
+        min-width: 32rem;
+        opacity: 0;
+        padding: $distance--lg;
+        position: fixed;
+        top: $distance--xxl;
+        transform: translate(-50%, 5%);
+        transition: 300ms;
+        visibility: hidden;
+        z-index: 2;
+
+        &--is-show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+    }
+
+}

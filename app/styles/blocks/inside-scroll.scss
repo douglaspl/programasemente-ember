@@ -1,0 +1,16 @@
+.inside-scroll {
+    $this: &;
+
+    display: flex;
+    flex-direction: column;
+
+    &__fixed {
+        flex: 0 0 auto;
+    }
+
+    &__scroll {
+        @include overflow-y;
+        flex: 1;
+    }
+
+}

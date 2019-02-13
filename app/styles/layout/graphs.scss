@@ -1,0 +1,14 @@
+.graphs {
+    $this: &;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $distance--lg 0;
+
+    > * {
+        flex: 1;
+        min-height: 15rem;
+    }
+    
+}

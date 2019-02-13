@@ -1,0 +1,95 @@
+// @import "ember-bootstrap/bootstrap";
+// @import "semente-styles.scss";
+
+// Novo comeca aqui
+
+@import "setup/_variables";
+@import "setup/_fix";
+@import "setup/_functions";
+@import "setup/_mixins";
+@import "setup/_includeMedia";
+@import "setup/_icons";
+@import "setup/_type";
+@import "setup/_basics";
+@import "setup/_rhythm"; // Não é para produção.
+@import "setup/_sanitize"; // Não é para produção.
+
+@import "blocks/_example";
+
+@import "blocks/accordion";
+@import "blocks/add-user";
+@import "blocks/alert";
+@import "blocks/avatar";
+@import "blocks/breadcrumb";
+@import "blocks/buttons";
+@import "blocks/capsule";
+@import "blocks/card";
+@import "blocks/checkbox";
+@import "blocks/counter";
+@import "blocks/data";
+@import "blocks/empty";
+@import "blocks/filter";
+@import "blocks/form";
+@import "blocks/help";
+@import "blocks/inside-scroll";
+@import "blocks/list";
+@import "blocks/loader";
+@import "blocks/logo";
+@import "blocks/modal";
+@import "blocks/pagination";
+@import "blocks/person";
+@import "blocks/popover";
+@import "blocks/progress";
+@import "blocks/radio";
+@import "blocks/side-arrows";
+@import "blocks/stacked-bar";
+@import "blocks/steps";
+@import "blocks/submenu";
+@import "blocks/switch";
+@import "blocks/table"; //ok
+@import "blocks/table-flip"; //ok
+@import "blocks/tabs";
+@import "blocks/tooltip"; //ok
+@import "blocks/video"; //ok
+@import "blocks/well";
+
+@import "component/ordering";
+
+@import "layout/content";
+@import "layout/header";
+@import "layout/main";
+@import "layout/content-main";
+
+@import "layout/about-author";
+@import "layout/image-change";
+@import "layout/class-list";
+@import "layout/class";
+
+@import "layout/filter-list";
+@import "layout/first-access";
+@import "layout/global-nav";
+@import "layout/graphs";
+@import "layout/highlight";
+@import "layout/institutions";
+@import "layout/login";
+@import "layout/select-inst";
+@import "layout/transition";
+
+@import "states/course-cover";
+@import "states/course-nav";
+@import "states/course";
+@import "states/report-class";
+@import "states/report-course";
+@import "states/report-people";
+@import "states/report-person";
+@import "states/report-question";
+@import "states/report-quiz";
+@import "states/report";
+
+@import "content/feedback";
+@import "content/html";
+@import "content/quiz";
+@import "content/video";
+
+@import "utils/animate";
+@import "utils/trumps";

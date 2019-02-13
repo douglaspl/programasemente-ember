@@ -1,0 +1,17 @@
+.empty {
+    $this: &;
+
+    align-items: center;
+    background-color: $color-gray--lightest;
+    border: 2px dotted $color-gray--light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $distance--xxl;
+
+    &__icon {
+        margin-bottom: $distance--md;
+        opacity: .8;
+    }
+
+}

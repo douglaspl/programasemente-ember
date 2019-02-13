@@ -1,0 +1,40 @@
+.ordering {
+    $this: &;
+
+    display: flex;
+    flex-direction: column;
+
+    @include media('>lg') {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    &__results {
+        margin-bottom: $distance--md;
+        order: 1;
+
+        @include media('>lg') {
+            margin-bottom: 0;
+            margin-left: $distance--sm;
+            order: 2;
+        }
+
+    }
+
+    &__order {
+        margin-bottom: $distance--md;
+        order: 2;
+
+        @include media('>lg') {
+            margin-bottom: 0;
+            order: 1;
+        }
+
+    }
+
+    &__pages {
+        margin-left: auto;
+        order: 3;
+    }
+
+}

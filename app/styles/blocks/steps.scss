@@ -1,0 +1,71 @@
+.steps {
+    $this: &;
+    $font-size: $font-size--sm;
+    $number-border: 2px;
+    $size: 2em;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-size: $font-size;
+    justify-content: space-between;
+    position: relative;
+
+    > * {
+        z-index: 2;
+    }
+
+    &::before {
+        background-color: $color-gray--lightest;
+        border-radius: $radius--capsule;
+        bottom: calc((#{$size} / 2) - #{$number-border});
+        content: '';
+        height: .25rem;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+
+    &__step {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-of-type) {
+            margin-right: $distance--md;
+        }
+
+        > *:last-child {
+            margin-top: $distance--xs;
+        }
+
+    }
+
+    &__number {
+        align-items: center;
+        background-color: $color-primary--darkest;
+        border: $number-border solid $color-white;
+        border-radius: 50%;
+        box-shadow: $shadow-2;
+        color: $color-white;
+        display: flex;
+        flex-direction: row;
+        height: $size;
+        justify-content: center;
+        width: $size;
+
+        &--is-active { background-color: $color-primary; }
+        // &--is-done { background-color: $color-success; }
+    }
+
+    &__label {
+        @include title-aux;
+
+        display: block;
+        min-width: 12rem;
+        text-align: center;
+        word-wrap: wrap;
+    }
+
+}

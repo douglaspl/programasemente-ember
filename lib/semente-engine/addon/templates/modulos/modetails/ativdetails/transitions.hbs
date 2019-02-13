@@ -1,0 +1,86 @@
+<section id="transition_aula_{{model.id}}" class="course__transition transition">
+	{{#if next_section}}
+		{{#if model.ultimaObrigatoria}}
+			{{#if next_atividade}}
+				<div class="transition__header">
+					<h1 class="transition__title animated fadeIn d500"><span>Parabéns!</span> Você finalizou esta aula.</h1>
+					<p class="animated fadeIn d750">Você pode acessar a área de <a class="transition__lecture" {{action 'goNext' next_section '' 'section'}}>Leitura</a> para ver a versão redigida do conteúdo desta aula e ter acesso à referências de outros materiais sobre o tema.</p>
+				</div>
+				<div class="transition__whatnext animated fadeIn d1250">
+					<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
+					<div class="transition__cta-group">
+						<button class="transition__cta btn btn--lg btn--inverted animated fadeIn d2250" {{action 'goNext' next_atividade_id next_ativsec_id 'atividade'}}><span class="hide-on--xs">Continuar para a</span> próxima aula</button>
+						<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d2000" {{action 'goNext' next_section_id '' 'section'}}>Ir para leitura</button>
+						<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d1750" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+						<p class="transition__countdown animated fadeIn d2250">Continuará automaticamente em {{countdown}} segundos.</p>
+					</div>
+				</div>
+			{{else}}
+				<div class="transition__header">
+					<h1 class="transition__title animated fadeIn d500">Parabéns! Você finalizou este curso.</h1>
+					<p class="animated fadeIn d750">Você pode acessar a área de <a class="transition__lecture" {{action 'goNext' next_section '' 'section'}}>Leitura</a> para ver a versão redigida do conteúdo desta aula e ter acesso à referências de outros materiais sobre o tema.</p>
+				</div>
+				<div class="transition__whatnext animated fadeIn d1250">
+					<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
+					<div class="transition__cta-group">
+						<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d2000" {{action 'goNext' next_section_id '' 'section'}}>Ir para leitura</button>
+						<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d1750" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+						
+						{{#link-to 'modulos' class="transition__cta btn btn--lg btn--inverted animated fadeIn d2250"}}Voltar à página de cursos{{/link-to}}
+						<p class="transition__countdown animated fadeIn d2250">Voltará automaticamente em {{countdown}} segundos.</p>
+					</div>
+				</div>
+			{{/if}}
+		{{else}}
+			<div class="transition__header">
+				<div class="transition__progress">
+					<div class="transition__step transition__former animated fadeInLeft d250">
+						<span>Você viu</span>
+						<span>{{model.nome}}</span>
+					</div>
+					<div class="transition__arrow">
+						<div class="icon-arrow-right icon--xl animated fadeInLeft d1000"></div>
+					</div>
+					<div class="transition__step transition__next animated fadeInLeft d1250">
+						<span>Próxima fase</span>
+						<span>{{next_section.nome}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="transition__whatnext animated fadeIn d1500">
+				<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
+				<div class="transition__cta-group">
+					<button class="transition__cta btn btn--lg btn--inverted animated fadeIn d2750" {{action 'goNext' next_section_id next_section_quiz 'section'}}>Continuar para a próxima fase</button>
+					<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+					<p class="transition__countdown  animated fadeIn d2750">Continuará automaticamente em {{countdown}} segundos.</p>
+				</div>
+			</div>
+		{{/if}}
+	{{else}}
+		{{#if next_atividade}}
+			<div class="transition__header">
+				<h1 class="transition__title animated fadeIn d500"><span>Parabéns!</span> Você finalizou esta aula.</h1>
+			</div>
+			<div class="transition__whatnext animated fadeIn d1500">
+				<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
+				<div class="transition__cta-group">
+					<button class="transition__cta btn btn--lg btn--inverted animated fadeIn d2750" {{action 'goNext' next_atividade_id next_ativsec_id 'atividade'}}>Continuar para a próxima aula</button>
+					<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+					<p class="transition__countdown animated fadeIn d2750">Continuará automaticamente em {{countdown}} segundos.</p>
+				</div>
+			</div>
+		{{else}}
+			<div class="transition__header">
+				<h1 class="transition__title animated fadeIn d500"><span>Parabéns!</span> Você finalizou esta curso.</h1>
+			</div>
+			<div class="transition__whatnext animated fadeIn d1500">
+				<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
+				<div class="transition__cta-group">
+					<button class="transition__cta btn btn--lg btn--ghost btn--ghost-white animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+					{{#link-to 'modulos' class="transition__cta btn btn--lg btn--inverted animated fadeIn d2750"}}Voltar à página de cursos{{/link-to}}
+					<p class="transition__countdown animated fadeIn d2750">Voltará automaticamente em {{countdown}} segundos.</p>
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+</section>

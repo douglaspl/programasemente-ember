@@ -1,0 +1,34 @@
+.breadcrumb {
+    $this: &;
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $distance--sm;
+    margin-top: $distance--md;
+
+    &__node {
+        display: flex;
+        flex-direction: row;
+        margin-right: $distance--xs;
+
+        > * {
+            order: 1;
+        }
+
+        &::before {
+            margin-left: $distance--xs;
+            order: 2;
+        }
+
+    }
+
+    &__link {
+        font-family: 'Source Sans Pro', sans-serif;
+
+        @include hover {
+            text-decoration: underline;
+        }
+
+    }
+
+}

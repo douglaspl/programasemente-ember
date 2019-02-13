@@ -1,0 +1,39 @@
+.about-author {
+    $this: &;
+
+    max-width: 100%;
+    width: 32rem;
+
+    @include media('>sm') {
+        max-width: 45vw;
+    }
+
+    &__header {
+        margin-bottom: $distance--sm;
+    }
+
+    &__thumb {
+        margin-right: $distance--sm;
+        vertical-align: middle;
+
+        @include media('>sm') {
+            margin-right: $distance--md;
+        }
+    }
+
+    &__name {
+        display: inline-block;
+        font-size: $font-size--md;
+        font-weight: bold;
+        vertical-align: middle;
+    }
+
+    &__info {
+
+        > * {
+            line-height: 1.5;
+        }
+
+    }
+
+}

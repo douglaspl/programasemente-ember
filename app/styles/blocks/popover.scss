@@ -1,0 +1,113 @@
+$popover-tip-size: 10px;
+$popover-distance: $popover-tip-size * 2;
+
+.popover {
+    $this: &;
+
+    @include  z-index('popover');
+    position: relative;
+
+    &__close {
+        position: absolute;
+        right: $distance--xs;
+        top: $distance--xs;
+    }
+
+    &__balloon {
+        background-color: $color-white;
+        border-radius: $radius--md;
+        box-shadow: $shadow-4;
+        opacity: 0;
+        padding: $distance--md;
+        position: absolute;
+        min-width: 24rem;
+        transition: 300ms;
+        visibility: hidden;
+        z-index: 2;
+
+        &::before {
+            border-color: $color-white transparent transparent transparent;
+            border-style: solid;
+            border-width: $popover-tip-size;
+            content: '';
+            filter: drop-shadow(4px 0px 4px rgba(26, 26, 26, .2));
+            position: absolute;
+        }
+
+        &--left {
+            right: calc(100% + #{$popover-distance});
+            top: 50%;
+            transform: translate($popover-distance, -50%);
+
+            &::before {
+                border-color: transparent transparent transparent $color-white;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            [class*='is-show'] & {
+                transform: translate(0, -50%);
+            }
+
+        }
+
+        &--left-top {
+            right: calc(100% + #{$popover-distance});
+            top: 50%;
+            transform: translate($popover-distance, -20%);
+
+            &::before {
+                border-color: transparent transparent transparent $color-white;
+                left: 100%;
+                top: 20%;
+                transform: translateY(-50%);
+            }
+
+            [class*='is-show'] & {
+                transform: translate(0, -20%);
+            }
+        }
+
+        &--right-top {
+            left: calc(100% + #{$popover-distance});
+            top: 50%;
+            transform: translate($popover-distance, -20%);
+
+            &::before {
+                border-color: transparent transparent transparent $color-white;
+                right: 100%;
+                top: 20%;
+                transform: translateY(-50%);
+            }
+
+            [class*='is-show'] & {
+                transform: translate(0, -20%);
+            }
+        }
+
+        &--right-bottom {
+            left: calc(100% + #{$popover-distance});
+            bottom: 50%;
+            transform: translate($popover-distance, +20%);
+
+            &::before {
+                border-color: transparent transparent transparent $color-white;
+                bottom: 13%;
+                right: 100%;
+                transform: translateX(0%) rotate(180deg);
+            }
+
+            [class*='is-show'] & {
+                transform: translate(0, +20%);
+            }
+        }
+
+        [class*='is-show'] & {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+}

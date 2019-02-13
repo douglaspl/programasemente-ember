@@ -1,0 +1,37 @@
+// BLOCK
+// video
+
+// ELEMENTS
+
+// MODIFIERS
+// --has-max-size
+
+// O video é um caso onde devo testar ainda se aplicar a classe
+// no iframe terá o mesmo comportamento.
+
+$video-size: 56.25%;
+
+.video {
+    height: 0;
+    padding-bottom: $video-size;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    @include media('landscape', 'height<sm') {
+        padding-bottom: 40%;
+    }
+
+    &--has-max-size {
+        max-width: 80%;
+    }
+
+    iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+}

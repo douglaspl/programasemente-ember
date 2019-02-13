@@ -1,0 +1,133 @@
+.class {
+    $this: &;
+
+    align-items: flex-start;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $radius--md;
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    min-height: 12rem;
+    padding: $distance--sm $distance--lg $distance--sm $distance--sm;
+    position: relative;
+
+    @include media('>sm') {
+        min-height: 24rem;
+        padding: $distance--lg $distance--xl;
+    }
+
+    > * {
+        z-index: 2;
+    }
+
+    &::before {
+        background-color: $color-black;
+        border-radius: inherit;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: .9;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &--is-completed {
+        border-top: 4px solid $color-success;
+    }
+
+    &--is-disabled {
+        cursor: not-allowed;
+        opacity: .65;
+    }
+
+    &__icon {
+        $size: 40px;
+
+        align-items: center;
+        background-color: $color-success;
+        border-radius: 50%;
+        box-shadow: $shadow-3;
+        color: $color-white;
+        display: flex;
+        font-size: $font-size--md;
+        height: $size;
+        justify-content: center;
+        line-height: 1;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(20%, -20%);
+        width: $size;
+
+        @include media('>sm') {
+            transform: translate(30%, -50%);
+        }
+
+    }
+
+    &__position-holder {
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    &__position {
+        bottom: 0;
+        font-size: 150px;
+        font-weight: 900;
+        line-height: 1;
+        opacity: .1;
+        position: absolute;
+        right: 0;
+        transform: translate(20%, 20%);
+
+        @include media('>sm') {
+            font-size: 300px;
+        }
+
+        @include media('>md') {
+            font-size: 400px;
+        }
+
+    }
+
+    &__title {
+        @include title-2--u($color: $color-white, $weight: bold);
+        @include line;
+
+        margin-bottom: $distance--xl;
+    }
+
+    &__description {
+        font-size: $font-size--sm;
+        line-height: 1.4;
+        max-width: 90%;
+        opacity: .85;
+
+        @include media('>sm') {
+            max-width: 60%;
+        }
+
+        @include media('>md') {
+            max-width: 90%;
+        }
+
+    }
+
+    &__cta {
+        margin-top: $distance--md;
+
+        @include media('>md') {
+            margin-top: auto;
+        }
+
+    }
+
+}

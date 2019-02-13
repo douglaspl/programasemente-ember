@@ -1,0 +1,1344 @@
+<main class="main report">
+
+  <div style="display:{{if instView 'none' 'inherit'}}">
+    <header class="main__header institutions__header">
+      <h1 class="main__title">Acompanhamento</h1>
+      <button class="btn btn--sm is-hidden--v">.</button>
+    </header>
+
+    <form class="m-bottom--md" autocomplete="off" aria-autocomplete="none">
+      <div class="form-group form-group--full-width">
+        <label class="form-group__label" for="search">Busca</label>
+        <div class="form-group__wrapper form-group__wrapper--search">
+          {{input class="form-group__input" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="matchValue" key-up="filterInst" type="text"}}
+        </div>
+      </div>
+    </form>
+
+    <!-- admin filtered institutions -->
+    <ul id="matchDisplay" class="list list--img-name-action list--striped" style="display:none;">
+      {{#each matchInsts as |inst|}}
+      <li>
+        <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
+        <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}>{{inst.name}}</a>
+      </li>
+      {{/each}}
+    </ul>
+
+    <!-- admin institutions list -->
+    <ul id="modelInstList" class="list list--img-name-action list--striped">
+      {{#each model as |inst|}}
+      <li>
+        <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
+        <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}>{{inst.name}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <!-- --------------------------------------------- institution selected -->
+  {{#if instView}}
+  <!-- back to institutions list -->
+  {{#if (equalstr role 'admin')}}
+  <button id="backToInstList" class="btn btn--text" {{action 'backToInstList' on="click"}}>
+    <span class="icon-arrow-left"></span>voltar
+  </button>
+  {{/if}}
+
+  <header id="report-header" class="main__header main__header--has-side-info">
+
+    <h1 class="main__title">{{inst_selected.name}}</h1>
+
+    {{#if inst_selected}}
+    <!-- TABS DE NAVEGAÇÃO -->
+    <div class="report__tabs tabs">
+      <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-courses" id="button_tab_cursos"
+        {{action 'selectTab' 'cursos'}}>Cursos</button>
+      <button class="report__tab tabs__tab" data-target="report-people" id="button_tab_pessoas"
+        {{action 'selectTab' 'pessoas'}}>Pessoas</button>
+      {{!-- <button class="report__tab tabs__tab btn" data-target="report-quiz">Quiz</button> --}}
+      {{!-- <button class="report__tab tabs__tab btn" data-target="report-people-comparison">Comparar pessoas</button>
+      --}}
+    </div>
+
+    <button class="btn btn--ghost m-left--md" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
+
+    {{/if}}
+  </header>
+
+  {{/if}}
+
+  <section class="main__section">
+    {{#if inst_selected}}
+    <!-- INÍCIO DA SESSÃO DE CURSOS -->
+    {{#if (equalstr sectionToDisplay 'cursos')}}
+    <section class="report__section report__section--is-active" id="report-courses">
+
+      <div class="form-group form-group--select-wrapper">
+        <label class="form-group__label" for="select_course">Curso</label>
+        <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course"
+          value="select_inst">
+          {{#if curso_selected}}
+          <option value="none" style="font-style: italic;">Selecione o curso...</option>
+          {{else}}
+          <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
+          {{/if}}
+          {{#each inst_selected.modulos as |modulo|}}
+          {{#if (equalstr curso_selected.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}}</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}}</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
+
+      {{#if curso_selected}}
+      <div class="report-course">
+        <div class="report-course__header">
+          {{!-- <span class="report-course__thumb" style={{curso_selected.backgroundImage}}></span> --}}
+          <div class="report-course__title-block">
+            <h2 class="title-2--u">{{curso_selected.name}}</h2>
+           {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xs" {{action 'goToMatriculados' curso_selected.id}}>Ver
+              todos os matriculados</button>--}}
+          </div>
+          {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
+          {{#if (equalstr acomp.modulo.id curso_selected.id)}}
+          <div class="report-course__data data data--bordered">
+            <span class="data__value">{{if acomp.matriculas acomp.matriculas '313'}}</span>
+            <span class="data__label">matrículas</span>
+          </div>
+          <div class="report-course__data data data--bordered">
+            <span class="data__value">{{acomp.completaramPerc}}
+              <span class="small">%</span>
+            </span>
+            <span class="data__label">completaram o curso</span>
+          </div>
+          {{/if}}
+          {{/each}}
+        </div>
+        <ul class="report-course__body report-class">
+          {{#each curso_selected.atividades as |atividade|}}
+          <li class="report-class__two-col">
+            <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
+              <span class="title-aux">Aula {{atividade.idx}}</span>
+              <h3 class="title-3">{{atividade.name}}</h3>
+            </div>
+            {{#each atividade.acompanhamentosAtividadeInstituicao as |acomp|}}
+            {{#if (equalstr acomp.instituicao.id inst_selected.id)}}
+            <div class="report-class__stacked-bar stacked-bar">
+              <div class="stacked-bar__values">
+                {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                {{else}}
+                <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                {{/if}}
+
+                {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                {{else}}
+                <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                {{/if}}
+
+                {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                {{else}}
+                <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                {{/if}}
+              </div>
+
+              <div class="stacked-bar__legend">
+                <span>
+                  <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                  <span>Não iniciado:
+                    <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                  </span>
+
+                </span>
+                <span>
+                  <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                  <span>Em andamento:
+                    <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                  </span>
+
+                </span>
+                <span>
+                  <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                  <span>Completo:
+                    <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                  </span>
+                </span>
+              </div>
+            </div>
+            {{/if}}
+            {{/each}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/if}}
+
+    </section>
+    {{/if}}
+    <!-- FIM DA SESSÃO DE CURSOS -->
+
+    <!-- INÍCIO DA SESSÃO DE PESSOAS (visão geral) -->
+    {{#if (equalstr sectionToDisplay 'pessoas')}}
+    <div style="display: none;">{{setPosition}}</div>
+    {{outlet}}
+    {{/if}}
+    <!-- FIM DA SESSÃO DE PESSOAS -->
+
+    <!-- INÍCIO DA SESSÃO DE QUIZ -->
+    <section class="report__section" id="report-quiz">
+      <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
+        <label class="form-group__label" for="search">Busca</label>
+        <div class="form-group__wrapper form-group__wrapper--search">
+          <input class="form-group__input" id="search_input" type="text" aria-describedby="Busca" autocomplete="off" aria-autocomplete="none" value="">
+        </div>
+      </form>
+      <span class="report__total-results">Mostrando
+        <strong>10 quizes</strong> do curso
+        <strong>Resiliência</strong>
+      </span>
+
+      <div class="report-quiz__btn-group btn-group">
+        <a href="#report-class-01" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(2)</span> --}}
+        </a>
+        <a href="#report-class-02" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(1)</span> --}}
+        </a>
+        <a href="#report-class-03" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(1)</span> --}}
+        </a>
+        <a href="#report-class-04" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(1)</span> --}}
+        </a>
+        <a href="#report-class-05" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(3)</span> --}}
+        </a>
+        <a href="#report-class-06" class="btn btn--primary-dark btn--sm">{{!-- <span class="btn__count">(2)</span> --}}
+        </a>
+      </div>
+
+      <section id="report-class-01" class="main__subsection">
+        <h2 class="main__subtitle">Aula 1: O que é resiliência?</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class1__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="report-class-02" class="main__subsection">
+        <h2 class="main__subtitle">Aula 2: É sempre possível aprender</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class2__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="report-class-03" class="main__subsection">
+        <h2 class="main__subtitle">Aula 3: Esforço e Talento</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class2__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="report-class-04" class="main__subsection">
+        <h2 class="main__subtitle">Aula 4: Pensando sobre os pensamentos</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class2__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="report-class-05" class="main__subsection">
+        <h2 class="main__subtitle">Aula 5: Mais que apenas explicações</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class2__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="report-class-06" class="main__subsection">
+        <h2 class="main__subtitle">Aula 6: Esperança se constrói</h2>
+        <div class="report-card">
+          <table class="table table--quizes">
+            <thead>
+              <tr class="table__subheader">
+                <th class="table__title table__name">
+                  <a id="quiz__class2__0">Para aprender</a>
+                </th>
+                <th class="table__correct">% acerto</th>
+                <th class="table__wrong">% erro</th>
+                <th class="table__average">% média de visualização completa do feedback</th>
+                <th class="table__rewatch">quantidade de vezes que os feedbacks foram reassistidos</th>
+                <th class="table__average-time">tempo médio de permanência na questão</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table__striped-light">
+                <td>Questão 1</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>84%</td>
+                <td>20</td>
+                <td>1min20seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>10</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>5</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>85%</td>
+                <td>15%</td>
+                <td>70%</td>
+                <td>12</td>
+                <td>1min2seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>70%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>65%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-light">
+                <td>Questão 3</td>
+                <td>92%</td>
+                <td>8%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>58seg</td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-light">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+
+
+              <tr class="table__striped-dark">
+                <td>Questão 2</td>
+                <td>22%</td>
+                <td>78%</td>
+                <td>84%</td>
+                <td>10</td>
+                <td>1min47seg</td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>A</td>
+                <td></td>
+                <td></td>
+                <td>76%</td>
+                <td>6</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>B</td>
+                <td></td>
+                <td></td>
+                <td>100%</td>
+                <td>1</td>
+                <td></td>
+              </tr>
+              <tr class="table__striped-dark">
+                <td>C</td>
+                <td></td>
+                <td></td>
+                <td>75%</td>
+                <td>3</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+
+    </section>
+    <!-- FIM DA SESSÃO DE QUIZ -->
+    {{/if}}
+
+
+    <!--#####################
+        ÁREAS UM NÍVEL ABAIXO
+        ##################### -->
+
+
+
+
+    <!-- INÍCIO DA SESSÃO DE QUIZ ESPECÍFICO -->
+    <section style="display: none;" id="report-quiz-specific" class="report-quiz">
+
+      <button id="back-quiz-specific" class="btn btn--text">
+        <span class="icon-arrow-left"></span>voltar
+      </button>
+
+      <h2 class="main__aux-title">Aula 1: O que é resiliência?</h2>
+      <h3 class="main__subtitle">Para aprender</h3>
+
+      <div class="report-quiz__header">
+        <div class="report-quiz__participants report-card">
+          <div class="data">
+            <span class="data__value">84</span>
+            <span class="data__label">respondentes</span>
+          </div>
+        </div>
+        <div class="report-quiz__average-score report-card">
+          <div class="data">
+            <span class="data__value">73.5
+              <span class="small">%</span>
+            </span>
+            <span class="data__label">aproveitamento médio</span>
+          </div>
+          <ul class="report-quiz__best-worst-score">
+            <li>22% menor aproveitamento</li>
+            <li class="report-quiz__worst-score">95% menor aproveitamento</li>
+          </ul>
+        </div>
+        <div class="report-quiz__average-time-each report-card">
+          <div class="data">
+            <span class="data__value">1
+              <span class="small">min</span> 17
+              <span class="small">seg</span>
+            </span>
+            <span class="data__label">tempo médio de permanência nas questões</span>
+          </div>
+        </div>
+        <div class="report-quiz__average-time-total report-card">
+          <div class="data">
+            <span class="data__value">5
+              <span class="small">min</span> 7
+              <span class="small">seg</span>
+            </span>
+            <span class="data__label">tempo médio em questionários</span>
+          </div>
+        </div>
+        <div class="report-quiz__total-questions report-card">
+          <div class="side-arrows">
+            {{!-- <p class="side-arrows__title">Total de 7 questões</p> --}}
+
+            <button id="side-arrows-container-arrow-left" class="side-arrows__arrow">
+              <span class="icon-chevron-left icon--xl"></span>
+            </button>
+
+            <div id="side-arrows-container-questions" class="side-arrows__container">
+              <div class="data">
+                <span class="data__title">Questão 1</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 2</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 3</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 4</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 5</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 6</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+              <div class="data">
+                <span class="data__title">Questão 7</span>
+                <span class="data__value">95
+                  <span class="small">%</span>
+                </span>
+                <span class="data__label">acertos</span>
+              </div>
+            </div>
+
+            <button id="side-arrows-container-arrow-right" class="side-arrows__arrow">
+              <span class="icon-chevron-right icon--xl"></span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <h2 class="main__subtitle">Questões</h2>
+
+      <div class="report-card report-question">
+
+        <div>
+          <span class="report-question__order">Questão 1</span>
+
+          <h3 class="report-question__question">Na Física, resiliência está relacionada à capacidade de um material em
+            ser flexível. Na Psicologia e nas Ciências
+            Humanas, o significado do termo resiliência está relacionado</h3>
+
+          <ul class="report-question__options">
+            <li class="report-question__option">
+              <span class="report-question__answer">aos aspectos da constituição biológica dos indivíduos para
+                enfrentar os desafios físicos.</span>
+            </li>
+            <li class="report-question__option">
+              <span class="report-question__answer">à capacidade de superar dificuldades e sofrimentos provocados pelas
+                adversidades.</span>
+              <span class="report-question__capsule capsule capsule--success">correta</span>
+            </li>
+            <li class="report-question__option">
+              <span class="report-question__answer">à capacidade do indivíduo de não apresentar sofrimento diante das
+                adversidades.</span>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="report-question__information">
+          <li class="report-question__info">
+            <span class="report-question__label">Acertos</span>
+            <span class="report-question__value">95%</span>
+          </li>
+          <li class="report-question__info">
+            <span class="report-question__label">Erros</span>
+            <span class="report-question__value">5%</span>
+          </li>
+          <li class="report-question__info">
+            <span class="report-question__label">Tempo médio de permanência</span>
+            <span class="report-question__value">1min20seg</span>
+          </li>
+          <li class="report-question__info">
+            <span class="report-question__label">Quantidade de vezes que os feedbacks foram reassistidos</span>
+            <span class="report-question__value">20</span>
+          </li>
+          <li class="report-question__info">
+            <span class="report-question__label">Média de visualização completa do feedback</span>
+            <span class="report-question__value">1min20seg</span>
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+    <!-- FIM DA SESSÃO DE QUIZ ESPECÍFICO -->
+
+    <!--#####################
+        FIM ÁREAS UM NÍVEL ABAIXO
+        ##################### -->
+
+  </section>
+
+
+</main>
+<div style="display: none;">{{rePlot}}{{oneInst}}</div>

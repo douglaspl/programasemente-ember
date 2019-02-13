@@ -1,0 +1,38 @@
+.card {
+    $this: &;
+
+    @include card;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &__cover {
+        @include bg-as-thumb;
+
+        box-shadow: $shadow-2;
+        display: block;
+        height: 50%;
+        min-height: 170px;
+        width: 100%;
+
+        @include media('>sm') {
+            min-height: 150px;
+        }
+
+    }
+
+    &__title {
+        @include title-3;
+
+        color: $color-primary--darkest;
+        flex: 1 0 auto;
+        margin: $distance--md 0 $distance--sm;
+    }
+
+    &__cta {
+        margin-bottom: $distance--sm;
+        margin-top: auto;
+    }
+
+}

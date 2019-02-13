@@ -1,0 +1,88 @@
+.report {
+    $this: &;
+
+    // Relacionado as tabs
+    &__section {
+        display: none;
+
+        &--is-active {
+            display: block;
+        }
+
+        @include media('<=sm') {
+
+            > * {
+                width: 100%;
+            }
+
+        }
+
+    }
+
+    &__header {}
+
+    &__tabs {
+        // margin-bottom: $distance--lg;
+        // width: 100%;
+
+        @include media('<=sm') {
+
+            > * {
+                flex: 1;
+            }
+
+        }
+
+    }
+
+    &__body {
+        margin-top: $distance--md;
+    }
+
+    &__total-results {
+        @include title-aux();
+
+        // padding-right: $distance--xxl;
+        // text-align: right;
+        // width: 100%;
+    }
+
+    &-card {
+        @include card;
+
+        margin-bottom: $distance--md;
+        padding: $distance--sm;
+
+        @include media('>lg') {
+            padding: $distance--lg $distance--md;
+        }
+
+        &__data {
+            flex: 0 0 130px;
+        }
+
+        &--error { border-left: 4px solid $color-error; }
+        &--success { border-left: 4px solid $color-success; }
+        &--warning { border-left: 4px solid $color-warning; }
+
+    }
+
+    &__pagination {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: $distance--xl;
+
+        > * {
+            margin-right: $distance--lg;
+
+            &:last-child {
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+        }
+
+    }
+
+}

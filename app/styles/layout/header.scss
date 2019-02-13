@@ -1,0 +1,40 @@
+.header {
+    $this: &;
+
+    align-items: center;
+    border-bottom: 1px solid $color-gray--light;
+    display: flex;
+    flex-direction: row;
+    min-height: $header-height;
+    justify-content: space-between;
+    padding: $header-v-padding $h-padding--xs;
+    position: relative;
+
+    @include media('>sm') {
+        padding-left: $h-padding--sm;
+        padding-right: $h-padding--sm;
+    }
+
+    @include media('>md') {
+        padding-left: $h-padding--md;
+        padding-right: $h-padding--md;
+    }
+
+    @include media('>lg') {
+        padding-left: $h-padding--lg;
+        padding-right: $h-padding--lg;
+    }
+
+    &__logo {
+        display: block;
+        height: 1rem;
+        max-width: 10rem;
+        width: auto;
+
+        @include target-ie {
+            max-width: 6.5rem;
+        }
+
+    }
+
+}

@@ -1,0 +1,46 @@
+.person {
+    $this: &;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: $font-size--xxs;
+
+    &__name {
+        @include title-3;
+        // padding: .75rem 0 0;
+    }
+
+    &__email {
+        margin-top: $distance--xxs;
+
+        @include media('>md') {
+            margin-bottom: $distance--sm;
+        }
+
+    }
+
+    &__other {
+        display: none;
+
+        @include media('>md') {
+            display: block;
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: $distance--xxs;
+        }
+
+    }
+
+    &__link {
+        color: $color-primary--darkest;
+
+        &:hover {
+            text-decoration: underline;
+
+        }
+
+    }
+
+}

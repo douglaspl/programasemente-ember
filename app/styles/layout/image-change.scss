@@ -1,0 +1,39 @@
+.image-change {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: $distance--sm;
+
+    &__image {
+        $height: $distance--super;
+
+        @include bg-as-thumb($size: contain);
+
+        display: inline-block;
+        flex: 0 0 auto;
+        height: $height;
+        position: relative;
+        width: ($height * 2);
+
+        &--empty {
+            align-items: center;
+            border: 4px dotted $color-gray--light;
+            display: inline-flex;
+            justify-content: center;
+
+            &::before {
+                color: $color-gray;
+                content: 'No image';
+                font-size: $font-size--xxs;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+
+    }
+
+    &__cta {
+        margin-left: $distance--md;
+    }
+
+}

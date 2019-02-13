@@ -1,0 +1,120 @@
+{{outlet}}
+
+{{!-- Daqui pra baixo old --}}
+
+{{!-- <div class="navbar-general navbar-thin desktop-show">
+    <table style="height: 100%; width: 100%;">
+        <tr style="height: 100%; width: 100%;">
+            <td class="top-navbar-logo-placeholder">&nbsp;</td>
+            <td id="top_header" class="top-navbar-header">&nbsp;</td>
+            <td id="top_exit" class="top-navbar-exit">
+                <a id="a_top_exit" href="#" {{action 'logOut'}}>SAIR</a>
+            </td>
+        </tr>
+    </table>
+</div> --}}
+{{!-- <div id="total_modetails_div" class="container-fluid" onscroll={{action 'scrollAction'}}> --}}
+{{!-- <div id="total_modetails_div" onscroll={{action 'scrollAction'}}> --}}
+    {{!-- <div class="row"> --}}
+    {{!-- <div>
+        <div class="total_modetails_div__container">
+            <div id="left_col" class="internal-nav col-sub-navbar desktop-show">
+                <aside class="col-top-navbar">
+                    <div class="col-top-navbar__content">
+                        <header class="current-module">
+                            <span class="current-module__subtitle">Você está no curso:</span>
+                            <h1 class="current-module__title">{{model.name}}</h1>
+                            <div class="current-module__progress progress-circle">
+                                <div class="wrapper"> --}}
+                                    <!-- PROGRESS BAR -->
+                                    {{!-- {{progress-circle class=progress-circle value=model.id}} --}}
+                                    <!-- PROGRESS TEXT -->
+                                    {{!-- <div class="progress__text">
+                                        Você já completou {{modulo_completed}}% deste curso.
+                                    </div> --}}
+                                {{!-- </div>
+                            </div>
+                        </header>
+                        <section class="classes">
+                            <h2 class="classes__title">Suas aulas</h2>
+                            <ul class="classes__list">
+                                {{#each model.atividades as |atividade idx|}}
+                                    <li class="classes__class class {{if (isinarray atividade ativ_enabled) 'classes__class--active' ' '}} {{if (equalstr ativ_ativa_id atividade.id) 'atividade_ativa'}}">
+                                        {{#if (isinarray atividade ativ_enabled)}}
+                                        <a class="class__link" href="#" {{action 'goAtividade' model atividade}}>
+                                            <span class="class__name">{{atividade.name}}</span>
+                                            <span class="class__progress">{{progress-bar-thin data=atividade.id update=update}}</span>
+                                        </a>
+                                        {{else}}
+                                        <a class="class__link" href="#">
+                                            <span class="class__name">{{atividade.name}}</span>
+                                            <span class="class__progress">{{progress-bar-thin data=atividade.id update=update}}</span>
+                                        </a>
+                                        {{/if}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="main_wrapper_activ">
+
+                <h1 class="top_activity_title desktop-show">{{ativ_ativa_name}}</h1> --}}
+                {{!-- <div class="top_activity_description">
+                    <span class="top_description">Competência Geral</span>
+                    <span class="bottom_description">{{model.description}}</span>
+                </div>                            --}}
+{{!-- 
+                <div id="col_main" class="col-sub-main">
+                    {{outlet}}
+                </div>
+            </div>
+        </div>
+        <!-- consumer only to run page transition recog -->
+        <div style="display: none;">{{setPosition}}</div>
+        <div id="aulas_list_modal" class="modal mobile-show">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="modal-header" {{action 'closeModal'}} style="text-align: right; cursor: pointer;">
+                        <i class="fa fa-times fa-1x"></i>
+                    </div>
+                    <div class="row">
+                        <table style="height: 100%; width: 100%;">
+                            <tr>
+                                <td class="col-sub-navbar-modlist">
+                                    <div class="col-top-navbar-modlist">
+                                        <div class="current-module__progress progress-circle" style="margin: 1.6rem auto 3.2rem;
+    padding-right: 130px;">
+                                            <div class="wrapper">
+                                                <!-- PROGRESS BAR -->
+                                                {{progress-circle class=progress-circle value=modulo_completed}}
+                                              
+                                            </div>
+                                          
+                                        </div>
+                                            
+                                        <div class="your_classes_txt">
+                                            Suas aulas
+                                        </div>
+                                        <div class="classes_wrapper_popup_mb">
+                                            {{#each model.atividades as |atividade idx|}} {{#if (isinarray atividade ativ_enabled)}}
+                                            <div class="item class-block" {{action 'goAtividade' model atividade}}>
+                                                <span class="name">AULA {{addone idx}} - {{atividade.name}}</span>
+                                                {{modulo-card-comp data=atividade.id type='aula' update=update}}
+                                            </div>
+                                            {{else}}
+                                            <div class="item class-block">
+                                                <span class="name">AULA {{addone idx}} - {{atividade.name}}</span>
+                                                {{modulo-card-comp data=atividade.id type='aula'}}
+                                            </div>
+                                            {{/if}} {{/each}}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}

@@ -1,0 +1,159 @@
+// BLOCK
+// login
+
+// ELEMENTS
+//  __box
+//  __logo
+//  __form-group
+//  __input
+//  __forgot-pass
+//  __cta
+//  __alert
+//  __show-pass
+
+.login {
+    $this: &;
+
+    align-items: center;
+    cursor: initial;
+    display: flex;
+    flex-direction: row;
+    min-height: 100%; // não provoca scroll (opondo-se aa height: 100vh) e evita espaços em branco qdo scrollamos com o input em :focus (opondo-se a height: 100%).
+    justify-content: center;
+    width: 100%;
+
+    @include target-ie {
+        height: 100%;
+    }
+
+    // @include media('>sm') {
+    //     justify-content: center;
+    //     padding: 0 5%;
+    // }
+
+    &__box {
+        background-color: $color-white;
+        border-radius: $radius--md;
+        box-shadow: $shadow-1;
+        display: flex;
+        flex-direction: column;
+        max-width: 94vw;
+        padding: $distance--sm $distance--sm $distance--md;
+
+        @include media('>sm') {
+            padding: $distance--md $distance--sm;
+        }
+
+        @include media('>sm') {
+            padding: $distance--md $distance--md $distance--md;
+        }
+
+        @include media('>lg') {
+            padding: $distance--lg $distance--md $distance--md;
+        }
+    }
+
+    &__logo {
+        align-self: center;
+        display: inline-block;
+        height: auto;
+        max-height: 48px;
+        margin: $distance--sm auto;
+        max-width: 10rem;
+
+        @include media('>md') {
+            // max-width: 9rem;
+        }
+
+        @include media('>lg') {
+            max-width: 11rem;
+        }
+
+    }
+
+    &__form-group {
+        margin-bottom: $distance--sm;
+        margin-top: $distance--sm;
+
+        & + & {
+            margin-top: $distance--sm;
+        }
+
+    }
+
+    &__input {
+        max-width: 100%;
+        padding: $distance--xs $distance--sm;
+        width: 18rem;
+
+        @include media('>sm') {
+            width: 24rem;
+        }
+    }
+
+    &__forgot-pass {
+        align-self: flex-start;
+        color: $color-gray--dark;
+        display: inline-block;
+        margin-top: $distance--xs;
+        text-decoration: underline;
+    }
+
+    &__cta {
+        align-self: center;
+        margin-top: $distance--sm;
+
+        @include media('>sm') {
+            margin-top: $distance--md;
+        }
+
+    }
+
+    &__alert {
+        margin-top: $distance--xs;
+
+        @include media('>sm') {
+            margin-top: $distance--md;
+        }
+
+    }
+
+    &__show-pass {
+        $size: 20px;
+
+        color: $color-primary;
+        font-size: $font-size--md;
+        height: $size;
+        overflow: hidden;
+        position: absolute;
+        right: $distance--xs;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $size;
+
+        > * {
+            left: 0;
+            position: absolute;
+            top: 0;
+            transition: 300ms;
+
+            &:not([class*='off']) {
+                transform: translateY(-120%);
+            }
+
+        }
+
+        &--is-show > * {
+            &:not([class*='off']) {
+                transform: translateY(0%);
+            }
+
+            &[class*='off'] {
+                transform: translateY(120%);
+            }
+        }
+
+    }
+
+}

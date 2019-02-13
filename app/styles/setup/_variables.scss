@@ -1,0 +1,412 @@
+:root {
+    --ease-in-quad: cubic-bezier(.55, .085, .68, .53);
+    --ease-in-cubic: cubic-bezier(.550, .055, .675, .19);
+    --ease-in-quart: cubic-bezier(.895, .03, .685, .22);
+    --ease-in-quint: cubic-bezier(.755, .05, .855, .06);
+    --ease-in-expo: cubic-bezier(.95, .05, .795, .035);
+    --ease-in-circ: cubic-bezier(.6, .04, .98, .335);
+
+    --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+    --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
+    --ease-out-quart: cubic-bezier(.165, .84, .44, 1);
+    --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+    --ease-out-expo: cubic-bezier(.19, 1, .22, 1);
+    --ease-out-circ: cubic-bezier(.075, .82, .165, 1);
+
+    --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
+    --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+    --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
+    --ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
+    --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+    --ease-in-out-circ: cubic-bezier(.785, .135, .15, .86);
+}
+
+//------------------------------------
+//    #AUX
+//------------------------------------
+$debugger: false;
+$show-rhythm: false;
+$show-v-rhythm: true;
+$show-h-rhythm: true;
+$sanitize: false;
+
+
+
+
+
+//------------------------------------
+//    #BREAKPOINTS
+//------------------------------------
+// Referência para uso http://include-media.com/#features.
+// Os nomes pré-definidos foram trocados para xs, sm, md, lg, xl.
+
+// EXEMPLO
+
+// .douglas {
+//    color: #bada55;
+//
+//    @include media('sm') {
+//        color: #c0ffee;
+//    }
+//
+// }
+
+// scss-lint:disable ZeroUnit
+
+// Referência para tamanhos: https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862.
+$breakpoints: (
+  xs: 0rem,           // Extra small screen / phone
+  sm: 37.5rem,       // 600px   // Small screen / phone
+  md: 56.25rem,      // 900px   // Medium screen / tablet
+  lg: 75rem,         // 1200px  // Large screen / desktop
+  xl: 112.5rem,      // 1800px  // Extra large screen / wide desktop / TV
+) !default;
+// scss-lint:enable ZeroUnit
+
+
+
+
+
+//------------------------------------
+//    #BUTTONS
+//------------------------------------
+$btn-pad--sm: .65em 1.75em .6em;
+$btn-pad--md: .65em 1.5em;
+$btn-pad--lg: .75em 1.5em;
+$btn-pad--xl: 1em 2em;
+
+
+
+
+
+//------------------------------------
+//    #COLORS
+//------------------------------------
+
+$hue: 265;
+// primary
+//https://www.colorbox.io/#steps=5#hue_start=270#hue_end=260#hue_curve=easeInQuad#sat_start=60#sat_end=80#sat_curve=easeInQuad#sat_rate=128#lum_start=85#lum_end=35#lum_curve=easeInQuad
+$color-primary--lightest: hsla($hue, 60%, 50%, 1) !default;
+$color-primary:           hsla($hue, 72%, 28%, 1) !default;
+$color-primary--darkest:  hsla($hue, 100%, 15%, 1) !default;
+
+// $color-primary--lightest: rgb(114, 50, 204) !default;
+// $color-primary:           rgb(62, 19, 122) !default;
+// $color-primary--darkest:  rgb(31, 0, 76) !default;
+
+// https://www.colorbox.io/#steps=3#hue_start=270#hue_end=260#hue_curve=easeInQuad#sat_start=60#sat_end=80#sat_curve=easeInQuad#sat_rate=60#lum_start=65#lum_end=35#lum_curve=easeInSine
+$shade-primary1:          hsla($hue, 25%, 53%, 1) !default;
+$shade-primary2:          hsla($hue, 24%, 35%, 1) !default;
+$shade-primary3:          hsla($hue, 32%, 26%, 1) !default;
+
+// $shade-primary1:          rgb(130, 105, 165) !default;
+// $shade-primary2:          rgb(85, 67, 110) !default;
+// $shade-primary3:          rgb(62, 45, 87) !default;
+
+// grays
+$color-white:             hsla(0, 0%, 100%, 1) !default;
+$color-gray--lightest:    hsla($hue, 2%, 94%, 1) !default;
+$color-gray--light:       hsla($hue, 5%, 82%, 1) !default;
+$color-gray:              hsla($hue, 8%, 60%, 1) !default;
+$color-gray--dark:        hsla($hue, 10%, 30%, 1) !default;
+$color-gray--darkest:     hsla($hue, 12%, 15%, 1) !default;
+$color-black:             hsla($hue, 20%, 4%, 1) !default;
+
+// $color-white:             rgb(255, 255, 255) !default;
+// $color-gray--lightest:    rgb(239, 239, 240) !default;
+// $color-gray--light:       rgb(208, 206, 211) !default;
+// $color-gray:              rgb(151, 144, 161) !default;
+// $color-gray--dark:        rgb(75, 68, 84) !default;
+// $color-gray--darkest:     rgb(37, 33, 42) !default;
+// $color-black:             rgb(9, 8, 12) !default;
+
+// aux
+$color-error:             hsla(2, 50%, 52%, 1) !default;
+$color-info:              hsla(210, 50%, 36%, 1) !default;
+$color-success:           hsla(100, 55%, 40%, 1) !default;
+$color-warning:           hsla(38, 87%, 50%, 1) !default;
+
+// $color-error:             rgb(193, 75, 71) !default;
+// $color-info:              rgb(45, 91, 137) !default;
+// $color-success:           rgb(83, 158, 45) !default;
+// $color-warning:           rgb(238, 157, 16) !default;
+
+$colors: (
+    (primary--lightest, $color-primary--lightest),
+    (primary, $color-primary),
+    (primary--darkest, $color-primary--darkest),
+    (shade-1, $shade-primary1),
+    (shade-2, $shade-primary2),
+    (shade-3, $shade-primary3),
+    (gray--lightest, $color-gray--lightest),
+    (gray--light, $color-gray--light),
+    (gray, $color-gray),
+    (gray--dark, $color-gray--dark),
+    (gray--darkest, $color-gray--darkest),
+    (black, $color-black),
+    (white, $color-white),
+    (error, $color-error),
+    (info, $color-info),
+    (success, $color-success),
+    (warning, $color-warning)
+);
+
+
+
+
+//------------------------------------
+//    #DIRECTIONS
+//------------------------------------
+ // Não mexer.
+$directions: 'top', 'right', 'bottom', 'left';
+$perpendiculars: 'v', 'h';
+
+
+
+
+
+//------------------------------------
+//    #DISTANCES
+//------------------------------------
+$distance--xxs: .25rem;
+$distance--xs: .5rem;
+$distance--sm: 1rem;
+$distance--md: 1.5rem;
+$distance--lg: 2rem;
+$distance--xl: 2.5rem;
+$distance--xxl: 3.5rem;
+$distance--xxxl: 5rem;
+
+$distance--super: 6rem;
+$distance--max: 8rem;
+
+$distances: (
+    (xxs, $distance--xxs),
+    (xs, $distance--xs),
+    (sm, $distance--sm),
+    (md, $distance--md),
+    (lg, $distance--lg),
+    (xl, $distance--xl),
+    (xxl, $distance--xxl)
+);
+
+
+
+
+
+//------------------------------------
+//    #AVATAR SIZES
+//------------------------------------
+$avatar--sm: 2rem;
+$avatar--md: 3.5rem;
+$avatar--lg: 5rem;
+$avatar--xl: 8rem;
+
+
+
+
+
+//------------------------------------
+//    #FONT SIZES
+//------------------------------------
+// Basic sizes.
+
+$multiplier: 0.125;
+
+$font-size--xxs: .875rem; //14
+$font-size--xs:  1rem;    //16
+$font-size--sm:  1.125rem; //18
+$font-size--md:  1.25rem;  //20
+$font-size--lg:  1.5rem;   //22
+$font-size--xl:  1.875rem;  //30
+$font-size--xxl: 2.25rem; //36
+
+// Very few uses.
+$font-size--super:  3rem; //48
+$font-size--max:    3.5rem; //54
+
+
+
+
+
+//------------------------------------
+//    #FORM
+//------------------------------------
+$form-shadow: 0 2px 0 rgba($color-black, .19);
+
+
+
+
+
+//------------------------------------
+//    #ICON
+//------------------------------------
+$icomoon-font-family: "icomoon" !default;
+
+$icon-alert-triangle: "\e900";
+$icon-arrow-down: "\e901";
+$icon-arrow-left: "\e902";
+$icon-arrow-right: "\e903";
+$icon-arrow-up: "\e904";
+$icon-at-sign: "\e919";
+$icon-award: "\e921";
+$icon-bar-chart: "\e91d";
+$icon-check: "\e905";
+$icon-chevron-down: "\e906";
+$icon-chevron-left: "\e907";
+$icon-chevron-right: "\e908";
+$icon-chevron-up: "\e909";
+$icon-chevrons-left: "\e916";
+$icon-chevrons-right: "\e917";
+$icon-clock: "\e91e";
+$icon-edit: "\e912";
+$icon-eye-off: "\e90b";
+$icon-eye: "\e90a";
+$icon-file-text: "\e915";
+$icon-frown-o: "\e918";
+$icon-help-circle: "\e91f";
+$icon-list: "\e922";
+$icon-live_help: "\e0c6";
+$icon-menu: "\e90c";
+$icon-minus: "\e90f";
+$icon-more_vert: "\e5d4";
+$icon-package: "\e920";
+$icon-paperclip: "\e914";
+$icon-play: "\e910";
+$icon-plus: "\e911";
+$icon-reload: "\e924";
+$icon-save: "\e91c";
+$icon-search: "\e90d";
+$icon-trash-2: "\e913";
+$icon-user: "\e91a";
+$icon-users: "\e91b";
+$icon-x: "\e90e";
+
+
+
+
+
+//------------------------------------
+//    #INPUT
+//------------------------------------
+$input-height: 2.5rem;
+$input-radio-selected-size: .6em;
+
+$input-check-radio-size: 1.75rem;
+$input-check-radio-distance-between: $distance--lg;
+$input-check-radio-label-margin: $input-check-radio-size + $distance--xs;
+
+
+
+
+
+//------------------------------------
+//    #LETTER SPACING
+//------------------------------------
+$letter-spacing--xxs:  -.075em;
+$letter-spacing--xs:  -.045em;
+$letter-spacing--sm:  -.015em;
+$letter-spacing--md:   .015em;
+$letter-spacing--lg:   .03em;
+$letter-spacing--xl:   .05em;
+$letter-spacing--xxl:  .15em;
+
+
+
+
+
+//------------------------------------
+//    #PADDING
+//------------------------------------
+$h-padding--xs: 8px;
+$h-padding--sm: 16px;
+$h-padding--md: 24px;
+$h-padding--lg: 32px;
+
+
+
+
+
+//------------------------------------
+//    #RADIUS
+//------------------------------------
+$radius: 4px;
+$radius--md: $radius * 2;
+$radius--lg: $radius * 4;
+$radius--capsule: 99rem;
+
+
+
+
+
+//------------------------------------
+//    #SCROLLBAR
+//------------------------------------
+$scrollbar-width: 8px;
+
+$scrollbar-handle-bg: transparentize($color-white, .2);
+$scrollbar-handle-bg-inactive: transparentize($color-black, .6);
+$scrollbar-handle-radius: 6px;
+$scrollbar-handle-shadow-color: transparentize($color-black, .5);
+$scrollbar-handle-shadow: inset 0 0 2px $scrollbar-handle-shadow-color;
+
+$scrollbar-track-radius: 6px;
+$scrollbar-track-shadow-color: transparentize($color-black, .7);
+$scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
+
+
+
+
+
+//------------------------------------
+//    #SHADOW DEPTH
+//------------------------------------
+$shadow-1: 0 1px 3px rgba($color-black, .07), 0 1px 2px rgba($color-black, .22);
+$shadow-2: 0 3px 6px rgba($color-black, .11), 0 3px 6px rgba($color-black, .21);
+$shadow-3: 0 10px 20px rgba($color-black, .14), 0 6px 6px rgba($color-black, .21);
+$shadow-4: 0 14px 28px rgba($color-black, .20), 0 10px 10px rgba($color-black, .2);
+$shadow-5: 0 19px 38px rgba($color-black, .25), 0 15px 12px rgba($color-black, .2);
+
+$shadow-h-1: 1px 0 3px rgba($color-black, .07), 1px 0 2px rgba($color-black, .22);
+$shadow-h-2: 3px 0 6px rgba($color-black, .11), 3px 0 6px rgba($color-black, .21);
+$shadow-h-3: 10px 0 20px rgba($color-black, .14), 06px 0 6px rgba($color-black, .21);
+$shadow-h-4: 14px 0 28px rgba($color-black, .20), 10px 0 10px rgba($color-black, .2);
+$shadow-h-5: 19px 0 38px rgba($color-black, .25), 15px 0 12px rgba($color-black, .2);
+
+$shadow-i-1: inset 0 1px 3px rgba($color-black, .07), inset  0 1px 2px rgba($color-black, .22);
+$shadow-i-2: inset 0 3px 6px rgba($color-black, .11), inset  0 3px 6px rgba($color-black, .21);
+$shadow-i-3: inset 0 10px 20px rgba($color-black, .14), inset  0 6px 6px rgba($color-black, .21);
+$shadow-i-4: inset 0 14px 28px rgba($color-black, .20), inset  0 10px 10px rgba($color-black, .2);
+$shadow-i-5: inset 0 19px 38px rgba($color-black, .25), inset  0 15px 12px rgba($color-black, .2);
+// -0.05, -0.02
+
+
+
+
+
+//------------------------------------
+//    #SHARED
+//------------------------------------
+$header-height: 3rem;
+$header-v-padding: .5rem;
+
+
+
+
+
+//------------------------------------
+//    #Z-INDEX
+//------------------------------------
+$z-index: (
+    'loader': 800,
+    'alert': 750,
+    'modal': 700,
+    'menu': 600,
+    'offcanvas': 500,
+    'overlayer': 400,
+    'popover': 350,
+    'help': 325,
+    'header': 300,
+    'body': 200,
+    'main': 100
+);

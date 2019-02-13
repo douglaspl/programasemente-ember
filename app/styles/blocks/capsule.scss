@@ -1,0 +1,27 @@
+.capsule {
+    $this: &;
+
+    background-color: $color-gray;
+    border-radius: $radius;
+    color: $color-white;
+    display: inline-block;
+    font-size: $font-size--xxs;
+    font-weight: bold;
+    padding: 0.5em 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+
+    &--shade1 { background-color: $shade-primary1; }
+    &--primary-lightest { background-color: $color-primary--lightest; }
+    &--error { background-color: $color-error; }
+    &--info { background-color: $color-info; }
+    &--success { background-color: $color-success; }
+    &--warning { background-color: $color-warning; }
+
+    &--xxs {
+        font-size: 12px;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+}

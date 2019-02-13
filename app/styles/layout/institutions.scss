@@ -1,0 +1,132 @@
+.institutions {
+    $this: &;
+
+    &__header {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include media('>md') {
+            flex-direction: row;
+        }
+
+        > *:last-child {
+            margin-top: $distance--lg;
+
+            @include media('>md') {
+                margin-top: 0;
+            }
+
+        }
+
+    }
+
+    &__courses {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: $distance--sm;
+        margin-top: $distance--sm;
+    }
+
+    &__course {
+        align-items: flex-start;
+        flex: 0 0 auto;
+        margin-bottom: $distance--lg;
+    }
+
+
+    &__config {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: $distance--md;
+        margin-top: $distance--md;
+
+        > * {
+            // flex: 0 0 15%;
+
+            &:not(:first-of-type) {
+                margin-left: $distance--lg;
+            }
+
+            // @include target-ie {
+            //     flex: 0 0 auto;
+            // }
+
+        }
+
+    }
+
+    &__areas {
+
+        > * {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+    }
+
+    &__users {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-top: $distance--sm;
+
+        > * {
+            flex: 0 0 auto;
+            margin-left: $distance--md;
+        }
+
+        > *:first-child {
+            flex: 1;
+            margin-left: 0;
+        }
+
+    }
+
+    &__table {
+        margin-top: $distance--xl;
+    }
+
+    &__mass-enroll {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin: $distance--md 0;
+    }
+
+    &__steps {
+        // align-items: center;
+        // display: flex;
+        // flex-direction: row;
+        margin-top: $distance--lg;
+    }
+
+    &__step {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        margin-right: $distance--xl;
+        opacity: .5;
+
+        &--is-active {
+            opacity: 1;
+        }
+
+    }
+
+    &__step-content {
+        display: none;
+
+        &--is-show {
+            display: block;
+        }
+
+    }
+
+}

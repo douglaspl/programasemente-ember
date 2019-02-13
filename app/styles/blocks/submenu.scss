@@ -1,0 +1,84 @@
+.submenu {
+    $this: &;
+
+    opacity: 0;
+    transform: translateY(8px);
+    transition-delay: 150ms;
+    transition-duration: 300ms;
+
+    transition-timing-function: cubic-bezier(.25, .46, .45, .94); // IE fallback
+    transition-timing-function: var(--ease-out--quad);
+
+    visibility: hidden;
+
+    &__item {
+        margin: $distance--xs 0 $distance--md;
+    }
+
+    &__link {
+        @include has-capsule-on-hover;
+
+        display: block;
+        padding: 0 $distance--sm;
+        transition: 300ms;
+
+        @include target-ie { overflow: hidden; }
+        @include target-edge { overflow: hidden; }
+
+    }
+
+    &--header {
+        background-color: $color-white;
+        border-radius: $radius;
+        box-shadow: $shadow-4;
+    }
+
+    &--is-show {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    &--each-animation {
+        display: flex;
+        flex-direction: row-reverse;
+        transition: 0;
+
+        > * {
+            margin-left: $distance--xs;
+            opacity: 0;
+            transform: translateX(0);
+            transition: 500ms;
+            transition-delay: 0ms;
+        }
+
+        &-is-show {
+            opacity: 1;
+            visibility: visible;
+
+            > * {
+                opacity: 1;
+                transform: translateX(-8px);
+
+                $i: 1;
+                $total: 10;
+                $min-delay: 250ms;
+
+                @while $i <= $total {
+
+                    &:nth-child(#{$i}) {
+                        transition-delay: ($min-delay * $i);
+
+                    }
+
+                    $i: $i + 1;
+
+                }
+
+            }
+
+
+        }
+    }
+
+}

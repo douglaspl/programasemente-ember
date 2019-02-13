@@ -1,0 +1,53 @@
+.select-inst {
+    $this: &;
+
+    @include overflow-y;
+
+    height: 80vh;
+    margin-top: $distance--md;
+    max-height: 100%;
+
+    @include media('>md') {
+        height: auto;
+    }
+
+    > *:not(:first-of-type) {
+        margin-top: $distance--sm;
+    }
+
+    &__link {
+        display: block;
+        font-size: $font-size--sm;
+        padding: $distance--sm;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+
+        &::before {
+            background-color: $color-primary--darkest;
+            border-radius: $radius--capsule;
+            left: 0;
+            content: '';
+            height: 100%;
+            opacity: .15;
+            position: absolute;
+            top: 0;
+
+            transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 300ms var(--ease-in-out-quad);
+
+            width: 100%;
+            z-index: -1;
+        }
+
+        &:hover {
+            color: $color-white;
+
+            &::before {
+                opacity: 1;
+            }
+
+        }
+    }
+
+}

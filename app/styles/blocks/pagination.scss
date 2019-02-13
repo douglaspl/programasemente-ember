@@ -1,0 +1,26 @@
+.pagination {
+    $this: &;
+
+    display: flex;
+    flex-direction: row;
+
+    > * {
+        margin: 0 $distance--xs 0 0;
+    }
+
+
+    &__input {
+        font-style: italic;
+        text-align: center;
+        width: 8rem;
+    }
+
+    &--center {
+        justify-content: center;
+    }
+
+    &--right {
+        justify-content: flex-end;
+    }
+
+}

@@ -1,0 +1,62 @@
+.report-course {
+    $this: &;
+
+    margin-top: $distance--lg;
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        > *:not(:last-child) {
+            margin-right: $distance--md;
+        }
+
+    }
+
+    &__body {
+        margin-top: $distance--xl;
+        width: 100%;
+    }
+
+    &__thumb {
+        @include bg-as-thumb;
+
+        border-radius: $radius;
+        box-shadow: $shadow-2;
+        height: 100px;
+        margin-bottom:  $distance--sm;
+        width: 200px;
+
+        @include media('>md') {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &__title-block {
+        align-self: center;
+        flex: 1 0 50%;
+        margin-bottom: $distance--md;
+
+        @include media('>md') {
+            flex: 1;
+            margin-bottom: 0;
+            padding: 0 $distance--sm;
+        }
+
+    }
+
+    &__title {
+        @include title-2--u;
+    }
+
+    &__data {
+        flex: 1 1 40%;
+
+        @include media('>sm') {
+            flex: 0 0 auto;
+        };
+    }
+
+}

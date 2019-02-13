@@ -1,0 +1,54 @@
+.progress {
+    $this: &;
+
+    background-color: $color-white;
+    border-radius: $radius--capsule;
+    box-shadow: $shadow-1;
+    display: block;
+    flex: 1;
+    height: $distance--sm;
+    min-width: 6.5rem;
+    overflow: hidden;
+    padding: 4px;
+    position: relative;
+
+    &-container {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__bar {
+        // background-color: $shade-primary3;
+        // background-color: $shade-primary1;
+        background-color: $color-success;
+        border-radius: inherit;
+        bottom: 3px;
+        box-shadow: $shadow-2, inset 0 2px 3px transparentize($color-white, .75);
+        display: block;
+        height: 100%;
+    }
+
+    &__value {
+        display: inline-block;
+        font-size: $font-size--sm;
+        margin-left: $distance--xs;
+    }
+
+    &--xs {
+        height: $distance--xs;
+        padding: .15rem;
+        min-width: 4rem;
+
+        ~ [class*="__value"] {
+            font-size: $font-size--xxs;
+        }
+
+    }
+
+    &--md {
+        height: $distance--md;
+    }
+
+}

@@ -1,0 +1,97 @@
+// table-flip is not a modifier of a table.
+// It is a complety different block, where x and y are inverted.
+// Changes are too profund to keep it as a modifier.
+
+// BLOCK
+//  table-flip
+
+// ELEMENTS
+// __icon
+
+.table-flip {
+    background: none;
+    display: flex;
+    overflow: hidden;
+
+    thead {
+        display: flex;
+        flex-shrink: 0;
+        width: 25%;
+    }
+
+    tbody {
+        display: flex;
+        flex: 1;
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+
+    }
+
+    th {
+        padding-left: $distance--sm;
+        padding-right: $distance--sm;
+        padding-bottom: 0;
+
+        &:not([class*='subheader']) {
+            font-weight: normal;
+            text-transform: none;
+        }
+
+    }
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 140px;
+        min-width: min-content;
+    }
+
+    td,
+    th {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        height: 4rem;
+        justify-content: center;
+
+        &[class*="subheader"] {
+            justify-content: flex-end;
+            height: 8rem;
+            padding-bottom: $distance--xs;
+        }
+
+        &:nth-child(odd) {
+            background-color: $color-white;
+        }
+
+        &:nth-child(even) {
+            background-color: $color-gray--lightest;
+        }
+
+    }
+
+    td {
+        align-items: center;
+
+        &.has-user-thumb {
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: visible;
+            position: relative;
+            text-align: center;
+
+            > *:first-child {
+                margin-bottom: $distance--xs;
+            }
+
+        }
+
+    }
+
+    &__icon {
+        align-items: center;
+    }
+
+}

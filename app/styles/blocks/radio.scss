@@ -1,0 +1,44 @@
+.radio {
+    $this: &;
+
+    @include check-radio;
+ 
+    align-items: center;
+    display: flex;
+ 
+    &__label {
+ 
+        &::before,
+        &::after {
+            border-radius: 50%;
+        }
+ 
+        &::after {
+            background-color: $color-primary;
+            content: '';
+            height: $input-radio-selected-size;
+            left: calc((#{$input-check-radio-size} - #{$input-radio-selected-size}) / 2);
+            width: $input-radio-selected-size;
+        }
+ 
+    }
+ 
+    &__input:checked + &__label::after {
+        background-color: $color-primary;
+        opacity: 1;
+    }
+ 
+    &--sm {
+        #{$this}__label {
+            padding-left: $distance--lg;
+
+            &::before {
+                height: $distance--sm * .75;
+                left: $distance--xs;
+                width: $distance--sm * .75;
+            }
+
+        }
+    }
+
+}

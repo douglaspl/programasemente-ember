@@ -1,0 +1,95 @@
+.report-question {
+    $this: &;
+
+    display: flex;
+    flex-direction: column;
+
+    @include media('>md') {
+        flex-direction: row;
+    }
+
+    &__information {
+        background-color: $color-white;
+        border: 1px solid $color-gray--light;
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 40%;
+        justify-content: center;
+        margin-top: $distance--xl;
+        padding: $distance--sm;
+
+        @include media('>md') {
+            align-self: flex-start;
+            margin-left: $distance--xl;
+            margin-top: 0;
+        }
+    }
+
+    &__info {
+
+        &:not(:last-of-type) {
+            margin-bottom: $distance--md;
+        }
+
+    }
+
+    &__label {
+        display: block;
+        font-size: $font-size--xxs;
+        // letter-spacing: .025em;
+        margin-bottom: $distance--xxs;
+        opacity: .75;
+        text-transform: uppercase;
+    }
+
+    &__value {
+        font-size: $font-size--lg;
+        font-weight: bold;
+    }
+
+    &__order {
+        display: block;
+        font-size: $font-size--xs;
+        margin-bottom: $distance--xs;
+        opacity: .75;
+        text-transform: uppercase;
+    }
+
+    &__question {
+        font-size: $font-size--md;
+        margin-bottom: $distance--lg;
+    }
+
+    &__options {
+        font-size: $font-size--sm;
+    }
+
+    &__option {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column-reverse;
+        padding: $distance--md 0;
+
+        &:not(:last-of-type) {
+            border-bottom: 1px solid $color-gray--light;
+        }
+
+        @include media('>md') {
+            align-items: center;
+            flex-direction: row;
+        }
+
+    }
+
+    &__capsule {
+        flex: 0 0 auto;
+        margin-bottom: $distance--sm;
+
+        @include media('>md') {
+            margin-bottom: 0;
+            margin-left: auto;
+        }
+
+    }
+
+}

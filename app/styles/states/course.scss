@@ -1,0 +1,49 @@
+.course {
+    $this: &;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @include media('>md') {
+        flex-direction: row;
+    }
+
+    &__nav {
+        z-index: 1;
+    }
+
+    &__content {
+        @include overflow-y;
+
+        background-color: $color-white;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+
+        > .ember-view {
+            height: 100%;
+
+            > .ember-view {
+                height: 100%;
+            }
+
+        }
+
+        _::-webkit-full-page-media, _:future, :root & {
+            height: 100%;
+            // position: relative;
+        }
+
+    }
+
+    &__transition {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+}

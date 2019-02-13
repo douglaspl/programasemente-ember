@@ -1,0 +1,83 @@
+.report-quiz {
+    $this: &;
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        > * {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            justify-content: center;
+            max-width: 100%;
+            transition: 300ms;
+        }
+
+    }
+
+    &__participants {
+        flex-basis: 100%;
+
+        @include media('>sm') { flex-basis: 25%; margin-right: $distance--sm; }
+        @include media('>md') { flex-basis: 15%; margin-right: $distance--sm; }
+        @include media('>lg') { flex-basis: 10%; margin-right: $distance--sm; }
+    }
+
+    &__average-score {
+        flex-basis: 100%;
+        
+        @include media('>sm') { flex-basis: 65%; }
+        @include media('>md') { flex-basis: 80%; }
+        @include media('>lg') { flex-basis: 40%; margin-right: $distance--sm; }
+    }
+    
+    &__best-worst-score {
+        font-size: $font-size--sm;
+        margin-left: $distance--sm;
+    }
+    
+    &__worst-score {
+        margin-top: $distance--sm;
+    }
+    
+    &__average-time-each {
+        flex-basis: 100%;
+
+        @include media('>sm') { flex-basis: 45%; margin-right: $distance--sm; }
+        @include media('>lg') { flex-basis: 15%; }
+    }
+    
+    &__average-time-total {
+        flex-basis: 100%;
+
+        @include media('>sm') { flex-basis: 45%; }
+        @include media('>lg') { flex-basis: 15%; }
+        
+        > *:first-child {
+            flex: 0 0 auto;
+        }
+        
+    }
+    
+    &__total-questions {
+        flex: 1;
+        flex-basis: 100%;
+
+        [class='data'] { flex: 1 0 8rem; }
+    }
+
+    &__btn-group > * {
+
+        margin-bottom: $distance--sm;
+        
+        @include media('>md') {
+            margin-bottom: 0;
+        }
+
+    }
+
+}

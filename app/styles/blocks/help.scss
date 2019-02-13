@@ -1,0 +1,128 @@
+.help {
+    $this: &;
+    $help-container-padding: $distance--xs;
+    $help-container-size: 30rem;
+
+    @include z-index('help');
+
+    bottom: 2%;
+    position: fixed;
+    right: 2%;
+
+    &__trigger {
+        z-index: 2;
+    }
+
+    &__container {
+        background-color: $color-gray--lightest;
+        bottom: 0;
+        box-shadow: $shadow-5;
+        height: 100%;
+        opacity: 0;
+        padding: $help-container-padding;
+        position: fixed;
+        right: 0;
+        transform: scale(0);
+        transform-origin: bottom right;
+
+        transition: 300ms cubic-bezier(.455, .03, .515, .955);
+        transition: 300ms var(--ease-in-out-circ);
+
+        width: 100%;
+        z-index: 1;
+
+        @include media('>sm') {
+            border-radius: $radius--md;
+            height: auto;
+            position: absolute;
+            width: $help-container-size;
+        }
+
+        &--is-show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(-25%, 25%);
+        z-index: 3;
+
+        @include media('>sm') {
+            transform: translate(25%, -25%);
+
+            &:hover {
+                transform: translate(25%, -25%);
+            }
+
+        }
+
+    }
+
+    &__form,
+    &__success {
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        left: 0;
+        padding: $distance--md;
+        right: 0;
+        top: 0;
+
+        transition: 300ms cubic-bezier(.77, 0, .175, 1);
+        transition: 300ms var(--ease-in-out-quad);
+    }
+
+    &__form {
+        position: relative;
+
+        > *:not(:last-child) {
+            margin-bottom: $distance--md;
+        }
+
+        [class*='step-two']  & {
+            opacity: 0;
+            transform: translateX(-4px);
+            visibility: hidden;
+        }
+
+    }
+
+    &__cta {
+        margin-top: auto;
+    }
+
+    &__basic-info {
+        align-items: center;
+        border-bottom: 2px solid $color-gray--light;
+        display: flex;
+        flex-direction: row;
+        padding-bottom: $distance--md;
+    }
+
+    &__user-avatar {
+        margin-right: $distance--sm;
+    }
+
+    &__success {
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        transform: translateX(4px);
+        visibility: hidden;
+
+        [class*='step-two']  & {
+            opacity: 1;
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+    }
+
+}

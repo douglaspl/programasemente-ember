@@ -1,0 +1,31 @@
+ {{#if (equalstr value 0)}}
+    <span class="class__position-holder">
+       <span class="class__position">{{atividade.idx}}</span>
+    </span>
+    <h3 class="class__title">{{atividade.name}}</h3>
+    <p class="class__description">{{atividade.description}}</p>
+    {{#if aula_liberada}}
+        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
+    {{/if}}
+{{else if (equalstr value 100)}}
+    <span class="class__icon icon-check"></span>
+    <span class="class__position-holder">
+        <span class="class__position">{{atividade.idx}}</span>
+    </span>
+    <h3 class="class__title">{{atividade.name}}</h3>
+    <p class="class__description">{{atividade.description}}</p>
+    {{#if temSecoes}}
+        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
+    {{/if}}
+{{else}}
+{{!-- <li class="class-list__class class" style={{atividade.backgroundImage}}> --}}
+    <span class="class__position-holder">
+        <span class="class__position">{{atividade.idx}}</span>
+    </span>
+    <h3 class="class__title">{{atividade.name}}</h3>
+    <p class="class__description">{{atividade.description}}</p>
+    {{#if temSecoes}}
+        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
+    {{/if}}
+{{!-- </li> --}}
+{{/if}}

@@ -1,0 +1,149 @@
+// BLOCK
+// switch
+
+// ELEMENTS
+// __checkbox
+// __label
+// __inner
+// __head
+
+// EXAMPLE
+// <span class="switch">
+    // <input class="switch__checkbox" type="checkbox" id="temp">
+    // <label class="switch__label" for="temp">
+    //     <span class="switch__inner"></span>
+    //     <span class="switch__switch"></span>
+    // </label>
+// </span>
+
+
+.switch {
+    $this: &;
+    $switch-head: 1.25rem;
+    $switch-height: $input-height;
+    $switch-width: 6rem;
+
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    user-select: none;
+    width: $switch-width;
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__label {
+        background-color: $color-gray--lightest;
+        border-radius: $radius--capsule;
+        box-shadow: $shadow-i-2;
+        cursor: pointer;
+        display: block;
+        height: $switch-height;
+        overflow: hidden;
+        position: relative;
+        transform: translate3d(0, 0, 0); // Evita problema de renderização
+
+        [disabled] + & {
+            background-color: $color-gray;
+            cursor: not-allowed;
+        }
+
+    }
+
+    &__inner {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        text-transform: uppercase;
+        top: 0;
+        transform: translateX(-200%);
+
+        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+
+        width: 100%;
+    }
+
+    &__inner::before,
+    &__inner::after {
+        box-sizing: border-box;
+        color: $color-gray--dark;
+        font-size: $font-size--xxs;
+        font-weight: bold;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 190%;
+    }
+
+    &__inner::before {
+        content: 'SIM';
+        left: 15%;
+        text-align: left;
+    }
+
+    &__inner::after {
+        content: 'NÃO';
+        text-align: right;
+        transform: translate(50%, -50%);
+    }
+
+    &__head {
+        background-color: $color-error;
+        border: 1px solid saturate(darken($color-error, 10%), 2%);
+        border-radius: 50%;
+        box-shadow: $shadow-3;
+        height: $switch-head;
+        position: absolute;
+        right: 5px;
+        top: 50%;
+
+        transform: translate(-550%, -50%); // IE fallback
+        transform: translate( calc((-#{$switch-head}) - 230%), -50%);
+
+        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+
+        width: $switch-head;
+    }
+
+    &__checkbox:checked + &__label {
+
+        #{$this}__head {
+            background-color: $color-success;
+            border: 1px solid saturate(darken($color-success, 5%), 2%);
+        }
+
+        #{$this}__inner {
+            transform: translateX(0);
+        }
+
+        #{$this}__head {
+            transform: translate(0, -50%);
+        }
+
+    }
+
+
+    &--institutions {
+        width: 9rem;
+
+        #{$this}__head {
+            transform: translate( calc((-#{$switch-head}) - 465%), -50%);
+        }
+
+        #{$this}__inner::before {
+            content: 'habilitada';
+            left: 8%;
+        }
+
+        #{$this}__inner::after {
+            content: 'desabilitada';
+            transform: translate(54%, -50%);
+        }
+
+    }
+
+}

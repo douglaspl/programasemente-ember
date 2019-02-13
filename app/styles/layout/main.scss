@@ -1,0 +1,120 @@
+.main {
+    $this: &;
+
+    padding: $distance--xs $h-padding--xs;
+
+    @include media('>sm') { padding: $distance--md $h-padding--sm; }
+    @include media('>md') { padding: $distance--md $h-padding--md; }
+    @include media('>lg') { padding: $distance--md $h-padding--lg; }
+
+    &__header {
+        margin: (-$distance--xs) (-$h-padding--xs) $distance--sm;
+        padding: $distance--md $distance--xs $distance--sm;
+
+        @include media('>sm') {
+            margin: (-$distance--md) (-$h-padding--sm) $distance--xl;
+            padding: $distance--xl $h-padding--sm $distance--sm;
+        }
+
+        @include media('>md') {
+            margin: (-$distance--md) (-$h-padding--md) $distance--xl;
+            padding: $distance--xl $h-padding--md $distance--sm;
+        }
+
+        @include media('>lg') {
+            margin: (-$distance--md) (-$h-padding--lg) $distance--xl;
+            padding: $distance--xl $h-padding--lg $distance--sm;
+        }
+
+        @include media('>xl') {
+            margin-bottom: $distance--xxl;
+        }
+
+        &--has-side-info {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            //     > *:last-child {
+                //         margin-top: $distance--md;
+                //    }
+
+            @include media('>sm') {
+                align-items: flex-start;
+                flex-direction: row;
+
+                // > *:last-child {
+                //     margin-top: 0;
+                // }
+
+            }
+
+        }
+
+        &--no-margin {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &__title {
+        @include title-1;
+        @include line;
+
+        color: $color-gray--darkest;
+        display: table;
+        margin-bottom: $distance--xl;
+        margin-right: auto;
+
+        @include media('>sm') {
+            margin-bottom: calc(#{$distance--xxl} + 1vw);
+        }
+
+        &:not(:first-child) {
+            margin-top: $distance--md;
+        }
+
+        [class*='main__header'] & {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &__subtitle {
+        @include title-2;
+
+        line-height: 1.4;
+        margin-bottom: $distance--md;
+        margin-top: $distance--md;
+    }
+
+    &__subsubtitle {
+        @include title-3--alt;
+
+        margin-bottom: $distance--sm;
+    }
+
+    &__aux-title {
+        @include title-aux;
+
+        display: block;
+        margin-top: $distance--md;
+    }
+
+    &__section {
+        margin-bottom: $distance--xxxl;
+    }
+
+    &__subsection:not(:first-of-type) {
+        margin-top: $distance--xxxl;
+    }
+
+    &--highlight {
+        display: flex;
+        flex-direction: row;
+        height: calc(100% - #{$header-height});
+        padding: 0;
+    }
+
+}

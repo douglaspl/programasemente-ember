@@ -1,0 +1,16 @@
+.class-list {
+    $this: &;
+    $margin: 48px;
+    $min-size: 450px;
+
+    @include n-columns($min-size, $margin, true, 3);
+
+    > * {
+
+        @include media('<=sm') {
+            max-width: calc(100% - #{$margin});
+        }
+
+    }
+
+}

@@ -1,0 +1,41 @@
+{{#if (equalstr disabled 'disabled')}}
+    {{#if questao}}
+        <a href="#" class='course-nav__link' id={{concatenate "link_conteudo_" secao.id "_" conteudo.id "_" questao.idx}} style="cursor: not-allowed;">
+            <span class="course-nav__status icon-live_help icon--lg"></span>
+            <span class="course-nav__label course-nav__label--quiz">Questão {{questao.idx}}</span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        </a>
+    {{else if conteudo.quiz}}
+        <a href="#" class='course-nav__link' style="cursor: not-allowed;">
+            <span class="course-nav__status icon-list icon--lg"></span>
+            <span class="course-nav__label course-nav__label--content">{{secao.nome}} </span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        </a>
+    {{else}}
+        <a href="#" class='course-nav__link' style="cursor: not-allowed;">
+            <span class="course-nav__status icon-play icon--lg"></span>
+            <span class="course-nav__label course-nav__label--content">{{secao.nome}}</span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        </a>
+    {{/if}}
+{{else}}
+    {{#if questao}}
+        {{#link-to 'modulos.modetails.ativdetails.secdetails' model.modulo.id model secao.id (query-params questao=questao.idx) class='course-nav__link' elementId=(concatenate "link_conteudo_" secao.id "_" conteudo.id "_" questao.idx)}}
+            <span class="course-nav__status icon-live_help icon--lg"></span>
+            <span class="course-nav__label course-nav__label--quiz">Questão {{questao.idx}}</span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        {{/link-to}}
+    {{else if conteudo.quiz}}
+        {{#link-to 'modulos.modetails.ativdetails.secdetails' model.modulo.id model secao.id (query-params questao=1) class='course-nav__link'}}
+            <span class="course-nav__status icon-list icon--lg"></span>
+            <span class="course-nav__label course-nav__label--content">{{secao.nome}} </span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        {{/link-to}}
+    {{else}}
+        {{#link-to 'modulos.modetails.ativdetails.secdetails' model.modulo.id model secao.id class='course-nav__link'}}
+            <span class="course-nav__status icon-play icon--lg"></span>
+            <span class="course-nav__label course-nav__label--content">{{secao.nome}}</span>
+            {{!-- <span class="course-nav__check icon-check icon--success icon--lg icon"></span> --}}
+        {{/link-to}}
+    {{/if}}
+{{/if}}

@@ -1,0 +1,107 @@
+$highlight-h-padding: $distance--md;
+$highlight-h-padding--md: $distance--xxxl;
+
+.highlight {
+    $this: &;
+
+    color: $color-white;
+    height: 100%;
+    margin-bottom: 0;
+    position: relative;
+    width: 100%;
+
+    &__subtitle {
+        @include title-aux($color: $color-white);
+        @include line;
+
+        z-index: 4;
+    }
+
+    &__title {
+        @include title-0;
+
+        margin-bottom: $distance--xxs;
+        margin-top: $distance--xxl;
+        text-shadow: $shadow-1;
+        transform: translateX(-5px);
+        z-index: 3;
+    }
+
+    &__last-access {
+        font-size: $font-size--xs;
+        font-style: italic;
+        line-height: 1;
+        opacity: .75;
+        z-index: 3;
+
+        @include media('>lg') {
+            font-size: $font-size--md;
+        }
+    }
+
+    &__cta {
+        margin-bottom: $distance--lg;
+        margin-top: $distance--xl;
+        z-index: 3;
+    }
+
+    &__item {
+        align-items: flex-start;
+        bottom: 0;
+        box-shadow: $shadow-3;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        left: 0;
+        overflow: hidden;
+        padding: 0 $highlight-h-padding;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        transition: 800ms cubic-bezier(.25, .46, .45, .94); // IE fallback
+        transition: 800ms var(--ease-out-quad);
+
+        z-index: 3;
+
+        @include media('>md') {
+            padding-left: $highlight-h-padding--md;
+        }
+
+        &::before {
+            background-image: linear-gradient(to right, transparentize($color-black, .15), transparent 75%);
+            content: '';
+            left: 0;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+    }
+
+    &__img {
+        @include bg-as-thumb;
+
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: scale(1);
+        transition: 500ms;
+        width: 100%;
+        z-index: 1;
+
+        @include hover($self: false) {
+
+            #{$this}:hover & {
+                transform: scale(1.05);
+            }
+
+        }
+
+    }
+
+}

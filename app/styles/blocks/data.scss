@@ -1,0 +1,70 @@
+.data {
+    $this: &;
+
+    align-items: center;
+    display: flex;
+    color: $color-gray--dark;
+    flex-direction: column;
+    justify-content: center;
+
+    &__title {
+        font-size: $font-size--xxs;
+        font-weight: bold;
+        text-transform: uppercase;
+        max-width: 90%;
+    }
+
+    &__value {
+        align-items: baseline;
+        display: inline-flex;
+        font-size: 1em;
+        font-weight: 600;
+        letter-spacing: $letter-spacing--xs;
+        justify-content: center;
+
+        @include media('>md') {
+            font-size: 2em;
+        }
+
+    }
+
+    &__label {
+        font-size: .65em;
+        margin-top: .25rem;
+        max-width: 95%;
+        opacity: .8;
+        text-align: center;
+        text-transform: uppercase;
+
+        @include media('>md') {
+            font-size: .85em;
+        }
+
+    }
+
+    &--bordered {
+        background-color: $color-gray--lightest;
+        border: 1px solid $color-gray--light;
+        border-radius: $radius--md;
+        padding: $distance--md;
+        min-width: 8rem;
+    }
+
+    &--light {
+        background-color: $color-white;
+    }
+
+    &--success {
+        background-color: $color-white;
+        border: 2px solid transparentize($color-success, .5);
+        min-width: 8rem;
+    }
+
+    &--bordered-short {
+        padding: $distance--xs $distance--sm;
+    }
+
+    &--md {
+        min-width: 8rem;
+    }
+}

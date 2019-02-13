@@ -1,0 +1,100 @@
+// Por padrão tooltip iniciam SEMPRE escondidos.
+// Se um tooltip precisar aparecer direto, sem interação do usuário,
+// há necessidade de acrescentar 'tooltip--is-visible' ao elemento com a classe 'tooltip'.
+
+// BLOCK
+// tooltip
+
+// ELEMENTS
+// __bubble
+// (::before)
+
+// ## Themes ##
+// --gray-darkest
+
+$tooltip-tip-size: .75rem;
+$tooltip-vertical-padding: $distance--xs;
+
+.tooltip {
+    $this: &;
+
+    position: relative;
+
+    // ELEMENTS
+    &__bubble {
+        background-color: $color-white;
+        border-radius: $radius--capsule;
+        box-shadow: $shadow-3;
+        font-size: $font-size--xxs;
+        font-weight: bold;
+        line-height: 1.15; // easier to calculate when bubble height becomes 32px;
+        opacity: 0;
+        padding: $tooltip-vertical-padding $distance--sm;
+        position: absolute;
+        text-transform: uppercase;
+        visibility: hidden;
+        white-space: nowrap;
+
+        // Default position
+        bottom: calc(100% + #{$tooltip-tip-size});
+        left: $tooltip-tip-size;
+
+        // Tip
+        &::before {
+            border-color: transparent transparent transparent $color-white ;
+            border-style: solid;
+            border-width: ($tooltip-tip-size + ($tooltip-vertical-padding / 2));
+            content: '';
+            position: absolute;
+            z-index: 2;
+
+            // Default position
+            left: 0;
+            top: 50%;
+        }
+
+        // THEMES
+        &--gray-darkest {
+            $bg-color: $color-gray--darkest;
+
+            background-color: $bg-color;
+            color: $color-white;
+
+            &::before {
+                border-left-color: $bg-color;
+            }
+
+        }
+
+    }
+
+    &--is-visible {
+
+        #{$this}__bubble {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+}
+
+// #######################
+// AINDA NÃO IMPLEMENTADOS
+// #######################
+
+// Tooltip positioning:
+//     1  2  3
+// 4   elemento   5
+//     6  7  8
+
+// Tip positioning:
+//     1  2  3
+// 12  tooltip  4
+// 11  tooltip  5
+// 10  tooltip  6
+//     9  8  7
+
+// #######################
+// /AINDA NÃO IMPLEMENTADOS
+// #######################

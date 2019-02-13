@@ -1,0 +1,86 @@
+{{#if video.videoId}}
+<!-- AQUI COMEÇA CONTEÚDO VINDO DO BANCO: VIDEO -->
+<article class="content content--video">
+  {{!-- <header class="content__header">
+    <h2 class="content__title-class">Aula {{model.atividade.idx}}: {{model.atividade.name}}</h2>
+    <h3 class="content__title">{{model.nome}}</h3>
+  </header> --}}
+  <div id="video_content_section_{{ide}}" class="video"></div>
+</article>
+<!-- AQUI TERMINA CONTEÚDO VINDO DO BANCO: VIDEO -->
+<div id="video_content_section_{{ide}}" class="video-wrapper"></div>
+{{else if html.texto}}
+<!-- AQUI COMEÇA CONTEÚDO VINDO DO BANCO: HTML -->
+<article class="content html">
+  <header class="html__header">
+    <img class="html__cover" src={{model.coverImage}}>
+    <h2 class="html__subtitle">Aula {{model.atividade.idx}}: {{model.atividade.name}}</h2>
+    <h3 class="html__title">{{model.nome}}</h3>
+  </header>
+  {{{html.texto}}}
+  <footer class="html__footer">
+    {{#if nome_proximo}}
+    <div>
+      <span class="title-aux">Próxima fase</span>
+      <h3 class="title-3">{{nome_proximo}}</h3>
+    </div>
+    {{#link-to 'modulos.modetails.ativdetails.secdetails' model.atividade.modulo.id model.atividade.id id_proximo
+    class="html__next-cta btn" }}Continuar{{/link-to}}
+    {{else if nome_aula_proxima}}
+    <div>
+      <span class="html__next-aux-text">Próxima Aula</span>
+      <h3 class="html__next-title">{{nome_aula_proxima}}</h3>
+    </div>
+    {{#link-to 'modulos.modetails.ativdetails.secdetails' model.atividade.modulo.id id_aula_proxima
+    id_primeira_secao_proxima_aula class="html__next-cta btn" }}Continuar{{/link-to}}
+
+    {{/if}}
+  </footer>
+</article>
+<!-- AQUI TERMINA CONTEÚDO VINDO DO BANCO: HTML -->
+{{else if sortedQuestoes}}
+{{#each sortedQuestoes as |questao|}}
+{{questao-render class="content_render_quiz" elementId=(concatenate 'article_questao_' questao.idx) questao=questao
+gonext=(action 'goNext') goquestao=(action 'goQuestao') questaoAtiva=questaoAtiva model=model
+sortedQuestoes=sortedQuestoes questoes_timing=questoes_timing}}
+{{/each}}
+{{/if}}
+
+
+
+
+
+{{!--Old daqui pra baixo --}}
+{{!-- {{#if video.videoId}}
+<div id="video_content_section_{{ide}}" class="video-wrapper"></div>
+{{else if html.texto}}
+<div id="html_content_section_{{ide}}" class="container-fluid render-html">
+  {{{html.texto}}}
+</div>
+{{else if sortedQuestoes}}
+{{#each sortedQuestoes as |questao|}}
+<div class="wrapper_questao" id="wrapper_questao_{{questao.idx}}" style="display: none;">
+  {{questao-render questao=questao respostaQuestao=respostaQuestao update=update}}
+</div>
+{{/each}}
+{{/if}}
+<div style="display: none;">{{questaoLoop}}</div> --}}
+
+
+<div class="alert-container">
+
+  <div id="conteudoRenderErrorRetrying" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+    <span class="alert__icon icon-x icon--lg"></span>
+    <div><strong>Tentando registrar seu progresso em...<span id="retryCounter">10</span></strong></div>
+  </div>
+
+
+
+  <div id="conteudoRenderErrorRetry" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+    <span class="alert__icon icon-frown-o icon--xl"></span>
+    <div style="max-width: 80%;"><strong>Não conseguimos registrar seu progresso.</strong></div>
+    <div class="alert__footer">
+      <button class="btn btn--sm btn--inverted" {{action videoStateRetry}}>Tentar novamente</button>
+    </div>
+  </div>
+</div>

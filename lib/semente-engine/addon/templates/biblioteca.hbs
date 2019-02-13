@@ -1,0 +1,118 @@
+<main class="main">
+
+  <header class="main__header main__header--has-side-info institutions__header">
+    <h1 class="main__title">Biblioteca</h1>
+    <div>
+      <!-- somente mostrar se tiver algum conteúdo não visto -->
+      {{#if filesList}}
+      <button id="markAllASRead" class="btn btn--sm btn--ghost" {{action 'markAllAsRead'}}>Marcar todos como vistos</button>
+      {{/if}}
+      <!-- upload file for the institution lib -->
+      {{#if (equalstr role 'admin')}}
+      <button class="btn btn--sm btn--primary" {{action 'fileUpload'}}><span class="btn__icon icon-plus"></span>Upload</button>
+      {{/if}}
+    </div>
+  </header>
+
+  <!-- files list -->
+  <ul class="list list--striped list--img-name-action">
+    {{#each filesList as |file|}}
+    <li>
+      {{!--file.id--}}
+
+      <!-- link -->
+      {{#if (equalstr file.type '0')}}
+      <div class="list__img list__img--xl list__img--video" {{action 'playView' file.view.id}}>
+
+        <span id="thumb{{file.view.id}}" class="icon-package icon--ultra" style="opacity: .4"></span>
+          {{!-- <img src={{if file.thumb file.thumb '/assets/img/online-course.png'}}> --}}
+
+        <iframe id="player{{file.view.id}}" src={{file.link}} width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen style="display:none;"></iframe>
+      </div>
+      {{/if}}
+
+      <!-- file -->
+      {{#if (equalstr file.type '1')}}
+      <a id="file{{file.view.id}}" href="{{file.link}}" target="_blank">
+        <span class="list__img list__img--xl">
+          <img src="{{if file.thumb file.thumb '/assets/img/online-course.png'}}" {{action 'linkView' file.view.id}}>
+        </span>
+      </a>
+      {{/if}}
+
+      <h2 class="title-2 list__name m-bottom--sm">{{file.name}}</h2>
+
+      <!-- data -->
+      <div>
+        {{#if (equalstr file.view.status false)}}
+        <span id="newAlert{{file.view.id}}" class="capsule capsule--xxs capsule--shade1 m-bottom--sm m-right--xs">Conteúdo
+          novo</span>
+        {{/if}}
+        <p class="">{{file.readableDate}}</p>
+      </div>
+
+
+      <!-- actions -->
+      {{!--#if (equalstr role 'admin')--}}
+      <!--
+      <div>
+        acoes admin
+      </div>
+      -->
+      {{!--/if--}}
+    </li>
+    {{/each}}
+  </ul>
+
+</main>
+
+<!-- file upload modal -->
+<aside id="j-uploadModal" class="modal">
+  <div class="modal__overlayer"></div>
+  <div class="modal__content">
+
+    <header class="modal__header">
+      <h3 class="modal__title">Upload Material</h3>
+    </header>
+
+    <div class="modal__body">
+
+      <input id="fileName" name="fileName" type="text" placeholder="Nome do material">
+
+      <select id="fileType" {{!--action 'fileType' on="change"--}}>
+        <option value="selecione">Selecione</option>
+        <option value="0">Link de Vídeo</option>
+        <option value="1">Link para Download</option>
+      </select>
+
+      <input id="filePath" name="fileLink" type="text" placeholder="Link do material">
+
+      <input id="fileThumb" name="fileLink" type="text" placeholder="Link do thumbnail">
+
+    </div>
+
+    <footer class="modal__footer">
+      <button class="btn btn--text" type="submit" {{action 'fileUpload'}}>Cancelar</button>
+      <button class="btn btn--primary" type="submit" {{action 'fileSave'}}>Incluir</button>
+    </footer>
+
+  </div>
+</aside>
+
+<!-- -->
+<div id="libModal" class="report-people__selected-users alert" style="z-index:99999;">
+  <!-- modal text -->
+  <div>{{modalTxtDisplay}}</div>
+
+  <button id="modalBtn" class="btn btn--inverted" {{action modalClose}} style="display:none;">Ok</button>
+</div>
+
+<div class="alert-container">
+  <div id="libraryAlert" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+    {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
+    {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
+    {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
+    <div style="max-width: 80%;"><strong>{{timeoutTxt}}</strong></div>
+  </div>
+</div>

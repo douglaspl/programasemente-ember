@@ -1,0 +1,90 @@
+.box-blue{
+    background-color: #3966a6;
+    color: #fff;
+}
+
+.box-gray{
+    background-color: #eaebec;
+}
+
+/*** PG ***/
+a.bt-prox-pg {
+    padding: 6px 8px;
+    border: solid 1px #96a7bf;
+    background-color: #96a7bf;
+    color: #fff;
+    border-radius: 7px;
+    text-decoration: none;
+    width: 247px;
+    margin: 15px auto 0;
+    display: block;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
+
+a.bt-prox-pg._open {
+    display: block;
+}
+
+a.bt-prox-pg:hover {
+    border-color: #3966a6;
+    background-color: #3966a6;
+    color: #fff;
+}
+
+.box-blue a.bt-prox-pg:hover {
+    border-color: #fff;
+    background-color: #fff;
+    color: #3966a6;
+}
+
+
+/** Atividades **/
+#cont-vd{
+    /* width: 90%;
+    overflow: visible; */
+    height: 100%;
+    left: 0;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+#content-assimilar {
+    padding: 60px 0;
+}
+
+@media(min-width: 660px) {
+
+    #content-assimilar {
+        padding: 60px 30px;
+    }
+
+}
+
+@media(min-width: 770px) {
+
+    ._padding50{
+        padding: 50px 50px 10px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+<div style="display: none;">{{setPosition}}</div> <!-- consumer to correct display the video on transitions -->
+<div class="table-modulos-mob mobile-show">
+    <div class="container-fluid">         
+        <table style="width: 100%;">
+            {{#each model.atividades as |atividade|}}
+                <a href="#" class={{if (equalstr ativ_ativa atividade.id) 'tr-table-atividades-active' 'tr-table-atividades'}} {{action 'goAtividade' model atividade}}>
+                    <td class="table-atividades" style="height: 65px;">{{atividade.name}}</td>
+                    <td style="padding: 5px;">
+                        {{#if atividade.progressos}}
+                            {{ativ-complete progressos=atividade.progressos}}
+                        {{/if}}
+                    </td>
+                </a>
+                {{!-- {{/link-to}} --}}
+            {{/each}}
+        </table>
+    </div>
+</div>
+<div style="display: none;">{{setPosition}}</div> <!-- consumer to correct display the video on transitions -->

@@ -1,0 +1,41 @@
+.counter {
+    $counter-color: $color-error;
+    $this: &;
+
+    position: relative;
+
+    &__bubble {
+        @include text-contrast($counter-color);
+
+        $size: 1.5em;
+
+        align-items: center;
+        background-color: $counter-color;
+        border-radius: 50%;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        font-weight: bold;
+        height: $size;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        transform: translate(-45%, -45%) scale(.75);
+
+        transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+
+        visibility: hidden;
+        width: $size;
+
+        &--is-show {
+            opacity: 1;
+            transform: translate(-45%, -45%) scale(1);
+            visibility: visible;
+        }
+
+    }
+
+}

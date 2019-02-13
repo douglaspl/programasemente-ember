@@ -1,0 +1,143 @@
+<main class="main">
+  <header class="main__header course-cover">
+    <button class="btn btn--text" {{action 'goToModulos'}}><span class="icon-chevron-left"></span> Voltar</button>
+
+    <h1 class="main__title">{{model.name}}</h1>
+
+    <section class="course-cover__mobile">
+      <div class="course-cover__progress-cta">
+        <div class="progress-container">
+          <span class="progress">
+            <span class="progress__bar" style={{moduloPercentStyle}}></span>
+          </span>
+          <span class="progress__value">{{moduloPercent}}</span>
+        </div>
+
+
+
+
+
+
+
+        <button class="btn" {{action 'goAtividade'}}>{{button_enter}}</button>
+
+
+
+
+
+      </div>
+
+      <div class="accordion">
+        <div class="accordion__target">
+          <p class="course-cover__description">{{model.description}}</p>
+
+          <div class="video">
+            <iframe src="https://player.vimeo.com/video/267638321?playsinline=0&amp;app_id=122963" width="760" height="429"
+              frameborder="0" title="SU_Resiliência_Aula_1" webkitallowfullscreen="" mozallowfullscreen=""
+              allowfullscreen="" data-ready="true"></iframe>
+          </div>
+
+          <div class="about-author m-top--md">
+            <div class="about-author__header">
+              <span class="about-author__thumb avatar avatar--lg avatar--float avatar--bordered">
+                <img class="avatar__img" src="/assets/img/autores/celso-lopes-de-souza.jpg" alt="Foto de Celso Lopes de Souza">
+              </span>
+              <h3 class="about-author__name">Dr. Celso Lopes de Souza</h3>
+            </div>
+            <div class="about-author__info">
+              <p>Celso Lopes de Souza é médico pela Universidade Federal de São Paulo (UNIFESP) com título de
+                Especialista em Psiquiatria pela Associação Brasileira de Psiquiatria. É o idealizador do Programa
+                Semente: um programa estruturado de Habilidades Socioemocionais utilizado por mais de 33 mil crianças e
+                adolescentes em todo Brasil. Atua na área educacional há mais de 20 anos, além de ser autor de diversos
+                livros didáticos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion__trigger-block">
+          <button class="accordion__trigger accordion__trigger--plus">
+            <span class="accordion__icon icon-plus"></span>
+            <span class="accordion__icon icon-minus"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- > SM -->
+    <section class="course-cover__beyond-mobile">
+      <div class="d-flex d-flex--r">
+        <div flex="50">
+          <p class="course-cover__description">{{model.description}}</p>
+          <button class="btn btn--lg" {{action 'goAtividade'}}>{{button_enter}}</button>
+        </div>
+        <!-- Por conta da natureza do video e seu container,
+                     foi necessária essa DIV extra para a coluna -->
+        <div class="m-left--auto" flex="40">
+          <div class="video">
+            <iframe src="https://player.vimeo.com/video/267638321?playsinline=0&amp;app_id=122963" width="760" height="429"
+              frameborder="0" title="SU_Resiliência_Aula_1" webkitallowfullscreen="" mozallowfullscreen=""
+              allowfullscreen="" data-ready="true"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <ul class="well well--md well--white course-cover__infos">
+        <li class="course-cover__info popover">
+          <div class="popover__balloon popover__balloon--right-bottom about-author">
+            <button class="popover__close icon-x"></button>
+            <div class="about-author__header">
+              <span class="about-author__thumb avatar avatar--lg avatar--float avatar--bordered">
+                <img class="avatar__img" src="/assets/img/autores/celso-lopes-de-souza.jpg" alt="Foto de Celso Lopes de Souza">
+              </span>
+              <h3 class="about-author__name">Dr. Celso Lopes de Souza</h3>
+            </div>
+            <div class="about-author__info">
+              <p>Celso Lopes de Souza é médico pela Universidade Federal de São Paulo (UNIFESP) com título de
+                Especialista em Psiquiatria pela Associação Brasileira de Psiquiatria. É o idealizador do Programa
+                Semente: um programa estruturado de Habilidades Socioemocionais utilizado por mais de 33 mil crianças e
+                adolescentes em todo Brasil. Atua na área educacional há mais de 20 anos, além de ser autor de diversos
+                livros didáticos.</p>
+            </div>
+          </div>
+
+          <span class="title-aux m-bottom--xs">Autor</span>
+          <button class="title-4 btn btn--link popover__trigger">Dr. Celso Lopes de Souza</button>
+        </li>
+
+        <li class="course-cover__info">
+          {{!-- <span class="title-aux m-bottom--xs">Duração</span> --}}
+          {{!-- <span class="title-4">{{model.duracao}} horas</span> --}}
+        </li>
+
+        <li class="course-cover__info" flex="40">
+
+          <span class="title-aux m-bottom--xs">Progresso</span>
+
+          <div class="progress-container">
+            <span class="progress progress--md">
+              <span class="progress__bar" style={{moduloPercentStyle}}></span>
+            </span>
+            <span class="progress__value">{{moduloPercent}}</span>
+          </div>
+
+        </li>
+
+      </ul>
+    </section>
+
+  </header>
+
+  <section class="main__section">
+    <h2 class="main__subtitle">Aulas</h2>
+    <ol class="class-list">
+      {{#each model.atividades as |atividade idx|}}
+      {{!-- {{#if (isinarray atividade atividades_enabled)}} --}}
+      {{ativ-card-comp atividade=atividade class='class-list__class class' transit=(action 'goAtividadeC')
+      data=atividade.id }}
+      {{!-- {{else}}
+      {{!-- {{ativ-card-comp atividade=atividade class='class-list__class class' transit=(action 'goAtividadeC')
+      data=atividade.id disabled='disabled'}} --}}
+      {{/each}}
+    </ol>
+  </section>
+</main>

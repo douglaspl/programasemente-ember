@@ -1,0 +1,201 @@
+// BLOCK
+// global-nav
+
+// ELEMENTS
+// __list
+//  --is-show
+
+// __item
+// __link
+//  --is-active
+// __thumb
+// __trigger
+// __close
+// __submenu-holder
+// __submenu
+// __call
+
+// MODIFIERS
+//
+
+.global-nav {
+    $this: &;
+
+    &__list {
+        @include z-index('offcanvas');
+
+        align-items: center;
+        background-color: $color-white;
+        box-shadow: $shadow-5;
+        display: flex;
+        flex-direction: column;
+        right: 0;
+        height: 100%;
+        justify-content: flex-start;
+        padding-top: 3rem;
+        position: fixed;
+        top: 0;
+        transform: translateX(110%);
+        transition: 500ms;
+        width: 95%;
+
+        @include media('>sm') {
+            background-color: transparent;
+            box-shadow: none;
+            flex-direction: row;
+            padding-top: 0;
+            position: relative;
+            transform: translate(0);
+        }
+
+        &--is-show {
+            transform: translateX(0);
+        }
+
+    }
+
+    &__item {
+        flex: 0 0 auto;
+        margin-bottom: $distance--xs;
+        order: 2;
+
+        @include media('>sm') {
+            margin-bottom: 0;
+        }
+
+        &:not(:last-child) {
+            order: 3;
+
+            @include media('>sm') {
+                margin-right: $distance--xs;
+                order: 1;
+            }
+
+            @include media('>md') { margin-right: $distance--md; }
+            @include media('>lg') { margin-right: $distance--lg; }
+            @include media('>xl') { margin-right: $distance--xl; }
+        }
+
+
+        &[class*='mob-only'] {
+
+            @include media('>sm') {
+                display: none;
+            }
+
+        }
+
+    }
+
+    &__link {
+        @include title-aux;
+
+        border-radius: $radius--capsule;
+        display: block;
+        opacity: .35;
+        padding: $distance--sm $distance--md;
+
+        transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
+        transition: 300ms var(--ease-out-quad);
+
+        @include media('>sm', '<md') {
+            font-size: 0.75rem;
+            padding: 1em;
+        }
+
+        @include hover {
+            background-color: $color-gray--lightest;
+            opacity: .8;
+        }
+
+        &--is-active {
+            background-color: $color-gray--lightest;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+    }
+
+    &__thumb {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+
+        @include media('>sm') {
+
+            [class*='is-show'] ~ & #{$this}__avatar {
+                transform: scale(2);
+            }
+
+        }
+
+    }
+
+    &__avatar {
+        background-color: $color-white;
+        height: $avatar--md;
+        margin-bottom: $distance--sm;
+        width: $avatar--md;
+
+        @include media('>sm') {
+            height: $avatar--sm;
+            margin-bottom: 0;
+            width: $avatar--sm;
+            transform-origin: top right;
+
+            transition: 300ms cubic-bezier(.25, .46, .45, .94); // IE fallback
+            transition: 300ms var(--ease-out-quad);
+        }
+
+    }
+
+    &__trigger {
+        padding: $distance--xxs;
+
+        @include media('>sm') {
+            display: none;
+        }
+
+    }
+
+    &__close {
+        padding: 0.5em 0.75em;
+        position: absolute;
+        right: $distance--sm;
+        top: $distance--sm;
+
+        @include media('>sm') {
+            display: none;
+        }
+
+    }
+
+    &__submenu-holder {
+        @include z-index('menu');
+
+        position: relative;
+    }
+
+    &__submenu {
+        position: absolute;
+        right: 50%;
+        top: calc(100% - #{$distance--sm});
+        width: 20rem;
+        z-index: -1;
+
+        @include media('<=sm') {
+            display: none;
+        }
+
+    }
+
+    &__call {
+        @include truncate;
+
+        border-bottom: 1px solid $color-gray--lightest;
+        font-size: $font-size--md;
+        padding: $distance--xs $distance--sm;
+    }
+
+}

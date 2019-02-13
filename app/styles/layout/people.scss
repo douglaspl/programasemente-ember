@@ -1,0 +1,17 @@
+.people {
+    $this: &;
+
+    &__header {
+        align-items: center;
+        border-bottom: 1px solid $color-gray--light;
+        display: flex;
+        flex-direction: row;
+        padding-bottom: $distance--lg;
+
+        > *:not(:first-child) {
+            margin-left: $distance--lg;
+        }
+
+    }
+
+}

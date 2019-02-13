@@ -1,0 +1,104 @@
+// BLOCK
+// course-cover
+
+// ELEMENTS
+//  __mobile
+//  __beyond-mobile
+
+//  __description
+//  __infos
+//  __info
+//  __progress-cta
+
+// MODIFIERS
+// None
+
+.course-cover {
+    $this: &;
+
+    background-color: $color-gray--lightest;
+    box-shadow: $shadow-2;
+
+    // CONTROLE DE VISIBILIDADE MOBILE
+    &__mobile {
+
+        @include media('>=sm') {
+            display: none;
+        }
+
+    }
+
+    &__beyond-mobile {
+        display: none;
+
+        @include media('>sm') {
+            display: block;
+            margin-top: $distance--lg;
+        }
+
+        @include media('>lg') {
+            margin-top: $distance--md;
+        }
+
+    }
+    // FIM CONTROLE DE VISIBILIDADE MOBILE
+
+    &__description {
+        margin-bottom: $distance--md;
+
+        @include media('>md') {
+            font-size: $font-size--sm;
+        }
+
+        @include media('>lg') {
+            font-size: $font-size--md;
+            margin-top: $distance--sm;
+            margin-bottom: $distance--lg;
+        }
+
+        @include media('>xl') {
+            font-size: $font-size--lg;
+        }
+
+
+    }
+
+    &__infos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        margin-top: $distance--lg;
+    }
+
+    &__info {
+        align-items: flex-start;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+    }
+
+    &__progress-cta {
+
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: $distance--sm;
+        margin-top: $distance--sm;
+
+        @include media('>sm') {
+            display: none;
+        }
+
+        > *:first-child {
+            flex: 1;
+        }
+
+        > *:last-child {
+            flex: 0 0 auto;
+            margin-left: $distance--md;
+        }
+
+    }
+
+}
