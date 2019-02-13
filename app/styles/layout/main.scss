@@ -60,7 +60,7 @@
 
     &__title {
         @include title-1;
-        @include line;
+        // @include line;
 
         color: $color-gray--darkest;
         display: table;

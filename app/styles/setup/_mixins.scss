@@ -17,7 +17,7 @@
 //------------------------------------
 @mixin button {
     align-items: center;
-    border: 1px solid transparent;
+    border: 0 solid transparent;
     display: inline-flex;
     flex-direction: row;
     font-size: $font-size--xxs;
@@ -656,7 +656,7 @@
                 $size: $font-size--lg,
                 $size--sm: $font-size--xl,
                 $size--lg: $font-size--xxl,
-                $weight: normal,
+                $weight: 900,
                 $letter: $letter-spacing--lg) {
 
     color: $color;
@@ -665,6 +665,7 @@
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: 1;
+    text-transform: uppercase;
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size; }

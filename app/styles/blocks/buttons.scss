@@ -37,9 +37,8 @@
     @include button;
 
     background-color: $green;
-    border-radius: 2px;
-    // box-shadow: $shadow-2;
-    color: $color-white;
+    border-radius: $radius--md;
+    color: $blue-navy;
     cursor: pointer;
     flex: 0 0 auto;
     padding: 1em 1.5em;
@@ -61,6 +60,7 @@
     &__icon {
         font-weight: bold;
         margin-right: $distance--xs;
+        opacity: .65;
     }
 
     // MODIFIERS
@@ -100,7 +100,7 @@
     &--ghost {
         background-color: transparent;
         border: 1px solid currentColor;
-        color: $green;
+        color: $green-leaf;
 
         &-white {
             color: $color-white;
@@ -114,7 +114,7 @@
 
     &--inverted {
         background-color: $color-white;
-        color: $green;
+        color: $green-leaf;
 
         @include hover {
             background-color: $color-gray--lightest;
@@ -157,7 +157,7 @@
     }
 
     &--primary-lightest {
-        background-color: $lemon;
+        background-color: $green;
 
         @include hover {
             background-color: $gray;

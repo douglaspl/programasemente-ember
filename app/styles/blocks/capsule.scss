@@ -12,7 +12,7 @@
     text-transform: uppercase;
 
     &--shade1 { background-color: $gray; }
-    &--primary-lightest { background-color: $lemon; }
+    &--primary-lightest { background-color: $lemon; color: $blue-navy; }
     &--error { background-color: $color-error; }
     &--info { background-color: $color-info; }
     &--success { background-color: $color-success; }

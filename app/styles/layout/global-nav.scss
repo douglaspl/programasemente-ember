@@ -90,9 +90,11 @@
     &__link {
         @include title-aux;
 
-        border-radius: $radius;
+        border-radius: $radius--md;
+        color: $blue-navy;
         display: block;
-        opacity: .35;
+        font-weight: 700;
+        opacity: .45;
         padding: $distance--sm $distance--md;
 
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback

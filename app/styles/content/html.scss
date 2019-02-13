@@ -37,7 +37,7 @@ $html-width--lg: 50rem;
     p {
 
         @include media('>sm') {
-            font-size: $font-size--xs;
+            font-size: $font-size--sm;
             line-height: 1.5;
         }
 
