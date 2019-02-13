@@ -23,7 +23,7 @@ $tooltip-vertical-padding: $distance--xs;
     // ELEMENTS
     &__bubble {
         background-color: $color-white;
-        border-radius: $radius--capsule;
+        border-radius: $radius;
         box-shadow: $shadow-3;
         font-size: $font-size--xxs;
         font-weight: bold;

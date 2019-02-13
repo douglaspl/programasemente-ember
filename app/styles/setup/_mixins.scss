@@ -188,8 +188,8 @@
     overflow: visible;
 
     &::before {
-        background-color: $color-primary;
-        border-radius: $radius--capsule;
+        background-color: $green;
+        border-radius: $radius;
         box-shadow: $shadow-3;
         content: '';
         height: calc(100% + (#{$distance--xs} * 2));
@@ -220,7 +220,7 @@
     }
 
     @include target-ie {
-        border-radius: $radius--capsule;
+        border-radius: $radius;
         background-color: transparent;
         padding: $distance--xs $distance--sm;
 
@@ -229,7 +229,7 @@
         }
 
         &:hover {
-            background-color: $color-primary;
+            background-color: $green;
         }
 
     }
@@ -348,12 +348,12 @@
 //------------------------------------
 //    #LINE
 //------------------------------------
-@mixin line($color: $color-primary, $height: .15em, $width: 4rem, $line: 'under') {
+@mixin line($color: $green, $height: .075em, $width: 4rem, $line: 'under') {
   position: relative;
 
   &::after {
       background-color: $color;
-      border-radius: $radius--capsule;
+      border-radius: 50%;
       content: '';
       height: $height;
       left: 0;
@@ -361,7 +361,7 @@
       width: $width;
 
       @if $line == 'under' {
-        top: calc(100% + .5em);
+        top: calc(100% + .35em);
       }
 
       @if $line == 'left' {
@@ -636,11 +636,11 @@
                 $size: $font-size--xxl,
                 $size--sm: $font-size--super,
                 $size--lg: $font-size--max,
-                $weight: bold,
+                $weight: normal,
                 $letter: $letter-spacing--sm) {
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -656,11 +656,11 @@
                 $size: $font-size--lg,
                 $size--sm: $font-size--xl,
                 $size--lg: $font-size--xxl,
-                $weight: bold,
-                $letter: $letter-spacing--sm) {
+                $weight: normal,
+                $letter: $letter-spacing--lg) {
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -677,10 +677,10 @@
                 $size--sm: $font-size--lg,
                 $size--lg: $font-size--xl,
                 $weight: normal,
-                $letter: $letter-spacing--sm) {
+                $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -692,14 +692,14 @@
 }
 
 @mixin title-2--u( $color: $color-gray--darkest,
-                   $size: $font-size--sm,
-                   $size--sm: $font-size--md,
-                   $size--lg: $font-size--lg,
+                   $size: $font-size--md,
+                   $size--sm: $font-size--lg,
+                   $size--lg: $font-size--xl,
                    $weight: normal,
                    $letter: $letter-spacing--xl) {
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -714,11 +714,11 @@
                 $size: $font-size--sm,
                 $size--sm: $font-size--md,
                 $size--lg: $font-size--lg,
-                $weight: bold,
-                $letter: $letter-spacing--sm) {
+                $weight: normal,
+                $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -731,7 +731,7 @@
 @mixin title-3--alt ( $color: $color-gray--dark,
                       $size: $font-size--xs,
                       $size--lg: $font-size--sm,
-                      $weight: bold,
+                      $weight: normal,
                       $letter: $letter-spacing--xl) {
 
     $width: .5em;
@@ -739,7 +739,7 @@
     @include line($width: $width, $line: 'left');
 
     color: $color;
-    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -755,7 +755,7 @@
                 $size: $font-size--xs,
                 $size--lg: $font-size--sm,
                 $weight: normal,
-                $letter: $letter-spacing--sm) {
+                $letter: $letter-spacing--md) {
 
     color: $color;
     font-size: $size;
@@ -768,7 +768,6 @@
 
 @mixin title-aux($color: $color-gray--dark,
                  $display: inline-block,
-                //  $margin-bottom: $distance--xxs,
                  $weight: 600) {
 
     color: $color;
@@ -789,7 +788,7 @@
 //------------------------------------
 //    #TITLE
 //------------------------------------
-// $title-color: $color-primary--darkest;
+// $title-color: $blue-navy;
 // $title-font-family: 'Bebas Neue', sans-serif;
 
 // @mixin title-1($color: $title-color,

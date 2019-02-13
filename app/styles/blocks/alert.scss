@@ -73,7 +73,7 @@
     }
 
     &--primary {
-        background-color: transparentize($color: $color-primary--darkest, $amount: .05);
+        background-color: transparentize($color: $blue-navy, $amount: .05);
         color: $color-white;
     }
 

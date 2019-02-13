@@ -2,9 +2,9 @@ $course-nav-bg-color: $color-gray--darkest;
 $course-nav-menu-size: 32px;
 
 $course-nav-hover-bg-color: $color-gray--lightest;
-$course-nav-active-bg-color: $color-primary--lightest;
+$course-nav-active-bg-color: $lemon;
 $course-nav-active-color: $color-gray--darkest;
-$course-nav-active-icon-color: $color-primary;
+$course-nav-active-icon-color: $green;
 
 $course-nav-not-done-opacity: .5;
 $course-nav-lateral-pad: $distance--sm;
@@ -219,7 +219,7 @@ $course-nav-lateral-pad: $distance--sm;
 
         &::before {
             background-color: $course-nav-hover-bg-color;
-            border-radius: $radius--capsule;
+            border-radius: $radius;
             content: '';
             height: 60%;
             opacity: 0;
@@ -266,7 +266,7 @@ $course-nav-lateral-pad: $distance--sm;
 
             &::after {
                 background-color: $color-white;
-                background-color: $color-primary--lightest;
+                background-color: $lemon;
                 content: '';
                 height: 100%;
                 left: 0;

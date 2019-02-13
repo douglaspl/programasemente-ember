@@ -17,7 +17,7 @@
     }
 
     &:before {
-        background-color: $color-primary--darkest;
+        background-color: $blue-navy;
         content: '';
         height: 100%;
         left: 0;
@@ -73,7 +73,7 @@
     &__next {}
 
     &__whatnext {
-        background-color: $color-primary--darkest;
+        background-color: $blue-navy;
         box-shadow: $shadow-5;
         flex: 0 0 auto;
         margin-bottom: $distance--super;
@@ -151,7 +151,7 @@
     }
 
     &__lecture {
-        color: $color-primary--darkest;
+        color: $blue-navy;
         cursor: pointer;
         margin: 0 $distance--xs;
         position: relative;

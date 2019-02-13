@@ -11,8 +11,8 @@
     text-align: center;
     text-transform: uppercase;
 
-    &--shade1 { background-color: $shade-primary1; }
-    &--primary-lightest { background-color: $color-primary--lightest; }
+    &--shade1 { background-color: $gray; }
+    &--primary-lightest { background-color: $lemon; }
     &--error { background-color: $color-error; }
     &--info { background-color: $color-info; }
     &--success { background-color: $color-success; }

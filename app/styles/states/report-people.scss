@@ -65,7 +65,7 @@
             &--has-not-init { border-left-color: $color-error; }
 
             @include media('>md') {
-                border-radius: $radius--capsule;
+                border-radius: $radius;
                 padding: $distance--sm $distance--md;
             }
 

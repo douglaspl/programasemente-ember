@@ -1,11 +1,11 @@
-$tab-radius: $radius--capsule;
+$tab-radius: $radius;
 
 .tabs {
     display: flex;
     flex-direction: row;
 
     &__tab {
-        $bg: $color-primary;
+        $bg: $green-leaf;
 
         @include button;
         @include text-contrast($bg);
@@ -27,7 +27,7 @@ $tab-radius: $radius--capsule;
         &:last-child { border-radius: 0 $tab-radius $tab-radius 0; }
 
         &--is-active {
-            background-color: $color-primary--lightest;
+            background-color: $green;
             box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4); // inset -6px 0 8px rgba(0, 0, 0, 0.2), inset 6px 0 8px rgba(0, 0, 0, 0.2)
         }
 

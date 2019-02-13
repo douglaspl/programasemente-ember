@@ -40,7 +40,7 @@
     &__input:checked ~ &__label {
 
         &::before {
-            background-color: $color-primary;
+            background-color: $green;
         }
 
         &::after {

@@ -36,9 +36,9 @@
 
     @include button;
 
-    background-color: $color-primary;
-    border-radius: $radius--capsule;
-    box-shadow: $shadow-2;
+    background-color: $green;
+    border-radius: 2px;
+    // box-shadow: $shadow-2;
     color: $color-white;
     cursor: pointer;
     flex: 0 0 auto;
@@ -46,15 +46,10 @@
     transition-property: background-color, box-shadow, transform;
 
     @include hover {
-        background-color: $color-primary--darkest;
-        box-shadow: $shadow-1;
+        background-color: $blue-navy;
+        // box-shadow: $shadow-1;
         transform: translateY(1px);
     }
-
-    // &:focus-within {
-    //     outline: 4px dotted $color-primary--lightest;
-    //     outline-offset: $distance--xxs;
-    // }
 
     // ELEMENTS
     &__count {
@@ -105,7 +100,7 @@
     &--ghost {
         background-color: transparent;
         border: 1px solid currentColor;
-        color: $color-primary;
+        color: $green;
 
         &-white {
             color: $color-white;
@@ -119,15 +114,11 @@
 
     &--inverted {
         background-color: $color-white;
-        color: $color-primary;
+        color: $green;
 
         @include hover {
             background-color: $color-gray--lightest;
         }
-
-        // &:focus-within {
-        //     outline-color: $color-gray--light;
-        // }
 
     }
 
@@ -163,16 +154,13 @@
 
         }
 
-        // &:focus-within::after {
-        //     border-bottom-color: transparent;
-        // }
     }
 
     &--primary-lightest {
-        background-color: $color-primary--lightest;
+        background-color: $lemon;
 
         @include hover {
-            background-color: $shade-primary1;
+            background-color: $gray;
         }
 
     }
@@ -181,7 +169,6 @@
         background-color: transparent;
         box-shadow: none;
         color: $color-gray--darkest;
-        // opacity: .75;
         padding: 0;
         text-shadow: none;
 
@@ -216,10 +203,6 @@
         @include hover {
             background-color: saturate(darken($color-success, 8%), 8%);
         }
-
-        // &:focus-within {
-        //     outline-color: $color-success;
-        // }
 
     }
 

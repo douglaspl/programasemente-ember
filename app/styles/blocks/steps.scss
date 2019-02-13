@@ -17,7 +17,7 @@
 
     &::before {
         background-color: $color-gray--lightest;
-        border-radius: $radius--capsule;
+        border-radius: $radius;
         bottom: calc((#{$size} / 2) - #{$number-border});
         content: '';
         height: .25rem;
@@ -44,7 +44,7 @@
 
     &__number {
         align-items: center;
-        background-color: $color-primary--darkest;
+        background-color: $blue-navy;
         border: $number-border solid $color-white;
         border-radius: 50%;
         box-shadow: $shadow-2;
@@ -55,7 +55,7 @@
         justify-content: center;
         width: $size;
 
-        &--is-active { background-color: $color-primary; }
+        &--is-active { background-color: $green; }
         // &--is-done { background-color: $color-success; }
     }
 

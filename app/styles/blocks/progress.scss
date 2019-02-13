@@ -2,7 +2,7 @@
     $this: &;
 
     background-color: $color-white;
-    border-radius: $radius--capsule;
+    border-radius: $radius;
     box-shadow: $shadow-1;
     display: block;
     flex: 1;
@@ -20,8 +20,8 @@
     }
 
     &__bar {
-        // background-color: $shade-primary3;
-        // background-color: $shade-primary1;
+        // background-color: $dark-gray;
+        // background-color: $gray;
         background-color: $color-success;
         border-radius: inherit;
         bottom: 3px;

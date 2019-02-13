@@ -24,8 +24,8 @@
         text-transform: uppercase;
 
         &::before {
-            background-color: $color-primary--darkest;
-            border-radius: $radius--capsule;
+            background-color: $blue-navy;
+            border-radius: $radius;
             left: 0;
             content: '';
             height: 100%;

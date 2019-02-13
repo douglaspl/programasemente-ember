@@ -122,7 +122,7 @@ $html-width--lg: 50rem;
         tr:first-of-type {
 
             td {
-                background-color: $shade-primary3;
+                background-color: $dark-gray;
                 color: $color-white;
             }
 
@@ -200,8 +200,8 @@ $html-width--lg: 50rem;
         $cave-size: ($ball-size/2 + $ball-shift / 2) * .9;
         $cave-size-smooth: $cave-size + 0.1rem;
 
-        background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $color-primary--darkest $cave-size-smooth);
-        border-radius: $radius--capsule;
+        background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy $cave-size-smooth);
+        border-radius: $radius;
         box-shadow: $shadow-2;
         color: $color-white;
         margin-bottom: $distance--xxl;
@@ -213,12 +213,12 @@ $html-width--lg: 50rem;
 
         &::before {
             $border: 4px;
-            $color: $color-primary--darkest;
+            $color: $blue-navy;
 
             @include icon;
 
             align-items: center;
-            background-color: $color-primary;
+            background-color: $green;
             border-radius: 50%;
             box-shadow: $shadow-3;
             display: flex;
@@ -242,7 +242,7 @@ $html-width--lg: 50rem;
 
         span:first-of-type {
             display: block;
-            font-family: 'Nunito';
+            font-family: 'Raleway', 'Roboto', sans-serif;
             font-size: $font-size--md;
             font-weight: bold;
             margin-bottom: $distance--xxs;

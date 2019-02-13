@@ -6,19 +6,19 @@
     border-radius: $radius--md;
     box-shadow: $shadow-i-1;
     padding: $distance--xs $distance--sm;
-    
+
     &--md {
         padding: $distance--md;
     }
 
     &--white {
         background-color: transparentize($color-white, .25);
-        border: 1px solid $color-gray--light;    
+        border: 1px solid $color-gray--light;
     }
 
     &--primary-light {
-        background-color: transparentize($color-primary--lightest, .9);
-        border: 1px solid $color-primary;    
+        background-color: transparentize($lemon, .9);
+        border: 1px solid $green;
     }
 
 }

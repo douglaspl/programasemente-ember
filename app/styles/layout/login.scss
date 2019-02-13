@@ -57,8 +57,8 @@
         align-self: center;
         display: inline-block;
         height: auto;
-        max-height: 48px;
-        margin: $distance--sm auto;
+        // max-height: 98px;
+        margin: 0 auto;
         max-width: 10rem;
 
         @include media('>md') {
@@ -66,7 +66,7 @@
         }
 
         @include media('>lg') {
-            max-width: 11rem;
+            // max-width: 8rem;
         }
 
     }
@@ -121,7 +121,7 @@
     &__show-pass {
         $size: 20px;
 
-        color: $color-primary;
+        color: $green;
         font-size: $font-size--md;
         height: $size;
         overflow: hidden;

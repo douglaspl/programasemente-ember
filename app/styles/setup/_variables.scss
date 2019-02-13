@@ -79,29 +79,30 @@ $btn-pad--xl: 1em 2em;
 
 
 
+
 //------------------------------------
 //    #COLORS
 //------------------------------------
+$blue-navy: hsl(191, 22%, 14%);
 
-$hue: 265;
-// primary
-//https://www.colorbox.io/#steps=5#hue_start=270#hue_end=260#hue_curve=easeInQuad#sat_start=60#sat_end=80#sat_curve=easeInQuad#sat_rate=128#lum_start=85#lum_end=35#lum_curve=easeInQuad
-$color-primary--lightest: hsla($hue, 60%, 50%, 1) !default;
-$color-primary:           hsla($hue, 72%, 28%, 1) !default;
-$color-primary--darkest:  hsla($hue, 100%, 15%, 1) !default;
+// $green: hsl(84, 49%, 55%); // CRANE
+$green: hsl(84, 55%, 45%);
+$green-leaf: hsl(148, 73%, 35%); // CRANE
 
-// $color-primary--lightest: rgb(114, 50, 204) !default;
-// $color-primary:           rgb(62, 19, 122) !default;
-// $color-primary--darkest:  rgb(31, 0, 76) !default;
+$dark-gray: hsl(0, 0%, 22%); // CRANE
+$lemon: hsl(60, 74%, 61%); // CRANE
+$gray: hsl(132, 12%, 83%); // CRANE
+$off-white: hsl(187, 44%, 96%); // CRANE
 
-// https://www.colorbox.io/#steps=3#hue_start=270#hue_end=260#hue_curve=easeInQuad#sat_start=60#sat_end=80#sat_curve=easeInQuad#sat_rate=60#lum_start=65#lum_end=35#lum_curve=easeInSine
-$shade-primary1:          hsla($hue, 25%, 53%, 1) !default;
-$shade-primary2:          hsla($hue, 24%, 35%, 1) !default;
-$shade-primary3:          hsla($hue, 32%, 26%, 1) !default;
+// $blue-navy: #1c292c;
+// $green: #98c555;
+// $green-leaf: #189a55;
+// $dark-gray: #383838;
+// $lemon: #e5e552;
+// $gray: #cfd9d1;
+// $off-white: #f2f9fa;
 
-// $shade-primary1:          rgb(130, 105, 165) !default;
-// $shade-primary2:          rgb(85, 67, 110) !default;
-// $shade-primary3:          rgb(62, 45, 87) !default;
+$hue: 148;
 
 // grays
 $color-white:             hsla(0, 0%, 100%, 1) !default;
@@ -112,32 +113,22 @@ $color-gray--dark:        hsla($hue, 10%, 30%, 1) !default;
 $color-gray--darkest:     hsla($hue, 12%, 15%, 1) !default;
 $color-black:             hsla($hue, 20%, 4%, 1) !default;
 
-// $color-white:             rgb(255, 255, 255) !default;
-// $color-gray--lightest:    rgb(239, 239, 240) !default;
-// $color-gray--light:       rgb(208, 206, 211) !default;
-// $color-gray:              rgb(151, 144, 161) !default;
-// $color-gray--dark:        rgb(75, 68, 84) !default;
-// $color-gray--darkest:     rgb(37, 33, 42) !default;
-// $color-black:             rgb(9, 8, 12) !default;
-
 // aux
 $color-error:             hsla(2, 50%, 52%, 1) !default;
 $color-info:              hsla(210, 50%, 36%, 1) !default;
-$color-success:           hsla(100, 55%, 40%, 1) !default;
+$color-success:           hsl(120, 45%, 35%) !default;
 $color-warning:           hsla(38, 87%, 50%, 1) !default;
 
-// $color-error:             rgb(193, 75, 71) !default;
-// $color-info:              rgb(45, 91, 137) !default;
-// $color-success:           rgb(83, 158, 45) !default;
-// $color-warning:           rgb(238, 157, 16) !default;
 
 $colors: (
-    (primary--lightest, $color-primary--lightest),
-    (primary, $color-primary),
-    (primary--darkest, $color-primary--darkest),
-    (shade-1, $shade-primary1),
-    (shade-2, $shade-primary2),
-    (shade-3, $shade-primary3),
+    (blue-navy, $blue-navy),
+    (green, $green),
+    (green-leaf, $green-leaf),
+    (dark-gray, $dark-gray),
+    (lemon, $lemon),
+    (gray, $gray),
+    (off-white, $off-white),
+
     (gray--lightest, $color-gray--lightest),
     (gray--light, $color-gray--light),
     (gray, $color-gray),
