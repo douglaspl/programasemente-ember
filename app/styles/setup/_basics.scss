@@ -5,11 +5,23 @@
 html,
 body {
 	// background-color: $color-gray--lightest;
-	background-color: $color-white;
+    background-color: $body-bg-color;
+    background-image:
+                        linear-gradient(180deg,
+                                    $body-bg-color 10%,
+                                    $body-bg-color--dark 10%,
+                                    $body-bg-color--dark 50%,
+                                    $body-bg-color 50%,
+                                    $body-bg-color 60%,
+                                    $body-bg-color--dark 60%,
+                                    $body-bg-color--dark 100%),
+                                    url('/assets/img/login-.jpg');
+    background-repeat: repeat, no-repeat;
+    background-size: 20.00px 11.55px, 120%;
 	height: 100%;
     color: $color-gray--darkest;
     font-family: 'Raleway', 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     line-height: 1;
     text-align: left;
@@ -21,12 +33,7 @@ body {
         max-height: 100%;
     }
 
-    // @include media('>lg') {
-    //     font-size: calc(16px + .125vw);
-    // }
-
 }
-
 
 a,
 a:hover,

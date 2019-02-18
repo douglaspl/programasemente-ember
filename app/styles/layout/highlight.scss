@@ -12,7 +12,7 @@ $highlight-h-padding--md: $distance--xxxl;
 
     &__subtitle {
         @include title-aux($color: $color-white);
-        @include line;
+        // @include line;
 
         z-index: 4;
     }
@@ -22,7 +22,7 @@ $highlight-h-padding--md: $distance--xxxl;
 
         margin-bottom: $distance--xxs;
         margin-top: $distance--sm;
-        text-shadow: $shadow-1;
+        // text-shadow: $shadow-1;
         transform: translateX(-5px);
         z-index: 3;
     }

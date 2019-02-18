@@ -106,12 +106,14 @@
         }
 
         @include hover {
-            background-color: $color-gray--lightest;
-            opacity: .8;
+            background-color: $green;
+            color: $color-white;
+            opacity: .75;
         }
 
         &--is-active {
-            background-color: $color-gray--lightest;
+            background-color: $green--light;
+            color: $color-white;
             opacity: 1;
             pointer-events: none;
         }
@@ -182,7 +184,7 @@
     &__submenu {
         position: absolute;
         right: 50%;
-        top: calc(100% - #{$distance--sm});
+        top: calc(100% - #{$distance--md});
         width: 20rem;
         z-index: -1;
 
@@ -197,7 +199,7 @@
 
         border-bottom: 1px solid $color-gray--lightest;
         font-size: $font-size--md;
-        padding: $distance--xs $distance--sm;
+        padding: $distance--sm $distance--md;
     }
 
 }

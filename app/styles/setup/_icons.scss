@@ -18,6 +18,16 @@
     content: $icon-live_help;
   }
 }
+.icon-lock_open {
+  &:before {
+    content: $icon-lock_open;
+  }
+}
+.icon-lock_outline {
+  &:before {
+    content: $icon-lock_outline;
+  }
+}
 .icon-more_vert {
   &:before {
     content: $icon-more_vert;

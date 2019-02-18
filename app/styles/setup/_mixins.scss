@@ -18,6 +18,7 @@
 @mixin button {
     align-items: center;
     border: 0 solid transparent;
+    box-shadow: $shadow-1;
     display: inline-flex;
     flex-direction: row;
     font-size: $font-size--xxs;
@@ -693,22 +694,22 @@
 }
 
 @mixin title-2--u( $color: $color-gray--darkest,
-                   $size: $font-size--md,
-                   $size--sm: $font-size--lg,
-                   $size--lg: $font-size--xl,
+                   $size: $font-size--sm,
+                   $size--sm: $font-size--md,
+                   $size--lg: $font-size--lg,
                    $weight: normal,
                    $letter: $letter-spacing--xl) {
 
     color: $color;
     font-family: 'Raleway', 'Roboto', sans-serif;
-    font-size: $size;
+    font-size: calc(#{$size} + .75vw);
     font-weight: $weight;
     letter-spacing: $letter;
     text-transform: uppercase;
     vertical-align: middle;
 
-    @include media('>sm') { font-size: $size--sm; }
-    @include media('>lg') { font-size: $size--lg; }
+    // @include media('>sm') { font-size: $size--sm; }
+    // @include media('>lg') { font-size: $size--lg; }
 }
 
 @mixin title-3( $color: $color-gray--darkest,

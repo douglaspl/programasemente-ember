@@ -2,11 +2,13 @@
     $this: &;
 
     align-items: center;
+    background-color: $color-white;
     border-bottom: 1px solid $color-gray--light;
     display: flex;
     flex-direction: row;
     min-height: $header-height;
     justify-content: space-between;
+    margin-top: $distance--xl;
     padding: $header-v-padding $h-padding--xs;
     position: relative;
 
@@ -26,15 +28,39 @@
     }
 
     &__logo {
+        background-color: $color-white;
+        border-radius: $radius--md;
+        box-shadow: $shadow-3;
         display: block;
-        height: 6rem;
-        max-width: 10rem;
+        left: $h-padding--xs;
+        max-width: 9rem;
+        padding: $distance--sm;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         width: auto;
 
         @include target-ie {
             max-width: 6.5rem;
         }
 
+        @include media('>sm') {
+            left: $h-padding--sm;
+        }
+
+        @include media('>md') {
+            left: $h-padding--md;
+        }
+
+        @include media('>lg') {
+            left: $h-padding--lg;
+        }
+
+
+    }
+
+    &__nav {
+        margin-left: auto;
     }
 
 }

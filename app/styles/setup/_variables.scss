@@ -85,14 +85,21 @@ $btn-pad--xl: 1em 2em;
 //------------------------------------
 $blue-navy: hsl(191, 22%, 14%);
 
-// $green: hsl(84, 55%, 45%);
+$green--light: hsl(84, 35%, 60%);
 $green: hsl(84, 49%, 55%); // CRANE
+$green--dark: hsl(84, 58%, 42%);
+$green--darkest: hsl(84, 70%, 28%);
+
 $green-leaf: hsl(148, 73%, 35%); // CRANE
 
 $dark-gray: hsl(0, 0%, 22%); // CRANE
 $lemon: hsl(60, 74%, 61%); // CRANE
 $gray: hsl(132, 12%, 83%); // CRANE
 $off-white: hsl(187, 44%, 96%); // CRANE
+
+$blueish: hsl(183, 40%, 55%);
+$blueish--dark: hsl(183, 50%, 47%);
+$blueish--darkest: hsl(183, 60%, 39%);
 
 // $blue-navy: #1c292c;
 // $green: #98c555;
@@ -114,11 +121,10 @@ $color-gray--darkest:     hsla($hue, 12%, 15%, 1) !default;
 $color-black:             hsla($hue, 20%, 4%, 1) !default;
 
 // aux
-$color-error:             hsla(2, 50%, 52%, 1) !default;
-$color-info:              hsla(210, 50%, 36%, 1) !default;
-$color-success:           hsl(120, 45%, 35%) !default;
+$color-error:             hsla(2, 70%, 40%, 1) !default;
+$color-info:              hsla(210, 70%, 36%, 1) !default;
+$color-success:           hsl(77, 81%, 43%) !default;
 $color-warning:           hsla(38, 87%, 50%, 1) !default;
-
 
 $colors: (
     (blue-navy, $blue-navy),
@@ -142,6 +148,8 @@ $colors: (
     (warning, $color-warning)
 );
 
+$body-bg-color: transparentize(darken($off-white, 5%), .2);
+$body-bg-color--dark: transparentize(darken($off-white, 10%), .2);
 
 
 
@@ -258,6 +266,8 @@ $icon-frown-o: "\e918";
 $icon-help-circle: "\e91f";
 $icon-list: "\e922";
 $icon-live_help: "\e0c6";
+$icon-lock_open: "\e898";
+$icon-lock_outline: "\e899";
 $icon-menu: "\e90c";
 $icon-minus: "\e90f";
 $icon-more_vert: "\e5d4";
@@ -378,7 +388,7 @@ $shadow-i-5: inset 0 19px 38px rgba($color-black, .25), inset  0 15px 12px rgba(
 //------------------------------------
 //    #SHARED
 //------------------------------------
-$header-height: 3rem;
+$header-height: 5rem;
 $header-v-padding: .5rem;
 
 

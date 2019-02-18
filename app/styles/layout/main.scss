@@ -2,10 +2,26 @@
     $this: &;
 
     padding: $distance--xs $h-padding--xs;
+    position: relative;
 
-    @include media('>sm') { padding: $distance--md $h-padding--sm; }
-    @include media('>md') { padding: $distance--md $h-padding--md; }
-    @include media('>lg') { padding: $distance--md $h-padding--lg; }
+    @include media('>sm') { padding: $distance--xxl $h-padding--sm $distance--md; }
+    @include media('>md') { padding: $distance--xxl $h-padding--md $distance--md; }
+    @include media('>lg') { padding: $distance--xxl $h-padding--lg $distance--md; }
+
+    &--timeline {
+        &::before {
+            background-color: $color-white;
+            content: '';
+            height: 100%;
+            opacity: .45;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 3px;
+        }
+
+    }
 
     &__header {
         margin: (-$distance--xs) (-$h-padding--xs) $distance--sm;
@@ -87,6 +103,23 @@
         line-height: 1.4;
         margin-bottom: $distance--md;
         margin-top: $distance--md;
+
+        &--timeline {
+            background-color: $color-gray--dark;
+            border-radius: $radius--capsule;
+            color: $lemon;
+            display: block;
+            font-weight: 900;
+            letter-spacing: $letter-spacing--xl;
+            margin: $distance--md auto $distance--super;
+            padding: $distance--sm $distance--xl;
+            position: relative;
+            text-align: center;
+            text-transform: uppercase;
+            width: 14em;
+            z-index: 2;
+        }
+
     }
 
     &__subsubtitle {

@@ -1,16 +1,30 @@
 .class-list {
-    $this: &;
-    $margin: 48px;
-    $min-size: 450px;
+    // $this: &;
+    // $margin: 48px;
+    // $min-size: 450px;
 
-    @include n-columns($min-size, $margin, true, 3);
+    // @include n-columns($min-size, $margin, true, 3);
 
-    > * {
+    // > * {
 
-        @include media('<=sm') {
-            max-width: calc(100% - #{$margin});
-        }
+    //     @include media('<=sm') {
+    //         max-width: calc(100% - #{$margin});
+    //     }
 
-    }
+    // }
+    // > * {
+    //     margin-left: 9rem;
+    //     margin-right: 9rem;
+    //     max-width: 40%;
+
+    //     &:not(:first-child) {
+    //         margin-top: 10rem;
+    //     }
+
+    //     &:nth-child(2n+2) {
+    //         margin-left: auto;
+    //     }
+
+    // }
 
 }

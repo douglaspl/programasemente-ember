@@ -1,31 +1,43 @@
  {{#if (equalstr value 0)}}
-    <span class="class__position-holder">
-       <span class="class__position">{{atividade.idx}}</span>
-    </span>
-    <h3 class="class__title">{{atividade.name}}</h3>
-    <p class="class__description">{{atividade.description}}</p>
-    {{#if aula_liberada}}
-        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
-    {{/if}}
+    <div class="timeline__indicator"></div>
+    <div class="timeline__date">
+        <span class="timeline__day">6</span> de abril
+        <span class="timeline__status icon-lock_outline"></span>
+    </div>
+    <div class="timeline__mark class class--is-disabled">
+        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+        {{#if aula_liberada}}
+            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
+        {{/if}}
+    </div>
 {{else if (equalstr value 100)}}
-    <span class="class__icon icon-check"></span>
-    <span class="class__position-holder">
-        <span class="class__position">{{atividade.idx}}</span>
-    </span>
-    <h3 class="class__title">{{atividade.name}}</h3>
-    <p class="class__description">{{atividade.description}}</p>
-    {{#if temSecoes}}
-        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
-    {{/if}}
+    <div class="timeline__indicator"></div>
+    <div class="timeline__date">
+        <span class="timeline__day">6</span> de abril
+        <span class="timeline__status icon-check"></span>
+    </div>
+    <div class="timeline__mark class class--is-completed">
+        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+        {{#if temSecoes}}
+            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
+        {{/if}}
+    </div>
 {{else}}
-{{!-- <li class="class-list__class class" style={{atividade.backgroundImage}}> --}}
-    <span class="class__position-holder">
-        <span class="class__position">{{atividade.idx}}</span>
-    </span>
-    <h3 class="class__title">{{atividade.name}}</h3>
-    <p class="class__description">{{atividade.description}}</p>
-    {{#if temSecoes}}
-        <button class='class__cta btn btn--inverted' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
-    {{/if}}
-{{!-- </li> --}}
+    <div class="timeline__indicator"></div>
+    <div class="timeline__date"><span class="timeline__day">6</span> de abril</div>
+    <div class="timeline__mark class">
+        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+        {{#if temSecoes}}
+            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
+        {{/if}}
+    </div>
 {{/if}}

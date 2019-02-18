@@ -1,42 +1,36 @@
 .class {
     $this: &;
 
+    $img-height: 118%;
+    $img-radius: $radius;
+    $img-width: 40%;
+
     align-items: flex-start;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: $off-white;
     border-radius: $radius--md;
-    color: $color-white;
+    // box-shadow: $shadow-2;
     display: flex;
     flex-direction: column;
-    min-height: 12rem;
     padding: $distance--sm $distance--lg $distance--sm $distance--sm;
     position: relative;
+    width: 100%;
 
     @include media('>sm') {
-        min-height: 24rem;
-        padding: $distance--lg $distance--xl;
+        min-height: 20vh;
+        padding: $distance--md $distance--lg;
+        width: calc(50% - #{$distance--md});
+    }
+
+    @include media('>lg') {
+        width: 40%;
     }
 
     > * {
         z-index: 2;
     }
 
-    &::before {
-        background-color: $color-black;
-        border-radius: inherit;
-        content: '';
-        height: 100%;
-        left: 0;
-        opacity: .9;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
     &--is-completed {
-        border-top: 4px solid $color-success;
+        // border-top: 4px solid $color-success;
     }
 
     &--is-disabled {
@@ -44,79 +38,45 @@
         opacity: .65;
     }
 
-    &__icon {
-        $size: 40px;
-
-        align-items: center;
-        background-color: $color-success;
-        border-radius: 50%;
+    &__img {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: $img-radius;
         box-shadow: $shadow-3;
-        color: $color-white;
-        display: flex;
-        font-size: $font-size--md;
-        height: $size;
-        justify-content: center;
-        line-height: 1;
+        height: $img-height;
         position: absolute;
-        right: 0;
-        top: 0;
-        transform: translate(20%, -20%);
-        width: $size;
-
-        @include media('>sm') {
-            transform: translate(30%, -50%);
-        }
-
-    }
-
-    &__position-holder {
-        left: 0;
-        height: 100%;
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-
-    &__position {
-        bottom: 0;
-        font-size: 150px;
-        font-weight: 900;
-        line-height: 1;
-        opacity: .1;
-        position: absolute;
-        right: 0;
-        transform: translate(20%, 20%);
-
-        @include media('>sm') {
-            font-size: 300px;
-        }
-
-        @include media('>md') {
-            font-size: 400px;
-        }
-
+        right: $distance--md;
+        top: (100% - $img-height)/2;
+        width: $img-width;
+        z-index: 1;
     }
 
     &__title {
-        @include title-2--u($color: $color-white, $weight: bold);
-        @include line;
+        @include title-2($color: $blue-navy, $weight: 700);
 
-        margin-bottom: $distance--xl;
+        letter-spacing: $letter-spacing--sm;
+        margin-bottom: $distance--xxs;
+
+        @include media('>sm') {
+            max-width: 50%;
+        }
+
     }
 
     &__description {
-        font-size: $font-size--sm;
-        line-height: 1.4;
-        max-width: 90%;
+        display: none;
+        font-size: $font-size--xs;
+        line-height: 1.35;
         opacity: .85;
 
         @include media('>sm') {
-            max-width: 60%;
+            max-width: 50%;
         }
 
-        @include media('>md') {
-            max-width: 90%;
+        @include media('>lg') {
+            font-size: $font-size--sm;
+            line-height: 1.5;
         }
 
     }

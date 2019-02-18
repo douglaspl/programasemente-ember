@@ -12,14 +12,14 @@
     visibility: hidden;
 
     &__item {
-        margin: $distance--xs 0 $distance--md;
+        margin: $distance--md 0 $distance--md;
     }
 
     &__link {
         @include has-capsule-on-hover;
 
         display: block;
-        padding: 0 $distance--sm;
+        padding: 0 $distance--md;
         transition: 300ms;
 
         @include target-ie { overflow: hidden; }
