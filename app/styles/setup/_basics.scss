@@ -4,7 +4,7 @@
 
 html,
 body {
-	// background-color: $color-gray--lightest;
+	background-color: $color-gray--lightest;
     background-color: $body-bg-color;
     background-image:
                         linear-gradient(180deg,
@@ -15,10 +15,11 @@ body {
                                     $body-bg-color 60%,
                                     $body-bg-color--dark 60%,
                                     $body-bg-color--dark 100%),
-                                    url('/assets/img/login-.jpg');
+                                    url('/assets/img/login-_.jpg');
     background-repeat: repeat, no-repeat;
-    background-size: 20.00px 11.55px, 120%;
-	height: 100%;
+    background-size: 20.00px 12px, cover;
+    // height: 100%;
+    min-height: 100%;
     color: $color-gray--darkest;
     font-family: 'Raleway', 'Roboto', sans-serif;
     font-size: 14px;
@@ -29,7 +30,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
     > .ember-view {
-        height: 100vh;
+        // height: 100vh;
+        min-height: 100vh;
         max-height: 100%;
     }
 

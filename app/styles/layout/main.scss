@@ -146,7 +146,8 @@
     &--highlight {
         display: flex;
         flex-direction: row;
-        height: calc(100% - #{$header-height});
+        // height: calc(100% - #{$header-height});
+        height: calc(100vh - (3 * #{$header-height}));
         padding: 0;
     }
 
