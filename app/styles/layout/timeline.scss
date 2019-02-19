@@ -83,7 +83,7 @@
         align-items: center;
         background-color: $bg-color;
         border-radius: $radius--md;
-        box-shadow: 0 4px 0 0 hsla(0, 0, 0, .2);
+        // box-shadow: 0 4px 0 0 hsla(0, 0, 0, .2);
         color: $blue-navy;
         display: flex;
         flex-direction: row;
@@ -129,7 +129,7 @@
         background-color: $color-success;
         border: 4px solid $lemon;
         border-radius: 50%;
-        box-shadow: inset 0 3px 0 0 hsla(0, 0, 0, .2);
+        // box-shadow: inset 0 3px 0 0 hsla(0, 0, 0, .2);
         color: $color-white;
         display: flex;
         font-size: $font-size--md;
@@ -151,16 +151,16 @@
             transform: translate(50%, -50%);
         }
 
-        [class*='--is-disabled'] & {
-            background-color: transparentize($color-gray--darkest, .2);
-        }
-
         &::before,
         &::after {
             content: '';
             position: absolute;
             height: 100%;
             width: 100%;
+        }
+
+        &--is-locked {
+            background-color: transparentize($color-gray--darkest, .2);
         }
 
     }
