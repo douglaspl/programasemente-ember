@@ -1,0 +1,27 @@
+.edit-text {
+    $this: &;
+
+    padding: $distance--xs;
+    position: relative;
+    min-width: 8rem;
+    outline: 0 solid transparent;
+
+    &__input {
+        background-color: transparent;
+        box-shadow: 0 0 0 transparent;
+        outline: 0 solid transparent;
+    }
+
+    &__indicator {
+        background-color: transparentize($green, .9);
+        border-bottom: 4px dotted $green;
+        content: '';
+        left: 0;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        transition: 300ms;
+        width: 100%;
+    }
+
+}

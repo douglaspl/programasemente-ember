@@ -124,30 +124,3 @@ td {
 [data-ember-action] {
     cursor: pointer;
 }
-
-[contenteditable] {
-    padding: $distance--xs;
-    position: relative;
-    min-width: 8rem;
-    outline: 0 solid transparent;
-
-    &::before {
-        background-color: transparentize($green, .9);
-        border-bottom: 4px dotted $green;
-        content: '';
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        transition: 300ms;
-        visibility: visible;
-        width: 100%;
-    }
-
-}
-
-[contenteditable='true']::before {
-    opacity: 1;
-    visibility: visible;
-}
