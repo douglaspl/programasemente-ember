@@ -17,11 +17,17 @@
         border-bottom: 4px dotted $green;
         content: '';
         left: 0;
+        opacity: 0;
         position: absolute;
         height: 100%;
         top: 0;
         transition: 300ms;
         width: 100%;
+
+        #{$this}__input:focus + & {
+            opacity: 1;
+        }
+
     }
 
 }
