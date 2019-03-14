@@ -385,8 +385,8 @@
     <ul class="institutions__areas list list--striped">
       <li id="newArea" style="display:none">
         <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
-        <h3 class="title-3" id="newAreaName" contenteditable="true">{{area.name}}</h3>
-        {{!-- <input class="form-group__input content-editable" type="textbox" id="newAreaName"> --}}
+        <input id="newAreaName" class="title-3" value="{{area.name}}">
+        {{!-- <input class="form-group__input content-editable" type="text" id="newAreaName"> --}}
         <div class="btn-group m-left--lg">
           <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}><span class="btn__icon icon-x"></span>Cancelar</button>
           <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}}><span class="btn__icon icon-save"></span>Salvar</button>
@@ -394,7 +394,8 @@
       </li>
       {{#each inst_selected.areas as |area idx|}}
       <li>
-        <h3 class="title-3" id="areaItemName{{area.id}}" contenteditable="false">{{area.name}}</h3>
+        <input class="title-3" id="areaItemName{{area.id}}" class="title-3" value="{{area.name}}" disabled>
+
         <div id="areaItemOptions{{area.id}}" class="btn-group">
           <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
             <span class="btn__icon icon-trash-2"></span> Remover
