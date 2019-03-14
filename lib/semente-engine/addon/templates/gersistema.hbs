@@ -376,13 +376,20 @@
                             <span class="edit-text__indicator"></span>
                         </div>
                         <div class="btn-group m-left--lg">
-                            <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}><span class="btn__icon icon-x"></span>Cancelar</button>
-                            <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}}><span class="btn__icon icon-save"></span>Salvar</button>
+                            <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
+                                <span class="btn__icon icon-x"></span>Cancelar
+                            </button>
+                            <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}} style="width: 100px;">
+                                <span class="btn__icon icon-check"></span>Salvar
+                            </button>
                         </div>
                     </li>
                     {{#each inst_selected.areas as |area idx|}}
                         <li>
-                            <h3 class="title-3" id="areaItemName{{area.id}}" contenteditable="false">{{area.name}}</h3>
+                            <div class="edit-text">
+                                <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
+                                <span class="edit-text__indicator"></span>
+                            </div>
                             <div id="areaItemOptions{{area.id}}" class="btn-group">
                                 <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
                                     <span class="btn__icon icon-trash-2"></span> Remover
@@ -395,7 +402,7 @@
                                 <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' area.id}}>
                                     <span class="btn__icon icon-x"></span>Cancelar
                                 </button>
-                                <button class="btn btn--sm btn--success" style="width: 100px;" type="submit" {{action 'saveArea' area.id}}>
+                                <button class="btn btn--sm btn--primary" style="width: 100px;" type="submit" {{action 'saveArea' area.id}}>
                                     <span class="btn__icon icon-check"></span>Salvar
                                 </button>
                             </div>
