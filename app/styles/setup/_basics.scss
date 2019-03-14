@@ -128,7 +128,7 @@ td {
 [contenteditable] {
     padding: $distance--xs;
     position: relative;
-    min-width: 5rem;
+    min-width: 8rem;
     outline: 0 solid transparent;
 
     &::before {
