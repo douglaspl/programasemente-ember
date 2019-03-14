@@ -73,17 +73,17 @@
     }
 
     &--primary {
-        background-color: transparentize($color: $blue-navy, $amount: .05);
+        background-color: transparentize($green, .05);
         color: $color-white;
     }
 
     &--error {
-        background-color: transparentize($color: $color-error, $amount: .15);
+        background-color: transparentize($color-error, .15);
         color: $color-white;
     }
 
     &--success {
-        background-color: transparentize($color: $color-success, $amount: .25);
+        background-color: transparentize($color-success, .25);
         color: $color-white;
     }
 

@@ -96,6 +96,7 @@
     &--rr { flex-direction: row-reverse; }
     &--c  { flex-direction: column; }
     &--cr { flex-direction: column-reverse; }
+    &-align--start    { align-items: flex-start; }
     &-align--center   { align-items: center; }
     &-justify--center { justify-content: center; }
     &-justify--start { justify-content: flex-start ;}

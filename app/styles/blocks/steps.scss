@@ -20,7 +20,7 @@
         border-radius: $radius;
         bottom: calc((#{$size} / 2) - #{$number-border});
         content: '';
-        height: .25rem;
+        height: $distance--xxs;
         left: 50%;
         position: absolute;
         transform: translateX(-50%);

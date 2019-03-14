@@ -1,23 +1,24 @@
 $tab-radius: $radius--md;
+$tab-bg: $leaf-50;
+$tab-active-bg: $leaf-40;
+
 
 .tabs {
     display: flex;
     flex-direction: row;
 
     &__tab {
-        $bg: $green-leaf;
+        $bg: $tab-bg;
 
         @include button;
         @include text-contrast($bg);
 
 
         background-color: $bg;
+        background-image: linear-gradient(to top, $bg, $leaf-60);
         border-radius: 0;
-        box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.2);
-        letter-spacing: $letter-spacing--xxl;
+        box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.15);
         padding: 1em 2.5em;
-        text-shadow: 0 1px 0 transparent($blue-navy, .6);
-        transition: 300ms;
 
         @include media('<md') {
             font-size: $font-size--xxs;
@@ -25,12 +26,22 @@ $tab-radius: $radius--md;
             padding-right: 1.25rem;
         }
 
+        > * {
+            opacity: .75;
+        }
+
         &:first-child { border-radius: $tab-radius 0 0 $tab-radius; }
         &:last-child { border-radius: 0 $tab-radius $tab-radius 0; }
 
         &--is-active {
-            background-color: $green;
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4); // inset -6px 0 8px rgba(0, 0, 0, 0.2), inset 6px 0 8px rgba(0, 0, 0, 0.2)
+            background-color: $tab-active-bg;
+            background-image: linear-gradient(to top, $tab-active-bg, $leaf-30);
+            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+
+            > * {
+                opacity: 1;
+            }
+
         }
 
     }

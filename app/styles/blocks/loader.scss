@@ -44,7 +44,7 @@ $previousAnimation: 0;
 
 .loader {
     align-items: center;
-    background-color: transparentize($color-gray--darkest, .1);
+    background-color: transparentize($gray-60, .1);
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -58,6 +58,7 @@ $previousAnimation: 0;
         align-items: flex-end;
         animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
         background-color: $green;
+        background-image: linear-gradient(-30deg, $lemon-60, $lemon-30);
         border-radius: 50%;
         box-shadow: $shadow-2;
         display: flex;

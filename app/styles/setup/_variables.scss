@@ -83,47 +83,141 @@ $btn-pad--xl: 1em 2em;
 //------------------------------------
 //    #COLORS
 //------------------------------------
-$blue-navy: hsl(191, 22%, 14%);
+// https://www.colorbox.io/#steps=7#hue_start=80#hue_end=88#hue_curve=easeInQuad#sat_start=4#sat_end=90#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=30#lum_curve=linear#lock_hex=#97c454#minor_steps_map=0
+$green-shades: (
+    0:  hsl(78, 15%, 95%),      // #fbfff2,
+    5:  hsl(80, 30%, 85%),      // #E1F0C4,
+    10: hsl(83, 39%, 75%),      // #C7E29B,
+    20: hsl(84, 49%, 55%),      // #97C454, // CRANE
+    30: hsl(84, 69%, 38%),      // #6FA61E,
+    40: hsl(86, 88%, 28%),      // #528809,
+    50: hsl(86, 94%, 21%),      // #3D6A03,
+    60: hsl(88, 100%, 15%)      // #294D00,
+);
 
-$green--light: hsl(84, 35%, 60%);
-$green: hsl(84, 49%, 55%); // CRANE
-$green--dark: hsl(84, 58%, 42%);
-$green--darkest: hsl(84, 70%, 28%);
+// https://www.colorbox.io/#steps=7#hue_start=138#hue_end=158#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=17#lum_curve=linear#lock_hex=#189a54#minor_steps_map=0
+$leaf-shades: (
+    0:  hsl(138, 65%, 90%),     // #f2fff6
+    5:  hsl(139, 61%, 84%),     // #bdefcd
+    10: hsl(141, 55%, 71%),     // #8edeaa
+    20: hsl(144, 49%, 49%),     // #40bc71
+    30: hsl(148, 73%, 35%),     // #189a54 // CRANE
+    40: hsl(150, 81%, 25%),     // #0c7541
+    50: hsl(155, 90%, 16%),     // #045030
+    60: hsl(158, 100%, 8%)      // #002b1b
+);
 
-$green-leaf: hsl(148, 73%, 35%); // CRANE
+// https://www.colorbox.io/#steps=7#hue_start=181#hue_end=201#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=8#lum_curve=linear#lock_hex=#1c292c#minor_steps_map=0
+$blue-navy-shades: (
+    0:  hsl(191, 20%, 92%),     // #f2ffff,
+    5:  hsl(191, 25%, 85%),     // #c8e9e9,
+    10: hsl(191, 30%, 65%),     // #a3d2d3,
+    20: hsl(191, 50%, 45%),     // #5ca8a9,
+    30: hsl(192, 74%, 30%),     // #367c7f,
+    40: hsl(195, 87%, 20%),     // #2d5156,
+    50: hsl(197, 90%, 14%),     // #000d14
+    60: hsl(199, 95%, 10%),     // #000d14
+    70: hsl(191, 22%, 14%)      // #1c292c, // CRANE
+);
 
-$dark-gray: hsl(0, 0%, 22%); // CRANE
-$lemon: hsl(60, 74%, 61%); // CRANE
-$gray: hsl(132, 12%, 83%); // CRANE
-$off-white: hsl(187, 44%, 96%); // CRANE
+// https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=14#lum_curve=linear#lock_hex=e5e552#minor_steps_map=0
+$lemon-shades: (
+    0:  hsl(56, 68%, 72%),      // #f2f2e6
+    5:  hsl(58, 72%, 66%),      // #ECEC9A
+    10: hsl(60, 74%, 61%),      // #E5E552 // CRANE
+    20: hsl(62, 85%, 55%),      // #B9BE12
+    30: hsl(64, 88%, 48%),      // #8C9800
+    40: hsl(66, 92%, 44%),      // #607100
+    50: hsl(68, 100%, 40%),     // #384A00
+    60: hsl(70, 100%, 36%)      // #182400
+);
 
-$blueish: hsl(183, 40%, 55%);
-$blueish--dark: hsl(183, 50%, 47%);
-$blueish--darkest: hsl(183, 60%, 39%);
+// https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
+$gray-shades: (
+    0:  hsl(148, 4%, 98%),     // #f2f9fa
+    5:  hsl(148, 4%, 90%),     // #d8e6e3
+    10: hsl(148, 5%, 79%),     // #c0d2c9
+    20: hsl(148, 5%, 62%),     // #93aa99
+    30: hsl(148, 6%, 47%),     // #6c836c
+    40: hsl(148, 7%, 32%),     // #4d5b48
+    50: hsl(148, 8%, 18%),     // #2e3428
+    60: hsl(148, 12%, 5%)      // #0c0d0a
+);
 
-// $blue-navy: #1c292c;
-// $green: #98c555;
-// $green-leaf: #189a55;
-// $dark-gray: #383838;
-// $lemon: #e5e552;
-// $gray: #cfd9d1;
-// $off-white: #f2f9fa;
+$green-0:   green-shades(0);
+$green-5:   green-shades(5);
+$green-10:  green-shades(10);
+$green-20:  green-shades(20);
+$green-30:  green-shades(30);
+$green-40:  green-shades(40);
+$green-50:  green-shades(50);
+$green-60:  green-shades(60);
+
+$leaf-0:   leaf-shades(0);
+$leaf-5:   leaf-shades(5);
+$leaf-10:  leaf-shades(10);
+$leaf-20:  leaf-shades(20);
+$leaf-30:  leaf-shades(30);
+$leaf-40:  leaf-shades(40);
+$leaf-50:  leaf-shades(50);
+$leaf-60:  leaf-shades(60);
+
+$blue-navy-0:   blue-navy-shades(0);
+$blue-navy-5:   blue-navy-shades(5);
+$blue-navy-10:  blue-navy-shades(10);
+$blue-navy-20:  blue-navy-shades(20);
+$blue-navy-30:  blue-navy-shades(30);
+$blue-navy-40:  blue-navy-shades(40);
+$blue-navy-50:  blue-navy-shades(50);
+$blue-navy-60:  blue-navy-shades(60);
+$blue-navy-60:  blue-navy-shades(70);
+
+$lemon-0:   lemon-shades(0);
+$lemon-5:   lemon-shades(5);
+$lemon-10:  lemon-shades(10);
+$lemon-20:  lemon-shades(20);
+$lemon-30:  lemon-shades(30);
+$lemon-40:  lemon-shades(40);
+$lemon-50:  lemon-shades(50);
+$lemon-60:  lemon-shades(60);
+
+$gray-0:   gray-shades(0);
+$gray-5:   gray-shades(5);
+$gray-10:  gray-shades(10);
+$gray-20:  gray-shades(20);
+$gray-30:  gray-shades(30);
+$gray-40:  gray-shades(40);
+$gray-50:  gray-shades(50);
+$gray-60:  gray-shades(60);
+
+// Temporário até limpar o CSS
+$green--light:     green-shades(10) !default;
+$green:            green-shades(20) !default;
+$green--dark:      green-shades(30) !default;
+$green--darkest:   green-shades(60) !default;
+$green-leaf:       leaf-shades(30) !default;
+$blue-navy:        blue-navy-shades(50) !default;
+$lemon:            lemon-shades(10) !default;
+$off-white:       hsla(187, 44%, 96%, 1);
+$gray:            hsla(132, 12%, 83%, 1);
+$dark-gray:       hsla(0, 0%, 22%, 1) !default;
+// Temporário até limpar o CSS
 
 $hue: 148;
 
 // grays
 $color-white:             hsla(0, 0%, 100%, 1) !default;
-$color-gray--lightest:    hsla($hue, 2%, 94%, 1) !default;
-$color-gray--light:       hsla($hue, 5%, 82%, 1) !default;
+$color-gray--lightest:    hsla(187, 44%, 96%, 1) !default;  // #f2f9fa // CRANE
+$color-gray--light:       hsla(132, 12%, 83%, 1) !default;  // #cfd9d1 // CRANE
 $color-gray:              hsla($hue, 8%, 60%, 1) !default;
 $color-gray--dark:        hsla($hue, 10%, 30%, 1) !default;
-$color-gray--darkest:     hsla($hue, 12%, 15%, 1) !default;
+$color-gray--darkest:     hsla(0, 0%, 22%, 1) !default;     // #383838 // CRANE
 $color-black:             hsla($hue, 20%, 4%, 1) !default;
 
 // aux
-$color-error:             hsla(2, 70%, 40%, 1) !default;
-$color-info:              hsla(210, 70%, 36%, 1) !default;
-$color-success:           hsl(77, 81%, 43%) !default;
+$color-error:             hsla(2, 60%, 45%, 1) !default;
+$color-info:              hsla(210, 60%, 36%, 1) !default;
+$color-success:           hsl(115, 50%, 40%) !default;
 $color-warning:           hsla(38, 87%, 50%, 1) !default;
 
 $colors: (
@@ -148,7 +242,8 @@ $colors: (
     (warning, $color-warning)
 );
 
-$body-bg-color: transparentize(darken($off-white, 5%), .2);
+$header-bg-color: $color-white;
+$body-bg-color: $gray-0;
 $body-bg-color--dark: transparentize(darken($off-white, 10%), .2);
 
 
@@ -331,7 +426,7 @@ $h-padding--lg: 32px;
 //------------------------------------
 //    #RADIUS
 //------------------------------------
-$radius: 4px;
+$radius: 1px;
 $radius--md: $radius * 2;
 $radius--lg: $radius * 4;
 $radius--capsule: 99rem;
@@ -362,23 +457,23 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 //------------------------------------
 //    #SHADOW DEPTH
 //------------------------------------
-$shadow-1: 0 1px 3px rgba($color-black, .07), 0 1px 2px rgba($color-black, .22);
-$shadow-2: 0 3px 6px rgba($color-black, .11), 0 3px 6px rgba($color-black, .21);
-$shadow-3: 0 10px 20px rgba($color-black, .14), 0 6px 6px rgba($color-black, .21);
-$shadow-4: 0 14px 28px rgba($color-black, .20), 0 10px 10px rgba($color-black, .2);
-$shadow-5: 0 19px 38px rgba($color-black, .25), 0 15px 12px rgba($color-black, .2);
+$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .17);
+$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .16);
+$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16);
+$shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2);
+$shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2);
 
-$shadow-h-1: 1px 0 3px rgba($color-black, .07), 1px 0 2px rgba($color-black, .22);
-$shadow-h-2: 3px 0 6px rgba($color-black, .11), 3px 0 6px rgba($color-black, .21);
-$shadow-h-3: 10px 0 20px rgba($color-black, .14), 06px 0 6px rgba($color-black, .21);
-$shadow-h-4: 14px 0 28px rgba($color-black, .20), 10px 0 10px rgba($color-black, .2);
-$shadow-h-5: 19px 0 38px rgba($color-black, .25), 15px 0 12px rgba($color-black, .2);
+$shadow-h-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17);
+$shadow-h-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16);
+$shadow-h-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16);
+$shadow-h-4: 14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2);
+$shadow-h-5: 19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2);
 
-$shadow-i-1: inset 0 1px 3px rgba($color-black, .07), inset  0 1px 2px rgba($color-black, .22);
-$shadow-i-2: inset 0 3px 6px rgba($color-black, .11), inset  0 3px 6px rgba($color-black, .21);
-$shadow-i-3: inset 0 10px 20px rgba($color-black, .14), inset  0 6px 6px rgba($color-black, .21);
-$shadow-i-4: inset 0 14px 28px rgba($color-black, .20), inset  0 10px 10px rgba($color-black, .2);
-$shadow-i-5: inset 0 19px 38px rgba($color-black, .25), inset  0 15px 12px rgba($color-black, .2);
+$shadow-i-1: inset 0 1px 3px rgba($color-black, .02), inset  0 1px 2px rgba($color-black, .17);
+$shadow-i-2: inset 0 3px 6px rgba($color-black, .06), inset  0 3px 6px rgba($color-black, .16);
+$shadow-i-3: inset 0 10px 20px rgba($color-black, .09), inset  0 6px 6px rgba($color-black, .16);
+$shadow-i-4: inset 0 14px 28px rgba($color-black, .15), inset  0 10px 10px rgba($color-black, .15);
+$shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset  0 15px 12px rgba($color-black, .15);
 // -0.05, -0.02
 
 

@@ -230,13 +230,13 @@
     <!-- institutions navigation -->
     <div class="tabs">
       <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'informations' on="click"}}>Informações</button>
+        {{action 'tabNavigation' 'informations' on="click"}}><span>Informações</span></button>
       <button class="report__tab tabs__tab {{if selectedInstTabs.courses 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'courses' on="click"}}>Cursos</button>
+        {{action 'tabNavigation' 'courses' on="click"}}><span>Cursos</span></button>
       <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'areas' on="click"}}>Áreas</button>
+        {{action 'tabNavigation' 'areas' on="click"}}><span>Áreas</span></button>
       <button class="report__tab tabs__tab {{if selectedInstTabs.users 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'users' on="click"}}>Usuários</button>
+        {{action 'tabNavigation' 'users' on="click"}}><span>Usuários</span></button>
     </div>
   </header>
   <!-- selected institution tab information -->
@@ -385,7 +385,8 @@
     <ul class="institutions__areas list list--striped">
       <li id="newArea" style="display:none">
         <label class="form-group__label" for="newAreaName">Nome da nova área</label>
-        <input class="form-group__input bg-white" type="textbox" id="newAreaName">
+        <h3 class="title-3" id="newAreaName" contenteditable="true">{{area.name}}</h3>
+        <input class="form-group__input" type="textbox" id="newAreaName">
         <div class="btn-group m-left--lg">
           <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}><span class="btn__icon icon-x"></span>Cancelar</button>
           <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}}><span class="btn__icon icon-save"></span>Salvar</button>
@@ -398,7 +399,7 @@
           <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
             <span class="btn__icon icon-trash-2"></span> Remover
           </button>
-          <button class="btn btn--ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
+          <button class="btn btn--leaf-ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
             <span class="btn__icon icon-edit"></span> Editar
           </button>
         </div>

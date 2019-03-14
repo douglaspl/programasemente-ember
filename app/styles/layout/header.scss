@@ -2,13 +2,13 @@
     $this: &;
 
     align-items: center;
-    background-color: $color-white;
+    background-color: $header-bg-color;
+    // background-image: linear-gradient(to right, $color-white, $green-5);
     border-bottom: 1px solid $color-gray--light;
     display: flex;
     flex-direction: row;
     min-height: $header-height;
     justify-content: space-between;
-    margin-top: $distance--xl;
     padding: $header-v-padding $h-padding--xs;
     position: relative;
 
@@ -28,34 +28,33 @@
     }
 
     &__logo {
-        background-color: $color-white;
-        border-radius: $radius--md;
-        box-shadow: $shadow-3;
         display: block;
-        left: $h-padding--xs;
-        max-width: 9rem;
-        padding: $distance--sm;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        padding: $distance--xs;
         width: auto;
+        // background-color: $color-white;
+        // border-radius: $radius--md;
+        // box-shadow: $shadow-3;
+        // left: $h-padding--xs;
+        // max-width: 6rem;
+        // position: absolute;
+        // top: 50%;
+        // transform: translateY(-50%);
 
         @include target-ie {
             max-width: 6.5rem;
         }
 
-        @include media('>sm') {
-            left: $h-padding--sm;
-        }
+        // @include media('>sm') {
+        //     left: $h-padding--sm;
+        // }
 
-        @include media('>md') {
-            left: $h-padding--md;
-        }
+        // @include media('>md') {
+        //     left: $h-padding--md;
+        // }
 
-        @include media('>lg') {
-            left: $h-padding--lg;
-        }
-
+        // @include media('>lg') {
+        //     left: $h-padding--lg;
+        // }
 
     }
 

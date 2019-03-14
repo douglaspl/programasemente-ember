@@ -36,8 +36,8 @@
 
             <div class="form-group form-group--vertical">
                 <label class="form-group__label" for="amount">Exibir</label>
-                <div class="a-self--fs">
-                    <span class="form-group--select-wrapper m-right--md">
+                <div class="d-flex d-flex-align--center a-self--fs">
+                    <div class="form-group--select-wrapper m-right--md">
                         <select id="amount" class="form-group__input form-group__input--select bg-white" name="order" {{action 'setExibir' on='change'}}>
                             {{#if (equalstr perPage 5)}}
                                 <option value="5" selected>5</option>
@@ -97,7 +97,8 @@
                                 <option value="1000">1000</option>
                             {{/if}}
                         </select>
-                    </span><span>resultados por página</span>
+                    </div>
+                    <span>resultados por página</span>
                 </div>
             </div>
 
@@ -124,7 +125,7 @@
                     <div class="form-group__wrapper form-group__wrapper--search" flex="100">
                         <input class="form-group__input bg-white" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="search_input_pessoas_adm" onkeyup="{{action 'pagedsearch'}}" type="text" value={{read_str}}>
                     </div>
-                    <button class="btn" type="submit" {{action 'pagedsearch'}}>Buscar</button>
+                    <button class="btn btn--leaf" type="submit" {{action 'pagedsearch'}}>Buscar</button>
                 </form>
                 <button class="btn btn--text btn--sm a-self--fs m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
             </div>
@@ -197,7 +198,7 @@
           ======================
           matriculados
           <div class="report-people__check form-group">
-            <span class="checkbox checkbox--white">
+            <span class="checkbox">
               <input class="checkbox__input ckb_pessoa_cmp" id="personID_{{pessoa.id}}" name="remember" type="checkbox"
                 value="personID_{{index}}" {{action 'selectPessoaCompare' pessoa.id preventDefault=false}}>
               <label class="checkbox__label" for="personID_{{pessoa.id}}"></label>

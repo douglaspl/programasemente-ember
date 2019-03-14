@@ -26,15 +26,15 @@
 
     &__person {
         align-items: flex-start;
-        border-radius: $radius;
+        border-radius: $radius--md;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         padding: $distance--lg $distance--md;
 
-        &:nth-child(odd) {
-            background-color: $color-gray--lightest;
-        }
+        // &:nth-child(odd) {
+        //     background-color: $color-gray--lightest;
+        // }
 
         @include media('>md') {
             align-items: center;
@@ -53,7 +53,7 @@
 
 
         [class*='has-stats'] & {
-            background-color: $color-gray--lightest;
+            // background-color: $color-gray--lightest;
             border: 3px solid transparent;
             box-shadow: $shadow-1;
             flex-wrap: wrap;

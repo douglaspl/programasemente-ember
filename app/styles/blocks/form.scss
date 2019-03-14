@@ -145,7 +145,7 @@
 
                     content: $icon-search;
                     font-size: $font-size--md;
-                    padding: .25rem .15rem .15rem;
+                    padding: $distance--xxs .15rem .15rem;
                     pointer-events: none;
                     position: absolute;
                     right: .5em;
@@ -160,8 +160,12 @@
 
             }
 
-            ~ [class*='btn'] {
-                margin-left: $distance--sm;
+            &:not[class*='vertical'] {
+
+                ~ [class*='btn'] {
+                    margin-left: $distance--sm;
+                }
+
             }
 
         }

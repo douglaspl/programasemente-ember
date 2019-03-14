@@ -17,8 +17,8 @@
 //------------------------------------
 @mixin button {
     align-items: center;
-    border: 0 solid transparent;
-    box-shadow: $shadow-1;
+    border: 1px solid transparent;
+    // box-shadow: $shadow-1;
     display: inline-flex;
     flex-direction: row;
     font-size: $font-size--xxs;
@@ -317,7 +317,7 @@
 //------------------------------------
 @mixin inputs {
     // appearance: none;
-    background-color: $color-gray--lightest;
+    background-color: $gray-5;
     border: 0 solid transparent;
     border-radius: $radius;
     color: $color-gray--darkest;
@@ -641,7 +641,7 @@
                 $letter: $letter-spacing--sm) {
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -661,7 +661,7 @@
                 $letter: $letter-spacing--lg) {
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -670,8 +670,8 @@
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size; }
-    @include media('>lg') { font-size: $size--sm; }
-    @include media('>xl') { font-size: $size--lg; }
+    @include media('>md') { font-size: $size--sm; }
+    @include media('>lg') { font-size: $size--lg; }
 }
 
 @mixin title-2( $color: $color-gray--darkest,
@@ -682,7 +682,7 @@
                 $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -701,7 +701,7 @@
                    $letter: $letter-spacing--xl) {
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: calc(#{$size} + .75vw);
     font-weight: $weight;
     letter-spacing: $letter;
@@ -720,7 +720,7 @@
                 $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -741,7 +741,7 @@
     @include line($width: $width, $line: 'left');
 
     color: $color;
-    font-family: 'Raleway', 'Roboto', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -768,17 +768,15 @@
     @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-aux($color: $color-gray--dark,
+@mixin title-aux($color: $green-30,
                  $display: inline-block,
-                 $weight: 600) {
+                 $weight: 400) {
 
     color: $color;
     display: $display;
-    font-size: $font-size--xxs;
+    font-size: $font-size--xs;
     font-weight: $weight;
-    letter-spacing: $letter-spacing--lg;
-    // margin-bottom: $margin-bottom;
-    opacity: .75;
+    letter-spacing: $letter-spacing--xl;
     text-transform: uppercase;
     vertical-align: middle;
 }

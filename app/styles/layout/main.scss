@@ -1,19 +1,60 @@
 .main {
     $this: &;
+    $container-diff: 6rem;
 
+    background-color: #fff;
+    border-color: #ced9d1;
+    border-style: solid;
+    border-width: 0 1px;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     padding: $distance--xs $h-padding--xs;
     position: relative;
+    width: 100%;
 
-    @include media('>sm') { padding: $distance--xxl $h-padding--sm $distance--md; }
-    @include media('>md') { padding: $distance--xxl $h-padding--md $distance--md; }
-    @include media('>lg') { padding: $distance--xxl $h-padding--lg $distance--md; }
+    @include media('>sm') {
+        $temp: map-get($breakpoints, sm);
+
+        max-width: $temp + $container-diff;
+        padding: $distance--xxl $h-padding--sm $distance--md;
+    }
+
+    @include media('>md') {
+        $temp: map-get($breakpoints, md);
+
+        max-width: $temp + $container-diff;
+        padding: $distance--xxl $h-padding--md $distance--md;
+    }
+
+    @include media('>lg') {
+        $temp: map-get($breakpoints, lg);
+
+        max-width: $temp + $container-diff;
+        padding: $distance--xxl $h-padding--lg $distance--md;
+    }
+
+    &--highlight {
+        display: flex;
+        flex-direction: row;
+        // height: calc(100% - #{$header-height});
+        height: calc(100vh - (3 * #{$header-height}));
+        max-width: none;
+        padding: 0;
+    }
+
 
     &--timeline {
+        // background-image: linear-gradient(-30deg, $lemon-60, $lemon-30 80%, $lemon-10);
+        // background-image: linear-gradient(-30deg, $gray-20, $gray-5 80%, $gray-0);
+        background-image: linear-gradient(-30deg, $blue-navy-60, $blue-navy-50 65%, $blue-navy-20 96%);
+        max-width: none;
+
         &::before {
-            background-color: $color-white;
+            background-color: $lemon;
             content: '';
             height: 100%;
-            opacity: .45;
+            opacity: .85;
             position: absolute;
             left: 50%;
             top: 0;
@@ -105,18 +146,27 @@
         margin-top: $distance--md;
 
         &--timeline {
-            background-color: $color-gray--dark;
+            background-color: $gray-0;
+            // background-color: $lemon-60;
+            // background-image: linear-gradient(to top, $green-30, $lemon-60 25%, $lemon-40 60%, $lemon-30 90%);
+            border: 2px solid currentColor;
             border-radius: $radius--capsule;
-            color: $lemon;
+            // box-shadow: 0 15px 50px transparentize($lemon-50, .4);
+            color: $color-white;
+            color: $lemon-40;
             display: block;
+            display: none;
+            font-size: 3rem;
             font-weight: 900;
-            letter-spacing: $letter-spacing--xl;
+            letter-spacing: $letter-spacing--md;
             margin: $distance--md auto $distance--super;
-            padding: $distance--sm $distance--xl;
+            padding-bottom: $distance--xs;
+            padding-top: $distance--xs;
             position: relative;
             text-align: center;
+            // text-shadow: 0 3px 2px $green-40;
             text-transform: uppercase;
-            width: 14em;
+            max-width: 8em;
             z-index: 2;
         }
 
@@ -141,14 +191,6 @@
 
     &__subsection:not(:first-of-type) {
         margin-top: $distance--xxxl;
-    }
-
-    &--highlight {
-        display: flex;
-        flex-direction: row;
-        // height: calc(100% - #{$header-height});
-        height: calc(100vh - (3 * #{$header-height}));
-        padding: 0;
     }
 
 }

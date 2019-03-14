@@ -12,7 +12,7 @@
         <h3 class="class__title">{{atividade.name}}</h3>
         <p class="class__description">{{atividade.description}}</p>
         {{#if aula_liberada}}
-            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
+            <button class='class__cta btn btn--lg btn-primary' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
         {{/if}}
     </div>
 {{else if (equalstr value 100)}}
@@ -29,7 +29,7 @@
         <h3 class="class__title">{{atividade.name}}</h3>
         <p class="class__description">{{atividade.description}}</p>
         {{#if temSecoes}}
-            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
+            <button class='class__cta btn btn--lg btn-primary' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
         {{/if}}
     </div>
 {{else}}
@@ -41,7 +41,7 @@
         <h3 class="class__title">{{atividade.name}}</h3>
         <p class="class__description">{{atividade.description}}</p>
         {{#if temSecoes}}
-            <button class='class__cta btn btn--lg btn--dark-auxiliary-color' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
+            <button class='class__cta btn btn--lg btn-primary' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
         {{/if}}
     </div>
 {{/if}}

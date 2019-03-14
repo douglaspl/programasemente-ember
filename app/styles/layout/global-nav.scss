@@ -91,12 +91,11 @@
         @include title-aux;
 
         border-radius: $radius--md;
-        color: $blue-navy;
+        color: $gray-60;
         display: block;
         font-weight: 700;
-        opacity: .45;
+        opacity: .65;
         padding: $distance--sm $distance--md;
-
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
         transition: 300ms var(--ease-out-quad);
 
@@ -106,16 +105,19 @@
         }
 
         @include hover {
-            background-color: $green;
-            color: $color-white;
-            opacity: .75;
+            background-color: $green-10;
         }
 
         &--is-active {
-            background-color: $green--light;
-            color: $color-white;
+            $bg: $lemon-40;
+
+            @include text-contrast($bg);
+
+            background-color: $bg;
+            background-image: linear-gradient(to top, $bg, $lemon-5);
             opacity: 1;
             pointer-events: none;
+            // text-shadow: 0 1px 0 $green-50;
         }
 
     }

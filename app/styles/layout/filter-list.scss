@@ -9,9 +9,9 @@
     }
 
     &__filter {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         border-radius: $radius--md;
-        box-shadow: $shadow-2;
+        // box-shadow: $shadow-2;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -29,15 +29,14 @@
         }
 
         @include media('>md') {
-            // align-self: flex-start;
             flex-direction: row;
-            flex: 0 1 22vw;
+            flex: 0 1 18vw;
             flex-direction: column;
             justify-content: flex-start;
             margin-bottom: 0;
             margin-right: $distance--xxl;
-            min-width: 420px;
-            padding: $distance--lg;
+            min-width: 240px;
+            // padding: $distance--lg;
 
             > *:not(:last-child) {
                 margin-bottom: $distance--xxl;

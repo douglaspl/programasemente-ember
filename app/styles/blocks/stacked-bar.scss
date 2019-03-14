@@ -54,24 +54,21 @@
     }
 
     &__color-element {
-        $size: 1em;
+        $size: .5em;
 
         border-radius: $radius;
         box-shadow: $shadow-1;
         display: inline-block;
         flex: 0 0 auto;
-        height: $size / 2;
+        height: $size;
         margin-right: $distance--xs;
-        width: $size * 2;
+        width: $size;
     }
 
     &__value {
-        // &--1 { background-color: $color-info; }
-        // &--2 { background-color: $color-warning; }
-        // &--3 { background-color: $color-success; }
-        &--1 { background-color: $blue-navy; }
-        &--2 { background-color: $green-leaf; }
-        &--3 { background-color: $green; }
+        &--1 { background-color: $green-60; }
+        &--2 { background-color: $green-40; }
+        &--3 { background-color: $green-20; }
     }
 
 }

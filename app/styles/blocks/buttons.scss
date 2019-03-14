@@ -96,6 +96,29 @@
         }
     }
 
+    &--leaf {
+        background-color: $leaf-40;
+        background-image: linear-gradient(to top, $leaf-50, $leaf-40);
+        color: $color-white;
+
+        @include hover {
+            background-color: $leaf-60;
+        }
+
+    }
+
+    &--leaf-ghost {
+        background-color: $gray-0;
+        background-image: linear-gradient(to top, $gray-0, $color-white);
+        border: 1px solid $leaf-40;
+        color: $leaf-50;
+
+        @include hover {
+            background-color: $leaf-0;
+        }
+
+    }
+
     &--ghost {
         background-color: transparent;
         border: 1px solid currentColor;
@@ -112,11 +135,11 @@
     }
 
     &--inverted {
-        background-color: $color-white;
+        background-color: $green-0;
         color: $green-leaf;
 
         @include hover {
-            background-color: $color-gray--lightest;
+            background-color: $green-5;
         }
 
     }
@@ -151,34 +174,6 @@
                 opacity: 0;
             }
 
-        }
-
-    }
-
-    &--primary-lightest {
-        background-color: $green;
-
-        @include hover {
-            background-color: $gray;
-        }
-
-    }
-
-    &--auxiliary-color {
-        background-color: $lemon;
-
-        @include hover {
-            background-color: darken($lemon, 2%);
-        }
-
-    }
-
-    &--dark-auxiliary-color {
-        background-color: $blue-navy;
-        color: $lemon;
-
-        @include hover {
-            background-color: darken($blue-navy, 2%);
         }
 
     }
