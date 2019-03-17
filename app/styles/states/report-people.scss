@@ -4,6 +4,11 @@
     position: relative;
 
     &__list {
+        // align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // justify-content: flex-start;
         margin-top: $distance--md;
     }
 
@@ -17,43 +22,90 @@
     }
 
     &__avatar {
-        display: none;
-
-        @include media('>md') {
-            display: inline-block;
-        }
+        box-shadow: $shadow-3;
+        display: inline-block;
+        margin-bottom: $distance--sm;
     }
 
     &__person {
-        align-items: flex-start;
+        $gutter: $distance--sm;
+        $total-items: 2;
+        $total-items-sm: 3;
+        $total-items-md: 4;
+        $total-items-lg: 5;
+        $total-distance: ($total-items - 1) * $gutter;
+
+        align-items: center;
+        background-color: $gray-0;
+        background-image: linear-gradient(to top, $gray-0, $color-white);
         border-radius: $radius--md;
+        box-shadow: $shadow-1;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
-        padding: $distance--lg $distance--md;
+        flex: 0 0 auto;
+        justify-content: flex-start;
+        margin: 0 $gutter $gutter 0;
+        padding: $distance--md;
+        width: calc((100% - #{$total-distance}) / #{$total-items});
 
-        // &:nth-child(odd) {
-        //     background-color: $color-gray--lightest;
-        // }
-
-        @include media('>md') {
-            align-items: center;
-            text-align: left;
+        &:nth-child(#{$total-items}n) {
+            margin-right: 0;
         }
 
-        > *:not(:last-child) {
-            margin-bottom: $distance--xs;
+        @include media('>sm') {
+            $gutter: $distance--sm;
+            $total-distance: ($total-items-sm - 1) * $gutter;
 
-            @include media('>md') {
-                margin-bottom: 0;
-                margin-right: $distance--md;
+            margin: 0 $gutter $gutter 0;
+            width: calc((100% - #{$total-distance}) / #{$total-items-sm});
+
+            &:nth-child(n + 1) {
+                margin-right: $gutter;
+            }
+
+            &:nth-child(#{$total-items-sm}n) {
+                margin-right: 0;
             }
 
         }
 
+        @include media('>md') {
+            $gutter: $distance--md;
+            $total-distance: ($total-items-md - 1) * $gutter;
+
+            margin: 0 $gutter $gutter 0;
+            width: calc((100% - #{$total-distance}) / #{$total-items-md});
+
+            &:nth-child(n + 1) {
+                margin-right: $gutter;
+            }
+
+            &:nth-child(#{$total-items-md}n) {
+                margin-right: 0;
+            }
+
+        }
+
+        @include media('>lg') {
+            $gutter: $distance--lg;
+            $total-distance: ($total-items-lg - 1) * $gutter;
+
+            margin: 0 $gutter $gutter 0;
+            width: calc((100% - #{$total-distance}) / #{$total-items-lg});
+
+            &:nth-child(n + 1) {
+                margin-right: $gutter;
+            }
+
+            &:nth-child(#{$total-items-lg}n) {
+                margin-right: 0;
+            }
+
+        }
 
         [class*='has-stats'] & {
-            // background-color: $color-gray--lightest;
+            // background-color: $gray-0;
             border: 3px solid transparent;
             box-shadow: $shadow-1;
             flex-wrap: wrap;

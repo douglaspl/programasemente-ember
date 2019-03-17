@@ -61,7 +61,7 @@
 
         tr:nth-child(odd) {
             td {
-                background-color: $color-gray--lightest;
+                background-color: $gray-0;
             }
         }
     }
@@ -207,7 +207,7 @@
     }
 
     &--quizes {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         text-align: center;
 
         tr > *:first-child {

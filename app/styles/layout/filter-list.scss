@@ -4,45 +4,32 @@
     display: flex;
     flex-direction: column;
 
-    @include media('>md') {
-        flex-direction: row;
-    }
-
     &__filter {
-        background-color: $gray-0;
+        background-color: $gray-5;
         border-radius: $radius--md;
         // box-shadow: $shadow-2;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        margin-bottom: $distance--xl;
-        padding: $distance--sm;
+        margin: 0 (-$h-padding--xs) $distance--xl;
+        padding: $distance--sm #{$h-padding--xs};
 
-        > *:not(:last-child) {
-            margin-bottom: $distance--md;
-
-            @include media('>md') {
-                margin-bottom: 0;
-                margin-right: $distance--xxl;
-            }
-
+        @include media('>sm') {
+            margin: 0 (-$h-padding--sm) $distance--xl;
+            padding: $distance--sm #{$h-padding--sm};
+        }
+        @include media('>md') {
+            margin: 0 (-$h-padding--md) $distance--xl;
+            padding: $distance--sm #{$h-padding--md};
+        }
+        @include media('>lg') {
+            margin: 0 (-$h-padding--lg) $distance--xl;
+            padding: $distance--sm #{$h-padding--lg};
         }
 
-        @include media('>md') {
-            flex-direction: row;
-            flex: 0 1 18vw;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-bottom: 0;
-            margin-right: $distance--xxl;
-            min-width: 240px;
-            // padding: $distance--lg;
-
-            > *:not(:last-child) {
-                margin-bottom: $distance--xxl;
-                margin-right: 0;
-            }
-
+        input,
+        select {
+            background-color: $color-white;
         }
 
     }
@@ -52,6 +39,9 @@
     }
 
     &__ordering {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: row;
         margin-bottom: $distance--xl;
     }
 

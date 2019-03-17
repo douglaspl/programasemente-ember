@@ -51,7 +51,7 @@
 
     // Específicos.
     &--quiz {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         height: 100%;
         margin: 0 auto;
         padding: $distance--sm $distance--xs;
@@ -138,7 +138,7 @@
 
     &--video {
         align-items: center;
-        background-color: $color-gray--light;
+        background-color: $gray-5;
         display: flex;
         flex-direction: column;
         height: 100%;

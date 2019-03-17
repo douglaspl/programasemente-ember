@@ -8,7 +8,7 @@ $html-width--lg: 50rem;
 .html {
     $this: &;
 
-    background-color: $color-gray--lightest;
+    background-color: $gray-0;
     padding-bottom: $distance--md;
     padding-top: 0;
 
@@ -44,7 +44,7 @@ $html-width--lg: 50rem;
     }
 
     blockquote {
-        border-left: 8px solid $color-gray--lightest;
+        border-left: 8px solid $gray-0;
         font-size: $font-size--sm;
         font-style: italic;
         line-height: 1.75;
@@ -115,7 +115,7 @@ $html-width--lg: 50rem;
 
         tr:nth-child(odd) {
             td {
-                background-color: $color-gray--lightest;
+                background-color: $gray-0;
             }
         }
 
@@ -157,7 +157,7 @@ $html-width--lg: 50rem;
     }
 
     &__header {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         box-shadow: $shadow-2;
         color: $color-gray--darkest;
         display: block;
@@ -242,7 +242,7 @@ $html-width--lg: 50rem;
 
         span:first-of-type {
             display: block;
-            font-family: 'Titillium Web', 'Merriweather Sans', 'Raleway', sans-serif;
+            font-family: 'Titillium Web', 'Raleway', sans-serif;
             font-size: $font-size--md;
             font-weight: bold;
             margin-bottom: $distance--xxs;

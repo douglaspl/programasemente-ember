@@ -7,8 +7,9 @@ body {
     background-color: $body-bg-color;
     min-height: 100%;
     color: $color-gray--darkest;
-    font-family: 'Titillium Web', 'Merriweather Sans', 'Raleway', sans-serif;
+    font-family: 'Titillium Web', 'Raleway', sans-serif;
     font-size: 14px;
+    font-variant-numeric: lining-nums;
     font-weight: 300;
     line-height: 1;
     text-align: left;
@@ -78,7 +79,6 @@ select {
     border-radius: $radius;
     box-shadow: $form-shadow;
     cursor: pointer;
-    padding-left: $distance--md;
     padding-right: $distance--xl;
 
     &::-ms-expand {

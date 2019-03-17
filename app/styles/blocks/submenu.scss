@@ -19,6 +19,8 @@
         @include has-capsule-on-hover;
 
         display: block;
+        font-size: $font-size--sm;
+        font-weight: 400;
         padding: 0 $distance--md;
         transition: 300ms;
 

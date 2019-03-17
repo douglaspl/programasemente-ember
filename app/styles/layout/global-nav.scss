@@ -105,7 +105,7 @@
         }
 
         @include hover {
-            background-color: $green-10;
+            background-color: $lemon-30;
         }
 
         &--is-active {
@@ -199,7 +199,7 @@
     &__call {
         @include truncate;
 
-        border-bottom: 1px solid $color-gray--lightest;
+        border-bottom: 1px solid $gray-0;
         font-size: $font-size--md;
         padding: $distance--sm $distance--md;
     }

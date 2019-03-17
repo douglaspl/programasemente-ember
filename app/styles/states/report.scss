@@ -38,14 +38,6 @@
         margin-top: $distance--md;
     }
 
-    &__total-results {
-        @include title-aux();
-
-        // padding-right: $distance--xxl;
-        // text-align: right;
-        // width: 100%;
-    }
-
     &-card {
         @include card;
 

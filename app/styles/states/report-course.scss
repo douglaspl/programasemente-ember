@@ -1,9 +1,10 @@
 .report-course {
     $this: &;
 
-    margin-top: $distance--lg;
+    margin-top: $distance--xl;
 
     &__header {
+        align-items: flex-end;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -35,7 +36,6 @@
     }
 
     &__title-block {
-        align-self: center;
         flex: 1 0 50%;
         margin-bottom: $distance--md;
 

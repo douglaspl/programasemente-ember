@@ -16,7 +16,7 @@
     }
 
     &::before {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         border-radius: $radius;
         bottom: calc((#{$size} / 2) - #{$number-border});
         content: '';

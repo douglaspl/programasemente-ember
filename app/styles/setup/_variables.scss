@@ -134,14 +134,14 @@ $lemon-shades: (
 
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
 $gray-shades: (
-    0:  hsl(148, 4%, 98%),     // #f2f9fa
-    5:  hsl(148, 4%, 90%),     // #d8e6e3
-    10: hsl(148, 5%, 79%),     // #c0d2c9
-    20: hsl(148, 5%, 62%),     // #93aa99
-    30: hsl(148, 6%, 47%),     // #6c836c
-    40: hsl(148, 7%, 32%),     // #4d5b48
-    50: hsl(148, 8%, 18%),     // #2e3428
-    60: hsl(148, 12%, 5%)      // #0c0d0a
+    0:  hsl(148, 3%, 98%),     // #f2f9fa
+    5:  hsl(148, 3%, 88%),     // #d8e6e3
+    10: hsl(148, 3%, 75%),     // #c0d2c9
+    20: hsl(148, 3%, 58%),     // #93aa99
+    30: hsl(148, 3%, 43%),     // #6c836c
+    40: hsl(148, 3%, 28%),     // #4d5b48
+    50: hsl(148, 3%, 15%),     // #2e3428
+    60: hsl(148, 3%, 5%)      // #0c0d0a
 );
 
 $green-0:   green-shades(0);
@@ -207,7 +207,7 @@ $hue: 148;
 
 // grays
 $color-white:             hsla(0, 0%, 100%, 1) !default;
-$color-gray--lightest:    hsla(187, 44%, 96%, 1) !default;  // #f2f9fa // CRANE
+$gray-0:    hsla(187, 44%, 96%, 1) !default;  // #f2f9fa // CRANE
 $color-gray--light:       hsla(132, 12%, 83%, 1) !default;  // #cfd9d1 // CRANE
 $color-gray:              hsla($hue, 8%, 60%, 1) !default;
 $color-gray--dark:        hsla($hue, 10%, 30%, 1) !default;
@@ -229,7 +229,7 @@ $colors: (
     (gray, $gray),
     (off-white, $off-white),
 
-    (gray--lightest, $color-gray--lightest),
+    (gray--lightest, $gray-0),
     (gray--light, $color-gray--light),
     (gray, $color-gray),
     (gray--dark, $color-gray--dark),
@@ -307,17 +307,17 @@ $avatar--xl: 8rem;
 
 $multiplier: 0.125;
 
-$font-size--xxs: .875rem; //14
-$font-size--xs:  1rem;    //16
-$font-size--sm:  1.125rem; //18
-$font-size--md:  1.25rem;  //20
-$font-size--lg:  1.5rem;   //22
-$font-size--xl:  1.875rem;  //30
-$font-size--xxl: 2.25rem; //36
+$font-size--xxs: .875rem;
+$font-size--xs:  1rem;
+$font-size--sm:  1.125rem;
+$font-size--md:  1.25rem;
+$font-size--lg:  1.75rem;
+$font-size--xl:  2.1rem;
+$font-size--xxl: 2.5rem;
 
 // Very few uses.
-$font-size--super:  3rem; //48
-$font-size--max:    3.5rem; //54
+$font-size--super:  3rem;
+$font-size--max:    3.5rem;
 
 
 
@@ -457,11 +457,11 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 //------------------------------------
 //    #SHADOW DEPTH
 //------------------------------------
-$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .17);
-$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .16);
-$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16);
-$shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2);
-$shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2);
+$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .17), 0 0 2px rgba($color-black, .12);
+$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
+$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
+$shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
+$shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
 
 $shadow-h-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17);
 $shadow-h-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16);

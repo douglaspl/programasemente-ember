@@ -2,13 +2,14 @@
     $this: &;
 
     display: flex;
-    flex: 1;
+    // flex: 1;
     flex-direction: column;
     font-size: $font-size--xxs;
 
     &__name {
-        @include title-3;
-        // padding: .75rem 0 0;
+        @include title-4($weight: 600);
+
+        text-align: center;
     }
 
     &__email {
@@ -29,16 +30,6 @@
 
         &:not(:last-of-type) {
             margin-bottom: $distance--xxs;
-        }
-
-    }
-
-    &__link {
-        color: $blue-navy;
-
-        &:hover {
-            text-decoration: underline;
-
         }
 
     }

@@ -20,7 +20,7 @@
             {{#each matchInsts as |inst|}}
                 <li>
                     <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
-                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}>{{inst.name}}</a>
+                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
                 </li>
             {{/each}}
         </ul>
@@ -30,7 +30,7 @@
             {{#each model as |inst|}}
                 <li>
                     <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
-                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}>{{inst.name}}</a>
+                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
                 </li>
             {{/each}}
         </ul>
@@ -51,8 +51,8 @@
             {{#if inst_selected}}
                 <!-- TABS DE NAVEGAÇÃO -->
                 <div class="report__tabs tabs">
-                    <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-courses" id="button_tab_cursos" {{action 'selectTab' 'cursos'}}><span>Cursos</span></button>
-                    <button class="report__tab tabs__tab" data-target="report-people" id="button_tab_pessoas" {{action 'selectTab' 'pessoas'}}><span>Pessoas</span></button>
+                    <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-people" id="button_tab_pessoas" {{action 'selectTab' 'pessoas'}}><span>Alunos</span></button>
+                    <button class="report__tab tabs__tab" data-target="report-courses" id="button_tab_cursos" {{action 'selectTab' 'cursos'}}><span>Cursos</span></button>
                     {{!-- <button class="report__tab tabs__tab btn" data-target="report-quiz">Quiz</button> --}}
                     {{!-- <button class="report__tab tabs__tab btn" data-target="report-people-comparison">Comparar pessoas</button>
       --}}
@@ -95,8 +95,9 @@
                                 {{!-- <span class="report-course__thumb" style={{curso_selected.backgroundImage}}></span> --}}
                                 <div class="report-course__title-block">
                                     <h2 class="title-2--u">{{curso_selected.name}}</h2>
-                                    {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xs" {{action 'goToMatriculados' curso_selected.id}}>Ver
-              todos os matriculados</button>--}}
+                                    {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xs" {{action 'goToMatriculados' curso_selected.id}}>
+                                        <span>Ver todos os matriculados</span>
+                                    </button> --}}
                                 </div>
                                 {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
                                     {{#if (equalstr acomp.modulo.id curso_selected.id)}}

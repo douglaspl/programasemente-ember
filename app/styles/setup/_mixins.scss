@@ -18,7 +18,7 @@
 @mixin button {
     align-items: center;
     border: 1px solid transparent;
-    // box-shadow: $shadow-1;
+    box-shadow: $shadow-1;
     display: inline-flex;
     flex-direction: row;
     font-size: $font-size--xxs;
@@ -55,7 +55,7 @@
         background-color: $color-gray--darkest;
         color: $color-white;
     } @else {
-        background-color: $color-gray--lightest;
+        background-color: $gray-0;
         color: $color-gray--darkest;
     }
 
@@ -99,7 +99,7 @@
         }
 
         &::before {
-            background-color: $color-gray--lightest;
+            background-color: $gray-0;
             border-radius: $radius;
             box-shadow: $shadow-1;
             content: '';
@@ -188,8 +188,13 @@
     position: relative;
     overflow: visible;
 
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
     &::before {
-        background-color: $green;
+        background-color: $lemon-30;
         border-radius: $radius;
         box-shadow: $shadow-3;
         content: '';
@@ -200,18 +205,17 @@
         top: 50%;
         transform: translate(-50%, -50%);
 
-        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-        transition: 300ms var(--ease-in-out-quad);
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
 
         visibility: hidden;
-        width: calc(100% + (#{$distance--sm} * 2));
-        z-index: -1;
+        width: calc(100% + #{$distance--sm});
+        z-index: 1;
     }
 
     &:hover {
-        background-color: transparent;
-        color: $color-white;
-        text-shadow: 0 0 1px $color-white;
+        // background-color: transparent;
+        // text-shadow: 0 0 1px $color-white;
 
         &::before {
             opacity: 1;
@@ -641,7 +645,7 @@
                 $letter: $letter-spacing--sm) {
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -661,12 +665,12 @@
                 $letter: $letter-spacing--lg) {
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: 1;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size; }
@@ -682,7 +686,7 @@
                 $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -701,7 +705,7 @@
                    $letter: $letter-spacing--xl) {
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Raleway', 'Titillium Web', sans-serif;
     font-size: calc(#{$size} + .75vw);
     font-weight: $weight;
     letter-spacing: $letter;
@@ -716,14 +720,15 @@
                 $size: $font-size--sm,
                 $size--sm: $font-size--md,
                 $size--lg: $font-size--lg,
-                $weight: normal,
+                $weight: 400,
                 $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Titillium Web', 'Raleway', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
+    opacity: .85;
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size--sm; }
@@ -731,9 +736,9 @@
 }
 
 @mixin title-3--alt ( $color: $color-gray--dark,
-                      $size: $font-size--xs,
-                      $size--lg: $font-size--sm,
-                      $weight: normal,
+                      $size: $font-size--sm,
+                      $size--lg: $font-size--md,
+                      $weight: 600,
                       $letter: $letter-spacing--xl) {
 
     $width: .5em;
@@ -741,10 +746,11 @@
     @include line($width: $width, $line: 'left');
 
     color: $color;
-    font-family: 'Raleway', 'Titillium Web', 'Merriweather Sans', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
+    line-height: 1.5;
     padding-left: calc(#{$width} + .25em);
     text-transform: uppercase;
     vertical-align: middle;
@@ -780,66 +786,6 @@
     text-transform: uppercase;
     vertical-align: middle;
 }
-
-
-
-
-
-//------------------------------------
-//    #TITLE
-//------------------------------------
-// $title-color: $blue-navy;
-// $title-font-family: 'Bebas Neue', sans-serif;
-
-// @mixin title-1($color: $title-color,
-//                $family: $title-font-family,
-//                $size: normal,
-//                $weight: $font-weight--lg) {
-//     color: $color;
-//     font-family: $family;
-//     font-size: $size;
-//     font-weight: $weight;
-// }
-
-// @mixin title-2($color: $title-color,
-//                        $family: $title-font-family,
-//                        $size: normal,
-//                        $weight: $font-weight--sm) {
-//     color: $color;
-//     font-family: $family;
-//     font-size: $size;
-//     font-weight: $weight;
-// }
-
-// @mixin title-3($color: $title-color,
-//                        $family: $title-font-family,
-//                        $size: normal,
-//                        $weight: $font-weight--lg) {
-//     color: $color;
-//     font-family: $family;
-//     font-size: $size;
-//     font-weight: $weight;
-// }
-
-// @mixin title-4($color: $title-color,
-//                        $family: $title-font-family,
-//                        $size: normal,
-//                        $weight: $font-weight--md) {
-//     color: $color;
-//     font-family: $family;
-//     font-size: $size;
-//     font-weight: $weight;
-// }
-
-// @mixin title-5($color: $title-color,
-//                        $family: $title-font-family,
-//                        $size: normal,
-//                        $weight: $font-weight--lg) {
-//     color: $color;
-//     font-family: $family;
-//     font-size: $size;
-//     font-weight: $weight;
-// }
 
 
 

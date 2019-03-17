@@ -48,12 +48,19 @@
     <path class="fill-primary" d="M376.949 19.657c0-2.163-1.756-3.919-3.919-3.919-2.163 0-3.919 1.756-3.919 3.919v45.156c0 2.163 1.756 3.919 3.919 3.919 2.163 0 3.919-1.756 3.919-3.919V19.657z" />
     <path class="fill-primary--darkest" d="M359.131 38.609c0-2.163-1.756-3.919-3.919-3.919-2.163 0-3.919 1.756-3.919 3.919v26.204c0 2.163 1.756 3.919 3.919 3.919 2.163 0 3.919-1.756 3.919-3.919V38.609z" />
   </svg> --}}
+
   <img class="header__logo" src="/assets/img/logo__programa-semente--crane.png">
+
   <h1 class="scr-only">Bem-vindo ao CORESkills!</h1>
+
   {{userLastAccess}}
+
   <nav class="header__nav global-nav">
+
     <button class="global-nav__trigger icon-menu"></button>
+
     <ul id="global-nav-menu" class="global-nav__list">
+
       <button class="global-nav__close icon-x"></button>
 
       <!-- courses header -->
@@ -91,44 +98,54 @@
       <!-- Em mobile, esses links não ficam dentro de um submenu e por isso tiveram que ser duplicados. -->
       <!-- Eles aparecem como irmãos a "Meus cursos", "Administração" etc. -->
       <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
-        <a href="#" class="global-nav__link header-indicadores" id="change_image_trigger">Alterar imagem do perfil</a>
-      </li>
+        <a href="#" class="global-nav__link header-indicadores" id="change_image_trigger">
+          <span>Alterar imagem do perfil</span></a></li>
 
       <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
-        <a href="#" class="global-nav__link header-indicadores" id="change_pass_trigger">Alterar senha</a>
-      </li>
+        <a href="#" class="global-nav__link header-indicadores" id="change_pass_trigger">
+          <span>Alterar senha</span></a></li>
 
       <li class="global-nav__item global-nav--mob-only" style="margin-top: auto;">
-        <a href="#" class="global-nav__link header-indicadores" {{action 'invalidateSession'}}>Fazer Logout</a>
-      </li>
+        <a href="#" class="global-nav__link header-indicadores" {{action 'invalidateSession'}}>
+          <span>Fazer Logout</span></a></li>
       <!-- /MOBILE -->
 
       <li class="global-nav__item global-nav__submenu-holder">
+
         <div class="global-nav__submenu submenu submenu--header">
+
           <p class="global-nav__call">Olá, <strong>{{username}}</strong></p>
+
           <ul>
             <li class="submenu__item">
-              <a href="#" id="change_image_trigger" class="submenu__link">Alterar imagem do perfil</a>
-            </li>
+              <a href="#" id="change_image_trigger" class="submenu__link">
+                <span>Alterar imagem do perfil</span></a></li>
 
             <li class="submenu__item">
-              <a href="#" id="change_pass_trigger" class="submenu__link">Alterar senha</a>
-            </li>
+              <a href="#" id="change_pass_trigger" class="submenu__link">
+                <span>Alterar senha</span></a></li>
             <li class="submenu__item">
-              <a href="#" class="submenu__link" {{action 'invalidateSession'}}>Fazer Logout</a>
-            </li>
+              <a href="#" class="submenu__link" {{action 'invalidateSession'}}>
+                <span>Fazer Logout</span></a></li>
           </ul>
+
         </div>
+
         <a class="global-nav__thumb" href="#">
           <span class="global-nav__avatar avatar">
             <img class="j-application-avatar" src={{uri_avatar}}>
           </span>
           <span class="icon-chevron-down hide-on--sm"></span>
         </a>
+
       </li>
+
     </ul>
+
   </nav>
+
 </header>
+
 <section id="content-main" class="content-main">
   {{#if role}}
   <!-- if an institution is selected, then the output is released. otherwise the intitution select is created -->

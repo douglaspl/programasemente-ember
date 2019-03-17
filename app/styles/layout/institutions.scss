@@ -2,7 +2,7 @@
     $this: &;
 
     &__header {
-        align-items: flex-start;
+        align-items: flex-end;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -43,18 +43,12 @@
         flex-direction: row;
         justify-content: flex-start;
         margin-bottom: $distance--md;
-        margin-top: $distance--md;
 
         > * {
-            // flex: 0 0 15%;
 
             &:not(:first-of-type) {
                 margin-left: $distance--lg;
             }
-
-            // @include target-ie {
-            //     flex: 0 0 auto;
-            // }
 
         }
 

@@ -47,6 +47,7 @@
     &--timeline {
         // background-image: linear-gradient(-30deg, $lemon-60, $lemon-30 80%, $lemon-10);
         // background-image: linear-gradient(-30deg, $gray-20, $gray-5 80%, $gray-0);
+        background-color: $blue-navy-50;
         background-image: linear-gradient(-30deg, $blue-navy-60, $blue-navy-50 65%, $blue-navy-20 96%);
         max-width: none;
 
@@ -65,22 +66,28 @@
     }
 
     &__header {
-        margin: (-$distance--xs) (-$h-padding--xs) $distance--sm;
+        margin: 0 (-$h-padding--xs) $distance--sm;
         padding: $distance--md $distance--xs $distance--sm;
 
         @include media('>sm') {
-            margin: (-$distance--md) (-$h-padding--sm) $distance--xl;
-            padding: $distance--xl $h-padding--sm $distance--sm;
+            margin-left: (-$h-padding--sm);
+            margin-right: (-$h-padding--sm);
+            padding-left: $h-padding--sm;
+            padding-right: $h-padding--sm;
         }
 
         @include media('>md') {
-            margin: (-$distance--md) (-$h-padding--md) $distance--xl;
-            padding: $distance--xl $h-padding--md $distance--sm;
+            margin-left: (-$h-padding--md);
+            margin-right: (-$h-padding--md);
+            padding-left: $h-padding--md;
+            padding-right: $h-padding--md;
         }
 
         @include media('>lg') {
-            margin: (-$distance--md) (-$h-padding--lg) $distance--xl;
-            padding: $distance--xl $h-padding--lg $distance--sm;
+            margin-left: (-$h-padding--lg);
+            margin-right: (-$h-padding--lg);
+            padding-left: $h-padding--lg;
+            padding-right: $h-padding--lg;
         }
 
         @include media('>xl') {
@@ -93,18 +100,9 @@
             flex-wrap: wrap;
             justify-content: space-between;
 
-            //     > *:last-child {
-                //         margin-top: $distance--md;
-                //    }
-
             @include media('>sm') {
-                align-items: flex-start;
+                align-items: flex-end;
                 flex-direction: row;
-
-                // > *:last-child {
-                //     margin-top: 0;
-                // }
-
             }
 
         }
@@ -117,7 +115,6 @@
 
     &__title {
         @include title-1;
-        // @include line;
 
         color: $color-gray--darkest;
         display: table;

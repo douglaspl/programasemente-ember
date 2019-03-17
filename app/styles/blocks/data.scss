@@ -59,15 +59,14 @@
     }
 
     &__label {
-        font-size: .65em;
+        font-size: .85em;
         margin-top: $distance--xxs;
         max-width: 95%;
-        opacity: .8;
         text-align: center;
         text-transform: uppercase;
 
         @include media('>md') {
-            font-size: .85em;
+            font-size: 1em;
         }
 
 

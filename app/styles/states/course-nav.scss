@@ -1,16 +1,15 @@
-$course-nav-bg-color: $color-gray--darkest;
-$course-nav-menu-size: 32px;
-
-$course-nav-hover-bg-color: $color-gray--lightest;
-$course-nav-active-bg-color: $lemon;
-$course-nav-active-color: $color-gray--darkest;
-$course-nav-active-icon-color: $green;
-
-$course-nav-not-done-opacity: .5;
-$course-nav-lateral-pad: $distance--sm;
-
 .course-nav {
     $this: &;
+    $course-nav-bg-color: $blue-navy-60;
+    $course-nav-menu-size: 32px;
+
+    $course-nav-hover-bg-color: $lemon-60;
+    $course-nav-active-bg-color: $lemon-10;
+    $course-nav-active-color: $gray-10;
+    $course-nav-active-icon-color: $lemon-40;
+
+    $course-nav-not-done-opacity: .5;
+    $course-nav-lateral-pad: $distance--sm;
 
     background-color: $course-nav-bg-color;
     color: $color-white;
@@ -49,7 +48,6 @@ $course-nav-lateral-pad: $distance--sm;
 
     // Status
     [class*='nav-is-show'] & {
-
         height: 85vh;
         transition-delay: 0ms;
 
@@ -99,7 +97,7 @@ $course-nav-lateral-pad: $distance--sm;
         width: $course-nav-menu-size;
 
         &:hover {
-            background-color: $color-gray--lightest;
+            background-color: $gray-0;
             box-shadow: $shadow-1;
             color: $color-gray--darkest;
         }
@@ -182,7 +180,7 @@ $course-nav-lateral-pad: $distance--sm;
     }
 
     &__nav {
-        @include scrolling-shadows($bg-color: $course-nav-bg-color, $shadow-width: 50%);
+        // @include scrolling-shadows($bg-color: $course-nav-bg-color, $shadow-width: 50%);
 
         flex: 1;
         padding-top: $distance--sm;
@@ -221,11 +219,11 @@ $course-nav-lateral-pad: $distance--sm;
             background-color: $course-nav-hover-bg-color;
             border-radius: $radius;
             content: '';
-            height: 60%;
+            height: 80%;
             opacity: 0;
             position: absolute;
             left: 0;
-            top: 20%;
+            top: 10%;
             transition: 250ms var(--ease-in-out-quad);
             width: .5rem;
             z-index: 2;
@@ -322,7 +320,7 @@ $course-nav-lateral-pad: $distance--sm;
         }
 
         [class*='is-done'] & {
-            color: $color-success;
+            color: $course-nav-active-icon-color;
             opacity: 1;
         }
 
@@ -357,7 +355,7 @@ $course-nav-lateral-pad: $distance--sm;
     &__class-title {
         @include title-4($color: inherit, $weight: bold);
 
-        margin-top: $distance--sm;
+        margin-top: $distance--xxs;
 
         [class*='is-show'] & {
             @include title-3($color: inherit);
@@ -366,7 +364,7 @@ $course-nav-lateral-pad: $distance--sm;
     }
 
     &__class-order {
-        @include title-aux($color: inherit);
+        @include title-aux($color: inherit, $weight: 300);
 
         display: block;
 
