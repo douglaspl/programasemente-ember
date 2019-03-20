@@ -1,0 +1,24 @@
+.date {
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+
+    > *:last-child {
+        margin-left: $distance--xs;
+    }
+
+    &__day {
+        font-size: $font-size--xxl;
+        font-weight: bold;
+        position: relative;
+        top: 4px;
+    }
+
+    &__month {
+        font-size: $font-size--md;
+        position: relative;
+        text-transform: uppercase;
+        top: 3px;
+    }
+
+}

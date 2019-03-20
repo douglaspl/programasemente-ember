@@ -49,9 +49,9 @@
         > * {
             margin-left: $distance--xs;
             opacity: 0;
-            transform: translateX(0);
-            transition: 500ms;
-            transition-delay: 0ms;
+            // transform: translateX(0);
+            transition: 200ms;
+            // transition-delay: 0ms;
         }
 
         &-is-show {
@@ -62,20 +62,20 @@
                 opacity: 1;
                 transform: translateX(-8px);
 
-                $i: 1;
-                $total: 10;
-                $min-delay: 250ms;
+                // $i: 1;
+                // $total: 10;
+                // $min-delay: 100ms;
 
-                @while $i <= $total {
+                // @while $i <= $total {
 
-                    &:nth-child(#{$i}) {
-                        transition-delay: ($min-delay * $i);
+                //     &:nth-child(#{$i}) {
+                //         transition-delay: ($min-delay * $i);
 
-                    }
+                //     }
 
-                    $i: $i + 1;
+                //     $i: $i + 1;
 
-                }
+                // }
 
             }
 

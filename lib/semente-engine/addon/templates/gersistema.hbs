@@ -333,8 +333,8 @@
         <!-- selected institutiton tab courses -->
         {{#if selectedInstTabs.courses}}
             <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-                <h2 class="main__subtitle">Cursos</h2>
-                <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
+                <h2 class="main__subtitle">Anos</h2>
+                <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
                     <span class="btn__icon icon-save"></span>
                     Salvar alterações
                 </button>
@@ -364,9 +364,9 @@
         <!-- selected institutions tab areas -->
         {{#if selectedInstTabs.areas}}
             <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-                <h2 class="main__subtitle">Áreas</h2>
+                <h2 class="main__subtitle">Turmas</h2>
                 <button class="btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
-                    <span class="btn__icon icon-plus"></span>Nova Área</button>
+                    <span class="btn__icon icon-plus"></span>Nova Turma</button>
             </div>
             <section class="main__subsection">
                 <ul class="institutions__areas list list--striped">
@@ -386,10 +386,43 @@
                         </div>
                     </li>
                     {{#each inst_selected.areas as |area idx|}}
-                        <li>
-                            <div class="edit-text">
-                                <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
-                                <span class="edit-text__indicator"></span>
+                        <li class="accordion">
+                            <div class="institutions__area">
+                                <div class="edit-text">
+                                    <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
+                                    <span class="edit-text__indicator"></span>
+                                </div>
+                                <button class="btn btn--sm btn--text accordion__trigger m-top--xs">Mostrar mais</button>
+                                <ul id="accordion{{area.id}}" class="accordion__target list list--striped calendar calendar--list">
+                                    <li>
+                                        <time class="calendar__date date" datetime="2019-02-15">
+                                            <span class="date__day">15</span><span class="date__month">fev</span>
+                                        </time>
+                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                            <span class="title-aux m-bottom--xxs">Aula 1</span>
+                                            <h3 class="title-4">O que é Resiliência?</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <time class="calendar__date date" datetime="2019-02-28">
+                                            <span class="date__day">28</span><span class="date__month">fev</span>
+                                        </time>
+                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                            <span class="title-aux m-bottom--xxs">Aula 2</span>
+                                            <h3 class="title-4">É sempre possível aprender</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="calendar__date date">
+                                            <span class="date__day">16</span><span class="date__month">mar</span>
+                                        </div>
+                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                            <span class="title-aux m-bottom--xxs">Aula 3</span>
+                                            <h3 class="title-4">Esforço e talento</h3>
+                                        </div>
+                                    </li>
+
+                                </ul>
                             </div>
                             <div id="areaItemOptions{{area.id}}" class="btn-group">
                                 <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>

@@ -1,0 +1,20 @@
+.calendar {
+    $this: &;
+
+    width: 100%;
+
+    &--list {
+
+        > * {
+            align-items: flex-end;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #{$this}__date {
+            margin-right: $distance--lg;
+        }
+
+    }
+
+}

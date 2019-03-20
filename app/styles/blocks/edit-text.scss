@@ -1,7 +1,7 @@
 .edit-text {
     $this: &;
 
-    padding: $distance--xs;
+    padding: 0 0 $distance--xs 0;
     position: relative;
     min-width: 8rem;
     outline: 0 solid transparent;
@@ -9,12 +9,14 @@
     &__input {
         background-color: transparent;
         box-shadow: 0 0 0 transparent;
+        height: 1em;
         outline: 0 solid transparent;
+        padding-left: 0;
     }
 
     &__indicator {
         background-color: transparentize($green, .9);
-        border-bottom: 4px dotted $green;
+        border-bottom: 2px dotted $green;
         content: '';
         left: 0;
         opacity: 0;
