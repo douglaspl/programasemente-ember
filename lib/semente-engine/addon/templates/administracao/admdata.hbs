@@ -217,10 +217,9 @@
     <button id="back-person-specific_old" class="btn btn--text" {{action 'closeEspecifico'}}>
         <span class="icon-arrow-left"></span>voltar
     </button>
-    <h2 class="main__title">Aluno específico</h2>
     {{#if selected_pessoa}}
-        <header class="report-person__header">
-            <div class="avatar">
+        <header class="report-person__header person">
+            <div class="avatar avatar--xl">
                 {{#if selected_pessoa.pessoa.uriAvatar}}
                     <img src={{selected_pessoa.pessoa.uriAvatar}}>
                 {{else}}
@@ -228,24 +227,17 @@
                 {{/if}}
             </div>
 
-            <div class="person">
+            <div>
                 {{selected_pessoa.lastAccess}}
-                <span class="person__name">{{selected_pessoa.pessoa.name}}</span>
-                <span><strong>E-mail</strong>: {{selected_pessoa.pessoa.email}}</span>
-                <span><strong>Último acesso</strong>: {{selected_pessoa.pessoa.lastAccess}}</span>
+                <h1 class="title-1">{{selected_pessoa.pessoa.name}}</h1>
+                <span class="person__email title-aux">{{selected_pessoa.pessoa.email}}</span>
             </div>
 
-            <div class="data data--bordered">
-                <span class="data__value">
-                    {{selected_pessoa.cadastrado}}
-                </span>
-                <span class="data__label">cadastrado em</span>
-            </div>
-
-            <div class="data data--bordered">
-                <span class="data__value">{{selected_pessoa.pessoa.nracessos}}</span>
-                <span class="data__label">acessos</span>
-            </div>
+            <ul class="person__info m-left--auto">
+                <li class="person__other">Cadastrado em: <strong>{{selected_pessoa.cadastrado}}</strong></li>
+                <li class="person__other">Último acesso: <strong>{{selected_pessoa.pessoa.lastAccess}}</strong></li>
+                <li class="person__other">Total de acessos: <strong>{{selected_pessoa.pessoa.nracessos}}</strong></li>
+            </ul>
 
         </header>
 

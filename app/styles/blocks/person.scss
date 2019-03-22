@@ -14,9 +14,9 @@
 
     &__email {
         margin-top: $distance--xxs;
+        margin-bottom: $distance--sm;
 
         @include media('>md') {
-            margin-bottom: $distance--sm;
         }
 
     }
@@ -29,9 +29,16 @@
         }
 
         &:not(:last-of-type) {
-            margin-bottom: $distance--xxs;
+            margin-bottom: $distance--xs;
         }
 
+    }
+
+    &__info {
+        background-color: $gray-5;
+        border-radius: $radius;
+        font-size: $font-size--sm;
+        padding: $distance--md;
     }
 
 }

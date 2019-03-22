@@ -54,6 +54,12 @@
     background-size: cover;
 }
 
+.link--dotted {
+    @include dotted-link;
+
+    display: inline-block;
+}
+
 .hide-on--xs {
     display: none;
 

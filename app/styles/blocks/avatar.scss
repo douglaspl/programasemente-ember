@@ -2,7 +2,7 @@
     $this: &;
     $avatar-default-size: $avatar--md;
 
-    border-radius: 50%;
+    border-radius: $radius;
     box-shadow: $shadow-1;
     display: inline-block;
     flex: 0 0 auto;

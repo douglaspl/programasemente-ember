@@ -52,13 +52,13 @@
                 <!-- TABS DE NAVEGAÇÃO -->
                 <div class="report__tabs tabs">
                     <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-people" id="button_tab_pessoas" {{action 'selectTab' 'pessoas'}}><span>Alunos</span></button>
-                    <button class="report__tab tabs__tab" data-target="report-courses" id="button_tab_cursos" {{action 'selectTab' 'cursos'}}><span>Cursos</span></button>
+                    <button class="report__tab tabs__tab" data-target="report-courses" id="button_tab_cursos" {{action 'selectTab' 'cursos'}}><span>Anos</span></button>
                     {{!-- <button class="report__tab tabs__tab btn" data-target="report-quiz">Quiz</button> --}}
                     {{!-- <button class="report__tab tabs__tab btn" data-target="report-people-comparison">Comparar pessoas</button>
       --}}
                 </div>
 
-                <button class="btn btn--leaf-ghost m-left--md" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
+                {{!-- <button class="btn btn--leaf-ghost m-left--md" {{action 'downloadFile'}}>Baixar relatório em Excel</button> --}}
 
             {{/if}}
         </header>
@@ -72,12 +72,12 @@
                 <section class="report__section report__section--is-active" id="report-courses">
 
                     <div class="form-group form-group--select-wrapper">
-                        <label class="form-group__label" for="select_course">Curso</label>
+                        <label class="form-group__label" for="select_course">Ano</label>
                         <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course" value="select_inst">
                             {{#if curso_selected}}
-                                <option value="none" style="font-style: italic;">Selecione o curso...</option>
+                                <option value="none" style="font-style: italic;">Selecione o ano...</option>
                             {{else}}
-                                <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
+                                <option value="none" selected style="font-style: italic;">Selecione o ano...</option>
                             {{/if}}
                             {{#each inst_selected.modulos as |modulo|}}
                                 {{#if (equalstr curso_selected.id modulo.id)}}
@@ -105,21 +105,21 @@
                                             <span class="data__value">{{if acomp.matriculas acomp.matriculas '313'}}</span>
                                             <span class="data__label">matrículas</span>
                                         </div>
-                                        <div class="report-course__data data data--horizontal data--bordered">
+                                        {{!-- <div class="report-course__data data data--horizontal data--bordered">
                                             <span class="data__value">{{acomp.completaramPerc}}
                                                 <span class="small">%</span>
                                             </span>
                                             <span class="data__label">completaram o curso</span>
-                                        </div>
+                                        </div> --}}
                                     {{/if}}
                                 {{/each}}
                             </div>
                             <ul class="report-course__body report-class">
                                 {{#each curso_selected.atividades as |atividade|}}
                                     <li class="report-class__two-col">
-                                        <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
+                                        <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
                                             <span class="title-aux">Aula {{atividade.idx}}</span>
-                                            <h3 class="title-3">{{atividade.name}}</h3>
+                                            <h3 class="title-3"><a class="link--dotted" href="#"><span>{{atividade.name}}</span></a></h3>
                                         </div>
                                         {{#each atividade.acompanhamentosAtividadeInstituicao as |acomp|}}
                                             {{#if (equalstr acomp.instituicao.id inst_selected.id)}}

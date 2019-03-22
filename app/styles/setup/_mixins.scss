@@ -182,6 +182,48 @@
 
 
 //------------------------------------
+//    #DOTTED LINK
+//------------------------------------
+@mixin dotted-link {
+    @include has-capsule-on-hover;
+
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    color: $color-gray--darkest;
+    padding: 0;
+    text-shadow: none;
+    z-index: 2;
+
+    &::after {
+        border-bottom: 4px dotted $color-gray--light;
+        content: '';
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        top: 100%;
+
+        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+
+        width: 100%;
+    }
+
+    &:hover {
+
+        &::after {
+            opacity: 0;
+        }
+
+    }
+
+}
+
+
+
+
+
+//------------------------------------
 //    #HAS CAPSULE ON HOVER
 //------------------------------------
 @mixin has-capsule-on-hover {
