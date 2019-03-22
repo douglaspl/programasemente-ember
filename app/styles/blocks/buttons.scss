@@ -1,4 +1,7 @@
 // BLOCK
+// mixins
+// placeholders
+
 // btn
 
 // ELEMENTS
@@ -9,6 +12,7 @@
 // ## Misc ##
 // --icon
 // --disabled
+// --is-toggle
 
 // ## Themes ##
 // --ghost
@@ -30,6 +34,37 @@
 // CONTAINER MODIFIERS
 // -group--xxs
 // -group--xs
+
+// MIXINS
+// Se o botão possuir states, ele deverá esconder os elementos internos e
+// deverá possuir um conteúdo ::before para segurar a altura do botão.
+// @mixin btn--has-state {
+//     overflow: hidden;
+
+//     &::before {
+//         content: '';
+//         display: inline-block;
+//         height: 1em;
+//         opacity: 0;
+//         visibility: hidden;
+//         width: 1em;
+//     }
+// }
+
+// PLACEHOLDERS
+%btn-steps {
+    @include transition();
+
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
 
 .btn {
     $this: &;
@@ -62,12 +97,6 @@
     }
 
     // MODIFIERS
-    &--disabled {
-        cursor: not-allowed;
-        opacity: .5;
-        pointer-events: none;
-    }
-
     &--icon {
         align-items: center;
         align-self: center;
@@ -95,6 +124,60 @@
             }
         }
     }
+
+    &--disabled {
+        cursor: not-allowed;
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &--is-toggle {
+        // @include btn--has-state;
+
+        height: 1rem;
+        line-height: 1.25;
+        justify-content: flex-start;
+        overflow: hidden;
+        position: relative;
+        text-align: left;
+
+        &:focus,
+        &:hover { background-color: transparent; }
+
+        [class*='__default'] {
+            @extend %btn-steps;
+
+            height: 100%;
+            position: absolute;
+        }
+
+        [class*='__active'],
+        [class*='__disabled'] {
+            @extend %btn-steps;
+
+            transform: translateY(-100%);
+        }
+
+        &--on {
+            [class*='__default'] { transform: translateY(100%); }
+            [class*='__active'] { transform: translateY(0); }
+        }
+
+        &--disabled {
+            [class*='__default'] { transform: translateY(100%); }
+            [class*='__disabled'] { transform: translateY(0); }
+
+            &:hover {
+                background-color: transparentize($color-black, .85);
+            }
+
+        }
+
+    }
+
+
+
+
 
     &--leaf {
         background-color: $leaf-40;

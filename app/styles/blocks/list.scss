@@ -76,7 +76,6 @@
     &--striped {
 
         > li {
-            margin-bottom: $distance--xs;
             padding: $distance--sm $distance--md;
 
             &:nth-child(odd) {

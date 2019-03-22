@@ -1,25 +1,24 @@
 <main class="main institutions">
-  <!-- ---------------------------------------------- administration view -->
-  <div style="display:{{if instView 'none' 'inherit'}}">
-    <!-- administration header -->
-    <header class="main__header institutions__header">
-      <h1 class="main__title">Administração</h1>
-      {{#if (equalstr role 'admin')}}
-      <button class="btn btn--sm btn--primary" {{action 'newInst' on="click"}}><span
-          class="btn__icon icon-plus"></span>Nova
-        Instituição</button>
-      {{/if}}
-    </header>
+    <!-- ---------------------------------------------- administration view -->
+    <div style="display:{{if instView 'none' 'inherit'}}">
+        <!-- administration header -->
+        <header class="main__header institutions__header">
+            <h1 class="main__title">Administração</h1>
+            {{#if (equalstr role 'admin')}}
+                <button class="btn btn--sm btn--primary" {{action 'newInst' on="click"}}><span class="btn__icon icon-plus"></span>Nova
+                    Instituição</button>
+            {{/if}}
+        </header>
 
-    <div class="m-bottom--md">
-      <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
-        <label class="form-group__label" for="search">Busca</label>
-        <div class="form-group__wrapper form-group__wrapper--search">
-          {{input class="form-group__input" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="matchValue" key-up="filterInst"
+        <div class="m-bottom--md">
+            <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
+                <label class="form-group__label" for="search">Busca</label>
+                <div class="form-group__wrapper form-group__wrapper--search">
+                    {{input class="form-group__input" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="matchValue" key-up="filterInst"
           type="text"}}
-        </div>
-      </form>
-      {{!--
+                </div>
+            </form>
+            {{!--
       <div class="form-group">
         <span class="form-group__label">Status</span>
         <span class="checkbox">
@@ -34,73 +33,69 @@
         </span>
       </div>
       --}}
-    </div>
-
-    <!-- gestor institution param -->
-    <div style="display:none">{{oneInst}}</div>
-
-    <!-- admin filtered institutions -->
-    <ul id="matchDisplay" class="list list--img-name-action list--striped" style="display:none;">
-      {{#each matchInsts as |inst|}}
-      <li>
-        <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
-        <a class="title-2 btn btn--link list__name"
-          {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
-        <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox"
-            {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
-          <label class="switch__label" for="activeInstId{{inst.id}}">
-            <span class="switch__inner"></span>
-            <span class="switch__head"></span>
-          </label>
-        </span>
-      </li>
-      {{/each}}
-    </ul>
-
-    <!-- admin institutions list -->
-    <ul id="modelInstList" class="list list--img-name-action list--striped">
-      {{#each model.instituicoes as |inst|}}
-      <li>
-        <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
-        <a class="title-2 btn btn--link list__name"
-          {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
-        <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox"
-            {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
-          <label class="switch__label" for="activeInstId{{inst.id}}">
-            <span class="switch__inner"></span>
-            <span class="switch__head"></span>
-          </label>
-        </span>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-  <!-- -------------------------------------------------- new institution -->
-  <aside id="new_inst_modal" class="modal">
-    <div class="modal__overlayer"></div>
-    <div class="modal__content">
-      <header class="modal__header">
-        <button class="modal__close btn btn--icon icon-x" type="submit" {{action 'newInstCancel' on="click"}}></button>
-        <h3 class="modal__title">Nova Instituição</h3>
-        <!-- new institution stepper -->
-        <div class="institutions__steps steps">
-          <div class="steps__step">
-            <div class="steps__label">Informações Básicas</div>
-            <div class="steps__number {{if goToStepTwo '' 'steps__number--is-active'}}" {{action 'goTo' '1'}}>1</div>
-          </div>
-          <div class="steps__step">
-            <div class="steps__label">Cursos Habilitados</div>
-            <div class="steps__number {{if goToStepTwo 'steps__number--is-active' ''}}" {{action 'goTo' '2'}}>2</div>
-          </div>
-          <div class="steps__step">
-            <div class="steps__label">Finalizar</div>
-            <div class="steps__number" {{action 'newInstSave' on="click"}}>3</div>
-          </div>
         </div>
 
-        {{!-- <div class="well well--md well--primary-light institutions__steps">
+        <!-- gestor institution param -->
+        <div style="display:none">{{oneInst}}</div>
+
+        <!-- admin filtered institutions -->
+        <ul id="matchDisplay" class="list list--img-name-action list--striped" style="display:none;">
+            {{#each matchInsts as |inst|}}
+                <li>
+                    <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
+                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
+                    <span class="switch switch--institutions">
+                        <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox" {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
+                        <label class="switch__label" for="activeInstId{{inst.id}}">
+                            <span class="switch__inner"></span>
+                            <span class="switch__head"></span>
+                        </label>
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+
+        <!-- admin institutions list -->
+        <ul id="modelInstList" class="list list--img-name-action list--striped">
+            {{#each model.instituicoes as |inst|}}
+                <li>
+                    <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span>
+                    <a class="title-2 btn btn--link list__name" {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
+                    <span class="switch switch--institutions">
+                        <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox" {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
+                        <label class="switch__label" for="activeInstId{{inst.id}}">
+                            <span class="switch__inner"></span>
+                            <span class="switch__head"></span>
+                        </label>
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    <!-- -------------------------------------------------- new institution -->
+    <aside id="new_inst_modal" class="modal">
+        <div class="modal__overlayer"></div>
+        <div class="modal__content">
+            <header class="modal__header">
+                <button class="modal__close btn btn--icon icon-x" type="submit" {{action 'newInstCancel' on="click"}}></button>
+                <h3 class="modal__title">Nova Instituição</h3>
+                <!-- new institution stepper -->
+                <div class="institutions__steps steps">
+                    <div class="steps__step">
+                        <div class="steps__label">Informações Básicas</div>
+                        <div class="steps__number {{if goToStepTwo '' 'steps__number--is-active'}}" {{action 'goTo' '1'}}>1</div>
+                    </div>
+                    <div class="steps__step">
+                        <div class="steps__label">Cursos Habilitados</div>
+                        <div class="steps__number {{if goToStepTwo 'steps__number--is-active' ''}}" {{action 'goTo' '2'}}>2</div>
+                    </div>
+                    <div class="steps__step">
+                        <div class="steps__label">Finalizar</div>
+                        <div class="steps__number" {{action 'newInstSave' on="click"}}>3</div>
+                    </div>
+                </div>
+
+                {{!-- <div class="well well--md well--primary-light institutions__steps">
           <button class="institutions__step {{if goToStepTwo '' 'institutions__step--is-active'}}"
             {{action 'goTo' '1'}}>
             <span class="title-aux">PASSO 1</span>
@@ -119,33 +114,33 @@
           <button class="btn btn--sm btn--primary" {{action 'newInstNextStep' on="click"}}>Avançar</button>
           {{/if}}
         </div> --}}
-      </header>
-      <div class="modal__body">
-        <!-- new institution step 1 -->
-        <div class="institutions__step-content {{if goToStepTwo '' 'institutions__step-content--is-show'}}">
-          {{!-- <h4 class="main__subtitle">Informações</h4> --}}
-          <section class="main__subsection">
-            <h4 class="main__subsubtitle">Básicas</h4>
-            <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
-              <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-                <label class="form-group__label">Nome</label>
-                <input class="form-group__input" type="textbox" id="new_inst_name" value={{new_inst_name}}>
-              </div>
-              <div class="form-group form-group--vertical">
-                <label class="form-group__label">Status</label>
-                <span class="switch switch--institutions">
-                  <input class="switch__checkbox" id="new_inst_enabled" type="checkbox" checked={{new_inst_enabled}}>
-                  <label class="switch__label" for="new_inst_enabled">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </div>
-            </div>
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-            <!-- comentar depois de estilizar -->
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-            <!--
+            </header>
+            <div class="modal__body">
+                <!-- new institution step 1 -->
+                <div class="institutions__step-content {{if goToStepTwo '' 'institutions__step-content--is-show'}}">
+                    {{!-- <h4 class="main__subtitle">Informações</h4> --}}
+                    <section class="main__subsection">
+                        <h4 class="main__subsubtitle">Básicas</h4>
+                        <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
+                            <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+                                <label class="form-group__label">Nome</label>
+                                <input class="form-group__input" type="textbox" id="new_inst_name" value={{new_inst_name}}>
+                            </div>
+                            <div class="form-group form-group--vertical">
+                                <label class="form-group__label">Status</label>
+                                <span class="switch switch--institutions">
+                                    <input class="switch__checkbox" id="new_inst_enabled" type="checkbox" checked={{new_inst_enabled}}>
+                                    <label class="switch__label" for="new_inst_enabled">
+                                        <span class="switch__inner"></span>
+                                        <span class="switch__head"></span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                        <!-- comentar depois de estilizar -->
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                        <!--
             <div class="form-group form-group--vertical form-group--full-width m-top--md">
               <label class="form-group__label">Marca</label>
               <div class="image-change">
@@ -157,132 +152,122 @@
               </div>
             </div>
             -->
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-            <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-          </section>
-          <section class="main__subsection">
-            <h4 class="main__subsubtitle">Número de usuários</h4>
-            <div class="institutions__config">
-              <div class="form-group form-group--vertical" flex="20">
-                <label class="form-group__label" for="new_inst_nrgest">Gestores</label>
-                <input class="form-group__input" type="textbox" id="new_inst_nrgest" value={{new_inst_nrgest}}>
-              </div>
-              <div class="form-group form-group--vertical" flex="20">
-                <label class="form-group__label" for="new_inst_nrcoord">Coordenadores</label>
-                <input class="form-group__input" type="textbox" id="new_inst_nrcoord" value={{new_inst_nrcoord}}>
-              </div>
-              <div class="form-group form-group--vertical" flex="20">
-                <label class="form-group__label" for="new_inst_nrinstr">Instrutores</label>
-                <input class="form-group__input" type="textbox" id="new_inst_nrinstr" value={{new_inst_nrinstr}}>
-              </div>
-              <div class="form-group form-group--vertical" flex="20">
-                <label class="form-group__label" for="new_inst_nralunos">Alunos</label>
-                <input class="form-group__input" type="textbox" id="new_inst_nralunos" value={{new_inst_nralunos}}>
-              </div>
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    </section>
+                    <section class="main__subsection">
+                        <h4 class="main__subsubtitle">Número de usuários</h4>
+                        <div class="institutions__config">
+                            <div class="form-group form-group--vertical" flex="20">
+                                <label class="form-group__label" for="new_inst_nrgest">Gestores</label>
+                                <input class="form-group__input" type="textbox" id="new_inst_nrgest" value={{new_inst_nrgest}}>
+                            </div>
+                            <div class="form-group form-group--vertical" flex="20">
+                                <label class="form-group__label" for="new_inst_nrcoord">Coordenadores</label>
+                                <input class="form-group__input" type="textbox" id="new_inst_nrcoord" value={{new_inst_nrcoord}}>
+                            </div>
+                            <div class="form-group form-group--vertical" flex="20">
+                                <label class="form-group__label" for="new_inst_nrinstr">Instrutores</label>
+                                <input class="form-group__input" type="textbox" id="new_inst_nrinstr" value={{new_inst_nrinstr}}>
+                            </div>
+                            <div class="form-group form-group--vertical" flex="20">
+                                <label class="form-group__label" for="new_inst_nralunos">Alunos</label>
+                                <input class="form-group__input" type="textbox" id="new_inst_nralunos" value={{new_inst_nralunos}}>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="main__subsection">
+                        <h4 class="main__subsubtitle">Recursos extras</h4>
+                        <div class="checkbox m-bottom--md">
+                            <input class="checkbox__input" id="new_inst_changePassword" type="checkbox" checked={{new_inst_changePassword}}>
+                            <label class="checkbox__label" for="new_inst_changePassword">Alterar senha no primeiro acesso</label>
+                        </div>
+                        <div class="checkbox m-bottom--md">
+                            <input class="checkbox__input" id="new_inst_library" type="checkbox" checked={{new_inst_library}}>
+                            <label class="checkbox__label" for="new_inst_library">Biblioteca de materiais</label>
+                        </div>
+                    </section>
+                </div>
+                <!-- new institution step 2 -->
+                <div class="institutions__step-content {{if goToStepTwo 'institutions__step-content--is-show' ''}}">
+                    <ul class="list list--img-name-action list--striped">
+                        {{#each modulos_list as |mod|}}
+                            <li>
+                                <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+                                <h3 class="list__name title-3">{{mod.name}}</h3>
+                                <span class="switch switch--institutions">
+                                    <!-- temporary save controll -->
+                                    <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}} style="display:none">
+                                    <!-- -->
+                                    <input class="switch__checkbox" id="ckb_new_{{mod.id}}" type="checkbox">
+                                    <label class="switch__label" for="ckb_new_{{mod.id}}">
+                                        <span class="switch__inner"></span>
+                                        <span class="switch__head"></span>
+                                    </label>
+                                </span>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
-          </section>
-          <section class="main__subsection">
-            <h4 class="main__subsubtitle">Recursos extras</h4>
-            <div class="checkbox m-bottom--md">
-              <input class="checkbox__input" id="new_inst_changePassword" type="checkbox"
-                checked={{new_inst_changePassword}}>
-              <label class="checkbox__label" for="new_inst_changePassword">Alterar senha no primeiro acesso</label>
-            </div>
-            <div class="checkbox m-bottom--md">
-              <input class="checkbox__input" id="new_inst_library" type="checkbox" checked={{new_inst_library}}>
-              <label class="checkbox__label" for="new_inst_library">Biblioteca de materiais</label>
-            </div>
-          </section>
         </div>
-        <!-- new institution step 2 -->
-        <div class="institutions__step-content {{if goToStepTwo 'institutions__step-content--is-show' ''}}">
-          <ul class="list list--img-name-action list--striped">
-            {{#each modulos_list as |mod|}}
-            <li>
-              <span class="list__img"
-                style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
-              <h3 class="list__name title-3">{{mod.name}}</h3>
-              <span class="switch switch--institutions">
-                <!-- temporary save controll -->
-                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
-                  style="display:none">
-                <!-- -->
-                <input class="switch__checkbox" id="ckb_new_{{mod.id}}" type="checkbox">
-                <label class="switch__label" for="ckb_new_{{mod.id}}">
-                  <span class="switch__inner"></span>
-                  <span class="switch__head"></span>
-                </label>
-              </span>
-            </li>
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </aside>
-  <!-- --------------------------------------------- institution selected -->
-  {{#if instView}}
-  <!-- back to institutions list -->
-  {{#if (equalstr role 'admin')}}
-  <button id="back-person-specific_old" class="btn btn--text" {{action 'backToInstList' on="click"}}>
-    <span class="icon-arrow-left"></span>voltar
-  </button>
-  {{/if}}
-  <!-- / back to institutions list -->
-  <header class="main__header institutions__header">
-    <!-- institutions selected name -->
-    <h1 class="main__title">{{inst_selected.name}}</h1>
-    <!-- institutions navigation -->
-    <div class="tabs">
-      <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'informations' on="click"}}><span>Informações</span></button>
-      <button class="report__tab tabs__tab {{if selectedInstTabs.courses 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'courses' on="click"}}><span>Anos</span></button>
-      <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'areas' on="click"}}><span>Turmas</span></button>
-      <button class="report__tab tabs__tab {{if selectedInstTabs.users 'tabs__tab--is-active'}}"
-        {{action 'tabNavigation' 'users' on="click"}}><span>Usuários</span></button>
-    </div>
-  </header>
-  <!-- selected institution tab information -->
-  {{#if selectedInstTabs.informations}}
-  <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-    <h2 class="main__subtitle">Informações</h2>
-    {{#if (equalstr role 'admin')}}
-    <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_inst"
-      {{action 'saveInformations' inst_selected.id}}>
-      <span class="btn__icon icon-save"></span>
-      Salvar alterações
-    </button>
-    {{/if}}
-  </div>
-  <section class="main__subsection">
-    <h3 class="main__subsubtitle">Básicas</h3>
-    <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
-      <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-        <label class="form-group__label">Nome</label>
+    </aside>
+    <!-- --------------------------------------------- institution selected -->
+    {{#if instView}}
+        <!-- back to institutions list -->
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}}
-          onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-        {{else}}
-        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} disabled="true">
-        {{!-- {{inst_selected.name}} --}}
+            <button id="back-person-specific_old" class="btn btn--text" {{action 'backToInstList' on="click"}}>
+                <span class="icon-arrow-left"></span>voltar
+            </button>
         {{/if}}
-      </div>
-      <div class="form-group form-group--vertical">
-        <label class="form-group__label">Status</label>
-        <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="inst_hab" type="checkbox" checked={{inst_selected.enabled}}
-            disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
-          <label class="switch__label" for="inst_hab">
-            <span class="switch__inner"></span>
-            <span class="switch__head"></span>
-          </label>
-        </span>
-      </div>
-    </div>
-    {{!--
+        <!-- / back to institutions list -->
+        <header class="main__header institutions__header">
+            <!-- institutions selected name -->
+            <h1 class="main__title">{{inst_selected.name}}</h1>
+            <!-- institutions navigation -->
+            <div class="tabs">
+                <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}" {{action 'tabNavigation' 'informations' on="click"}}><span>Informações</span></button>
+                <button class="report__tab tabs__tab {{if selectedInstTabs.courses 'tabs__tab--is-active'}}" {{action 'tabNavigation' 'courses' on="click"}}><span>Anos</span></button>
+                <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}" {{action 'tabNavigation' 'areas' on="click"}}><span>Turmas</span></button>
+                <button class="report__tab tabs__tab {{if selectedInstTabs.users 'tabs__tab--is-active'}}" {{action 'tabNavigation' 'users' on="click"}}><span>Usuários</span></button>
+            </div>
+        </header>
+        <!-- selected institution tab information -->
+        {{#if selectedInstTabs.informations}}
+            <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+                <h2 class="main__subtitle">Informações</h2>
+                {{#if (equalstr role 'admin')}}
+                    <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_inst" {{action 'saveInformations' inst_selected.id}}>
+                        <span class="btn__icon icon-save"></span>
+                        Salvar alterações
+                    </button>
+                {{/if}}
+            </div>
+            <section class="main__subsection">
+                <h3 class="main__subsubtitle">Básicas</h3>
+                <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
+                    <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+                        <label class="form-group__label">Nome</label>
+                        {{#if (equalstr role 'admin')}}
+                            <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} onkeyup={{action 'dataChange' 'btn_save_inst'}}>
+                        {{else}}
+                            <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} disabled="true">
+                            {{!-- {{inst_selected.name}} --}}
+                        {{/if}}
+                    </div>
+                    <div class="form-group form-group--vertical">
+                        <label class="form-group__label">Status</label>
+                        <span class="switch switch--institutions">
+                            <input class="switch__checkbox" id="inst_hab" type="checkbox" checked={{inst_selected.enabled}} disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
+                            <label class="switch__label" for="inst_hab">
+                                <span class="switch__inner"></span>
+                                <span class="switch__head"></span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+                {{!--
     <div class="form-group form-group--vertical form-group--full-width m-top--md">
       <label class="form-group__label">Marca</label>
       <div class="image-change">
@@ -294,25 +279,162 @@
       </div>
     </div>
     --}}
-  </section>
-  <section class="main__subsection">
-    <h3 class="main__subsubtitle">Número de usuários</h3>
-    <div class="institutions__config">
-      <div class="form-group form-group--vertical" flex="20">
-        <label class="form-group__label">Gestores</label>
-        {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
-          onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-        {{else}}
-        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
-          disabled="true">
+            </section>
+            <section class="main__subsection">
+                <h3 class="main__subsubtitle">Número de usuários</h3>
+                <div class="institutions__config">
+                    <div class="form-group form-group--vertical" flex="20">
+                        <label class="form-group__label">Gestores</label>
+                        {{#if (equalstr role 'admin')}}
+                            <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}} onkeyup={{action 'dataChange' 'btn_save_inst'}}>
+                        {{else}}
+                            <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}} disabled="true">
+                        {{/if}}
+                        <!-- /selected institution tab information -->
+                        <!-- selected institutiton tab courses -->
+                        {{#if selectedInstTabs.courses}}
+                            <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+                                <h2 class="main__subtitle">Anos</h2>
+                                <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
+                                    <span class="btn__icon icon-save"></span>
+                                    Salvar alterações
+                                </button>
+                            </div>
+                            <section class="main__subsection">
+                                <ul class="list list--img-name-action list--striped">
+                                    {{#each modulos_list as |mod|}}
+                                        <li>
+                                            <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+                                            <h3 class="list__name title-3">{{mod.name}}</h3>
+                                            <span class="switch switch--institutions">
+                                                <!-- temporary save controll -->
+                                                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}} style="display:none">
+                                                <!-- -->
+                                                <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_courses'}}>
+                                                <label class="switch__label" for="ckb_{{mod.id}}">
+                                                    <span class="switch__inner"></span>
+                                                    <span class="switch__head"></span>
+                                                </label>
+                                            </span>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </section>
+                        {{/if}}
+                        <!-- /selected institutiton tab courses -->
+                        <!-- selected institutions tab areas -->
+                        {{#if selectedInstTabs.areas}}
+                            <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+                                <h2 class="main__subtitle">Turmas</h2>
+                                <button class="btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
+                                    <span class="btn__icon icon-plus"></span>Nova Turma</button>
+                            </div>
+                            <section class="main__subsection">
+                                <ul class="institutions__areas list list--striped">
+                                    <li id="newArea" style="display:none">
+                                        <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
+                                        <div class="edit-text">
+                                            <input class="edit-text__input form-group__input content-editable" type="textbox" id="newAreaName">
+                                            <span class="edit-text__indicator"></span>
+                                        </div>
+                                        <div class="btn-group m-left--lg">
+                                            <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
+                                                <span class="btn__icon icon-x"></span>Cancelar
+                                            </button>
+                                            <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}} style="width: 100px;">
+                                                <span class="btn__icon icon-check"></span>Salvar
+                                            </button>
+                                        </div>
+                                    </li>
+                                    {{#each inst_selected.areas as |area idx|}}
+                                        <li class="accordion">
+                                            <div class="institutions__area">
+                                                <div class="edit-text">
+                                                    <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
+                                                    <span class="edit-text__indicator"></span>
+                                                </div>
+                                                <button class="btn btn--sm btn--text accordion__trigger m-top--xs">Mostrar mais</button>
+                                                <ul id="accordion{{area.id}}" class="accordion__target list list--striped calendar calendar--list">
+                                                    <li>
+                                                        <time class="calendar__date date" datetime="2019-02-15">
+                                                            <span class="date__day">15</span><span class="date__month">fev</span>
+                                                        </time>
+                                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                                            <span class="title-aux m-bottom--xxs">Aula 1</span>
+                                                            <h3 class="title-4">O que é Resiliência?</h3>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <time class="calendar__date date" datetime="2019-02-28">
+                                                            <span class="date__day">28</span><span class="date__month">fev</span>
+                                                        </time>
+                                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                                            <span class="title-aux m-bottom--xxs">Aula 2</span>
+                                                            <h3 class="title-4">É sempre possível aprender</h3>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="calendar__date date">
+                                                            <span class="date__day">16</span><span class="date__month">mar</span>
+                                                        </div>
+                                                        <div class="d-flex d-flex--c d-flex-justify--center">
+                                                            <span class="title-aux m-bottom--xxs">Aula 3</span>
+                                                            <h3 class="title-4">Esforço e talento</h3>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div id="areaItemOptions{{area.id}}" class="btn-group">
+                                                <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
+                                                    <span class="btn__icon icon-trash-2"></span> Remover
+                                                </button>
+                                                <button class="btn btn--leaf-ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
+                                                    <span class="btn__icon icon-edit"></span> Editar
+                                                </button>
+                                            </div>
+                                            <div class="btn-group" id="areaItemActions{{area.id}}" style="display:none">
+                                                <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' area.id}}>
+                                                    <span class="btn__icon icon-x"></span>Cancelar
+                                                </button>
+                                                <button class="btn btn--sm btn--primary" style="width: 100px;" type="submit" {{action 'saveArea' area.id}}>
+                                                    <span class="btn__icon icon-check"></span>Salvar
+                                                </button>
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </section>
+                        {{/if}}
+                    </div>
+                    <div class="form-group form-group--vertical" flex="20">
+                        <label class="form-group__label">Alunos</label>
+                        {{#if (equalstr role 'admin')}}
+                            <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} onkeyup={{action 'dataChange' 'btn_save_inst'}}>
+                        {{else}}
+                            <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} disabled="true">
+                        {{/if}}
+                    </div>
+                </div>
+            </section>
+            <section class="main__subsection">
+                <h3 class="main__subsubtitle">Recursos extras</h3>
+                <div class="checkbox m-bottom--md">
+                    <input class="checkbox__input" id="inst_changePassword" type="checkbox" checked={{inst_selected.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
+                    <label class="checkbox__label" for="inst_changePassword">Alterar senha no primeiro acesso</label>
+                </div>
+                <div class="checkbox m-bottom--md">
+                    <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.temBiblioteca}} disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
+                    <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
+                </div>
+            </section>
         {{/if}}
         <!-- /selected institution tab information -->
         <!-- selected institutiton tab courses -->
         {{#if selectedInstTabs.courses}}
             <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
                 <h2 class="main__subtitle">Anos</h2>
-                <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
+                <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
                     <span class="btn__icon icon-save"></span>
                     Salvar alterações
                 </button>
@@ -347,7 +469,7 @@
                     <span class="btn__icon icon-plus"></span>Nova Turma</button>
             </div>
             <section class="main__subsection">
-                <ul class="institutions__areas list list--striped">
+                <ul class="institutions__areas list">
                     <li id="newArea" style="display:none">
                         <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
                         <div class="edit-text">
@@ -364,43 +486,16 @@
                         </div>
                     </li>
                     {{#each inst_selected.areas as |area idx|}}
-                        <li class="accordion">
-                            <div class="institutions__area">
+                        <li>
+                            <div>
                                 <div class="edit-text">
                                     <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
                                     <span class="edit-text__indicator"></span>
                                 </div>
-                                <button class="btn btn--sm btn--text accordion__trigger m-top--xs">Mostrar mais</button>
-                                <ul id="accordion{{area.id}}" class="accordion__target list list--striped calendar calendar--list">
-                                    <li>
-                                        <time class="calendar__date date" datetime="2019-02-15">
-                                            <span class="date__day">15</span><span class="date__month">fev</span>
-                                        </time>
-                                        <div class="d-flex d-flex--c d-flex-justify--center">
-                                            <span class="title-aux m-bottom--xxs">Aula 1</span>
-                                            <h3 class="title-4">O que é Resiliência?</h3>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <time class="calendar__date date" datetime="2019-02-28">
-                                            <span class="date__day">28</span><span class="date__month">fev</span>
-                                        </time>
-                                        <div class="d-flex d-flex--c d-flex-justify--center">
-                                            <span class="title-aux m-bottom--xxs">Aula 2</span>
-                                            <h3 class="title-4">É sempre possível aprender</h3>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="calendar__date date">
-                                            <span class="date__day">16</span><span class="date__month">mar</span>
-                                        </div>
-                                        <div class="d-flex d-flex--c d-flex-justify--center">
-                                            <span class="title-aux m-bottom--xxs">Aula 3</span>
-                                            <h3 class="title-4">Esforço e talento</h3>
-                                        </div>
-                                    </li>
-
-                                </ul>
+                                <button id="cta{{area.id}}" class="btn btn--ghost btn--xs btn--is-toggle" {{action displayAccordion area.id}} style="width: 8rem;">
+                                    <span class="btn__label label__default">Exibir calendário</span>
+                                    <span class="btn__label label__active">Fechar calendário</span>
+                                </button>
                             </div>
                             <div id="areaItemOptions{{area.id}}" class="btn-group">
                                 <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
@@ -418,247 +513,81 @@
                                     <span class="btn__icon icon-check"></span>Salvar
                                 </button>
                             </div>
+
+                            <!-- ACCORDION TEST -->
+                            <ul id="j-accordionContent{{area.id}}" class="list list--striped calendar calendar--list j-accordionNode animated fadeIn" style="display:none;">
+                                <li>
+                                    <time class="calendar__date date" datetime="2019-02-15">
+                                        <span class="date__day">15</span><span class="date__month">fev</span>
+                                    </time>
+                                    <div class="d-flex d-flex--c d-flex-justify--center">
+                                        <span class="title-aux m-bottom--xxs">Aula 1</span>
+                                        <h3 class="title-4">O que é Resiliência?</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="calendar__date date" datetime="2019-02-28">
+                                        <span class="date__day">28</span><span class="date__month">fev</span>
+                                    </time>
+                                    <div class="d-flex d-flex--c d-flex-justify--center">
+                                        <span class="title-aux m-bottom--xxs">Aula 2</span>
+                                        <h3 class="title-4">É sempre possível aprender</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="calendar__date date">
+                                        <span class="date__day">16</span><span class="date__month">mar</span>
+                                    </div>
+                                    <div class="d-flex d-flex--c d-flex-justify--center">
+                                        <span class="title-aux m-bottom--xxs">Aula 3</span>
+                                        <h3 class="title-4">Esforço e talento</h3>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- /ACORDION TEST -->
                         </li>
+
                     {{/each}}
+                    <div id="teste" style="display:none">hi</div>
                 </ul>
             </section>
         {{/if}}
-      </div>
-      <div class="form-group form-group--vertical" flex="20">
-        <label class="form-group__label">Alunos</label>
-        {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
-          onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-        {{else}}
-        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} disabled="true">
+        <!-- /selected institutions tab areas -->
+        <!-- selected institutions tab users -->
+        {{#if selectedInstTabs.users}}
+            {{outlet}}
         {{/if}}
-      </div>
-    </div>
-  </section>
-  <section class="main__subsection">
-    <h3 class="main__subsubtitle">Recursos extras</h3>
-    <div class="checkbox m-bottom--md">
-      <input class="checkbox__input" id="inst_changePassword" type="checkbox"
-        checked={{inst_selected.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin') false true}}
-        onchange={{action 'dataChange' 'btn_save_inst'}}>
-      <label class="checkbox__label" for="inst_changePassword">Alterar senha no primeiro acesso</label>
-    </div>
-    <div class="checkbox m-bottom--md">
-      <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.temBiblioteca}}
-        disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
-      <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
-    </div>
-  </section>
-  {{/if}}
-  <!-- /selected institution tab information -->
-  <!-- selected institutiton tab courses -->
-  {{#if selectedInstTabs.courses}}
-  <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-    <h2 class="main__subtitle">Cursos</h2>
-    <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_courses"
-      {{action 'saveCourses' inst_selected.id}}>
-      <span class="btn__icon icon-save"></span>
-      Salvar alterações
-    </button>
-  </div>
-  <section class="main__subsection">
-    <ul class="list list--img-name-action list--striped">
-      {{#each modulos_list as |mod|}}
-      <li>
-        <span class="list__img"
-          style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
-        <h3 class="list__name title-3">{{mod.name}}</h3>
-        <span class="switch switch--institutions">
-          <!-- temporary save controll -->
-          <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
-            style="display:none">
-          <!-- -->
-          <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-            checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
-            onchange={{action 'dataChange' 'btn_save_courses'}}>
-          <label class="switch__label" for="ckb_{{mod.id}}">
-            <span class="switch__inner"></span>
-            <span class="switch__head"></span>
-          </label>
-        </span>
-      </li>
-      {{/each}}
-    </ul>
-  </section>
-  {{/if}}
-  <!-- /selected institutiton tab courses -->
-  <!-- selected institutions tab areas -->
-  {{#if selectedInstTabs.areas}}
-  <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-    <h2 class="main__subtitle">Áreas</h2>
-    <button class="btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
-      <span class="btn__icon icon-plus"></span>Nova Área</button>
-  </div>
-  <section class="main__subsection">
-    <ul class="institutions__areas list list--striped">
-      <li id="newArea" style="display:none">
-        <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
-        <div class="edit-text">
-          <input class="edit-text__input form-group__input content-editable" type="textbox" id="newAreaName">
-          <span class="edit-text__indicator"></span>
-        </div>
-        <div class="btn-group m-left--lg">
-          <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
-            <span class="btn__icon icon-x"></span>Cancelar
-          </button>
-          <button class="btn btn--sm btn--primary" type="submit" {{action 'addArea'}} style="width: 100px;">
-            <span class="btn__icon icon-check"></span>Salvar
-          </button>
-        </div>
-      </li>
-      {{#each inst_selected.areas as |area idx|}}
-      <li {{action displayAccordion area.id}}>
-        <div class="edit-text">
-          <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
-          <span class="edit-text__indicator"></span>
-        </div>
-        <div id="areaItemOptions{{area.id}}" class="btn-group">
-          <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
-            <span class="btn__icon icon-trash-2"></span> Remover
-          </button>
-          <button class="btn btn--leaf-ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
-            <span class="btn__icon icon-edit"></span> Editar
-          </button>
-        </div>
-        <div class="btn-group" id="areaItemActions{{area.id}}" style="display:none">
-          <button class="btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' area.id}}>
-            <span class="btn__icon icon-x"></span>Cancelar
-          </button>
-          <button class="btn btn--sm btn--primary" style="width: 100px;" type="submit" {{action 'saveArea' area.id}}>
-            <span class="btn__icon icon-check"></span>Salvar
-          </button>
-        </div>
-      </li>
-       <!-- ACCORDION TEST -->
-        <div id="j-accordionContent{{area.id}}" class="j-accordionNode" style="display:none;">
-          accord
-        </div>
-        <!-- /ACORDION TEST -->
-      {{/each}}
-      <div id="teste" style="display:none">hi</div>
-    </ul>
-  </section>
-  {{/if}}
-  <!-- /selected institutions tab areas -->
-  <!-- selected institutions tab users -->
-  {{#if selectedInstTabs.users}}
-  {{outlet}}
-  {{/if}}
-  <!-- /selected institutions tab users -->
-  {{/if}}
+        <!-- /selected institutions tab users -->
+    {{/if}}
 </main>
+
 <!-- ################################################################## -->
 <!-- ################################################################## -->
 <!-- ################################################################## -->
 <!-- -------------------------------------------------- administration users modal -->
 <div class="alert-container">
 
-  <!-- CONFIRMATION || LIST -->
-  <div id="staticAlertAdm" class="alert alert--xs alert--primary alert--has-interaction">
+    <!-- CONFIRMATION || LIST -->
+    <div id="staticAlertAdm" class="alert alert--xs alert--primary alert--has-interaction">
 
-    <p>{{staticTxt1}} <span class="m-left--xxs"><strong>{{staticTxt2}}</strong></span></p>
+        <p>{{staticTxt1}} <span class="m-left--xxs"><strong>{{staticTxt2}}</strong></span></p>
 
-    <div class="alert__footer">
-      <!-- area to delete -->
-      {{#if (equalstr staticType 'area')}}
-      <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Cancelar</button>
-      <button class="btn btn--sm btn--inverted" {{action 'actionConfirmation' areaToDelete}}><span
-          class="btn__icon icon-trash-2"></span>Remover área</button>
-      {{/if}}
-      <!-- -->
+        <div class="alert__footer">
+            <!-- area to delete -->
+            {{#if (equalstr staticType 'area')}}
+                <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Cancelar</button>
+                <button class="btn btn--sm btn--inverted" {{action 'actionConfirmation' areaToDelete}}><span class="btn__icon icon-trash-2"></span>Remover área</button>
+            {{/if}}
+            <!-- -->
+        </div>
     </div>
-  </div>
 
-  <!-- LOADING || SUCCESS || ERROR -->
-  <div id="timeoutAlertAdm" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
-    {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
-    {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
-    {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
-    <div style="max-width: 80%;"><strong>{{timeoutTxt}}</strong></div>
-  </div>
+    <!-- LOADING || SUCCESS || ERROR -->
+    <div id="timeoutAlertAdm" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+        {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
+        {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
+        {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
+        <div style="max-width: 80%;"><strong>{{timeoutTxt}}</strong></div>
+    </div>
 
 </div>
-<!-- ################################################################## -->
-<!-- ################################################################## -->
-<!-- ################################################################## -->
-
-
-{{!--
-<!-- --------------------------------------------- administration modal -->
-<div id="administrationModal" class="alert-container">
-
-  <!-- modal text -->
-   <span class="alert__icon icon-alert-triangle icon--lg"></span>
-  <div flex="1">
-    {{#if modalTxtDisplay}}
-    <p>{{modalTxtDisplay}}</p>
-    {{/if}}
-    {{#if modalTxtConfirmation}}
-    <p class="m-v--xs"><strong>{{modalTxtConfirmation}}</strong></p>
-    {{/if}}
-  </div>
-
-  <!-- loading -->
-  <div id="admModalInstLoading" class="alert alert--primary alert--xs alert--has-icon alert--no-interaction">
-    <span class="alert__icon icon-arrow-down icon--lg"></span>
-    <div flex="1">
-      {{#if modalTxtDisplay}}
-      <p>{{modalTxtDisplay}}</p>
-      {{/if}}
-      {{!-- {{#if modalTxtConfirmation}}
-      <p class="m-v--xs"><strong>{{modalTxtConfirmation}}</strong></p>
-      {{/if}}
-    </div>
-  </div>
-
-  <!-- error -->
-  <div id="admModalInstError" class="alert alert--primary alert--xs alert--has-icon alert--no-interaction">
-    <span class="alert__icon icon-x icon--lg"></span>
-    <div flex="1">
-      {{#if modalTxtDisplay}}
-      <p>{{modalTxtDisplay}}</p>
-      {{/if}}
-      {{!-- {{#if modalTxtConfirmation}}
-      <p class="m-v--xs"><strong>{{modalTxtConfirmation}}</strong></p>
-      {{/if}}
-    </div>
-  </div>
-
-  <!-- success -->
-  <div id="admModalInstSuccess" class="alert alert--primary alert--xs alert--has-icon alert--no-interaction">
-    <span class="alert__icon icon-check icon--lg"></span>
-    <div flex="1">
-      {{#if modalTxtDisplay}}
-      <p>{{modalTxtDisplay}}</p>
-      {{/if}}
-      {{!-- {{#if modalTxtConfirmation}}
-      <p class="m-v--xs"><strong>{{modalTxtConfirmation}}</strong></p>
-      {{/if}}
-    </div>
-  </div>
-
-  <!-- confirmation -->
-  <div id="admModalInstConfirmation" class="alert alert--primary alert--xs alert--has-interaction">
-    {{#if modalTxtDisplay}}
-    <p>{{modalTxtDisplay}}</p>
-    {{/if}}
-    {{#if modalTxtConfirmation}}
-    <div class="m-top--sm">
-      <span class="icon-arrow-right icon--lg m-right--xs color-primary--lightest"></span><span class="title-3 color-white">{{modalTxtConfirmation}}</span>
-    </div>
-    {{/if}}
-
-    <div class="alert__footer">
-      <button class="btn btn--sm btn--text-inverted" {{action modalDisplay 'close'}}>Cancelar</button>
-      <button class="btn btn--sm btn--inverted" {{action 'actionConfirmation' areaToDelete}}>Confirmar</button>
-    </div>
-  </div>
-
-</div>
-
---}}

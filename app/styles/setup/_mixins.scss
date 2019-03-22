@@ -649,7 +649,7 @@
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
-    line-height: 1;
+    line-height: 1.25;
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size--sm; }
@@ -669,7 +669,7 @@
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
-    line-height: 1;
+    line-height: 1.25;
     // text-transform: uppercase;
     vertical-align: middle;
 
@@ -690,7 +690,7 @@
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
-    line-height: 1;
+    line-height: 1.25;
     vertical-align: middle;
 
     @include media('>sm') { font-size: $size--sm; }
@@ -787,6 +787,24 @@
     vertical-align: middle;
 }
 
+
+
+
+
+//------------------------------------
+//    #TRANSITION
+//------------------------------------
+
+// EXEMPLO
+//
+// .douglas {
+//    @include transition(500ms);
+// }
+//
+@mixin transition($args: '200ms') {
+    transition: unquote($args);
+    transition-timing-function: var(--ease-in-out-quad);
+}
 
 
 

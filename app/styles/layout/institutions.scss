@@ -60,7 +60,9 @@
             align-items: flex-start;
             display: flex;
             flex-direction: row;
+            flex-flow: wrap;
             justify-content: space-between;
+            padding: 0 0 $distance--xxl 0;
         }
 
     }
