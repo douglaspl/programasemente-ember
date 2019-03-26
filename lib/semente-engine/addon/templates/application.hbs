@@ -64,7 +64,26 @@
       <button class="global-nav__close icon-x"></button>
 
       <!-- courses header -->
-      <li class="global-nav__item" id="header-modulos">{{#link-to 'modulos' class="global-nav__link"}}Percurso{{/link-to}}</li>
+      <li class="global-nav__item" id="header-modulos">
+        <div class="global-nav__submenu submenu submenu--header">
+
+          <ul>
+            <li class="submenu__item">
+              <a href="#" id="change_image_trigger" class="submenu__link">
+                <span>Primeiro ano</span></a></li>
+
+            <li class="submenu__item">
+              <a href="#" id="change_pass_trigger" class="submenu__link">
+                <span>Segundo ano</span></a></li>
+
+            <li class="submenu__item">
+              <a href="#" class="submenu__link">
+                <span>Terceiro ano</span></a></li>
+          </ul>
+
+        </div>
+
+        {{#link-to 'modulos' class="global-nav__link"}}Percurso{{/link-to}}</li>
 
       <!-- lib header -->
       <li class="global-nav__item counter" id="header-biblioteca" style="display:none;">

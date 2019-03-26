@@ -12,10 +12,10 @@
 
             &::before {
                 background-color: $lemon;
-                background-image: linear-gradient(to top, $gray-30, $gray-10);
+                background-image: linear-gradient(to top, $gray-5, $color-white);
                 border-radius: $radius--capsule;
                 box-shadow: 0 0 40px transparentize($color-black, .1);
-                color: $color-white;
+                color: $gray-40;
                 content: 'Início do ano';
                 font-weight: 600;
                 left: 50%;
