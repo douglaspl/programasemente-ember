@@ -201,18 +201,22 @@
         margin-top: $distance--xxxl;
     }
 
-    &__icon-1 {
-        @include icon-placeholder;
+    @include media('>xl') {
 
-        transform: rotate(-30deg);
-    }
+        &__icon-1 {
+            @include icon-placeholder;
 
-    &__icon-2 {
-        @include icon-placeholder;
+            transform: rotate(-30deg);
+        }
 
-        left: 50%;
-        top: 50%;
-        transform: rotate(30deg) scale(1.2);
+        &__icon-2 {
+            @include icon-placeholder;
+
+            left: 50%;
+            top: 50%;
+            transform: rotate(30deg);
+        }
+
     }
 
 }

@@ -7,6 +7,54 @@
     > * {
         position: relative;
 
+        &:first-child {
+            margin-top: $distance--super;
+
+            &::before {
+                background-color: $lemon;
+                background-image: linear-gradient(to top, $gray-30, $gray-10);
+                border-radius: $radius--capsule;
+                box-shadow: 0 0 40px transparentize($color-black, .1);
+                color: $color-white;
+                content: 'Início do ano';
+                font-weight: 600;
+                left: 50%;
+                letter-spacing: $letter-spacing--xxl;
+                padding: $distance--xs 0;
+                position: absolute;
+                transform: translate(-50%, 50%);
+                text-align: center;
+                text-transform: uppercase;
+                top: -$distance--super;
+                width: 12rem;
+            }
+
+        }
+
+        &:last-child {
+            margin-bottom: $distance--super;
+
+            &::before {
+                background-color: $lemon;
+                background-image: linear-gradient(to top, $gray-30, $gray-10);
+                border-radius: $radius--capsule;
+                bottom: -$distance--xxl;
+                box-shadow: 0 0 40px transparentize($color-black, .1);
+                color: $color-white;
+                content: 'Fim do ano';
+                font-weight: 600;
+                left: 50%;
+                letter-spacing: $letter-spacing--xxl;
+                padding: $distance--xs 0;
+                position: absolute;
+                text-align: center;
+                text-transform: uppercase;
+                transform: translate(-50%, 50%);
+                width: 12rem;
+            }
+
+        }
+
         &:not(:first-child) {
             margin-top: 20vh;
         }
