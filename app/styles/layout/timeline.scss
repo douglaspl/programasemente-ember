@@ -69,7 +69,7 @@
                 bottom: calc(100% + 18vh);
                 box-shadow: 0 0 80px $gray-60;
                 color: $blue-navy-50;
-                content: 'Fim do bimestre';
+                content: 'Fim da unidade';
                 font-weight: 600;
                 left: 50%;
                 letter-spacing: $letter-spacing--xxl;
@@ -142,6 +142,7 @@
         box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         font-size: $font-size--lg;
         line-height: 1;
         padding: $distance--sm $distance--xl $distance--sm $distance--sm;
