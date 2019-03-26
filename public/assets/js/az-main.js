@@ -32,11 +32,12 @@ function toogleMenu() {
 $(document).on('click', '.global-nav__trigger', function () { toogleMenu(); });
 $(document).on('click', '.global-nav__close', function () { toogleMenu(); });
 
-function toogleSub() {
-    $('.submenu').toggleClass('submenu--is-show');
+function toogleSub(target) {
+    $(target).toggleClass('submenu--is-show');
 }
 
-$(document).on('click', '.global-nav__thumb', function () { toogleSub(); });
+$(document).on('click', '.j-thumb', function () { toogleSub('#thumbSubmenu'); });
+$(document).on('click', '.j-timeline', function () { toogleSub('#timelineSubmenu'); });
 
 function toogleAccordion() {
     $('.accordion').toggleClass('accordion--is-show');

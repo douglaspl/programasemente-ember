@@ -195,17 +195,25 @@
         margin-top: $distance--xxxl;
     }
 
-    @include media('>xl') {
 
-        &__icon-1 {
+    &__icon-1 {
+        display: none;
+
+        @include media('>lg') {
             @include icon-placeholder;
 
+            display: block;
             transform: rotate(-30deg);
         }
+    }
 
-        &__icon-2 {
+    &__icon-2 {
+        display: none;
+
+        @include media('>lg') {
             @include icon-placeholder;
 
+            display: block;
             left: 50%;
             top: 50%;
             transform: rotate(30deg);

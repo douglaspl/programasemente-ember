@@ -65,15 +65,15 @@
 
       <!-- courses header -->
       <li class="global-nav__item" id="header-modulos">
-        <div class="global-nav__submenu submenu submenu--header">
+        <div class="global-nav__submenu submenu submenu--header" id="timelineSubmenu">
 
           <ul>
             <li class="submenu__item">
-              <a href="#" id="change_image_trigger" class="submenu__link">
-                <span>Primeiro ano</span></a></li>
+              {{#link-to 'modulos' class="submenu__link"}}<span>Primeiro ano</span>{{/link-to}}
+            </li>
 
             <li class="submenu__item">
-              <a href="#" id="change_pass_trigger" class="submenu__link">
+              <a href="#" class="submenu__link">
                 <span>Segundo ano</span></a></li>
 
             <li class="submenu__item">
@@ -83,7 +83,8 @@
 
         </div>
 
-        {{#link-to 'modulos' class="global-nav__link"}}Percurso{{/link-to}}</li>
+        <a href="#" class="global-nav__item j-timeline">Percurso <span class="icon icon-chevron-down"></span></a>
+      </li>
 
       <!-- lib header -->
       <li class="global-nav__item counter" id="header-biblioteca" style="display:none;">
@@ -131,7 +132,7 @@
 
       <li class="global-nav__item global-nav__submenu-holder">
 
-        <div class="global-nav__submenu submenu submenu--header">
+        <div class="global-nav__submenu submenu submenu--header" id="thumbSubmenu">
 
           <p class="global-nav__call">Olá, <strong>{{username}}</strong></p>
 
@@ -150,7 +151,7 @@
 
         </div>
 
-        <a class="global-nav__thumb" href="#">
+        <a class="global-nav__thumb j-thumb" href="#">
           <span class="global-nav__avatar avatar">
             <img class="j-application-avatar" src={{uri_avatar}}>
           </span>
