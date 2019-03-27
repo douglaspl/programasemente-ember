@@ -61,26 +61,14 @@
             > * {
                 opacity: 1;
                 transform: translateX(-8px);
-
-                // $i: 1;
-                // $total: 10;
-                // $min-delay: 100ms;
-
-                // @while $i <= $total {
-
-                //     &:nth-child(#{$i}) {
-                //         transition-delay: ($min-delay * $i);
-
-                //     }
-
-                //     $i: $i + 1;
-
-                // }
-
             }
 
-
         }
+
+    }
+
+    &--timeline {
+        z-index: 2;
     }
 
 }

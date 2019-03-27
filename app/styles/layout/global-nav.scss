@@ -188,7 +188,6 @@
         right: 50%;
         top: calc(100% - #{$distance--md});
         width: 20rem;
-        z-index: -1;
 
         @include media('<=sm') {
             display: none;
