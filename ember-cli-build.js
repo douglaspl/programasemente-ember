@@ -3,7 +3,7 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     fingerprint: {
       exclude: ['jpg', 'png', 'ico', 'fontawesome']
@@ -14,7 +14,9 @@ module.exports = function(defaults) {
       'importBootstrapCSS': false
     },
 
-    'ember-font-awesome': { removeUnusedIcons: false } // The addon will not remove unused icons, not even in production. }
+    'ember-font-awesome': {
+      removeUnusedIcons: false
+    } // The addon will not remove unused icons, not even in production. }
     ,
 
     'ember-service-worker': {
@@ -24,7 +26,7 @@ module.exports = function(defaults) {
     autoprefixer: {
       browsers: ['last 3 versions']
     },
-    babel: {
+    'ember-cli-babel': {
       includePolyfill: true
     }
   });

@@ -21,6 +21,9 @@
 .global-nav {
     $this: &;
 
+    $global-nav-gradient-light: $lemon-5;
+    $global-nav-gradient-dark:  $lemon-40;
+
     &__list {
         @include z-index('offcanvas');
 
@@ -105,16 +108,15 @@
         }
 
         @include hover {
-            background-color: $lemon-30;
+            background-color: $global-nav-gradient-dark;
+            background-image: linear-gradient(to top, $global-nav-gradient-dark, $global-nav-gradient-light);
         }
 
         &--is-active {
-            $bg: $lemon-40;
+            @include text-contrast($global-nav-gradient-dark);
 
-            @include text-contrast($bg);
-
-            background-color: $bg;
-            background-image: linear-gradient(to top, $bg, $lemon-5);
+            background-color: $global-nav-gradient-dark;
+            background-image: linear-gradient(to top, $global-nav-gradient-dark, $global-nav-gradient-light);
             opacity: 1;
             pointer-events: none;
             // text-shadow: 0 1px 0 $green-50;

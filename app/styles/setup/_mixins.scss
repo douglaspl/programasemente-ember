@@ -22,7 +22,7 @@
     display: inline-flex;
     flex-direction: row;
     font-size: $font-size--xxs;
-    font-weight: bold;
+    font-weight: 700;
     justify-content: center;
     letter-spacing: $letter-spacing--md;
     line-height: 1;
@@ -188,6 +188,7 @@
     @include has-capsule-on-hover;
 
     background-color: transparent;
+    background-image: none;
     border-radius: 0;
     box-shadow: none;
     color: $color-gray--darkest;

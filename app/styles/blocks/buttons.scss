@@ -69,18 +69,25 @@
 .btn {
     $this: &;
 
+    $bg-light: $green-30;
+    $bg-dark: $green-50;
+
     @include button;
 
-    background-color: $green--dark;
+    background-color: $bg-dark;
+    background-image: linear-gradient(to top, $bg-dark, $bg-light);
+
     border-radius: $radius--md;
     color: $color-white;
     cursor: pointer;
     flex: 0 0 auto;
     padding: 1em 1.5em;
+    transition: 200ms;
     transition-property: background-color, box-shadow, transform;
 
     @include hover {
-        background-color: $green--dark;
+        background-color: $green-60;
+        background-image: linear-gradient(to top, $green-60, $green-40);
     }
 
     // ELEMENTS
@@ -197,22 +204,25 @@
         color: $leaf-50;
 
         @include hover {
-            background-color: $leaf-0;
+            background-color: $gray-5;
+            background-image: linear-gradient(to top, $gray-5, $gray-0);
         }
 
     }
 
     &--ghost {
         background-color: transparent;
-        border: 1px solid currentColor;
-        color: $green-leaf;
+        background-image: none;
+        border: 1px solid $leaf-30;
+        color: $leaf-40;
 
         &-white {
             color: $color-white;
         }
 
         @include hover {
-            background-color: $lemon-5;
+            background-color: $lemon-0;
+            background-image: none;
         }
 
     }
@@ -229,17 +239,26 @@
 
     &--link {
         @include dotted-link;
+
+        &:hover {
+            background-color: transparent;
+            background-image: none;
+        }
+
     }
 
     &--text {
         background-color: transparent;
+        background-image: none;
         box-shadow: none;
         color: $color-gray--darkest;
+        opacity: .75;
         padding: 0;
         text-shadow: none;
 
         @include hover {
             background-color: transparent;
+            background-image: none;
             box-shadow: none;
             opacity: 1;
             transform: translateY(0);
