@@ -1,36 +1,36 @@
 .edit-text {
-    $this: &;
+  $this: &;
 
-    padding: 0 0 $distance--xs 0;
-    position: relative;
-    margin-top: $distance--xs;
-    min-width: 8rem;
+  padding: 0 0 $distance--xxs 0;
+  position: relative;
+  margin-bottom: $distance--xxs;
+  min-width: 8rem;
+  outline: 0 solid transparent;
+
+  &__input {
+    background-color: transparent;
+    box-shadow: 0 0 0 transparent;
+    height: 1.25em;
     outline: 0 solid transparent;
+    padding-left: 0;
+  }
 
-    &__input {
-        background-color: transparent;
-        box-shadow: 0 0 0 transparent;
-        height: 1.25em;
-        outline: 0 solid transparent;
-        padding-left: 0;
+  &__indicator {
+    background-color: transparentize($green, .9);
+    border-bottom: 2px dotted $green;
+    content: '';
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    transition: 300ms;
+    width: 100%;
+
+    #{$this}__input:focus+& {
+      opacity: 1;
     }
 
-    &__indicator {
-        background-color: transparentize($green, .9);
-        border-bottom: 2px dotted $green;
-        content: '';
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        transition: 300ms;
-        width: 100%;
-
-        #{$this}__input:focus + & {
-            opacity: 1;
-        }
-
-    }
+  }
 
 }

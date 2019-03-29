@@ -1,27 +1,51 @@
 .capsule {
-    $this: &;
+  $this: &;
 
-    background-color: $color-gray;
-    border-radius: $radius;
-    color: $color-white;
-    display: inline-block;
-    font-size: $font-size--xxs;
-    font-weight: bold;
-    padding: 0.5em 1.5em;
-    text-align: center;
-    text-transform: uppercase;
+  background-color: $color-gray;
+  border-radius: $radius;
+  color: $color-white;
+  display: inline-block;
+  font-size: $font-size--xxs;
+  font-weight: bold;
+  letter-spacing: $letter-spacing--xl;
+  padding: 0.5em 1.5em;
+  text-align: center;
+  text-transform: uppercase;
 
-    &--shade1 { background-color: $gray; }
-    &--primary-lightest { background-color: $lemon; color: $blue-navy; }
-    &--error { background-color: $color-error; }
-    &--info { background-color: $color-info; }
-    &--success { background-color: $color-success; }
-    &--warning { background-color: $color-warning; }
+  &--lemon {
+    background-color: $lemon-10;
+    color: $blue-navy-50;
+  }
 
-    &--xxs {
-        font-size: 12px;
-        padding-left: 1em;
-        padding-right: 1em;
-    }
+  &--green {
+    background-color: $green-20;
+    color: $blue-navy-50;
+  }
+
+  &--error {
+    background-color: $color-error;
+  }
+
+  &--info {
+    background-color: $color-info;
+  }
+
+  &--success {
+    background-color: $color-success;
+  }
+
+  &--warning {
+    background-color: $color-warning;
+  }
+
+  &--xxs {
+    font-size: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  &--round {
+    border-radius: $radius--capsule;
+  }
 
 }
