@@ -27,8 +27,7 @@
     <div class="report__pagination">
       <div class="form-group form-group--select-wrapper">
         <label class="form-group__label" for="amount">Exibir</label>
-        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
-          {{action 'setExibir' on='change'}}>
+        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order" {{action 'setExibir' on='change'}}>
           <option value="5" selected={{paginationSelected.p5}}>5</option>
           <option value="10" selected={{paginationSelected.p10}}>10</option>
           <option value="25" selected={{paginationSelected.p25}}>25</option>
@@ -51,8 +50,7 @@
         <tr>
           <th class="table__check" scope="col">
             <span class="checkbox">
-              <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
-                {{action 'listItemCheck' 'all' on='change'}}>
+              <input class="checkbox__input" id="usersListCheckAll" type="checkbox" {{action 'listItemCheck' 'all' on='change'}}>
               <label class="checkbox__label" for="usersListCheckAll"></label>
             </span>
           </th>
@@ -102,7 +100,7 @@
 
 
 
-         <!-- ############################################################### -->
+        <!-- ############################################################### -->
         <!-- ############################################################### -->
         <!-- ############################################################### -->
         {{#if (equalstr gerdataLoaderState 1)}}
@@ -122,8 +120,7 @@
         <tr>
           <td class="table__check">
             <span class="checkbox">
-              <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
-                {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
+              <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox" {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
               <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
             </span>
           </td>
@@ -142,8 +139,7 @@
           </td>
           <!-- user action -->
           <td class="table__actions">
-            <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--ghost icon-more_vert"
-              {{action 'userActionDisplay' pessoa.id}}></button>
+            <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--ghost icon-more_vert" {{action 'userActionDisplay' pessoa.id}}></button>
             <!-- dropdown user actions list -->
             <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu submenu--each-animation j-user-action">
               {{#if (equalstr pessoa.role 'admin')}}
@@ -166,7 +162,7 @@
 <div class="alert-container">
 
   <!-- CONFIRMATION || LIST -->
-  <div id="staticAlertUser" class="alert alert--xs alert--primary alert--has-interaction">
+  <div id="staticAlertUser" class="alert alert--x  alert--blue-navy-50 alert--has-interaction">
 
     <p class="alert__msg">
       {{#if staticTxt1}}<strong class="m-right--xs">{{staticTxt1}}</strong>{{/if}}
@@ -202,7 +198,7 @@
       <!-- check users list -->
       {{#if (equalstr staticType 'checklist')}}
       <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Desmarcar todos</button>
-      <button class="btn btn--sm btn--inverted" {{action 'emailAction'}}><span class="btn__icon icon-at-sign"></span>Enviar
+      <button class="btn btn--sm btn--primary" {{action 'emailAction'}}><span class="btn__icon icon-at-sign"></span>Enviar
         emails</button>
       {{/if}}
       <!-- -->
@@ -227,8 +223,7 @@
       <!-- -->
       <!-- reset user progress -->
       {{#if (equalstr staticType 'progress')}}
-      <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit"
-        {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
+      <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit" {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
       <button class="btn btn--inverted" type="submit" {{action staticAlert 'close'}}>Fechar</button>
       {{/if}}
       <!-- -->
@@ -236,7 +231,7 @@
   </div>
 
   <!-- LOADING || SUCCESS || ERROR -->
-  <div id="timeoutAlertUser" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+  <div id="timeoutAlertUser" class="alert alert--x  alert--blue-navy-50 alert--has-icon alert--no-interaction">
     {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
@@ -306,8 +301,7 @@
           <h3 class="list__name title-3">{{mod.name}}</h3>
           <span class="switch switch--institutions">
             {{#if (isinarray mod user_modulos)}}
-            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}}
-              disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}} disabled={{if (isinarray mod inst_selected.modulos) false true}}>
             {{else}}
             <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" disabled={{if (isinarray mod inst_selected.modulos) false true}}>
             {{/if}}

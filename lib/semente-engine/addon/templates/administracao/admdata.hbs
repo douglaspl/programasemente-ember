@@ -1,195 +1,195 @@
 <!-- INÍCIO DE TODOS EM UMA INSTITUIÇÃO -->
 <section class="report__section report-people report__section--is-active" id="report-people">
 
-    <!-- INÍCIO DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
-    <div class="report-people__selected-users alert alert--primary" id="report-people-compare">
-        <p>Você está com <strong>{{ap_length}} usuários</strong> selecionados.</p>
-        <div class="alert__footer">
-            <button class="btn btn--text-inverted" {{action 'deselectPessoaCompare'}}>Desmarcar todos</button>
-            <button class="btn btn--inverted" {{action 'showComparison'}}>Comparar</button>
-        </div>
+  <!-- INÍCIO DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
+  <div class="report-people__selected-users alert alert--blue-navy-50" id="report-people-compare">
+    <p>Você está com <strong>{{ap_length}} usuários</strong> selecionados.</p>
+    <div class="alert__footer">
+      <button class="btn btn--text" {{action 'deselectPessoaCompare'}}>Desmarcar todos</button>
+      <button class="btn btn--inverted" {{action 'showComparison'}}>Comparar</button>
     </div>
-    <!-- FIM DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
+  </div>
+  <!-- FIM DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
 
 
 
-    <div class="filter-list">
+  <div class="filter-list">
 
-        <div class="filter-list__filter">
+    <div class="filter-list__filter">
 
-            <div class="form-group form-group--vertical w100">
-                <label class="form-group__label" for="search">Busca</label>
+      <div class="form-group form-group--vertical w100">
+        <label class="form-group__label" for="search">Busca</label>
 
-                <form class="d-flex d-flex--c" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+        <form class="d-flex d-flex--c" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
 
-                    <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
-                        {{input class="form-group__input" aria-describedby="basic-addon1" id="search_input_pessoas_adm"
+          <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
+            {{input class="form-group__input" aria-describedby="basic-addon1" id="search_input_pessoas_adm"
             key-up="pagedsearch" type="text" autocomplete="off" aria-autocomplete="none"}}
-                    </div>
+          </div>
 
-                    <div class="m-top--sm">
-                        {{!-- <button class="btn btn--leaf a-self--fs" {{action 'pagedsearch'}}>Buscar</button> --}}
-                        <button class="btn btn--text btn--sm a-self--fs" {{action 'exitpagedsearch'}}>
-                            <span class="btn__icon icon icon-x"></span>Limpar</button>
-                    </div>
+          <div class="m-top--sm">
+            {{!-- <button class="btn btn--leaf a-self--fs" {{action 'pagedsearch'}}>Buscar</button> --}}
+            <button class="btn btn--text btn--sm a-self--fs" {{action 'exitpagedsearch'}}>
+              <span class="btn__icon icon icon-x"></span>Limpar</button>
+          </div>
 
-                </form>
+        </form>
 
-            </div>
+      </div>
 
-        </div>
+    </div>
 
-        <!-- ========================
+    <!-- ========================
         ########### LIST ############
         ========================= -->
-        <div class="filter-list__list">
+    <div class="filter-list__list">
 
-            <div class="total-results">
-                <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
-            </div>
+      <div class="total-results">
+        <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
+      </div>
 
-            <div class="filter-list__ordering">
-                <!-- ========================
+      <div class="filter-list__ordering">
+        <!-- ========================
                 ######### ORDERING ##########
                 ========================= -->
 
-                    <div class="form-group form-group--vertical">
-                        <label class="form-group__label" for="amount">Exibir</label>
-                        <div class="d-flex d-flex-align--center a-self--fs" flex-align="center">
+        <div class="form-group form-group--vertical">
+          <label class="form-group__label" for="amount">Exibir</label>
+          <div class="d-flex d-flex-align--center a-self--fs" flex-align="center">
 
-                            <div class="form-group--select-wrapper m-right--md">
-                                <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order" {{action 'setExibir' on='change'}}>
-                                    {{#if (equalstr perPage 5)}}
-                                        <option value="5" selected>5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000">1000</option>
-                                    {{else if (equalstr perPage 25)}}
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25" selected>25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000">1000</option>
-                                    {{else if (equalstr perPage 50)}}
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50" selected>50</option>
-                                        <option value="100">100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000">1000</option>
-                                    {{else if (equalstr perPage 100)}}
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100" selected>100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000">1000</option>
-                                    {{else if (equalstr perPage 500)}}
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                        <option value="500" selected>500</option>
-                                        <option value="1000">1000</option>
-                                    {{else if (equalstr perPage 1000)}}
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000" selected>1000</option>
-                                    {{else}}
-                                        <option value="5">5</option>
-                                        <option value="10" selected>10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                        <option value="500">500</option>
-                                        <option value="1000">1000</option>
-                                    {{/if}}
-                                </select>
-                            </div>
-                            <span>resultados por página</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group form-group--vertical m-left--xxl">
-                        <label class="form-group__label" for="order">Ordenação</label>
-                        <div class="form-group--select-wrapper">
-                            <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order" {{action 'ordenaPessoas' on='change'}}>
-                                {{#if (equalstr ordem 'completeness')}}
-                                    <option value="az">Ordem alfabética A-Z</option>
-                                    <option value="access">Acessos</option>
-                                    <option value="completeness" selected>Completude</option>
-                                {{else if (equalstr ordem 'access')}}
-                                    <option value="az">Ordem alfabética A-Z</option>
-                                    <option value="access" selected>Acessos</option>
-                                    <option value="completeness">Completude</option>
-                                {{else}}
-                                    <option value="az" selected>Ordem alfabética A-Z</option>
-                                    <option value="access">Acessos</option>
-                                    <option value="completeness">Completude</option>
-                                {{/if}}
-                            </select>
-                        </div>
-                    </div>
-
-                    {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
-            </div>
-
-            <ul class="report-people__list">
-
-
-                <!-- ############################################################### -->
-                <!-- ############################################################### -->
-                <!-- ############################################################### -->
-                {{#if (equalstr admdataLoaderState 1)}}
-                    <div style='display:flex;width:100%;justify-content:center;align-items:center;'>
-                        <span style="color:#ffffff; background-color:rgb(140, 0, 255);padding:14px;border:0;border-radius:5px; box-shadow:0px 1px 3px #b1b1b1;">
-                            <b>LOADING...</b>
-                        </span>
-                    </div>
+            <div class="form-group--select-wrapper m-right--md">
+              <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order" {{action 'setExibir' on='change'}}>
+                {{#if (equalstr perPage 5)}}
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                {{else if (equalstr perPage 25)}}
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25" selected>25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                {{else if (equalstr perPage 50)}}
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50" selected>50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                {{else if (equalstr perPage 100)}}
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100" selected>100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                {{else if (equalstr perPage 500)}}
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500" selected>500</option>
+                <option value="1000">1000</option>
+                {{else if (equalstr perPage 1000)}}
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000" selected>1000</option>
+                {{else}}
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
                 {{/if}}
-                <!-- ############################################################### -->
-                <!-- ############################################################### -->
-                <!-- ############################################################### -->
+              </select>
+            </div>
+            <span>resultados por página</span>
+          </div>
+        </div>
+
+        <div class="form-group form-group--vertical m-left--xxl">
+          <label class="form-group__label" for="order">Ordenação</label>
+          <div class="form-group--select-wrapper">
+            <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order" {{action 'ordenaPessoas' on='change'}}>
+              {{#if (equalstr ordem 'completeness')}}
+              <option value="az">Ordem alfabética A-Z</option>
+              <option value="access">Acessos</option>
+              <option value="completeness" selected>Completude</option>
+              {{else if (equalstr ordem 'access')}}
+              <option value="az">Ordem alfabética A-Z</option>
+              <option value="access" selected>Acessos</option>
+              <option value="completeness">Completude</option>
+              {{else}}
+              <option value="az" selected>Ordem alfabética A-Z</option>
+              <option value="access">Acessos</option>
+              <option value="completeness">Completude</option>
+              {{/if}}
+            </select>
+          </div>
+        </div>
+
+        {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
+      </div>
+
+      <ul class="report-people__list">
+
+
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        {{#if (equalstr admdataLoaderState 1)}}
+        <div style='display:flex;width:100%;justify-content:center;align-items:center;'>
+          <span style="color:#ffffff; background-color:rgb(140, 0, 255);padding:14px;border:0;border-radius:5px; box-shadow:0px 1px 3px #b1b1b1;">
+            <b>LOADING...</b>
+          </span>
+        </div>
+        {{/if}}
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
+        <!-- ############################################################### -->
 
 
 
-                {{#each pagedContent.content as |pessoa|}}
-                    <li class="report-people__person augmented-link">
-                        <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
-                        {{!-- <div class="report-people__check form-group">
+        {{#each pagedContent.content as |pessoa|}}
+        <li class="report-people__person augmented-link">
+          <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
+          {{!-- <div class="report-people__check form-group">
                             <span class="checkbox">
                                 <input class="checkbox__input ckb_pessoa_cmp" id="personID_{{pessoa.id}}" name="remember" type="checkbox" value="personID_{{index}}" {{action 'selectPessoaCompare' pessoa.id preventDefault=false}}>
                                 <label class="checkbox__label" for="personID_{{pessoa.id}}"></label>
                             </span>
                         </div> --}}
-                        <span class="report-people__avatar avatar avatar--lg">
-                            {{#if pessoa.uriAvatar}}
-                                <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-                            {{else}}
-                                <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-                            {{/if}}
-                        </span>
-                        <div class="person">
-                            <span class="person__name">
-                                {{pessoa.name}}
-                            </span>
-                            {{!-- <span class="person__email">{{pessoa.email}}</span> --}}
-                            {{!-- <span class="person__other">Último acesso: <strong>{{pessoa.lastAccess}}</strong></span> --}}
-                            {{!-- <span class="person__other">Área: <strong>{{pessoa.area.name}}</strong></span> --}}
-                        </div>
-                        {{!-- <div class="report-people__data">
+          <span class="report-people__avatar avatar avatar--lg">
+            {{#if pessoa.uriAvatar}}
+            <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+            {{else}}
+            <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+            {{/if}}
+          </span>
+          <div class="person">
+            <span class="person__name">
+              {{pessoa.name}}
+            </span>
+            {{!-- <span class="person__email">{{pessoa.email}}</span> --}}
+            {{!-- <span class="person__other">Último acesso: <strong>{{pessoa.lastAccess}}</strong></span> --}}
+            {{!-- <span class="person__other">Área: <strong>{{pessoa.area.name}}</strong></span> --}}
+          </div>
+          {{!-- <div class="report-people__data">
                             <div class="data">
                                 <span class="data__value">{{pessoa.nracessos}}</span>
                                 <span class="data__label">acessos</span>
@@ -199,185 +199,185 @@
                                 <span class="data__label">cursos concluídos</span>
                             </div>
                         </div> --}}
-                    </li>
-                {{/each}}
-            </ul>
+        </li>
+        {{/each}}
+      </ul>
 
-            {{page-numbers content=pagedContent perPage=perPage class="pagination--right"}}
-
-        </div>
+      {{page-numbers content=pagedContent perPage=perPage class="pagination--right"}}
 
     </div>
+
+  </div>
 
 </section>
 
 <!-- INÍCIO DA SESSÃO DE PESSOA ESPECÍFICA -->
 <section style="display: none;" id="report-person-specific" class="report__person-specific">
 
-    <button id="back-person-specific_old" class="btn btn--text" {{action 'closeEspecifico'}}>
-        <span class="icon-arrow-left"></span>voltar
-    </button>
-    {{#if selected_pessoa}}
-        <header class="report-person__header person">
-            <div class="avatar avatar--xl">
-                {{#if selected_pessoa.pessoa.uriAvatar}}
-                    <img src={{selected_pessoa.pessoa.uriAvatar}}>
-                {{else}}
-                    <img src="/assets/img/avatar-default.svg">
-                {{/if}}
-            </div>
+  <button id="back-person-specific_old" class="btn btn--text" {{action 'closeEspecifico'}}>
+    <span class="icon-arrow-left"></span>voltar
+  </button>
+  {{#if selected_pessoa}}
+  <header class="report-person__header person">
+    <div class="avatar avatar--xl">
+      {{#if selected_pessoa.pessoa.uriAvatar}}
+      <img src={{selected_pessoa.pessoa.uriAvatar}}>
+      {{else}}
+      <img src="/assets/img/avatar-default.svg">
+      {{/if}}
+    </div>
 
-            <div>
-                {{selected_pessoa.lastAccess}}
-                <h1 class="title-1">{{selected_pessoa.pessoa.name}}</h1>
-                <span class="person__email title-aux">{{selected_pessoa.pessoa.email}}</span>
-            </div>
+    <div>
+      {{selected_pessoa.lastAccess}}
+      <h1 class="title-1">{{selected_pessoa.pessoa.name}}</h1>
+      <span class="person__email title-aux">{{selected_pessoa.pessoa.email}}</span>
+    </div>
 
-            <ul class="person__info m-left--auto">
-                <li class="person__other">Cadastrado em: <strong>{{selected_pessoa.cadastrado}}</strong></li>
-                <li class="person__other">Último acesso: <strong>{{selected_pessoa.pessoa.lastAccess}}</strong></li>
-                <li class="person__other">Total de acessos: <strong>{{selected_pessoa.pessoa.nracessos}}</strong></li>
-            </ul>
+    <ul class="person__info m-left--auto">
+      <li class="person__other">Cadastrado em: <strong>{{selected_pessoa.cadastrado}}</strong></li>
+      <li class="person__other">Último acesso: <strong>{{selected_pessoa.pessoa.lastAccess}}</strong></li>
+      <li class="person__other">Total de acessos: <strong>{{selected_pessoa.pessoa.nracessos}}</strong></li>
+    </ul>
 
-        </header>
+  </header>
 
-        {{#if selected_pessoa.matriculado}}
-            <section class="report-person__body">
-                <div class="form-group form-group--select-wrapper">
-                    {{moduloPercent}}
-                    <label class="form-group__label" for="select_course">Curso</label>
-                    <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course_pessoa" value="select_inst">
-                        {{!-- {{#if curso_selected}}
+  {{#if selected_pessoa.matriculado}}
+  <section class="report-person__body">
+    <div class="form-group form-group--select-wrapper">
+      {{moduloPercent}}
+      <label class="form-group__label" for="select_course">Curso</label>
+      <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course_pessoa" value="select_inst">
+        {{!-- {{#if curso_selected}}
         <option value="none" style="font-style: italic;">Selecione o curso...</option>
         {{else}}
         <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
         {{/if}} --}}
-                        {{#each selected_pessoa.modulos as |modulo|}}
-                            {{#if (equalstr curso_selected.id modulo.id)}}
-                                <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-                            {{else}}
-                                <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-                            {{/if}}
-                        {{/each}}
-                    </select>
-                </div>
-                {{#if curso_selected}}
-                    <ul>
-                        {{#each curso_selected.atividades as |atividade|}}
-                            <li class="report-person__class">
-                                <div class="report-class__two-col">
-                                    <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
-                                        <span class="title-aux">Aula {{atividade.idx}}</span>
-                                        <h3 class="title-3">{{atividade.name}}</h3>
-                                    </div>
-                                    <ul class="report-class__progress">
-                                        {{#each atividade.secoes as |secao|}}
-                                            {{#if (equalstr secao.conteudo.type 'html')}}
-
-                                                {{#if (equalstr secao.conteudo.percent '100')}}
-                                                    <li class="data data--bordered data--success data--short">
-                                                        <span class="icon-check icon--success icon--lg"></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                    </li>
-                                                {{else}}
-                                                    <li class="data data--bordered data--light data--short">
-                                                        <span class="icon-minus icon--lg"></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                    </li>
-                                                {{/if}}
-
-                                            {{else if (equalstr secao.conteudo.type 'video')}}
-
-                                                {{#if (equalstr secao.conteudo.percent '100')}}
-                                                    <li class="data data--bordered data--success data--short">
-                                                        <span class="icon-check icon--success icon--lg"></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                    </li>
-                                                {{else}}
-                                                    <li class="data data--bordered data--light data--short">
-                                                        <span class="icon-minus icon--lg"></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                    </li>
-                                                {{/if}}
-
-                                            {{else}}
-
-                                                {{#if secao.conteudo.respondidas}}
-                                                    <li class="data data--bordered data--success data--short">
-                                                        <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                        {{!-- <span class="data__label">aproveitamento</span> --}}
-                                                    </li>
-                                                {{else}}
-                                                    <li class="data data--bordered data--light data--short">
-                                                        <span class="icon-minus icon--lg"></span>
-                                                        <span class="data__label">{{secao.nome}}</span>
-                                                        {{!-- <span class="data__label">aproveitamento</span> --}}
-                                                    </li>
-                                                {{/if}}
-
-                                            {{/if}}
-
-                                        {{/each}}
-                                    </ul>
-                                </div>
-                                <h4 class="report-class__subtitle">Dados dos quizes</h4>
-                                {{#each atividade.secoes as |secao|}}
-                                    {{#if (equalstr secao.conteudo.type 'quiz')}}
-                                        <table class="report-class__table table table--striped">
-                                            <thead>
-                                                <tr class="table__subheader">
-                                                    <th class="report-class__main-info">{{secao.nome}}</th>
-                                                    <th class="report-class__correct">acertou</th>
-                                                    <th class="report-class__visualization">% visualização do feedback</th>
-                                                    <th class="report-class__feedback">quantidade de vezes que o feedback foi reassistido</th>
-                                                    <th class="report-class__time-spent">tempo de permanência na questão</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {{#each secao.conteudo.questoes as |questao|}}
-                                                    <tr>
-                                                        <td class="report-class__main-info">Questão {{questao.idx}}</td>
-                                                        {{#if questao.respondida}}
-                                                            {{#if questao.acertou}}
-                                                                <td class="report-class__correct"><span class="icon-check icon--success"></span></td>
-                                                            {{else}}
-                                                                <td class="report-class__correct"><span class="icon-x icon--error"></span></td>
-                                                            {{/if}}
-                                                        {{else}}
-                                                            <td class="report-class__correct"><span class="icon-minus"></span></td>
-                                                        {{/if}}
-                                                        <td class="report-class__visualization">{{questao.visfeedback}}%</td>
-                                                        <td class="report-class__feedback">{{questao.qtdefeedback}}</td>
-                                                        <td class="report-class__time-spent">{{questao.tempoquestaoalias}}</td>
-                                                    </tr>
-                                                {{/each}}
-                                            </tbody>
-                                        </table>
-                                    {{/if}}
-                                {{/each}}
-                            </li>
-                        {{/each}}
-                    </ul>
-                {{/if}}
-            </section>
+        {{#each selected_pessoa.modulos as |modulo|}}
+        {{#if (equalstr curso_selected.id modulo.id)}}
+        <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
         {{else}}
-            <!-- INÍCIO DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
-            <div class="empty">
-                <span class="empty__icon icon-frown-o icon--xxl"></span>
-                Esse usuário não está matriculado em nenhum curso.
-            </div>
-            <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
+        <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
         {{/if}}
-    {{else}}
-        <div class="loader">
-            <div class="loader__bars">
-                <div class="loader__bar loader__bar--1"></div>
-                <div class="loader__bar loader__bar--2"></div>
-                <div class="loader__bar loader__bar--3"></div>
-            </div>
+        {{/each}}
+      </select>
+    </div>
+    {{#if curso_selected}}
+    <ul>
+      {{#each curso_selected.atividades as |atividade|}}
+      <li class="report-person__class">
+        <div class="report-class__two-col">
+          <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
+            <span class="title-aux">Aula {{atividade.idx}}</span>
+            <h3 class="title-3">{{atividade.name}}</h3>
+          </div>
+          <ul class="report-class__progress">
+            {{#each atividade.secoes as |secao|}}
+            {{#if (equalstr secao.conteudo.type 'html')}}
+
+            {{#if (equalstr secao.conteudo.percent '100')}}
+            <li class="data data--bordered data--success data--short">
+              <span class="icon-check icon--success icon--lg"></span>
+              <span class="data__label">{{secao.nome}}</span>
+            </li>
+            {{else}}
+            <li class="data data--bordered data--light data--short">
+              <span class="icon-minus icon--lg"></span>
+              <span class="data__label">{{secao.nome}}</span>
+            </li>
+            {{/if}}
+
+            {{else if (equalstr secao.conteudo.type 'video')}}
+
+            {{#if (equalstr secao.conteudo.percent '100')}}
+            <li class="data data--bordered data--success data--short">
+              <span class="icon-check icon--success icon--lg"></span>
+              <span class="data__label">{{secao.nome}}</span>
+            </li>
+            {{else}}
+            <li class="data data--bordered data--light data--short">
+              <span class="icon-minus icon--lg"></span>
+              <span class="data__label">{{secao.nome}}</span>
+            </li>
+            {{/if}}
+
+            {{else}}
+
+            {{#if secao.conteudo.respondidas}}
+            <li class="data data--bordered data--success data--short">
+              <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
+              <span class="data__label">{{secao.nome}}</span>
+              {{!-- <span class="data__label">aproveitamento</span> --}}
+            </li>
+            {{else}}
+            <li class="data data--bordered data--light data--short">
+              <span class="icon-minus icon--lg"></span>
+              <span class="data__label">{{secao.nome}}</span>
+              {{!-- <span class="data__label">aproveitamento</span> --}}
+            </li>
+            {{/if}}
+
+            {{/if}}
+
+            {{/each}}
+          </ul>
         </div>
-        {{!-- <div class="container-fluid gersistema-container" style="padding-top: 200px;">
+        <h4 class="report-class__subtitle">Dados dos quizes</h4>
+        {{#each atividade.secoes as |secao|}}
+        {{#if (equalstr secao.conteudo.type 'quiz')}}
+        <table class="report-class__table table table--striped">
+          <thead>
+            <tr class="table__subheader">
+              <th class="report-class__main-info">{{secao.nome}}</th>
+              <th class="report-class__correct">acertou</th>
+              <th class="report-class__visualization">% visualização do feedback</th>
+              <th class="report-class__feedback">quantidade de vezes que o feedback foi reassistido</th>
+              <th class="report-class__time-spent">tempo de permanência na questão</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each secao.conteudo.questoes as |questao|}}
+            <tr>
+              <td class="report-class__main-info">Questão {{questao.idx}}</td>
+              {{#if questao.respondida}}
+              {{#if questao.acertou}}
+              <td class="report-class__correct"><span class="icon-check icon--success"></span></td>
+              {{else}}
+              <td class="report-class__correct"><span class="icon-x icon--error"></span></td>
+              {{/if}}
+              {{else}}
+              <td class="report-class__correct"><span class="icon-minus"></span></td>
+              {{/if}}
+              <td class="report-class__visualization">{{questao.visfeedback}}%</td>
+              <td class="report-class__feedback">{{questao.qtdefeedback}}</td>
+              <td class="report-class__time-spent">{{questao.tempoquestaoalias}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+        {{/each}}
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </section>
+  {{else}}
+  <!-- INÍCIO DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
+  <div class="empty">
+    <span class="empty__icon icon-frown-o icon--xxl"></span>
+    Esse usuário não está matriculado em nenhum curso.
+  </div>
+  <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
+  {{/if}}
+  {{else}}
+  <div class="loader">
+    <div class="loader__bars">
+      <div class="loader__bar loader__bar--1"></div>
+      <div class="loader__bar loader__bar--2"></div>
+      <div class="loader__bar loader__bar--3"></div>
+    </div>
+  </div>
+  {{!-- <div class="container-fluid gersistema-container" style="padding-top: 200px;">
     <div class="row">
       <div class="col-xs-12" style="text-align: center;">
         <table style="width: 100%; text-align: center;">
@@ -395,305 +395,305 @@
       </div>
     </div>
   </div> --}}
-    {{/if}}
+  {{/if}}
 </section>
 
 <section style="display: none;" id="report-people-comparison">
 
-    <header class="report__header">
-        <button class="btn btn--text" {{action 'backComparison'}}>
-            <span class="icon-arrow-left"></span>voltar
-        </button>
+  <header class="report__header">
+    <button class="btn btn--text" {{action 'backComparison'}}>
+      <span class="icon-arrow-left"></span>voltar
+    </button>
 
-        <h2 class="main__subtitle">Comparar alunos</h2>
-        <div class="filter filter--all-left">
-            <div class="form-group form-group--select-wrapper">
-                <label class="form-group__label" for="select_course">Curso</label>
-                <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}} id="select_course_compare" value="select_inst">
-                    {{#if curso_selected_compare}}
-                        <option value="none" style="font-style: italic;">Selecione o curso...</option>
-                    {{else}}
-                        <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
-                    {{/if}}
-                    {{#each modulos as |modulo|}}
-                        {{#if (equalstr curso_selected_compare.id modulo.id)}}
-                            <option value={{modulo.id}} selected>{{modulo.name}}</option>
-                        {{else}}
-                            <option value={{modulo.id}}>{{modulo.name}}</option>
-                        {{/if}}
-                    {{/each}}
-                </select>
-            </div>
+    <h2 class="main__subtitle">Comparar alunos</h2>
+    <div class="filter filter--all-left">
+      <div class="form-group form-group--select-wrapper">
+        <label class="form-group__label" for="select_course">Curso</label>
+        <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}} id="select_course_compare" value="select_inst">
+          {{#if curso_selected_compare}}
+          <option value="none" style="font-style: italic;">Selecione o curso...</option>
+          {{else}}
+          <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
+          {{/if}}
+          {{#each modulos as |modulo|}}
+          {{#if (equalstr curso_selected_compare.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}}</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}}</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
 
-            {{#if curso_selected_compare}}
-                <div class="form-group form-group--select-wrapper">
-                    <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst" {{action 'selectAtividadeCompare' on="change"}}>
-                        {{!-- <option value="none" style="font-style: italic;">Selecione a aula...</option> --}}
-                        <option value="all" style="font-style: italic;">Todas as aulas</option>
-                        {{#each curso_selected_compare.atividades as |atividade|}}
-                            {{#if (equalstr atividade_selected_compare.id atividade.id)}}
-                                <option value={{atividade.id}} selected>{{atividade.name}}</option>
-                            {{else}}
-                                <option value={{atividade.id}}>{{atividade.name}}</option>
-                            {{/if}}
-                        {{/each}}
-                    </select>
-                </div>
-            {{else}}
-                {{!-- <option value="none" selected>...</option> --}}
-            {{/if}}
+      {{#if curso_selected_compare}}
+      <div class="form-group form-group--select-wrapper">
+        <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst" {{action 'selectAtividadeCompare' on="change"}}>
+          {{!-- <option value="none" style="font-style: italic;">Selecione a aula...</option> --}}
+          <option value="all" style="font-style: italic;">Todas as aulas</option>
+          {{#each curso_selected_compare.atividades as |atividade|}}
+          {{#if (equalstr atividade_selected_compare.id atividade.id)}}
+          <option value={{atividade.id}} selected>{{atividade.name}}</option>
+          {{else}}
+          <option value={{atividade.id}}>{{atividade.name}}</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
+      {{else}}
+      {{!-- <option value="none" selected>...</option> --}}
+      {{/if}}
 
-        </div>
+    </div>
 
-    </header>
-    {{#if curso_selected_compare}}
-        <section class="report__body">
-            {{#if comparison_await}}
-                <div class="loader">
-                    <div class="loader__bars">
-                        <div class="loader__bar loader__bar--1"></div>
-                        <div class="loader__bar loader__bar--2"></div>
-                        <div class="loader__bar loader__bar--3"></div>
-                    </div>
-                </div>
-                {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
-            {{else}}
-                {{#each curso_selected_compare.atividades as |atividade idx|}}
-                    {{#if atividade_selected_compare}}
-                        {{#if (equalstr atividade_selected_compare.id atividade.id)}}
-                            <table class="report-class__table table-flip">
-                                <thead>
-                                    <tr>
-                                        <th class="table__subheader">
-                                            <span class="table__subtitle">Aula {{atividade.idx}}</span>
-                                            <span class="table__title">{{atividade.name}}</span>
-                                        </th>
-                                        {{#each atividade.secoes as |secao|}}
-                                            <th class="report-class__main-info">{{secao.nome}}</th>
-                                        {{/each}}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{#each array_pessoas_calc as |comp_pessoa|}}
-                                        <tr>
-                                            <td class="table__subheader has-user-thumb">
-                                                <span class="avatar">
-                                                    {{#if comp_pessoa.pessoa.uriAvatar}}
-                                                        <img class="avatar__img" src={{comp_pessoa.pessoa.uriAvatar}}>
-                                                    {{else}}
-                                                        <img class="avatar__img" src="/assets/img/avatar-default.svg">
-                                                    {{/if}}
-                                                </span>
-                                                {{comp_pessoa.pessoa.name}}
-                                            </td>
-                                            {{#each comp_pessoa.modulos as |p_modulo|}}
-                                                {{#each p_modulo.atividades as |p_atividade|}}
-                                                    {{#each p_atividade.secoes as |p_secao|}}
-                                                        {{#each atividade.secoes as |secao|}}
-                                                            {{#if (equalstr p_secao.conteudo.id secao.id)}}
-                                                                {{#if (equalstr p_secao.conteudo.type 'html')}}
-                                                                    {{#if (equalstr p_secao.conteudo.percent '100')}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="icon-check icon--success"></span>
-                                                                        </td>
-                                                                    {{else}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="icon-minus"></span>
-                                                                        </td>
-                                                                    {{/if}}
-                                                                {{else if (equalstr p_secao.conteudo.type 'video')}}
-                                                                    {{#if (equalstr p_secao.conteudo.percent '100')}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="icon-check icon--success"></span>
-                                                                        </td>
-                                                                    {{else}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="icon-minus"></span>
-                                                                        </td>
-                                                                    {{/if}}
-                                                                {{else}}
-                                                                    {{#if p_secao.conteudo.respondidas}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="">{{p_secao.conteudo.aproveitamento}}<span class="small">%</span></span>
-                                                                        </td>
-                                                                    {{else}}
-                                                                        <td class="table-flip__icon table__icon">
-                                                                            <span class="icon-minus"></span>
-                                                                        </td>
-                                                                    {{/if}}
-                                                                {{/if}}
-                                                            {{/if}}
-                                                        {{/each}}
-                                                    {{/each}}
-                                                {{/each}}
-                                            {{/each}}
-                                        </tr>
-                                    {{/each}}
-                                    <tr>
-                                        <td class="table__subheader has-user-thumb">
-                                            {{!-- <span class="avatar">
+  </header>
+  {{#if curso_selected_compare}}
+  <section class="report__body">
+    {{#if comparison_await}}
+    <div class="loader">
+      <div class="loader__bars">
+        <div class="loader__bar loader__bar--1"></div>
+        <div class="loader__bar loader__bar--2"></div>
+        <div class="loader__bar loader__bar--3"></div>
+      </div>
+    </div>
+    {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
+    {{else}}
+    {{#each curso_selected_compare.atividades as |atividade idx|}}
+    {{#if atividade_selected_compare}}
+    {{#if (equalstr atividade_selected_compare.id atividade.id)}}
+    <table class="report-class__table table-flip">
+      <thead>
+        <tr>
+          <th class="table__subheader">
+            <span class="table__subtitle">Aula {{atividade.idx}}</span>
+            <span class="table__title">{{atividade.name}}</span>
+          </th>
+          {{#each atividade.secoes as |secao|}}
+          <th class="report-class__main-info">{{secao.nome}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each array_pessoas_calc as |comp_pessoa|}}
+        <tr>
+          <td class="table__subheader has-user-thumb">
+            <span class="avatar">
+              {{#if comp_pessoa.pessoa.uriAvatar}}
+              <img class="avatar__img" src={{comp_pessoa.pessoa.uriAvatar}}>
+              {{else}}
+              <img class="avatar__img" src="/assets/img/avatar-default.svg">
+              {{/if}}
+            </span>
+            {{comp_pessoa.pessoa.name}}
+          </td>
+          {{#each comp_pessoa.modulos as |p_modulo|}}
+          {{#each p_modulo.atividades as |p_atividade|}}
+          {{#each p_atividade.secoes as |p_secao|}}
+          {{#each atividade.secoes as |secao|}}
+          {{#if (equalstr p_secao.conteudo.id secao.id)}}
+          {{#if (equalstr p_secao.conteudo.type 'html')}}
+          {{#if (equalstr p_secao.conteudo.percent '100')}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-check icon--success"></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{else if (equalstr p_secao.conteudo.type 'video')}}
+          {{#if (equalstr p_secao.conteudo.percent '100')}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-check icon--success"></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{else}}
+          {{#if p_secao.conteudo.respondidas}}
+          <td class="table-flip__icon table__icon">
+            <span class="">{{p_secao.conteudo.aproveitamento}}<span class="small">%</span></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{/if}}
+          {{/if}}
+          {{/each}}
+          {{/each}}
+          {{/each}}
+          {{/each}}
+        </tr>
+        {{/each}}
+        <tr>
+          <td class="table__subheader has-user-thumb">
+            {{!-- <span class="avatar">
               <img class="avatar__img" src="/assets/img/avatar-default.svg">
             </span> --}}
-                                            <button class="btn btn--primary btn--sm" {{action 'openAdd' 1}}>Adicionar aluno</button>
+            <button class="btn btn--primary btn--sm" {{action 'openAdd' 1}}>Adicionar aluno</button>
 
-                                            <div id="add-user-1" class="add-user j-add-user">
-                                                <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 1 0}}></a>
-                                                <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
-                                                    <div class="form-group__wrapper form-group__wrapper--search">
-                                                        <input class="form-group__input" id="search_input_add" onfocus={{action 'livesearch' -1}} onkeyup={{action "livesearch" -1}} type="text" value={{read_str}} tabindex="1" autocomplete="off" aria-autocomplete="none">
-                                                    </div>
-                                                </form>
+            <div id="add-user-1" class="add-user j-add-user">
+              <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 1 0}}></a>
+              <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
+                <div class="form-group__wrapper form-group__wrapper--search">
+                  <input class="form-group__input" id="search_input_add" onfocus={{action 'livesearch' -1}} onkeyup={{action "livesearch" -1}} type="text" value={{read_str}} tabindex="1" autocomplete="off" aria-autocomplete="none">
+                </div>
+              </form>
 
-                                                <ul class="add-user__list">
-                                                    {{#each pessoas_selected_add as |pessoa_busca|}}
-                                                        <li class="add-user__user">
-                                                            {{#if comparison_await}}
-                                                                <i class="fa fa-spinner fa-pulse fa-1x"></i>
-                                                            {{else}}
-                                                                <span class="avatar avatar--sm">
-                                                                    {{#if pessoa_busca.uriAvatar}}
-                                                                        <img class="avatar__img" src={{pessoa_busca.uriAvatar}}>
-                                                                    {{else}}
-                                                                        <img class="avatar__img" src="/assets/img/avatar-default.svg">
-                                                                    {{/if}}
-                                                                </span>
-                                                                <span class="add-user__name">
-                                                                    <a class="person__link" href="#" {{action 'addPessoaCompare' pessoa_busca.id}}>{{pessoa_busca.name}}</a>
-                                                                </span>
-                                                            {{/if}}
-                                                        </li>
-                                                    {{/each}}
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        {{/if}}
+              <ul class="add-user__list">
+                {{#each pessoas_selected_add as |pessoa_busca|}}
+                <li class="add-user__user">
+                  {{#if comparison_await}}
+                  <i class="fa fa-spinner fa-pulse fa-1x"></i>
+                  {{else}}
+                  <span class="avatar avatar--sm">
+                    {{#if pessoa_busca.uriAvatar}}
+                    <img class="avatar__img" src={{pessoa_busca.uriAvatar}}>
                     {{else}}
-                        <table class="report-class__table table-flip">
-                            <thead>
-                                <tr>
-                                    <th class="table__subheader">
-                                        <span class="title-aux">Aula {{atividade.idx}}</span>
-                                        <span class="title-3">{{atividade.name}}</span>
-                                    </th>
-                                    {{#each atividade.secoes as |secao|}}
-                                        <th class="report-class__main-info">{{secao.nome}}</th>
-                                    {{/each}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{#each array_pessoas_calc as |comp_pessoa|}}
-                                    <tr>
-                                        <td class="table__subheader has-user-thumb">
-                                            <span class="avatar">
-                                                {{#if comp_pessoa.pessoa.uriAvatar}}
-                                                    <img class="avatar__img" src={{comp_pessoa.pessoa.uriAvatar}}>
-                                                {{else}}
-                                                    <img class="avatar__img" src="/assets/img/avatar-default.svg">
-                                                {{/if}}
-                                            </span>
-                                            {{comp_pessoa.pessoa.name}}
-                                        </td>
-                                        {{#each comp_pessoa.modulos as |p_modulo|}}
-                                            {{#each p_modulo.atividades as |p_atividade|}}
-                                                {{#each p_atividade.secoes as |p_secao|}}
-                                                    {{#each atividade.secoes as |secao|}}
-                                                        {{#if (equalstr p_secao.conteudo.id secao.id)}}
-                                                            {{#if (equalstr p_secao.conteudo.type 'html')}}
-                                                                {{#if (equalstr p_secao.conteudo.percent '100')}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="icon-check icon--success"></span>
-                                                                    </td>
-                                                                {{else}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="icon-minus"></span>
-                                                                    </td>
-                                                                {{/if}}
-                                                            {{else if (equalstr p_secao.conteudo.type 'video')}}
-                                                                {{#if (equalstr p_secao.conteudo.percent '100')}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="icon-check icon--success"></span>
-                                                                    </td>
-                                                                {{else}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="icon-minus"></span>
-                                                                    </td>
-                                                                {{/if}}
-                                                            {{else}}
-                                                                {{#if p_secao.conteudo.respondidas}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="">{{p_secao.conteudo.aproveitamento}}<span class="small">%</span></span>
-                                                                    </td>
-                                                                {{else}}
-                                                                    <td class="table-flip__icon table__icon">
-                                                                        <span class="icon-minus"></span>
-                                                                    </td>
-                                                                {{/if}}
-                                                            {{/if}}
-                                                        {{/if}}
-                                                    {{/each}}
-                                                {{/each}}
-                                            {{/each}}
-                                        {{/each}}
-                                    </tr>
-                                {{/each}}
-                                <tr>
-                                    <td class="table__subheader has-user-thumb">
-                                        {{!-- <span class="avatar">
-              <img class="avatar__img" src="/assets/img/avatar-default.svg">
-            </span> --}}
-                                        <button class="btn btn--primary btn--sm" {{action 'openAdd' 2 idx}}>Adicionar aluno</button>
-
-                                        <div id="add-user-2_{{idx}}" class="add-user j-add-user">
-                                            <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 2 idx}}></a>
-                                            <div class="form-group form-group--full-width">
-                                                <div class="form-group__wrapper form-group__wrapper--search">
-                                                    <input class="form-group__input" id="search_input_add_{{idx}}" onfocus={{action "livesearch" idx}} onkeyup={{action "livesearch" idx}} tabindex="1" type="text" value={{read_str}}>
-                                                </div>
-                                            </div>
-
-                                            <ul class="add-user__list">
-                                                {{#each pessoas_selected_add as |pessoa_busca|}}
-                                                    <li class="add-user__user">
-                                                        {{#if comparison_await}}
-                                                            <i class="fa fa-spinner fa-pulse fa-1x"></i>
-                                                        {{else}}
-                                                            <span class="avatar avatar--sm">
-                                                                {{#if pessoa_busca.uriAvatar}}
-                                                                    <img class="avatar__img" src={{pessoa_busca.uriAvatar}}>
-                                                                {{else}}
-                                                                    <img class="avatar__img" src="/assets/img/avatar-default.svg">
-                                                                {{/if}}
-                                                            </span>
-                                                            <span class="add-user__name">
-                                                                <a class="person__link" href="#" {{action 'addPessoaCompare' pessoa_busca.id}}>{{pessoa_busca.name}}</a>
-                                                            </span>
-                                                        {{/if}}
-                                                    </li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <img class="avatar__img" src="/assets/img/avatar-default.svg">
                     {{/if}}
+                  </span>
+                  <span class="add-user__name">
+                    <a class="person__link" href="#" {{action 'addPessoaCompare' pessoa_busca.id}}>{{pessoa_busca.name}}</a>
+                  </span>
+                  {{/if}}
+                </li>
                 {{/each}}
-            {{/if}}
-        </section>
+              </ul>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
     {{/if}}
+    {{else}}
+    <table class="report-class__table table-flip">
+      <thead>
+        <tr>
+          <th class="table__subheader">
+            <span class="title-aux">Aula {{atividade.idx}}</span>
+            <span class="title-3">{{atividade.name}}</span>
+          </th>
+          {{#each atividade.secoes as |secao|}}
+          <th class="report-class__main-info">{{secao.nome}}</th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each array_pessoas_calc as |comp_pessoa|}}
+        <tr>
+          <td class="table__subheader has-user-thumb">
+            <span class="avatar">
+              {{#if comp_pessoa.pessoa.uriAvatar}}
+              <img class="avatar__img" src={{comp_pessoa.pessoa.uriAvatar}}>
+              {{else}}
+              <img class="avatar__img" src="/assets/img/avatar-default.svg">
+              {{/if}}
+            </span>
+            {{comp_pessoa.pessoa.name}}
+          </td>
+          {{#each comp_pessoa.modulos as |p_modulo|}}
+          {{#each p_modulo.atividades as |p_atividade|}}
+          {{#each p_atividade.secoes as |p_secao|}}
+          {{#each atividade.secoes as |secao|}}
+          {{#if (equalstr p_secao.conteudo.id secao.id)}}
+          {{#if (equalstr p_secao.conteudo.type 'html')}}
+          {{#if (equalstr p_secao.conteudo.percent '100')}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-check icon--success"></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{else if (equalstr p_secao.conteudo.type 'video')}}
+          {{#if (equalstr p_secao.conteudo.percent '100')}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-check icon--success"></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{else}}
+          {{#if p_secao.conteudo.respondidas}}
+          <td class="table-flip__icon table__icon">
+            <span class="">{{p_secao.conteudo.aproveitamento}}<span class="small">%</span></span>
+          </td>
+          {{else}}
+          <td class="table-flip__icon table__icon">
+            <span class="icon-minus"></span>
+          </td>
+          {{/if}}
+          {{/if}}
+          {{/if}}
+          {{/each}}
+          {{/each}}
+          {{/each}}
+          {{/each}}
+        </tr>
+        {{/each}}
+        <tr>
+          <td class="table__subheader has-user-thumb">
+            {{!-- <span class="avatar">
+              <img class="avatar__img" src="/assets/img/avatar-default.svg">
+            </span> --}}
+            <button class="btn btn--primary btn--sm" {{action 'openAdd' 2 idx}}>Adicionar aluno</button>
+
+            <div id="add-user-2_{{idx}}" class="add-user j-add-user">
+              <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 2 idx}}></a>
+              <div class="form-group form-group--full-width">
+                <div class="form-group__wrapper form-group__wrapper--search">
+                  <input class="form-group__input" id="search_input_add_{{idx}}" onfocus={{action "livesearch" idx}} onkeyup={{action "livesearch" idx}} tabindex="1" type="text" value={{read_str}}>
+                </div>
+              </div>
+
+              <ul class="add-user__list">
+                {{#each pessoas_selected_add as |pessoa_busca|}}
+                <li class="add-user__user">
+                  {{#if comparison_await}}
+                  <i class="fa fa-spinner fa-pulse fa-1x"></i>
+                  {{else}}
+                  <span class="avatar avatar--sm">
+                    {{#if pessoa_busca.uriAvatar}}
+                    <img class="avatar__img" src={{pessoa_busca.uriAvatar}}>
+                    {{else}}
+                    <img class="avatar__img" src="/assets/img/avatar-default.svg">
+                    {{/if}}
+                  </span>
+                  <span class="add-user__name">
+                    <a class="person__link" href="#" {{action 'addPessoaCompare' pessoa_busca.id}}>{{pessoa_busca.name}}</a>
+                  </span>
+                  {{/if}}
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    {{/if}}
+    {{/each}}
+    {{/if}}
+  </section>
+  {{/if}}
 
 </section>
 <!-- FIM DA SESSÃO DE COMPARAÇÃO DE PESSOAS -->

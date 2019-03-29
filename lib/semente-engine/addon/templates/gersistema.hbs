@@ -352,22 +352,29 @@
     <button class="j-areaFocus btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
       <span class="btn__icon icon-plus"></span>Nova Turma</button>
     <div class="form-group form-group--select-wrapper m-left--auto">
-        <label class="form-group__label" for="select_course">Ano</label>
-        <select class="form-group__input form-group__input--select" id="select_year" value="select_inst" style="min-width: 10rem;">
-            <option value="ano1" selected>1º ano</option>
-            <option value="ano2">2º ano</option>
-            <option value="ano3">3º ano</option>
-        </select>
+      <label class="form-group__label" for="select_course">Ano</label>
+      <select class="form-group__input form-group__input--select" id="select_year" value="select_inst" style="min-width: 10rem;">
+        <option value="ano1" selected>1º ano</option>
+        <option value="ano2">2º ano</option>
+        <option value="ano3">3º ano</option>
+      </select>
     </div>
   </div>
   <section class="main__subsection">
     <ul class="institutions__areas list">
       <li id="newArea" style="display:none;">
-        <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
-        <div class="edit-text">
-          <input class="j-areaFocus edit-text__input form-group__input" type="textbox" id="newAreaName" value="{{area.name}}">
-          <!-- !!!!! DONT'T USE CONTENT EDITABLE ELEMENTE FOR DATA !!!!! -->
-          <!--<span class="edit-text__indicator"></span>-->
+        <div class="form-group form-group--select-wrapper m-right--md">
+          <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst" style="min-width: 5    rem;">
+            <option value="ano1" selected>1º ano</option>
+            <option value="ano2">2º ano</option>
+            <option value="ano3">3º ano</option>
+          </select>
+        </div>
+        <div flex="1" class="m-top--sm m-right--lg">
+          <div class="edit-text">
+            <input class="j-areaFocus edit-text__input form-group__input title-3" type="textbox" id="newAreaName" value="{{area.name}}">
+            <span class="edit-text__indicator"></span>
+          </div>
         </div>
         <div class="btn-group m-left--lg">
           <button class="j-areaFocus btn btn--sm btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
@@ -380,12 +387,11 @@
       </li>
       {{#each inst_selected.areas as |area idx|}}
       <li>
-        <div class="capsule capsule--green capsule--round capsule--xxs m-right--md m-top--xxs">1º ano</div>
+        <div class="capsule capsule--green capsule--round m-right--md m-top--xxs">1º ano</div>
         <div flex="1" class="m-right--lg">
           <div class="edit-text">
             <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
-            <!-- !!!!! DONT'T USE CONTENT EDITABLE ELEMENTE FOR DATA !!!!! -->
-            <!-- <span class="edit-text__indicator"></span>-->
+            <span class="edit-text__indicator"></span>
           </div>
           <em>10 alunos</em>
         </div>
@@ -426,22 +432,23 @@
 <div class="alert-container">
 
   <!-- CONFIRMATION || LIST -->
-  <div id="staticAlertAdm" class="alert alert--xs alert--primary alert--has-interaction">
+  <div id="staticAlertAdm" class="alert alert--x  alert--blue-navy-50 alert--has-interaction">
 
-    <p>{{staticTxt1}} <span class="m-left--xxs"><strong>{{staticTxt2}}</strong></span></p>
+    <p>{{staticTxt1}}</p>
+    <p class="m-top--md"><strong>{{staticTxt2}}</strong></p>
 
     <div class="alert__footer">
       <!-- area to delete -->
       {{#if (equalstr staticType 'area')}}
       <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Cancelar</button>
-      <button class="btn btn--sm btn--inverted" {{action 'actionConfirmation' areaToDelete}}><span class="btn__icon icon-trash-2"></span>Remover área</button>
+      <button class="btn btn--sm btn--primary" {{action 'actionConfirmation' areaToDelete}}><span class="btn__icon icon-trash-2"></span>Remover área</button>
       {{/if}}
       <!-- -->
     </div>
   </div>
 
   <!-- LOADING || SUCCESS || ERROR -->
-  <div id="timeoutAlertAdm" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+  <div id="timeoutAlertAdm" class="alert alert--x  alert--blue-navy-50 alert--has-icon alert--no-interaction">
     {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}

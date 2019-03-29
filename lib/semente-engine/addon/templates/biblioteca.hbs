@@ -25,10 +25,9 @@
       <div class="list__img list__img--xl list__img--video" {{action 'playView' file.view.id}}>
 
         <span id="thumb{{file.view.id}}" class="icon-package icon--ultra" style="opacity: .4"></span>
-          {{!-- <img src={{if file.thumb file.thumb '/assets/img/online-course.png'}}> --}}
+        {{!-- <img src={{if file.thumb file.thumb '/assets/img/online-course.png'}}> --}}
 
-        <iframe id="player{{file.view.id}}" src={{file.link}} width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen style="display:none;"></iframe>
+        <iframe id="player{{file.view.id}}" src={{file.link}} width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:none;"></iframe>
       </div>
       {{/if}}
 
@@ -109,7 +108,7 @@
 </div>
 
 <div class="alert-container">
-  <div id="libraryAlert" class="alert alert--xs alert--primary alert--has-icon alert--no-interaction">
+  <div id="libraryAlert" class="alert alert--x  alert--blue-navy-50 alert--has-icon alert--no-interaction">
     {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}

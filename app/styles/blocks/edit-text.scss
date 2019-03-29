@@ -13,6 +13,9 @@
     height: 1.25em;
     outline: 0 solid transparent;
     padding-left: 0;
+    position: relative;
+    width: 100%;
+    z-index: 2;
   }
 
   &__indicator {
@@ -26,6 +29,7 @@
     top: 0;
     transition: 300ms;
     width: 100%;
+    z-index: 1;
 
     #{$this}__input:focus+& {
       opacity: 1;
