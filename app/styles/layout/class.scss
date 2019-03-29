@@ -1,88 +1,88 @@
 .class {
-    $this: &;
+  $this: &;
 
-    $img-height: 118%;
-    $img-width: 40%;
+  $img-height: 118%;
+  $img-width: 40%;
 
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  @include media('>sm') {
+    min-height: 20vh;
+    padding: $distance--md $distance--lg;
+    width: calc(50% - #{$distance--md});
+  }
+
+  @include media('>lg') {
+    width: 40%;
+  }
+
+  >* {
+    z-index: 2;
+  }
+
+  &--is-completed {
+    // border-top: 4px solid $color-success;
+  }
+
+  &--is-disabled {
+    cursor: not-allowed;
+    opacity: .65;
+  }
+
+  &__img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $radius--md;
+    // box-shadow: 0 4px 0 0 hsla(0, 0, 0, .2);
+    height: calc(100% - (#{$distance--xs} * 2));
+    position: absolute;
+    right: $distance--xs;
+    // top: (100% - $img-height)/2;
+    top: $distance--xs;
+    width: $img-width;
+    z-index: 1;
+  }
+
+  &__title {
+    @include title-2;
+
+    margin-bottom: $distance--sm;
 
     @include media('>sm') {
-        min-height: 20vh;
-        padding: $distance--md $distance--lg;
-        width: calc(50% - #{$distance--md});
+      max-width: 50%;
+    }
+
+  }
+
+  &__description {
+    display: none;
+    font-size: $font-size--xs;
+    line-height: 1.35;
+    opacity: .85;
+
+    @include media('>sm') {
+      max-width: 50%;
     }
 
     @include media('>lg') {
-        width: 40%;
+      font-size: $font-size--sm;
+      line-height: 1.5;
     }
 
-    > * {
-        z-index: 2;
+  }
+
+  &__cta {
+    margin-top: $distance--md;
+
+    @include media('>md') {
+      margin-top: auto;
     }
 
-    &--is-completed {
-        // border-top: 4px solid $color-success;
-    }
-
-    &--is-disabled {
-        cursor: not-allowed;
-        opacity: .65;
-    }
-
-    &__img {
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: $radius--md;
-        // box-shadow: 0 4px 0 0 hsla(0, 0, 0, .2);
-        height: calc(100% - (#{$distance--xs} * 2));
-        position: absolute;
-        right: $distance--xs;
-        // top: (100% - $img-height)/2;
-        top: $distance--xs;
-        width: $img-width;
-        z-index: 1;
-    }
-
-    &__title {
-        @include title-2;
-
-        margin-bottom: $distance--xxs;
-
-        @include media('>sm') {
-            max-width: 50%;
-        }
-
-    }
-
-    &__description {
-        display: none;
-        font-size: $font-size--xs;
-        line-height: 1.35;
-        opacity: .85;
-
-        @include media('>sm') {
-            max-width: 50%;
-        }
-
-        @include media('>lg') {
-            font-size: $font-size--sm;
-            line-height: 1.5;
-        }
-
-    }
-
-    &__cta {
-        margin-top: $distance--md;
-
-        @include media('>md') {
-            margin-top: auto;
-        }
-
-    }
+  }
 
 }
