@@ -19,7 +19,7 @@
     transition: 400ms cubic-bezier(.455, .03, .515, .955); // IE fallback
     transition: 400ms var(--ease-in-out-quad);
     visibility: hidden;
-    z-index: 2;
+    z-index: 3;
   }
 
 
@@ -47,7 +47,7 @@
     transform: translate(-50%, 0) scale(.9);
     transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
     transition: 200ms var(--ease-in-out-quad);
-    z-index: 3;
+    z-index: 5;
 
     >*:first-child {
       margin-right: $distance--sm;
