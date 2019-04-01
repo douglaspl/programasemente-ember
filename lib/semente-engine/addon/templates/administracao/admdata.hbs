@@ -146,50 +146,38 @@
         {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
       </div>
 
-      <ul class="report-people__list">
+      <div class="loader-local {{if (equalstr admdataLoaderState 1) 'loader-local--is-show' ''}}">
 
-
-        <!-- ############################################################### -->
-        <!-- ############################################################### -->
-        <!-- ############################################################### -->
-        {{#if (equalstr admdataLoaderState 1)}}
-        <div style='display:flex;width:100%;justify-content:center;align-items:center;'>
-          <span style="color:#ffffff; background-color:rgb(140, 0, 255);padding:14px;border:0;border-radius:5px; box-shadow:0px 1px 3px #b1b1b1;">
-            <b>LOADING...</b>
-          </span>
+        <div class="loader-local__loader">
+          <span class="icon icon-reload icon--xl"></span>
+          Buscando
         </div>
-        {{/if}}
-        <!-- ############################################################### -->
-        <!-- ############################################################### -->
-        <!-- ############################################################### -->
-
-
-
-        {{#each pagedContent.content as |pessoa|}}
-        <li class="report-people__person augmented-link">
-          <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
-          {{!-- <div class="report-people__check form-group">
+        <ul class="report-people__list">
+          {{#each pagedContent.content as |pessoa|}}
+          <li class="report-people__person augmented-link">
+            <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
+            {{!-- <div class="report-people__check form-group">
                             <span class="checkbox">
                                 <input class="checkbox__input ckb_pessoa_cmp" id="personID_{{pessoa.id}}" name="remember" type="checkbox" value="personID_{{index}}" {{action 'selectPessoaCompare' pessoa.id preventDefault=false}}>
                                 <label class="checkbox__label" for="personID_{{pessoa.id}}"></label>
                             </span>
                         </div> --}}
-          <span class="report-people__avatar avatar avatar--lg">
-            {{#if pessoa.uriAvatar}}
-            <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-            {{else}}
-            <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-            {{/if}}
-          </span>
-          <div class="person">
-            <span class="person__name">
-              {{pessoa.name}}
+            <span class="report-people__avatar avatar avatar--lg">
+              {{#if pessoa.uriAvatar}}
+              <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+              {{else}}
+              <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+              {{/if}}
             </span>
-            {{!-- <span class="person__email">{{pessoa.email}}</span> --}}
-            {{!-- <span class="person__other">Último acesso: <strong>{{pessoa.lastAccess}}</strong></span> --}}
-            {{!-- <span class="person__other">Área: <strong>{{pessoa.area.name}}</strong></span> --}}
-          </div>
-          {{!-- <div class="report-people__data">
+            <div class="person">
+              <span class="person__name">
+                {{pessoa.name}}
+              </span>
+              {{!-- <span class="person__email">{{pessoa.email}}</span> --}}
+              {{!-- <span class="person__other">Último acesso: <strong>{{pessoa.lastAccess}}</strong></span> --}}
+              {{!-- <span class="person__other">Área: <strong>{{pessoa.area.name}}</strong></span> --}}
+            </div>
+            {{!-- <div class="report-people__data">
                             <div class="data">
                                 <span class="data__value">{{pessoa.nracessos}}</span>
                                 <span class="data__label">acessos</span>
@@ -199,10 +187,10 @@
                                 <span class="data__label">cursos concluídos</span>
                             </div>
                         </div> --}}
-        </li>
-        {{/each}}
-      </ul>
-
+          </li>
+          {{/each}}
+        </ul>
+      </div>
       {{page-numbers content=pagedContent perPage=perPage class="pagination--right"}}
 
     </div>
