@@ -34,11 +34,11 @@
   &__circle {
     $multiplier: 1.75;
 
-  animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
+    animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
     align-items: center;
     background-color: $gray-0;
     border-radius: $radius--md;
-    box-shadow: $shadow-5;
+    box-shadow: $shadow-5, $shadow-h-5;
     display: flex;
     flex-direction: row;
     height: $tree-width * $multiplier;
@@ -47,7 +47,7 @@
   }
 
   svg {
-    filter: drop-shadow(0 0 10px $lemon-60);
+    filter: drop-shadow(0 0 10px $gray-20);
     width: $tree-width;
   }
 
