@@ -29,7 +29,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 999999999;
+  z-index: 999999;
 
   &__circle {
     $multiplier: 1.75;
@@ -67,7 +67,7 @@
   &__foliage {
     fill: none;
     stroke: #97c454;
-    stroke: $leaf-50;
+    stroke: $green-40;
     // stroke: white;
     stroke-width: 6px;
   }

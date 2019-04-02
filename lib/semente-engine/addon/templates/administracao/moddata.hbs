@@ -133,15 +133,29 @@
       <div class="filter-list__list">
 
         {{#if load_state}}
-        <div class="loader">
-          <div class="loader__bars">
-            <h1>Moddata.hbs 1</h1>
-            <div class="loader__bar loader__bar--1"></div>
-            <div class="loader__bar loader__bar--2"></div>
-            <div class="loader__bar loader__bar--3"></div>
+        <div class="loader" id="firstAccessLoader">
+          <div class="loader__circle">
+            <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+              <title>semente-simbolo</title>
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <g id="simbolo">
+                    <line id="caule" class="loader__steam" x1="61.5" y1="45" x2="61.5" y2="161" />
+                    <line id="ramo3" class="loader__steam" x1="80.8" y1="126.95" x2="61.7" y2="146.05" />
+                    <circle id="copa3" class="loader__foliage" cx="99.5" cy="116.5" r="21.5" />
+                    <line id="ramo4" class="loader__steam" x1="42.7" y1="126.95" x2="61.8" y2="146.05" />
+                    <circle id="copa4" class="loader__foliage" cx="23.5" cy="116.5" r="21.5" />
+                    <line id="ramo2" class="loader__steam" x1="80.8" y1="73.95" x2="61.7" y2="93.05" />
+                    <circle id="copa2" class="loader__foliage" cx="99.5" cy="63.5" r="21.5" />
+                    <line id="ramo1" class="loader__steam" x1="42.7" y1="73.95" x2="61.8" y2="93.05" />
+                    <circle id="copa1" class="loader__foliage" cx="23.5" cy="63.5" r="21.5" />
+                    <circle id="copa-topo" class="loader__foliage" cx="61.5" cy="23.5" r="21.5" />
+                  </g>
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
-
         {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
         {{else}}
         <div class="filter-list__ordering ordering">
@@ -424,12 +438,27 @@
   <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
   {{/if}}
   {{else}}
-  <div class="loader">
-    <div class="loader__bars">
-      <h1>Moddata.hbs 2</h1>
-      <div class="loader__bar loader__bar--1"></div>
-      <div class="loader__bar loader__bar--2"></div>
-      <div class="loader__bar loader__bar--3"></div>
+  <div class="loader" id="firstAccessLoader">
+    <div class="loader__circle">
+      <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+        <title>semente-simbolo</title>
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1">
+            <g id="simbolo">
+              <line id="caule" class="loader__steam" x1="61.5" y1="45" x2="61.5" y2="161" />
+              <line id="ramo3" class="loader__steam" x1="80.8" y1="126.95" x2="61.7" y2="146.05" />
+              <circle id="copa3" class="loader__foliage" cx="99.5" cy="116.5" r="21.5" />
+              <line id="ramo4" class="loader__steam" x1="42.7" y1="126.95" x2="61.8" y2="146.05" />
+              <circle id="copa4" class="loader__foliage" cx="23.5" cy="116.5" r="21.5" />
+              <line id="ramo2" class="loader__steam" x1="80.8" y1="73.95" x2="61.7" y2="93.05" />
+              <circle id="copa2" class="loader__foliage" cx="99.5" cy="63.5" r="21.5" />
+              <line id="ramo1" class="loader__steam" x1="42.7" y1="73.95" x2="61.8" y2="93.05" />
+              <circle id="copa1" class="loader__foliage" cx="23.5" cy="63.5" r="21.5" />
+              <circle id="copa-topo" class="loader__foliage" cx="61.5" cy="23.5" r="21.5" />
+            </g>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
   {{!-- <div class="container-fluid gersistema-container" style="padding-top: 200px;">
@@ -503,12 +532,27 @@
   {{#if curso_selected_compare}}
   <section class="report__body">
     {{#if comparison_await}}
-    <div class="loader">
-      <div class="loader__bars">
-        <h1>Moddata.hbs 3</h1>
-        <div class="loader__bar loader__bar--1"></div>
-        <div class="loader__bar loader__bar--2"></div>
-        <div class="loader__bar loader__bar--3"></div>
+    <div class="loader" id="firstAccessLoader">
+      <div class="loader__circle">
+        <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+          <title>semente-simbolo</title>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <g id="simbolo">
+                <line id="caule" class="loader__steam" x1="61.5" y1="45" x2="61.5" y2="161" />
+                <line id="ramo3" class="loader__steam" x1="80.8" y1="126.95" x2="61.7" y2="146.05" />
+                <circle id="copa3" class="loader__foliage" cx="99.5" cy="116.5" r="21.5" />
+                <line id="ramo4" class="loader__steam" x1="42.7" y1="126.95" x2="61.8" y2="146.05" />
+                <circle id="copa4" class="loader__foliage" cx="23.5" cy="116.5" r="21.5" />
+                <line id="ramo2" class="loader__steam" x1="80.8" y1="73.95" x2="61.7" y2="93.05" />
+                <circle id="copa2" class="loader__foliage" cx="99.5" cy="63.5" r="21.5" />
+                <line id="ramo1" class="loader__steam" x1="42.7" y1="73.95" x2="61.8" y2="93.05" />
+                <circle id="copa1" class="loader__foliage" cx="23.5" cy="63.5" r="21.5" />
+                <circle id="copa-topo" class="loader__foliage" cx="61.5" cy="23.5" r="21.5" />
+              </g>
+            </g>
+          </g>
+        </svg>
       </div>
     </div>
     {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}

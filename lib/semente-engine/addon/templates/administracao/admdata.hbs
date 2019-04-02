@@ -253,62 +253,61 @@
     <ul>
       {{#each curso_selected.atividades as |atividade|}}
       <li class="report-person__class">
-        <div class="report-class__two-col">
-          <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
-            <span class="title-aux">Aula {{atividade.idx}}</span>
-            <h3 class="title-3">{{atividade.name}}</h3>
-          </div>
-          <ul class="report-class__progress">
-            {{#each atividade.secoes as |secao|}}
-            {{#if (equalstr secao.conteudo.type 'html')}}
-
-            {{#if (equalstr secao.conteudo.percent '100')}}
-            <li class="data data--bordered data--success data--short">
-              <span class="icon-check icon--success icon--lg"></span>
-              <span class="data__label">{{secao.nome}}</span>
-            </li>
-            {{else}}
-            <li class="data data--bordered data--light data--short">
-              <span class="icon-minus icon--lg"></span>
-              <span class="data__label">{{secao.nome}}</span>
-            </li>
-            {{/if}}
-
-            {{else if (equalstr secao.conteudo.type 'video')}}
-
-            {{#if (equalstr secao.conteudo.percent '100')}}
-            <li class="data data--bordered data--success data--short">
-              <span class="icon-check icon--success icon--lg"></span>
-              <span class="data__label">{{secao.nome}}</span>
-            </li>
-            {{else}}
-            <li class="data data--bordered data--light data--short">
-              <span class="icon-minus icon--lg"></span>
-              <span class="data__label">{{secao.nome}}</span>
-            </li>
-            {{/if}}
-
-            {{else}}
-
-            {{#if secao.conteudo.respondidas}}
-            <li class="data data--bordered data--success data--short">
-              <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
-              <span class="data__label">{{secao.nome}}</span>
-              {{!-- <span class="data__label">aproveitamento</span> --}}
-            </li>
-            {{else}}
-            <li class="data data--bordered data--light data--short">
-              <span class="icon-minus icon--lg"></span>
-              <span class="data__label">{{secao.nome}}</span>
-              {{!-- <span class="data__label">aproveitamento</span> --}}
-            </li>
-            {{/if}}
-
-            {{/if}}
-
-            {{/each}}
-          </ul>
+        <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm">
+          <span class="title-aux">Aula {{atividade.idx}}</span>
+          <h3 class="title-2">{{atividade.name}}</h3>
         </div>
+        <ul class="report-class__progress">
+          {{#each atividade.secoes as |secao|}}
+          {{#if (equalstr secao.conteudo.type 'html')}}
+
+          {{#if (equalstr secao.conteudo.percent '100')}}
+          <li class="data data--bordered data--success data--short">
+            <span class="icon-check icon--success icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{else}}
+          <li class="data data--bordered data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{/if}}
+
+          {{else if (equalstr secao.conteudo.type 'video')}}
+
+          {{#if (equalstr secao.conteudo.percent '100')}}
+          <li class="data data--bordered data--success data--short">
+            <span class="icon-check icon--success icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{else}}
+          <li class="data data--bordered data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{/if}}
+
+          {{else}}
+
+          {{#if secao.conteudo.respondidas}}
+          <li class="data data--bordered data--success data--short">
+            <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
+            <span class="data__label">{{secao.nome}}</span>
+            {{!-- <span class="data__label">aproveitamento</span> --}}
+          </li>
+          {{else}}
+          <li class="data data--bordered data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+            {{!-- <span class="data__label">aproveitamento</span> --}}
+          </li>
+          {{/if}}
+
+          {{/if}}
+
+          {{/each}}
+        </ul>
+
         <h4 class="report-class__subtitle">Dados dos quizes</h4>
         {{#each atividade.secoes as |secao|}}
         {{#if (equalstr secao.conteudo.type 'quiz')}}
@@ -358,12 +357,27 @@
   <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
   {{/if}}
   {{else}}
-  <div class="loader">
-    <div class="loader__bars">
-      <h1>admdata.hbs 1</h1>
-      <div class="loader__bar loader__bar--1"></div>
-      <div class="loader__bar loader__bar--2"></div>
-      <div class="loader__bar loader__bar--3"></div>
+  <div class="loader" id="firstAccessLoader">
+    <div class="loader__circle">
+      <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+        <title>semente-simbolo</title>
+        <g id="Layer_2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1">
+            <g id="simbolo">
+              <line id="caule" class="loader__steam" x1="61.5" y1="45" x2="61.5" y2="161" />
+              <line id="ramo3" class="loader__steam" x1="80.8" y1="126.95" x2="61.7" y2="146.05" />
+              <circle id="copa3" class="loader__foliage" cx="99.5" cy="116.5" r="21.5" />
+              <line id="ramo4" class="loader__steam" x1="42.7" y1="126.95" x2="61.8" y2="146.05" />
+              <circle id="copa4" class="loader__foliage" cx="23.5" cy="116.5" r="21.5" />
+              <line id="ramo2" class="loader__steam" x1="80.8" y1="73.95" x2="61.7" y2="93.05" />
+              <circle id="copa2" class="loader__foliage" cx="99.5" cy="63.5" r="21.5" />
+              <line id="ramo1" class="loader__steam" x1="42.7" y1="73.95" x2="61.8" y2="93.05" />
+              <circle id="copa1" class="loader__foliage" cx="23.5" cy="63.5" r="21.5" />
+              <circle id="copa-topo" class="loader__foliage" cx="61.5" cy="23.5" r="21.5" />
+            </g>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
   {{!-- <div class="container-fluid gersistema-container" style="padding-top: 200px;">
@@ -438,12 +452,27 @@
   {{#if curso_selected_compare}}
   <section class="report__body">
     {{#if comparison_await}}
-    <div class="loader">
-      <div class="loader__bars">
-        <h1>admdata.hbs 2</h1>
-        <div class="loader__bar loader__bar--1"></div>
-        <div class="loader__bar loader__bar--2"></div>
-        <div class="loader__bar loader__bar--3"></div>
+    <div class="loader" id="firstAccessLoader">
+      <div class="loader__circle">
+        <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+          <title>semente-simbolo</title>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <g id="simbolo">
+                <line id="caule" class="loader__steam" x1="61.5" y1="45" x2="61.5" y2="161" />
+                <line id="ramo3" class="loader__steam" x1="80.8" y1="126.95" x2="61.7" y2="146.05" />
+                <circle id="copa3" class="loader__foliage" cx="99.5" cy="116.5" r="21.5" />
+                <line id="ramo4" class="loader__steam" x1="42.7" y1="126.95" x2="61.8" y2="146.05" />
+                <circle id="copa4" class="loader__foliage" cx="23.5" cy="116.5" r="21.5" />
+                <line id="ramo2" class="loader__steam" x1="80.8" y1="73.95" x2="61.7" y2="93.05" />
+                <circle id="copa2" class="loader__foliage" cx="99.5" cy="63.5" r="21.5" />
+                <line id="ramo1" class="loader__steam" x1="42.7" y1="73.95" x2="61.8" y2="93.05" />
+                <circle id="copa1" class="loader__foliage" cx="23.5" cy="63.5" r="21.5" />
+                <circle id="copa-topo" class="loader__foliage" cx="61.5" cy="23.5" r="21.5" />
+              </g>
+            </g>
+          </g>
+        </svg>
       </div>
     </div>
     {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}

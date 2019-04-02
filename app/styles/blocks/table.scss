@@ -1,229 +1,300 @@
 .table {
-    $this: &;
+  $this: &;
 
-    border-collapse: collapse;
-    table-layout: fixed;
-    white-space: nowrap;
-    width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
+  width: 100%;
 
-    &__icon {
-        font-size: 1.75em;
-        text-align: center;
+  &__icon {
+    font-size: 1.75em;
+    text-align: center;
+  }
+
+  &__subheader {
+    border-bottom: 1px solid $color-gray--light;
+    font-size: .85em;
+    font-weight: bold;
+    opacity: .85;
+    padding-top: $distance--md;
+    text-transform: uppercase;
+
+    th {
+      font-weight: inherit;
     }
 
-    &__subheader {
-        border-bottom: 1px solid $color-gray--light;
-        font-size: .85em;
-        font-weight: bold;
-        opacity: .85;
-        padding-top: $distance--md;
-        text-transform: uppercase;
+  }
 
-        th {
-            font-weight: inherit;
-        }
+  &__title {
+    display: block;
+    font-size: $font-size--md;
+    font-weight: bold;
+  }
 
+  &__subtitle {
+    display: block;
+    font-size: $font-size--xxs;
+    opacity: .85;
+    text-transform: uppercase;
+  }
+
+  // When there are stripes inside a striped table.
+  // Currently used at: Acompanhamento > Quiz (WIP)
+  &__striped-light {
+    &:nth-child(even) {
+      background-color: rgba(255, 255, 255, 1);
     }
 
-    &__title {
-        display: block;
-        font-size: $font-size--md;
-        font-weight: bold;
+    &:nth-child(odd) {
+      background-color: rgba(255, 255, 255, .65);
+    }
+  }
+
+  &__striped-dark {
+    &:nth-child(even) {
+      background-color: rgba(255, 255, 255, .05);
     }
 
-    &__subtitle {
-        display: block;
-        font-size: $font-size--xxs;
-        opacity: .85;
-        text-transform: uppercase;
+    &:nth-child(odd) {
+      background-color: rgba(255, 255, 255, .3);
+    }
+  }
+
+  // / When there are stripes inside a striped table.
+
+  // MODIFIERS
+  &--striped {
+    tr:nth-child(even) {
+      td {
+        background-color: $color-white;
+      }
     }
 
-    // When there are stripes inside a striped table.
-    // Currently used at: Acompanhamento > Quiz (WIP)
-    &__striped-light {
-        &:nth-child(even) { background-color: rgba(255, 255, 255, 1); }
-        &:nth-child(odd) { background-color: rgba(255, 255, 255, .65); }
-    }
-
-    &__striped-dark {
-        &:nth-child(even) { background-color: rgba(255, 255, 255, .05); }
-        &:nth-child(odd) { background-color: rgba(255, 255, 255, .3); }
-    }
-    // / When there are stripes inside a striped table.
-
-    // MODIFIERS
-    &--striped {
-        tr:nth-child(odd) {
-            td {
-                background-color: $color-white;
-            }
-        }
-
-        tr:nth-child(odd) {
-            td {
-                background-color: $gray-0;
-            }
-        }
-    }
-
-    // SPECIFIC TABLES COLUMNS WIDTHS
-    &--indicators {
-        #{$this}__name { width: 16%; }
-        #{$this}__email { width: 24%; }
-        #{$this}__area { width: 12%; }
-        #{$this}__role { width: 12%; }
-        #{$this}__last-access { width: 10%; }
-        #{$this}__total-access { width: 12%; }
-        #{$this}__activities { width: 14%; }
-    }
-
-    &--users {
-        #{$this}__check { width: 60px; }
-        #{$this}__name { width: 12%; }
-        #{$this}__email { width: 20%; }
-
-        #{$this}__area {
-            display: none;
-            width: 10%;
-
-            @include media('>md') {
-                display: table-cell;
-            }
-
-        }
-
-        #{$this}__role {
-            display: none;
-            width: 8%;
-
-            @include media('>md') {
-                display: table-cell;
-            }
-
-        }
-
-        #{$this}__enabled {
-            text-align: center;
-            width: 10%;
-        }
-
-        #{$this}__sent {
-            text-align: center;
-            width: 10%;
-        }
-
-        #{$this}__courses {
-            text-align: center;
-            width: 10%;
-        }
-
-        #{$this}__actions {
-            overflow: visible;
-            position: relative;
-            text-align: center;
-            width: 60px;
-
-        }
-
-        #{$this}__submenu {
-            position: absolute;
-            right: 85%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-    }
-
-    &--emails {
-        #{$this}__check {
-            text-align: center;
-            width: 32px;
-        }
-
-        #{$this}__name { width: 16%; }
-        #{$this}__email { width: 34%; }
-
-        #{$this}__role {
-            display: none;
-            width: 10%;
-
-            @include media('>md') {
-                display: table-cell;
-            }
-
-        }
-
-        #{$this}__enabled {
-            text-align: center;
-            width: 10%;
-        }
-
-        #{$this}__sent {
-            text-align: center;
-            width: 10%;
-        }
-
-        #{$this}__courses { width: 23%; }
-
-        #{$this}__actions {
-            text-align: center;
-            width: 80px;
-        }
-
-        #{$this}__status {
-            text-align: center;
-            width: 80px;
-        }
-
-    }
-
-    &--mass-enroll {
-        #{$this}__enroller { width: 8%;}
-        #{$this}__file { width: 20%;}
-        #{$this}__import { width: 12%;}
-        #{$this}__status { width: 8%;}
-
-        #{$this}__users {
-            text-align: center;
-            width: 8%;
-        }
-
-        #{$this}__processed {
-            text-align: center;
-            width: 8%;
-        }
-
-        #{$this}__not-processed {
-            text-align: center;
-            width: 14%;
-            white-space: normal;
-        }
-
-        #{$this}__log {
-            text-align: center;
-            width: 4%;
-        }
-
-    }
-
-    &--quizes {
+    tr:nth-child(odd) {
+      td {
         background-color: $gray-0;
-        text-align: center;
+      }
+    }
+  }
 
-        tr > *:first-child {
-            text-align: left;
-        }
+  // SPECIFIC TABLES COLUMNS WIDTHS
+  &--indicators {
+    #{$this}__name {
+      width: 16%;
+    }
 
-        #{$this}__name {
-            width: 16%;
-        }
+    #{$this}__email {
+      width: 24%;
+    }
 
-        #{$this}__correct { width: 12%; }
-        #{$this}__wrong { width: 12%; }
-        #{$this}__average { width: 20%; }
-        #{$this}__rewatch { width: 20%; }
-        #{$this}__average-time { width: 20%; }
+    #{$this}__area {
+      width: 12%;
+    }
+
+    #{$this}__role {
+      width: 12%;
+    }
+
+    #{$this}__last-access {
+      width: 10%;
+    }
+
+    #{$this}__total-access {
+      width: 12%;
+    }
+
+    #{$this}__activities {
+      width: 14%;
+    }
+  }
+
+  &--users {
+    #{$this}__check {
+      width: 60px;
+    }
+
+    #{$this}__name {
+      width: 12%;
+    }
+
+    #{$this}__email {
+      width: 20%;
+    }
+
+    #{$this}__area {
+      display: none;
+      width: 10%;
+
+      @include media('>md') {
+        display: table-cell;
+      }
 
     }
+
+    #{$this}__role {
+      display: none;
+      width: 8%;
+
+      @include media('>md') {
+        display: table-cell;
+      }
+
+    }
+
+    #{$this}__enabled {
+      text-align: center;
+      width: 10%;
+    }
+
+    #{$this}__sent {
+      text-align: center;
+      width: 10%;
+    }
+
+    #{$this}__courses {
+      text-align: center;
+      width: 10%;
+    }
+
+    #{$this}__actions {
+      overflow: visible;
+      position: relative;
+      text-align: center;
+      width: 60px;
+
+    }
+
+    #{$this}__submenu {
+      position: absolute;
+      right: 85%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  }
+
+  &--emails {
+    #{$this}__check {
+      text-align: center;
+      width: 32px;
+    }
+
+    #{$this}__name {
+      width: 16%;
+    }
+
+    #{$this}__email {
+      width: 34%;
+    }
+
+    #{$this}__role {
+      display: none;
+      width: 10%;
+
+      @include media('>md') {
+        display: table-cell;
+      }
+
+    }
+
+    #{$this}__enabled {
+      text-align: center;
+      width: 10%;
+    }
+
+    #{$this}__sent {
+      text-align: center;
+      width: 10%;
+    }
+
+    #{$this}__courses {
+      width: 23%;
+    }
+
+    #{$this}__actions {
+      text-align: center;
+      width: 80px;
+    }
+
+    #{$this}__status {
+      text-align: center;
+      width: 80px;
+    }
+
+  }
+
+  &--mass-enroll {
+    #{$this}__enroller {
+      width: 8%;
+    }
+
+    #{$this}__file {
+      width: 20%;
+    }
+
+    #{$this}__import {
+      width: 12%;
+    }
+
+    #{$this}__status {
+      width: 8%;
+    }
+
+    #{$this}__users {
+      text-align: center;
+      width: 8%;
+    }
+
+    #{$this}__processed {
+      text-align: center;
+      width: 8%;
+    }
+
+    #{$this}__not-processed {
+      text-align: center;
+      width: 14%;
+      white-space: normal;
+    }
+
+    #{$this}__log {
+      text-align: center;
+      width: 4%;
+    }
+
+  }
+
+  &--quizes {
+    background-color: $gray-0;
+    text-align: center;
+
+    tr>*:first-child {
+      text-align: left;
+    }
+
+    #{$this}__name {
+      width: 16%;
+    }
+
+    #{$this}__correct {
+      width: 12%;
+    }
+
+    #{$this}__wrong {
+      width: 12%;
+    }
+
+    #{$this}__average {
+      width: 20%;
+    }
+
+    #{$this}__rewatch {
+      width: 20%;
+    }
+
+    #{$this}__average-time {
+      width: 20%;
+    }
+
+  }
 
 }
