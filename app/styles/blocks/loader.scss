@@ -1,104 +1,75 @@
-$loader-width: 6px;
-
-$percentages: (40, 65, 100);
-$factor: 20;
-$interval: 0.5;
-$previousAnimation: 0;
-
 @keyframes pulse {
-    0%   { transform: scale(1); }
-    33%  { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
   }
 
-@for $i from 1 through 3 {
-  @keyframes bar_animate_#{$i - 1} {
-    @if $i > 2 {
-      $previousAnimation: $previousAnimation + ($factor * nth($percentages, $i - 1) / 100) + $interval;
-      0%, #{($previousAnimation)}% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-     }
-    }
-    @else if $i == 2 {
-      $previousAnimation: $previousAnimation + ($factor * nth($percentages, $i - 1) / 100) + $interval;
-      0%, #{$previousAnimation}% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-      }
-    }
-    @else {
-      0% {
-      transform: scaleY(0);
-      transform-origin: bottom;
-      }
-    }
-
-    #{$previousAnimation + ($factor * nth($percentages, $i) / 100)}%, 100% {
-        transform: scaleY(1);
-        transform-origin: bottom;
-      }
+  33% {
+    transform: scale(1.2);
   }
 
+  100% {
+    transform: scale(1);
+  }
 }
 
 .loader {
+
+  $tree-width: 64px;
+
+  align-items: center;
+  background-color: transparentize($blue-navy-50, .2);
+  background-image: linear-gradient(-30deg,
+    transparentize($blue-navy-60, .2),
+    transparentize($blue-navy-50, .2) 65%,
+    transparentize($blue-navy-20, .2) 96%);
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999999999;
+
+  &__circle {
+    $multiplier: 1.75;
+
+  animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
     align-items: center;
-    background-color: transparentize($blue-navy-50, .2);
-    background-image: linear-gradient(-30deg,
-                                      transparentize($blue-navy-60, .2),
-                                      transparentize($blue-navy-50, .2) 65%,
-                                      transparentize($blue-navy-20, .2) 96%);
+    background-color: $gray-0;
+    border-radius: $radius--md;
+    box-shadow: $shadow-5;
     display: flex;
+    flex-direction: row;
+    height: $tree-width * $multiplier;
     justify-content: center;
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 999999999;
+    width: $tree-width * $multiplier;
+  }
 
-    &__bars {
-        align-items: flex-end;
-        animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
-        background-color: $green;
-        background-image: linear-gradient(-30deg, $lemon-60, $lemon-30);
-        border-radius: 50%;
-        box-shadow: $shadow-2;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        height: $loader-width * 16;
-        padding: ($loader-width * 4) ($loader-width * 4.5);
-        width: $loader-width * 16;
-    }
+  svg {
+    filter: drop-shadow(0 0 10px $lemon-60);
+    width: $tree-width;
+  }
 
-    &__bar {
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        background-color: $color-white;
-        border-radius: $radius;
-        box-shadow: $shadow-3;
-        flex: 0 0 auto;
-        width: $loader-width;
+  &__steam {
+    fill: none;
+    stroke: #3a3a3a;
+    stroke: $gray-50;
+    // stroke: #f3f3f3;
+    stroke-width: 6px;
+  }
 
-        &--1 {
-            animation-name: bar_animate_0;
-            height: 50%;
-            opacity: .4;
-        }
+  &__steam,
+  &__foliage {
+    stroke-miterlimit: 10;
+  }
 
-        &--2 {
-            animation-name: bar_animate_1;
-            height: 85%;
-            opacity: .65;
-        }
-
-        &--3 {
-            animation-name: bar_animate_2;
-            height: 100%;
-            opacity: 1;
-        }
-    }
+  &__foliage {
+    fill: none;
+    stroke: #97c454;
+    stroke: $leaf-50;
+    // stroke: white;
+    stroke-width: 6px;
+  }
 
 }
