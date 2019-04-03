@@ -20,8 +20,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      //host: 'http://localhost:64567',
-      host:  'https://www.sementeapi.minimo.com.br',
+      //host: 'http://localhost:64568',
+      host:  'https://sementeapimedio.minimo.com.br',
       namespace: 'api/v0',
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -59,8 +59,8 @@ module.exports = function(environment) {
   }
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://www.sementeapi.minimo.com.br/api/v0/auth/login',
-    serverTokenRefreshEndpoint: 'https://www.sementeapi.minimo.com.br/api/v0/RefreshTokens',
+    serverTokenEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/auth/login',
+    serverTokenRefreshEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/RefreshTokens',
     // serverTokenEndpoint: 'http://www.sdsorocaba.esy.es/api/v0/auth/login',
     identificationField: 'username',
     passwordField: 'password',
