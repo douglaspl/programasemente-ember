@@ -110,7 +110,7 @@
 
             [class*='--user'] &::before,
             #{$this}__input:checked + &::before {
-                background-color: $green;
+                background-color: $green-20;
                 color: $color-white;
             }
 

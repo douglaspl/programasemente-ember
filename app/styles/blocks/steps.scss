@@ -44,7 +44,7 @@
 
     &__number {
         align-items: center;
-        background-color: $blue-navy;
+        background-color: $blue-navy-50;
         border: $number-border solid $color-white;
         border-radius: 50%;
         box-shadow: $shadow-2;
@@ -55,7 +55,7 @@
         justify-content: center;
         width: $size;
 
-        &--is-active { background-color: $green; }
+        &--is-active { background-color: $green-20; }
         // &--is-done { background-color: $color-success; }
     }
 

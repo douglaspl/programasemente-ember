@@ -19,8 +19,8 @@
   }
 
   &__indicator {
-    background-color: transparentize($green, .9);
-    border-bottom: 2px dotted $green;
+    background-color: transparentize($green-20, .9);
+    border-bottom: 2px dotted $green-20;
     content: '';
     left: 0;
     opacity: 0;

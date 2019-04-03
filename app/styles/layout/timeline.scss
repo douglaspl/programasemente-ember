@@ -11,7 +11,7 @@
             margin-top: $distance--super;
 
             &::before {
-                background-color: $lemon;
+                background-color: $lemon-10;
                 background-image: linear-gradient(to top, $gray-5, $color-white);
                 border-radius: $radius--capsule;
                 box-shadow: 0 0 40px transparentize($color-black, .1);
@@ -35,7 +35,7 @@
             margin-bottom: $distance--super;
 
             &::before {
-                background-color: $lemon;
+                background-color: $lemon-10;
                 background-image: linear-gradient(to top, $gray-30, $gray-10);
                 border-radius: $radius--capsule;
                 bottom: -$distance--xxl;
@@ -63,7 +63,7 @@
             margin-top: 36vh;
 
             &::after {
-                background-color: $lemon;
+                background-color: $lemon-10;
                 background-image: linear-gradient(to top, $lemon-40, $lemon-5);
                 border-radius: $radius--capsule;
                 bottom: calc(100% + 18vh);
@@ -86,7 +86,7 @@
     }
 
     &__mark {
-        background-color: $off-white;
+        background-color: $color-off-white;
         border-radius: $radius--md;
         box-shadow: 0 2px 0 0 hsla(0, 0, 0, .2);
         padding: $distance--md $distance--lg;

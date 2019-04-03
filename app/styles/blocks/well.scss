@@ -1,24 +1,24 @@
 .well {
-    $this: &;
+  $this: &;
 
-    background-color: $gray-0;
+  background-color: $gray-0;
+  border: 1px solid $color-gray--light;
+  border-radius: $radius--md;
+  box-shadow: $shadow-i-1;
+  padding: $distance--xs $distance--sm;
+
+  &--md {
+    padding: $distance--md;
+  }
+
+  &--white {
+    background-color: transparentize($color-white, .25);
     border: 1px solid $color-gray--light;
-    border-radius: $radius--md;
-    box-shadow: $shadow-i-1;
-    padding: $distance--xs $distance--sm;
+  }
 
-    &--md {
-        padding: $distance--md;
-    }
-
-    &--white {
-        background-color: transparentize($color-white, .25);
-        border: 1px solid $color-gray--light;
-    }
-
-    &--primary-light {
-        background-color: transparentize($lemon, .9);
-        border: 1px solid $green;
-    }
+  &--primary-light {
+    background-color: transparentize($lemon-10, .9);
+    border: 1px solid $green-20;
+  }
 
 }

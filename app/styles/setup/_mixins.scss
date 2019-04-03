@@ -2,10 +2,10 @@
 //    #BG AS THUMB
 //------------------------------------
 @mixin bg-as-thumb($size: cover) {
-    background-clip: content-box;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: $size;
+  background-clip: content-box;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: $size;
 }
 
 
@@ -16,21 +16,21 @@
 //    #BUTTON DEFAULT APPEARANCE
 //------------------------------------
 @mixin button {
-    align-items: center;
-    border: 1px solid transparent;
-    box-shadow: $shadow-1;
-    display: inline-flex;
-    flex-direction: row;
-    font-size: $font-size--xxs;
-    font-weight: 700;
-    justify-content: center;
-    letter-spacing: $letter-spacing--md;
-    line-height: 1;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 300ms;
-    white-space: nowrap;
+  align-items: center;
+  border: 1px solid transparent;
+  box-shadow: $shadow-1;
+  display: inline-flex;
+  flex-direction: row;
+  font-size: $font-size--xxs;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: $letter-spacing--md;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 300ms;
+  white-space: nowrap;
 }
 
 
@@ -41,23 +41,27 @@
 //    #CARD
 //------------------------------------
 @mixin card($theme: false, $padding: false) {
-    border-radius: $radius--md;
-    box-shadow: $shadow-1;
+  border-radius: $radius--md;
+  box-shadow: $shadow-1;
 
-    @if $padding {
-        padding: $padding;
-    }
+  @if $padding {
+    padding: $padding;
+  }
 
-    @if $theme == 'light' {
-        background-color: $color-white;
-        color: $color-gray--darkest;
-    } @else if $theme == 'dark' {
-        background-color: $color-gray--darkest;
-        color: $color-white;
-    } @else {
-        background-color: $gray-0;
-        color: $color-gray--darkest;
-    }
+  @if $theme=='light' {
+    background-color: $color-white;
+    color: $color-gray--darkest;
+  }
+
+  @else if $theme=='dark' {
+    background-color: $color-gray--darkest;
+    color: $color-white;
+  }
+
+  @else {
+    background-color: $gray-0;
+    color: $color-gray--darkest;
+  }
 
 
 }
@@ -70,65 +74,65 @@
 //    #CHECK RADIO
 //------------------------------------
 @mixin check-radio($size: 'default') {
+  position: relative;
+
+  &__input {
+    @include input-hide;
+  }
+
+  &__label {
+    align-items: center;
+    cursor: pointer; //Label por padrão não possui o cursor como pointer
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    font-weight: normal; //Como é um label vinculado a check/radio, não deve ser bold(default)
+    letter-spacing: 0;
+    min-height: 2em;
+    padding-left: $input-check-radio-label-margin;
     position: relative;
 
-    &__input {
-        @include input-hide;
+    @include target-ie() {
+      flex: 0 0 auto;
+      line-height: 2em;
     }
 
-    &__label {
-        align-items: center;
-        cursor: pointer; //Label por padrão não possui o cursor como pointer
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-        font-weight: normal; //Como é um label vinculado a check/radio, não deve ser bold(default)
-        letter-spacing: 0;
-        min-height: 2em;
-        padding-left: $input-check-radio-label-margin;
-        position: relative;
-
-        @include target-ie(){
-            flex: 0 0 auto;
-            line-height: 2em;
-        }
-
-        &:active,
-        &:focus {
-            background-color: none;
-        }
-
-        &::before {
-            background-color: $gray-0;
-            border-radius: $radius;
-            box-shadow: $shadow-1;
-            content: '';
-            cursor: pointer;
-            display: inline-block;
-            height: $input-check-radio-size;
-            left: 0;
-            position: absolute;
-            text-align: center;
-            transform: translateY(-50%);
-            transition: 300ms;
-            top: 50%;
-            width: $input-check-radio-size;
-        }
-
-        &::after {
-            text-shadow: $shadow-2;
-            opacity: 0;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-100%);
-            transition: 300ms;
-        }
-
+    &:active,
+    &:focus {
+      background-color: none;
     }
 
-    &__input:checked ~ &__label::after {
-        transform: translateY(-50%);
+    &::before {
+      background-color: $gray-0;
+      border-radius: $radius;
+      box-shadow: $shadow-1;
+      content: '';
+      cursor: pointer;
+      display: inline-block;
+      height: $input-check-radio-size;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      transform: translateY(-50%);
+      transition: 300ms;
+      top: 50%;
+      width: $input-check-radio-size;
     }
+
+    &::after {
+      text-shadow: $shadow-2;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-100%);
+      transition: 300ms;
+    }
+
+  }
+
+  &__input:checked~&__label::after {
+    transform: translateY(-50%);
+  }
 
 }
 
@@ -144,36 +148,36 @@
 // $pos
 // $size
 @mixin divider($color: $light-gray, $direction: 'horizontal', $pos: 'none', $size: 2px, $opacity: .25) {
-    position: relative;
+  position: relative;
 
-    &::after {
-        background-color: $color;
-        content: '';
-        left: 0;
-        opacity: $opacity;
-        position: absolute;
+  &::after {
+    background-color: $color;
+    content: '';
+    left: 0;
+    opacity: $opacity;
+    position: absolute;
 
-        @if ($pos == 'top') {
-            bottom: 100%;
-        }
-
-        @if ($pos == 'bottom') {
-            top: 100%;
-        }
-
-        @if ($direction == 'horizontal') {
-            height: $size;
-            width: 100%;
-        }
-
-        @if ($direction == 'vertical') {
-            height: 100%;
-            top: 0;
-            width: $size;
-        }
-
-
+    @if ($pos=='top') {
+      bottom: 100%;
     }
+
+    @if ($pos=='bottom') {
+      top: 100%;
+    }
+
+    @if ($direction=='horizontal') {
+      height: $size;
+      width: 100%;
+    }
+
+    @if ($direction=='vertical') {
+      height: 100%;
+      top: 0;
+      width: $size;
+    }
+
+
+  }
 
 }
 
@@ -185,38 +189,38 @@
 //    #DOTTED LINK
 //------------------------------------
 @mixin dotted-link {
-    @include has-capsule-on-hover;
+  @include has-capsule-on-hover;
 
-    background-color: transparent;
-    background-image: none;
-    border-radius: 0;
-    box-shadow: none;
-    color: $color-gray--darkest;
-    padding: 0;
-    text-shadow: none;
-    z-index: 2;
+  background-color: transparent;
+  background-image: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: $color-gray--darkest;
+  padding: 0;
+  text-shadow: none;
+  z-index: 2;
+
+  &::after {
+    border-bottom: 4px dotted $color-gray--light;
+    content: '';
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 100%;
+
+    transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+    transition: 300ms var(--ease-in-out-quad);
+
+    width: 100%;
+  }
+
+  &:hover {
 
     &::after {
-        border-bottom: 4px dotted $color-gray--light;
-        content: '';
-        left: 0;
-        opacity: 1;
-        position: absolute;
-        top: 100%;
-
-        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-        transition: 300ms var(--ease-in-out-quad);
-
-        width: 100%;
+      opacity: 0;
     }
 
-    &:hover {
-
-        &::after {
-            opacity: 0;
-        }
-
-    }
+  }
 
 }
 
@@ -228,59 +232,59 @@
 //    #HAS CAPSULE ON HOVER
 //------------------------------------
 @mixin has-capsule-on-hover {
-    position: relative;
-    overflow: visible;
+  position: relative;
+  overflow: visible;
 
-    > * {
-        position: relative;
-        z-index: 2;
-    }
+  >* {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before {
+    background-color: $lemon-30;
+    border-radius: $radius;
+    box-shadow: $shadow-3;
+    content: '';
+    height: calc(100% + (#{$distance--xs} * 2));
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+    transition: 200ms var(--ease-in-out-quad);
+
+    visibility: hidden;
+    width: calc(100% + #{$distance--sm});
+    z-index: 1;
+  }
+
+  &:hover {
+    // background-color: transparent;
+    // text-shadow: 0 0 1px $color-white;
 
     &::before {
-        background-color: $lemon-30;
-        border-radius: $radius;
-        box-shadow: $shadow-3;
-        content: '';
-        height: calc(100% + (#{$distance--xs} * 2));
-        left: 50%;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
+      opacity: 1;
+      visibility: visible;
+    }
 
-        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-        transition: 200ms var(--ease-in-out-quad);
+  }
 
-        visibility: hidden;
-        width: calc(100% + #{$distance--sm});
-        z-index: 1;
+  @include target-ie {
+    border-radius: $radius;
+    background-color: transparent;
+    padding: $distance--xs $distance--sm;
+
+    &::before {
+      display: none;
     }
 
     &:hover {
-        // background-color: transparent;
-        // text-shadow: 0 0 1px $color-white;
-
-        &::before {
-            opacity: 1;
-            visibility: visible;
-        }
-
+      background-color: $green-20;
     }
 
-    @include target-ie {
-        border-radius: $radius;
-        background-color: transparent;
-        padding: $distance--xs $distance--sm;
-
-        &::before {
-            display: none;
-        }
-
-        &:hover {
-            background-color: $green;
-        }
-
-    }
+  }
 
 }
 
@@ -292,30 +296,30 @@
 //    #HOVER
 //------------------------------------
 @mixin hover($self: true, $pseudo: '') {
-    @media (-moz-touch-enabled: 1), (hover:hover), (hover:on-demand) {
-        @if $self == true {
-            &:hover#{$pseudo} {
-                @content;
-            }
-        }
-
-        @if $self == false {
-            @content;
-        }
-
+  @media (-moz-touch-enabled: 1), (hover:hover), (hover:on-demand) {
+    @if $self==true {
+      &:hover#{$pseudo} {
+        @content;
+      }
     }
 
-    @include target-ff {
-        @if $self == true {
-            &:hover#{$pseudo} {
-                @content;
-            }
-        }
-
-        @if $self == false {
-            @content;
-        }
+    @if $self==false {
+      @content;
     }
+
+  }
+
+  @include target-ff {
+    @if $self==true {
+      &:hover#{$pseudo} {
+        @content;
+      }
+    }
+
+    @if $self==false {
+      @content;
+    }
+  }
 
 }
 
@@ -327,19 +331,19 @@
 //    #ICON
 //------------------------------------
 @mixin icon {
-    color: inherit;
-    font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    vertical-align: middle;
+  color: inherit;
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -350,9 +354,9 @@
 //    #IMG RESPONSIVE
 //------------------------------------
 @mixin img-responsive {
-    display: block;
-    height: auto;
-    max-width: 100%;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
 
@@ -363,15 +367,15 @@
 //    #INPUTS
 //------------------------------------
 @mixin inputs {
-    // appearance: none;
-    background-color: $gray-5;
-    border: 0 solid transparent;
-    border-radius: $radius;
-    color: $color-gray--darkest;
-    font-size: 1rem;
-    height: $input-height;
-    padding-left: $distance--xs;
-    padding-right: $distance--xs;
+  // appearance: none;
+  background-color: $gray-5;
+  border: 0 solid transparent;
+  border-radius: $radius;
+  color: $color-gray--darkest;
+  font-size: 1rem;
+  height: $input-height;
+  padding-left: $distance--xs;
+  padding-right: $distance--xs;
 }
 
 
@@ -382,11 +386,11 @@
 //    #INPUT HIDE
 //------------------------------------
 @mixin input-hide {
-    // left: -9999px;
-    opacity: 0;
-    position: absolute;
-    // top: -9999px;
-    // visibility: hidden;
+  // left: -9999px;
+  opacity: 0;
+  position: absolute;
+  // top: -9999px;
+  // visibility: hidden;
 }
 
 
@@ -396,25 +400,25 @@
 //------------------------------------
 //    #LINE
 //------------------------------------
-@mixin line($color: $green, $height: .075em, $width: 4rem, $line: 'under') {
+@mixin line($color: $green-20, $height: .075em, $width: 4rem, $line: 'under') {
   position: relative;
 
   &::after {
-      background-color: $color;
-      border-radius: 50%;
-      content: '';
-      height: $height;
-      left: 0;
-      position: absolute;
-      width: $width;
+    background-color: $color;
+    border-radius: 50%;
+    content: '';
+    height: $height;
+    left: 0;
+    position: absolute;
+    width: $width;
 
-      @if $line == 'under' {
-        top: calc(100% + .35em);
-      }
+    @if $line=='under' {
+      top: calc(100% + .35em);
+    }
 
-      @if $line == 'left' {
-        bottom: $height;
-      }
+    @if $line=='left' {
+      bottom: $height;
+    }
 
   }
 
@@ -428,36 +432,36 @@
 //    #N COLUMNS
 //------------------------------------
 @mixin n-columns($min-width, $gutter, $last-equal: false, $max-cols: 5) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: -$gutter;
-    margin-top: -$gutter;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -$gutter;
+  margin-top: -$gutter;
 
-    > * {
-        flex: 1 0 $min-width;
-        margin-left: $gutter;
-        margin-top: $gutter;
+  >* {
+    flex: 1 0 $min-width;
+    margin-left: $gutter;
+    margin-top: $gutter;
 
-        @if $last-equal {
-            @for $i from 2 through $max-cols {
-                $screen-width: ($min-width * $i) + ($gutter * $i);
-                $column-width: (100% / $i);
+    @if $last-equal {
+      @for $i from 2 through $max-cols {
+        $screen-width: ($min-width * $i) + ($gutter * $i);
+        $column-width: (100% / $i);
 
-                @media (min-width: $screen-width) {
-                    max-width: calc(#{$column-width} - #{$gutter});
-                }
-            }
-
-            $column-width: (100% / $max-cols);
-
-            @media (min-width: $min-width * $max-cols) {
-                min-width: calc(#{$column-width} - #{$gutter});
-            }
-
+        @media (min-width: $screen-width) {
+          max-width: calc(#{$column-width} - #{$gutter});
         }
+      }
+
+      $column-width: (100% / $max-cols);
+
+      @media (min-width: $min-width * $max-cols) {
+        min-width: calc(#{$column-width} - #{$gutter});
+      }
 
     }
+
+  }
 
 }
 
@@ -469,16 +473,16 @@
 //    #OVERFLOW Y
 //------------------------------------
 @mixin overflow-y($shadows: false, $bg-color: transparent) {
-    @include scrollbar($shadows, $bg-color);
+  @include scrollbar($shadows, $bg-color);
 
-    max-height: 100%;
-    -webkit-overflow-scrolling: touch; // Melhora comportamento do scroll em iOS;
-    overflow-y: auto;
-    overflow-x: hidden;
+  max-height: 100%;
+  -webkit-overflow-scrolling: touch; // Melhora comportamento do scroll em iOS;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-    @media (landscape) {
-        padding-right: .75rem;
-    }
+  @media (landscape) {
+    padding-right: .75rem;
+  }
 
 }
 
@@ -501,28 +505,31 @@
 // }
 //
 @mixin scrollbar($shadows: false, $bg-color: transparent) {
-    &::-webkit-scrollbar {
-        width: $scrollbar-width;
-    }
-    // Pista / Track
-    &::-webkit-scrollbar-track {
-        border-radius: $scrollbar-track-radius;
-        box-shadow: $scrollbar-track-shadow;
-    }
-    // Parte clicável / Handle
-    &::-webkit-scrollbar-thumb {
-        background: $scrollbar-handle-bg;
-        border-radius: $scrollbar-handle-radius;
-        box-shadow: $scrollbar-handle-shadow;
-    }
-    // Parte clicável / Handle quando a janela estiver inativa
-    &::-webkit-scrollbar-thumb:window-inactive {
-        background: $scrollbar-handle-bg-inactive;
-    }
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
 
-    @if $shadows == true {
-        @include scrolling-shadows($bg-color);
-    }
+  // Pista / Track
+  &::-webkit-scrollbar-track {
+    border-radius: $scrollbar-track-radius;
+    box-shadow: $scrollbar-track-shadow;
+  }
+
+  // Parte clicável / Handle
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-handle-bg;
+    border-radius: $scrollbar-handle-radius;
+    box-shadow: $scrollbar-handle-shadow;
+  }
+
+  // Parte clicável / Handle quando a janela estiver inativa
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: $scrollbar-handle-bg-inactive;
+  }
+
+  @if $shadows==true {
+    @include scrolling-shadows($bg-color);
+  }
 
 }
 
@@ -534,34 +541,34 @@
 //    #SCROLLING SHADOWS
 //------------------------------------
 @mixin scrolling-shadows($bg-color: $color-white,
-                         $shadow-intensity: 0.2,
-                         $shadow-color: $color-black,
-                         $cover-size: 40px,
-                         $shadow-size: 14px,
-                         $shadow-width: 100%) {
+$shadow-intensity: 0.2,
+$shadow-color: $color-black,
+$cover-size: 40px,
+$shadow-size: 14px,
+$shadow-width: 100%) {
 
-	background:
-		// Shadow covers
-		linear-gradient($bg-color 30%, rgba($bg-color,0)),
-		linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
+  background:
+    // Shadow covers
+    linear-gradient($bg-color 30%, rgba($bg-color, 0)),
+    linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
 
-		// Shadows
-		radial-gradient(farthest-side 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
-		radial-gradient(farthest-side 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
-	background:
-		// Shadow covers
-		linear-gradient($bg-color 30%, rgba($bg-color, 0)),
-		linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
+    // Shadows
+    radial-gradient(farthest-side 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
+    radial-gradient(farthest-side 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+  background:
+    // Shadow covers
+    linear-gradient($bg-color 30%, rgba($bg-color, 0)),
+    linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
 
-		// Shadows
-		radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
-		radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
-	background-repeat: no-repeat;
-	background-color: $bg-color;
-	background-size: $shadow-width $cover-size, $shadow-width $cover-size, $shadow-width $shadow-size, $shadow-width $shadow-size;
+    // Shadows
+    radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
+    radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: $bg-color;
+  background-size: $shadow-width $cover-size, $shadow-width $cover-size, $shadow-width $shadow-size, $shadow-width $shadow-size;
 
-	// Opera doesn't support this in the shorthand
-	background-attachment: local, local, scroll, scroll;
+  // Opera doesn't support this in the shorthand
+  background-attachment: local, local, scroll, scroll;
 }
 
 
@@ -587,9 +594,9 @@
 //------------------------------------
 // Caso queira atingir exclusivamente navegadores como Safari e Chrome.
 @mixin target-webkit {
-    @media screen and (-webkit-min-device-pixel-ratio:0) {
-        @content;
-    }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
 }
 
 
@@ -601,9 +608,9 @@
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Firefox.
 @mixin target-edge {
-    @supports (-ms-ime-align: auto) {
-        @content;
-    }
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
 }
 
 
@@ -615,9 +622,9 @@
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Firefox.
 @mixin target-ff {
-    @-moz-document url-prefix() {
-        @content;
-    }
+  @-moz-document url-prefix() {
+    @content;
+  }
 }
 
 
@@ -629,9 +636,9 @@
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Internet Explorer.
 @mixin target-ie {
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-        @content;
-    }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
 }
 
 
@@ -643,9 +650,9 @@
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Internet Explorer.
 @mixin target-ipad {
-    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
-        @content;
-    }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    @content;
+  }
 }
 
 
@@ -663,14 +670,16 @@
 // }
 //
 @mixin text-contrast($n) {
-    $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
-    $light-color: round((red($color-white) * 299) + (green($color-white) * 587) + (blue($color-white) * 114) / 1000);
+  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $light-color: round((red($color-white) * 299) + (green($color-white) * 587) + (blue($color-white) * 114) / 1000);
 
-    @if abs($color-brightness) < ($light-color / 2){
-        color: $color-white;
-    }  @else {
-        color: $color-gray--darkest;
-    }
+  @if abs($color-brightness) < ($light-color / 2) {
+    color: $color-white;
+  }
+
+  @else {
+    color: $color-gray--darkest;
+  }
 }
 
 
@@ -680,154 +689,184 @@
 //------------------------------------
 //    #TITLES
 //------------------------------------
-@mixin title-0( $color: inherit,
-                $size: $font-size--xxl,
-                $size--sm: $font-size--super,
-                $size--lg: $font-size--max,
-                $weight: 800,
-                $letter: $letter-spacing--sm) {
+@mixin title-0($color: inherit,
+$size: $font-size--xxl,
+$size--sm: $font-size--super,
+$size--lg: $font-size--max,
+$weight: 800,
+$letter: $letter-spacing--sm) {
 
-    color: $color;
-    font-family: 'Raleway', 'Titillium Web', sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    line-height: 1.25;
-    vertical-align: middle;
+  color: $color;
+  font-family: 'Raleway', 'Titillium Web', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  line-height: 1.25;
+  vertical-align: middle;
 
-    @include media('>sm') { font-size: $size--sm; }
-    @include media('>lg') { font-size: $size--lg; }
-    @include media('>xl') { font-size: calc(#{$size--lg} + .5vw); }
+  @include media('>sm') {
+    font-size: $size--sm;
+  }
+
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
+
+  @include media('>xl') {
+    font-size: calc(#{$size--lg} + .5vw);
+  }
 }
 
-@mixin title-1( $color: inherit,
-                $size: $font-size--lg,
-                $size--sm: $font-size--xl,
-                $size--lg: $font-size--xxl,
-                $weight: 900,
-                $letter: $letter-spacing--lg) {
+@mixin title-1($color: inherit,
+$size: $font-size--lg,
+$size--sm: $font-size--xl,
+$size--lg: $font-size--xxl,
+$weight: 900,
+$letter: $letter-spacing--lg) {
 
-    color: $color;
-    font-family: 'Raleway', 'Titillium Web', sans-serif;
+  color: $color;
+  font-family: 'Raleway', 'Titillium Web', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  line-height: 1.25;
+  // text-transform: uppercase;
+  vertical-align: middle;
+
+  @include media('>sm') {
     font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    line-height: 1.25;
-    // text-transform: uppercase;
-    vertical-align: middle;
+  }
 
-    @include media('>sm') { font-size: $size; }
-    @include media('>md') { font-size: $size--sm; }
-    @include media('>lg') { font-size: $size--lg; }
+  @include media('>md') {
+    font-size: $size--sm;
+  }
+
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
 }
 
-@mixin title-2( $color: $color-gray--darkest,
-                $size: $font-size--md,
-                $size--sm: $font-size--lg,
-                $size--lg: $font-size--xl,
-                $weight: normal,
-                $letter: $letter-spacing--md) {
+@mixin title-2($color: $color-gray--darkest,
+$size: $font-size--md,
+$size--sm: $font-size--lg,
+$size--lg: $font-size--xl,
+$weight: normal,
+$letter: $letter-spacing--md) {
 
-    color: $color;
-    font-family: 'Raleway', 'Titillium Web', sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    line-height: 1.25;
-    vertical-align: middle;
+  color: $color;
+  font-family: 'Raleway', 'Titillium Web', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  line-height: 1.25;
+  vertical-align: middle;
 
-    @include media('>sm') { font-size: $size--sm; }
-    @include media('>lg') { font-size: $size--lg; }
+  @include media('>sm') {
+    font-size: $size--sm;
+  }
+
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
 }
 
-@mixin title-2--u( $color: $color-gray--darkest,
-                   $size: $font-size--sm,
-                   $size--sm: $font-size--md,
-                   $size--lg: $font-size--lg,
-                   $weight: normal,
-                   $letter: $letter-spacing--xl) {
+@mixin title-2--u($color: $color-gray--darkest,
+$size: $font-size--sm,
+$size--sm: $font-size--md,
+$size--lg: $font-size--lg,
+$weight: normal,
+$letter: $letter-spacing--xl) {
 
-    color: $color;
-    font-family: 'Raleway', 'Titillium Web', sans-serif;
-    font-size: calc(#{$size} + .75vw);
-    font-weight: $weight;
-    letter-spacing: $letter;
-    text-transform: uppercase;
-    vertical-align: middle;
+  color: $color;
+  font-family: 'Raleway', 'Titillium Web', sans-serif;
+  font-size: calc(#{$size} + .75vw);
+  font-weight: $weight;
+  letter-spacing: $letter;
+  text-transform: uppercase;
+  vertical-align: middle;
 
-    // @include media('>sm') { font-size: $size--sm; }
-    // @include media('>lg') { font-size: $size--lg; }
+  // @include media('>sm') { font-size: $size--sm; }
+  // @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-3( $color: $color-gray--darkest,
-                $size: $font-size--sm,
-                $size--sm: $font-size--md,
-                $size--lg: $font-size--lg,
-                $weight: 400,
-                $letter: $letter-spacing--md) {
+@mixin title-3($color: $color-gray--darkest,
+$size: $font-size--sm,
+$size--sm: $font-size--md,
+$size--lg: $font-size--lg,
+$weight: 400,
+$letter: $letter-spacing--md) {
 
-    color: $color;
-    font-family: 'Titillium Web', 'Raleway', sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    opacity: .85;
-    vertical-align: middle;
+  color: $color;
+  font-family: 'Titillium Web', 'Raleway', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  opacity: .85;
+  vertical-align: middle;
 
-    @include media('>sm') { font-size: $size--sm; }
-    @include media('>lg') { font-size: $size--lg; }
+  @include media('>sm') {
+    font-size: $size--sm;
+  }
+
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
 }
 
-@mixin title-3--alt ( $color: $color-gray--dark,
-                      $size: $font-size--sm,
-                      $size--lg: $font-size--md,
-                      $weight: 600,
-                      $letter: $letter-spacing--xl) {
+@mixin title-3--alt ($color: $color-gray--dark,
+$size: $font-size--sm,
+$size--lg: $font-size--md,
+$weight: 600,
+$letter: $letter-spacing--xl) {
 
-    $width: .5em;
+  $width: .5em;
 
-    @include line($width: $width, $line: 'left');
+  @include line($width: $width, $line: 'left');
 
-    color: $color;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    line-height: 1.5;
-    padding-left: calc(#{$width} + .25em);
-    text-transform: uppercase;
-    vertical-align: middle;
+  color: $color;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  line-height: 1.5;
+  padding-left: calc(#{$width} + .25em);
+  text-transform: uppercase;
+  vertical-align: middle;
 
-    @include media('>lg') { font-size: $size--lg; }
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
 
 }
 
-@mixin title-4( $color: $color-gray--dark,
-                $size: $font-size--xs,
-                $size--lg: $font-size--sm,
-                $weight: normal,
-                $letter: $letter-spacing--md) {
+@mixin title-4($color: $color-gray--dark,
+$size: $font-size--xs,
+$size--lg: $font-size--sm,
+$weight: normal,
+$letter: $letter-spacing--md) {
 
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    vertical-align: middle;
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $letter;
+  vertical-align: middle;
 
-    @include media('>lg') { font-size: $size--lg; }
+  @include media('>lg') {
+    font-size: $size--lg;
+  }
 }
 
 @mixin title-aux($color: $green-30,
-                 $display: inline-block,
-                 $weight: 400) {
+$display: inline-block,
+$weight: 400) {
 
-    color: $color;
-    display: $display;
-    font-size: $font-size--xs;
-    font-weight: $weight;
-    letter-spacing: $letter-spacing--xl;
-    text-transform: uppercase;
-    vertical-align: middle;
+  color: $color;
+  display: $display;
+  font-size: $font-size--xs;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing--xl;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
 
@@ -845,8 +884,8 @@
 // }
 //
 @mixin transition($args: '200ms') {
-    transition: unquote($args);
-    transition-timing-function: var(--ease-in-out-quad);
+  transition: unquote($args);
+  transition-timing-function: var(--ease-in-out-quad);
 }
 
 
@@ -856,9 +895,9 @@
 //    #TRUNCATE (one line)
 //------------------------------------
 @mixin truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
@@ -876,5 +915,5 @@
 // }
 //
 @mixin z-index($key) {
-    z-index: z-index($key);
+  z-index: z-index($key);
 }

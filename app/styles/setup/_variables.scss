@@ -82,28 +82,6 @@ $btn-pad--xl: 1em 2em;
 //------------------------------------
 //    #COLORS
 //------------------------------------
-// https://www.colorbox.io/#steps=7#hue_start=80#hue_end=88#hue_curve=easeInQuad#sat_start=4#sat_end=90#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=30#lum_curve=linear#lock_hex=#97c454#minor_steps_map=0
-$green-shades: (0: hsl(78, 15%, 95%), // #fbfff2,
-5: hsl(80, 30%, 85%), // #E1F0C4,
-10: hsl(83, 39%, 75%), // #C7E29B,
-20: hsl(84, 49%, 55%), // #97C454, // CRANE
-30: hsl(84, 69%, 38%), // #6FA61E,
-40: hsl(86, 88%, 28%), // #528809,
-50: hsl(86, 94%, 21%), // #3D6A03,
-60: hsl(88, 100%, 15%) // #294D00,
-);
-
-// https://www.colorbox.io/#steps=7#hue_start=138#hue_end=158#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=17#lum_curve=linear#lock_hex=#189a54#minor_steps_map=0
-$leaf-shades: (0: hsl(138, 65%, 90%), // #f2fff6
-5: hsl(139, 61%, 84%), // #bdefcd
-10: hsl(141, 55%, 71%), // #8edeaa
-20: hsl(144, 49%, 49%), // #40bc71
-30: hsl(148, 73%, 35%), // #189a54 // CRANE
-40: hsl(150, 81%, 25%), // #0c7541
-50: hsl(155, 90%, 16%), // #045030
-60: hsl(158, 100%, 8%) // #002b1b
-);
-
 // https://www.colorbox.io/#steps=7#hue_start=181#hue_end=201#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=8#lum_curve=linear#lock_hex=#1c292c#minor_steps_map=0
 $blue-navy-shades: (0: hsl(191, 20%, 92%), // #f2ffff,
 5: hsl(191, 25%, 85%), // #c8e9e9,
@@ -116,6 +94,40 @@ $blue-navy-shades: (0: hsl(191, 20%, 92%), // #f2ffff,
 70: hsl(191, 22%, 14%) // #1c292c, // CRANE
 );
 
+
+
+
+
+// https://www.colorbox.io/#steps=7#hue_start=80#hue_end=88#hue_curve=easeInQuad#sat_start=4#sat_end=90#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=30#lum_curve=linear#lock_hex=#97c454#minor_steps_map=0
+$green-shades: (0: hsl(78, 15%, 95%), // #fbfff2,
+5: hsl(80, 30%, 85%), // #E1F0C4,
+10: hsl(83, 39%, 75%), // #C7E29B,
+20: hsl(84, 49%, 55%), // #97C454, // CRANE
+30: hsl(84, 69%, 38%), // #6FA61E,
+40: hsl(86, 88%, 28%), // #528809,
+50: hsl(86, 94%, 21%), // #3D6A03,
+60: hsl(88, 100%, 15%) // #294D00,
+);
+
+
+
+
+
+// https://www.colorbox.io/#steps=7#hue_start=138#hue_end=158#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=17#lum_curve=linear#lock_hex=#189a54#minor_steps_map=0
+$leaf-shades: (0: hsl(138, 65%, 90%), // #f2fff6
+5: hsl(139, 61%, 84%), // #bdefcd
+10: hsl(141, 55%, 71%), // #8edeaa
+20: hsl(144, 49%, 49%), // #40bc71
+30: hsl(148, 73%, 35%), // #189a54 // CRANE
+40: hsl(150, 81%, 25%), // #0c7541
+50: hsl(155, 90%, 16%), // #045030
+60: hsl(158, 100%, 8%) // #002b1b
+);
+
+
+
+
+
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=14#lum_curve=linear#lock_hex=e5e552#minor_steps_map=0
 $lemon-shades: (0: hsl(56, 68%, 72%), // #f2f2e6
 5: hsl(58, 72%, 66%), // #ECEC9A
@@ -127,6 +139,10 @@ $lemon-shades: (0: hsl(56, 68%, 72%), // #f2f2e6
 60: hsl(70, 100%, 36%) // #182400
 );
 
+
+
+
+
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
 $gray-shades: (0: hsl(148, 3%, 98%), // #f2f9fa
 5: hsl(148, 3%, 88%), // #d8e6e3
@@ -137,6 +153,16 @@ $gray-shades: (0: hsl(148, 3%, 98%), // #f2f9fa
 50: hsl(148, 3%, 15%), // #2e3428
 60: hsl(148, 3%, 5%) // #0c0d0a
 );
+
+$blue-navy-0: blue-navy-shades(0);
+$blue-navy-5: blue-navy-shades(5);
+$blue-navy-10: blue-navy-shades(10);
+$blue-navy-20: blue-navy-shades(20);
+$blue-navy-30: blue-navy-shades(30);
+$blue-navy-40: blue-navy-shades(40);
+$blue-navy-50: blue-navy-shades(50);
+$blue-navy-60: blue-navy-shades(60);
+$blue-navy-60: blue-navy-shades(70);
 
 $green-0: green-shades(0);
 $green-5: green-shades(5);
@@ -156,16 +182,6 @@ $leaf-40: leaf-shades(40);
 $leaf-50: leaf-shades(50);
 $leaf-60: leaf-shades(60);
 
-$blue-navy-0: blue-navy-shades(0);
-$blue-navy-5: blue-navy-shades(5);
-$blue-navy-10: blue-navy-shades(10);
-$blue-navy-20: blue-navy-shades(20);
-$blue-navy-30: blue-navy-shades(30);
-$blue-navy-40: blue-navy-shades(40);
-$blue-navy-50: blue-navy-shades(50);
-$blue-navy-60: blue-navy-shades(60);
-$blue-navy-60: blue-navy-shades(70);
-
 $lemon-0: lemon-shades(0);
 $lemon-5: lemon-shades(5);
 $lemon-10: lemon-shades(10);
@@ -184,24 +200,11 @@ $gray-40: gray-shades(40);
 $gray-50: gray-shades(50);
 $gray-60: gray-shades(60);
 
-// Temporário até limpar o CSS
-$green--light: green-shades(10) !default;
-$green: green-shades(20) !default;
-$green--dark: green-shades(30) !default;
-$green--darkest: green-shades(60) !default;
-$green-leaf: leaf-shades(30) !default;
-$blue-navy: blue-navy-shades(50) !default;
-$lemon: lemon-shades(10) !default;
-$off-white: hsla(187, 44%, 96%, 1);
-$gray: hsla(132, 12%, 83%, 1);
-$dark-gray: hsla(0, 0%, 22%, 1) !default;
-// Temporário até limpar o CSS
-
 $hue: 148;
 
 // grays
 $color-white: hsla(0, 0%, 100%, 1) !default;
-$gray-0: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE
+$color-off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
 $color-gray--light: hsla(132, 12%, 83%, 1) !default; // #cfd9d1 // CRANE
 $color-gray: hsla($hue, 8%, 60%, 1) !default;
 $color-gray--dark: hsla($hue, 10%, 30%, 1) !default;
@@ -214,21 +217,54 @@ $color-info: hsla(210, 60%, 36%, 1) !default;
 $color-success: hsl(115, 50%, 40%) !default;
 $color-warning: hsla(38, 87%, 50%, 1) !default;
 
-$colors: ((blue-navy, $blue-navy),
-(green, $green),
-(green-leaf, $green-leaf),
-(dark-gray, $dark-gray),
-(lemon, $lemon),
-(gray, $gray),
-(off-white, $off-white),
+$colors: ((blue-navy-0, $blue-navy-0),
+(blue-navy-5, $blue-navy-5),
+(blue-navy-10, $blue-navy-10),
+(blue-navy-20, $blue-navy-20),
+(blue-navy-30, $blue-navy-30),
+(blue-navy-40, $blue-navy-40),
+(blue-navy-50, $blue-navy-50),
+(blue-navy-60, $blue-navy-60),
 
-(gray--lightest, $gray-0),
-(gray--light, $color-gray--light),
-(gray, $color-gray),
-(gray--dark, $color-gray--dark),
-(gray--darkest, $color-gray--darkest),
+(green-0, $green-0),
+(green-5, $green-5),
+(green-10, $green-10),
+(green-20, $green-20),
+(green-30, $green-30),
+(green-40, $green-40),
+(green-50, $green-50),
+(green-60, $green-60),
+
+(leaf-0, $leaf-0),
+(leaf-5, $leaf-5),
+(leaf-10, $leaf-10),
+(leaf-20, $leaf-20),
+(leaf-30, $leaf-30),
+(leaf-40, $leaf-40),
+(leaf-50, $leaf-50),
+(leaf-60, $leaf-60),
+
+(lemon-0, $lemon-0),
+(lemon-5, $lemon-5),
+(lemon-10, $lemon-10),
+(lemon-20, $lemon-20),
+(lemon-30, $lemon-30),
+(lemon-40, $lemon-40),
+(lemon-50, $lemon-50),
+(lemon-60, $lemon-60),
+
+(gray-0, $gray-0),
+(gray-5, $gray-5),
+(gray-10, $gray-10),
+(gray-20, $gray-20),
+(gray-30, $gray-30),
+(gray-40, $gray-40),
+(gray-50, $gray-50),
+(gray-60, $gray-60),
+
 (black, $color-black),
 (white, $color-white),
+
 (error, $color-error),
 (info, $color-info),
 (success, $color-success),
@@ -236,7 +272,7 @@ $colors: ((blue-navy, $blue-navy),
 
 $header-bg-color: $color-white;
 $body-bg-color: $gray-0;
-$body-bg-color--dark: transparentize(darken($off-white, 10%), .2);
+$body-bg-color--dark: transparentize(darken($color-off-white, 10%), .2);
 
 
 

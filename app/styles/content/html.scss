@@ -6,290 +6,302 @@ $html-width--md: 42rem;
 $html-width--lg: 50rem;
 
 .html {
-    $this: &;
+  $this: &;
 
-    background-color: $gray-0;
-    padding-bottom: $distance--md;
-    padding-top: 0;
+  background-color: $gray-0;
+  padding-bottom: $distance--md;
+  padding-top: 0;
 
-    > * {
-        margin: 0 auto $html-v-gutter;
-        text-align: left;
-        width: calc(100% - (2 * #{$html-padding-lateral}));
+  >* {
+    margin: 0 auto $html-v-gutter;
+    text-align: left;
+    width: calc(100% - (2 * #{$html-padding-lateral}));
 
-        @include media('>sm') {
-            margin-bottom: $html-v-gutter--sm;
-            width: $html-width--sm;
-        }
-
-        @include media('>lg') {
-            width: $html-width--lg;
-        }
-
+    @include media('>sm') {
+      margin-bottom: $html-v-gutter--sm;
+      width: $html-width--sm;
     }
 
-    h4 {
-        @include line;
-
-        font-size: $font-size--md;
+    @include media('>lg') {
+      width: $html-width--lg;
     }
 
-    p {
+  }
 
-        @include media('>sm') {
-            font-size: $font-size--sm;
-            line-height: 1.5;
-        }
+  h4 {
+    @include line;
 
+    font-size: $font-size--md;
+  }
+
+  p {
+
+    @include media('>sm') {
+      font-size: $font-size--sm;
+      line-height: 1.5;
     }
 
-    blockquote {
-        border-left: 8px solid $gray-0;
-        font-size: $font-size--sm;
-        font-style: italic;
-        line-height: 1.75;
-        padding: 0 0 0 $distance--md;
+  }
+
+  blockquote {
+    border-left: 8px solid $gray-0;
+    font-size: $font-size--sm;
+    font-style: italic;
+    line-height: 1.75;
+    padding: 0 0 0 $distance--md;
+  }
+
+  ul li {
+    line-height: 1.2;
+    margin-bottom: $distance--xs;
+
+    &::before {
+      content: '\e908';
+      display: inline-block;
+      font-family: 'icomoon';
+      opacity: .5;
+      transform: translateY(2px);
     }
 
-    ul li {
-        line-height: 1.2;
-        margin-bottom: $distance--xs;
+  }
 
-        &::before {
-            content: '\e908';
-            display: inline-block;
-            font-family: 'icomoon';
-            opacity: .5;
-            transform: translateY(2px);
-        }
+  img:not([class*='cover']) {
+    border-radius: $radius--md;
+    display: block;
+    margin: 0 auto $html-v-gutter;
+    max-width: initial;
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
 
+    @include media('>sm') {
+      margin-bottom: $html-v-gutter--sm;
+      width: calc(#{$html-width--sm} + (2 * #{$html-padding-lateral}));
     }
 
-    img:not([class*='cover']) {
-        border-radius: $radius--md;
-        display: block;
-        margin: 0 auto $html-v-gutter;
-        max-width: initial;
-        object-fit: cover;
-        overflow: hidden;
-        width: 100%;
-
-        @include media('>sm') {
-            margin-bottom: $html-v-gutter--sm;
-            width: calc(#{$html-width--sm} + (2 * #{$html-padding-lateral}));
-        }
-
-        @include media('>md') {
-            max-width: 96%;
-            width: calc(#{$html-width--md} + (2 * #{$distance--xl}));
-        }
-
-        @include media('>lg') {
-            width: calc(#{$html-width--lg} + (2 * #{$distance--xxl}));
-        }
-
+    @include media('>md') {
+      max-width: 96%;
+      width: calc(#{$html-width--md} + (2 * #{$distance--xl}));
     }
 
-    img:not([class*='cover']):not([class*='diagram']) {
-        box-shadow: $shadow-2;
-        height: 16rem;
-
-        @include target-ie {
-            height: auto;
-        }
-
+    @include media('>lg') {
+      width: calc(#{$html-width--lg} + (2 * #{$distance--xxl}));
     }
 
-    table {
-        border-collapse: collapse;
-        border-radius: $radius;
-        overflow: hidden;
-        table-layout: fixed;
-        white-space: nowrap;
+  }
 
-        tr:nth-child(odd) {
-            td {
-                background-color: $color-white;
-            }
-        }
+  img:not([class*='cover']):not([class*='diagram']) {
+    box-shadow: $shadow-2;
+    height: 16rem;
 
-        tr:nth-child(odd) {
-            td {
-                background-color: $gray-0;
-            }
-        }
-
-        tr:first-of-type {
-
-            td {
-                background-color: $dark-gray;
-                color: $color-white;
-            }
-
-        }
-
-        td {
-            white-space: normal;
-        }
-
+    @include target-ie {
+      height: auto;
     }
 
-    &__cover {
-        box-shadow: $shadow-3;
-        height: 10rem;
-        margin-bottom: $distance--md;
-        object-fit: cover;
-        width: 100%;
+  }
 
-        @include media('>sm') {
-            height: 16rem;
-            margin-bottom: $distance--xxl;
-        }
+  table {
+    border-collapse: collapse;
+    border-radius: $radius;
+    overflow: hidden;
+    table-layout: fixed;
+    white-space: nowrap;
 
-        @include media('>md') {
-            height: 20rem;
-        }
-
-        @include media('>lg') {
-            height: 33vmin;
-        }
-
+    tr:nth-child(odd) {
+      td {
+        background-color: $color-white;
+      }
     }
 
-    &__header {
+    tr:nth-child(odd) {
+      td {
         background-color: $gray-0;
-        box-shadow: $shadow-2;
-        color: $color-gray--darkest;
-        display: block;
-        margin-bottom: $distance--xl;
-        padding: 0 0 $distance--md;
-        width: 100%;
-
-        @include media('>sm') {
-            padding-bottom: $distance--xxl;
-        }
-
+      }
     }
 
-    &__title {
-        @include title-0;
+    tr:first-of-type {
 
-        margin: 0 auto;
-        transform: translateX(-5px);
-        width: calc(100% - (2 * #{$html-padding-lateral}));
-
-        @include media('>sm') { width: $html-width--sm; }
-        @include media('>lg') { width: $html-width--lg; }
-
-    }
-
-    &__subtitle {
-        @include title-aux($display: block);
-
-        margin: 0 auto;
-        width: calc(100% - (2 * #{$html-padding-lateral}));
-
-        @include media('>sm') { width: $html-width--sm; }
-        @include media('>lg') { width: $html-width--lg; }
-    }
-
-    &__congrats,
-    p.html__congrats {
-        $ball-size: 5rem;
-        $ball-shift: 2.5rem;
-        $cave-size: ($ball-size/2 + $ball-shift / 2) * .9;
-        $cave-size-smooth: $cave-size + 0.1rem;
-
-        background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy $cave-size-smooth);
-        border-radius: $radius;
-        box-shadow: $shadow-2;
+      td {
+        background-color: $gray-50;
         color: $color-white;
-        margin-bottom: $distance--xxl;
-        margin-top: $distance--xxl + ($ball-shift * 2);
-        padding: ($cave-size * 0.65) 1.25em 1.5em;
-        position: relative;
-        text-align: center;
-        width: $ball-size * 3;
-
-        &::before {
-            $border: 4px;
-            $color: $blue-navy;
-
-            @include icon;
-
-            align-items: center;
-            background-color: $green;
-            border-radius: 50%;
-            box-shadow: $shadow-3;
-            display: flex;
-            color: $color-white;
-            color: $color-warning;
-            content: $icon-award;
-            font-size: ($ball-size / 2);
-            height: $ball-size;
-            left: 50%;
-            justify-content: center;
-            position: absolute;
-            text-shadow: 0 6px 4px transparentize($color, .75);
-            top: -$border;
-            transform: translate(-50%, (-$ball-shift * 1.75));
-            width: $ball-size;
-        }
-
-        span {
-            font-size: $font-size--xxs;
-        }
-
-        span:first-of-type {
-            display: block;
-            font-family: 'Titillium Web', 'Raleway', sans-serif;
-            font-size: $font-size--md;
-            font-weight: bold;
-            margin-bottom: $distance--xxs;
-            text-transform: uppercase;
-        }
-
+      }
 
     }
 
-    &__footer {
-        border-top: 1px solid $color-gray--light;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin: 0 auto;
-        padding-top: $distance--xxl;
-        width: calc(100% - (2 * #{$html-padding-lateral}));
-
-        @include media('>sm') {
-            justify-content: flex-end;
-            width: $html-width--sm;
-        }
-
-        @include media('>lg') { width: $html-width--lg; }
-
+    td {
+      white-space: normal;
     }
 
-    &__next-cta {
-        align-self: center;
-        margin-left: $distance--lg;
+  }
+
+  &__cover {
+    box-shadow: $shadow-3;
+    height: 10rem;
+    margin-bottom: $distance--md;
+    object-fit: cover;
+    width: 100%;
+
+    @include media('>sm') {
+      height: 16rem;
+      margin-bottom: $distance--xxl;
     }
 
-    &__next-title {
-        font-size: $font-size--lg;
-
-        @include media('>sm') {
-            font-size: $font-size--xl;
-        }
-
+    @include media('>md') {
+      height: 20rem;
     }
 
-    &__next-aux-text {
-        font-size: $font-size--sm;
+    @include media('>lg') {
+      height: 33vmin;
     }
 
-    &__diagram {
-        height: auto;
+  }
+
+  &__header {
+    background-color: $gray-0;
+    box-shadow: $shadow-2;
+    color: $color-gray--darkest;
+    display: block;
+    margin-bottom: $distance--xl;
+    padding: 0 0 $distance--md;
+    width: 100%;
+
+    @include media('>sm') {
+      padding-bottom: $distance--xxl;
     }
+
+  }
+
+  &__title {
+    @include title-0;
+
+    margin: 0 auto;
+    transform: translateX(-5px);
+    width: calc(100% - (2 * #{$html-padding-lateral}));
+
+    @include media('>sm') {
+      width: $html-width--sm;
+    }
+
+    @include media('>lg') {
+      width: $html-width--lg;
+    }
+
+  }
+
+  &__subtitle {
+    @include title-aux($display: block);
+
+    margin: 0 auto;
+    width: calc(100% - (2 * #{$html-padding-lateral}));
+
+    @include media('>sm') {
+      width: $html-width--sm;
+    }
+
+    @include media('>lg') {
+      width: $html-width--lg;
+    }
+  }
+
+  &__congrats,
+  p.html__congrats {
+    $ball-size: 5rem;
+    $ball-shift: 2.5rem;
+    $cave-size: ($ball-size/2 + $ball-shift / 2) * .9;
+    $cave-size-smooth: $cave-size + 0.1rem;
+
+    background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy-50 $cave-size-smooth);
+    border-radius: $radius;
+    box-shadow: $shadow-2;
+    color: $color-white;
+    margin-bottom: $distance--xxl;
+    margin-top: $distance--xxl + ($ball-shift * 2);
+    padding: ($cave-size * 0.65) 1.25em 1.5em;
+    position: relative;
+    text-align: center;
+    width: $ball-size * 3;
+
+    &::before {
+      $border: 4px;
+      $color: $blue-navy-50;
+
+      @include icon;
+
+      align-items: center;
+      background-color: $green-20;
+      border-radius: 50%;
+      box-shadow: $shadow-3;
+      display: flex;
+      color: $color-white;
+      color: $color-warning;
+      content: $icon-award;
+      font-size: ($ball-size / 2);
+      height: $ball-size;
+      left: 50%;
+      justify-content: center;
+      position: absolute;
+      text-shadow: 0 6px 4px transparentize($color, .75);
+      top: -$border;
+      transform: translate(-50%, (-$ball-shift * 1.75));
+      width: $ball-size;
+    }
+
+    span {
+      font-size: $font-size--xxs;
+    }
+
+    span:first-of-type {
+      display: block;
+      font-family: 'Titillium Web', 'Raleway', sans-serif;
+      font-size: $font-size--md;
+      font-weight: bold;
+      margin-bottom: $distance--xxs;
+      text-transform: uppercase;
+    }
+
+
+  }
+
+  &__footer {
+    border-top: 1px solid $color-gray--light;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: $distance--xxl;
+    width: calc(100% - (2 * #{$html-padding-lateral}));
+
+    @include media('>sm') {
+      justify-content: flex-end;
+      width: $html-width--sm;
+    }
+
+    @include media('>lg') {
+      width: $html-width--lg;
+    }
+
+  }
+
+  &__next-cta {
+    align-self: center;
+    margin-left: $distance--lg;
+  }
+
+  &__next-title {
+    font-size: $font-size--lg;
+
+    @include media('>sm') {
+      font-size: $font-size--xl;
+    }
+
+  }
+
+  &__next-aux-text {
+    font-size: $font-size--sm;
+  }
+
+  &__diagram {
+    height: auto;
+  }
 
 }

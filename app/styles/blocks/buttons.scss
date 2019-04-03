@@ -53,284 +53,296 @@
 
 // PLACEHOLDERS
 %btn-steps {
-    @include transition();
+  @include transition();
 
-    align-items: center;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 2;
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .btn {
-    $this: &;
+  $this: &;
 
-    $bg-light: $green-30;
-    $bg-dark: $green-50;
+  $bg-light: $green-30;
+  $bg-dark: $green-50;
 
-    @include button;
+  @include button;
 
-    background-color: $bg-dark;
-    background-image: linear-gradient(to top, $bg-dark, $bg-light);
+  background-color: $bg-dark;
+  background-image: linear-gradient(to top, $bg-dark, $bg-light);
 
-    border-radius: $radius--md;
-    color: $color-white;
-    cursor: pointer;
-    flex: 0 0 auto;
-    padding: 1em 1.5em;
-    transition: 200ms;
-    transition-property: background-color, box-shadow, transform;
+  border-radius: $radius--md;
+  color: $color-white;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 1em 1.5em;
+  transition: 200ms;
+  transition-property: background-color, box-shadow, transform;
 
-    @include hover {
-        background-color: $green-60;
-        background-image: linear-gradient(to top, $green-60, $green-40);
+  @include hover {
+    background-color: $green-60;
+    background-image: linear-gradient(to top, $green-60, $green-40);
+  }
+
+  // ELEMENTS
+  &__count {
+    font-style: italic;
+    opacity: .85;
+    margin-left: $distance--xxs;
+  }
+
+  &__icon {
+    font-weight: bold;
+    margin-right: $distance--xs;
+    opacity: .65;
+  }
+
+  // MODIFIERS
+  &--icon {
+    align-items: center;
+    align-self: center;
+    border-radius: $radius--capsule;
+    display: inline-flex;
+    justify-content: center;
+    padding: .572em;
+
+    &::before {
+      align-items: center;
+      display: flex;
+      height: 1em;
+      justify-content: center;
+      width: 1em;
     }
 
-    // ELEMENTS
-    &__count {
-        font-style: italic;
-        opacity: .85;
-        margin-left: $distance--xxs;
+    // SANITIZER
+    span {
+      display: block;
+      outline: 10px solid crimson;
+      text-align: center;
+
+      &::before {
+        content: 'SPAN DESNECESSÁRIO'
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &--is-toggle {
+    // @include btn--has-state;
+
+    height: 1rem;
+    line-height: 1.25;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
     }
 
-    &__icon {
-        font-weight: bold;
-        margin-right: $distance--xs;
-        opacity: .65;
+    [class*='__default'] {
+      @extend %btn-steps;
+
+      height: 100%;
+      position: absolute;
     }
 
-    // MODIFIERS
-    &--icon {
-        align-items: center;
-        align-self: center;
-        border-radius: $radius--capsule;
-        display: inline-flex;
-        justify-content: center;
-        padding: .572em;
+    [class*='__active'],
+    [class*='__disabled'] {
+      @extend %btn-steps;
 
-        &::before {
-            align-items: center;
-            display: flex;
-            height: 1em;
-            justify-content: center;
-            width: 1em;
-        }
+      transform: translateY(-100%);
+    }
 
-        // SANITIZER
-        span {
-            display: block;
-            outline: 10px solid crimson;
-            text-align: center;
+    &--on {
+      [class*='__default'] {
+        transform: translateY(100%);
+      }
 
-            &::before {
-                content: 'SPAN DESNECESSÁRIO'
-            }
-        }
+      [class*='__active'] {
+        transform: translateY(0);
+      }
     }
 
     &--disabled {
-        cursor: not-allowed;
-        opacity: .5;
-        pointer-events: none;
-    }
+      [class*='__default'] {
+        transform: translateY(100%);
+      }
 
-    &--is-toggle {
-        // @include btn--has-state;
+      [class*='__disabled'] {
+        transform: translateY(0);
+      }
 
-        height: 1rem;
-        line-height: 1.25;
-        justify-content: flex-start;
-        overflow: hidden;
-        position: relative;
-        text-align: left;
-
-        &:focus,
-        &:hover { background-color: transparent; }
-
-        [class*='__default'] {
-            @extend %btn-steps;
-
-            height: 100%;
-            position: absolute;
-        }
-
-        [class*='__active'],
-        [class*='__disabled'] {
-            @extend %btn-steps;
-
-            transform: translateY(-100%);
-        }
-
-        &--on {
-            [class*='__default'] { transform: translateY(100%); }
-            [class*='__active'] { transform: translateY(0); }
-        }
-
-        &--disabled {
-            [class*='__default'] { transform: translateY(100%); }
-            [class*='__disabled'] { transform: translateY(0); }
-
-            &:hover {
-                background-color: transparentize($color-black, .85);
-            }
-
-        }
+      &:hover {
+        background-color: transparentize($color-black, .85);
+      }
 
     }
 
+  }
 
 
 
 
-    &--leaf {
-        background-color: $leaf-40;
-        background-image: linear-gradient(to top, $leaf-50, $leaf-40);
-        color: $color-white;
 
-        @include hover {
-            background-color: $leaf-60;
-        }
+  &--leaf {
+    background-color: $leaf-40;
+    background-image: linear-gradient(to top, $leaf-50, $leaf-40);
+    color: $color-white;
 
+    @include hover {
+      background-color: $leaf-60;
     }
 
-    &--leaf-ghost {
-        background-color: $gray-0;
-        background-image: linear-gradient(to top, $gray-0, $color-white);
-        border: 1px solid $leaf-40;
-        color: $leaf-50;
+  }
 
-        @include hover {
-            background-color: $gray-5;
-            background-image: linear-gradient(to top, $gray-5, $gray-0);
-        }
+  &--leaf-ghost {
+    background-color: $gray-0;
+    background-image: linear-gradient(to top, $gray-0, $color-white);
+    border: 1px solid $leaf-40;
+    color: $leaf-50;
 
+    @include hover {
+      background-color: $gray-5;
+      background-image: linear-gradient(to top, $gray-5, $gray-0);
     }
 
-    &--ghost {
-        background-color: transparent;
-        background-image: none;
-        border: 1px solid $leaf-30;
-        color: $leaf-40;
+  }
 
-        &-white {
-            color: $color-white;
-        }
+  &--ghost {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid $leaf-30;
+    color: $leaf-40;
 
-        @include hover {
-            background-color: $lemon-0;
-            background-image: none;
-        }
-
+    &-white {
+      color: $color-white;
     }
 
-    &--inverted {
-        background-color: $green-0;
-        color: $green-leaf;
-
-        @include hover {
-            background-color: $green-5;
-        }
-
+    @include hover {
+      background-color: $lemon-0;
+      background-image: none;
     }
 
-    &--link {
-        @include dotted-link;
+  }
 
-        &:hover {
-            background-color: transparent;
-            background-image: none;
-        }
+  &--inverted {
+    background-color: $green-0;
+    color: $leaf-30;
 
+    @include hover {
+      background-color: $green-5;
     }
 
-    &--text {
-        background-color: transparent;
-        background-image: none;
-        box-shadow: none;
-        color: $color-gray--darkest;
-        opacity: .75;
-        padding: 0;
-        text-shadow: none;
+  }
 
-        @include hover {
-            background-color: transparent;
-            background-image: none;
-            box-shadow: none;
-            opacity: 1;
-            transform: translateY(0);
-        }
+  &--link {
+    @include dotted-link;
 
+    &:hover {
+      background-color: transparent;
+      background-image: none;
     }
 
-    &--text-inverted {
-        background-color: transparent;
-        background-image: none;
-        box-shadow: none;
-        color: $color-white;
-        padding: 0;
-        text-shadow: none;
+  }
 
-        @include hover {
-            background-color: transparent;
-            background-image: none;
-            box-shadow: none;
-            opacity: 1;
-            transform: translateY(0);
-        }
+  &--text {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: $color-gray--darkest;
+    opacity: .75;
+    padding: 0;
+    text-shadow: none;
 
+    @include hover {
+      background-color: transparent;
+      background-image: none;
+      box-shadow: none;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    &--success {
-        background-color: saturate(darken($color-success,6%),6%);
+  }
 
-        @include hover {
-            background-color: saturate(darken($color-success, 8%), 8%);
-        }
+  &--text-inverted {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: $color-white;
+    padding: 0;
+    text-shadow: none;
 
+    @include hover {
+      background-color: transparent;
+      background-image: none;
+      box-shadow: none;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    // Sizes
+  }
+
+  &--success {
+    background-color: saturate(darken($color-success, 6%), 6%);
+
+    @include hover {
+      background-color: saturate(darken($color-success, 8%), 8%);
+    }
+
+  }
+
+  // Sizes
+  &--xs {
+    font-size: ($font-size--xxs - ($font-size--xxs / 4));
+  }
+
+  &--sm {
+    font-size: ($font-size--xxs - ($font-size--xxs / 8));
+  }
+
+  &--lg {
+    font-size: $font-size--xs;
+  }
+
+  &--xl {
+    font-size: $font-size--sm;
+  }
+
+  // Container
+  &-group {
+
+    >*:not(:last-child) {
+      margin-right: $distance--sm;
+    }
+
     &--xs {
-        font-size: ($font-size--xxs - ($font-size--xxs / 4));
-    }
-
-    &--sm {
-        font-size: ($font-size--xxs - ($font-size--xxs / 8));
-    }
-
-    &--lg {
-        font-size: $font-size--xs;
-    }
-
-    &--xl {
-        font-size: $font-size--sm;
-    }
-
-    // Container
-    &-group {
-
-        > *:not(:last-child) {
-            margin-right: $distance--sm;
-        }
-
-        &--xs {
-            > *:not(:last-child) {
-                margin-right: $distance--xs;
-            }
-
-        }
-
-        &--xxs {
-            > *:not(:last-child) {
-                margin-right: $distance--xxs;
-            }
-
-        }
+      >*:not(:last-child) {
+        margin-right: $distance--xs;
+      }
 
     }
+
+    &--xxs {
+      >*:not(:last-child) {
+        margin-right: $distance--xxs;
+      }
+
+    }
+
+  }
 
 }
