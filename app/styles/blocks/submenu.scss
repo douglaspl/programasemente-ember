@@ -1,74 +1,53 @@
 .submenu {
-    $this: &;
+  $this: &;
 
-    opacity: 0;
-    transform: translateY(8px);
-    transition-delay: 150ms;
-    transition-duration: 300ms;
+  opacity: 0;
+  transform: translateY(8px);
+  transition-delay: 150ms;
+  transition-duration: 300ms;
 
-    transition-timing-function: cubic-bezier(.25, .46, .45, .94); // IE fallback
-    transition-timing-function: var(--ease-out--quad);
+  transition-timing-function: cubic-bezier(.25, .46, .45, .94); // IE fallback
+  transition-timing-function: var(--ease-out--quad);
 
-    visibility: hidden;
+  visibility: hidden;
 
-    &__item {
-        margin: $distance--md 0 $distance--md;
+  &__item {
+    margin: $distance--md 0 $distance--md;
+  }
+
+  &__link {
+    @include has-capsule-on-hover;
+
+    display: block;
+    font-size: $font-size--sm;
+    font-weight: 400;
+    padding: 0 $distance--md;
+    transition: 300ms;
+
+    @include target-ie {
+      overflow: hidden;
     }
 
-    &__link {
-        @include has-capsule-on-hover;
-
-        display: block;
-        font-size: $font-size--sm;
-        font-weight: 400;
-        padding: 0 $distance--md;
-        transition: 300ms;
-
-        @include target-ie { overflow: hidden; }
-        @include target-edge { overflow: hidden; }
-
+    @include target-edge {
+      overflow: hidden;
     }
 
-    &--header {
-        background-color: $color-white;
-        border-radius: $radius;
-        box-shadow: $shadow-4;
-    }
+  }
 
-    &--is-show {
-        opacity: 1;
-        transform: translateY(0);
-        visibility: visible;
-    }
+  &--header {
+    background-color: $color-white;
+    border-radius: $radius;
+    box-shadow: $shadow-4;
+  }
 
-    &--each-animation {
-        display: flex;
-        flex-direction: row-reverse;
-        transition: 0;
+  &--is-show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
 
-        > * {
-            margin-left: $distance--xs;
-            opacity: 0;
-            // transform: translateX(0);
-            transition: 200ms;
-            // transition-delay: 0ms;
-        }
-
-        &-is-show {
-            opacity: 1;
-            visibility: visible;
-
-            > * {
-                opacity: 1;
-                transform: translateX(-8px);
-            }
-
-        }
-
-    }
-
-    &--timeline {
-        z-index: 2;
-    }
+  &--timeline {
+    z-index: 2;
+  }
 
 }

@@ -17,7 +17,7 @@
 //------------------------------------
 @mixin button {
   align-items: center;
-  border: 1px solid transparent;
+  border: 0 solid transparent;
   box-shadow: $shadow-1;
   display: inline-flex;
   flex-direction: row;
@@ -814,10 +814,10 @@ $letter: $letter-spacing--md) {
 }
 
 @mixin title-3--alt ($color: $color-gray--dark,
-$size: $font-size--sm,
-$size--lg: $font-size--md,
+$size: $font-size--xs,
+$size--lg: $font-size--sm,
 $weight: 600,
-$letter: $letter-spacing--xl) {
+$letter: $letter-spacing--lg) {
 
   $width: .5em;
 
@@ -829,7 +829,6 @@ $letter: $letter-spacing--xl) {
   font-weight: $weight;
   letter-spacing: $letter;
   line-height: 1.5;
-  padding-left: calc(#{$width} + .25em);
   text-transform: uppercase;
   vertical-align: middle;
 
@@ -856,13 +855,13 @@ $letter: $letter-spacing--md) {
   }
 }
 
-@mixin title-aux($color: $green-30,
+@mixin title-aux($color: $green-50,
 $display: inline-block,
 $weight: 400) {
 
   color: $color;
   display: $display;
-  font-size: $font-size--xs;
+  font-size: $font-size--xxs;
   font-weight: $weight;
   letter-spacing: $letter-spacing--xl;
   text-transform: uppercase;

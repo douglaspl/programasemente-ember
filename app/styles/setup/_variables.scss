@@ -335,15 +335,15 @@ $avatar--xl: 8rem;
 //------------------------------------
 // Basic sizes.
 
-$multiplier: 0.125;
+$multiplier: 0.15rem;
 
-$font-size--xxs: .875rem;
-$font-size--xs: 1rem;
-$font-size--sm: 1.125rem;
-$font-size--md: 1.25rem;
-$font-size--lg: 1.75rem;
-$font-size--xl: 2.1rem;
-$font-size--xxl: 2.5rem;
+$font-size--xxs: 1rem;
+$font-size--xs:  $font-size--xxs + (1 * $multiplier);
+$font-size--sm:  $font-size--xs  + (2 * $multiplier);
+$font-size--md:  $font-size--sm  + (1 * $multiplier);
+$font-size--lg:  $font-size--md  + (1 * $multiplier);
+$font-size--xl:  $font-size--lg  + (1 * $multiplier);
+$font-size--xxl: $font-size--xl  + (2 * $multiplier);
 
 // Very few uses.
 $font-size--super: 3rem;

@@ -84,20 +84,13 @@
                 {{/if}}
               </div>
             </th>
-            <th class="table__role" scope="col">
-              <div {{action 'setSort' 'role'}}>
-                Perfil
-                {{#if (equalstr sortCol 'role')}}
-                <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div>
-            </th>
+            <th class="table__total"><span class="d--none d-lg--inline">Total de </span>turmas</th>
             <th class="table__enabled" scope="col">Hab<span class="hide-on--sm">ilitado</span>
             </th>
-            <th class="table__sent" scope="col">@
-              <span class="hide-on--sm">enviado</span>
+            <th class="table__sent" scope="col">
+              <span class="d-lg--none">@ BV</span>
+              <span class="d-none d-lg--inline">boas-vindas</span>
             </th>
-            <th class="table__courses" scope="col">Cursos</th>
             <th class="table__actions" scope="col">Ações</th>
           </tr>
         </thead>
@@ -111,31 +104,30 @@
                 <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
               </span>
             </td>
-            <td class="table__name">{{pessoa.name}}</td>
+            <td class="table__name">
+              <strong class="title-4 d-block">{{pessoa.name}}</strong>
+              <span class='color-green-40'>{{pessoa.role}}</span></td>
             <td class="table__email">{{pessoa.email}}</td>
             <td class="table__area">{{pessoa.area.name}}</td>
-            <td class="table__role">{{pessoa.role}}</td>
+            <td class="table__total">3</td>
             <td class="table__icon">
               <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
             </td>
             <td class="table__icon">
               <span class="{{if pessoa.emailsent 'icon-check icon--success' 'icon-x icon--error'}}"></span>
             </td>
-            <td class="table__courses">
-              {{pessoa.modulos.length}}
-            </td>
             <!-- user action -->
             <td class="table__actions">
-              <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--ghost icon-more_vert" {{action 'userActionDisplay' pessoa.id}}></button>
+              <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--primary icon-more_vert" {{action 'userActionDisplay' pessoa.id}}></button>
               <!-- dropdown user actions list -->
-              <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu submenu--each-animation j-user-action">
+              <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu j-user-action">
                 {{#if (equalstr pessoa.role 'admin')}}
                 {{!--<button class="btn btn--icon btn--disabled icon-trash-2" disabled></button>--}}
                 {{else}}
-                <button class="btn btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
+                <button class="btn btn--leaf btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
                 {{/if}}
-                <button class="btn btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
-                <button class="btn btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
+                <button class="btn btn--leaf btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
+                <button class="btn btn--leaf btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
               </div>
             </td>
           </tr>
