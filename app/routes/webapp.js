@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import ENV from '../config/environment';
+import Ember from 'ember';
 
 export default Route.extend(AuthenticatedRouteMixin, {
   env: ENV.APP,
