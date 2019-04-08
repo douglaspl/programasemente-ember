@@ -121,9 +121,10 @@
       width: 20%;
     }
 
-    #{$this}__area {
+    #{$this}__class {
       display: none;
-      width: 12%;
+      text-align: center;
+      width: 5%;
 
       @include media('>md') {
         display: table-cell;

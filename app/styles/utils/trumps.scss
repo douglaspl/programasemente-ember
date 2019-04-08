@@ -130,6 +130,10 @@
     text-align: center;
 }
 
+.ta-l {
+    text-align: left;
+}
+
 .tt-u {
     text-transform: uppercase;
 }
@@ -172,6 +176,7 @@
     &-align--center   { align-items: center; }
     &-justify--center { justify-content: center; }
     &-justify--start { justify-content: flex-start ;}
+    &-justify--space-between { justify-content: space-between ;}
 }
 
 .a-self--fs { align-self: flex-start; }

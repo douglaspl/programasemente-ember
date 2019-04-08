@@ -22,6 +22,12 @@
       <button class="btn btn--text m-left--md" {{action 'exitsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
     </form>
     <!-- users list counter -->
+
+    <div class="total-results">
+      <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
+    </div>
+
+
     <div class="report__total-results m-bottom--lg">Total de <strong>{{totalPessoas}}</strong> pessoas</div>
     <!-- users list pagination -->
     <div class="report__pagination">
@@ -76,9 +82,9 @@
                 {{/if}}
               </div>
             </th>
-            <th class="table__area" scope="col">
+            <th class="table__class" scope="col">
               <div {{action 'setSort' 'area.name'}}>
-                Área
+                Ano
                 {{#if (equalstr sortCol 'area.name')}}
                 <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
                 {{/if}}
@@ -108,8 +114,42 @@
               <strong class="title-4 d-block">{{pessoa.name}}</strong>
               <span class='color-green-40'>{{pessoa.role}}</span></td>
             <td class="table__email">{{pessoa.email}}</td>
-            <td class="table__area">{{pessoa.area.name}}</td>
-            <td class="table__total">3</td>
+            <!--- PRECISA DE VALORES DINÂMICOS -->
+            <td class="table__class popover" id="epic{{pessoa.id}}">
+              <button data-target="#epic{{pessoa.id}}" class="btn btn--link popover__trigger"><span>1</span></button>
+
+              <div class="popover__balloon popover__balloon--right-bottom ta-l">
+                <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
+                <h3 class="title-aux m-top--xs">Total por ano</h3>
+                <ul>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>1 ano</strong>
+                    <ul>
+                      <li>111</li>
+                    </ul>
+                  </li>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>2 ano</strong>
+                    <ul class="d-flex d-flex--r">
+                      <li class="m-left--xs">211,</li>
+                      <li class="m-left--xs">212</li>
+                    </ul>
+                  </li>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>3 ano</strong>
+                    <ul class="d-flex d-flex--r">
+                      <li class="m-left--xs">311,</li>
+                      <li class="m-left--xs">312,</li>
+                      <li class="m-left--xs">313</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td class="table__total">
+              3
+            </td>
+            <!--- /PRECISA DE VALORES DINÂMICOS -->
             <td class="table__icon">
               <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
             </td>
