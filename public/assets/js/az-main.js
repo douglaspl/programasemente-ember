@@ -230,3 +230,11 @@ function questionScrollRight() {
 
 $(document).on('click', '#side-arrows-container-arrow-left', function () { questionScrollLeft(); });
 $(document).on('click', '#side-arrows-container-arrow-right', function () { questionScrollRight(); });
+
+
+function filterToggle(el) {
+    el.toggleClass('btn--is-toggle--on');
+    $('#' + el.data('target')).toggleClass('d--none');
+}
+
+$(document).on('click', '#year-class-toggle', function () { filterToggle($(this)); });
