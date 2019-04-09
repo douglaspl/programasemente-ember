@@ -145,7 +145,7 @@
               <label class="form-group__label">Marca</label>
               <div class="image-change">
                 <span class="image-change__image image-change__image--empty" id="new_inst_uploadPreview"></span>
-                <label class="image-change__cta btn btn--ghost btn--xs" for="new_inst_uploadImage">Buscar imagem
+                <label class="image-change__cta btn btn--green-ghost btn--xs" for="new_inst_uploadImage">Buscar imagem
                   <input id="new_inst_uploadImage" type="file" name="myPhoto" {{action 'previewImage' 'new' on="change"}} style="display: none;">
                 </label>
                 <button class="btn btn--text m-left--md">Redefinir</button>
@@ -238,7 +238,7 @@
   <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
     <h2 class="main__subtitle">Informações</h2>
     {{#if (equalstr role 'admin')}}
-    <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_inst" {{action 'saveInformations' inst_selected.id}}>
+    <button class="btn btn--green-ghost btn--xs m-left--md" style="display:none" id="btn_save_inst" {{action 'saveInformations' inst_selected.id}}>
       <span class="btn__icon icon-save"></span>
       Salvar alterações
     </button>
@@ -272,7 +272,7 @@
       <label class="form-group__label">Marca</label>
       <div class="image-change">
         <span class="image-change__image image-change__image--empty"><img id="uploadPreview"></span>
-        <label class="image-change__cta btn btn--ghost btn--xs" for="uploadImage">Buscar imagem
+        <label class="image-change__cta btn btn--green-ghost btn--xs" for="uploadImage">Buscar imagem
           <input id="uploadImage" type="file" name="myPhoto" {{action 'previewImage' on="change"}} style="display: none;">
         </label>
         <button class="btn btn--text m-left--md">Redefinir</button>
@@ -296,7 +296,7 @@
         {{#if selectedInstTabs.courses}}
         <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
           <h2 class="main__subtitle">Anos</h2>
-          <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
+          <button class="btn btn--green-ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
             <span class="btn__icon icon-save"></span>
             Salvar alterações
           </button>
@@ -327,7 +327,7 @@
         {{#if selectedInstTabs.areas}}
         <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
           <h2 class="main__subtitle">Turmas</h2>
-          <button class="btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
+          <button class="btn btn--green-ghost btn--sm m-left--md" {{action 'newArea'}}>
             <span class="btn__icon icon-plus"></span>Nova Turma</button>
         </div>
         <section class="main__subsection">
@@ -395,7 +395,7 @@
                 <button class="btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
                   <span class="btn__icon icon-trash-2"></span> Remover
                 </button>
-                <button class="btn btn--ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
+                <button class="btn btn--green-ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
                   <span class="btn__icon icon-edit"></span> Editar
                 </button>
               </div>
@@ -440,7 +440,7 @@
   {{#if selectedInstTabs.courses}}
   <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
     <h2 class="main__subtitle">Anos</h2>
-    <button class="btn btn--ghost btn--xs m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
+    <button class="btn btn--green-ghost btn--xs m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses' inst_selected.id}}>
       <span class="btn__icon icon-save"></span>
       Salvar alterações
     </button>
@@ -510,7 +510,7 @@
   {{#if selectedInstTabs.areas}}
   <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
     <h2 class="main__subtitle">Turmas</h2>
-    <button class="j-areaFocus btn btn--ghost btn--sm m-left--md" {{action 'newArea'}}>
+    <button class="j-areaFocus btn btn--green-ghost btn--sm m-left--md" {{action 'newArea'}}>
       <span class="btn__icon icon-plus"></span>Nova Turma</button>
     <div class="form-group form-group--select-wrapper m-left--auto">
       <label class="form-group__label" for="select_course">Ano</label>
@@ -560,7 +560,7 @@
           <button class="j-areaFocus btn btn--sm btn--text color-error" {{action 'deleteArea' area.id}}>
             <span class="btn__icon icon-trash-2"></span> Remover
           </button>
-          <button class="j-areaFocus btn btn--ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
+          <button class="j-areaFocus btn btn--green-ghost btn--sm" style="width: 100px;" {{action 'editArea' area.id}}>
             <span class="btn__icon icon-edit"></span> Editar
           </button>
         </div>

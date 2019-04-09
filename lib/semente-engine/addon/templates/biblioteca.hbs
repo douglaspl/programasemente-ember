@@ -5,7 +5,7 @@
     <div>
       <!-- somente mostrar se tiver algum conteúdo não visto -->
       {{#if filesList}}
-      <button id="markAllASRead" class="btn btn--sm btn--ghost" {{action 'markAllAsRead'}}>Marcar todos como vistos</button>
+      <button id="markAllASRead" class="btn btn--sm btn--green-ghost" {{action 'markAllAsRead'}}>Marcar todos como vistos</button>
       {{/if}}
       <!-- upload file for the institution lib -->
       {{#if (equalstr role 'admin')}}

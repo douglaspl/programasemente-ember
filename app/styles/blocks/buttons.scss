@@ -222,11 +222,11 @@
 
   }
 
-  &--ghost {
+  &--green-ghost {
     background-color: transparent;
     background-image: none;
-    border: 1px solid $leaf-30;
-    color: $leaf-40;
+    border: 1px solid $green-30;
+    color: $green-40;
 
     &-white {
       color: $color-white;
