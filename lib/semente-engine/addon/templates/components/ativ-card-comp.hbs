@@ -1,7 +1,7 @@
  {{#if (equalstr value 0)}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
-        <span class="timeline__day">6</span> de abril
+        <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
         <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock_outline"></span>
         </span>
@@ -19,7 +19,7 @@
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
         <span class="title-aux w100">Liberada a partir de</span>
-        <span class="timeline__day">6</span> de abril
+        <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
         <span class="timeline__status">
             <span class="icon-check"></span>
         </span>
@@ -35,7 +35,7 @@
     </div>
 {{else}}
     <div class="timeline__indicator"></div>
-    <div class="timeline__date"><span class="timeline__day">6</span> de abril</div>
+    <div class="timeline__date"><span class="timeline__day">{{dia}}</span> {{mensagem_mes}}</div>
     <div class="timeline__mark class">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>

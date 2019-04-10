@@ -20,8 +20,9 @@ module.exports = function(environment) {
     },
 
     APP: {
-      //host: 'http://localhost:64568',
-      host:  'https://sementeapimedio.minimo.com.br',
+
+      host: 'http://localhost:64568',
+      //host:  'https://sementeapimedio.minimo.com.br',
       namespace: 'api/v0',
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -29,7 +30,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
-    // ENV.APP.host = 'http://localhost:64567';
+    ENV.APP.host = 'http://localhost:64568';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -59,8 +60,10 @@ module.exports = function(environment) {
   }
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/auth/login',
-    serverTokenRefreshEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/RefreshTokens',
+    serverTokenEndpoint: 'http://localhost:64568/api/v0/auth/login',
+    //serverTokenEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/auth/login',
+    serverTokenRefreshEndpoint: 'http://localhost:64568/api/v0/RefreshTokens',
+    //serverTokenRefreshEndpoint: 'https://sementeapimedio.minimo.com.br/api/v0/RefreshTokens',
     // serverTokenEndpoint: 'http://www.sdsorocaba.esy.es/api/v0/auth/login',
     identificationField: 'username',
     passwordField: 'password',

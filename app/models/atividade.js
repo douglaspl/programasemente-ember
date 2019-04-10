@@ -6,6 +6,7 @@ export default DS.Model.extend({
     idx: DS.attr(),
     description: DS.attr(),
     timesection: DS.attr(),
+    dia: DS.attr(),
     abertura: DS.attr(),
     atividade: DS.attr(),
     video: DS.attr(),
