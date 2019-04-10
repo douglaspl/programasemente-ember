@@ -4,30 +4,111 @@
   <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
     <h2 class="main__subtitle">Usuários</h2>
     <div class="institutions__btn-group">
-      <button class="btn btn--sm btn--ghost m-left--md" {{action 'userModal'}}><span class="btn__icon icon-plus"></span>Novo
+      <button class="btn btn--sm btn--green-ghost m-left--md" {{action 'userModal'}}><span
+          class="btn__icon icon-plus"></span>Novo
         Usuário</button>
-      <button class="btn btn--sm btn--ghost m-left--md" {{action 'cadastroLote'}}><span class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
+      <button class="btn btn--sm btn--green-ghost m-left--md" {{action 'cadastroLote'}}><span
+          class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
     </div>
   </div>
 
   <!-- ------------------------------------------ administration users body -->
   <section class="report__section report-people" id="report-people-gersistema" style="display: block;">
-    <!-- users list search/filter -->
-    <form class="form-group form-group--full-width m-top--sm m-bottom--xs" autocomplete="off" aria-autocomplete="none">
-      <label class="form-group__label" for="search">Busca</label>
-      <div class="form-group__wrapper form-group__wrapper--search">
-        {{input class="form-group__input" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="search_input_pessoas_ger"
-        key-up="livesearch" type="text"}}
+
+    <div class="filter-list">
+      <div class="filter-list__filter">
+
+        <!-- users list search/filter -->
+        <form class="form-group form-group--vertical form-group--full-width m-top--sm m-bottom--xs"
+              autocomplete="off"
+              aria-autocomplete="none">
+          <label class="form-group__label"
+                 for="search">Busca</label>
+          <div class="form-group__wrapper form-group__wrapper--search">
+            {{input class="form-group__input"
+                    aria-autocomplete="none"
+                    aria-describedby="basic-addon1"
+                    autocomplete="off"
+                    id="search_input_pessoas_ger"
+                    key-up="livesearch" type="text"}}
+          </div>
+          <button class="btn btn--text m-top--xs m-right--auto" {{action 'exitsearch'}}>
+            <span class="btn__icon icon-x"></span>Limpar
+          </button>
+        </form>
+
+        <!-- ano e turma -->
+        <div class="d-flex m-top--lg d--none animated fadeIn faster" id="year-class-filter">
+
+          <div class="form-group form-group--vertical" flex="1">
+            <span class="form-group__label">Ano</span>
+            <div class="d-flex">
+              <span class="checkbox m-right--md">
+                  <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1">
+                  <label class="checkbox__label" for="year1">1º ano</label>
+              </span>
+              <span class="checkbox m-right--md">
+                  <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2">
+                  <label class="checkbox__label" for="year2">2º ano</label>
+              </span>
+              <span class="checkbox">
+                  <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3">
+                  <label class="checkbox__label" for="year3">3º ano</label>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+            <label class="form-group__label">Turma</label>
+            
+            <select class="form-group__input form-group__input--select">
+              <option value="0" selected>Escolha uma turma</option>
+              <option value="101">101</option>
+              <option value="102">102</option>
+              <option value="103">103</option>
+              <option value="201">201</option>
+              <option value="202">202</option>
+              <option value="203">203</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="d-flex d-flex-justify--center m-top--lg">
+          <button class="btn btn--xs btn--green-ghost btn--is-toggle"
+                  {{action toggle 'year-class-filter'}}
+                  id="year-class-toggle"
+                  data-target="year-class-filter"
+                  style="height: 2rem; width: 9rem;">
+            <span class="btn__label label__default">Mostrar mais</span>
+            <span class="btn__label label__active">Mostrar menos</span>
+          </button>
+        </div>
+
+        {{!-- 
+        <div class="d-flex d-flex-justify--center m-top--lg">
+          <button class="btn btn--xs btn--green-ghost btn--is-toggle" id="year-class-toggle" data-target="year-class-filter" style="height: 2rem; width: 9rem;">
+            <span class="btn__label label__default">Mostrar mais</span>
+            <span class="btn__label label__active">Mostrar menos</span>
+          </button>
+        </div> --}}
+
       </div>
-      <button class="btn btn--text m-left--md" {{action 'exitsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
-    </form>
+    </div>
+
+
     <!-- users list counter -->
-    <div class="report__total-results m-bottom--lg">Total de <strong>{{totalPessoas}}</strong> pessoas</div>
+
+    <div class="total-results">
+      <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
+    </div>
+
     <!-- users list pagination -->
     <div class="report__pagination">
       <div class="form-group form-group--select-wrapper">
         <label class="form-group__label" for="amount">Exibir</label>
-        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order" {{action 'setExibir' on='change'}}>
+        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
+          {{action 'setExibir' on='change'}}>
           <option value="5" selected={{paginationSelected.p5}}>5</option>
           <option value="10" selected={{paginationSelected.p10}}>10</option>
           <option value="25" selected={{paginationSelected.p25}}>25</option>
@@ -56,7 +137,8 @@
           <tr>
             <th class="table__check" scope="col">
               <span class="checkbox">
-                <input class="checkbox__input" id="usersListCheckAll" type="checkbox" {{action 'listItemCheck' 'all' on='change'}}>
+                <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
+                  {{action 'listItemCheck' 'all' on='change'}}>
                 <label class="checkbox__label" for="usersListCheckAll"></label>
               </span>
             </th>
@@ -76,9 +158,9 @@
                 {{/if}}
               </div>
             </th>
-            <th class="table__area" scope="col">
+            <th class="table__class" scope="col">
               <div {{action 'setSort' 'area.name'}}>
-                Área
+                Ano
                 {{#if (equalstr sortCol 'area.name')}}
                 <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
                 {{/if}}
@@ -100,7 +182,8 @@
           <tr>
             <td class="table__check">
               <span class="checkbox">
-                <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox" {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
+                <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
+                  {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
                 <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
               </span>
             </td>
@@ -108,8 +191,42 @@
               <strong class="title-4 d-block">{{pessoa.name}}</strong>
               <span class='color-green-40'>{{pessoa.role}}</span></td>
             <td class="table__email">{{pessoa.email}}</td>
-            <td class="table__area">{{pessoa.area.name}}</td>
-            <td class="table__total">3</td>
+            <!--- PRECISA DE VALORES DINÂMICOS -->
+            <td class="table__class popover" id="epic{{pessoa.id}}">
+              <button data-target="#epic{{pessoa.id}}" class="btn btn--link popover__trigger"><span>1</span></button>
+
+              <div class="popover__balloon popover__balloon--right-bottom ta-l">
+                <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
+                <h3 class="title-aux m-top--xs">Total por ano</h3>
+                <ul>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>1 ano</strong>
+                    <ul>
+                      <li>111</li>
+                    </ul>
+                  </li>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>2 ano</strong>
+                    <ul class="d-flex d-flex--r">
+                      <li class="m-left--xs">211,</li>
+                      <li class="m-left--xs">212</li>
+                    </ul>
+                  </li>
+                  <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                    <strong>3 ano</strong>
+                    <ul class="d-flex d-flex--r">
+                      <li class="m-left--xs">311,</li>
+                      <li class="m-left--xs">312,</li>
+                      <li class="m-left--xs">313</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </td>
+            <td class="table__total">
+              3
+            </td>
+            <!--- /PRECISA DE VALORES DINÂMICOS -->
             <td class="table__icon">
               <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
             </td>
@@ -118,7 +235,8 @@
             </td>
             <!-- user action -->
             <td class="table__actions">
-              <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--primary icon-more_vert" {{action 'userActionDisplay' pessoa.id}}></button>
+              <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--primary icon-more_vert"
+                {{action 'userActionDisplay' pessoa.id}}></button>
               <!-- dropdown user actions list -->
               <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu j-user-action">
                 {{#if (equalstr pessoa.role 'admin')}}
@@ -178,7 +296,8 @@
       <!-- check users list -->
       {{#if (equalstr staticType 'checklist')}}
       <button class="btn btn--sm btn--text-inverted" {{action staticAlert 'close'}}>Desmarcar todos</button>
-      <button class="btn btn--sm btn--primary" {{action 'emailAction'}}><span class="btn__icon icon-at-sign"></span>Enviar
+      <button class="btn btn--sm btn--primary" {{action 'emailAction'}}><span
+          class="btn__icon icon-at-sign"></span>Enviar
         emails</button>
       {{/if}}
       <!-- -->
@@ -203,7 +322,8 @@
       <!-- -->
       <!-- reset user progress -->
       {{#if (equalstr staticType 'progress')}}
-      <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit" {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
+      <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit"
+        {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
       <button class="btn btn--inverted" type="submit" {{action staticAlert 'close'}}>Fechar</button>
       {{/if}}
       <!-- -->
@@ -276,14 +396,19 @@
         {{#if new_user_email}}
         <!-- edit user -->
         {{#each modulos_list as |mod|}}
-        <li class="institutions__course form-group checkbox" style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-          <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+        <li class="institutions__course form-group checkbox"
+          style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+          <span class="list__img"
+            style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
           <h3 class="list__name title-3">{{mod.name}}</h3>
           <span class="switch switch--institutions">
             {{#if (isinarray mod user_modulos)}}
-            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}} disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+              checked={{if (isinarray mod inst_selected.modulos) true false}}
+              disabled={{if (isinarray mod inst_selected.modulos) false true}}>
             {{else}}
-            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+              disabled={{if (isinarray mod inst_selected.modulos) false true}}>
             {{/if}}
             <label class="switch__label" for="ckb_new_p_{{mod.id}}">
               <span class="switch__inner"></span>
@@ -295,11 +420,14 @@
         {{else}}
         <!-- new user -->
         {{#each modulos_list as |mod|}}
-        <li class="institutions__course form-group checkbox" style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-          <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+        <li class="institutions__course form-group checkbox"
+          style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+          <span class="list__img"
+            style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
           <h3 class="list__name title-3">{{mod.name}}</h3>
           <span class="switch switch--institutions">
-            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox" checked={{if (isinarray mod inst_selected.modulos) true false}}>
+            <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+              checked={{if (isinarray mod inst_selected.modulos) true false}}>
             <label class="switch__label" for="ckb_new_p_{{mod.id}}">
               <span class="switch__inner"></span>
               <span class="switch__head"></span>
@@ -310,7 +438,8 @@
         {{/if}}
       </ul>
       {{#if new_user_email}}
-      <button class="btn btn--primary" type="submit" {{action 'editProgressos' new_user_id}}>Zerar progressos...</button>
+      <button class="btn btn--primary" type="submit" {{action 'editProgressos' new_user_id}}>Zerar
+        progressos...</button>
       {{/if}}
       {{!--
       <div class="m-top--lg">
@@ -364,7 +493,8 @@
         <div class="institutions__mass-enroll institutions__btn-group btn-group">
           <button class="btn btn-primary" type="submit" {{action 'baixarTemplate'}}>Baixar template</button>
           <label class="btn btn--primary label_get_lote" for="get_lote">Buscar arquivo</label>
-          <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file" style="display: none;" />
+          <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file"
+            style="display: none;" />
           {{#if selected_file}}
           <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
           {{else}}

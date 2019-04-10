@@ -1,0 +1,16 @@
+//------------------------------------
+//    #COLORS
+//------------------------------------
+@each $color-name, $color in $colors {
+    .bg-#{$color-name} {
+        background-color: $color;
+    }
+
+    .color-#{$color-name} {
+        color: $color;
+    }
+
+    .fill-#{$color-name} {
+        fill: $color;
+    }
+}

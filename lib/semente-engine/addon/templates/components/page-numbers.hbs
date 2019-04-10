@@ -1,9 +1,9 @@
 {{#if canStepBackward}}
-    <button class="btn btn--ghost btn--icon icon-chevron-left" {{action "incrementPage" -1}}></button>
-    <button class="btn btn--ghost btn--icon icon-chevrons-left"  {{action "pageClicked" 1}}></button>
+    <button class="btn btn--green-ghost btn--icon icon-chevron-left" {{action "incrementPage" -1}}></button>
+    <button class="btn btn--green-ghost btn--icon icon-chevrons-left"  {{action "pageClicked" 1}}></button>
 {{else}}
-    <button class="btn btn--ghost btn--icon btn--disabled icon-chevron-left"></button>
-    <button class="btn btn--ghost btn--icon btn--disabled icon-chevrons-left"></button>
+    <button class="btn btn--green-ghost btn--icon btn--disabled icon-chevron-left"></button>
+    <button class="btn btn--green-ghost btn--icon btn--disabled icon-chevrons-left"></button>
 {{/if}}
 
 <div class="form-group">
@@ -11,16 +11,16 @@
 </div>
 
 
-{{!-- <button class="btn btn--ghost btn--icon icon-chevrons-right {{if canStepForward "" "btn--disabled"}}" {{if canStepForward (action "pageClicked" totalPages)}}></button>
-<button class="btn btn--ghost btn--icon icon-chevron-right {{if canStepForward "" "btn--disabled"}}" {{if canStepForward (action "incrementPage" 1)}}></button>   --}}
+{{!-- <button class="btn btn--green-ghost btn--icon icon-chevrons-right {{if canStepForward "" "btn--disabled"}}" {{if canStepForward (action "pageClicked" totalPages)}}></button>
+<button class="btn btn--green-ghost btn--icon icon-chevron-right {{if canStepForward "" "btn--disabled"}}" {{if canStepForward (action "incrementPage" 1)}}></button>   --}}
 
 
 {{#if canStepForward}}
-    <button class="btn btn--ghost btn--icon icon-chevrons-right" {{action "pageClicked" totalPages}}></button>
-    <button class="btn btn--ghost btn--icon icon-chevron-right" {{action "incrementPage" 1}}></button>
+    <button class="btn btn--green-ghost btn--icon icon-chevrons-right" {{action "pageClicked" totalPages}}></button>
+    <button class="btn btn--green-ghost btn--icon icon-chevron-right" {{action "incrementPage" 1}}></button>
 {{else}}
-    <button class="btn btn--ghost btn--icon btn--disabled icon-chevrons-right"></button>
-    <button class="btn btn--ghost btn--icon btn--disabled icon-chevron-right"></button>
+    <button class="btn btn--green-ghost btn--icon btn--disabled icon-chevrons-right"></button>
+    <button class="btn btn--green-ghost btn--icon btn--disabled icon-chevron-right"></button>
 {{/if}}
 
 

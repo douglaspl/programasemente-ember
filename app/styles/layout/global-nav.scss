@@ -118,7 +118,7 @@
             background-color: $global-nav-gradient-dark;
             background-image: linear-gradient(to top, $global-nav-gradient-dark, $global-nav-gradient-light);
             opacity: 1;
-            pointer-events: none;
+           // pointer-events: none;
             // text-shadow: 0 1px 0 $green-50;
         }
 

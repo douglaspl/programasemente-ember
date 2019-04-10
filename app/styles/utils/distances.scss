@@ -1,0 +1,113 @@
+//------------------------------------
+//    #MARGIN
+//------------------------------------
+@each $measure, $distance in $distances {
+    .m--#{$measure} {
+        margin: $distance;
+    }
+
+    @each $direction in $directions {
+        .m-#{$direction}--#{$measure} {
+            margin-#{$direction}: $distance;
+        }
+    }
+
+    @each $perpendicular in $perpendiculars {
+        @if $perpendicular == 'v' {
+        .m-#{$perpendicular}--#{$measure} {
+            margin-bottom: $distance;
+            margin-top: $distance;
+            }
+        }
+
+        @if $perpendicular == 'h' {
+            .m-#{$perpendicular}--#{$measure} {
+                margin-left: $distance;
+                margin-right: $distance;
+            }
+        }
+
+    }
+}
+
+@each $direction in $directions {
+    .m-#{$direction}--none {
+        margin-#{$direction}: 0;
+    }
+}
+
+@each $direction in $directions {
+    .m-#{$direction}--auto {
+        margin-#{$direction}: auto;
+    }
+}
+
+.m-h--none {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.m-v--none {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.m--none {
+    margin: 0;
+}
+
+
+
+
+
+//------------------------------------
+//    #PADDING
+//------------------------------------
+@each $measure, $distance in $distances {
+    .p--#{$measure} {
+        padding: $distance;
+    }
+
+    @each $direction in $directions {
+        .p-#{$direction}--#{$measure} {
+            padding-#{$direction}: $distance;
+        }
+    }
+
+    @each $perpendicular in $perpendiculars {
+        @if $perpendicular == 'v' {
+            .p-#{$perpendicular}--#{$measure} {
+                padding-bottom: $distance;
+                padding-top: $distance;
+            }
+        }
+
+        @if $perpendicular == 'h' {
+            .p-#{$perpendicular}--#{$measure} {
+                padding-left: $distance;
+                padding-right: $distance;
+            }
+        }
+
+    }
+}
+
+@each $direction in $directions {
+    .p-#{$direction}--none {
+        padding-#{$direction}: 0;
+    }
+}
+
+.p-h--none {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.p-v--none {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.p--none {
+    padding: 0;
+}

@@ -1,20 +1,3 @@
-
-//------------------------------------
-//    #ANIMATION DELAYS
-//------------------------------------
-.d250 {    animation-delay: .25s;   }
-.d500 {    animation-delay: .5s;    }
-.d750 {    animation-delay: .75s;   }
-.d1000 {   animation-delay: 1s;     }
-.d1250 {   animation-delay: 1.25s;  }
-.d1500 {   animation-delay: 1.5s;   }
-.d1750 {   animation-delay: 1.75s;  }
-.d2000 {   animation-delay: 2s;     }
-.d2250 {   animation-delay: 2.25s;  }
-.d2500 {   animation-delay: 2.5s;   }
-.d2750 {   animation-delay: 2.75s;   }
-.d3000 {   animation-delay: 3s;   }
-
 .augmented-link {
     position: relative;
 
@@ -69,57 +52,10 @@
     visibility: hidden;
 }
 
-.d-none,
-.d--none,
-.is-hidden {
-    display: none;
-}
 
 
 
-.d-sm--none,
-.hide-on--sm { @include media('>sm') { display: none; } }
 
-.d-md--none,
-.hide-on--md { @include media('>md') { display: none; } }
-
-.d-lg--none,
-.hide-on--lg { @include media('>lg') { display: none; } }
-
-.d-xl--none,
-.hide-on--xl { @include media('>xl') { display: none; } }
-
-
-
-.d-sm--inline,
-.visible-on--sm { @include media('>sm') {display: inline-block; } }
-
-.d-sm--block { @include media('>sm') {display: block; } }
-.d-sm--flex { @include media('>sm') {display: flex; } }
-
-
-
-.d-md--inline,
-.visible-on--md { @include media('>md') {display: inline-block; } }
-
-.d-md--block { @include media('>md') {display: block; } }
-.d-md--flex { @include media('>md') {display: flex; } }
-
-
-
-.d-lg--inline,
-.visible-on--lg { @include media('>lg') {display: inline-block; } }
-
-.d-lg--block { @include media('>lg') {display: block; } }
-.d-lg--flex { @include media('>lg') {display: flex; } }
-
-
-
-.d-xl--inline,
-.visible-on--xl { @include media('>xl') {display: inline-block; } }
-
-.d-xl--block { @include media('>xl') {display: block; } }
-.d-xl--flex { @include media('>xl') {display: flex; } }
 
 
 .overflow-hidden {
@@ -128,6 +64,10 @@
 
 .ta-c {
     text-align: center;
+}
+
+.ta-l {
+    text-align: left;
 }
 
 .tt-u {
@@ -156,83 +96,6 @@
     width: 100%;
 }
 
-//------------------------------------
-//    #FLEX
-//------------------------------------
-// Somente utilizar quando não houver
-// mudança de direção por conta de responsividade
-.d-flex {
-    display: flex;
-
-    &--r  { flex-direction: row; }
-    &--rr { flex-direction: row-reverse; }
-    &--c  { flex-direction: column; }
-    &--cr { flex-direction: column-reverse; }
-    &-align--start    { align-items: flex-start; }
-    &-align--center   { align-items: center; }
-    &-justify--center { justify-content: center; }
-    &-justify--start { justify-content: flex-start ;}
-}
-
-.a-self--fs { align-self: flex-start; }
-
-[flex = '0'] { flex: 0 0 auto; }
-[flex = '1'] { flex: 1; }
-
-$i: 5;
-
-@while $i <= 100 {
-
-    [flex = '#{$i}'] {
-        $perc: $i+'%';
-
-        flex: 0 1 #{$perc};
-
-    }
-
-    $i: $i + 5;
-
-}
-
-
-
-
-
-//------------------------------------
-//    #TITLES
-//------------------------------------
-.title {
-    &-0         { @include title-0; }
-    &-1         { @include title-1; }
-    &-2         { @include title-2; }
-    &-2--u      { @include title-2--u; }
-    &-3         { @include title-3; }
-    &-3--alt    { @include title-3--alt; }
-    &-4         { @include title-4; }
-    &-aux       { @include title-aux;}
-}
-
-
-
-
-
-//------------------------------------
-//    #COLORS
-//------------------------------------
-@each $color-name, $color in $colors {
-    .bg-#{$color-name} {
-        background-color: $color;
-    }
-
-    .color-#{$color-name} {
-        color: $color;
-    }
-
-    .fill-#{$color-name} {
-        fill: $color;
-    }
-}
-
 .color-samples {
     $size: 5rem;
 
@@ -249,123 +112,4 @@ $i: 5;
         width: $size;
     }
 
-}
-
-
-
-
-
-
-//------------------------------------
-//    #MARGIN
-//------------------------------------
-@each $measure, $distance in $distances {
-    .m--#{$measure} {
-        margin: $distance;
-    }
-
-    @each $direction in $directions {
-        .m-#{$direction}--#{$measure} {
-            margin-#{$direction}: $distance;
-        }
-    }
-
-    @each $perpendicular in $perpendiculars {
-        @if $perpendicular == 'v' {
-        .m-#{$perpendicular}--#{$measure} {
-            margin-bottom: $distance;
-            margin-top: $distance;
-            }
-        }
-
-        @if $perpendicular == 'h' {
-            .m-#{$perpendicular}--#{$measure} {
-                margin-left: $distance;
-                margin-right: $distance;
-            }
-        }
-
-    }
-}
-
-@each $direction in $directions {
-    .m-#{$direction}--none {
-        margin-#{$direction}: 0;
-    }
-}
-
-@each $direction in $directions {
-    .m-#{$direction}--auto {
-        margin-#{$direction}: auto;
-    }
-}
-
-.m-h--none {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.m-v--none {
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.m--none {
-    margin: 0;
-}
-
-
-
-
-
-//------------------------------------
-//    #PADDING
-//------------------------------------
-@each $measure, $distance in $distances {
-    .p--#{$measure} {
-        padding: $distance;
-    }
-
-    @each $direction in $directions {
-        .p-#{$direction}--#{$measure} {
-            padding-#{$direction}: $distance;
-        }
-    }
-
-    @each $perpendicular in $perpendiculars {
-        @if $perpendicular == 'v' {
-            .p-#{$perpendicular}--#{$measure} {
-                padding-bottom: $distance;
-                padding-top: $distance;
-            }
-        }
-
-        @if $perpendicular == 'h' {
-            .p-#{$perpendicular}--#{$measure} {
-                padding-left: $distance;
-                padding-right: $distance;
-            }
-        }
-
-    }
-}
-
-@each $direction in $directions {
-    .p-#{$direction}--none {
-        padding-#{$direction}: 0;
-    }
-}
-
-.p-h--none {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.p-v--none {
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
-.p--none {
-    padding: 0;
 }

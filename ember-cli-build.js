@@ -28,7 +28,15 @@ module.exports = function (defaults) {
     },
     'ember-cli-babel': {
       includePolyfill: true
+    },
+
+    'sourcemaps': {
+      enabled: true,
+      extensions: ['js', 'css'],
+      mapCommentType: "block"
+
     }
+
   });
 
   // Use `app.import` to add additional libraries to the generated

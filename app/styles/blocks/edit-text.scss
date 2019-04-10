@@ -1,5 +1,7 @@
 .edit-text {
+
   $this: &;
+  $edit-text-dots-color: $green-20;
 
   padding: 0 0 $distance--xxs 0;
   position: relative;
@@ -19,8 +21,8 @@
   }
 
   &__indicator {
-    background-color: transparentize($green-20, .9);
-    border-bottom: 2px dotted $green-20;
+    background-color: transparentize($edit-text-dots-color, .9);
+    border-bottom: 2px dotted $edit-text-dots-color;
     content: '';
     left: 0;
     opacity: 0;
