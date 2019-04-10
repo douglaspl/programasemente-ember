@@ -75,11 +75,23 @@
         </div>
 
         <div class="d-flex d-flex-justify--center m-top--lg">
-          <button class="btn btn--xs btn--green-ghost btn--is-toggle" id="year-class-toggle" data-target="year-class-filter" style="height: 2rem; width: 9rem;">
-            <span class="label__default">Mostrar mais</span>
-            <span class="label__active">Mostrar menos</span>
+          <button class="btn btn--xs btn--green-ghost btn--is-toggle"
+                  {{action toggle 'year-class-filter'}}
+                  id="year-class-toggle"
+                  data-target="year-class-filter"
+                  style="height: 2rem; width: 9rem;">
+            <span class="btn__label label__default">Mostrar mais</span>
+            <span class="btn__label label__active">Mostrar menos</span>
           </button>
         </div>
+
+        {{!-- 
+        <div class="d-flex d-flex-justify--center m-top--lg">
+          <button class="btn btn--xs btn--green-ghost btn--is-toggle" id="year-class-toggle" data-target="year-class-filter" style="height: 2rem; width: 9rem;">
+            <span class="btn__label label__default">Mostrar mais</span>
+            <span class="btn__label label__active">Mostrar menos</span>
+          </button>
+        </div> --}}
 
       </div>
     </div>

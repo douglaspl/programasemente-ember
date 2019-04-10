@@ -232,9 +232,9 @@ $(document).on('click', '#side-arrows-container-arrow-left', function () { quest
 $(document).on('click', '#side-arrows-container-arrow-right', function () { questionScrollRight(); });
 
 
-function filterToggle(el) {
-    el.toggleClass('btn--is-toggle--on');
-    $('#' + el.data('target')).toggleClass('d--none');
-}
+// function filterToggle(el) {
+//     el.toggleClass('btn--is-toggle--on');
+//     $('#' + el.data('target')).toggleClass('d--none');
+// }
 
-$(document).on('click', '#year-class-toggle', function () { filterToggle($(this)); });
+// $(document).on('click', '#year-class-toggle', function () { filterToggle($(this)); });
