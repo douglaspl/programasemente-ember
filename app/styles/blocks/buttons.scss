@@ -306,20 +306,18 @@
   }
 
   // Sizes
+  &--xxs {
+    font-size: $font-size--xxs * .75;
+    letter-spacing: $letter-spacing--xl;
+  }
+
   &--xs {
-    font-size: ($font-size--xxs - ($font-size--xxs / 4));
+    font-size: $font-size--xs * .75;
+    letter-spacing: $letter-spacing--lg;
   }
 
-  &--sm {
-    font-size: ($font-size--xxs - ($font-size--xxs / 8));
-  }
-
-  &--lg {
-    font-size: $font-size--xs;
-  }
-
-  &--xl {
-    font-size: $font-size--sm;
+  &--md {
+    font-size: $font-size--md * .7;
   }
 
   // Container

@@ -31,7 +31,7 @@
             <span class="tooltip__bubble tooltip__bubble--gray-darkest">Sua resposta</span>
             <input class="quiz__input" type="radio" name="options" value="a" id="option_icon_{{questao.id}}_{{alternativa.id}}" onclick={{if naoRespondida (action 'selectAnswer' alternativa.id alternativa.videoId alternativa.estadoVideoAlternativa)}}>
             <label class="quiz__answer-text quiz__answer-text--clickable" data-option={{alternativa.id}} for="option_icon_{{questao.id}}_{{alternativa.id}}">{{alternativa.texto}}</label>
-            <button class="quiz__btn-confirm btn btn--sm" id="button_{{questao.id}}_{{alternativa.id}}" onclick={{action 'confirmAnswer' alternativa.id}}>Confirmar</button>
+            <button class="quiz__btn-confirm btn btn--xs" id="button_{{questao.id}}_{{alternativa.id}}" onclick={{action 'confirmAnswer' alternativa.id}}>Confirmar</button>
           </li>
           {{/each}}
         </ul>
@@ -40,7 +40,7 @@
     </ul>
 
     <div class="quiz__nav">
-      <a href="#" class="quiz__nav-arrows btn btn--icon btn--xl icon-chevron-left {{if idx_anterior 'quiz__nav-arrows--clickable' 'btn--disabled'}}"
+      <a href="#" class="quiz__nav-arrows btn btn--icon btn--md icon-chevron-left {{if idx_anterior 'quiz__nav-arrows--clickable' 'btn--disabled'}}"
         {{action 'changeQuestion' idx_anterior}}></a>
       {{!-- {{#if idx_anterior}}
       <a href="#" class='quiz__nav-arrows quiz__nav-arrows--clickable' {{action 'changeQuestion' idx_anterior}}>
@@ -60,13 +60,13 @@
 
       {{#if enable_next}}
       {{#if idx_proximo}}
-      <a href="#" class='quiz__nav-arrows btn btn--icon btn--xl icon-chevron-right quiz__nav-arrows--clickable'
+      <a href="#" class='quiz__nav-arrows btn btn--icon btn--md icon-chevron-right quiz__nav-arrows--clickable'
         {{action 'changeQuestion' idx_proximo}}></a>
       {{else}}
-      <a class="quiz__nav-arrows btn btn--icon btn--xl btn--disabled icon-chevron-right"></a>
+      <a class="quiz__nav-arrows btn btn--icon btn--md btn--disabled icon-chevron-right"></a>
       {{/if}}
       {{else}}
-      <a class="quiz__nav-arrows btn btn--icon btn--xl btn--disabled icon-chevron-right"></a>
+      <a class="quiz__nav-arrows btn btn--icon btn--md btn--disabled icon-chevron-right"></a>
       {{/if}}
     </div>
   </div>

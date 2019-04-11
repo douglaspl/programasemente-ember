@@ -14,7 +14,8 @@
 @import "setup/_rhythm"; // Não é para produção.
 @import "setup/_sanitize"; // Não é para produção.
 
-@import "blocks/_example";
+@import "styleguide/_example";
+@import "styleguide/_styleguide";
 
 @import "blocks/accordion";
 @import "blocks/add-user";

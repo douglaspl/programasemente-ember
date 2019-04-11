@@ -1,288 +1,378 @@
 <style>
-    .temp {
-        padding: 4rem;
-    }
+  .temp {
+    padding: 4rem;
+  }
 
-    .temp > * {
-        margin-bottom: 1rem;
-    }
+  .temp>* {
+    margin-bottom: 1rem;
+  }
 
-    .temp > *::before {
-        content: attr(data-class);
-    }
+  .temp>*::before {
+    content: attr(data-class);
+  }
 </style>
-<h1>Blocos</h1>
-<p>São as menores partes independentes e singulares da UI.</p>
+<div class="sg">
+  <header>
+    <h1>Blocos</h1>
+    <p class="sg__lead">São as menores partes independentes e singulares da UI.</p>
+  </header>
+  <nav>
+    <a href="#buttons">Botões</a>
+    <a href="#tooltip">Tooltip</a>
+    <a href="#colors">Cores</a>
+  </nav>
 
-<h2>Botões</h2>
-<h3>Básico</h3>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+  <section id="buttons">
+    <h2>Botões</h2>
+    <div class="sg__block">
+      <h3>Básico</h3>
+      <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <button class="btn">Push me</button>
+              </div>
             </div>
-        </div>
-        <div class="example__code">
-            <code>
+            <div class="example__code">
+              <code>
                 &#60;button class="btn"&#62;Push me&#60;/button&#62;
-            </code>
+              </code>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn__icon</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn__icon</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <button class="btn"><span class="icon-plus btn__icon"></span>Push me</button>
+              </div>
             </div>
+            <div class="example__code">
+              <code>&#60;button class="btn"&#62;&#60;span class="icon-plus btn__icon"&#62;&#60;/span&#62;Push
+                me&#62;&#60;/button&#62;</code>
+            </div>
+          </div>
         </div>
-        <div class="example__code">
-            <code>&#60;button class="btn"&#62;&#60;span class="icon-plus btn__icon"&#62;&#60;/span&#62;Push me&#62;&#60;/button&#62;</code>
-        </div>
-    </div>
-</div>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn__count</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn__count</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <button class="btn">Push me<span class="btn__count">(12)</span></button>
+              </div>
             </div>
+            <div class="example__code">
+              <code>&#60;button class="btn"&#62;Push me&#60;span
+                class="btn__count"&#62;(12)&#60;/span&#62;&#60;/button&#62;</code>
+            </div>
+          </div>
         </div>
-        <div class="example__code">
-            <code>&#60;button class="btn"&#62;Push me&#60;span class="btn__count"&#62;(12)&#60;/span&#62;&#60;/button&#62;</code>
-        </div>
+      </div>
     </div>
-</div>
 
-
-
-
-
-<h3>Modificadores</h3>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn--disabled</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+    <div class="sg__block">
+      <h3>Modificadores</h3>
+      <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn--disabled</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <button class="btn btn--disabled">Push me</button>
+              </div>
             </div>
+            <div class="example__code">
+              <code>&#60;button class="btn btn--disabled"&#62;Push me&#60;/button&#62;</code>
+            </div>
+          </div>
         </div>
-        <div class="example__code">
-            <code>&#60;button class="btn btn--disabled"&#62;Push me&#60;/button&#62;</code>
-        </div>
-    </div>
-</div>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn--green-ghost</span>
-        <span class="example__class-name">.btn--green-ghost-white</span>
-        <span class="example__class-name">.btn--inverted</span>
-        <span class="example__class-name">.btn--link</span>
-        <span class="example__class-name">.btn--text-inverted</span>
-        <span class="example__class-name">.btn--text</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element" cols="5">
-            <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn--green-ghost</span>
+            <span class="example__class-name">.btn--green-ghost-white</span>
+            <span class="example__class-name">.btn--inverted</span>
+            <span class="example__class-name">.btn--link</span>
+            <span class="example__class-name">.btn--text-inverted</span>
+            <span class="example__class-name">.btn--text</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element" cols="5">
+              <div>
                 <button class="btn btn--green-ghost">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn btn--green-ghost-white">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn btn--link">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn btn--inverted">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn btn--text">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn btn--text-inverted">Push me</button>
+              </div>
             </div>
+            <div class="example__code">
+              <code>&#60;button class="btn btn--primary-dark"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--inverted"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--green-ghost"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--link"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--text"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--text-inverted"&#62;Push me&#60;/button&#62;</code>
+            </div>
+          </div>
         </div>
-        <div class="example__code">
-            <code>&#60;button class="btn btn--primary-dark"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--inverted"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--green-ghost"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--link"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--text"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--text-inverted"&#62;Push me&#60;/button&#62;</code>
-        </div>
-    </div>
-</div>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn--icon</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn--icon</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <button class="btn btn--icon icon-plus"></button>
+              </div>
             </div>
-        </div>
-        <div class="example__code">
-            <code>
+            <div class="example__code">
+              <code>
                 &#60;button class="btn btn--icon icon-plus"&#62;Push me&#60;/button&#62;
-            </code>
+              </code>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.btn--xs</span>
-        <span class="example__class-name">.btn--sm</span>
-        <span class="example__class-name">.btn</span>
-        <span class="example__class-name">.btn--lg</span>
-        <span class="example__class-name">.btn--xl</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.btn--xs</span>
+            <span class="example__class-name">.btn--sm</span>
+            <span class="example__class-name">.btn</span>
+            <span class="example__class-name">.btn--lg</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
+                <button class="btn btn--xxs">Push me</button>
+              </div>
+              <div>
                 <button class="btn btn--xs">Push me</button>
-            </div>
-            <div>
-                <button class="btn btn--sm">Push me</button>
-            </div>
-            <div>
+              </div>
+              <div>
                 <button class="btn">Push me</button>
+              </div>
+              <div>
+                <button class="btn btn--md">Push me</button>
+              </div>
             </div>
-            <div>
-                <button class="btn btn--lg">Push me</button>
+            <div class="example__code">
+              <code>&#60;button class="btn btn--xs"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--sm"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--lg"&#62;Push me&#60;/button&#62;</code>
             </div>
-            <div>
-                <button class="btn btn--xl">Push me</button>
-            </div>
+          </div>
         </div>
-        <div class="example__code">
-            <code>&#60;button class="btn btn--xs"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--sm"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--lg"&#62;Push me&#60;/button&#62;</code>
-            <code>&#60;button class="btn btn--xl"&#62;Push me&#60;/button&#62;</code>
-        </div>
+      </div>
     </div>
-</div>
+  </section>
 
 
 
-
-
-
-<h2>Tooltip</h2>
-<h3>Básico</h3>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.tooltip</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
+  <section id="tooltip">
+    <h2>Tooltip</h2>
+    <div class="sg__block">
+      <h3>Básico</h3>
+      <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.tooltip</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
                 <p class="tooltip tooltip--is-visible">
-                    <span class="tooltip__bubble">From Ironman movie.</span>
-                    <span>"I am Ironman." - Stark, Tony</span>
+                  <span class="tooltip__bubble">From Ironman movie.</span>
+                  <span>"I am Ironman." - Stark, Tony</span>
                 </p>
+              </div>
             </div>
-        </div>
-        <div class="example__code">
-            <pre>
+            <div class="example__code">
+              <pre>
 <code>&#60;p class="tooltip tooltip--is-visible"&#62;
     &#60;span class="tooltip__bubble"&#62;From Ironman movie.&#60;/span&#62;
     &#60;span&#62;"I am Ironman." - Stark,Tony&#60;/span&#62;
 &#60;/p&#62;</code>
             </pre>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<h3>Modificadores</h3>
-<div class="example">
-    <h4 class="example__class-names">
-        <span class="example__class-name">.tooltip</span>
-    </h4>
-    <div class="example__block">
-        <div class="example__element">
-            <div>
-                <p class="tooltip tooltip--is-visible">
-                    <span class="tooltip__bubble tooltip__bubble--gray-darkest">From Ironman movie.</span>
-                    <span>"I am Ironman." - Stark, Tony</span>
-                </p>
             </div>
+          </div>
         </div>
-        <div class="example__code">
-            <pre>
+      </div>
+    </div>
+
+
+
+
+    <div class="sg__block">
+      <h3>Modificadores</h3>
+      <div>
+        <div class="example">
+          <h4 class="example__class-names">
+            <span class="example__class-name">.tooltip</span>
+          </h4>
+          <div class="example__block">
+            <div class="example__element">
+              <div>
+                <p class="tooltip tooltip--is-visible">
+                  <span class="tooltip__bubble tooltip__bubble--gray-darkest">From Ironman movie.</span>
+                  <span>"I am Ironman." - Stark, Tony</span>
+                </p>
+              </div>
+            </div>
+            <div class="example__code">
+              <pre>
 <code>&#60;p class="tooltip tooltip--is-visible"&#62;
     &#60;span class="tooltip__bubble tooltip__bubble--gray-darkest"&#62;From Ironman movie.&#60;/span&#62;
     &#60;span&#62;"I am Ironman." - Stark, Tony&#60;/span&#62;
 &#60;/p&#62;</code>
             </pre>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </section>
 
 
 
-<div class="color-samples">
-    <div class="bg-primary--lightest"></div>
-    <div class="bg-primary"></div>
-    <div class="bg-primary--darkest"></div>
-    <div></div>
-    <div></div>
+  <section id="colors">
+    <h2>Cores</h2>
+    <p class="sg__lead">Todas as cores possuem classes para fundo (<strong>.bg-xxx</strong>), cor do texto (<strong>.color-xxx</strong>) e preenchimento de svgs (<strong>.fill-xxx</strong>).</p>
+    <div class="sg__block">
+      <h3>Básicas</h3>
+      <div>
+        <h4>blue-navy <small>0, 5, 10, 20, 30, 40, 50, 60</small></h4>
+        <div class="sg__color-samples">
+          <div class="bg-blue-navy-0"></div>
+          <div class="bg-blue-navy-5"></div>
+          <div class="bg-blue-navy-10"></div>
+          <div class="bg-blue-navy-20"></div>
+          <div class="bg-blue-navy-30"></div>
+          <div class="bg-blue-navy-40"></div>
+          <div class="bg-blue-navy-50"></div>
+          <div class="bg-blue-navy-60"></div>
+        </div>
+        <h4>green<small>0, 5, 10, 20, 30, 40, 50, 60</small></h4>
+        <div class="sg__color-samples">
+          <div class="bg-green-0"></div>
+          <div class="bg-green-5"></div>
+          <div class="bg-green-10"></div>
+          <div class="bg-green-20"></div>
+          <div class="bg-green-30"></div>
+          <div class="bg-green-40"></div>
+          <div class="bg-green-50"></div>
+          <div class="bg-green-60"></div>
+        </div>
+        <h4>lemon<small>0, 5, 10, 20, 30, 40, 50, 60</small></h4>
+        <div class="sg__color-samples">
+          <div class="bg-lemon-0"></div>
+          <div class="bg-lemon-5"></div>
+          <div class="bg-lemon-10"></div>
+          <div class="bg-lemon-20"></div>
+          <div class="bg-lemon-30"></div>
+          <div class="bg-lemon-40"></div>
+          <div class="bg-lemon-50"></div>
+          <div class="bg-lemon-60"></div>
+        </div>
+      </div>
+    </div>
+    <div class="sg__block">
+      <h3>Apoio</h3>
+      <div>
+        <h4>gray<small>0, 5, 10, 20, 30, 40, 50, 60</small></h4>
+        <div class="sg__color-samples">
+          <div class="bg-gray-0"></div>
+          <div class="bg-gray-5"></div>
+          <div class="bg-gray-10"></div>
+          <div class="bg-gray-20"></div>
+          <div class="bg-gray-30"></div>
+          <div class="bg-gray-40"></div>
+          <div class="bg-gray-50"></div>
+          <div class="bg-gray-60"></div>
+        </div>
+        <h4>error</h4>
+        <div class="sg__color-samples">
+          <div class="bg-error"></div>
+        </div>
+        <h4>info</h4>
+        <div class="sg__color-samples">
+          <div class="bg-info"></div>
+        </div>
+        <h4>success</h4>
+        <div class="sg__color-samples">
+          <div class="bg-success"></div>
+        </div>
+        <h4>warning</h4>
+        <div class="sg__color-samples">
+          <div class="bg-warning"></div>
+        </div>
+      </div>
+    </div>
+    <div class="color-samples">
+      <div class="bg-primary--lightest"></div>
+      <div class="bg-primary"></div>
+      <div class="bg-primary--darkest"></div>
+      <div></div>
+      <div></div>
 
-    <div></div>
-    <div class="bg-shade-1"></div>
-    <div></div>
-    <div></div>
-    <div></div>
+      <div></div>
+      <div class="bg-shade-1"></div>
+      <div></div>
+      <div></div>
+      <div></div>
 
-    <div></div>
-    <div class="bg-shade-2"></div>
-    <div></div>
-    <div></div>
-    <div></div>
+      <div></div>
+      <div class="bg-shade-2"></div>
+      <div></div>
+      <div></div>
+      <div></div>
 
-    <div></div>
-    <div class="bg-shade-3"></div>
-    <div></div>
-    <div></div>
-    <div></div>
+      <div></div>
+      <div class="bg-shade-3"></div>
+      <div></div>
+      <div></div>
+      <div></div>
 
-    <div class="bg-gray--lightest"></div>
-    <div class="bg-gray--light"></div>
-    <div class="bg-gray"></div>
-    <div class="bg-gray--dark"></div>
-    <div class="bg-gray--darkest"></div>
+      <div class="bg-gray--lightest"></div>
+      <div class="bg-gray--light"></div>
+      <div class="bg-gray"></div>
+      <div class="bg-gray--dark"></div>
+      <div class="bg-gray--darkest"></div>
 
-    <div class="bg-black"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+      <div class="bg-black"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
 
-    <div class="bg-error"></div>
-    <div class="bg-info"></div>
-    <div class="bg-success"></div>
-    <div class="bg-warning"></div>
-</div>
-
-<div class="temp">
+      <div class="bg-error"></div>
+      <div class="bg-info"></div>
+      <div class="bg-success"></div>
+      <div class="bg-warning"></div>
+    </div>
+  </section>
+  {{!-- <div class="temp">
     <h3 class="title-0" data-class="title-0"></h3>
     <h3 class="title-1" data-class="title-1"></h3>
     <h3 class="title-2" data-class="title-2"></h3>
@@ -309,4 +399,5 @@
     <h3 class="hightlight__title" data-class="hightlight__title"></h3>
     <h3 class="side-arrows__title" data-class="side-arrows__title"></h3>
     <h3 class="html__title-class" data-class="html__title-class"></h3>
+  </div> --}}
 </div>

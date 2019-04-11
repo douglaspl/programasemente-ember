@@ -52,12 +52,6 @@
     visibility: hidden;
 }
 
-
-
-
-
-
-
 .overflow-hidden {
     overflow: hidden;
 }
@@ -96,20 +90,3 @@
     width: 100%;
 }
 
-.color-samples {
-    $size: 5rem;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: $size * 6;
-    padding: $distance--md;
-
-    > * {
-
-        flex: 0 0 auto;
-        height: $size;
-        width: $size;
-    }
-
-}

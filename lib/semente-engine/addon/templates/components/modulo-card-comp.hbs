@@ -1,11 +1,11 @@
 {{#if (equalstr type 'modulo')}}
     {{!-- <div style="display: none;">{{value}}</div> --}}
     {{#if (equalstr itens_completos total)}}
-         <button class="card__cta btn btn--sm">Rever curso</button>
+         <button class="card__cta btn btn--xs">Rever curso</button>
     {{else if (equalstr value 0)}}
-        <button class="card__cta btn btn--sm">Iniciar curso</button>
+        <button class="card__cta btn btn--xs">Iniciar curso</button>
     {{else}}
-         <button class="card__cta btn btn--sm">Continuar curso</button>
+         <button class="card__cta btn btn--xs">Continuar curso</button>
     {{/if}}
 
 {{/if}}
