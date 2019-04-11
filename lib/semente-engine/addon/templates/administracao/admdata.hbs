@@ -37,6 +37,56 @@
 
       </div>
 
+      <!-- ano e turma -->
+      <div class="d-flex m-top--lg d--none animated fadeIn faster" id="year-class-filter">
+
+        <div class="form-group form-group--vertical" flex="1">
+          <span class="form-group__label">Ano</span>
+          <div class="d-flex">
+            <span class="checkbox m-right--md">
+                <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1">
+                <label class="checkbox__label" for="year1">1º ano</label>
+            </span>
+            <span class="checkbox m-right--md">
+                <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2">
+                <label class="checkbox__label" for="year2">2º ano</label>
+            </span>
+            <span class="checkbox">
+                <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3">
+                <label class="checkbox__label" for="year3">3º ano</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+          <label class="form-group__label">Turma</label>
+          
+          <select class="form-group__input form-group__input--select">
+            <option value="0" selected>Escolha uma turma</option>
+            <option value="101">101</option>
+            <option value="102">102</option>
+            <option value="103">103</option>
+            <option value="201">201</option>
+            <option value="202">202</option>
+            <option value="203">203</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="d-flex d-flex-justify--center m-top--lg">
+        <button class="btn btn--xxs btn--green-ghost btn--is-toggle"
+                {{action toggle 'year-class-filter'}}
+                id="year-class-toggle"
+                data-target="year-class-filter"
+                style="height: 2rem; width: 9rem;">
+          <span class="btn__label label__default">Mostrar mais</span>
+          <span class="btn__label label__active">Mostrar menos</span>
+        </button>
+      </div>
+
+
+
     </div>
 
     <!-- ========================
