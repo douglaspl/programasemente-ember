@@ -6,15 +6,25 @@
             <span class="icon-lock_outline"></span>
         </span>
     </div>
-    <div class="timeline__mark class class--is-disabled">
-        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
-        <h3 class="class__title">{{atividade.name}}</h3>
-        <p class="class__description">{{atividade.description}}</p>
-        {{#if aula_liberada}}
+    {{#if aula_liberada}}
+        <div class="timeline__mark class class--is-completed">
+            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+            <h3 class="class__title">{{atividade.name}}</h3>
+            <p class="class__description">{{atividade.description}}</p>
             <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
-        {{/if}}
-    </div>
+            
+        </div>
+    {{else}}
+        <div class="timeline__mark class class--is-disabled">
+            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+            <h3 class="class__title">{{atividade.name}}</h3>
+            <p class="class__description">{{atividade.description}}</p>
+            
+            
+        </div>
+    {{/if}}
 {{else if (equalstr value 100)}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
