@@ -1,11 +1,22 @@
- {{#if (equalstr value 0)}}
+{{#if (equalstr value 0)}}
+    {{#if data_ok}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
+        <span class="title-aux w100">Liberada a partir de</span>
         <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        <span class="timeline__status timeline__status--is-locked">
-            <span class="icon-lock_outline"></span>
+        <span class="timeline__status">
+            <span class="icon-check"></span>
         </span>
     </div>
+    {{else}}
+        <div class="timeline__indicator"></div>
+        <div class="timeline__date">
+            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+            <span class="timeline__status timeline__status--is-locked">
+                <span class="icon-lock_outline"></span>
+            </span>
+        </div>
+    {{/if}}
     {{#if aula_liberada}}
         <div class="timeline__mark class class--is-completed">
             <span class="class__img" style="{{atividade.backgroundImage}}"></span>
@@ -20,9 +31,7 @@
             <span class="class__img" style="{{atividade.backgroundImage}}"></span>
             <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
             <h3 class="class__title">{{atividade.name}}</h3>
-            <p class="class__description">{{atividade.description}}</p>
-            
-            
+            <p class="class__description">{{atividade.description}}</p>   
         </div>
     {{/if}}
 {{else if (equalstr value 100)}}
