@@ -4,7 +4,8 @@
     $date-bg-color: $color-white;
     $status-border-color: $date-bg-color;
 
-    > * {
+    &__mark { 
+
         position: relative;
 
         &:first-child {
@@ -59,33 +60,35 @@
             margin-top: 20vh;
         }
 
-        &:nth-child(2n+3) {
-            margin-top: 36vh;
-
-            &::after {
-                background-color: $lemon-10;
-                background-image: linear-gradient(to top, $lemon-40, $lemon-5);
-                border-radius: $radius--capsule;
-                bottom: calc(100% + 18vh);
-                box-shadow: 0 0 80px $gray-60;
-                color: $blue-navy-50;
-                content: 'Fim da unidade';
-                font-weight: 600;
-                left: 50%;
-                letter-spacing: $letter-spacing--xxl;
-                padding: $distance--xs $distance--xl;
-                position: absolute;
-                transform: translate(-50%, 50%);
-                text-align: center;
-                text-transform: uppercase;
-                width: 14rem;
+        //.timeline__mark--start-unit
+        &--start-unit {
+            &:nth-child(2n+3) {
+                margin-top: 36vh;
+    
+                &::after {
+                    background-color: $lemon-10;
+                    background-image: linear-gradient(to top, $lemon-40, $lemon-5);
+                    border-radius: $radius--capsule;
+                    bottom: calc(100% + 18vh);
+                    box-shadow: 0 0 80px $gray-60;
+                    color: $blue-navy-50;
+                    content: 'Fim da unidade';
+                    font-weight: 600;
+                    left: 50%;
+                    letter-spacing: $letter-spacing--xxl;
+                    padding: $distance--xs $distance--xl;
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 14rem;
+                }
+    
             }
-
         }
-
     }
 
-    &__mark {
+    &__class {
         background-color: $color-off-white;
         border-radius: $radius--md;
         box-shadow: 0 2px 0 0 hsla(0, 0, 0, .2);
@@ -115,12 +118,6 @@
                 right: 100%;
             }
 
-        }
-
-        //.timeline__mark--start-unit
-        &--start-unit {
-            // aqui entrará estilo que marca final de unidade
-            outline: 1px solid crimson;
         }
 
     }

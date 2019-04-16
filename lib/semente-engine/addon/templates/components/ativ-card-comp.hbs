@@ -18,7 +18,7 @@
         </div>
     {{/if}}
     {{#if aula_liberada}}
-        <div class="timeline__mark class class--is-completed">
+        <div class="timeline__class class class--is-completed">
             <span class="class__img" style="{{atividade.backgroundImage}}"></span>
             <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
             <h3 class="class__title">{{atividade.name}}</h3>
@@ -27,7 +27,7 @@
             
         </div>
     {{else}}
-        <div class="timeline__mark class class--is-disabled">
+        <div class="timeline__class class class--is-disabled">
             <span class="class__img" style="{{atividade.backgroundImage}}"></span>
             <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
             <h3 class="class__title">{{atividade.name}}</h3>
@@ -43,7 +43,7 @@
             <span class="icon-check"></span>
         </span>
     </div>
-    <div class="timeline__mark class class--is-completed">
+    <div class="timeline__class class class--is-completed">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
         <h3 class="class__title">{{atividade.name}}</h3>
@@ -55,7 +55,7 @@
 {{else}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date"><span class="timeline__day">{{dia}}</span> {{mensagem_mes}}</div>
-    <div class="timeline__mark class">
+    <div class="timeline__class class">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
         <h3 class="class__title">{{atividade.name}}</h3>
