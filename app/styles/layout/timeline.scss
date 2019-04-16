@@ -189,14 +189,13 @@
         box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
         color: $color-white;
         display: flex;
-        font-size: $font-size--lg;
-        font-weight: bold;
+        font-size: $font-size--sm;
         height: $distance--xxl;
         justify-content: center;
         line-height: 1;
         position: absolute;
         left: 100%;
-        text-shadow: 0 2px 0 $green-30;
+        // text-shadow: 0 2px 0 $green-30;
         transform: translate(-50%, -50%);
         top: 50%;
         width: $distance--xxl;
@@ -219,7 +218,7 @@
 
         &--is-locked {
             background-color: $gray-30;
-            text-shadow: 0 2px 0 $gray-50;
+            // text-shadow: 0 2px 0 $gray-50;
         }
 
     }

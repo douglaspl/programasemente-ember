@@ -20,15 +20,15 @@
   }
 }
 
-.icon-lock_open {
+.icon-unlocked {
   &:before {
-    content: $icon-lock_open;
+    content: $icon-unlocked;
   }
 }
 
-.icon-lock_outline {
+.icon-lock {
   &:before {
-    content: $icon-lock_outline;
+    content: $icon-lock;
   }
 }
 
