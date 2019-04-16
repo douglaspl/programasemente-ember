@@ -117,6 +117,11 @@
 
         }
 
+        //.timeline__mark--start-unit
+        &--start-unit {
+            // aqui entrará estilo que marca final de unidade
+            outline: 1px solid crimson;
+        }
 
     }
 
