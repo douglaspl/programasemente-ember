@@ -1,231 +1,232 @@
-
 .timeline {
-    $this: &;
-    $date-bg-color: $color-white;
-    $status-border-color: $date-bg-color;
+  $this: &;
+  $date-bg-color: $color-white;
+  $status-border-color: $date-bg-color;
 
-    &__mark { 
+  &__mark {
 
-        position: relative;
+    position: relative;
 
-        &:first-child {
-            margin-top: $distance--super;
+    &:first-child {
+      margin-top: $distance--super;
 
-            &::before {
-                background-color: $lemon-10;
-                background-image: linear-gradient(to top, $gray-5, $color-white);
-                border-radius: $radius--capsule;
-                box-shadow: 0 0 40px transparentize($color-black, .1);
-                color: $gray-40;
-                content: 'Início do ano';
-                font-weight: 600;
-                left: 50%;
-                letter-spacing: $letter-spacing--xxl;
-                padding: $distance--xs 0;
-                position: absolute;
-                transform: translate(-50%, 50%);
-                text-align: center;
-                text-transform: uppercase;
-                top: -$distance--super;
-                width: 12rem;
-            }
-
-        }
-
-        &:last-child {
-            margin-bottom: $distance--super;
-
-            &::before {
-                background-color: $lemon-10;
-                background-image: linear-gradient(to top, $gray-30, $gray-10);
-                border-radius: $radius--capsule;
-                bottom: -$distance--xxl;
-                box-shadow: 0 0 40px transparentize($color-black, .1);
-                color: $color-white;
-                content: 'Fim do ano';
-                font-weight: 600;
-                left: 50%;
-                letter-spacing: $letter-spacing--xxl;
-                padding: $distance--xs 0;
-                position: absolute;
-                text-align: center;
-                text-transform: uppercase;
-                transform: translate(-50%, 50%);
-                width: 12rem;
-            }
-
-        }
-
-        &:not(:first-child) {
-            margin-top: 20vh;
-        }
-
-        //.timeline__mark--start-unit
-        &--start-unit {
-            &:nth-child(2n+3) {
-                margin-top: 36vh;
-    
-                &::after {
-                    background-color: $lemon-10;
-                    background-image: linear-gradient(to top, $lemon-40, $lemon-5);
-                    border-radius: $radius--capsule;
-                    bottom: calc(100% + 18vh);
-                    box-shadow: 0 0 80px $gray-60;
-                    color: $blue-navy-50;
-                    content: 'Fim da unidade';
-                    font-weight: 600;
-                    left: 50%;
-                    letter-spacing: $letter-spacing--xxl;
-                    padding: $distance--xs $distance--xl;
-                    position: absolute;
-                    transform: translate(-50%, 50%);
-                    text-align: center;
-                    text-transform: uppercase;
-                    width: 14rem;
-                }
-    
-            }
-        }
-    }
-
-    &__class {
-        background-color: $color-off-white;
-        border-radius: $radius--md;
-        box-shadow: 0 2px 0 0 hsla(0, 0, 0, .2);
-        padding: $distance--md $distance--lg;
-        margin-left: auto;
-        margin-right: calc(50% + #{$distance--md});
-
-        #{$this} > *:nth-child(2n+2) & {
-            margin-left: calc(50% + #{$distance--md});
-            margin-right: auto;
-        }
-
-        &::before {
-            border-color: transparent transparent transparent $color-white;
-            border-style: solid;
-            border-width: 1rem;
-            content: '';
-            height: 0;
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-
-            #{$this} > *:nth-child(2n+2) & {
-                border-color: transparent $color-white transparent transparent;
-                left: auto;
-                right: 100%;
-            }
-
-        }
-
-    }
-
-    &__indicator {
-        $size: 25px;
-
-        background-color: $blue-navy-50;
-        border: 8px solid $lemon-10;
+      &::before {
+        background-color: $lemon-10;
+        background-image: linear-gradient(to top, $gray-5, $color-white);
         border-radius: $radius--capsule;
-        box-shadow: 0 0 40px transparentize($lemon-60, .1);
-        height: $size;
+        box-shadow: 0 0 40px transparentize($color-black, .1);
+        color: $gray-40;
+        content: 'Início do ano';
+        font-weight: 600;
         left: 50%;
+        letter-spacing: $letter-spacing--xxl;
+        padding: $distance--xs 0;
         position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: $size;
-    }
-
-    &__date {
-        align-items: center;
-        background-color: $date-bg-color;
-        border-radius: $radius--md;
-        box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        font-size: $font-size--lg;
-        line-height: 1;
-        padding: $distance--sm $distance--xl $distance--sm $distance--sm;
-        position: absolute;
-        left: calc(50% + #{$distance--md});
-        right: auto;
-        top: 50%;
-        transform: translateY(-50%);
-
-        #{$this} > *:nth-child(2n+2) & {
-            left: auto;
-            padding: $distance--sm $distance--sm $distance--sm $distance--xl;
-            right: calc(50% + #{$distance--md});
-        }
-
-        &::before {
-            border-color: transparent $date-bg-color transparent transparent;
-            border-style: solid;
-            border-width: 1rem;
-            content: '';
-            height: 0;
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-
-            #{$this} > *:nth-child(2n+2) & {
-                border-color: transparent transparent transparent $date-bg-color;
-                left: 100%;
-                right: auto;
-            }
-
-        }
+        transform: translate(-50%, 50%);
+        text-align: center;
+        text-transform: uppercase;
+        top: -$distance--super;
+        width: 12rem;
+      }
 
     }
 
-    &__status {
-        align-items: center;
-        background-color: $color-success;
-        border: 4px solid $status-border-color;
-        border-radius: 50%;
-        box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
+    &:last-child {
+      margin-bottom: $distance--super;
+
+      &::before {
+        background-color: $lemon-10;
+        background-image: linear-gradient(to top, $gray-30, $gray-10);
+        border-radius: $radius--capsule;
+        bottom: -$distance--xxl;
+        box-shadow: 0 0 40px transparentize($color-black, .1);
         color: $color-white;
-        display: flex;
-        font-size: $font-size--sm;
-        height: $distance--xxl;
-        justify-content: center;
-        line-height: 1;
+        content: 'Fim do ano';
+        font-weight: 600;
+        left: 50%;
+        letter-spacing: $letter-spacing--xxl;
+        padding: $distance--xs 0;
         position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        transform: translate(-50%, 50%);
+        width: 12rem;
+      }
+
+    }
+
+    &:not(:first-child) {
+      margin-top: 20vh;
+    }
+
+    //.timeline__mark--start-unit
+    &--start-unit {
+        $start-unit-margin-top: 36vh;
+        $start-unit-bottom-correction: $start-unit-margin-top / 3 ;
+        
+        margin-top: $start-unit-margin-top;
+
+      &::after {
+        background-color: $lemon-10;
+        background-image: linear-gradient(to top, $lemon-40, $lemon-5);
+        border-radius: $radius--capsule;
+        bottom: calc(100% + #{$start-unit-bottom-correction});
+        box-shadow: 0 0 80px $gray-60;
+        color: $blue-navy-50;
+        content: 'Fim da unidade';
+        font-weight: 600;
+        left: 50%;
+        letter-spacing: $letter-spacing--xxl;
+        padding: $distance--xs $distance--xl;
+        position: absolute;
+        transform: translate(-50%, 50%);
+        text-align: center;
+        text-transform: uppercase;
+        width: 14rem;
+      }
+
+    }
+
+  }
+
+  &__class {
+    background-color: $color-off-white;
+    border-radius: $radius--md;
+    box-shadow: 0 2px 0 0 hsla(0, 0, 0, .2);
+    padding: $distance--md $distance--lg;
+    margin-left: auto;
+    margin-right: calc(50% + #{$distance--md});
+
+    #{$this}>*:nth-child(2n+2) & {
+      margin-left: calc(50% + #{$distance--md});
+      margin-right: auto;
+    }
+
+    &::before {
+      border-color: transparent transparent transparent $color-white;
+      border-style: solid;
+      border-width: 1rem;
+      content: '';
+      height: 0;
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      #{$this}>*:nth-child(2n+2) & {
+        border-color: transparent $color-white transparent transparent;
+        left: auto;
+        right: 100%;
+      }
+
+    }
+
+  }
+
+  &__indicator {
+    $size: 25px;
+
+    background-color: $blue-navy-50;
+    border: 8px solid $lemon-10;
+    border-radius: $radius--capsule;
+    box-shadow: 0 0 40px transparentize($lemon-60, .1);
+    height: $size;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: $size;
+  }
+
+  &__date {
+    align-items: center;
+    background-color: $date-bg-color;
+    border-radius: $radius--md;
+    box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: $font-size--lg;
+    line-height: 1;
+    padding: $distance--sm $distance--xl $distance--sm $distance--sm;
+    position: absolute;
+    left: calc(50% + #{$distance--md});
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+    #{$this}>*:nth-child(2n+2) & {
+      left: auto;
+      padding: $distance--sm $distance--sm $distance--sm $distance--xl;
+      right: calc(50% + #{$distance--md});
+    }
+
+    &::before {
+      border-color: transparent $date-bg-color transparent transparent;
+      border-style: solid;
+      border-width: 1rem;
+      content: '';
+      height: 0;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      #{$this}>*:nth-child(2n+2) & {
+        border-color: transparent transparent transparent $date-bg-color;
         left: 100%;
-        // text-shadow: 0 2px 0 $green-30;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        width: $distance--xxl;
-        z-index: 2;
-
-        #{$this} > *:nth-child(2n+2) & {
-            box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
-            left: auto;
-            right: 100%;
-            transform: translate(50%, -50%);
-        }
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            height: 100%;
-            width: 100%;
-        }
-
-        &--is-locked {
-            background-color: $gray-30;
-            // text-shadow: 0 2px 0 $gray-50;
-        }
+        right: auto;
+      }
 
     }
 
-    &__day {
-        font-size: 1.5em;
-        margin-right: $distance--xs;
+  }
+
+  &__status {
+    align-items: center;
+    background-color: $color-success;
+    border: 4px solid $status-border-color;
+    border-radius: 50%;
+    box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
+    color: $color-white;
+    display: flex;
+    font-size: $font-size--sm;
+    height: $distance--xxl;
+    justify-content: center;
+    line-height: 1;
+    position: absolute;
+    left: 100%;
+    // text-shadow: 0 2px 0 $green-30;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    width: $distance--xxl;
+    z-index: 2;
+
+    #{$this}>*:nth-child(2n+2) & {
+      box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
+      left: auto;
+      right: 100%;
+      transform: translate(50%, -50%);
     }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    &--is-locked {
+      background-color: $gray-30;
+      // text-shadow: 0 2px 0 $gray-50;
+    }
+
+  }
+
+  &__day {
+    font-size: 1.5em;
+    margin-right: $distance--xs;
+  }
 
 }
