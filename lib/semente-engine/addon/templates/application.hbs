@@ -64,7 +64,9 @@
       <button class="global-nav__close icon-x"></button>
 
       <!-- courses header -->
-      <li class="global-nav__item" id="header-modulos">
+      
+       {{#if (equalstr role 'aluno')}}
+         <li class="global-nav__item" id="header-modulos">
         <a href="#" class="global-nav__link j-timeline">Percurso <span class="icon icon-chevron-down"></span></a>
 
         <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
@@ -84,6 +86,9 @@
         </div>
 
       </li>
+       {{else}}
+       {{/if}}
+    
 
       <!-- lib header -->
       <li class="global-nav__item counter" id="header-biblioteca" style="display:none;">
@@ -97,11 +102,10 @@
 
       <!-- follow up header -->
       {{#if (equalstr role 'aluno')}}{{else}}
-      {{#if (equalstr role 'instrutor')}}{{else}}
-      <li class="global-nav__item" id="header-indicadores">{{#link-to 'administracao'
+       <li class="global-nav__item" id="header-indicadores">{{#link-to 'administracao'
         class="global-nav__link"}}Acompanhamento{{/link-to}}</li>
       {{/if}}
-      {{/if}}
+      
 
       <!--  administration header -->
       {{#if (equalstr role 'aluno')}}{{else}}
