@@ -135,8 +135,13 @@
     <h2 class="main__subtitle main__subtitle--timeline">Percurso</h2>
     <ol class="timeline">
       {{#each model.atividades as |atividade idx|}}
+        
+        {{#if (equalstr (get listaStartUnit idx) 1)}}
       <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
-        {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
+          {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
+        {{else}}
+          {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
+        {{/if}}
       {{/each}}
     </ol>
   </section>
