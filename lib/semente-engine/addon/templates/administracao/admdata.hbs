@@ -44,15 +44,15 @@
           <span class="form-group__label">Ano</span>
           <div class="d-flex">
             <span class="checkbox m-right--md">
-                <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1">
+                <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1" {{action 'filterano1' on='change'}}>
                 <label class="checkbox__label" for="year1">1º ano</label>
             </span>
             <span class="checkbox m-right--md">
-                <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2">
+                <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2" {{action 'filterano2' on='change'}}>
                 <label class="checkbox__label" for="year2">2º ano</label>
             </span>
             <span class="checkbox">
-                <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3">
+                <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3" {{action 'filterano3' on='change'}}>
                 <label class="checkbox__label" for="year3">3º ano</label>
             </span>
           </div>
