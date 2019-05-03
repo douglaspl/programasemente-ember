@@ -65,8 +65,12 @@
 
       <!-- courses header -->
       
-      {{!-- {{#if (equalstr role 'aluno')}}`--}}
-         <li class="global-nav__item" id="header-modulos">
+    {{#if (equalstr role 'aluno')}}
+      <li class="global-nav__item" id="header-modulos">
+        {{#link-to 'modulos.modlist' 1 class="global-nav__link"}}Primeiro Ano{{/link-to}}
+      </li>
+    {{else}}
+      <li class="global-nav__item" id="header-modulos">
         <a href="#" class="global-nav__link j-timeline">Percurso <span class="icon icon-chevron-down"></span></a>
 
         <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
@@ -86,8 +90,7 @@
         </div>
 
       </li>
-      {{!-- {{else}}
-       {{/if}} --}}
+    {{/if}}
     
 
       <!-- lib header -->
