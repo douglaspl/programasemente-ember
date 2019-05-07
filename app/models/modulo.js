@@ -8,7 +8,6 @@ export default DS.Model.extend({
     habilitado: DS.attr(),
     coverImage: DS.attr(), 
     dataInscricao: DS.attr(),
-    idx: DS.attr(),
     autor: DS.attr(),
     videoId: DS.attr(),
     duracao: DS.attr(),
