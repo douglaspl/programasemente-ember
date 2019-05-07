@@ -57,9 +57,9 @@
         align-self: center;
         display: inline-block;
         height: auto;
-        // max-height: 98px;
+        max-height: 98px;
         margin: 0 auto;
-        max-width: 10rem;
+        //max-width: 10rem;
 
         @include media('>md') {
             // max-width: 9rem;
