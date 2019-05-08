@@ -1,5 +1,5 @@
 <!-- user help -->
-{{!-- <div style="display: none;">{{modulo}}</div> --}}
+
 <aside class="help" id="help">
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
   <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle" {{action "toggleHelp"}}></button>
@@ -76,17 +76,21 @@
 
         <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
           <ul>
+            {{#if primeiroAno}}
             <li class="submenu__item">
               {{#link-to 'modulos.modlist' 1 class="submenu__link"}}<span>Primeiro ano</span>{{/link-to}}
             </li>
-
+            {{/if}}
+            {{#if segundoAno}}
             <li class="submenu__item">
-              <a href="#" class="submenu__link">
-                <span>Segundo ano</span></a></li>
-
+              {{#link-to 'modulos.modlist' 2 class="submenu__link"}}<span>Segundo ano</span>{{/link-to}}
+            </li>
+            {{/if}}
+            {{#if terceiroAno}}
             <li class="submenu__item">
               <a href="#" class="submenu__link">
                 <span>Terceiro ano</span></a></li>
+            {{/if}}
           </ul>
         </div>
 
@@ -221,7 +225,9 @@
   </aside>
   {{/if}}
 </section>
+
 <div style="display: none;">{{oneInst}}</div>
+
 
 <!-- for algorithm run purposes only -->
 
