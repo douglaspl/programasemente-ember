@@ -29,8 +29,9 @@
 
     &__logo {
         display: block;
+        width: 120px;
         padding: $distance--xs;
-        width: auto;
+        // width: auto;
         // background-color: $color-white;
         // border-radius: $radius--md;
         // box-shadow: $shadow-3;
