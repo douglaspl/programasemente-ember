@@ -212,7 +212,7 @@
             display: none;
         }
 
-        > li:first-of-type {
+        .global-nav__item:first-of-type {
             margin-bottom: $distance--sm;
 
             [class*='__link'] {
