@@ -387,7 +387,7 @@
         {{#if new_user_email}}
         <!-- edit user -->
         {{#each modulos_list as |mod|}}
-        <li class="institutions__course form-group checkbox"
+        <li class="institutions__course form-group"
           style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
           <span class="list__img"
             style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
@@ -411,7 +411,7 @@
         {{else}}
         <!-- new user -->
         {{#each modulos_list as |mod|}}
-        <li class="institutions__course form-group checkbox"
+        <li class="institutions__course form-group"
           style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
           <span class="list__img"
             style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
