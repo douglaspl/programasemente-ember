@@ -4,13 +4,14 @@
   $img-height: 118%;
   $img-width: 40%;
 
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
 
   @include media('>sm') {
+    align-items: flex-start;
     min-height: 20vh;
     padding: $distance--md $distance--lg;
     width: calc(50% - #{$distance--md});
@@ -20,13 +21,11 @@
     width: 40%;
   }
 
-  >* {
+  > * {
     z-index: 2;
   }
 
-  &--is-completed {
-    // border-top: 4px solid $color-success;
-  }
+  &--is-completed {}
 
   &--is-disabled {
     cursor: not-allowed;
@@ -38,14 +37,19 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: $radius--md;
-    // box-shadow: 0 4px 0 0 hsla(0, 0, 0, .2);
-    height: calc(100% - (#{$distance--xs} * 2));
-    position: absolute;
-    right: $distance--xs;
-    // top: (100% - $img-height)/2;
-    top: $distance--xs;
-    width: $img-width;
+    height: 10rem;
+    margin-bottom: $distance--sm;
+    width: 100%;
     z-index: 1;
+
+    @include media('>sm') {
+      height: calc(100% - (#{$distance--xs} * 2));
+      position: absolute;
+      right: $distance--xs;
+      top: $distance--xs;
+      width: $img-width;
+    }
+
   }
 
   &__title {
