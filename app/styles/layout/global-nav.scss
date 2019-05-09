@@ -205,4 +205,40 @@
         padding: $distance--sm $distance--md;
     }
 
+
+    @include media('<=sm') {
+    
+        [class*='icon-chevron'] {
+            display: none;
+        }
+
+        > li:first-of-type {
+            margin-bottom: $distance--sm;
+
+            [class*='__link'] {
+                text-align: center;
+            }
+    
+            [class*='__submenu'] {
+                box-shadow: none;
+                display: block;
+                left: 0;
+                opacity: 1;
+                position: relative;
+                right: 0;
+                text-align: center;
+                top: 0;
+                transform: none;
+                visibility: visible;
+    
+                li:first-of-type {
+                    margin-top: 0;
+                }
+                
+            }
+
+        }
+
+    }
+
 }
