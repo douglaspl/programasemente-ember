@@ -365,35 +365,61 @@
             value={{if new_user_email new_user_email}}>
         </div>
 
-        <div class="form-group form-group--vertical form-group--aired-h form-group--select-wrapper" flex="20">
-          <label class="form-group__label" for="new_user_role">Perfil</label>
-          <select class="form-group__input" id="new_user_role">
-            <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
-            <option value="instrutor" selected={{thisUserRole.instrutor}}>Instrutor</option>
-            <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
-            <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
-            {{#if (equalstr new_user_role 'admin')}}
-              <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
-            {{/if}}
-          </select>
+        <div flex="20" class="form-group--aired-h">
+          <div class="form-group form-group--vertical form-group--select-wrapper w100">
+            <label class="form-group__label" for="new_user_role">Perfil</label>
+            <select class="form-group__input" id="new_user_role">
+              <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
+              <option value="instrutor" selected={{thisUserRole.instrutor}}>Instrutor</option>
+              <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
+              <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
+              {{#if (equalstr new_user_role 'admin')}}
+                <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
+              {{/if}}
+            </select>
+          </div>
         </div>
 
-        <div class="form-group form-group--vertical form-group--aired-h form-group--select-wrapper" flex="20">
-          <label class="form-group__label" for="new_user_area">Área</label>
-          <select class="form-group__input" id="new_user_area">
-            <option value="">Selecione...</option>
-            {{#each inst_selected.areas as |area|}}
-              {{#if (equalstr area.id new_user_area)}}
-                <option value={{area.id}} selected>{{area.name}}</option>
-              {{else}}
-                <option value={{area.id}}>{{area.name}}</option>
-              {{/if}}
-            {{/each}}
-          </select>
+        <div flex="20" class="form-group--aired-h">
+          <div class="form-group form-group--vertical form-group--select-wrapper w100">
+            <label class="form-group__label" for="new_user_area">Área</label>
+            <select class="form-group__input" id="new_user_area">
+              <option value="">Selecione...</option>
+              {{#each inst_selected.areas as |area|}}
+                {{#if (equalstr area.id new_user_area)}}
+                  <option value={{area.id}} selected>{{area.name}}</option>
+                {{else}}
+                  <option value={{area.id}}>{{area.name}}</option>
+                {{/if}}
+              {{/each}}
+            </select>
+          </div>
         </div>
+
 
       </div>
 
+      <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
+        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <label class="form-group__label" for="new_user_birth">Nascimento</label>
+          <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}}>
+          <div class="m-top--xxs">(dd/mm/aaaa)</div>
+        </div>
+        <div flex="20" class="form-group--aired-h">
+          <div class="form-group form-group--vertical form-group--select-wrapper w100">
+            <label class="form-group__label" for="new_user_role">Sexo</label>
+            <select class="form-group__input" id="new_user_role">
+              <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
+              <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
+              <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <label class="form-group__label" for="new_user_subsc">Matrícula</label>
+          <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
+        </div>
+      </div>
 
 
 
