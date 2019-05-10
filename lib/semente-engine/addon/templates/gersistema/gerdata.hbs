@@ -314,7 +314,7 @@
       <!-- -->
       <!-- reset user progress -->
       {{#if (equalstr staticType 'progress')}}
-        <button id="botao_reset_{{new_user_id}}" class="btn btn--text-inverted" type="submit"
+        <button id="botao_reset_{{new_user_id}}" class="btn btn--xs btn--text-inverted" type="submit"
           {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
         <button class="btn btn--inverted" type="submit" {{action staticAlert 'close'}}>Fechar</button>
       {{/if}}
@@ -351,20 +351,6 @@
       <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
 
 
-
-
-
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-          <label class="form-group__label" for="new_user_name">Nome</label>
-          <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
-        </div>
-
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-          <label class="form-group__label">E-mail</label>
-          <input class="form-group__input" type="textbox" id="new_user_email"
-            value={{if new_user_email new_user_email}}>
-        </div>
-
         <div flex="20" class="form-group--aired-h">
           <div class="form-group form-group--vertical form-group--select-wrapper w100">
             <label class="form-group__label" for="new_user_role">Perfil</label>
@@ -379,6 +365,20 @@
             </select>
           </div>
         </div>
+
+
+
+        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <label class="form-group__label" for="new_user_name">Nome</label>
+          <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
+        </div>
+
+        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <label class="form-group__label">E-mail</label>
+          <input class="form-group__input" type="textbox" id="new_user_email"
+            value={{if new_user_email new_user_email}}>
+        </div>
+
 
         <div flex="20" class="form-group--aired-h">
           <div class="form-group form-group--vertical form-group--select-wrapper w100">
@@ -402,7 +402,18 @@
       <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
         <div class="form-group form-group--vertical form-group--aired-h" flex="20">
           <label class="form-group__label" for="new_user_birth">Nascimento</label>
-          <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}}>
+          <input class="form-group__input"
+                 type="textbox"
+                 id="new_user_birth"
+                 value={{new_user_birth}}
+                 name="date"
+                 maxlength="10"
+                 onkeyup="var v = this.value;
+                          if (v.match(/^\d{2}$/) !== null) {
+                              this.value = v + '/';
+                          } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                              this.value = v + '/';
+                          }">
           <div class="m-top--xxs">(dd/mm/aaaa)</div>
         </div>
         <div flex="20" class="form-group--aired-h">
@@ -433,15 +444,15 @@
 
 
 
-      <h4 class="modal__subtitle">Cursos</h4>
+      <h4 class="modal__subtitle">Anos</h4>
       <ul class="list list--img-name-action list--striped">
         {{#if new_user_email}}
           <!-- edit user -->
           {{#each modulos_list as |mod|}}
             <li class="institutions__course form-group"
               style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-              <span class="list__img"
-                style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+              <img class="list__img list__img--auto-height"
+                src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 {{#if (isinarray mod user_modulos)}}
@@ -464,8 +475,8 @@
           {{#each modulos_list as |mod|}}
             <li class="institutions__course form-group"
               style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-              <span class="list__img"
-                style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+              <img class="list__img list__img--auto-height"
+                src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"

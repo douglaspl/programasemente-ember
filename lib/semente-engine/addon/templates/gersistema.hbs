@@ -481,13 +481,16 @@
       <li>
         {{!-- <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span> --}}
         <div flex="1">
-          <h3 class="list__name title-3">{{mod.name}}</h3>
-          {{!-- <button id="cta{{area.id}}" class="btn btn--text btn--xs btn--is-toggle" {{action displayAccordion area.id}} style="width: 8rem;"> --}}
-          <button id="cta{{mod.id}}" class="btn btn--leaf-ghost btn--xs btn--is-toggle m-top--sm"
-            {{action displayAccordion mod.id}} style="height: 2rem; width: 9rem;">
-            <span class="btn__label label__default">Exibir calendário</span>
-            <span class="btn__label label__active">Fechar calendário</span>
-          </button>
+          <div class="d-flex d-flex-align--center">
+            <img class="list__img list__img--auto-height"
+                src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+            <h3 class="list__name title-3 m-left--lg">{{mod.name}}</h3>
+            <button id="cta{{mod.id}}" class="btn btn--green-ghost btn--xs btn--is-toggle m-left--xl"
+              {{action displayAccordion mod.id}} style="height: 2rem; width: 9rem;">
+              <span class="btn__label label__default">Exibir calendário</span>
+              <span class="btn__label label__active">Fechar calendário</span>
+            </button>
+          </div>
         </div>
         <span class="switch switch--institutions">
           <!-- temporary save controll -->
@@ -586,13 +589,12 @@
       </li>
       {{#each inst_selected.areas as |area idx|}}
       <li>
-        <div class="capsule capsule--green capsule--round m-right--md m-top--xxs">1º ano</div>
         <div flex="1" class="m-right--lg">
           <div class="edit-text">
             <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
             <span class="edit-text__indicator"></span>
           </div>
-          <em>10 alunos</em>
+          <div><span>1º ano</span><span class="m-h--sm">|</span><em>10 alunos</em></div>
         </div>
         <div class="btn-group m-left--auto" id="areaItemOptions{{area.id}}">
           <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' area.id}}>

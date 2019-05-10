@@ -20,6 +20,11 @@
         width: 100%;
     }
 
+    &__img {
+        margin-right: $distance--sm;
+        width: 6rem;
+    }
+
     &__thumb {
         @include bg-as-thumb;
 
@@ -36,6 +41,9 @@
     }
 
     &__title-block {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
         flex: 1 0 50%;
         margin-bottom: $distance--md;
 

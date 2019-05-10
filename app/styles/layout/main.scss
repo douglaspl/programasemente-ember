@@ -166,7 +166,6 @@
       padding-top: $distance--xs;
       position: relative;
       text-align: center;
-      // text-shadow: 0 3px 2px $green-40;
       text-transform: uppercase;
       max-width: 8em;
       z-index: 2;
@@ -175,7 +174,7 @@
   }
 
   &__subsubtitle {
-    @include title-3--alt;
+    @include title-3;
 
     margin-bottom: $distance--sm;
   }

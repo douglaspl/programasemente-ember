@@ -94,6 +94,7 @@
                             <div class="report-course__header">
                                 {{!-- <span class="report-course__thumb" style={{curso_selected.backgroundImage}}></span> --}}
                                 <div class="report-course__title-block">
+                                    <img class="report-course__img" src="{{if curso_selected.coverImg curso_selected.coverImg '/assets/img/online-course.png'}}">
                                     <h2 class="title-2--u">{{curso_selected.name}}</h2>
                                     {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
                                         <span>Ver todos os matriculados</span>

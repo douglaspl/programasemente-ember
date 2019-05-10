@@ -22,7 +22,7 @@
 
       <!-- link -->
       {{#if (equalstr file.type '0')}}
-      <div class="list__img list__img--xl list__img--video" {{action 'playView' file.view.id}}>
+      <div class="list__img list__img--xl list__img--auto-height" {{action 'playView' file.view.id}}>
 
         <span id="thumb{{file.view.id}}" class="icon-package icon--ultra" style="opacity: .4"></span>
         {{!-- <img src={{if file.thumb file.thumb '/assets/img/online-course.png'}}> --}}

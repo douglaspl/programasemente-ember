@@ -751,7 +751,7 @@ $letter: $letter-spacing--lg) {
 $size: $font-size--md,
 $size--sm: $font-size--lg,
 $size--lg: $font-size--xl,
-$weight: normal,
+$weight: 600,
 $letter: $letter-spacing--md) {
 
   color: $color;
@@ -760,6 +760,7 @@ $letter: $letter-spacing--md) {
   font-weight: $weight;
   letter-spacing: $letter;
   line-height: 1.25;
+  text-transform: uppercase;
   vertical-align: middle;
 
   @include media('>sm') {
@@ -794,7 +795,7 @@ $letter: $letter-spacing--xl) {
 $size: $font-size--sm,
 $size--sm: $font-size--md,
 $size--lg: $font-size--lg,
-$weight: 400,
+$weight: 600,
 $letter: $letter-spacing--md) {
 
   color: $color;
