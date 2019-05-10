@@ -92,7 +92,6 @@
                     {{#if curso_selected}}
                         <div class="report-course">
                             <div class="report-course__header">
-                                {{!-- <span class="report-course__thumb" style={{curso_selected.backgroundImage}}></span> --}}
                                 <div class="report-course__title-block">
                                     <img class="report-course__img" src="{{if curso_selected.coverImg curso_selected.coverImg '/assets/img/online-course.png'}}">
                                     <h2 class="title-2--u">{{curso_selected.name}}</h2>
@@ -106,12 +105,6 @@
                                             <span class="data__value">{{if acomp.matriculas acomp.matriculas '313'}}</span>
                                             <span class="data__label">matrículas</span>
                                         </div>
-                                        {{!-- <div class="report-course__data data data--horizontal data--bordered">
-                                            <span class="data__value">{{acomp.completaramPerc}}
-                                                <span class="small">%</span>
-                                            </span>
-                                            <span class="data__label">completaram o curso</span>
-                                        </div> --}}
                                     {{/if}}
                                 {{/each}}
                             </div>

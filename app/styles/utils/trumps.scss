@@ -41,6 +41,10 @@
     display: block;
 }
 
+.d-i-block {
+    display: inline-block;
+}
+
 .link--dotted {
     @include dotted-link;
 
