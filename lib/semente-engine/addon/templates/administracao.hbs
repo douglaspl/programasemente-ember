@@ -37,14 +37,17 @@
     </div>
     <!-- --------------------------------------------- institution selected -->
     {{#if instView}}
+    <header id="report-header" class="main__header main__header--has-side-info">
         <!-- back to institutions list -->
         {{#if (equalstr role 'admin')}}
-            <button id="backToInstList" class="btn btn--text" {{action 'backToInstList' on="click"}}>
-                <span class="icon-arrow-left"></span>voltar
-            </button>
-        {{/if}}
+    <div style="width:100%;">
+      <button id="backToInstList" class="btn btn--text" {{action 'backToInstList' on="click"}}>
+        <span class="icon-arrow-left"></span>voltar
+      </button>
+    </div>
+    {{/if}}
 
-        <header id="report-header" class="main__header main__header--has-side-info">
+        
 
             <h1 class="main__title">{{inst_selected.name}}</h1>
 
