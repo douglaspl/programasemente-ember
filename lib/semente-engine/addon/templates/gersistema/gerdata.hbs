@@ -359,7 +359,8 @@
         <div flex="20" class="form-group--aired-h">
           <div class="form-group form-group--vertical form-group--select-wrapper w100">
             <label class="form-group__label" for="new_user_role">Perfil</label>
-            <select class="form-group__input" id="new_user_role">
+            <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
+              <option value="">Selecione...</option>
               <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
               <option value="instrutor" selected={{thisUserRole.instrutor}}>Instrutor</option>
               <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
@@ -370,8 +371,6 @@
             </select>
           </div>
         </div>
-
-
 
         <div class="form-group form-group--vertical form-group--aired-h" flex="20">
           <label class="form-group__label" for="new_user_name">Nome</label>
@@ -400,43 +399,37 @@
             </select>
           </div>
         </div>
-
-
       </div>
 
-      <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-          <label class="form-group__label" for="new_user_birth">Nascimento</label>
-          <input class="form-group__input"
-                 type="textbox"
-                 id="new_user_birth"
-                 value={{new_user_birth}}
-                 name="date"
-                 maxlength="10"
-                 onkeyup="var v = this.value;
+      {{#if (equalstr perfil "aluno")}}
+        <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
+          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+            <label class="form-group__label" for="new_user_birth">Nascimento</label>
+            <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
+              maxlength="10" onkeyup="var v = this.value;
                           if (v.match(/^\d{2}$/) !== null) {
                               this.value = v + '/';
                           } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
                               this.value = v + '/';
                           }">
-          <div class="m-top--xxs">(dd/mm/aaaa)</div>
-        </div>
-        <div flex="20" class="form-group--aired-h">
-          <div class="form-group form-group--vertical form-group--select-wrapper w100">
-            <label class="form-group__label" for="new_user_role">Sexo</label>
-            <select class="form-group__input" id="new_user_role">
-              <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
-              <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
-              <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
-            </select>
+            <div class="m-top--xxs">(dd/mm/aaaa)</div>
+          </div>
+          <div flex="20" class="form-group--aired-h">
+            <div class="form-group form-group--vertical form-group--select-wrapper w100">
+              <label class="form-group__label" for="new_user_role">Sexo</label>
+              <select class="form-group__input" id="new_user_role">
+                <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
+                <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
+                <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+            <label class="form-group__label" for="new_user_subsc">Matrícula</label>
+            <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
           </div>
         </div>
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-          <label class="form-group__label" for="new_user_subsc">Matrícula</label>
-          <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
-        </div>
-      </div>
-
+      {{/if}}
 
 
       <div class="form-group checkbox">
