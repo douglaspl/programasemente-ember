@@ -163,7 +163,8 @@
     font-size: $font-size--lg;
     justify-content: center;
     line-height: 1;
-    padding: $distance--md $distance--xl $distance--md $distance--sm;
+    padding: $distance--xl $distance--xl $distance--md $distance--sm;
+    text-align: center;
     
     @include media('>sm') {
       justify-content: initial;
@@ -173,6 +174,7 @@
       right: auto;
       top: 50%;
       transform: translateY(-50%);
+      text-align: initial;
     }
 
     #{$this}>*:nth-child(2n+2) & {
@@ -216,25 +218,33 @@
     background-color: $color-success;
     border-radius: 50%;
     border: 4px solid $status-border-color;
-    box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
+    box-shadow: 0 0 20px transparentize($blue-navy-60, .5);
     color: $color-white;
     display: flex;
     font-size: $font-size--sm;
     height: $distance--xxl;
     justify-content: center;
-    left: 100%;
+    left: 50%;
     line-height: 1;
     position: absolute;
-    top: 50%;
+    top: 0;
     transform: translate(-50%, -50%);
     width: $distance--xxl;
     z-index: 2;
 
-    #{$this}>*:nth-child(2n+2) & {
-      box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
-      left: auto;
-      right: 100%;
-      transform: translate(50%, -50%);
+    @include media('>sm') {
+      box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
+      top: 50%;
+      left: 100%;
+  
+      #{$this}>*:nth-child(2n+2) & {
+          box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
+          left: auto;
+          right: 100%;
+          top: 50%;
+          transform: translate(50%, -50%);
+      }
+
     }
 
     &::before,
