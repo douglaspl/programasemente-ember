@@ -4,8 +4,12 @@
   $status-border-color: $date-bg-color;
 
   &__mark {
-
+    background-color: $blue-navy-30;
     position: relative;
+
+    @include media('>sm') {
+      background-color: transparent;
+    }
 
     &:first-child {
       margin-top: $distance--super;
