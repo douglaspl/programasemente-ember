@@ -451,7 +451,7 @@
           {{#each modulos_list as |mod|}}
             <li class="institutions__course form-group"
               style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-              <img class="list__img list__img--auto-height"
+              <img class="list__img list__img--auto-height border-1--gray-5"
                 src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
@@ -475,7 +475,7 @@
           {{#each modulos_list as |mod|}}
             <li class="institutions__course form-group"
               style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-              <img class="list__img list__img--auto-height"
+              <img class="list__img list__img--auto-height border-1--gray-5"
                 src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">

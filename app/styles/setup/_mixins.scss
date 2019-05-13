@@ -201,7 +201,7 @@
   z-index: 2;
 
   &::after {
-    border-bottom: 4px dotted $color-gray--light;
+    border-bottom: 4px dotted $gray-5;
     content: '';
     left: 0;
     opacity: 1;

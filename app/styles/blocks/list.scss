@@ -43,7 +43,6 @@
             @include bg-as-thumb($size: contain);
 
             align-items: center;
-            border: 1px solid $color-gray--light;
             border-radius: $radius--md;
             display: flex;
             height: $size/2;

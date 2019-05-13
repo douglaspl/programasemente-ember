@@ -6,6 +6,10 @@
         background-color: $color;
     }
 
+    .border-1--#{$color-name} {
+        border: 1px solid $color;
+    }
+
     .color-#{$color-name} {
         color: $color;
     }

@@ -205,7 +205,7 @@ $hue: 148;
 // grays
 $color-white: hsla(0, 0%, 100%, 1) !default;
 $color-off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
-$color-gray--light: hsla(132, 12%, 83%, 1) !default; // #cfd9d1 // CRANE
+$gray-5: hsla(132, 12%, 83%, 1) !default; // #cfd9d1 // CRANE
 $color-gray: hsla($hue, 8%, 60%, 1) !default;
 $color-gray--dark: hsla($hue, 10%, 30%, 1) !default;
 $color-gray--darkest: hsla(0, 0%, 22%, 1) !default; // #383838 // CRANE
