@@ -56,9 +56,10 @@
     @include title-2;
 
     margin-bottom: $distance--sm;
+    text-align: left;
 
     @include media('>sm') {
-      max-width: 50%;
+      max-width: 60%;
     }
 
   }

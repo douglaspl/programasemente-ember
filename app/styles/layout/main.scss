@@ -58,19 +58,7 @@
     background-color: $blue-navy-20;
     background-image: linear-gradient(-30deg, $blue-navy-40, $blue-navy-30 65%, $blue-navy-20 96%);
     max-width: none;
-
-    &::before {
-      background-color: $lemon-10;
-      content: '';
-      height: 100%;
-      opacity: .85;
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: 3px;
-    }
-
+    padding-top: 0;
   }
 
   &__header {

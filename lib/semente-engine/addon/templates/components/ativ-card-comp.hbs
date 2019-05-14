@@ -2,16 +2,21 @@
     {{#if data_ok}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
-        <span class="title-aux w100">Liberada a partir de</span>
-        <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        <span class="timeline__status">
+        <span class="title-aux w100">Liberada desde</span>
+        <span class="d-block">
+            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+        </span>
+        <span class="timeline__status p-bottom--xxs">
             <span class="icon-unlocked"></span>
         </span>
     </div>
     {{else}}
         <div class="timeline__indicator"></div>
         <div class="timeline__date">
-            <span class="d-block"><span class="timeline__day">{{dia}}</span> {{mensagem_mes}}</span>
+            <span class="title-aux w100">Liberada a partir de</span>
+            <span class="d-block">
+                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+            </span>
             <span class="timeline__status timeline__status--is-locked">
                 <span class="icon-lock"></span>
             </span>
@@ -24,7 +29,6 @@
             <h3 class="class__title">{{atividade.name}}</h3>
             <p class="class__description">{{atividade.description}}</p>
             <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
-            
         </div>
     {{else}}
         <div class="timeline__class class class--is-disabled">
@@ -38,8 +42,10 @@
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
         <span class="title-aux w100">Liberada a partir de</span>
-        <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        <span class="timeline__status">
+        <span class="d-block">
+            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+        </span>
+        <span class="timeline__status p-bottom--xxs">
             <span class="icon-unlocked"></span>
         </span>
     </div>
@@ -54,7 +60,15 @@
     </div>
 {{else}}
     <div class="timeline__indicator"></div>
-    <div class="timeline__date"><span class="timeline__day">{{dia}}</span> {{mensagem_mes}}</div>
+    <div class="timeline__date">
+        <span class="title-aux w100">Liberada desde</span>
+        <span class="d-block">
+            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+        </span>
+        <span class="timeline__status">
+            <span class="icon-check"></span>
+        </span>
+    </div>
     <div class="timeline__class class">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
