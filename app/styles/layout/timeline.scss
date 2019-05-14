@@ -116,6 +116,14 @@
         }
 
       }
+
+      [class*='__status'] {
+        box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
+        left: auto;
+        right: 100%;
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
       
     }
 
@@ -243,15 +251,6 @@
       box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
       top: 50%;
       left: 100%;
-  
-      #{$this} ol > *:nth-child(2n+2) & {
-          box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
-          left: auto;
-          right: 100%;
-          top: 50%;
-          transform: translate(50%, -50%);
-      }
-
     }
 
     &::before,
