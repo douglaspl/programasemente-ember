@@ -431,7 +431,8 @@
   {{else}}
     <div class="loader" id="firstAccessLoader">
       <div class="loader__circle">
-        <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+        <img src="/assets/img/logo__programa-semente.jpg">
+        {{!-- <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
           <title>semente-simbolo</title>
           <g id="Layer_2" data-name="Layer 2">
             <g id="Layer_1-2" data-name="Layer 1">
@@ -449,7 +450,7 @@
               </g>
             </g>
           </g>
-        </svg>
+        </svg> --}}
       </div>
     </div>
     {{!-- <div class="container-fluid gersistema-container" style="padding-top: 200px;">
@@ -528,7 +529,8 @@
       {{#if comparison_await}}
         <div class="loader" id="firstAccessLoader">
           <div class="loader__circle">
-            <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
+            <img src="/assets/img/logo__programa-semente.jpg">
+            {{!-- <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 161">
               <title>semente-simbolo</title>
               <g id="Layer_2" data-name="Layer 2">
                 <g id="Layer_1-2" data-name="Layer 1">
@@ -546,7 +548,7 @@
                   </g>
                 </g>
               </g>
-            </svg>
+            </svg> --}}
           </div>
         </div>
         {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
@@ -628,7 +630,7 @@
                       {{!-- <span class="avatar">
               <img class="avatar__img" src="/assets/img/avatar-default.svg">
             </span> --}}
-                      <button class="btn btn--primary btn--xs" {{action 'openAdd' 1}}>Adicionar aluno</button>
+                      <button class="btn btn--xs" {{action 'openAdd' 1}}>Adicionar aluno</button>
 
                       <div id="add-user-1" class="add-user j-add-user">
                         <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 1 0}}></a>
@@ -747,7 +749,7 @@
                     {{!-- <span class="avatar">
               <img class="avatar__img" src="/assets/img/avatar-default.svg">
             </span> --}}
-                    <button class="btn btn--primary btn--xs" {{action 'openAdd' 2 idx}}>Adicionar aluno</button>
+                    <button class="btn btn--xs" {{action 'openAdd' 2 idx}}>Adicionar aluno</button>
 
                     <div id="add-user-2_{{idx}}" class="add-user j-add-user">
                       <a class="btn btn--text icon-x add-user__close" {{action 'closeAdd' 2 idx}}></a>

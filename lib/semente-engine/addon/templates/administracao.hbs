@@ -56,9 +56,10 @@
                 <div class="report__tabs tabs">
                     <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-people" id="button_tab_pessoas" {{action 'selectTab' 'pessoas'}}><span>Alunos</span></button>
                     <button class="report__tab tabs__tab" data-target="report-courses" id="button_tab_cursos" {{action 'selectTab' 'cursos'}}><span>Anos</span></button>
-                    {{!-- <button class="report__tab tabs__tab btn" data-target="report-quiz">Quiz</button> --}}
-                    {{!-- <button class="report__tab tabs__tab btn" data-target="report-people-comparison">Comparar pessoas</button>
-      --}}
+                    {{!--
+                    <button class="report__tab tabs__tab" data-target="report-quiz">Quiz</button>
+                    <button class="report__tab tabs__tab" data-target="report-people-comparison">Comparar pessoas</button>
+                    --}}
                 </div>
 
                 {{!-- <button class="btn btn--leaf-ghost m-left--md" {{action 'downloadFile'}}>Baixar relatório em Excel</button> --}}
@@ -182,6 +183,7 @@
 
             <!-- INÍCIO DA SESSÃO DE QUIZ -->
             <section class="report__section" id="report-quiz">
+
                 <form class="form-group form-group--full-width" autocomplete="off" aria-autocomplete="none">
                     <label class="form-group__label" for="search">Busca</label>
                     <div class="form-group__wrapper form-group__wrapper--search">
@@ -194,17 +196,23 @@
                 </span>
 
                 <div class="report-quiz__btn-group btn-group">
-                    <a href="#report-class-01" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(2)</span> --}}
+                    <a href="#report-class-01" class="btn btn--xs">
+                        <span class="btn__count">(2)</span>
                     </a>
-                    <a href="#report-class-02" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(1)</span> --}}
+                    <a href="#report-class-02" class="btn btn--xs">
+                        <span class="btn__count">(1)</span>
                     </a>
-                    <a href="#report-class-03" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(1)</span> --}}
+                    <a href="#report-class-03" class="btn btn--xs">
+                        <span class="btn__count">(1)</span>
                     </a>
-                    <a href="#report-class-04" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(1)</span> --}}
+                    <a href="#report-class-04" class="btn btn--xs">
+                        <span class="btn__count">(1)</span>
                     </a>
-                    <a href="#report-class-05" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(3)</span> --}}
+                    <a href="#report-class-05" class="btn btn--xs">
+                        <span class="btn__count">(3)</span>
                     </a>
-                    <a href="#report-class-06" class="btn btn--primary-dark btn--xs">{{!-- <span class="btn__count">(2)</span> --}}
+                    <a href="#report-class-06" class="btn btn--xs">
+                        <span class="btn__count">(2)</span>
                     </a>
                 </div>
 
@@ -1142,8 +1150,6 @@
                         </table>
                     </div>
                 </section>
-
-
 
             </section>
             <!-- FIM DA SESSÃO DE QUIZ -->

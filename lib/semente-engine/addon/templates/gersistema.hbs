@@ -5,7 +5,7 @@
     <header class="main__header institutions__header">
       <h1 class="main__title">Administração</h1>
       {{#if (equalstr role 'admin')}}
-      <button class="btn btn--xs btn--primary" {{action 'newInst' on="click"}}><span
+      <button class="btn btn--xs" {{action 'newInst' on="click"}}><span
           class="btn__icon icon-plus"></span>Nova
         Instituição</button>
       {{/if}}
@@ -376,7 +376,7 @@
               <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
                 <span class="btn__icon icon-x"></span>Cancelar
               </button>
-              <button class="btn btn--xs btn--primary" type="submit" {{action 'addArea'}} style="width: 100px;">
+              <button class="btn btn--xs" type="submit" {{action 'addArea'}} style="width: 100px;">
                 <span class="btn__icon icon-check"></span>Salvar
               </button>
             </div>
@@ -435,7 +435,7 @@
               <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' area.id}}>
                 <span class="btn__icon icon-x"></span>Cancelar
               </button>
-              <button class="btn btn--xs btn--primary" style="width: 100px;" type="submit"
+              <button class="btn btn--xs" style="width: 100px;" type="submit"
                 {{action 'saveArea' area.id}}>
                 <span class="btn__icon icon-check"></span>Salvar
               </button>
@@ -582,7 +582,7 @@
           <button class="j-areaFocus btn btn--xxs btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
             <span class="btn__icon icon-x"></span>Cancelar
           </button>
-          <button class="j-areaFocus btn btn--xxs btn--primary" type="submit" {{action 'addArea'}} style="width: 100px;">
+          <button class="j-areaFocus btn btn--xxs" type="submit" {{action 'addArea'}} style="width: 100px;">
             <span class="btn__icon icon-check"></span>Salvar
           </button>
         </div>
@@ -609,7 +609,7 @@
             {{action 'cancelAreaAction' area.id}}>
             <span class="btn__icon icon-x"></span>Cancelar
           </button>
-          <button class="j-areaFocus btn btn--xs btn--primary" style="width: 100px;" type="submit"
+          <button class="j-areaFocus btn btn--xs" style="width: 100px;" type="submit"
             {{action 'saveArea' area.id}}>
             <span class="btn__icon icon-check"></span>Salvar
           </button>
@@ -644,7 +644,7 @@
       <!-- area to delete -->
       {{#if (equalstr staticType 'area')}}
       <button class="btn btn--xs btn--text-inverted" {{action staticAlert 'close'}}>Cancelar</button>
-      <button class="btn btn--xs btn--primary" {{action 'actionConfirmation' areaToDelete}}><span
+      <button class="btn btn--xs" {{action 'actionConfirmation' areaToDelete}}><span
           class="btn__icon icon-trash-2"></span>Remover área</button>
       {{/if}}
       <!-- -->
