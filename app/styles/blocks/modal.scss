@@ -34,7 +34,7 @@
         max-width: 70rem;
         outline: 0;
         opacity: 0;
-        padding: $distance--md;
+        padding: $distance--xxl $distance--md $distance--md;
         position: relative;
         top: 50%;
         transform: translateY(-45%);
@@ -58,8 +58,8 @@
         // border: 2px solid $color-white;
         box-shadow: $shadow-3;
         position: absolute;
-        right: -$distance--xs;
-        top: -$distance--xs;
+        right: 0;
+        top: 0;
     }
 
     &__header {

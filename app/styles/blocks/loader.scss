@@ -32,7 +32,8 @@
   z-index: 999999;
 
   &__circle {
-    $multiplier: 1.75;
+    //$multiplier: 1.75;
+    $multiplier: 2.125; // retirar quando voltar para marca nova da crane
 
     animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
     align-items: center;
@@ -43,6 +44,7 @@
     flex-direction: row;
     height: $tree-width * $multiplier;
     justify-content: center;
+    padding: $distance--xs; // retirar quando voltar para marca nova da crane
     width: $tree-width * $multiplier;
   }
 

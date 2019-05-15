@@ -5,11 +5,11 @@
     <div>
       <!-- somente mostrar se tiver algum conteúdo não visto -->
       {{#if filesList}}
-      <button id="markAllASRead" class="btn btn--xs btn--green-ghost" {{action 'markAllAsRead'}}>Marcar todos como vistos</button>
+      <button id="markAllASRead" class="btn btn--xs btn--leaf-ghost" {{action 'markAllAsRead'}}>Marcar todos como vistos</button>
       {{/if}}
       <!-- upload file for the institution lib -->
       {{#if (equalstr role 'admin')}}
-      <button class="btn btn--xs btn--primary" {{action 'fileUpload'}}><span class="btn__icon icon-plus"></span>Upload</button>
+      <button class="btn btn--xs" {{action 'fileUpload'}}><span class="btn__icon icon-plus"></span>Upload</button>
       {{/if}}
     </div>
   </header>
@@ -93,7 +93,7 @@
 
     <footer class="modal__footer">
       <button class="btn btn--text" type="submit" {{action 'fileUpload'}}>Cancelar</button>
-      <button class="btn btn--primary" type="submit" {{action 'fileSave'}}>Incluir</button>
+      <button class="btn" type="submit" {{action 'fileSave'}}>Incluir</button>
     </footer>
 
   </div>
