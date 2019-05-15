@@ -11,6 +11,7 @@
 
 // ## Themes ##
 // --gray-darkest
+// --lemon
 
 $tooltip-tip-size: .75rem;
 $tooltip-vertical-padding: $distance--xs;
@@ -53,19 +54,6 @@ $tooltip-vertical-padding: $distance--xs;
             top: 50%;
         }
 
-        // THEMES
-        &--gray-darkest {
-            $bg-color: $color-gray--darkest;
-
-            background-color: $bg-color;
-            color: $color-white;
-
-            &::before {
-                border-left-color: $bg-color;
-            }
-
-        }
-
     }
 
     &--is-visible {
@@ -73,6 +61,37 @@ $tooltip-vertical-padding: $distance--xs;
         #{$this}__bubble {
             opacity: 1;
             visibility: visible;
+        }
+
+    }
+
+    // THEMES
+    &--gray-darkest {
+        [class*='__bubble'] {
+
+            $bg-color: $color-gray--darkest;
+            
+            background-color: $bg-color;
+            color: $color-white;
+            
+            &::before {
+                border-left-color: $bg-color;
+            }
+        }
+
+    }
+
+    &--lemon {
+        [class*='__bubble'] {
+            $bg-color: $lemon-40;
+
+            @include text-contrast($bg-color);
+            
+            background-color: $bg-color;
+
+            &::before {
+                border-left-color: $bg-color;
+            }
         }
 
     }

@@ -752,15 +752,16 @@ $size: $font-size--md,
 $size--sm: $font-size--lg,
 $size--lg: $font-size--xl,
 $weight: 600,
-$letter: $letter-spacing--md) {
+$letter: $letter-spacing--md,
+$case: uppercase) {
 
   color: $color;
   font-family: 'Raleway', 'Titillium Web', sans-serif;
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $letter;
-  line-height: 1;
-  text-transform: uppercase;
+  line-height: 1.2;
+  text-transform: $case;
   vertical-align: middle;
 
   @include media('>sm') {

@@ -44,9 +44,10 @@
     }
 
     &__question {
-        @include title-2;
+        @include title-2($case: none);
 
         margin-bottom: $distance--xl;
+        max-width: 42ch;
         padding-bottom: $distance--xs;
 
     }
@@ -74,6 +75,7 @@
         display: flex;
         flex: 1;
         flex-direction: row;
+        line-height: 1.3;
 
         &::before {
             $size: $distance--lg;

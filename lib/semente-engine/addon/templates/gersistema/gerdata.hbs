@@ -300,7 +300,7 @@
       <!-- send email(s) -->
       {{#if (equalstr staticType 'mail')}}
         <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
-        <button class="btn btn--inverted" type="submit" {{action 'sendMail'}}>Enviar email{{#if
+        <button class="btn" type="submit" {{action 'sendMail'}}>Enviar email{{#if
         mail_single_pessoa}}
           {{else}}s{{/if}}</button>
       {{/if}}
@@ -308,20 +308,20 @@
       <!-- retry failed email -->
       {{#if (equalstr staticType 'failed')}}
         <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
-        <button class="btn btn--inverted" {{action 'sendMail'}}>Tentar Novamente</button>
+        <button class="btn" {{action 'sendMail'}}>Tentar Novamente</button>
       {{/if}}
       <!-- -->
       <!-- delete user -->
       {{#if (equalstr staticType 'delete')}}
         <button class="btn btn--text-inverted" type="submit" {{action 'cancelDel'}}>Cancelar</button>
-        <button class="btn btn--inverted" type="submit" {{action 'confirmDel' confirm_entity}}>Apagar</button>
+        <button class="btn" type="submit" {{action 'confirmDel' confirm_entity}}>Apagar</button>
       {{/if}}
       <!-- -->
       <!-- reset user progress -->
       {{#if (equalstr staticType 'progress')}}
         <button id="botao_reset_{{new_user_id}}" class="btn btn--xs btn--text-inverted" type="submit"
           {{action 'resetarProgressos' new_user_id}}>Zerar Progressos</button>
-        <button class="btn btn--inverted" type="submit" {{action staticAlert 'close'}}>Fechar</button>
+        <button class="btn" type="submit" {{action staticAlert 'close'}}>Fechar</button>
       {{/if}}
       <!-- -->
     </div>

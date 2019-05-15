@@ -100,11 +100,13 @@
         <div class="example">
           <h4 class="example__class-names">
             <span class="example__class-name">.btn--green-ghost</span>
-            <span class="example__class-name">. </span>
-            <span class="example__class-name">.btn--inverted</span>
+            <span class="example__class-name">.btn--leaf</span>
+            <span class="example__class-name">.btn--leaf-ghost</span>
+            <span class="example__class-name">.btn--green-ghost</span>
             <span class="example__class-name">.btn--link</span>
-            <span class="example__class-name">.btn--text-inverted</span>
             <span class="example__class-name">.btn--text</span>
+            <span class="example__class-name">.btn--text-inverted</span>
+            <span class="example__class-name">.btn--success0</span>
           </h4>
           <div class="example__block">
             <div class="example__element" cols="5">
@@ -112,8 +114,7 @@
               <div><button class="btn btn--leaf">Push me</button></div>
               <div><button class="btn btn--leaf-ghost">Push me</button></div>
               <div><button class="btn btn--green-ghost">Push me</button></div>
-              <div><button class="btn btn--inverted">Push me</button></div>
-              <div><button class="btn btn--link">Push me</button></div>
+              <div><button class="btn btn--link"><span>Push me</span></button></div>
               <div><button class="btn btn--text">Push me</button></div>
               <div><button class="btn btn--text-inverted">Push me</button></div>
               <div><button class="btn btn--success">Push me</button></div>
@@ -125,7 +126,7 @@
               <code>&#60;button class="btn btn--green-ghost"&#62;Push me&#60;/button&#62;</code>
               <code>&#60;button class="btn btn--inverted"&#62;Push me&#60;/button&#62;</code>
               <code>&#60;button class="btn btn--link"&#62;Push me&#60;/button&#62;</code>
-              <code>&#60;button class="btn btn--text"&#62;Push me&#60;/button&#62;</code>
+              <code>&#60;button class="btn btn--text"&#62;&#60;span&#62;Push me&#60;/span&#62;&#60;/button&#62;</code>
               <code>&#60;button class="btn btn--text-inverted"&#62;Push me&#60;/button&#62;</code>
               <code>&#60;button class="btn btn--success"&#62;Push me&#60;/button&#62;</code>
             </div>
@@ -209,7 +210,7 @@
     &#60;span&#62;"I am Ironman." - Stark,Tony&#60;/span&#62;
 &#60;/p&#62;</code>
             </pre>
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -228,8 +229,14 @@
           <div class="example__block">
             <div class="example__element">
               <div>
-                <p class="tooltip tooltip--is-visible">
-                  <span class="tooltip__bubble tooltip__bubble--gray-darkest">From Ironman movie.</span>
+                <p class="tooltip tooltip--gray-darkest tooltip--is-visible">
+                  <span class="tooltip__bubble">From Ironman movie.</span>
+                  <span>"I am Ironman." - Stark, Tony</span>
+                </p>
+              </div>
+              <div class="m-top--xl">
+                <p class="tooltip tooltip--lemon tooltip--is-visible">
+                  <span class="tooltip__bubble">From Ironman movie.</span>
                   <span>"I am Ironman." - Stark, Tony</span>
                 </p>
               </div>
@@ -237,10 +244,17 @@
             <div class="example__code">
               <pre>
 <code>&#60;p class="tooltip tooltip--is-visible"&#62;
-    &#60;span class="tooltip__bubble tooltip__bubble--gray-darkest"&#62;From Ironman movie.&#60;/span&#62;
-    &#60;span&#62;"I am Ironman." - Stark, Tony&#60;/span&#62;
+&#60;span class="tooltip__bubble tooltip__bubble--gray-darkest"&#62;From Ironman movie.&#60;/span&#62;
+&#60;span&#62;"I am Ironman." - Stark, Tony&#60;/span&#62;
 &#60;/p&#62;</code>
-            </pre>
+              </pre>
+
+              <pre>
+<code>&#60;p class="tooltip tooltip--is-visible"&#62;
+&#60;span class="tooltip__bubble tooltip__bubble--lemon"&#62;From Ironman movie.&#60;/span&#62;
+&#60;span&#62;"I am Ironman." - Stark, Tony&#60;/span&#62;
+&#60;/p&#62;</code>
+              </pre>
             </div>
           </div>
         </div>
@@ -252,7 +266,8 @@
 
   <section id="colors">
     <h2>Cores</h2>
-    <p class="sg__lead">Todas as cores possuem classes para fundo (<strong>.bg-xxx</strong>), cor do texto (<strong>.color-xxx</strong>) e preenchimento de svgs (<strong>.fill-xxx</strong>).</p>
+    <p class="sg__lead">Todas as cores possuem classes para fundo (<strong>.bg-xxx</strong>), cor do texto
+      (<strong>.color-xxx</strong>) e preenchimento de svgs (<strong>.fill-xxx</strong>).</p>
     <div class="sg__block">
       <h3>Básicas</h3>
       <div>
