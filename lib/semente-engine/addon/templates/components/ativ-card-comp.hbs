@@ -39,9 +39,10 @@
         </div>
     {{/if}}
 {{else if (equalstr value 100)}}
+    {{#if data_ok}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
-        <span class="title-aux w100">Liberada a partir de</span>
+        <span class="title-aux w100">Liberada desde</span>
         <span class="d-block">
             <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
         </span>
@@ -49,6 +50,20 @@
             <span class="icon-unlocked"></span>
         </span>
     </div>
+    {{else}}
+        <div class="timeline__indicator"></div>
+        <div class="timeline__date">
+            <span class="title-aux w100">Liberada a partir de</span>
+            <span class="d-block">
+                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+            </span>
+            <span class="timeline__status timeline__status--is-locked">
+                <span class="icon-lock"></span>
+            </span>
+        </div>
+    {{/if}}
+    
+    {{#if data_ok}}
     <div class="timeline__class class class--is-completed">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
@@ -58,10 +73,21 @@
             <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
         {{/if}}
     </div>
+     {{else}}
+        <div class="timeline__class class class--is-disabled">
+            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+            <h3 class="class__title">{{atividade.name}}</h3>
+            <p class="class__description">{{atividade.description}}</p>   
+        </div>
+    {{/if}}
+    
 {{else}}
+
+    {{#if data_ok}}
     <div class="timeline__indicator"></div>
     <div class="timeline__date">
-        <span class="title-aux w100">Liberada desde</span>
+        <span class="title-aux w100">Liberada apartir de</span>
         <span class="d-block">
             <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
         </span>
@@ -69,6 +95,22 @@
             <span class="icon-check"></span>
         </span>
     </div>
+{{else}}
+        <div class="timeline__indicator"></div>
+        <div class="timeline__date">
+            <span class="title-aux w100">Liberada a partir de</span>
+            <span class="d-block">
+                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
+            </span>
+            <span class="timeline__status timeline__status--is-locked">
+                <span class="icon-lock"></span>
+            </span>
+        </div>
+{{/if}}
+
+
+ {{#if data_ok}}
+
     <div class="timeline__class class">
         <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
@@ -78,4 +120,14 @@
             <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
         {{/if}}
     </div>
+{{else}}
+        <div class="timeline__class class class--is-disabled">
+            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+            <h3 class="class__title">{{atividade.name}}</h3>
+            <p class="class__description">{{atividade.description}}</p>   
+        </div>
+    {{/if}}
+
+
 {{/if}}
