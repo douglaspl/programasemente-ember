@@ -44,15 +44,15 @@
           <div class="form-group form-group--vertical" flex="1">
             <span class="form-group__label">Ano</span>
             <div class="d-flex">
-              <span class="checkbox m-right--md">
+              <span class="checkbox m-right--lg">
                 <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1">
                 <label class="checkbox__label" for="year1">1º ano</label>
               </span>
-              <span class="checkbox m-right--md">
+              <span class="checkbox m-right--lg">
                 <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2">
                 <label class="checkbox__label" for="year2">2º ano</label>
               </span>
-              <span class="checkbox m-right--md">
+              <span class="checkbox m-right--lg">
                 <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3">
                 <label class="checkbox__label" for="year3">3º ano</label>
               </span>
@@ -349,12 +349,7 @@
     </header>
     <div class="modal__body">
 
-
-
-
       <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
-
-
         <div flex="20" class="form-group--aired-h">
           <div class="form-group form-group--vertical form-group--select-wrapper w100">
             <label class="form-group__label" for="new_user_role">Perfil</label>
@@ -370,7 +365,9 @@
             </select>
           </div>
         </div>
+      </div>
 
+      <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
         <div class="form-group form-group--vertical form-group--aired-h" flex="20">
           <label class="form-group__label" for="new_user_name">Nome</label>
           <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
@@ -381,21 +378,31 @@
           <input class="form-group__input" type="textbox" id="new_user_email"
             value={{if new_user_email new_user_email}}>
         </div>
+        <div flex="20" class="form-group--aired-h a-self--fe p-bottom--xxs">
+          <div class="form-group checkbox">
+            <input class="checkbox__input" type="checkbox" id="new_user_enabled">
+            <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
+          </div>
+        </div>
+        {{!-- <div flex="20" class="form-group--aired-h">
+          <div class="form-group form-group--vertical form-group--select-wrapper w100">
+            <label class="form-group__label" for="new_user_area">Turmas</label>
+            <select class="form-group__input" id="new_user_area">
+              <option value="">Selecione...</option>
+              {{#each inst_selected.areas as |area|}}
+                {{#if (equalstr area.id new_user_area)}}
+                  <option value={{area.id}} selected>{{area.name}}</option>
+                {{else}}
+                  <option value={{area.id}}>{{area.name}}</option>
+                {{/if}}
+              {{/each}}
+            </select>
+          </div>
+        </div> --}}
       </div>
 
       {{#if (equalstr perfil "aluno")}}
         <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
-          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
-            <label class="form-group__label" for="new_user_birth">Nascimento</label>
-            <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
-              maxlength="10" onkeyup="var v = this.value;
-                          if (v.match(/^\d{2}$/) !== null) {
-                              this.value = v + '/';
-                          } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
-                              this.value = v + '/';
-                          }">
-            <div class="m-top--xxs">(dd/mm/aaaa)</div>
-          </div>
           <div flex="20" class="form-group--aired-h">
             <div class="form-group form-group--vertical form-group--select-wrapper w100">
               <label class="form-group__label" for="new_user_role">Sexo</label>
@@ -407,82 +414,90 @@
             </div>
           </div>
           <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+            <label class="form-group__label" for="new_user_birth">Nascimento</label>
+            <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
+              maxlength="10" onkeyup="var v = this.value;
+                          if (v.match(/^\d{2}$/) !== null) {
+                              this.value = v + '/';
+                          } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                              this.value = v + '/';
+                          }">
+            <div class="m-top--xxs">(dd/mm/aaaa)</div>
+          </div>
+          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
             <label class="form-group__label" for="new_user_subsc">Matrícula</label>
             <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
           </div>
         </div>
       {{/if}}
 
-
-      <div class="form-group checkbox">
-        <input class="checkbox__input" type="checkbox" id="new_user_enabled">
-        <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
-      </div>
-
-
-
-
       <section>
         <h4 class="modal__subtitle">Anos</h4>
-        <ul class="list list--img-name-action list--striped">
-          {{#if new_user_email}}
-            <!-- edit user -->
-            {{#each modulos_list as |mod|}}
-              <li class="institutions__course form-group"
-                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                <img class="list__img list__img--auto-height border-1--gray-5"
-                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                <h3 class="list__name title-3">{{mod.name}}</h3>
-                <span class="switch switch--institutions">
-                  {{#if (isinarray mod user_modulos)}}
+
+          <ul class="list list--img-name-action list--striped">
+            {{#if new_user_email}}
+              <!-- edit user -->
+              {{#each modulos_list as |mod|}}
+                <li class="institutions__course form-group"
+                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                  <img class="list__img list__img--auto-height border-1--gray-5"
+                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                  <h3 class="list__name title-3">{{mod.name}}</h3>
+                  <span class="switch switch--institutions">
+                    {{#if (isinarray mod user_modulos)}}
+                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                        checked={{if (isinarray mod inst_selected.modulos) true false}}
+                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                    {{else}}
+                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                    {{/if}}
+                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                      <span class="switch__inner"></span>
+                      <span class="switch__head"></span>
+                    </label>
+                  </span>
+                </li>
+              {{/each}}
+            {{else}}
+              <!-- new user -->
+              {{#each modulos_list as |mod|}}
+                <li class="institutions__course form-group"
+                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                  <img class="list__img list__img--auto-height border-1--gray-5"
+                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                  <h3 class="list__name title-3">{{mod.name}}</h3>
+                  <span class="switch switch--institutions">
                     <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                      checked={{if (isinarray mod inst_selected.modulos) true false}}
-                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                  {{else}}
-                    <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                  {{/if}}
-                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </li>
-            {{/each}}
-          {{else}}
-            <!-- new user -->
-            {{#each modulos_list as |mod|}}
-              <li class="institutions__course form-group"
-                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                <img class="list__img list__img--auto-height border-1--gray-5"
-                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                <h3 class="list__name title-3">{{mod.name}}</h3>
-                <span class="switch switch--institutions">
-                  <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                    checked={{if (isinarray mod inst_selected.modulos) true false}}>
-                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </li>
-            {{/each}}
-          {{/if}}
-        </ul>
+                      checked={{if (isinarray mod inst_selected.modulos) true false}}>
+                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                      <span class="switch__inner"></span>
+                      <span class="switch__head"></span>
+                    </label>
+                  </span>
+                </li>
+              {{/each}}
+            {{/if}}
+          </ul>
+
       </section>
       <section>
-        <!-- se retirar esse select para de funcionar -->
-        <select class="d-none form-group__input" id="new_user_area">
-          <option value="">Selecione...</option>
-          {{#each inst_selected.areas as |area|}}
-            {{#if (equalstr area.id new_user_area)}}
-              <option value={{area.id}} selected>{{area.name}}</option>
-            {{else}}
-              <option value={{area.id}}>{{area.name}}</option>
-            {{/if}}
-          {{/each}}
-        </select>
         <h4 class="modal__subtitle">Turmas</h4>
+          {{#if (equalstr perfil "aluno")}}
+
+            <select class="form-group__input" id="new_user_area">
+              <option value="">Selecione...</option>
+              {{#each inst_selected.areas as |area|}}
+                {{#if (equalstr area.id new_user_area)}}
+                  <option value={{area.id}} selected>{{area.name}}</option>
+                {{else}}
+                  <option value={{area.id}}>{{area.name}}</option>
+                {{/if}}
+              {{/each}}
+            </select>
+        
+        {{else}}
+
           <ul class="list list--striped">
             {{#each inst_selected.areas as |area|}}
             <li>
@@ -500,11 +515,16 @@
               </li>
             {{/each}}
           </ul>
+
+        {{/if}}
       </section>
 
       {{#if new_user_email}}
-        <button class="btn" type="submit" {{action 'editProgressos' new_user_id}}>Zerar
+      <section>
+        <h4 class="modal__subtitle">Progresso</h4>
+        <button class="btn btn--xs" type="submit" {{action 'editProgressos' new_user_id}}>Zerar
           progressos...</button>
+      </section>
       {{/if}}
       {{!--
       <div class="m-top--lg">

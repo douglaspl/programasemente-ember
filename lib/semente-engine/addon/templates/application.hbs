@@ -1,4 +1,6 @@
 <!-- user help -->
+<div style="display: none;">{{InstituicaoId}}</div>
+<div style="display: none;">{{InstituicaoName}}</div>
 
 <aside class="help" id="help">
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
@@ -68,7 +70,7 @@
       
     {{#if (equalstr role 'aluno')}}
       <li class="global-nav__item" id="header-modulos">
-        {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}} {{ModuloName}} {{/link-to}}
+        {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}} Percurso {{/link-to}}
       </li>
     {{else}}
       <li class="global-nav__item" id="header-modulos">
