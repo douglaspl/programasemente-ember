@@ -433,58 +433,69 @@
 
       <section>
         <h4 class="modal__subtitle">Anos</h4>
-
-          <ul class="list list--img-name-action list--striped">
-            {{#if new_user_email}}
-              <!-- edit user -->
-              {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
-                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                  <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                  <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <span class="switch switch--institutions">
-                    {{#if (isinarray mod user_modulos)}}
-                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                        checked={{if (isinarray mod inst_selected.modulos) true false}}
-                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                    {{else}}
-                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                    {{/if}}
-                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                      <span class="switch__inner"></span>
-                      <span class="switch__head"></span>
-                    </label>
-                  </span>
-                </li>
-              {{/each}}
-            {{else}}
-              <!-- new user -->
-              {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
-                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                  <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                  <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <span class="switch switch--institutions">
+        <ul class="list list--img-name-action list--striped">
+          {{#if new_user_email}}
+            <!-- edit user -->
+            {{#each modulos_list as |mod|}}
+              <li class="institutions__course form-group"
+                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                <img class="list__img list__img--auto-height border-1--gray-5"
+                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                <h3 class="list__name title-3">{{mod.name}}</h3>
+                <span class="switch switch--institutions">
+                  {{#if (isinarray mod user_modulos)}}
                     <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                      checked={{if (isinarray mod inst_selected.modulos) true false}}>
-                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                      <span class="switch__inner"></span>
-                      <span class="switch__head"></span>
-                    </label>
-                  </span>
-                </li>
-              {{/each}}
-            {{/if}}
-          </ul>
-
+                      checked={{if (isinarray mod inst_selected.modulos) true false}}
+                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                  {{else}}
+                    <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                  {{/if}}
+                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                    <span class="switch__inner"></span>
+                    <span class="switch__head"></span>
+                  </label>
+                </span>
+              </li>
+            {{/each}}
+          {{else}}
+            <!-- new user -->
+            {{#each modulos_list as |mod|}}
+              <li class="institutions__course form-group"
+                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                <img class="list__img list__img--auto-height border-1--gray-5"
+                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                <h3 class="list__name title-3">{{mod.name}}</h3>
+                <span class="switch switch--institutions">
+                  <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                    checked={{if (isinarray mod inst_selected.modulos) true false}}>
+                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                    <span class="switch__inner"></span>
+                    <span class="switch__head"></span>
+                  </label>
+                </span>
+              </li>
+            {{/each}}
+          {{/if}}
+        </ul>
       </section>
       <section>
+        <!-- se retirar esse select para de funcionar -->
+        <select class="d-none form-group__input" id="new_user_area">
+          <option value="">Selecione...</option>
+          {{#each inst_selected.areas as |area|}}
+            {{#if (equalstr area.id new_user_area)}}
+              <option value={{area.id}} selected>{{area.name}}</option>
+            {{else}}
+              <option value={{area.id}}>{{area.name}}</option>
+            {{/if}}
+          {{/each}}
+        </select>
         <h4 class="modal__subtitle">Turmas</h4>
-          {{#if (equalstr perfil "aluno")}}
 
+      {{#if (equalstr perfil "aluno")}}
+        <div flex="20" class="form-group--aired-h">
+          <div class="form-group form-group--vertical form-group--select-wrapper w100">
             <select class="form-group__input" id="new_user_area">
               <option value="">Selecione...</option>
               {{#each inst_selected.areas as |area|}}
@@ -495,9 +506,9 @@
                 {{/if}}
               {{/each}}
             </select>
-        
+          </div>
+        </div>
         {{else}}
-
           <ul class="list list--striped">
             {{#each inst_selected.areas as |area|}}
             <li>
@@ -516,7 +527,7 @@
             {{/each}}
           </ul>
 
-        {{/if}}
+          {{/if}}
       </section>
 
       {{#if new_user_email}}

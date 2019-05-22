@@ -17,6 +17,7 @@
     &-justify--space-between { justify-content: space-between ;}
 }
 
+.a-self--fe { align-self: flex-end; }
 .a-self--fs { align-self: flex-start; }
 
 [flex = '0'] { flex: 0 0 auto; }
