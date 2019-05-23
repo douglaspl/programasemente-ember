@@ -80,13 +80,13 @@
           <ul>
             {{#if primeiroAno}}
             <li class="submenu__item">
-              {{#link-to 'modulos.modlist' 1 class="submenu__link"}}<span>Primeiro ano</span>{{/link-to}}
-            </li>
+              <a class="submenu__link"{{action 'goToModulo' 1 on="click"}}>
+                <span>Primeiro Ano</span></a></li>
             {{/if}}
             {{#if segundoAno}}
             <li class="submenu__item">
-              {{#link-to 'modulos.modlist' 2 class="submenu__link"}}<span>Segundo ano</span>{{/link-to}}
-            </li>
+              <a class="submenu__link"{{action 'goToModulo' 2 on="click"}}>
+                <span>Segundo Ano</span></a></li>
             {{/if}}
             {{#if terceiroAno}}
             <li class="submenu__item">
@@ -101,19 +101,20 @@
     
 
       <!-- lib header -->
-      <li class="global-nav__item counter" id="header-biblioteca" style="display:none;">
-        {{#link-to 'biblioteca' class="global-nav__link"}}biblioteca{{/link-to}}
+      <li class="global-nav__item counter" id="header-biblioteca" style="display:none;" {{action 'goToBiblioteca' on="click"}}>
+        <span>Biblioteca</span>
         <span id="j-libraryNotificationNumber" class="counter__bubble">0</span>
       </li>
 
       <!-- progress header -->
       <li class="global-nav__item" id="header-progressos" style="display: none;"><a class="global-nav__link" href="#">Meu
-          progresso</a></li>
+          progresso</a>
+      </li>
 
       <!-- follow up header -->
       {{#if (equalstr role 'aluno')}}{{else}}
-       <li class="global-nav__item" id="header-indicadores">{{#link-to 'administracao'
-        class="global-nav__link"}}Acompanhamento{{/link-to}}</li>
+       <li class="global-nav__item" id="header-indicadores" {{action 'goToAdministracao' on="click"}}>
+         <span class="global-nav__item">Acompanhamento</span></li>
       {{/if}}
       
 
