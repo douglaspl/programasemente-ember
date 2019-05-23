@@ -413,7 +413,7 @@
       {{#if (equalstr perfil "aluno")}}
         <div
           class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v animated fadeIn">
-          <div flex="20" class="form-group--aired-h">
+          <div flex="20" class="m-right--lg">
             <div class="form-group form-group--vertical form-group--select-wrapper w100">
               <label class="form-group__label" for="new_user_role">Sexo</label>
               <select class="form-group__input" id="new_user_role">
@@ -441,56 +441,93 @@
         </div>
       {{/if}}
 
-      <section>
-        <h4 class="modal__subtitle">Anos</h4>
-        <ul class="list list--img-name-action list--striped">
-          {{#if new_user_email}}
-            <!-- edit user -->
-            {{#each modulos_list as |mod|}}
-              <li class="institutions__course form-group"
-                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                <img class="list__img list__img--auto-height border-1--gray-5"
-                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                <h3 class="list__name title-3">{{mod.name}}</h3>
-                <span class="switch switch--institutions">
-                  {{#if (isinarray mod user_modulos)}}
+      {{#if (equalstr perfil "gestor")}}
+      {{else if (equalstr perfil "coordenador")}}
+      {{else if (equalstr perfil "")}}
+      {{else}}
+        <section>
+          <h4 class="modal__subtitle">Anos</h4>
+          <ul class="list list--img-name-action list--striped">
+            {{#if new_user_email}}
+              <!-- edit user -->
+              {{#each modulos_list as |mod|}}
+                <li class="institutions__course form-group"
+                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                  <img class="list__img list__img--auto-height border-1--gray-5"
+                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                  <h3 class="list__name title-3">{{mod.name}}</h3>
+                  <div flex="20" class="form-group--aired-h animated fadeIn">
+                    <div class="form-group form-group--select-wrapper w100">
+                      <label class="form-group__label">Turma</label>
+                      <select class="form-group__input" id="new_user_area">
+                        <option value="">Selecione...</option>
+                        {{#each inst_selected.areas as |area|}}
+                          {{#if (equalstr area.id new_user_area)}}
+                            <option value={{area.id}} selected>{{area.name}}</option>
+                          {{else}}
+                            <option value={{area.id}}>{{area.name}}</option>
+                          {{/if}}
+                        {{/each}}
+                      </select>
+                    </div>
+                  </div>
+                  {{!-- <span class="switch switch--institutions">
+                    {{#if (isinarray mod user_modulos)}}
+                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                        checked={{if (isinarray mod inst_selected.modulos) true false}}
+                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                    {{else}}
+                      <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
+                        disabled={{if (isinarray mod inst_selected.modulos) false true}}>
+                    {{/if}}
+                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                      <span class="switch__inner"></span>
+                      <span class="switch__head"></span>
+                    </label>
+                  </span> --}}
+                </li>
+              {{/each}}
+            {{else}}
+              <!-- new user -->
+              {{#each modulos_list as |mod|}}
+                <li class="institutions__course form-group"
+                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+                  <img class="list__img list__img--auto-height border-1--gray-5"
+                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                  <h3 class="list__name title-3">{{mod.name}}</h3>
+
+                  <div flex="20" class="form-group--aired-h animated fadeIn">
+                    <div class="form-group form-group--select-wrapper w100">
+                      <label class="form-group__label">Turma</label>
+                      <select class="form-group__input" id="new_user_area">
+                        <option value="">Selecione...</option>
+                        {{#each inst_selected.areas as |area|}}
+                          {{#if (equalstr area.id new_user_area)}}
+                            <option value={{area.id}} selected>{{area.name}}</option>
+                          {{else}}
+                            <option value={{area.id}}>{{area.name}}</option>
+                          {{/if}}
+                        {{/each}}
+                      </select>
+                    </div>
+                  </div>
+                  {{!-- <span class="switch switch--institutions">
                     <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                      checked={{if (isinarray mod inst_selected.modulos) true false}}
-                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                  {{else}}
-                    <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                      disabled={{if (isinarray mod inst_selected.modulos) false true}}>
-                  {{/if}}
-                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </li>
-            {{/each}}
-          {{else}}
-            <!-- new user -->
-            {{#each modulos_list as |mod|}}
-              <li class="institutions__course form-group"
-                style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                <img class="list__img list__img--auto-height border-1--gray-5"
-                  src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
-                <h3 class="list__name title-3">{{mod.name}}</h3>
-                <span class="switch switch--institutions">
-                  <input class="switch__checkbox" id="ckb_new_p_{{mod.id}}" type="checkbox"
-                    checked={{if (isinarray mod inst_selected.modulos) true false}}>
-                  <label class="switch__label" for="ckb_new_p_{{mod.id}}">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </li>
-            {{/each}}
-          {{/if}}
-        </ul>
-      </section>
+                      checked={{if (isinarray mod inst_selected.modulos) true false}}>
+                    <label class="switch__label" for="ckb_new_p_{{mod.id}}">
+                      <span class="switch__inner"></span>
+                      <span class="switch__head"></span>
+                    </label> 
+                  </span> --}}
+                </li>
+              {{/each}}
+            {{/if}}
+          </ul>
+        </section>
+      {{/if}}
+
+      <!-- se retirar esse select para de funcionar -->
       <section>
-        <!-- se retirar esse select para de funcionar -->
         <select class="d-none form-group__input" id="new_user_area">
           <option value="">Selecione...</option>
           {{#each inst_selected.areas as |area|}}
@@ -501,51 +538,6 @@
             {{/if}}
           {{/each}}
         </select>
-
-
-        {{#if (equalstr perfil "")}}
-
-        {{else if (equalstr perfil "aluno")}}
-          <h4 class="modal__subtitle animated fadeIn">Turmas</h4>
-
-          <div flex="20" class="form-group--aired-h animated fadeIn">
-            <div class="form-group form-group--vertical form-group--select-wrapper w100">
-              <select class="form-group__input" id="new_user_area">
-                <option value="">Selecione...</option>
-                {{#each inst_selected.areas as |area|}}
-                  {{#if (equalstr area.id new_user_area)}}
-                    <option value={{area.id}} selected>{{area.name}}</option>
-                  {{else}}
-                    <option value={{area.id}}>{{area.name}}</option>
-                  {{/if}}
-                {{/each}}
-              </select>
-            </div>
-          </div>
-
-        {{else}}
-          <h4 class="modal__subtitle animated fadeIn">Turmas</h4>
-          <ul class="list list--striped animated fadeIn">
-            {{#each inst_selected.areas as |area|}}
-              <li>
-                {{#if (equalstr area.id new_user_area)}}
-                  <span class="checkbox">
-                    <input class="checkbox__input" id="{{area.id}}" name="{{area.id}}" type="checkbox"
-                      value="{{area.id}}" checked>
-                    <label class="checkbox__label" for="{{area.id}}">{{area.name}}</label>
-                  </span>
-                {{else}}
-                  <span class="checkbox">
-                    <input class="checkbox__input" id="{{area.id}}" name="{{area.id}}" type="checkbox"
-                      value="{{area.id}}" checked>
-                    <label class="checkbox__label" for="{{area.id}}">{{area.name}}</label>
-                  </span>
-                {{/if}}
-              </li>
-            {{/each}}
-          </ul>
-
-        {{/if}}
       </section>
 
       {{#if new_user_email}}

@@ -170,6 +170,7 @@
 
         &--select-wrapper {
             display: inline-flex;
+            min-width: 9rem;
             position: relative;
 
             &::before {
