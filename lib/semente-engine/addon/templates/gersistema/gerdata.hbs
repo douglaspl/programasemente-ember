@@ -189,7 +189,16 @@
               <!--- PRECISA DE VALORES DINÂMICOS -->
               <td class="table__class popover" id="epic{{pessoa.id}}">
                 <button data-target="#epic{{pessoa.id}}"
-                  class="btn btn--link popover__trigger"><span>1,2,3</span></button>
+                  class="btn btn--link popover__trigger">
+                    <span> 
+                      {{#each pessoa.modulos as |anos index|}}
+                        {{#if (equalstr anos.idx '4')}}
+                        <span>{{if index ", "}}PV</span>
+                        {{else}}
+                        <span>{{if index ", "}}{{anos.idx}}</span>
+                        {{/if}}
+                      {{/each}}
+                    </span></button>
 
                 <div class="popover__balloon popover__balloon--right-bottom ta-l">
                   <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
