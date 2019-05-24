@@ -40,7 +40,11 @@ $i: 5;
 
 
 
-
+.d-none,
+.d--none,
+.is-hidden {
+    display: none;
+}
 
 //------------------------------------
 //    #RESPONSIVE VISIBILITY
@@ -89,8 +93,3 @@ $i: 5;
 .d-xl--block { @include media('>xl') {display: block; } }
 .d-xl--flex { @include media('>xl') {display: flex; } }
 
-.d-none,
-.d--none,
-.is-hidden {
-    display: none;
-}
