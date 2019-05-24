@@ -20,6 +20,7 @@
     }
 
     &__label {
+        user-select: none;
 
         &::after {
             color: $color-white;

@@ -39,7 +39,7 @@
         </form>
 
         <!-- ano e turma -->
-        <div class="d-flex m-top--lg d--none animated fadeIn faster" id="year-class-filter">
+        <div class="d-flex m-top--lg d--none faster" id="year-class-filter">
 
           <div class="form-group form-group--vertical" flex="1">
             <span class="form-group__label">Ano</span>
@@ -260,7 +260,7 @@
   </section>
 </section>
 
-<!-- -------------------------------------------------- administration users modal -->
+<!-- -------------------------------------------------- administration users alert -->
 <div class="alert-container">
 
   <!-- CONFIRMATION || LIST -->
@@ -355,6 +355,7 @@
         <h3 class="modal__title">Novo Usuário</h3>
       {{/if}}
     </header>
+
     <div class="modal__body">
 
       <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
@@ -395,9 +396,9 @@
       </div>
 
       <!-- INFORMAÇÕES EXTRAS SOMENTE PARA ALUNOS -->
-      {{#if (equalstr perfil "aluno")}}
-        <div
-          class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v animated fadeIn">
+      {{!-- {{#if (equalstr perfil "aluno")}} --}}
+      {{#if (equalstr activeProfile "aluno")}}
+        <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
           <div flex="20" class="m-right--lg">
             <div class="form-group form-group--vertical form-group--select-wrapper w100">
               <label class="form-group__label" for="new_user_role">Sexo</label>
@@ -427,7 +428,7 @@
       {{/if}}
 
       <!-- ANOS SÓ É EXIBIDO PARA ALUNOS E INSTRUTORES -->
-      {{#if (equalstr new_user_role "instrutor")}}
+      {{#if (equalstr activeProfile "instrutor")}}
         <section>
           <h4 class="modal__subtitle">Anos</h4>
           <ul class="list list--img-name-action list--striped">
@@ -439,7 +440,32 @@
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <div flex="20" class="form-group--aired-h animated fadeIn">
+                  <div class="m-top--xl w100">
+                    <h4 class="title-4 m-bottom--xs">Turmas</h4>
+                    <ul class="list list--3-col">
+                      {{#each inst_selected.areas as |area|}}
+                        <li class="m-bottom--lg">
+                          {{#if (equalstr area.id new_user_area)}}
+                            <span class="checkbox m-right--lg">
+                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{area.id}}" type="checkbox" value="{{area.id}}" checked>
+                              <label class="checkbox__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{else}}
+                            <span class="checkbox m-right--lg">
+                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{area.id}}" type="checkbox" value="{{area.id}}">
+                              <label class="checkbox__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{/if}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+
+                  {{!-- <div flex="20" class="form-group--aired-h">
                     <div class="form-group form-group--select-wrapper w100">
                       <label class="form-group__label">Turma</label>
                       <select class="form-group__input" id="new_user_area">
@@ -453,7 +479,7 @@
                         {{/each}}
                       </select>
                     </div>
-                  </div>
+                  </div> --}}
                 </li>
               {{/each}}
             {{else}}
@@ -464,8 +490,31 @@
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
-
-                  <div flex="20" class="form-group--aired-h animated fadeIn">
+                  <div class="m-top--xl w100">
+                    <h4 class="title-4 m-bottom--xs">Turmas</h4>
+                    <ul class="list list--3-col">
+                      {{#each inst_selected.areas as |area|}}
+                        <li class="m-bottom--lg">
+                          {{#if (equalstr area.id new_user_area)}}
+                            <span class="checkbox m-right--lg">
+                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{area.id}}" type="checkbox" value="{{area.id}}" checked>
+                              <label class="checkbox__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{else}}
+                            <span class="checkbox m-right--lg">
+                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{area.id}}" type="checkbox" value="{{area.id}}">
+                              <label class="checkbox__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{/if}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                  {{!-- <div flex="20" class="form-group--aired-h">
                     <div class="form-group form-group--select-wrapper w100">
                       <label class="form-group__label">Turma</label>
                       <select class="form-group__input" id="new_user_area">
@@ -479,14 +528,14 @@
                         {{/each}}
                       </select>
                     </div>
-                  </div>
+                  </div> --}}
                 </li>
               {{/each}}
             {{/if}}
           </ul>
         </section>
       {{/if}}
-      {{#if (equalstr new_user_role "aluno")}}
+      {{#if (equalstr activeProfile "aluno")}}
         <section>
           <h4 class="modal__subtitle">Anos</h4>
           <ul class="list list--img-name-action list--striped">
@@ -498,9 +547,30 @@
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <div flex="20" class="form-group--aired-h animated fadeIn">
-                    <div class="form-group form-group--select-wrapper w100">
-                      <label class="form-group__label">Turma</label>
+                  <div class="m-top--xl w100">
+                    <h4 class="title-4 m-bottom--xs">Turma</h4>                  
+                    <ul class="list list--3-col">
+                      {{#each inst_selected.areas as |area|}}
+                        <li class="m-bottom--lg">
+                          {{#if (equalstr area.id new_user_area)}}
+                            <span class="radio m-right--lg">
+                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}" checked>
+                              <label class="radio__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{else}}
+                            <span class="radio m-right--lg">
+                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}">
+                              <label class="radio__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{/if}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                    {{!-- <div class="form-group form-group--select-wrapper">
                       <select class="form-group__input" id="new_user_area">
                         <option value="">Selecione...</option>
                         {{#each inst_selected.areas as |area|}}
@@ -511,7 +581,7 @@
                           {{/if}}
                         {{/each}}
                       </select>
-                    </div>
+                    </div> --}}
                   </div>
                 </li>
               {{/each}}
@@ -523,10 +593,30 @@
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
-
-                  <div flex="20" class="form-group--aired-h animated fadeIn">
-                    <div class="form-group form-group--select-wrapper w100">
-                      <label class="form-group__label">Turma</label>
+                  <div class="m-top--xl w100">
+                    <h4 class="title-4 m-bottom--xs">Turma</h4>                  
+                    <ul class="list list--3-col">
+                      {{#each inst_selected.areas as |area|}}
+                        <li class="m-bottom--lg">
+                          {{#if (equalstr area.id new_user_area)}}
+                            <span class="radio m-right--lg">
+                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}" checked>
+                              <label class="radio__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{else}}
+                            <span class="radio m-right--lg">
+                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}">
+                              <label class="radio__label"
+                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                            </span>
+                          {{/if}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                    {{!-- <div class="form-group form-group--select-wrapper">
                       <select class="form-group__input" id="new_user_area">
                         <option value="">Selecione...</option>
                         {{#each inst_selected.areas as |area|}}
@@ -537,7 +627,7 @@
                           {{/if}}
                         {{/each}}
                       </select>
-                    </div>
+                    </div> --}}
                   </div>
                 </li>
               {{/each}}

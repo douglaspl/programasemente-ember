@@ -14,7 +14,7 @@
         }
 
         &::after {
-            background-color: $green-20;
+            background-color: $color-white;
             content: '';
             height: $input-radio-selected-size;
             left: calc((#{$input-check-radio-size} - #{$input-radio-selected-size}) / 2);
@@ -23,9 +23,15 @@
 
     }
 
-    &__input:checked + &__label::after {
-        background-color: $green-20;
-        opacity: 1;
+    &__input:checked + &__label {
+        &::before {
+            background-color: $green-20;
+        }
+
+        &::after {
+            opacity: 1;
+        
+        }
     }
 
     &--sm {
