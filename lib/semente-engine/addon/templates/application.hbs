@@ -102,8 +102,7 @@
 
       <!-- lib header -->
       <li class="global-nav__item counter" id="header-biblioteca" style="display:none;" {{action 'goToBiblioteca' on="click"}}>
-        <span>Biblioteca</span>
-        <span id="j-libraryNotificationNumber" class="counter__bubble">0</span>
+        <a class="global-nav__link"><span>Biblioteca</span><span id="j-libraryNotificationNumber" class="counter__bubble">0</span></a>
       </li>
 
       <!-- progress header -->
@@ -113,8 +112,9 @@
 
       <!-- follow up header -->
       {{#if (equalstr role 'aluno')}}{{else}}
-       <li class="global-nav__item" id="header-indicadores" {{action 'goToAdministracao' on="click"}}>
-         <span class="global-nav__item">Acompanhamento</span></li>
+          <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
+            <a class="global-nav__link"><span>Acompanhamento</span></a>
+        	</li>
       {{/if}}
       
 
@@ -122,8 +122,11 @@
       {{#if (equalstr role 'aluno')}}{{else}}
       {{#if (equalstr role 'instrutor')}}{{else}}
       {{#if (equalstr role 'coordenador')}}{{else}}
-      <li class="global-nav__item" id="header-gersistema">{{#link-to 'gersistema.gerdata' (query-params
-        instituicao_id=0 perPage=10) class="global-nav__link"}}Administração{{/link-to}}</li>
+        <li class="global-nav__item" id="header-gersistema" {{action 'goToAdministracao' on="click"}}>
+          <a class="global-nav__link"><span>Administração</span></a>
+        </li>
+      {{!-- <li class="global-nav__item" id="header-gersistema">{{#link-to 'gersistema.gerdata' (query-params
+        instituicao_id=0 perPage=10) class="global-nav__link"}}Administração{{/link-to}}</li> --}}
       {{/if}}
       {{/if}}
       {{/if}}
