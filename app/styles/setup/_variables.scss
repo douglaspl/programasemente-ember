@@ -145,10 +145,10 @@ $lemon-shades: (0: hsl(56, 68%, 72%), // #f2f2e6
 
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
 $gray-shades: (0: hsl(148, 3%, 98%), // #f2f9fa
-5: hsl(148, 3%, 88%), // #d8e6e3
-10: hsl(148, 3%, 75%), // #c0d2c9
-20: hsl(148, 3%, 58%), // #93aa99
-30: hsl(148, 3%, 43%), // #6c836c
+5: hsl(148, 3%, 93%), // #d8e6e3
+10: hsl(148, 3%, 80%), // #c0d2c9
+20: hsl(148, 3%, 65%), // #93aa99
+30: hsl(148, 3%, 45%), // #6c836c
 40: hsl(148, 3%, 28%), // #4d5b48
 50: hsl(148, 3%, 15%), // #2e3428
 60: hsl(148, 3%, 5%) // #0c0d0a
@@ -357,6 +357,7 @@ $font-size--max: 3.5rem;
 //    #FORM
 //------------------------------------
 $form-shadow: 0 2px 0 rgba($color-black, .19);
+$form-background-color: $gray-0;
 
 
 

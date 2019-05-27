@@ -368,7 +368,7 @@
 //------------------------------------
 @mixin inputs {
   // appearance: none;
-  background-color: $gray-5;
+  background-color: $form-background-color;
   border: 0 solid transparent;
   border-radius: $radius;
   color: $color-gray--darkest;
