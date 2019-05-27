@@ -34,9 +34,9 @@
     }
 
     &__label {
-        background-color: $gray-5;
+        background-color: $form-background-color;
         border-radius: $radius--md;
-        box-shadow: $shadow-i-2;
+        box-shadow: $shadow-i-1;
         cursor: pointer;
         display: block;
         height: $switch-height;
@@ -93,7 +93,6 @@
 
     &__head {
         background-color: $color-error;
-        border: 1px solid saturate(darken($color-error, 10%), 2%);
         border-radius: $radius--md;
         box-shadow: $shadow-2;
         height: $switch-head;
@@ -114,7 +113,6 @@
 
         #{$this}__head {
             background-color: $color-success;
-            border: 1px solid saturate(darken($color-success, 5%), 2%);
         }
 
         #{$this}__inner {
