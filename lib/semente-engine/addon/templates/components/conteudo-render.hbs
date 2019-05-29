@@ -41,7 +41,7 @@
 {{else if sortedQuestoes}}
 {{#each sortedQuestoes as |questao|}}
 {{questao-render class="content_render_quiz" elementId=(concatenate 'article_questao_' questao.idx) questao=questao
-gonext=(action 'goNext') goquestao=(action 'goQuestao') questaoAtiva=questaoAtiva model=model
+gonext=(action 'goNext') transit=(action 'goTransition') goquestao=(action 'goQuestao') questaoAtiva=questaoAtiva model=model
 sortedQuestoes=sortedQuestoes questoes_timing=questoes_timing}}
 {{/each}}
 {{/if}}
