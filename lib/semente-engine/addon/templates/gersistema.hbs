@@ -211,7 +211,7 @@
   <!-- / back to institutions list -->
   <header class="main__header institutions__header">
     <!-- institutions selected name -->
-    <h1 class="main__title">{{inst_selected.attributes.name}}</h1>
+    <h1 class="main__title">{{inst_selected.name}}</h1>
     <!-- institutions navigation -->
     <div class="tabs">
       <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
@@ -230,7 +230,7 @@
     <h2 class="main__subtitle">Informações</h2>
     {{#if (equalstr role 'admin')}}
     <button class="btn btn--green-ghost btn--xxs m-left--md" style="display:none" id="btn_save_inst"
-      {{action 'saveInformations' inst_selected.attributes.id}}>
+      {{action 'saveInformations' inst_selected.id}}>
       <span class="btn__icon icon-save"></span>
       Salvar alterações
     </button>
@@ -242,17 +242,17 @@
       <div class="form-group form-group--vertical form-group--aired-h" flex="20">
         <label class="form-group__label">Nome</label>
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.attributes.name}}
+        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
         {{else}}
-        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.attributes.name}} disabled="true">
+        <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} disabled="true">
         {{!-- {{inst_selected.name}} --}}
         {{/if}}
       </div>
       <div class="form-group form-group--vertical">
         <label class="form-group__label">Status</label>
         <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="inst_hab" type="checkbox" checked={{inst_selected.attributes.enabled}}
+          <input class="switch__checkbox" id="inst_hab" type="checkbox" checked={{inst_selected.enabled}}
             disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
           <label class="switch__label" for="inst_hab">
             <span class="switch__inner"></span>
@@ -281,10 +281,10 @@
       <div class="form-group form-group--vertical" flex="20">
         <label class="form-group__label">Gestores</label>
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.attributes.nrgestores}}
+        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
         {{else}}
-        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.attributes.nrgestores}}
+        <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
           disabled="true">
         {{/if}}
       </div>
@@ -292,29 +292,29 @@
       <div class="form-group form-group--vertical" flex="25">
         <label class="form-group__label">Coordenadores</label>
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_coordenadores" value={{inst_selected.attributes.nrcoordenadores}}
+        <input class="form-group__input" type="textbox" id="nr_coordenadores" value={{inst_selected.nrcoordenadores}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
         {{else}}
-        {{inst_selected.attributes.nrcoordenadores}}
+        {{inst_selected.nrcoordenadores}}
         {{/if}}
       </div>
       <div class="form-group form-group--vertical" flex="25">
         <label class="form-group__label">Instrutores</label>
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.attributes.nrinstrutores}}
+        <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.nrinstrutores}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
         {{else}}
-        {{inst_selected.attributes.nrinstrutores}}
+        {{inst_selected.nrinstrutores}}
         {{/if}}
       </div>
 
       <div class="form-group form-group--vertical" flex="20">
         <label class="form-group__label">Alunos</label>
         {{#if (equalstr role 'admin')}}
-        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.attributes.nralunos}}
+        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
         {{else}}
-        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.attributes.nralunos}} disabled="true">
+        <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} disabled="true">
         {{/if}}
       </div>
       <!-- /selected institution tab information -->
@@ -343,7 +343,7 @@
               <!-- -->
               <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
                 checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
-                onchange={{action 'dataChange' 'btn_save_courses'}}>
+                onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
               <label class="switch__label" for="ckb_{{mod.id}}">
                 <span class="switch__inner"></span>
                 <span class="switch__head"></span>
@@ -453,12 +453,12 @@
     <h3 class="main__subsubtitle">Recursos extras</h3>
     <div class="checkbox m-bottom--md">
       <input class="checkbox__input" id="inst_changePassword" type="checkbox"
-        checked={{inst_selected.attributes.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin') false true}}
+        checked={{inst_selected.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin') false true}}
         onchange={{action 'dataChange' 'btn_save_inst'}}>
       <label class="checkbox__label" for="inst_changePassword">Alterar senha no primeiro acesso</label>
     </div>
     <div class="checkbox m-bottom--md">
-      <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.attributes.temBiblioteca}}
+      <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.temBiblioteca}}
         disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
       <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
     </div>
@@ -499,7 +499,7 @@
           <!-- -->
           <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
             checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
-            onchange={{action 'dataChange' 'btn_save_courses'}}>
+            onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
           <label class="switch__label" for="ckb_{{mod.id}}">
             <span class="switch__inner"></span>
             <span class="switch__head"></span>
