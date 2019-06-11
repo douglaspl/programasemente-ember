@@ -22,7 +22,7 @@ module.exports = function(environment) {
     APP: {
 
       //host: 'http://localhost:64568',
-      host:  'https://sementeapimedio.minimo.com.br',
+      host:  'http://sementeapimedio.minimo.com.br',
       namespace: 'api/v0',
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -30,7 +30,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
-    ENV.APP.host = 'https://sementeapimedio.minimo.com.br';
+    ENV.APP.host = 'http://sementeapimedio.minimo.com.br';
     // ENV.APP.host = 'http://localhost:64568';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
