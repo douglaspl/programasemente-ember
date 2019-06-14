@@ -1,10 +1,10 @@
 @font-face {
   font-family: $icomoon-font-family;
-  src: url('icomoon.eot?gt77nf');
-  src: url('icomoon.eot?gt77nf#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?gt77nf') format('truetype'),
-    url('icomoon.woff?gt77nf') format('woff'),
-    url('icomoon.svg?gt77nf#icomoon') format('svg');
+  src:  url('icomoon.eot?gt77nf');
+  src:  url('icomoon.eot?gt77nf#iefix') format('embedded-opentype'),
+        url('icomoon.ttf?gt77nf') format('truetype'),
+        url('icomoon.woff?gt77nf') format('woff'),
+        url('icomoon.svg?gt77nf#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -260,26 +260,10 @@
   }
 }
 
-.icon--error {
-  color: $color-error;
-}
+.icon--error { color: $color-error; }
+.icon--success { color: $color-success; }
 
-.icon--success {
-  color: $color-success;
-}
-
-.icon--lg {
-  font-size: 1.5em;
-}
-
-.icon--xl {
-  font-size: 2em;
-}
-
-.icon--xxl {
-  font-size: 4em;
-}
-
-.icon--ultra {
-  font-size: calc(10em + 1vh);
-}
+.icon--lg { font-size: 1.5em; }
+.icon--xl { font-size: 2em; }
+.icon--xxl { font-size: 4em; }
+.icon--ultra { font-size: calc(10em + 1vh); }

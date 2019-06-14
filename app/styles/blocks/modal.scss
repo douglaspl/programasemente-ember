@@ -82,6 +82,7 @@
     &__body {
 
         @include overflow-y;
+        padding-bottom: $distance--sm;
         padding-right: $distance--md;
 
         @include target-ipad {
