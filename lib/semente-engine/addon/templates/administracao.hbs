@@ -123,7 +123,7 @@
                     <li class="report-class__two-col">
                         <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
                             <span class="title-aux">Aula {{atividade.idx}}</span>
-                            <h3 class="title-3"><a class="link--dotted" href="#"><span>{{atividade.name}}</span></a>
+                            <h3 class="title-3"><a class="link--dotted" {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>
                             </h3>
                         </div>
                         {{#each atividade.acompanhamentosAtividadeInstituicao as |acomp|}}
