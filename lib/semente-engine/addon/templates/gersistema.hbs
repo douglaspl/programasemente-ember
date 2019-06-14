@@ -184,7 +184,7 @@
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 <!-- temporary save controll -->
-                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+                <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
                   style="display:none">
                 <!-- -->
                 <input class="switch__checkbox" id="ckb_new_{{mod.id}}" type="checkbox">
@@ -338,12 +338,12 @@
             <h3 class="list__name title-3">{{mod.name}}</h3>
             <span class="switch switch--institutions">
               <!-- temporary save controll -->
-              <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+              <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
                 style="display:none">
               <!-- -->
               <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-                checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
-                onchange={{action 'dataChange' 'btn_save_courses'}}>
+                checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
+                onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
               <label class="switch__label" for="ckb_{{mod.id}}">
                 <span class="switch__inner"></span>
                 <span class="switch__head"></span>
@@ -494,50 +494,34 @@
         </div>
         <span class="switch switch--institutions">
           <!-- temporary save controll -->
-          <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+          <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
             style="display:none">
           <!-- -->
           <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-            checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
-            onchange={{action 'dataChange' 'btn_save_courses'}}>
+            checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
+            onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
           <label class="switch__label" for="ckb_{{mod.id}}">
             <span class="switch__inner"></span>
             <span class="switch__head"></span>
           </label>
         </span>
 
-        <!-- ACCORDION TEST -->
+        <!-- ACCORDION -->
         <ul id="j-accordionContent{{mod.id}}"
           class="list list--striped calendar calendar--list j-accordionNode animated fadeIn w100" style="display:none;">
-          <li>
-            <time class="calendar__date date" datetime="2019-02-15">
-              <span class="date__day">15</span><span class="date__month">fev</span>
-            </time>
-            <div class="d-flex d-flex--c d-flex-justify--center">
-              <span class="title-aux m-bottom--xxs">Aula 1</span>
-              <h3 class="title-4">O que é Resiliência?</h3>
-            </div>
-          </li>
-          <li>
-            <time class="calendar__date date" datetime="2019-02-28">
-              <span class="date__day">28</span><span class="date__month">fev</span>
-            </time>
-            <div class="d-flex d-flex--c d-flex-justify--center">
-              <span class="title-aux m-bottom--xxs">Aula 2</span>
-              <h3 class="title-4">É sempre possível aprender</h3>
-            </div>
-          </li>
-          <li>
-            <div class="calendar__date date">
-              <span class="date__day">16</span><span class="date__month">mar</span>
-            </div>
-            <div class="d-flex d-flex--c d-flex-justify--center">
-              <span class="title-aux m-bottom--xxs">Aula 3</span>
-              <h3 class="title-4">Esforço e talento</h3>
-            </div>
-          </li>
+          {{#each atividadeList as |atv|}}
+            <li>
+              <time class="calendar__date date" datetime="2019-02-15">
+                <span class="date__day">{{atv.dia}}</span><span class="date__month">{{atv.mes}}</span>
+              </time>
+              <div class="d-flex d-flex--c d-flex-justify--center">
+                <span class="title-aux m-bottom--xxs">{{atv.id}}</span>
+                <h3 class="title-4">{{atv.name}}</h3>
+              </div>
+            </li>
+          {{/each}}
         </ul>
-        <!-- /ACORDION TEST -->
+        <!-- /ACORDION -->
       </li>
       {{/each}}
     </ul>
