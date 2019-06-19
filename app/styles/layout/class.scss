@@ -53,9 +53,10 @@
   }
 
   &__title {
-    @include title-2;
+    @include title-2($color: $blue-navy-50);
 
     margin-bottom: $distance--sm;
+    padding-right: $distance--sm;
     text-align: left;
 
     @include media('>sm') {
