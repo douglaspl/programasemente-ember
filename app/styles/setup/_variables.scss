@@ -496,11 +496,17 @@ $shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16
 $shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
 $shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
 
-$shadow-h-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17);
-$shadow-h-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16);
-$shadow-h-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16);
-$shadow-h-4: 14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2);
-$shadow-h-5: 19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2);
+$shadow-h-r-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-4: 14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-5: 19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
+
+$shadow-h-l-1: -1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-2: -3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-3: -10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-4: -14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-5: -19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
 
 $shadow-i-1: inset 0 1px 3px rgba($color-black, .02), inset 0 1px 2px rgba($color-black, .17);
 $shadow-i-2: inset 0 3px 6px rgba($color-black, .06), inset 0 3px 6px rgba($color-black, .16);

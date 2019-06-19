@@ -1,8 +1,9 @@
 .timeline {
   $this: &;
   
-  $line-color: transparentize($lemon-10, .4);
-  $line-main-steps-background: $lemon-20;
+  $line-color: $blue-navy-50;
+  $line-main-steps-center: $lemon-30;
+  $line-main-steps-background: $line-color;
   $line-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
 
   $date-bg-color: $color-white;
@@ -42,7 +43,14 @@
     position: relative;
 
     @include media('>sm') {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 80%;
+    }
+
+    @include media('>md') {
       background-color: transparent;
+      max-width: 100%;
     }
 
     &:first-child {
@@ -86,11 +94,20 @@
 
     &:nth-child(2n+2) {
 
+      [class*='__img'] {
+        box-shadow: $shadow-h-r-4;
+        left: auto;
+        right: -3%;
+      }
+
       [class*='__class'] {
 
-        @include media('>sm') {
+        @include media('>md') {
+          align-items: flex-start;
+          box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
           margin-left: calc(50% + #{$distance--md});
           margin-right: auto;
+          text-align: left;
         }  
         
         &::before {
@@ -105,7 +122,7 @@
         left: auto;
         right: calc(50% + #{$distance--md});
         
-        @include media('>sm') {
+        @include media('>md') {
           padding: $distance--sm $distance--sm $distance--sm $distance--xl;
         }
 
@@ -117,12 +134,15 @@
 
       }
 
-      [class*='__status'] {
-        box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
-        left: auto;
-        right: 100%;
-        top: 50%;
-        transform: translate(50%, -50%);
+      @include media('>md') {
+        
+        [class*='__status'] {
+          box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
+          left: auto;
+          right: 100%;
+          transform: translate(50%, -50%);
+        }
+
       }
       
     }
@@ -131,13 +151,13 @@
 
   &__class {
     background-color: $color-off-white;
-    border-radius: $radius--md;
-    box-shadow: 0 2px 0 0 hsla(0, 0, 0, .2);
+    box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
     margin-left: auto;
     margin-right: calc(50% + #{$distance--md});
     padding: 0 $distance--sm $distance--md $distance--sm;
 
-    @include media('>sm') {
+    @include media('>md') {
+      border-radius: $radius--md;
       padding: $distance--md $distance--lg;
     }
 
@@ -153,7 +173,7 @@
       top: 50%;
       transform: translateY(-50%);
 
-      @include media('>sm') {
+      @include media('>md') {
         display: block;
       }
 
@@ -164,7 +184,7 @@
   &__indicator {
     $size: 25px;
 
-    background-color: $blue-navy-50;
+    background-color: $line-main-steps-center;
     border-radius: $radius--capsule;
     border: 8px solid $line-main-steps-background;
     box-shadow: 0 0 40px transparentize($line-main-steps-background, .1);
@@ -174,7 +194,7 @@
     transform: translate(-50%, -50%);
     width: $size;
 
-    @include media('>sm') {
+    @include media('>md') {
       top: 50%;
     }
 
@@ -183,7 +203,6 @@
   &__date {
     align-items: center;
     background-color: $date-bg-color;
-    border-radius: $radius--md;
     box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
     display: flex;
     flex-direction: row;
@@ -195,15 +214,16 @@
     text-align: center;
     text-transform: uppercase;
     
-    @include media('>sm') {
+    @include media('>md') {
+      border-radius: $radius--md;
       justify-content: initial;
       left: calc(50% + #{$distance--md});
       padding: $distance--sm $distance--xl $distance--sm $distance--sm;
       position: absolute;
       right: auto;
+      text-align: initial;
       top: 50%;
       transform: translateY(-50%);
-      text-align: initial;
     }
 
     &::before {
@@ -218,7 +238,7 @@
       top: 50%;
       transform: translateY(-50%);
 
-      @include media('>sm') {
+      @include media('>md') {
         display: block;
       }
 
@@ -247,9 +267,9 @@
     width: $distance--xxl;
     z-index: 2;
 
-    @include media('>sm') {
+    @include media('>md') {
       box-shadow: 10px 0 20px transparentize($blue-navy-60, .1);
-      top: 50%;
+      // top: 50%;
       left: 100%;
     }
 
@@ -271,7 +291,7 @@
 
   &__day {
 
-    @include media('>sm') {
+    @include media('>md') {
       font-size: 1.25em;
       letter-spacing: $letter-spacing--xxs;
       margin-right: $distance--xxs;

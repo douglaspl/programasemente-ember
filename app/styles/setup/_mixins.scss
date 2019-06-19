@@ -746,20 +746,21 @@ $letter: $letter-spacing--sm) {
   }
 }
 
-@mixin title-2($color: $color-gray--darkest,
+@mixin title-2($case: uppercase,
+$color: $color-gray--darkest,
+$line-height: 1.2,
 $size: $font-size--md,
 $size--sm: $font-size--lg,
 $size--lg: $font-size--xl,
 $weight: 600,
-$letter: $letter-spacing--sm,
-$case: uppercase) {
+$letter: $letter-spacing--sm) {
 
   color: $color;
   font-family: filson-soft, 'Titillium Web', sans-serif;
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $letter;
-  line-height: 1.2;
+  line-height: $line-height;
   text-transform: $case;
   vertical-align: middle;
 
@@ -854,7 +855,7 @@ $letter: $letter-spacing--md) {
 
 @mixin title-aux($color: $green-50,
 $display: inline-block,
-$weight: 400) {
+$weight: 600) {
 
   color: $color;
   display: $display;
