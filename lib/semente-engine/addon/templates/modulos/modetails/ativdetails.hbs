@@ -9,15 +9,15 @@
 
       <h1 class="course-nav__course-title">{{model.modulo.name}}</h1>
       {{#if (equalstr role 'aluno')}}
-        {{#link-to 'modulos.modlist' model.modulo.id class="course-nav__back"}}
-        <span class="icon-chevron-left"></span>
-        Voltar para aulas
-        {{/link-to}}
+      {{#link-to 'modulos.modlist' model.modulo.id class="course-nav__back"}}
+      <span class="icon-chevron-left"></span>
+      Voltar para aulas
+      {{/link-to}}
       {{else}}
-        {{#link-to 'administracao.admdata' class="course-nav__back"}}
-        <span class="icon-chevron-left"></span>
-        Voltar
-        {{/link-to}}
+      {{#link-to 'administracao.admdata' class="course-nav__back"}}
+      <span class="icon-chevron-left"></span>
+      Voltar
+      {{/link-to}}
       {{/if}}
 
     </div>
@@ -46,50 +46,50 @@
     <nav id="scroller_menu" class="course-nav__nav">
       <ul class="course-nav__nodes">
         {{#each model.secoes as |secao|}}
-        {{#if (isinarray secao secoes_enabled)}}
-        {{#each secao.conteudos as |conteudo|}}
-        {{#if conteudo.quiz}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
-        model=model secao=secao conteudo=conteudo}}
-        {{#each conteudo.quiz.questoes as |questao|}}
-        {{#if (isinarray questao questoes_enabled)}}
-        {{#if (isinarray questao questoes_respondidas)}}
-        {{section-link class='course-nav__node course-nav__node--is-done' elementId=(concatenate "li_conteudo_"
-        secao.id "_" conteudo.id "_" questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
-        {{else}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
-        questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
-        {{/if}}
-        {{else}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
-        questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
-        {{/if}}
-        {{/each}}
-        {{else}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
-        model=model secao=secao conteudo=conteudo}}
-        {{/if}}
-        {{/each}}
-        {{else}}
-        {{#each secao.conteudos as |conteudo|}}
-        {{#if conteudo.quiz}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
-        model=model secao=secao conteudo=conteudo disabled='disabled'}}
-        {{#each conteudo.quiz.questoes as |questao|}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
-        questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
-        {{/each}}
-        {{else}}
-        {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
-        model=model secao=secao conteudo=conteudo disabled='disabled'}}
-        {{/if}}
-        {{/each}}
-        {{/if}}
+          {{#if (isinarray secao secoes_enabled)}}
+            {{#each secao.conteudos as |conteudo|}}
+              {{#if conteudo.quiz}}
+                {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+                model=model secao=secao conteudo=conteudo}}
+                {{#each conteudo.quiz.questoes as |questao|}}
+                  {{#if (isinarray questao questoes_enabled)}}
+                    {{#if (isinarray questao questoes_respondidas)}}
+                      {{section-link class='course-nav__node course-nav__node--is-done' elementId=(concatenate "li_conteudo_"
+                      secao.id "_" conteudo.id "_" questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
+                    {{else}}
+                      {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+                      questao.idx) model=model secao=secao conteudo=conteudo questao=questao}}
+                    {{/if}}
+                  {{else}}
+                    {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+                    questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
+                  {{/if}}
+                {{/each}}
+              {{else}}
+                {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+                model=model secao=secao conteudo=conteudo}}
+              {{/if}}
+            {{/each}}
+          {{else}}
+            {{#each secao.conteudos as |conteudo|}}
+              {{#if conteudo.quiz}}
+                {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+                model=model secao=secao conteudo=conteudo disabled='disabled'}}
+                {{#each conteudo.quiz.questoes as |questao|}}
+                  {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id "_"
+                  questao.idx) model=model secao=secao conteudo=conteudo questao=questao disabled='disabled'}}
+                {{/each}}
+              {{else}}
+                {{section-link class='course-nav__node' elementId=(concatenate "li_conteudo_" secao.id "_" conteudo.id)
+                model=model secao=secao conteudo=conteudo disabled='disabled'}}
+              {{/if}}
+            {{/each}}
+          {{/if}}
         {{/each}}
       </ul>
     </nav>
   </header>
-{{model.acompanhamentosCursoInstituicao}}
+  {{model.acompanhamentosCursoInstituicao}}
   {{outlet}}
 
 
