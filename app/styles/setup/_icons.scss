@@ -1,10 +1,10 @@
 @font-face {
   font-family: $icomoon-font-family;
-  src:  url('icomoon.eot?7fp88i');
-  src:  url('icomoon.eot?7fp88i#iefix') format('embedded-opentype'),
-        url('icomoon.ttf?7fp88i') format('truetype'),
-        url('icomoon.woff?7fp88i') format('woff'),
-        url('icomoon.svg?7fp88i#icomoon') format('svg');
+  src:  url('icomoon.eot?gt77nf');
+  src:  url('icomoon.eot?gt77nf#iefix') format('embedded-opentype'),
+        url('icomoon.ttf?gt77nf') format('truetype'),
+        url('icomoon.woff?gt77nf') format('woff'),
+        url('icomoon.svg?gt77nf#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,12 +23,6 @@
 .icon-unlocked {
   &:before {
     content: $icon-unlocked;
-  }
-}
-
-.icon-activity {
-  &:before {
-    content: $icon-activity; 
   }
 }
 
