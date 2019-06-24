@@ -150,7 +150,7 @@
   }
 
   &__class {
-    background-color: $color-off-white;
+    background-color: $color-white;
     box-shadow: -10px 0 20px transparentize($blue-navy-60, .1);
     margin-left: auto;
     margin-right: calc(50% + #{$distance--md});
