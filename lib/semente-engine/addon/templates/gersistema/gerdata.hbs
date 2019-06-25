@@ -443,21 +443,21 @@
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
-                      {{#each inst_selected.areas as |area|}}
+                      {{#each inst_selected.turmas as |turma|}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr area.id new_user_area)}}
+                          {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{area.id}}" type="checkbox" value="{{area.id}}" checked>
+                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{area.id}}" type="checkbox" value="{{area.id}}">
+                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{turma.id}}" type="checkbox" value="{{turma.id}}">
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -493,21 +493,21 @@
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
-                      {{#each inst_selected.areas as |area|}}
+                      {{#each inst_selected.turmas as |turma|}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr area.id new_user_area)}}
+                          {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{area.id}}" type="checkbox" value="{{area.id}}" checked>
+                              <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
+                                name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{area.id}}" type="checkbox" value="{{area.id}}">
+                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{turma.id}}" type="checkbox" value="{{turma.id}}">
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -550,21 +550,21 @@
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--sm">Turma</h4>                  
                     <ul class="list list--3-col">
-                      {{#each inst_selected.areas as |area|}}
+                      {{#each inst_selected.turmas as |turma|}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr area.id new_user_area)}}
+                          {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}" checked>
+                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
                               <label class="radio__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}">
+                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
                               <label class="radio__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -596,21 +596,21 @@
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--sm">Turma</h4>             
                     <ul class="list list--3-col">
-                      {{#each inst_selected.areas as |area|}}
+                      {{#each inst_selected.turmas as |turma|}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr area.id new_user_area)}}
+                          {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}" checked>
+                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
                               <label class="radio__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{area.name}}_{{area.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{area.id}}">
+                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
                               <label class="radio__label"
-                                for="{{mod.name}}_{{area.name}}_{{area.id}}">{{area.name}}</label>
+                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
