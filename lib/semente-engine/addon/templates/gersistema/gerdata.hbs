@@ -365,7 +365,7 @@
             <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
               <option value="">Selecione...</option>
               <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
-              <option value="instrutor" selected={{thisUserRole.instrutor}}>Instrutor</option>
+              <option value="instrutor" selected={{thisUserRole.instrutor}}>Professor</option>
               <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
               <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
               {{#if (equalstr new_user_role 'admin')}}
