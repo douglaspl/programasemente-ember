@@ -18,7 +18,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     }
   },
   firstAccessVerify() {
-    console.log('index.js');
+    //console.log('index.js');
     //always requesting without header 'pessoaid' will retrieve the data from the user which bears the stored token
     let sessionData = this.get('session.data');
     let tok = sessionData.authenticated.access_token;
@@ -54,7 +54,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
             let logStorage = localStorage.getItem('person_logged');
             let log = JSON.parse(logStorage);
             if (logStorage) {
-              console.log(log.role);
+              //console.log(log.role);
               // ------------------------------------ institution param 
               let institutions = included.filter(function (i) {
                 return i.id === log.instituicao_id;
@@ -71,7 +71,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
                 else window.location = '/firstaccess';
               else window.location = '/webapp';
             } else {
-              console.log('n role');
+              //console.log('n role');
               let logData, name, trocousenha, hasTo;
 
               name = data[0].attributes.name;
