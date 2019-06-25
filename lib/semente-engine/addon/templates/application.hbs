@@ -213,7 +213,7 @@
         </ul>
 
         <ul id="modelList" class="select-inst">
-          {{#each model as |pessoa idx|}}
+          {{#each instList as |pessoa idx|}}
           <li>
             <a class="select-inst__link" href="#" {{action 'selectPessoa' pessoa.id on='click'}}>
               {{pessoa.instituicao_name}}

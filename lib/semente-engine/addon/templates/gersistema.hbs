@@ -384,59 +384,28 @@
 
 
 
-          {{#each inst_selected.areas as |area idx|}}
+          {{#each inst_selected.turmas as |turma idx|}}
           <li class="accordion">
             <div class="institutions__area">
               <div class="edit-text">
-                <input class="edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}" disabled>
+                <input class="edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}" disabled>
                 <span class="edit-text__indicator"></span>
               </div>
-              <button class="btn btn--xs btn--text accordion__trigger m-top--xs">Mostrar mais</button>
-              <ul id="accordion{{area.id}}" class="accordion__target list list--striped calendar calendar--list">
-                <li>
-                  <time class="calendar__date date" datetime="2019-02-15">
-                    <span class="date__day">15</span><span class="date__month">fev</span>
-                  </time>
-                  <div class="d-flex d-flex--c d-flex-justify--center">
-                    <span class="title-aux m-bottom--xxs">Aula 1</span>
-                    <h3 class="title-4">O que é Resiliência?</h3>
-                  </div>
-                </li>
-                <li>
-                  <time class="calendar__date date" datetime="2019-02-28">
-                    <span class="date__day">28</span><span class="date__month">fev</span>
-                  </time>
-                  <div class="d-flex d-flex--c d-flex-justify--center">
-                    <span class="title-aux m-bottom--xxs">Aula 2</span>
-                    <h3 class="title-4">É sempre possível aprender</h3>
-                  </div>
-                </li>
-                <li>
-                  <div class="calendar__date date">
-                    <span class="date__day">16</span><span class="date__month">mar</span>
-                  </div>
-                  <div class="d-flex d-flex--c d-flex-justify--center">
-                    <span class="title-aux m-bottom--xxs">Aula 3</span>
-                    <h3 class="title-4">Esforço e talento</h3>
-                  </div>
-                </li>
-
-              </ul>
             </div>
-            <div id="areaItemOptions{{area.id}}" class="btn-group">
-              <button class="btn btn--xs btn--text color-error" {{action 'deleteArea' area.id}}>
+            <div id="areaItemOptions{{turma.id}}" class="btn-group">
+              <button class="btn btn--xs btn--text color-error" {{action 'deleteArea' turma.id}}>
                 <span class="btn__icon icon-trash-2"></span> Remover
               </button>
-              <button class="btn btn--green-ghost btn--xs" style="width: 100px;" {{action 'editArea' area.id}}>
+              <button class="btn btn--green-ghost btn--xs" style="width: 100px;" {{action 'editArea' turma.id}}>
                 <span class="btn__icon icon-edit"></span> Editar
               </button>
             </div>
-            <div class="btn-group" id="areaItemActions{{area.id}}" style="display:none">
-              <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' area.id}}>
+            <div class="btn-group" id="areaItemActions{{turma.id}}" style="display:none">
+              <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' turma.id}}>
                 <span class="btn__icon icon-x"></span>Cancelar
               </button>
               <button class="btn btn--xs" style="width: 100px;" type="submit"
-                {{action 'saveArea' area.id}}>
+                {{action 'saveArea' turma.id}}>
                 <span class="btn__icon icon-check"></span>Salvar
               </button>
             </div>
@@ -538,9 +507,9 @@
       <label class="form-group__label" for="select_course">Ano</label>
       <select class="form-group__input form-group__input--select" id="select_year" value="select_inst"
         style="min-width: 10rem;">
-        <option value="ano1" selected>1º ano</option>
-        <option value="ano2">2º ano</option>
-        <option value="ano3">3º ano</option>
+        <option value="1" selected>1º ano</option>
+        <option value="2">2º ano</option>
+        <option value="3">3º ano</option>
       </select>
     </div>
   </div>
@@ -550,15 +519,15 @@
         <div class="form-group form-group--select-wrapper m-right--md">
           <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst"
             style="min-width: 5    rem;">
-            <option value="ano1" selected>1º ano</option>
-            <option value="ano2">2º ano</option>
-            <option value="ano3">3º ano</option>
+            <option value="1" selected>1º ano</option>
+            <option value="2">2º ano</option>
+            <option value="3">3º ano</option>
           </select>
         </div>
         <div flex="1" class="m-right--lg">
           <div class="edit-text">
             <input class="j-areaFocus edit-text__input form-group__input title-3" type="textbox" id="newAreaName"
-              value="{{area.name}}">
+              value="{{turma.name}}">
             <span class="edit-text__indicator"></span>
           </div>
         </div>
@@ -571,30 +540,30 @@
           </button>
         </div>
       </li>
-      {{#each inst_selected.areas as |area idx|}}
+      {{#each inst_selected.turmas as |turma idx|}}
       <li>
         <div flex="1" class="m-right--lg">
           <div class="edit-text">
-            <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{area.id}}" value="{{area.name}}">
+            <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}">
             <span class="edit-text__indicator"></span>
           </div>
-          <div><span>1º ano</span><span class="m-h--sm">|</span><em>10 alunos</em></div>
+          <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>10 alunos</em></div>
         </div>
-        <div class="btn-group m-left--auto" id="areaItemOptions{{area.id}}">
-          <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' area.id}}>
+        <div class="btn-group m-left--auto" id="areaItemOptions{{turma.id}}">
+          <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' turma.id}}>
             <span class="btn__icon icon-trash-2"></span> Remover
           </button>
-          <button class="j-areaFocus btn btn--green-ghost btn--xxs" style="width: 100px;" {{action 'editArea' area.id}}>
+          <button class="j-areaFocus btn btn--green-ghost btn--xxs" style="width: 100px;" {{action 'editArea' turma.id}}>
             <span class="btn__icon icon-edit"></span> Editar
           </button>
         </div>
-        <div class="btn-group m-left--auto" id="areaItemActions{{area.id}}" style="display:none">
+        <div class="btn-group m-left--auto" id="areaItemActions{{turma.id}}" style="display:none">
           <button class="j-areaFocus j-cancelArea btn btn--xs btn--text" type="submit"
-            {{action 'cancelAreaAction' area.id}}>
+            {{action 'cancelAreaAction' turma.id}}>
             <span class="btn__icon icon-x"></span>Cancelar
           </button>
           <button class="j-areaFocus btn btn--xs" style="width: 100px;" type="submit"
-            {{action 'saveArea' area.id}}>
+            {{action 'saveArea' turma.id}}>
             <span class="btn__icon icon-check"></span>Salvar
           </button>
         </div>
