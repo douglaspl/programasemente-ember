@@ -152,7 +152,7 @@
                 <input class="form-group__input" type="textbox" id="new_inst_nrcoord" value={{new_inst_nrcoord}}>
               </div>
               <div class="form-group form-group--vertical" flex="20">
-                <label class="form-group__label" for="new_inst_nrinstr">Instrutores</label>
+                <label class="form-group__label" for="new_inst_nrinstr">Professores</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nrinstr" value={{new_inst_nrinstr}}>
               </div>
               <div class="form-group form-group--vertical" flex="20">
@@ -299,7 +299,7 @@
         {{/if}}
       </div>
       <div class="form-group form-group--vertical" flex="25">
-        <label class="form-group__label">Instrutores</label>
+        <label class="form-group__label">Professores</label>
         {{#if (equalstr role 'admin')}}
         <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.nrinstrutores}}
           onkeyup={{action 'dataChange' 'btn_save_inst'}}>
