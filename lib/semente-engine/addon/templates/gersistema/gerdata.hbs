@@ -438,26 +438,26 @@
                 <li class="institutions__course form-group"
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
-                      {{#each inst_selected.turmas as |turma|}}
+                      {{#each mod.turmas as |turma|}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}">
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -488,26 +488,26 @@
                 <li class="institutions__course form-group"
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
-                      {{#each inst_selected.turmas as |turma|}}
+                      {{#each mod.turmas as |turma|}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
                               <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="checkbox m-right--lg">
-                              <input class="checkbox__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}">
                               <label class="checkbox__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -545,26 +545,27 @@
                 <li class="institutions__course form-group"
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--sm">Turma</h4>                  
                     <ul class="list list--3-col">
-                      {{#each inst_selected.turmas as |turma|}}
+                      {{#each mod.turmas as |turma|}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
+
                               <label class="radio__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
                               <label class="radio__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>
@@ -591,26 +592,26 @@
                 <li class="institutions__course form-group"
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
                     <h4 class="title-4 m-bottom--sm">Turma</h4>             
                     <ul class="list list--3-col">
-                      {{#each inst_selected.turmas as |turma|}}
+                      {{#each mod.turmas as |turma|}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
                               <label class="radio__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="radio m-right--lg">
-                              <input class="radio__input" id="{{mod.name}}_{{turma.name}}_{{turma.id}}"
+                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
                               <label class="radio__label"
-                                for="{{mod.name}}_{{turma.name}}_{{turma.id}}">{{turma.name}}</label>
+                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{/if}}
                         </li>

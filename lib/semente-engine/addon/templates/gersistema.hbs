@@ -180,7 +180,7 @@
             {{#each modulos_list as |mod|}}
             <li>
               <span class="list__img"
-                style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+                style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span>
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 <!-- temporary save controll -->
@@ -334,7 +334,7 @@
           {{#each modulos_list as |mod|}}
           <li>
             <span class="list__img"
-              style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+              style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span>
             <h3 class="list__name title-3">{{mod.name}}</h3>
             <span class="switch switch--institutions">
               <!-- temporary save controll -->
@@ -452,7 +452,7 @@
         <div flex="1">
           <div class="d-flex d-flex-align--center">
             <img class="list__img list__img--auto-height"
-                src="{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}">
+                src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
             <h3 class="list__name title-3 m-left--lg">{{mod.name}}</h3>
             <button id="cta{{mod.id}}" class="btn btn--green-ghost btn--xs btn--is-toggle m-left--xl"
               {{action displayAccordion mod.id}} style="height: 2rem; width: 9rem;">
