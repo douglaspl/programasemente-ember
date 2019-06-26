@@ -23,6 +23,7 @@ export default DS.Model.extend({
   area: DS.belongsTo('area', {
     async: true
   }),
+  turmas: DS.hasMany('turma', {async: true}),
   modulos: DS.hasMany('modulo', {
     async: true
   }),

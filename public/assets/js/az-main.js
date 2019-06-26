@@ -49,10 +49,8 @@ function tooglePopover(target) {
     if (target) {
         $('.popover').removeClass('popover--is-show');
         $(target).toggleClass('popover--is-show');
-        console.log("jhsjhfs");
     } else {
         $('.popover').toggleClass('popover--is-show');
-        console.log("old");
     }
 
 }
