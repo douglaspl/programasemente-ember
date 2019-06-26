@@ -56,7 +56,7 @@
   }
 
   &__title {
-    @include title-2($color: $blue-navy-50, $line-height: 1);
+    @include title-2($color: $gray-50, $line-height: 1);
 
     margin-bottom: $distance--lg;
     text-align: inherit;
