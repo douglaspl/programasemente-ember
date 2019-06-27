@@ -184,7 +184,7 @@
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 <!-- temporary save controll -->
-                <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
+                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
                   style="display:none">
                 <!-- -->
                 <input class="switch__checkbox" id="ckb_new_{{mod.id}}" type="checkbox">
@@ -338,11 +338,11 @@
             <h3 class="list__name title-3">{{mod.name}}</h3>
             <span class="switch switch--institutions">
               <!-- temporary save controll -->
-              <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
+              <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
                 style="display:none">
               <!-- -->
               <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-                checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
+                checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
                 onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
               <label class="switch__label" for="ckb_{{mod.id}}">
                 <span class="switch__inner"></span>
@@ -463,11 +463,11 @@
         </div>
         <span class="switch switch--institutions">
           <!-- temporary save controll -->
-          <input id="isCkb{{mod.id}}" type="checkbox" checked={{action 'checkModulo' mod.id}}
+          <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
             style="display:none">
           <!-- -->
           <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-            checked={{action 'checkModulo' mod.id}} disabled={{if (equalstr role 'admin') false true}}
+            checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
             onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
           <label class="switch__label" for="ckb_{{mod.id}}">
             <span class="switch__inner"></span>
