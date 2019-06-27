@@ -444,6 +444,7 @@
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
+                        {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
@@ -461,6 +462,7 @@
                             </span>
                           {{/if}}
                         </li>
+                        {{/if}}
                       {{/each}}
                     </ul>
                   </div>
@@ -494,6 +496,7 @@
                     <h4 class="title-4 m-bottom--xs">Turmas</h4>
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
+                        {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="checkbox m-right--lg">
@@ -511,6 +514,7 @@
                             </span>
                           {{/if}}
                         </li>
+                        {{/if}}
                       {{/each}}
                     </ul>
                   </div>
@@ -551,6 +555,7 @@
                     <h4 class="title-4 m-bottom--sm">Turma</h4>                  
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
+                        {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
@@ -569,6 +574,7 @@
                             </span>
                           {{/if}}
                         </li>
+                        {{/if}}
                       {{/each}}
                     </ul>
                     {{!-- <div class="form-group form-group--select-wrapper">
@@ -598,6 +604,7 @@
                     <h4 class="title-4 m-bottom--sm">Turma</h4>             
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
+                        {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
                           {{#if (equalstr turma.id new_user_area)}}
                             <span class="radio m-right--lg">
@@ -615,6 +622,7 @@
                             </span>
                           {{/if}}
                         </li>
+                        {{/if}}
                       {{/each}}
                     </ul>
                     {{!-- <div class="form-group form-group--select-wrapper">
