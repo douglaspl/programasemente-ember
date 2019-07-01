@@ -45,15 +45,18 @@
             <span class="form-group__label">Ano</span>
             <div class="d-flex">
               <span class="checkbox m-right--lg">
-                <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1">
+                <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1"
+                  {{action 'filterano1' on='change'}}>
                 <label class="checkbox__label" for="year1">1º ano</label>
               </span>
               <span class="checkbox m-right--lg">
-                <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2">
+                <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2"
+                  {{action 'filterano2' on='change'}}>
                 <label class="checkbox__label" for="year2">2º ano</label>
               </span>
               <span class="checkbox m-right--lg">
-                <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3">
+                <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3"
+                  {{action 'filterano3' on='change'}}>
                 <label class="checkbox__label" for="year3">3º ano</label>
               </span>
               <span class="checkbox">
@@ -67,14 +70,11 @@
           <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
             <label class="form-group__label">Turma</label>
 
-            <select class="form-group__input form-group__input--select">
+            <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
               <option value="0" selected>Escolha uma turma</option>
-              <option value="101">101</option>
-              <option value="102">102</option>
-              <option value="103">103</option>
-              <option value="201">201</option>
-              <option value="202">202</option>
-              <option value="203">203</option>
+              {{#each inst_selected.turmas as |turma|}}
+                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+              {{/each}}
             </select>
           </div>
 
