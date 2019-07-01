@@ -446,7 +446,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id pessoa.turmas)}}
+                          {{#if (isinarray turma pessoa_selected.turmas)}}
                             <span class="checkbox m-right--lg">
                               <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
@@ -498,7 +498,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id pessoa.turmas)}}
+                          {{#if (isinarray turma pessoa_selected.turmas)}}
                             <span class="checkbox m-right--lg">
                               <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
@@ -542,10 +542,10 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id pessoa.turmas)}}
+                          {{#if (isinarray turma pessoa_selected.turmas)}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
 
                               <label class="radio__label"
                                 for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
@@ -553,7 +553,7 @@
                           {{else}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
                               <label class="radio__label"
                                 for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
@@ -579,17 +579,17 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id pessoa.turmas)}}
+                          {{#if (isinarray turma pessoa_selected.turmas)}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
                               <label class="radio__label"
                                 for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
                           {{else}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}">
+                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
                               <label class="radio__label"
                                 for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
                             </span>
