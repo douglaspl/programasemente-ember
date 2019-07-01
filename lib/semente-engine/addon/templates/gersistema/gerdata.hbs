@@ -401,8 +401,8 @@
         <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
           <div flex="20" class="m-right--lg">
             <div class="form-group form-group--vertical form-group--select-wrapper w100">
-              <label class="form-group__label" for="new_user_role">Sexo</label>
-              <select class="form-group__input" id="new_user_role">
+              <label class="form-group__label" for="new_user_gender">Sexo</label>
+              <select class="form-group__input" id="new_user_gender">
                 <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
                 <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
                 <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
@@ -446,7 +446,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id new_user_area)}}
+                          {{#if (equalstr turma.id pessoa.turmas)}}
                             <span class="checkbox m-right--lg">
                               <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
@@ -498,7 +498,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id new_user_area)}}
+                          {{#if (equalstr turma.id pessoa.turmas)}}
                             <span class="checkbox m-right--lg">
                               <input class="checkbox__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{turma.id}}" type="checkbox" value="{{turma.id}}" checked>
@@ -542,7 +542,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id new_user_area)}}
+                          {{#if (equalstr turma.id pessoa.turmas)}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
@@ -579,7 +579,7 @@
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
                         <li class="m-bottom--lg">
-                          {{#if (equalstr turma.id new_user_area)}}
+                          {{#if (equalstr turma.id pessoa.turmas)}}
                             <span class="radio m-right--lg">
                               <input class="radio__input" id="ckb_new_p_{{turma.id}}"
                                 name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" checked>
