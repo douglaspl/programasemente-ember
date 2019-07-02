@@ -547,7 +547,7 @@
             <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}">
             <span class="edit-text__indicator"></span>
           </div>
-          <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>10 alunos</em></div>
+          <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>{{turma.pessoas.length}} integrantes</em></div>
         </div>
         <div class="btn-group m-left--auto" id="areaItemOptions{{turma.id}}">
           <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' turma.id}}>

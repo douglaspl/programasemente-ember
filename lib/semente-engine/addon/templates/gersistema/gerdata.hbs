@@ -190,32 +190,23 @@
                   <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
                   <h3 class="title-aux m-top--xs">Total por ano</h3>
                   <ul>
-                    <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
-                      <strong>1 ano</strong>
-                      <ul>
-                        <li>111</li>
-                      </ul>
-                    </li>
-                    <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
-                      <strong>2 ano</strong>
-                      <ul class="d-flex d-flex--r">
-                        <li class="m-left--xs">211,</li>
-                        <li class="m-left--xs">212</li>
-                      </ul>
-                    </li>
-                    <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
-                      <strong>3 ano</strong>
-                      <ul class="d-flex d-flex--r">
-                        <li class="m-left--xs">311,</li>
-                        <li class="m-left--xs">312,</li>
-                        <li class="m-left--xs">313</li>
-                      </ul>
-                    </li>
+                    {{#each pessoa.modulos as |mod|}}
+                      <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                        <strong>{{mod.name}}</strong>
+                        {{#each pessoa.turmas as |tur|}}
+                          {{#if (isinarray tur mod.turmas)}}
+                            <ul>
+                              <li>{{tur.name}}</li>
+                            </ul>
+                          {{/if}}
+                        {{/each}}
+                      </li>
+                    {{/each}}
                   </ul>
                 </div>
               </td>
               <td class="table__total">
-                3
+                {{pessoa.turmas.length}}
               </td>
               <!--- /PRECISA DE VALORES DINÂMICOS -->
               <td class="table__icon">
