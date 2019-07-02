@@ -43,26 +43,13 @@
         <div class="form-group form-group--vertical" flex="1">
           <span class="form-group__label">Ano</span>
           <div class="d-flex">
+            {{#each inst_selected.modulos as |mod|}}
             <span class="checkbox m-right--lg">
-              <input class="checkbox__input" id="year1" name="year" type="checkbox" value="year1"
-                {{action 'filterano1' on='change'}}>
-              <label class="checkbox__label" for="year1">1º ano</label>
+              <input class="checkbox__input" id="ano_{{mod.id}}" name="year" type="checkbox" value="year{{mod.id}}"
+                {{action 'filterano' mod.id on='change'}}>
+              <label class="checkbox__label" for="ano_{{mod.id}}">{{mod.name}}</label>
             </span>
-            <span class="checkbox m-right--lg">
-              <input class="checkbox__input" id="year2" name="year" type="checkbox" value="year2"
-                {{action 'filterano2' on='change'}}>
-              <label class="checkbox__label" for="year2">2º ano</label>
-            </span>
-            <span class="checkbox m-right--lg">
-              <input class="checkbox__input" id="year3" name="year" type="checkbox" value="year3"
-                {{action 'filterano3' on='change'}}>
-              <label class="checkbox__label" for="year3">3º ano</label>
-            </span>
-            <span class="checkbox">
-              <input class="checkbox__input" id="yearPre" name="year" type="checkbox" value="yearPre"
-                {{action 'filterPre' on='change'}}>
-              <label class="checkbox__label" for="yearPre">Pré-vestibular</label>
-            </span>
+            {{/each}}
           </div>
         </div>
 
@@ -71,9 +58,15 @@
 
           <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
             <option value="0" selected>Escolha uma turma</option>
+            {{#if (equalstr pessoaLogged.role "instrutor")}}
+              {{#each pessoaLogged.turmas as |turma|}}
+                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+              {{/each}}
+            {{else}}
               {{#each inst_selected.turmas as |turma|}}
                 <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
               {{/each}}
+            {{/if}}
           </select>
         </div>
 
