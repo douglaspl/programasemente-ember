@@ -1,8 +1,9 @@
 .class {
   $this: &;
 
-  $img-width: 45%;
-
+  $img-height: 10rem;
+  $img-width:  18rem;
+  
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -46,9 +47,9 @@
     @include media('>md') {
       $distance: $distance--md;
 
-      height: 100%;
+      height: $img-height;
       position: absolute;
-      left: -3%;
+      left: -7%;
       top: -8%;
       width: $img-width;
     }
@@ -62,7 +63,7 @@
     text-align: inherit;
 
     @include media('>md') {
-      max-width: (100% - $img-width);
+      max-width: calc(100% - #{$img-width});
     }
 
   }
