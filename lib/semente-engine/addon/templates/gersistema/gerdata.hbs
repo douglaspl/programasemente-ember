@@ -194,7 +194,7 @@
                       <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
                         <strong>{{mod.name}}</strong>
                         {{#each pessoa.turmas as |tur|}}
-                          {{#if (isinarray tur mod.turmas)}}
+                          {{#if (equalstr tur.modulo.id mod.id)}}
                             <ul>
                               <li>{{tur.name}}</li>
                             </ul>
