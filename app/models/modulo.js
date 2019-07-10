@@ -13,6 +13,7 @@ export default DS.Model.extend({
     videoId: DS.attr(),
     duracao: DS.attr(),
     atividades: DS.hasMany('atividade', {async: true}),
+    turmas: DS.hasMany('turma', {async: true}),
     pessoas: DS.hasMany('pessoa', {async: true}),
     acompanhamentosCursoInstituicao: DS.hasMany('acompanhamento-curso-instituicao',{async: true}),
     backgroundImage: Ember.computed('coverImage', function() {

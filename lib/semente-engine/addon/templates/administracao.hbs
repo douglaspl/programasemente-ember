@@ -133,12 +133,15 @@
 
                     <select class="form-group__input form-group__input--select">
                       <option value="0" selected>Escolha uma turma</option>
-                      <option value="101">101</option>
-                      <option value="102">102</option>
-                      <option value="103">103</option>
-                      <option value="201">201</option>
-                      <option value="202">202</option>
-                      <option value="203">203</option>
+                      {{#if (equalstr pessoaLogged.role "instrutor")}}
+                        {{#each pessoaLogged.turmas as |turma|}}
+                          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                        {{/each}}
+                      {{else}}
+                        {{#each inst_selected.turmas as |turma|}}
+                          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                        {{/each}}
+                      {{/if}}
                     </select>
                   </div>
 
