@@ -5,6 +5,7 @@
     @include overflow-y;
     // height: calc(100vh - #{$header-height} - (2 * #{$header-v-padding}));
     height: calc(100vh - #{$header-height});
+    z-index: 1;
 
     &--in-course {
         height: 100vh;

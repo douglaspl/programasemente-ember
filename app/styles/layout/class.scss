@@ -46,11 +46,12 @@
     @include media('>md') {
       $distance: $distance--md;
 
-      height: 100%;
+      height: 20vh;
       position: absolute;
-      left: -3%;
-      top: -8%;
+      left: 0;
+      top: 0;
       width: $img-width;
+      transform: translate(-5%, -10%);
     }
 
   }

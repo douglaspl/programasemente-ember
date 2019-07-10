@@ -191,6 +191,7 @@
   &__section {
     margin-bottom: $distance--xxxl;
     position: relative;
+    z-index: 1;
   }
 
   &__subsection:not(:first-of-type) {
