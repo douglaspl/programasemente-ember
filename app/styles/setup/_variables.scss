@@ -377,6 +377,7 @@ $icon-arrow-up: "\e904";
 $icon-at-sign: "\e919";
 $icon-award: "\e921";
 $icon-bar-chart: "\e91d";
+$icon-calendar: "\e928";
 $icon-check: "\e905";
 $icon-chevron-down: "\e906";
 $icon-chevron-left: "\e907";
@@ -524,6 +525,23 @@ $shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset 0 15px 12px rgba($c
 //------------------------------------
 $header-height: 7.8rem;
 $header-v-padding: .5rem;
+
+
+
+
+
+//------------------------------------
+//    #TIMELINE
+//------------------------------------
+$timeline-color: $lemon-40;
+$timeline-main-steps-background: $timeline-color;
+$timeline-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
+$timeline-gap: $distance--xxl;
+
+$timeline-mark-bg: $color-white;
+
+$timeline-date-bg-color: $color-white;
+$timeline-status-size: 3.5rem;
 
 
 

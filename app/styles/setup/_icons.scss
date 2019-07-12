@@ -98,6 +98,12 @@
   }
 }
 
+.icon-calendar {
+  &:before {
+    content: $icon-calendar; 
+  }
+}
+
 .icon-check {
   &:before {
     content: $icon-check;
