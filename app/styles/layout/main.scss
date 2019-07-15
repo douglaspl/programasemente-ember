@@ -42,7 +42,11 @@
     $temp: map-get($breakpoints, lg);
 
     max-width: $temp + $container-diff;
-    padding: $distance--xxl $h-padding--lg $distance--md;
+    padding: $distance--xxl $h-padding--lg $distance--md 30vw;
+  }
+
+  @include media('>xl') {
+    padding-left: $h-padding--lg;
   }
 
   &--highlight {
@@ -63,7 +67,13 @@
     display: flex;
     justify-content: center;
     max-width: none;
+    padding-bottom: 0;
     padding-top: 0;
+
+    > [class*='main__section'] {
+      margin-bottom: 0;
+    }
+
   }
 
   &__header {

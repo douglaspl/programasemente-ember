@@ -448,10 +448,10 @@ $letter-spacing--xxl: .15em;
 //------------------------------------
 //    #PADDING
 //------------------------------------
-$h-padding--xs: 8px;
-$h-padding--sm: 16px;
-$h-padding--md: 24px;
-$h-padding--lg: 32px;
+$h-padding--xs: $distance--lg;
+$h-padding--sm: $distance--xl;
+$h-padding--md: $distance--xxl;
+$h-padding--lg: $distance--xxxl;
 
 
 
@@ -534,14 +534,17 @@ $header-v-padding: .5rem;
 //    #TIMELINE
 //------------------------------------
 $timeline-color: $lemon-40;
+$timeline-tip-size: 1rem;
+
+$timeline-gap: $distance--lg;
 $timeline-main-steps-background: $timeline-color;
 $timeline-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
-$timeline-gap: $distance--xxl;
+$timeline-translation: $timeline-gap + $timeline-tip-size;
 
 $timeline-mark-bg: $color-white;
 
 $timeline-date-bg-color: $color-white;
-$timeline-status-size: 3.5rem;
+$timeline-status-size: 3rem;
 
 
 

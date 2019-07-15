@@ -9,9 +9,13 @@
   border-radius: $radius--md;
   box-shadow: $shadow-h-r-2;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: $distance--md;
   text-align: left;
+
+  @include media('>md') {
+    flex-direction: row;
+  }
 
   > * {
     z-index: 2;
@@ -35,17 +39,24 @@
     background-color: $timeline-mark-bg;
     display: flex;
     margin-bottom: $distance--lg;
-    padding: $distance--md $distance--sm;
-    position: absolute;
-    right: calc(100% + #{$timeline-gap});
+    padding:  0;
     text-transform: uppercase;
-    top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(-8px);
+    
+    @include media('>lg') {
+      padding: $distance--md $distance--sm;
+      position: absolute;
+      right: calc(100% + #{$timeline-gap});
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
     > * {
+
       &:first-child {
         opacity: .75;
       }
+
     }
 
   }
@@ -67,10 +78,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: $radius--lg;
-    box-shadow: $shadow-4;
     display: block;
     flex: 0 0 auto;
     height: 20vh;
+    margin-top: $distance--xl;
     position: relative;
     width: 100%;
     z-index: 1;
@@ -84,13 +95,20 @@
       position: absolute;
       top: 0;
       width: 100%;
-     }
+    }
 
     @include media('>md') {
-      height: $img-height;
-      margin: (-$img-height/4) 0 0;
+      $multiplier: .85;
+
+      box-shadow: $shadow-4;
+      height: $img-height * $multiplier;
+      margin: (-($img-height * $multiplier)/4) 0 0;
+      transform: translate(10%, 0);
+      width: $img-width * $multiplier;
+    }
+
+    @include media('>lg') {
       transform: translate(15%, 0);
-      width: $img-width;
     }
 
   }
@@ -121,7 +139,6 @@
   }
 
   &__cta {
-    margin-top: $distance--md;
 
     @include media('>md') {
       margin-top: auto;
