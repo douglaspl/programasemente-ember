@@ -44,7 +44,7 @@
     transform: translateX(-8px);
     
     @include media('>lg') {
-      padding: $distance--md $distance--sm;
+      padding: $distance--md;
       position: absolute;
       right: calc(100% + #{$timeline-gap});
       top: 50%;

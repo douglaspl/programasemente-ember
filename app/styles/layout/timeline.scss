@@ -2,6 +2,15 @@
   $this: &;
   $start-unit-margin-top: 36vh;
   $start-unit-bottom-correction: $start-unit-margin-top / 2;
+  $base-margin-top: 10vh;
+
+  @mixin timeline-marks {
+    background-color: $leaf-60;
+    border: 2px solid $timeline-color;
+    border-radius: $radius--capsule;
+    box-shadow: $shadow-3;
+    color: $color-white;
+  }
 
   background-image: linear-gradient($timeline-color, $timeline-color);
   background-position: top left;
@@ -25,7 +34,7 @@
     text-align: center;
     text-transform: uppercase;
     z-index: 2;
-    
+
     @include media('>lg') {
       // transform: translateX(-50%);
     }
@@ -51,7 +60,6 @@
   }
 
   &__mark {
-    $base-margin-top: 10vh;
 
     margin-top: $base-margin-top;
     position: relative;
@@ -72,33 +80,6 @@
         margin-top: $start-unit-margin-top;
       }
 
-      &::after {
-        background-color: $timeline-main-steps-background;
-        // background-image: $timeline-main-steps-background-gradient;
-        border-radius: $radius--md;
-        box-shadow: 0 0 80px $gray-60;
-        bottom: 100%;
-        color: $gray-50;
-        content: 'Fim da unidade';
-        font-weight: 600;
-        letter-spacing: $letter-spacing--lg;
-        margin-left: $timeline-translation;
-        margin-top: $distance--lg;
-        padding: $distance--xs $distance--xl;
-        position: absolute;
-        text-align: center;
-        text-transform: uppercase;
-        transform: translateY(calc(-#{$base-margin-top/2} + 50%));
-        
-        @include media('>md') {
-          bottom: calc(100% + #{$start-unit-bottom-correction});
-          left: 50%;
-          position: absolute;
-          transform: translate(-50%, 50%);
-        }
-
-      }
-
     }
 
     &:first-child {
@@ -107,6 +88,39 @@
 
     &:last-child {
       margin-bottom: $distance--super;
+    }
+
+  }
+
+  &__end-class {
+    @include timeline-marks;
+
+    box-shadow: 0 0 80px $gray-60;
+    bottom: 100%;
+    content: 'Fim da unidade';
+    display: none;
+    font-size: $font-size--xxs;
+    font-weight: 600;
+    margin-left: $timeline-translation;
+    margin-top: $distance--lg;
+    padding: $distance--sm $distance--lg;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translateY(calc(-#{$base-margin-top/2} + 50%));
+    white-space: nowrap;
+
+    @include media('>md') {
+      bottom: calc(100% + #{$start-unit-bottom-correction});
+      right: 100%;
+      position: absolute;
+      transform: translate(50%, 50%);
+    }
+
+    [class*='--start-unit'] & {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
     }
 
   }
@@ -136,12 +150,9 @@
   }
 
   &__status {
+    @include timeline-marks;
+
     align-items: center;
-    background-color: $leaf-60;
-    border: 2px solid $timeline-color;
-    border-radius: $radius--capsule;
-    box-shadow: $shadow-3;
-    color: $color-white;
     display: flex;
     flex: 0 0 auto;
     font-size: $font-size--xs;
@@ -154,7 +165,7 @@
     transform: translate(-50%, -50%);
     width: $timeline-status-size;
     z-index: 3;
-    
+
     @include media('>lg') {
       left: auto;
       right: 100%;

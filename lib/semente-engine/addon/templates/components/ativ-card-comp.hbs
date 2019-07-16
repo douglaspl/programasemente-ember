@@ -1,5 +1,6 @@
 {{#if (equalstr value 0)}}
   {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-completed">
       <span class="timeline__status">
         <span class="icon-unlocked"></span>
@@ -22,6 +23,7 @@
       <span class="class__img" style="{{atividade.backgroundImage}}"></span>
     </div>
   {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-disabled">
       <span class="timeline__status timeline__status--is-locked">
         <span class="icon-lock"></span>
@@ -47,6 +49,7 @@
 
 {{else if (equalstr value 100)}}
   {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-completed">
       <span class="timeline__status">
         <span class="icon-check"></span>
@@ -72,6 +75,7 @@
 
     </div>
   {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-disabled">
       <span class="timeline__status timeline__status--is-locked">
         <span class="icon-lock"></span>
@@ -97,6 +101,7 @@
 
 {{else}}
   {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class">
 
       <span class="timeline__status">
@@ -124,6 +129,7 @@
 
     </div>
   {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-disabled">
 
       <span class="timeline__status timeline__status--is-locked">
