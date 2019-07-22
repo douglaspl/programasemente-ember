@@ -1,0 +1,165 @@
+.rubric {
+    $this: &;
+    $line-color: $gray-20;
+    $left-gap: $distance--xxl;
+    $circle-size: 1rem;
+    $arrow-size: $circle-size / 2;
+    $translate: $circle-size / 2;
+
+    text-align: left;
+
+    > * {
+        padding: $distance--lg $distance--super $distance--lg $distance--lg;
+    }
+
+    &__rubric {
+        @include title-aux;
+
+        align-items: center;
+        background-color: $lemon-20;
+        box-shadow: $shadow-3;
+        color: $blue-navy-30;
+        display: flex;
+        letter-spacing: 1em;
+
+        &::after {
+            background-color: currentColor;
+            content: '';
+            flex: 1;
+            height: 1px;
+            margin-left: $distance--lg;
+        }
+    }
+
+    &__question {
+        font-size: $font-size--sm;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    &__order {
+        color: $lemon-60;
+        font-weight: bold;
+        line-height: inherit;
+        margin-right: $distance--lg;
+        text-transform: uppercase;
+    }
+
+    &__sentence {
+        @include title-4;
+    }
+
+    &__answers {
+        background-image: linear-gradient(to right, $line-color 0, transparent 50%);
+        background-position: ($translate * 2) 10%;
+        background-repeat: no-repeat;
+        background-size: 2px 98%;
+        color: $gray-20;
+        margin-top: $distance--md;
+        padding: $distance--lg $distance--lg $distance--md $left-gap;
+        position: relative;
+
+        &::before,
+        &::after  {
+            content: '';
+            left: 0;
+            position: absolute;
+        }
+
+        &::before {
+            background-color: $line-color;
+            border-radius: 50%;
+            height: $circle-size;
+            top: 0;
+            transform: translateX($translate);
+            width: $circle-size;
+        }
+
+        &::after {
+            border-color: currentColor transparent transparent;
+            border-style: solid;
+            border-width: $arrow-size;
+            bottom: 0;
+            height: 0;
+            transform: translate($translate, $arrow-size) scale(1.5);
+        }
+
+        > * {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+
+            &:nth-child(1) #{$this}__option::after { content: "1"; }
+            &:nth-child(2) #{$this}__option::after { content: "1-2"; }
+            &:nth-child(3) #{$this}__option::after { content: "2"; }
+            &:nth-child(4) #{$this}__option::after { content: "2-3"; }
+            &:nth-child(5) #{$this}__option::after { content: "3"; }
+            &:nth-child(6) #{$this}__option::after { content: "3-4"; }
+            &:nth-child(7) #{$this}__option::after { content: "4"; }
+        }
+        
+    }
+
+    &__option {
+        $checkbox-size: 2.75rem;
+        
+        align-items: center;
+        color: $gray-50;
+        display: flex;
+        flex: 1;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin-bottom: $checkbox-size / 2;
+        padding: 0;
+        position: relative;
+        text-align: left;
+
+        &::after {
+            align-items: center;
+            background-color: $gray-0;
+            border: 1px solid $gray-10;
+            border-radius: $radius--lg;
+            color: $blue-navy-40;
+            content: '';
+            display: inline-flex;
+            flex: 0 0 auto;
+            font-size: 1.25em;
+            font-weight: bold;
+            height: $checkbox-size;
+            letter-spacing: $letter-spacing--xxs;
+            justify-content: center;
+            margin-left: -$left-gap + ($translate * 2);
+            transform: translateX(-50%);
+            width: $checkbox-size;
+        }
+
+    }
+
+    &__radio {
+        opacity: 0;
+        position: absolute;
+        visibility: hidden;
+
+        &:checked ~ {
+
+            #{$this}__option::after {
+                background-color: $lemon-40;
+            }
+
+            #{$this}__answer-btn {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        }
+
+    }
+
+    &__answer-btn {
+        flex: 0 0 auto;
+        margin-left: $distance--md;
+        opacity: 0;
+        transition: 250ms ease-out;
+        visibility: hidden;
+    }
+}

@@ -1,5 +1,65 @@
 {{#if video.videoId}}
 <!-- AQUI COMEÇA CONTEÚDO VINDO DO BANCO: VIDEO -->
+<article class="content content--rubric rubric">
+  <h1 class="rubric__rubric">Determinação</h1>
+  <p class="rubric__question">
+    <span class="rubric__order">Rubrica 1</span>Uma situação específica na qual você poderia aplicar e praticar (ou talvez não) determinação é em uma atividade para a escola. Pensando nisso, como você se auto avalia na situação abaixo? Assinale a opção que você escolheu preenchendo completamente o espaço compreendido pelo quadrado correspondente à sua resposta. 
+  </p>
+  <div class="rubric__answer-layer">
+    <h2 class="rubric__sentence">Quando trabalho em uma atividade para a escola...</h2>
+    <ol class="rubric__answers">
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="um" value="um">
+        <label class="rubric__option" for="um">
+          Escolho o caminho mais fácil. Não vejo sentido em dedicar muito esforço em uma atividade da escola.
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="um-dois" value="um-dois">
+        <label class="rubric__option" for="um-dois">
+          Entre os degraus 1 e 2
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="dois" value="dois">
+        <label class="rubric__option" for="dois">
+          Faço algum esforço ao trabalhar na atividade, mas paro por aí se já está bom para o professor.
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="dois-tres" value="dois-tres">
+        <label class="rubric__option" for="dois-tres">
+          Entre os degraus 2 e 3
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="tres" value="tres">
+        <label class="rubric__option" for="tres">
+          Dedico esforço e tempo para trabalhar na atividade. Tento fazer o melhor que posso para realizar um bom trabalho.
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="tres-quatro" value="tres-quatro">
+        <label class="rubric__option" for="tres-quatro">
+          Entre os degraus 3 e 4
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+      <li>
+        <input class="rubric__radio" type="radio" name="rubric" id="quatro" value="quatro">
+        <label class="rubric__option" for="quatro">
+          Desafio-me a trabalhar duro e dedicar esforço e tempo extra. Quero fazer a melhor atividade que puder!
+        </label>
+        <button class="rubric__answer-btn btn btn--lemon">Responder</button>
+      </li>
+    </ol>
+  </div>
+</article>
 <article class="content content--video">
   {{!-- <header class="content__header">
     <h2 class="content__title-class">Aula {{model.atividade.idx}}: {{model.atividade.name}}</h2>

@@ -842,7 +842,7 @@ $letter: $letter-spacing--lg) {
 }
 
 @mixin title-4($color: $color-gray--dark,
-$size: $font-size--xs,
+$size: $font-size--sm,
 $weight: 600,
 $letter: $letter-spacing--md) {
 
@@ -863,7 +863,7 @@ $weight: 600) {
   font-weight: $weight;
   letter-spacing: $letter-spacing--xl;
   text-transform: uppercase;
-  vertical-align: middle;
+  // vertical-align: middle;
 }
 
 
