@@ -9,7 +9,13 @@
     text-align: left;
 
     > * {
-        padding: $distance--lg $distance--super $distance--lg $distance--lg;
+        padding-left: $distance--md;
+        padding-right: $distance--sm;
+        
+        @include media('>md') {
+            padding-left: $distance--lg;
+            padding-right: $distance--lg;
+        }
     }
 
     &__rubric {
@@ -21,6 +27,13 @@
         color: $blue-navy-30;
         display: flex;
         letter-spacing: 1em;
+        padding-bottom: $distance--sm;
+        padding-top: $distance--sm;
+
+        @include media('>md') {
+            padding-bottom: $distance--lg;
+            padding-top: $distance--lg;
+        }
 
         &::after {
             background-color: currentColor;
@@ -32,17 +45,30 @@
     }
 
     &__question {
-        font-size: $font-size--sm;
+        font-size: $font-size--xs;
         font-weight: bold;
-        line-height: 1.5;
+        line-height: 1.25;
+        padding-bottom: $distance--md;
+        padding-top: $distance--md;
+        
+        @include media('>md') {
+            font-size: $font-size--sm;
+            line-height: 1.5;
+        }
+
     }
 
     &__order {
         color: $lemon-60;
         font-weight: bold;
         line-height: inherit;
-        margin-right: $distance--lg;
+        margin-right: $distance--sm;
         text-transform: uppercase;
+
+        @include media('>md') {
+            margin-right: $distance--lg;
+        }
+
     }
 
     &__sentence {
@@ -56,7 +82,7 @@
         background-size: 2px 98%;
         color: $gray-20;
         margin-top: $distance--md;
-        padding: $distance--lg $distance--lg $distance--md $left-gap;
+        padding: $distance--lg 0 $distance--md $left-gap;
         position: relative;
 
         &::before,
@@ -85,7 +111,7 @@
         }
 
         > * {
-            align-items: flex-start;
+            align-items: center;
             display: flex;
             flex-direction: row;
 
@@ -153,6 +179,13 @@
 
         }
 
+    }
+
+    &__answer-layer {
+        background-color: $color-white;
+        box-shadow: $shadow-v-u-3;
+        padding-bottom: $distance--lg;
+        padding-top: $distance--lg;
     }
 
     &__answer-btn {

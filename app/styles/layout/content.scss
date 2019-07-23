@@ -161,7 +161,6 @@
         background-color: $gray-5;
         display: flex;
         flex-direction: column;
-        height: 100%;
         justify-content: flex-start;
         padding-top: 0;
         transition: 500ms;
@@ -169,7 +168,10 @@
         @include media('>sm') {
             // padding: $distance--md $distance--max;
         }
-
+        
+        @include media('>sm') {
+            height: 100%;
+        }
         > * {
             outline: 1px solid crimson;
         }
