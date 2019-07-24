@@ -5,6 +5,7 @@
     $circle-size: 1rem;
     $arrow-size: $circle-size / 2;
     $translate: $circle-size / 2;
+    $question-max-width: 56rem;
 
     text-align: left;
 
@@ -19,20 +20,19 @@
     }
 
     &__rubric {
-        @include title-aux;
+        @include title-aux($color: $gray-30, $letter: 1em);
 
         align-items: center;
         background-color: $lemon-20;
         box-shadow: $shadow-3;
-        color: $blue-navy-30;
         display: flex;
-        letter-spacing: 1em;
+        line-height: 1.3;
         padding-bottom: $distance--sm;
         padding-top: $distance--sm;
 
         @include media('>md') {
-            padding-bottom: $distance--lg;
-            padding-top: $distance--lg;
+            padding-bottom: $distance--md;
+            padding-top: $distance--md;
         }
 
         &::after {
@@ -45,30 +45,24 @@
     }
 
     &__question {
-        font-size: $font-size--xs;
-        font-weight: bold;
-        line-height: 1.25;
+        @include title-4;
+
         padding-bottom: $distance--md;
         padding-top: $distance--md;
-        
+        max-width: $question-max-width;
+
         @include media('>md') {
-            font-size: $font-size--sm;
-            line-height: 1.5;
+            padding-bottom: $distance--xl;
+            padding-top: $distance--xl;
         }
 
     }
 
     &__order {
         color: $lemon-60;
-        font-weight: bold;
         line-height: inherit;
         margin-right: $distance--sm;
         text-transform: uppercase;
-
-        @include media('>md') {
-            margin-right: $distance--lg;
-        }
-
     }
 
     &__sentence {
@@ -135,8 +129,8 @@
         flex: 1;
         flex-direction: row-reverse;
         justify-content: flex-end;
-        margin-bottom: $checkbox-size / 2;
-        padding: 0;
+        margin: ($checkbox-size / 6) 0;
+        max-width: $question-max-width - $left-gap - $distance--lg;
         position: relative;
         text-align: left;
 
@@ -145,7 +139,7 @@
             background-color: $gray-0;
             border: 1px solid $gray-10;
             border-radius: $radius--lg;
-            color: $blue-navy-40;
+            color: $gray-40;
             content: '';
             display: inline-flex;
             flex: 0 0 auto;
@@ -155,7 +149,8 @@
             letter-spacing: $letter-spacing--xxs;
             justify-content: center;
             margin-left: -$left-gap + ($translate * 2);
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(.75);
+            transition: 250ms;
             width: $checkbox-size;
         }
 
@@ -168,8 +163,13 @@
 
         &:checked ~ {
 
-            #{$this}__option::after {
-                background-color: $lemon-40;
+            #{$this}__option {
+                background-color: $gray-5;
+
+                &::after {
+                    background-color: $lemon-30;
+                    transform: translateX(-50%);
+                }
             }
 
             #{$this}__answer-btn {

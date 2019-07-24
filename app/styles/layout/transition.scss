@@ -96,7 +96,7 @@
     }
 
     &__title {
-        @include title-1($size: calc(#{$font-size--lg} + 1vh),
+        @include title-1($size:     calc(#{$font-size--lg} + 1vh),
                          $size--sm: calc(#{$font-size--xl} + 1vh),
                          $size--lg: calc(#{$font-size--xxl} + 1vh));
 

@@ -224,10 +224,10 @@
                   {{#if (equalstr pessoa.role 'admin')}}
                     {{!--<button class="btn btn--icon btn--disabled icon-trash-2" disabled></button>--}}
                   {{else}}
-                    <button class="btn btn--leaf btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
+                    <button class="btn btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
                   {{/if}}
-                  <button class="btn btn--leaf btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
-                  <button class="btn btn--leaf btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
+                  <button class="btn btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
+                  <button class="btn btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
                 </div>
               </td>
             </tr>

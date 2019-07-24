@@ -129,8 +129,9 @@ $leaf-shades: (0: hsl(138, 65%, 90%), // #f2fff6
 
 
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=14#lum_curve=linear#lock_hex=e5e552#minor_steps_map=0
-$lemon-shades: (0: hsl(56, 68%, 72%), // #f2f2e6
-5: hsl(58, 72%, 66%), // #ECEC9A
+$lemon-shades: (
+0:  hsl(56, 68%, 90%), // #f2f2e6
+5:  hsl(58, 72%, 75%), // #ECEC9A
 10: hsl(60, 74%, 61%), // #E5E552 // CRANE
 20: hsl(62, 85%, 55%), // #B9BE12
 30: hsl(64, 88%, 48%), // #8C9800
@@ -490,35 +491,35 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 //------------------------------------
 //    #SHADOW DEPTH
 //------------------------------------
-$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .17), 0 0 2px rgba($color-black, .12);
-$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
-$shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
+$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .1), 0 0 2px rgba($color-black, .08);
+$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .13), 0 0 2px rgba($color-black, .08);
+$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .13), 0 0 2px rgba($color-black, .08);
+$shadow-4: 0 14px 28px rgba($color-black, .12), 0 10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .08);
+$shadow-5: 0 19px 38px rgba($color-black, .15), 0 15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .08);
 
-$shadow-v-u-1: 0 -1px 3px rgba($color-black, .02), 0 -1px 2px rgba($color-black, .17), 0 0 2px rgba($color-black, .12);
-$shadow-v-u-2: 0 -3px 6px rgba($color-black, .06), 0 -3px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-v-u-3: 0 -10px 20px rgba($color-black, .09), 0 -6px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-v-u-4: 0 -14px 28px rgba($color-black, .15), 0 -10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
-$shadow-v-u-5: 0 -19px 38px rgba($color-black, .2), 0 -15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
+$shadow-v-u-1: 0 -1px 3px rgba($color-black, .02), 0 -1px 2px rgba($color-black, .1), 0 0 2px rgba($color-black, .08);
+$shadow-v-u-2: 0 -3px 6px rgba($color-black, .06), 0 -3px 6px rgba($color-black, .13), 0 0 2px rgba($color-black, .08);
+$shadow-v-u-3: 0 -10px 20px rgba($color-black, .09), 0 -6px 6px rgba($color-black, .13), 0 0 2px rgba($color-black, .08);
+$shadow-v-u-4: 0 -14px 28px rgba($color-black, .12), 0 -10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .08);
+$shadow-v-u-5: 0 -19px 38px rgba($color-black, .15), 0 -15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .08);
 
-$shadow-h-r-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-4: 14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-5: 19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .1), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .13), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .13), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-4: 14px 0 28px rgba($color-black, .12), 10px 0 10px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
+$shadow-h-r-5: 19px 0 38px rgba($color-black, .15), 15px 0 12px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
 
-$shadow-h-l-1: -1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-2: -3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-3: -10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-4: -14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-5: -19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-1: -1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .1), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-2: -3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .13), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-3: -10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .13), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-4: -14px 0 28px rgba($color-black, .12), 10px 0 10px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
+$shadow-h-l-5: -19px 0 38px rgba($color-black, .15), 15px 0 12px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
 
-$shadow-i-1: inset 0 1px 3px rgba($color-black, .02), inset 0 1px 2px rgba($color-black, .17);
-$shadow-i-2: inset 0 3px 6px rgba($color-black, .06), inset 0 3px 6px rgba($color-black, .16);
-$shadow-i-3: inset 0 10px 20px rgba($color-black, .09), inset 0 6px 6px rgba($color-black, .16);
-$shadow-i-4: inset 0 14px 28px rgba($color-black, .15), inset 0 10px 10px rgba($color-black, .15);
-$shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset 0 15px 12px rgba($color-black, .15);
+$shadow-i-1: inset 0 1px 3px rgba($color-black, .02), inset 0 1px 2px rgba($color-black, .1);
+$shadow-i-2: inset 0 3px 6px rgba($color-black, .06), inset 0 3px 6px rgba($color-black, .13);
+$shadow-i-3: inset 0 10px 20px rgba($color-black, .09), inset 0 6px 6px rgba($color-black, .13);
+$shadow-i-4: inset 0 14px 28px rgba($color-black, .12), inset 0 10px 10px rgba($color-black, .15);
+$shadow-i-5: inset 0 19px 38px rgba($color-black, .15), inset 0 15px 12px rgba($color-black, .15);
 // -0.05, -0.02
 
 

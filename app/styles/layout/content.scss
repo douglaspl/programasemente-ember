@@ -158,28 +158,16 @@
 
     &--rubric {
         align-items: stretch;
-        background-color: $gray-5;
+        background-color: $gray-0;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         padding-top: 0;
         transition: 500ms;
-
-        @include media('>sm') {
-            // padding: $distance--md $distance--max;
-        }
         
         @include media('>sm') {
             height: 100%;
         }
-        > * {
-            outline: 1px solid crimson;
-        }
-
-        // [class*='nav-is-show'] & {
-        //     padding-left: $distance--xxl;
-        //     padding-right: $distance--xxl;
-        // }
 
     }
 

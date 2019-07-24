@@ -21,7 +21,8 @@
   box-shadow: $shadow-1;
   display: inline-flex;
   flex-direction: row;
-  font-family: filson-soft, 'Titillium Web', sans-serif;
+  // font-family: filson-soft, 'Titillium Web', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-size: $font-size--xs * .75;
   font-weight: 700;
   justify-content: center;
@@ -855,13 +856,14 @@ $letter: $letter-spacing--md) {
 
 @mixin title-aux($color: $green-50,
 $display: inline-block,
+$letter: $letter-spacing--xl,
 $weight: 600) {
 
   color: $color;
   display: $display;
   font-size: $font-size--xxs;
   font-weight: $weight;
-  letter-spacing: $letter-spacing--xl;
+  letter-spacing: $letter;
   text-transform: uppercase;
   // vertical-align: middle;
 }

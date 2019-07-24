@@ -136,9 +136,8 @@
 
 
     &__back {
-        @include title-aux;
+        @include title-aux($color: inherit);
 
-        color: inherit;
         display: none;
         height: $course-nav-menu-size;
         margin-bottom: 0;

@@ -70,8 +70,9 @@
 .btn {
   $this: &;
 
-  $bg-light: $green-30;
-  $bg-dark: $green-50;
+  $bg-light: $leaf-40;
+  $bg-dark: $leaf-50;
+  $bg-hover: $leaf-60;
 
   @include button;
 
@@ -84,11 +85,10 @@
   flex: 0 0 auto;
   padding: 1em 1.5em;
   transition: 200ms;
-  transition-property: background-color, box-shadow, transform;
 
   @include hover {
-    background-color: $green-60;
-    background-image: linear-gradient(to top, $green-60, $green-40);
+    background-color:  $bg-hover;
+    background-image: linear-gradient(to top, $bg-hover, $bg-light);
 }
 
 // ELEMENTS
