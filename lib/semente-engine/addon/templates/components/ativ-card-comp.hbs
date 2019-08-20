@@ -1,133 +1,157 @@
 {{#if (equalstr value 0)}}
-    {{#if data_ok}}
-    <div class="timeline__indicator"></div>
-    <div class="timeline__date">
-        <span class="title-aux w100">Liberada desde</span>
-        <span class="d-block">
-            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        </span>
-        <span class="timeline__status p-bottom--xxs">
-            <span class="icon-unlocked"></span>
-        </span>
-    </div>
-    {{else}}
-        <div class="timeline__indicator"></div>
-        <div class="timeline__date">
-            <span class="title-aux w100">Liberada a partir de</span>
-            <span class="d-block">
-                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-            </span>
-            <span class="timeline__status timeline__status--is-locked">
-                <span class="icon-lock"></span>
-            </span>
-        </div>
-    {{/if}}
-    {{#if data_ok}}
-        <div class="timeline__class class class--is-completed">
-            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
-            <h3 class="class__title">{{atividade.name}}</h3>
-            <p class="class__description">{{atividade.description}}</p>
-            <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
-        </div>
-    {{else}}
-        <div class="timeline__class class class--is-disabled">
-            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
-            <h3 class="class__title">{{atividade.name}}</h3>
-            <p class="class__description">{{atividade.description}}</p>   
-        </div>
-    {{/if}}
-{{else if (equalstr value 100)}}
-    {{#if data_ok}}
-    <div class="timeline__indicator"></div>
-    <div class="timeline__date">
-        <span class="title-aux w100">Liberada desde</span>
-        <span class="d-block">
-            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        </span>
-        <span class="timeline__status p-bottom--xxs">
-            <span class="icon-check"></span>
-        </span>
-    </div>
-    {{else}}
-        <div class="timeline__indicator"></div>
-        <div class="timeline__date">
-            <span class="title-aux w100">Liberada a partir de</span>
-            <span class="d-block">
-                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-            </span>
-            <span class="timeline__status timeline__status--is-locked">
-                <span class="icon-lock"></span>
-            </span>
-        </div>
-    {{/if}}
-    
-    {{#if data_ok}}
+  {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class class--is-completed">
-        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+      <span class="timeline__status">
+        <span class="icon-unlocked"></span>
+      </span>
+
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada desde</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
+        </div>
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+        <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
+      </div>
+
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+    </div>
+  {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
+    <div class="timeline__class class class--is-disabled">
+      <span class="timeline__status timeline__status--is-locked">
+        <span class="icon-lock"></span>
+      </span>
+
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada a partir de</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
+        </div>
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+      </div>
+
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+
+    </div>
+  {{/if}}
+
+{{else if (equalstr value 100)}}
+  {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
+    <div class="timeline__class class class--is-completed">
+      <span class="timeline__status">
+        <span class="icon-check"></span>
+      </span>
+
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada desde</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
+        </div>
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
         <h3 class="class__title">{{atividade.name}}</h3>
         <p class="class__description">{{atividade.description}}</p>
         {{#if temSecoes}}
-            <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
+          <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
         {{/if}}
+      </div>
+
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+
     </div>
-     {{else}}
-        <div class="timeline__class class class--is-disabled">
-            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
-            <h3 class="class__title">{{atividade.name}}</h3>
-            <p class="class__description">{{atividade.description}}</p>   
-        </div>
-    {{/if}}
+  {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
+    <div class="timeline__class class class--is-disabled">
+      <span class="timeline__status timeline__status--is-locked">
+        <span class="icon-lock"></span>
+      </span>
     
-{{else}}
-
-    {{#if data_ok}}
-    <div class="timeline__indicator"></div>
-    <div class="timeline__date">
-        <span class="title-aux w100">Liberada desde</span>
-        <span class="d-block">
-            <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-        </span>
-        <span class="timeline__status">
-            <span class="icon-unlocked"></span>
-        </span>
-    </div>
-{{else}}
-        <div class="timeline__indicator"></div>
-        <div class="timeline__date">
-            <span class="title-aux w100">Liberada a partir de</span>
-            <span class="d-block">
-                <span class="timeline__day">{{dia}}</span> {{mensagem_mes}}
-            </span>
-            <span class="timeline__status timeline__status--is-locked">
-                <span class="icon-lock"></span>
-            </span>
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada a partir de</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
         </div>
-{{/if}}
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+      </div>
 
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
 
- {{#if data_ok}}
+    </div>
+  {{/if}}
 
+{{else}}
+  {{#if data_ok}}
+    <div class="timeline__end-class">Fim da unidade</div>
     <div class="timeline__class class">
-        <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-        <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
+
+      <span class="timeline__status">
+        <span class="icon-unlocked"></span>
+      </span>
+
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada desde</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
+        </div>
+    
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
         <h3 class="class__title">{{atividade.name}}</h3>
         <p class="class__description">{{atividade.description}}</p>
         {{#if temSecoes}}
-            <button class='class__cta btn btn--md btn-primary' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
+          <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
         {{/if}}
+      </div>
+
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+
     </div>
-{{else}}
-        <div class="timeline__class class class--is-disabled">
-            <span class="class__img" style="{{atividade.backgroundImage}}"></span>
-            <div class="title-aux m-bottom--xxs">Aula {{atividade.idx}}</div>
-            <h3 class="class__title">{{atividade.name}}</h3>
-            <p class="class__description">{{atividade.description}}</p>   
+  {{else}}
+    <div class="timeline__end-class">Fim da unidade</div>
+    <div class="timeline__class class class--is-disabled">
+
+      <span class="timeline__status timeline__status--is-locked">
+        <span class="icon-lock"></span>
+      </span>
+
+      <div class="class__info"> capsule capsule--lemon
+        <div class="class__date-block">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Liberada a partir de</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
         </div>
-    {{/if}}
 
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+      </div>
 
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+
+    </div>
+  {{/if}}
 {{/if}}

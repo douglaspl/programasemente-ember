@@ -368,6 +368,12 @@ $form-background-color: $gray-0;
 //------------------------------------
 $icomoon-font-family: "icomoon" !default;
 
+$icon-checkered-flag: "\e929";
+$icon-live_help: "\e0c6";
+$icon-more_vert: "\e5d4";
+$icon-reload: "\e924";
+$icon-lock: "\e925";
+$icon-unlocked: "\e926";
 $icon-activity: "\e927";
 $icon-alert-triangle: "\e900";
 $icon-arrow-down: "\e901";
@@ -377,6 +383,7 @@ $icon-arrow-up: "\e904";
 $icon-at-sign: "\e919";
 $icon-award: "\e921";
 $icon-bar-chart: "\e91d";
+$icon-calendar: "\e928";
 $icon-check: "\e905";
 $icon-chevron-down: "\e906";
 $icon-chevron-left: "\e907";
@@ -386,32 +393,25 @@ $icon-chevrons-left: "\e916";
 $icon-chevrons-right: "\e917";
 $icon-clock: "\e91e";
 $icon-edit: "\e912";
-$icon-eye-off: "\e90b";
 $icon-eye: "\e90a";
+$icon-eye-off: "\e90b";
 $icon-file-text: "\e915";
-$icon-frown-o: "\e918";
 $icon-help-circle: "\e91f";
 $icon-list: "\e922";
-$icon-live_help: "\e0c6";
-$icon-lock: "\e925";
-$icon-unlocked: "\e926";
 $icon-menu: "\e90c";
 $icon-minus: "\e90f";
 $icon-more-vertical: "\e923";
-$icon-more_vert: "\e5d4";
 $icon-package: "\e920";
 $icon-paperclip: "\e914";
-$icon-play: "\e910";
 $icon-plus: "\e911";
-$icon-reload: "\e924";
 $icon-save: "\e91c";
 $icon-search: "\e90d";
 $icon-trash-2: "\e913";
 $icon-user: "\e91a";
 $icon-users: "\e91b";
 $icon-x: "\e90e";
-
-
+$icon-frown-o: "\e918";
+$icon-play: "\e910";
 
 
 
@@ -447,10 +447,10 @@ $letter-spacing--xxl: .15em;
 //------------------------------------
 //    #PADDING
 //------------------------------------
-$h-padding--xs: 8px;
-$h-padding--sm: 16px;
-$h-padding--md: 24px;
-$h-padding--lg: 32px;
+$h-padding--xs: $distance--lg;
+$h-padding--sm: $distance--xl;
+$h-padding--md: $distance--xxl;
+$h-padding--lg: $distance--xxxl;
 
 
 
@@ -524,6 +524,26 @@ $shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset 0 15px 12px rgba($c
 //------------------------------------
 $header-height: 7.8rem;
 $header-v-padding: .5rem;
+
+
+
+
+
+//------------------------------------
+//    #TIMELINE
+//------------------------------------
+$timeline-color: $lemon-40;
+$timeline-tip-size: 1rem;
+
+$timeline-gap: $distance--lg;
+$timeline-main-steps-background: $timeline-color;
+$timeline-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
+$timeline-translation: $timeline-gap + $timeline-tip-size;
+
+$timeline-mark-bg: $color-white;
+
+$timeline-date-bg-color: $color-white;
+$timeline-status-size: 3rem;
 
 
 
