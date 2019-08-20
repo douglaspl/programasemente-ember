@@ -131,7 +131,7 @@
                   <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
                     <label class="form-group__label">Turma</label>
 
-                    <select class="form-group__input form-group__input--select">
+                    <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
                       <option value="0" selected>Escolha uma turma</option>
                       {{#if (equalstr pessoaLogged.role "instrutor")}}
                         {{#each pessoaLogged.turmas as |turma|}}
