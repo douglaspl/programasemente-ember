@@ -100,11 +100,7 @@
               {{/each}}
             </select>
           </div>
-
-          {{#if curso_selected}}
-            <div class="filter-list">
-
-              <div class="filter-list__filter">
+          <div class="filter-list__filter">
 
                 <div class="d-flex d-flex-align--start">
 
@@ -135,11 +131,11 @@
                       <option value="0" selected>Escolha uma turma</option>
                       {{#if (equalstr pessoaLogged.role "instrutor")}}
                         {{#each pessoaLogged.turmas as |turma|}}
-                          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                          <option id="opt_{{turma.id}}" style="display: none" value={{turma.id}}>{{turma.name}}</option>
                         {{/each}}
                       {{else}}
                         {{#each inst_selected.turmas as |turma|}}
-                          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                          <option id="opt_{{turma.id}}" style="display: none" value={{turma.id}}>{{turma.name}}</option>
                         {{/each}}
                       {{/if}}
                     </select>
@@ -150,91 +146,170 @@
 
               </div>
 
+          {{#if curso_selected}}
+            <div class="filter-list">
+
+              
+
               <!-- ========================
               ########### LIST ############
               ========================= -->
               <div class="filter-list__list">
 
                 <div class="total-results">
-                  <span class="total-results__results">Total de <strong>XXXX</strong> aulas</span>
+                  <span class="total-results__results">Total de <strong>{{curso_selected.atividades.length}}</strong> aulas</span>
                 </div>
 
-                <div class="report-course">
-                  <div class="report-course__header">
-                    <div class="report-course__title-block">
-                      <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
-                      <h2 class="title-2--u">{{curso_selected.name}}</h2>
-                      {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
-                                                <span>Ver todos os matriculados</span>
-                                            </button> --}}
+
+                {{#if filtered_turma}}
+                  <div class="report-course">
+                    <div class="report-course__header">
+                      <div class="report-course__title-block">
+                        <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
+                        <h2 class="title-2--u">{{curso_selected.name}}</h2>
+                        {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
+                                                  <span>Ver todos os matriculados</span>
+                                              </button> --}}
+                      </div>
+                        
+                      <div class="report-course__data data data--horizontal data--bordered">
+                        <span class="data__value">{{turma_selected.pessoas.length}}</span>
+                        <span class="data__label">matrículas</span>
+                      </div>
                     </div>
-                    {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
-                      {{#if (equalstr acomp.modulo.id curso_selected.id)}}
-                        <div class="report-course__data data data--horizontal data--bordered">
-                          <span class="data__value">{{if acomp.matriculas acomp.matriculas '313'}}</span>
-                          <span class="data__label">matrículas</span>
-                        </div>
-                      {{/if}}
-                    {{/each}}
+                    <ul class="report-course__body report-class">
+                      {{#each turma_selected.acompanhamentosatividades as |acomp|}}
+                        <li class="report-class__two-col">
+                          <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
+                            <span class="title-aux">Aula {{acomp.atividade.idx}}</span>
+                            <h3 class="title-3"><a class="link--dotted"
+                                {{action 'goToAtividade' acomp.atividade.modulo.id acomp.atividade.id on="click"}}><span>{{acomp.atividade.name}}</span></a>
+                            </h3>
+                          </div>
+                              <div class="report-class__stacked-bar stacked-bar">
+                                <div class="stacked-bar__values">
+                                  {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                                  {{/if}}
+
+                                  {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                                  {{/if}}
+
+                                  {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                                  {{/if}}
+                                </div>
+
+                                <div class="stacked-bar__legend">
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                                    <span>Não iniciado:
+                                      <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                                    </span>
+
+                                  </span>
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                                    <span>Em andamento:
+                                      <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                                    </span>
+
+                                  </span>
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                                    <span>Completo:
+                                      <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                        </li>
+                      {{/each}}
+                    </ul>
                   </div>
-                  <ul class="report-course__body report-class">
-                    {{#each curso_selected.atividades as |atividade|}}
-                      <li class="report-class__two-col">
-                        <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
-                          <span class="title-aux">Aula {{atividade.idx}}</span>
-                          <h3 class="title-3"><a class="link--dotted"
-                              {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>
-                          </h3>
-                        </div>
-                        {{#each atividade.acompanhamentosAtividadeInstituicao as |acomp|}}
-                          {{#if (equalstr acomp.instituicao.id inst_selected.id)}}
-                            <div class="report-class__stacked-bar stacked-bar">
-                              <div class="stacked-bar__values">
-                                {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
-                                {{else}}
-                                  <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
-                                {{/if}}
+                {{else}}
+                  <div class="report-course">
+                    <div class="report-course__header">
+                      <div class="report-course__title-block">
+                        <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
+                        <h2 class="title-2--u">{{curso_selected.name}}</h2>
+                        {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
+                                                  <span>Ver todos os matriculados</span>
+                                              </button> --}}
+                      </div>
+                      {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
+                        {{#if (equalstr acomp.modulo.id curso_selected.id)}}
+                          <div class="report-course__data data data--horizontal data--bordered">
+                            <span class="data__value">{{if acomp.matriculas acomp.matriculas '0'}}</span>
+                            <span class="data__label">matrículas</span>
+                          </div>
+                        {{/if}}
+                      {{/each}}
+                    </div>
+                    <ul class="report-course__body report-class">
+                      {{#each curso_selected.atividades as |atividade|}}
+                        <li class="report-class__two-col">
+                          <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
+                            <span class="title-aux">Aula {{atividade.idx}}</span>
+                            <h3 class="title-3"><a class="link--dotted"
+                                {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>
+                            </h3>
+                          </div>
+                          {{#each atividade.acompanhamentosAtividadeInstituicao as |acomp|}}
+                            {{#if (equalstr acomp.instituicao.id inst_selected.id)}}
+                              <div class="report-class__stacked-bar stacked-bar">
+                                <div class="stacked-bar__values">
+                                  {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                                  {{/if}}
 
-                                {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
-                                {{else}}
-                                  <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
-                                {{/if}}
+                                  {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                                  {{/if}}
 
-                                {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
-                                {{else}}
-                                  <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
-                                {{/if}}
+                                  {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                                  {{else}}
+                                    <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                                  {{/if}}
+                                </div>
+
+                                <div class="stacked-bar__legend">
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                                    <span>Não iniciado:
+                                      <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                                    </span>
+
+                                  </span>
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                                    <span>Em andamento:
+                                      <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                                    </span>
+
+                                  </span>
+                                  <span>
+                                    <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                                    <span>Completo:
+                                      <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                                    </span>
+                                  </span>
+                                </div>
                               </div>
+                            {{/if}}
+                          {{/each}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                {{/if}}
 
-                              <div class="stacked-bar__legend">
-                                <span>
-                                  <span class="stacked-bar__color-element stacked-bar__value--1"></span>
-                                  <span>Não iniciado:
-                                    <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
-                                  </span>
-
-                                </span>
-                                <span>
-                                  <span class="stacked-bar__color-element stacked-bar__value--2"></span>
-                                  <span>Em andamento:
-                                    <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
-                                  </span>
-
-                                </span>
-                                <span>
-                                  <span class="stacked-bar__color-element stacked-bar__value--3"></span>
-                                  <span>Completo:
-                                    <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
-                                  </span>
-                                </span>
-                              </div>
-                            </div>
-                          {{/if}}
-                        {{/each}}
-                      </li>
-                    {{/each}}
-                  </ul>
-                </div>
 
               </div>
 

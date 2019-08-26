@@ -14,6 +14,7 @@ inflector.irregular('questao', 'questoes');
 inflector.irregular('material', 'materiais');
 // inflector.uncountable('acompanhamento-curso-instituicao');
 inflector.uncountable('acompanhamento-atividade-instituicao');
+inflector.uncountable('acompanhamento-ativitade-turma');
 export default DS.JSONAPIAdapter.extend({
     envnmt: ENV.APP,
     session: Ember.inject.service('session'),
