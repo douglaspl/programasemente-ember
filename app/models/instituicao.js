@@ -16,6 +16,7 @@ export default DS.Model.extend({
     turmas: DS.hasMany('turma', {async: true}),
     pessoas: DS.hasMany('pessoa', {async: true}),
     modulos: DS.hasMany('modulo', {async: true}),
+    sistemas: DS.hasMany('sistema', {async: true}),
     acompanhamentosatividades: DS.hasMany('acompanhamento-atividade-instituicao',{async: true}),
     acompanhamentosCursoInstituicao: DS.hasMany('acompanhamento-curso-instituicao',{async: true}),
 });

@@ -15,6 +15,7 @@ export default DS.Model.extend({
     atividades: DS.hasMany('atividade', {async: true}),
     turmas: DS.hasMany('turma', {async: true}),
     pessoas: DS.hasMany('pessoa', {async: true}),
+    sistema: DS.belongsTo('sistema', {async: true}),
     acompanhamentosCursoInstituicao: DS.hasMany('acompanhamento-curso-instituicao',{async: true}),
     backgroundImage: Ember.computed('coverImage', function() {
         return new Ember.String.htmlSafe("background-image: url('" + this.get('coverImage') + "');");

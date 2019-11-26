@@ -27,6 +27,7 @@ export default DS.Model.extend({
     async: true
   }),
   turmas: DS.hasMany('turma', {async: true}),
+  sistema: DS.belongsTo('sistema', {async: true}),
   modulos: DS.hasMany('modulo', {
     async: true
   }),
