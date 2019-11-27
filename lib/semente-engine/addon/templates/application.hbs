@@ -80,17 +80,17 @@
           <ul>
             {{#if primeiroAno}}
             <li class="submenu__item">
-              <a class="submenu__link"{{action 'goToModulo' 1 on="click"}}>
+              <a class="submenu__link"{{action 'goToModulo' primeiroAno on="click"}}>
                 <span>Primeiro Ano</span></a></li>
             {{/if}}
             {{#if segundoAno}}
             <li class="submenu__item">
-              <a class="submenu__link"{{action 'goToModulo' 2 on="click"}}>
+              <a class="submenu__link"{{action 'goToModulo' segundoAno on="click"}}>
                 <span>Segundo Ano</span></a></li>
             {{/if}}
             {{#if terceiroAno}}
             <li class="submenu__item">
-              <a href="#" class="submenu__link"{{action 'goToModulo' 3 on="click"}}>
+              <a href="#" class="submenu__link"{{action 'goToModulo' terceiroAno on="click"}}>
                 <span>Terceiro ano</span></a></li>
             {{/if}}
           </ul>
