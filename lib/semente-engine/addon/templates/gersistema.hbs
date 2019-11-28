@@ -173,6 +173,21 @@
               <label class="checkbox__label" for="new_inst_library">Biblioteca de materiais</label>
             </div>
           </section>
+          <section class="main__subsection">
+            <h4 class="main__subsubtitle">Sistemas</h4>
+            <div class="checkbox m-bottom--md">
+              <input class="checkbox__input" id="new_sis_1" type="checkbox">
+              <label class="checkbox__label" for="new_sis_1">Programa.Semente</label>
+            </div>
+            <div class="checkbox m-bottom--md">
+              <input class="checkbox__input" id="new_sis_2" type="checkbox">
+              <label class="checkbox__label" for="new_sis_2">Plataforma S</label>
+            </div>
+             <div class="checkbox m-bottom--md">
+              <input class="checkbox__input" id="new_sis_3" type="checkbox">
+              <label class="checkbox__label" for="new_sis_3">CoreSkills</label>
+            </div>
+          </section>
         </div>
         <!-- new institution step 2 -->
         <div class="institutions__step-content {{if goToStepTwo 'institutions__step-content--is-show' ''}}">
@@ -432,6 +447,24 @@
       <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
     </div>
   </section>
+  <section class="main__subsection">
+        <h3 class="main__subsubtitle">Sistemas</h3>
+        <div class="checkbox m-bottom--md">
+          <input class="checkbox__input" id="sis_1" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temMedio}}
+            disabled={{if (equalstr role 'admin') false true}}>
+          <label class="checkbox__label" for="sis_1">Programa.Semente</label>
+        </div>
+        <div class="checkbox m-bottom--md">
+          <input class="checkbox__input" id="sis_2" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temS}}
+            disabled={{if (equalstr role 'admin') false true}}>
+          <label class="checkbox__label" for="sis_2">Plataforma S</label>
+        </div>
+           <div class="checkbox m-bottom--md">
+          <input class="checkbox__input" id="sis_3" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temCoreSkills}}
+            disabled={{if (equalstr role 'admin') false true}}>
+          <label class="checkbox__label" for="sis_3">CoreSkills</label>
+        </div>
+      </section>
   {{/if}}
   <!-- /selected institution tab information -->
   <!-- selected institutiton tab courses -->
