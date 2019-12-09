@@ -1,3 +1,34 @@
+ {{#if notStudent}}
+  <div class="timeline__end-class">Fim da unidade</div>
+    <div class="timeline__class class">
+
+      <span class="timeline__status">
+        <span class="icon-unlocked"></span>
+      </span>
+
+      <div class="class__info">
+        <div class="class__date-block capsule capsule--lemon">
+          <span class="icon icon-calendar icon--xxl"></span>
+          <span class="class__date">
+            <span class="title-aux">Data de liberação</span>
+            <span class="class__day">{{dia}} {{mensagem_mes}}</span>
+          </span>
+        </div>
+    
+        <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
+        <h3 class="class__title">{{atividade.name}}</h3>
+        <p class="class__description">{{atividade.description}}</p>
+        {{#if temSecoes}}
+          <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Ver</button>
+        {{/if}}
+      </div>
+
+      <span class="class__img" style="{{atividade.backgroundImage}}"></span>
+
+    </div>
+
+{{else}}
+
 {{#if (equalstr value 0)}}
   {{#if data_ok}}
     <div class="timeline__end-class">Fim da unidade</div>
@@ -154,4 +185,5 @@
 
     </div>
   {{/if}}
+{{/if}}
 {{/if}}
