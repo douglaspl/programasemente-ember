@@ -59,6 +59,40 @@
         font-style: italic;
     }
 
+    .quiz__gallery {
+        margin: 1rem 0;        
+        
+        > * {
+            $size: 5rem;
+
+            @include bg-as-thumb;
+
+            border-radius: $radius--lg;
+            box-shadow: $shadow-3;
+            cursor: pointer;
+            display: inline-block;
+            height: $size;
+            overflow: hidden;
+            position: relative;
+            transform: translate3d(0,0,0) scale(1);
+            transform-origin: center center;
+            transition: 200ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
+            width: $size;
+            
+            &:not(:last-child) {
+                margin-right: $distance--sm;
+            }
+    
+            &:hover {
+                box-shadow: $shadow-3;
+                transform: translate3d(0,0,0) scale(1.1);
+            }
+
+        }
+        
+    }
+
     &__answer {
         align-items: center;
         display: flex;
