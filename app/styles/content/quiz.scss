@@ -1,67 +1,131 @@
 .quiz {
-    $this: &;
+  $this: &;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__body {
+    @include overflow-y;
+
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $distance--xxs;
+
+    @include media('>sm') {
+      flex: 0 0 auto;
+    }
+
+    @include media('>md') {
+      max-width: 54.75rem;
+    }
+
+    @include media('>lg') {
+      max-width: 56.75rem;
+    }
+
+    @include media('>xl') {
+      max-width: 62.25rem;
+    }
+
+    >*:first-child {
+      margin-top: $distance--md;
+    }
+
+    >*:last-child {
+      margin-top: $distance--xxs;
+    }
+
+  }
+
+  &__questions {
+    @include card($theme: light);
+
+    padding: $distance--md;
+
+    @include media('>sm') {
+      margin-top: $distance--xxs;
+    }
+
+  }
+
+  &__order {
+    @include title-aux;
+  }
+
+  &__question {
+    @include title-2($case: none);
+
+    margin-bottom: $distance--lg;
+    max-width: 42ch;
+    padding-bottom: $distance--xs;
+  }
+
+  // Questões com statements precisaram ser divididas em blocos.
+  &__pre-statement,
+  &__pos-statement {
+    $multiplier: .9;
+
+    $size: $font-size--sm * $multiplier;
+    $size--sm: $font-size--md * $multiplier;
+    $size--lg: $font-size--lg * $multiplier;
+    $weight: 400;
+
+    display: block;
+    line-height: 1;
+    font-size: $size;
+    font-weight: $weight;
+    vertical-align: middle;
+
+    @include media('>sm') {
+      font-size: $size--sm;
+    }
+
+    @include media('>lg') {
+      font-size: $size--lg;
+    }
+  }
+
+  &__statement {
+    display: block;
+    font-size: .75em;
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.2;
+    margin: 1em 0;
+    opacity: .75;
+
+    > p {
+        line-height: 1;
+
+        + p {
+            margin-top: $distance--xs;
+        }
+
+    }
+
+    &--poetry {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+  }
+
+  .quiz__signature {
+    display: block;
+    font-size: .5em;
+    font-weight: normal;
+    opacity: .75;
     position: relative;
+    text-align: right;
+    top: -1em;
+  }
 
-    &__body {
-        @include overflow-y;
-
-        flex: 1;
-        margin-left: auto;
-        margin-right: auto;
-        padding: $distance--xxs;
-
-        @include media('>sm') { flex: 0 0 auto; }
-        @include media('>md') { max-width: 54.75rem; }
-        @include media('>lg') { max-width: 56.75rem; }
-        @include media('>xl') { max-width: 62.25rem; }
-
-        > *:first-child {
-            margin-top: $distance--md;
-        }
-
-        > *:last-child {
-            margin-top: $distance--xxs;
-        }
-
-    }
-
-    &__questions {
-        @include card($theme: light);
-
-        padding: $distance--md;
-
-        @include media('>sm') {
-            margin-top: $distance--xxs;
-        }
-
-    }
-
-    &__order {
-        @include title-aux;
-    }
-
-    &__question {
-        @include title-2($case: none);
-
-        margin-bottom: $distance--xl;
-        max-width: 42ch;
-        padding-bottom: $distance--xs;
-
-    }
-
-    &__statement {
-        display: block;
-        margin: 1em 0;
-        font-size: .85em;
-        font-style: italic;
-    }
-
-    .quiz__gallery {
-        margin: 1rem 0;        
-        
+  .quiz__gallery {
+    margin: 1rem 0;        
+    
         > * {
             $size: 5rem;
 
@@ -83,165 +147,194 @@
             &:not(:last-child) {
                 margin-right: $distance--sm;
             }
-    
+
             &:hover {
                 box-shadow: $shadow-3;
                 transform: translate3d(0,0,0) scale(1.1);
             }
 
         }
-        
+    
     }
 
-    &__answer {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        font-size: $font-size--xs;
-        line-height: 1.5;
-        margin-bottom: $distance--md;
-        position: relative;
+  &__answer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-size: $font-size--xs;
+    line-height: 1.5;
+    margin-bottom: $distance--md;
+    position: relative;
+
+    @include media('>sm') {
+      margin-bottom: $distance--lg;
+    }
+
+    @include media('>xl') {
+      font-size: $font-size--sm;
+    }
+
+  }
+
+  &__answer-text {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    line-height: 1.3;
+
+    &::before {
+      $size: $distance--lg;
+
+      align-items: center;
+      background-color: $gray-0;
+      border-radius: 50%;
+      box-shadow: $shadow-2;
+      color: $color-gray--darkest;
+      display: flex;
+      flex: 0 0 auto;
+      height: $size;
+      justify-content: center;
+      line-height: 1;
+      margin-right: $distance--sm;
+      text-transform: uppercase;
+      transform: translateY(-$distance--xxs);
+      transition: 300ms;
+      width: $size;
+
+      #{$this}__answer:nth-child(1):not([class*='--correct']) & {
+        content: 'a';
+      }
+
+      #{$this}__answer:nth-child(2):not([class*='--correct']) & {
+        content: 'b';
+      }
+
+      #{$this}__answer:nth-child(3):not([class*='--correct']) & {
+        content: 'c';
+      }
+
+      #{$this}__answer:nth-child(4):not([class*='--correct']) & {
+        content: 'd';
+      }
+
+      #{$this}__answer:nth-child(5):not([class*='--correct']) & {
+        content: 'e';
+      }
+
+      #{$this}__answer:nth-child(6):not([class*='--correct']) & {
+        content: 'f';
+      }
+
+      #{$this}__answer:nth-child(7):not([class*='--correct']) & {
+        content: 'g';
+      }
+
+      #{$this}__answer:nth-child(8):not([class*='--correct']) & {
+        content: 'h';
+      }
+
+      #{$this}__answer:nth-child(9):not([class*='--correct']) & {
+        content: 'i';
+      }
+
+      #{$this}__answer:nth-child(10):not([class*='--correct']) & {
+        content: 'j';
+      }
+    }
+
+    @at-root {
+
+      [class*='--user'] &::before,
+      #{$this}__input:checked+&::before {
+        background-color: $green-20;
+        color: $color-white;
+      }
+
+      [class*='--correct'] &::before {
+        background-color: $color-success !important; // Garante que ficará verde independente de for a resposta do usuário ou não.
+        color: $color-white;
+        content: "\e905";
+        font-family: 'icomoon';
+      }
+
+    }
+
+  }
+
+  &__input {
+    @include input-hide;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: $distance--xs;
+
+    @include media('>sm') {
+      justify-content: center;
+
+      position: relative;
+    }
+
+  }
+
+  &__nav-arrows {
+    cursor: not-allowed;
+
+    @include media('>sm') {
+
+      &:first-child {
+        margin-right: $distance--sm;
+      }
+
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+
+  }
+
+  &__btn-confirm {
+    display: none;
+
+    @include media('>sm') {
+      display: inline-block;
+      opacity: 0;
+      visibility: hidden;
+      margin-left: $distance--md;
+      transform: translateX(2px);
+
+      #{$this}__input:checked~&,
+      [class*='--user'] & {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+    }
+
+
+    &--nav {
+      display: none;
+      font-size: $font-size--xxs;
+      margin-left: 0;
+      opacity: 1;
+      visibility: visible;
+
+      &--is-show {
+        display: inline-block;
 
         @include media('>sm') {
-            margin-bottom: $distance--lg;
+          display: none;
         }
 
-        @include media('>lg') {
-            font-size: $font-size--sm;
-        }
+      }
+
 
     }
 
-    &__answer-text {
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-        line-height: 1.3;
-
-        &::before {
-            $size: $distance--lg;
-
-            align-items: center;
-            background-color: $gray-0;
-            border-radius: 50%;
-            box-shadow: $shadow-2;
-            color: $color-gray--darkest;
-            display: flex;
-            flex: 0 0 auto;
-            height: $size;
-            justify-content: center;
-            line-height: 1;
-            margin-right: $distance--sm;
-            text-transform: uppercase;
-            transform: translateY(-$distance--xxs);
-            transition: 300ms;
-            width: $size;
-
-            #{$this}__answer:nth-child(1):not([class*='--correct']) & { content: 'a';}
-            #{$this}__answer:nth-child(2):not([class*='--correct']) & { content: 'b';}
-            #{$this}__answer:nth-child(3):not([class*='--correct']) & { content: 'c';}
-            #{$this}__answer:nth-child(4):not([class*='--correct']) & { content: 'd';}
-            #{$this}__answer:nth-child(5):not([class*='--correct']) & { content: 'e';}
-            #{$this}__answer:nth-child(6):not([class*='--correct']) & { content: 'f';}
-            #{$this}__answer:nth-child(7):not([class*='--correct']) & { content: 'g';}
-            #{$this}__answer:nth-child(8):not([class*='--correct']) & { content: 'h';}
-            #{$this}__answer:nth-child(9):not([class*='--correct']) & { content: 'i';}
-            #{$this}__answer:nth-child(10):not([class*='--correct']) & { content: 'j';}
-        }
-
-        @at-root {
-
-            [class*='--user'] &::before,
-            #{$this}__input:checked + &::before {
-                background-color: $green-20;
-                color: $color-white;
-            }
-
-            [class*='--correct'] &::before {
-                background-color: $color-success !important; // Garante que ficará verde independente de for a resposta do usuário ou não.
-                color: $color-white;
-                content: "\e905";
-                font-family: 'icomoon';
-            }
-
-        }
-
-    }
-
-    &__input {
-        @include input-hide;
-    }
-
-    &__nav {
-        display: flex;
-        flex-direction: row;
-        flex: 0 0 auto;
-        justify-content: space-between;
-        padding: $distance--xs;
-
-        @include media('>sm') {
-            justify-content: center;
-
-            position: relative;
-        }
-
-    }
-
-    &__nav-arrows {
-        cursor: not-allowed;
-
-        @include media('>sm') {
-
-            &:first-child {
-                margin-right: $distance--sm;
-            }
-
-        }
-
-        &--clickable {
-            cursor: pointer;
-        }
-
-    }
-
-    &__btn-confirm {
-        display: none;
-
-        @include media('>sm') {
-            display: inline-block;
-            opacity: 0;
-            visibility: hidden;
-            margin-left: $distance--md;
-            transform: translateX(2px);
-
-            #{$this}__input:checked ~ &,
-            [class*='--user'] & {
-                opacity: 1;
-                visibility: visible;
-                transform: translateX(0);
-            }
-        }
-
-
-        &--nav {
-            display: none;
-            font-size: $font-size--xxs;
-            margin-left: 0;
-            opacity: 1;
-            visibility: visible;
-
-            &--is-show {
-                display: inline-block;
-
-                @include media('>sm') {
-                    display: none;
-                }
-
-            }
-
-
-        }
-
-    }
+  }
 
 }
