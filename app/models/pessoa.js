@@ -46,6 +46,9 @@ export default DS.Model.extend({
   estadoVideos: DS.hasMany('estado-video', {
     async: true
   }),
+  estadoQuestoes: DS.hasMany('estado-questao', {
+    async: true
+  }),
   estadoVideosAlternativas: DS.hasMany('estado-video-alternativa', {
     async: true
   }),
