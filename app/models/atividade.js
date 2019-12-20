@@ -7,6 +7,7 @@ export default DS.Model.extend({
     description: DS.attr(),
     timesection: DS.attr(),
     dia: DS.attr(),
+    liberada: DS.attr(),
     abertura: DS.attr(),
     atividade: DS.attr(),
     video: DS.attr(),
