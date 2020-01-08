@@ -353,7 +353,7 @@
 
                       {{#if secao.conteudo.respondidas}}
                         <li class="data data--bordered data--success data--short">
-                          <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
+                          <span class="data__value">{{format-decimal secao.conteudo.aproveitamento}}<span class="small">%</span></span>
                           <span class="data__label">{{secao.nome}}</span>
                           {{!-- <span class="data__label">aproveitamento</span> --}}
                         </li>
