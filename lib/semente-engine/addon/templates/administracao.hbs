@@ -110,8 +110,8 @@
                     <form class="d-flex d-flex--c" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
 
                       <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
-                        {{input class="form-group__input" aria-describedby="basic-addon1" id="search_input_pessoas_adm"
-                key-up="pagedsearch" type="text" autocomplete="off" aria-autocomplete="none"}}
+                        {{input class="form-group__input" aria-describedby="basic-addon1" id="matchClass"
+                key-up="filterClasses" type="text" autocomplete="off" aria-autocomplete="none"}}
                       </div>
 
                       <div class="m-top--sm">
@@ -173,11 +173,11 @@
                       </div>
                         
                       <div class="report-course__data data data--horizontal data--bordered">
-                        <span class="data__value">{{turma_selected.pessoas.length}}</span>
+                        <span class="data__value">{{alunos_turma}}</span>
                         <span class="data__label">matrículas</span>
                       </div>
                     </div>
-                    <ul class="report-course__body report-class">
+                    <ul class="report-course__body report-class" id="acomp_classes">
                       {{#each turma_selected.acompanhamentosatividades as |acomp|}}
                         <li class="report-class__two-col">
                           <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
@@ -250,7 +250,7 @@
                         {{/if}}
                       {{/each}}
                     </div>
-                    <ul class="report-course__body report-class">
+                    <ul class="report-course__body report-class" id="acomp_classes">
                       {{#each curso_selected.atividades as |atividade|}}
                         <li class="report-class__two-col">
                           <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
