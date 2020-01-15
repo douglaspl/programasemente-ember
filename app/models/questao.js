@@ -6,4 +6,5 @@ export default DS.Model.extend({
     texto: DS.attr(),
     quiz: DS.belongsTo('quiz', {async: true}),
     alternativas: DS.hasMany('alternativa', {async: true}),
+    estadosQuestao: DS.hasMany('estado-questao', {async: true})
 });

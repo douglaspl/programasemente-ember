@@ -59,11 +59,21 @@ export default Route.extend(AuthenticatedRouteMixin, {
               let institutions = included.filter(function (i) {
                 return i.id === log.instituicao_id;
               });
+              if (!institutions[0]){
+                localStorage.clear();
+                window.location.reload(true);
+                return
+              }
               let institutionChangePasswordParam = institutions[0].attributes.trocasenhaobrigatoria;
               // ---------------------------------------- account param
               let accounts = data.filter(function (i) {
                 return i.id === log.id;
               });
+              if (!accounts[0]){
+                localStorage.clear();
+                window.location.reload(true);
+                return
+              }
               let accountChangePasswordParam = accounts[0].attributes.trocousenha;
               // ----------------------------------------- verification
               if (institutionChangePasswordParam === true)
