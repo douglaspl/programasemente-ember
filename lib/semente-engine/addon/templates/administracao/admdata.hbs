@@ -274,9 +274,9 @@
           <div class="popover__balloon popover__balloon--lemon popover__balloon--right-bottom about-author">
             <button class="popover__close icon-x"></button>
             <ul class="">
-              <li class="m-bottom--xs">Nascimento: <strong>01/01/1980</strong></li>
-              <li class="m-bottom--xs">Sexo: <strong>Feminino/Masculino</strong></li>
-              <li class="">Matrícula: <strong>200057258-3738</strong></li>
+              <li class="m-bottom--xs">Nascimento: <strong>{{selected_pessoa.pessoa.dataNascimento}}</strong></li>
+              <li class="m-bottom--xs">Sexo: <strong>{{capitalize selected_pessoa.pessoa.genero}}</strong></li>
+              <li class="">Matrícula: <strong>{{selected_pessoa.pessoa.matricula}}</strong></li>
             </ul>
           </div>
         </span>
