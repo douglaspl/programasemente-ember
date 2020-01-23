@@ -1,6 +1,6 @@
 {{#if notTravada}}
     {{#if notStudent}}
-      <div class="timeline__end-class">Fim da unidade</div>
+      <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class">
 
           <span class="timeline__status">
@@ -15,7 +15,7 @@
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
-        
+
             <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
            <h3 class="class__title">{{atividade.name}}</h3>
         {{!-- INÍCIO IFS para Competências Alvo--}}
@@ -139,7 +139,7 @@
 
     {{#if (equalstr value 0)}}
       {{#if data_ok}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class class--is-completed">
           <span class="timeline__status">
             <span class="icon-unlocked"></span>
@@ -162,7 +162,7 @@
           <span class="class__img" style="{{atividade.backgroundImage}}"></span>
         </div>
       {{else}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class class--is-disabled">
           <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock"></span>
@@ -188,7 +188,7 @@
 
     {{else if (equalstr value 100)}}
       {{#if data_ok}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class class--is-completed">
           <span class="timeline__status">
             <span class="icon-check"></span>
@@ -214,12 +214,12 @@
 
         </div>
       {{else}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class class--is-disabled">
           <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock"></span>
           </span>
-        
+
           <div class="class__info">
             <div class="class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
@@ -240,7 +240,7 @@
 
     {{else}}
       {{#if data_ok}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class">
 
           <span class="timeline__status">
@@ -255,7 +255,7 @@
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
-        
+
             <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
             <h3 class="class__title">{{atividade.name}}</h3>
             <p class="class__description">{{atividade.description}}</p>
@@ -268,7 +268,7 @@
 
         </div>
       {{else}}
-        <div class="timeline__end-class">Fim da unidade</div>
+        <div class="timeline__end-class">Fim do bloco</div>
         <div class="timeline__class class class--is-disabled">
 
           <span class="timeline__status timeline__status--is-locked">
@@ -296,14 +296,14 @@
     {{/if}}
     {{/if}}
 {{else}}
-<div class="timeline__end-class">Fim da unidade</div>
+<div class="timeline__end-class">Fim do bloco</div>
 <div class="timeline__class class class--is-disabled">
 
   <span class="timeline__status timeline__status--is-locked">
     <span class="icon-lock"></span>
   </span>
 
-  <div class="class__info"> 
+  <div class="class__info">
     <div class="class__date-block">
       <span class="icon icon-calendar icon--xxl"></span>
       <span class="class__date">
