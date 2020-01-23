@@ -17,7 +17,114 @@
             </div>
         
             <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
-            <h3 class="class__title">{{atividade.name}}</h3>
+           <h3 class="class__title">{{atividade.name}}</h3>
+        {{!-- INÍCIO IFS para Competências Alvo--}}
+            {{#if (equalstr modulo.idx 1) }}
+              {{#if (equalstr atividade.idx 1)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Entusiasmo</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 2)}}
+               <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Tolerância ao estresse</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 3)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Autoconfiança</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 4)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Autoconfiança</li>
+                    <li>Iniciativa social</li>
+                    <li>Tolerância ao estresse</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 5)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Persistência</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 6)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Autoconfiança</li>
+                    <li>Persistência</li>
+                    <li>Determinação</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 7)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Empatia</li>
+                    <li>Respeito</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 8)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Foco</li>
+                    <li>Empatia</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 9)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Responsabilidade</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 10)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Responsabilidade</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 11)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Confiança</li>
+                  </ul>
+                </div>
+              {{/if}}
+              {{#if (equalstr atividade.idx 12)}}
+              <div class="skills">
+                <h2 class="skills__title">Competências alvo</h2>
+                  <ul class="skills__list">
+                    <li>Responsabilidade</li>
+                  </ul>
+                </div>
+              {{/if}}
+            {{/if}}
+            {{!-- FIM IFS para Competências Alvo--}}
+
             <p class="class__description">{{atividade.description}}</p>
             {{#if temSecoes}}
               <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Ver</button>

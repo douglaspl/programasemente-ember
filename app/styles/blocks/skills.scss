@@ -1,0 +1,31 @@
+.skills {
+    $this: &;
+
+    border-left: 2px solid;
+    margin-bottom: 2rem;
+    font-size: $font-size--xs;
+    //font-size: calc(#{$font-size--md} + .25vw);
+    padding: $distance--xs 0 $distance--md $distance--sm;
+    position: relative;
+    z-index: 99;
+
+    &__title {
+        @include title-aux;
+        margin-bottom: $distance--xs;
+        
+    }
+
+    &__list {
+        
+        > li {
+            letter-spacing: $letter-spacing--lg;
+        }
+
+    }
+
+    &--sm {
+        font-size: $font-size--xxs;
+        font-size: calc(#{$font-size--xxs} + .25vw);
+    }
+
+}
