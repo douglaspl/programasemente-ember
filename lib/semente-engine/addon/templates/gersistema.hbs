@@ -91,7 +91,7 @@
             <div class="steps__number {{if goToStepTwo '' 'steps__number--is-active'}}" {{action 'goTo' '1'}}>1</div>
           </div>
           <div class="steps__step">
-            <div class="steps__label">Cursos Habilitados</div>
+            <div class="steps__label">Anos Habilitados</div>
             <div class="steps__number {{if goToStepTwo 'steps__number--is-active' ''}}" {{action 'goTo' '2'}}>2</div>
           </div>
           <div class="steps__step">
@@ -552,7 +552,7 @@
         <div class="form-group form-group--select-wrapper m-right--md">
           <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst"
             style="min-width: 5    rem;">
-           <option value="0" selected>Selecionar Curso</option>
+           <option value="0" selected>Selecionar percurso</option>
             {{#each modulos_list as |mod|}}
             <option value={{mod.id}}>{{mod.name}}</option>
             {{/each}}

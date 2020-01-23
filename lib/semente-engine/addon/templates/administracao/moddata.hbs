@@ -328,12 +328,12 @@
   {{#if selected_pessoa.matriculado}}
   <section class="report-person__body">
     <div class="form-group form-group--select-wrapper">
-      <label class="form-group__label" for="select_course">Curso</label>
+      <label class="form-group__label" for="select_course">Percurso</label>
       <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course_pessoa" value="select_inst">
         {{!-- {{#if curso_selected}}
-        <option value="none" style="font-style: italic;">Selecione o curso...</option>
+        <option value="none" style="font-style: italic;">Selecione o percurso...</option>
         {{else}}
-        <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
+        <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
         {{/if}} --}}
         {{#each selected_pessoa.modulos as |modulo|}}
         {{#if (equalstr curso_selected.id modulo.id)}}
@@ -434,7 +434,7 @@
   <!-- INÍCIO DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
   <div class="empty">
     <span class="empty__icon icon-frown-o icon--4x"></span>
-    Esse usuário não está matriculado em nenhum curso.
+    Esse usuário não está matriculado em nenhum percurso.
   </div>
   <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
   {{/if}}
@@ -494,12 +494,12 @@
     <h2 class="main__subtitle">Comparar alunos</h2>
     <div class="filter filter--all-left">
       <div class="form-group form-group--select-wrapper">
-        <label class="form-group__label" for="select_course">Curso</label>
+        <label class="form-group__label" for="select_course">Percurso</label>
         <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}} id="select_course_compare" value="select_inst">
           {{#if curso_selected_compare}}
-          <option value="none" style="font-style: italic;">Selecione o curso...</option>
+          <option value="none" style="font-style: italic;">Selecione o percurso...</option>
           {{else}}
-          <option value="none" selected style="font-style: italic;">Selecione o curso...</option>
+          <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
           {{/if}}
           {{#each modulos as |modulo|}}
           {{#if (equalstr curso_selected_compare.id modulo.id)}}
