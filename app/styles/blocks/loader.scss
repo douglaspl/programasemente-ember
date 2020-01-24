@@ -1,17 +1,3 @@
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  33% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
 .loader {
 
   $tree-width: 64px;
@@ -32,46 +18,17 @@
   z-index: 999999;
 
   &__circle {
-    //$multiplier: 1.75;
-    $multiplier: 2.125; // retirar quando voltar para marca nova da crane
+    $multiplier: 3;
 
-    animation: pulse 2s var(--ease-in-out-quad) 2s infinite alternate;
     align-items: center;
-    background-color: $gray-0;
-    border-radius: $radius--md;
+    background-color: $color-white;
+    border-radius: $radius--capsule;
     box-shadow: $shadow-5, $shadow-h-r-5;
     display: flex;
     flex-direction: row;
     height: $tree-width * $multiplier;
     justify-content: center;
-    padding: $distance--xs; // retirar quando voltar para marca nova da crane
     width: $tree-width * $multiplier;
-  }
-
-  svg {
-    filter: drop-shadow(0 0 10px $gray-20);
-    width: $tree-width;
-  }
-
-  &__steam {
-    fill: none;
-    stroke: #3a3a3a;
-    stroke: $gray-50;
-    // stroke: #f3f3f3;
-    stroke-width: 6px;
-  }
-
-  &__steam,
-  &__foliage {
-    stroke-miterlimit: 10;
-  }
-
-  &__foliage {
-    fill: none;
-    stroke: #97c454;
-    stroke: $green-40;
-    // stroke: white;
-    stroke-width: 6px;
   }
 
 }
