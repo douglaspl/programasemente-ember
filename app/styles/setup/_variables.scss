@@ -209,10 +209,6 @@ $hue: 148;
 // grays
 $color-white: hsla(0, 0%, 100%, 1) !default;
 $color-off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
-$gray-5: hsla(132, 12%, 83%, 1) !default; // #cfd9d1 // CRANE
-$color-gray: hsla($hue, 8%, 60%, 1) !default;
-$color-gray--dark: hsla($hue, 10%, 30%, 1) !default;
-$color-gray--darkest: hsla(0, 0%, 22%, 1) !default; // #383838 // CRANE
 $color-black: hsla($hue, 20%, 4%, 1) !default;
 
 // aux
@@ -306,13 +302,15 @@ $distance--xxxl: 5rem;
 $distance--super: 6rem;
 $distance--max: 8rem;
 
-$distances: ((xxs, $distance--xxs),
-(xs, $distance--xs),
-(sm, $distance--sm),
-(md, $distance--md),
-(lg, $distance--lg),
-(xl, $distance--xl),
-(xxl, $distance--xxl));
+$distances: (
+  (xxs, $distance--xxs),
+  (xs, $distance--xs),
+  (sm, $distance--sm),
+  (md, $distance--md),
+  (lg, $distance--lg),
+  (xl, $distance--xl),
+  (xxl, $distance--xxl)
+);
 
 
 
@@ -356,7 +354,7 @@ $font-size--max: 3.5rem;
 //------------------------------------
 //    #FORM
 //------------------------------------
-$form-shadow: 0 2px 0 rgba($color-black, .19);
+$form-shadow: 0 2px 0 rgba($gray-60, .12);
 $form-background-color: $gray-0;
 
 
@@ -447,10 +445,10 @@ $letter-spacing--xxl: .15em;
 //------------------------------------
 //    #PADDING
 //------------------------------------
-$h-padding--xs: $distance--lg;
-$h-padding--sm: $distance--xl;
-$h-padding--md: $distance--xxl;
-$h-padding--lg: $distance--xxxl;
+$h-padding--xs: $distance--sm;
+$h-padding--sm: $distance--md;
+$h-padding--md: $distance--lg;
+$h-padding--lg: $distance--xl;
 
 
 
@@ -522,7 +520,7 @@ $shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset 0 15px 12px rgba($c
 //------------------------------------
 //    #SHARED
 //------------------------------------
-$header-height: 5.8rem;
+$header-height: 3rem;
 $header-v-padding: .5rem;
 
 

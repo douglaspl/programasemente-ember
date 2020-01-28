@@ -100,7 +100,7 @@
     @if abs($color-brightness) < ($light-color / 1.5) {
         color: $color-white;
     }  @else {
-        color: $color-gray--darkest;
+        color: $gray-60;
     }
 }
 

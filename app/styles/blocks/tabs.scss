@@ -1,6 +1,7 @@
-$tab-radius: $radius--md;
-$tab-bg: $leaf-50;
+$tab-bg: $leaf-40;
+$tab-bg--dark: $leaf-60;
 $tab-active-bg: $leaf-40;
+$tab-radius: $radius--md;
 
 
 .tabs {
@@ -8,17 +9,18 @@ $tab-active-bg: $leaf-40;
     flex-direction: row;
 
     &__tab {
-        $bg: $tab-bg;
-
         @include button;
-        @include text-contrast($bg);
+        @include text-contrast($tab-bg);
 
-
-        background-color: $bg;
-        background-image: linear-gradient(to top, $bg, $leaf-60);
+        background-color: $tab-bg;
+        background-image: linear-gradient(to top, $tab-bg, $tab-bg--dark);
         border-radius: 0;
         box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.15);
         padding: 1em 2.5em;
+
+        &:hover {
+            background-color: $tab-bg--dark;
+        }
 
         @include media('<md') {
             font-size: $font-size--xxs;

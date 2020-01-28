@@ -30,7 +30,8 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: 300ms;
+  transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+  transition: 200ms var(--ease-in-out-quad);
   white-space: nowrap;
 }
 
@@ -51,17 +52,17 @@
 
   @if $theme=='light' {
     background-color: $color-white;
-    color: $color-gray--darkest;
+    color: $gray-60;
   }
 
   @else if $theme=='dark' {
-    background-color: $color-gray--darkest;
+    background-color: $gray-60;
     color: $color-white;
   }
 
   @else {
     background-color: $gray-0;
-    color: $color-gray--darkest;
+    color: $gray-60;
   }
 
 
@@ -196,7 +197,7 @@
   background-image: none;
   border-radius: 0;
   box-shadow: none;
-  color: $color-gray--darkest;
+  color: $gray-60;
   padding: 0;
   text-shadow: none;
   z-index: 2;
@@ -370,7 +371,7 @@
   background-color: $form-background-color;
   border: 0 solid transparent;
   border-radius: $radius;
-  color: $color-gray--darkest;
+  color: $gray-60;
   font-size: 1rem;
   height: $input-height;
   min-height: $input-height;
@@ -678,7 +679,7 @@ $shadow-width: 100%) {
   }
 
   @else {
-    color: $color-gray--darkest;
+    color: $gray-60;
   }
 }
 
@@ -689,19 +690,19 @@ $shadow-width: 100%) {
 //------------------------------------
 //    #TITLES
 //------------------------------------
-@mixin title-0($color: inherit,
-$size: $font-size--xxl,
-$size--sm: $font-size--super,
-$size--lg: $font-size--max,
-$weight: 800,
-$letter: $letter-spacing--sm) {
+@mixin title-0( $color: inherit,
+                $size: $font-size--xxl,
+                $size--sm: $font-size--super,
+                $size--lg: $font-size--max,
+                $weight: 800,
+                $letter: $letter-spacing--sm) {
 
   color: $color;
   font-family: $font-title;
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $letter;
-  line-height: 1.25;
+  line-height: 1;
   vertical-align: middle;
 
   @include media('>sm') { font-size: $size--sm; }
@@ -730,7 +731,7 @@ $letter: $letter-spacing--sm) {
 }
 
 @mixin title-2( $case: uppercase,
-                $color: $color-gray--darkest,
+                $color: $gray-60,
                 $line-height: 1.2,
                 $size: $font-size--md,
                 $size--sm: $font-size--lg,
@@ -751,7 +752,7 @@ $letter: $letter-spacing--sm) {
   @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-2--u( $color: $color-gray--darkest,
+@mixin title-2--u( $color: $gray-60,
                    $size: $font-size--sm,
                    $size--sm: $font-size--md,
                    $size--lg: $font-size--lg,
@@ -769,7 +770,7 @@ $letter: $letter-spacing--sm) {
 //   @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-3( $color: $color-gray--darkest,
+@mixin title-3( $color: $gray-60,
                 $size: $font-size--sm,
                 $size--sm: $font-size--md,
                 $size--lg: $font-size--lg,
@@ -788,7 +789,7 @@ $letter: $letter-spacing--sm) {
   @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-3--alt (   $color: $color-gray--dark,
+@mixin title-3--alt (   $color: $gray-50,
                         $size: $font-size--xs,
                         $size--lg: $font-size--sm,
                         $weight: 600,
@@ -808,7 +809,7 @@ $letter: $letter-spacing--sm) {
   @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-4( $color: $color-gray--dark,
+@mixin title-4( $color: $gray-50,
                 $size: $font-size--xs,
                 $size--lg: $font-size--md,
                 $weight: 600,

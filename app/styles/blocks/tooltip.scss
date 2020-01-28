@@ -69,11 +69,11 @@ $tooltip-vertical-padding: $distance--xs;
     &--gray-darkest {
         [class*='__bubble'] {
 
-            $bg-color: $color-gray--darkest;
-            
+            $bg-color: $gray-60;
+
             background-color: $bg-color;
             color: $color-white;
-            
+
             &::before {
                 border-left-color: $bg-color;
             }
@@ -86,7 +86,7 @@ $tooltip-vertical-padding: $distance--xs;
             $bg-color: $lemon-40;
 
             @include text-contrast($bg-color);
-            
+
             background-color: $bg-color;
 
             &::before {

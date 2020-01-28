@@ -63,7 +63,7 @@
         }
 
         #{$this}__header {
-            color: $color-gray;
+            color: $gray-30;
         }
 
     }
@@ -105,7 +105,7 @@
         }
 
         &::before {
-            background-color: $color-gray--darkest;
+            background-color: $gray-60;
             content: '';
             height: 100%;
             left: 0;

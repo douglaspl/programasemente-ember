@@ -22,7 +22,7 @@
 
   &__begin,
   &__end {
-    @include title-aux($color: $color-gray--darkest);
+    @include title-aux($color: $gray-60);
 
     background-color: $timeline-main-steps-background;
     // background-image: $timeline-main-steps-background-gradient;
