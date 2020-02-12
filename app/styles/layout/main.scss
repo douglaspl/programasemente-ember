@@ -214,8 +214,16 @@
     z-index: 1;
   }
 
-  &__subsection:not(:first-of-type) {
-    margin-top: $distance--xxxl;
+  &__subsection {
+
+    &:not(:first-of-type) {
+        margin-top: $distance--xxxl;
+    }
+
+    > * {
+       margin-bottom: $distance--xxl;
+    }
+
   }
 
 

@@ -737,7 +737,7 @@ $shadow-width: 100%) {
                 $size--sm: $font-size--lg,
                 $size--lg: $font-size--xl,
                 $weight: 600,
-                $letter: $letter-spacing--sm) {
+                $letter: $letter-spacing--xs) {
 
   color: $color;
   font-family: $font-title;
@@ -774,8 +774,8 @@ $shadow-width: 100%) {
                 $size: $font-size--sm,
                 $size--sm: $font-size--md,
                 $size--lg: $font-size--lg,
-                $weight: 600,
-                $letter: $letter-spacing--md) {
+                $weight: 500,
+                $letter: $letter-spacing--sm) {
 
   color: $color;
   font-family: $font-title;
@@ -825,12 +825,14 @@ $shadow-width: 100%) {
   @include media('>lg') { font-size: $size--lg; }
 }
 
-@mixin title-aux($color: $green-50,
+@mixin title-aux($color: $gray-40,
                  $display: inline-block,
+                 $family: $font-base,
                  $weight: 600) {
 
   color: $color;
   display: $display;
+  font-family: $font-base;
   font-size: $font-size--xxs;
   font-weight: $weight;
   letter-spacing: $letter-spacing--xl;

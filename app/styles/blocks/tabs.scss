@@ -1,48 +1,22 @@
-$tab-bg: $leaf-40;
-$tab-bg--dark: $leaf-60;
-$tab-active-bg: $leaf-40;
-$tab-radius: $radius--md;
-
-
 .tabs {
+    $this: &;
+
+    border-bottom: 1px solid $gray-5;
     display: flex;
     flex-direction: row;
+    font-family: $font-title;
+    font-size: $font-size--xs;
+    font-weight: bolder;
 
     &__tab {
-        @include button;
-        @include text-contrast($tab-bg);
+        padding: 1em;
 
-        background-color: $tab-bg;
-        background-image: linear-gradient(to top, $tab-bg, $tab-bg--dark);
-        border-radius: 0;
-        box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.15);
-        padding: 1em 2.5em;
-
-        &:hover {
-            background-color: $tab-bg--dark;
-        }
-
-        @include media('<md') {
-            font-size: $font-size--xxs;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
-        }
-
-        > * {
-            opacity: .75;
-        }
-
-        &:first-child { border-radius: $tab-radius 0 0 $tab-radius; }
-        &:last-child { border-radius: 0 $tab-radius $tab-radius 0; }
+        > * { opacity: .5; }
 
         &--is-active {
-            background-color: $tab-active-bg;
-            background-image: linear-gradient(to top, $tab-active-bg, $leaf-30);
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+            border-bottom: 2px solid $lemon-30;
 
-            > * {
-                opacity: 1;
-            }
+            > * { opacity: 1; }
 
         }
 

@@ -22,7 +22,8 @@
     &__header {}
 
     &__tabs {
-        font-size: $font-size--sm;
+        margin-bottom: $distance--lg;
+        margin-top: $distance--lg;
 
         @include media('<=sm') {
 
