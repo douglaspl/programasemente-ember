@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
       document.getElementById('login_button').disabled = true;
       let life = 0;
       if (document.getElementById('remember').checked) life = 1;
-      let username = document.getElementById('identification').value.toLowerCase();
+      let username = document.getElementById('identification').value;
       let password = document.getElementById('password').value;
       this.get('session').authenticate('authenticator:authold', username, password, life).then(() => {}).catch((reason) => {
         if (reason.error_description) {
