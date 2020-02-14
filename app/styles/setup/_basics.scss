@@ -76,9 +76,10 @@ input {
 select {
   @include inputs;
 
-  border-radius: $radius;
+  border-radius: $radius--md;
   box-shadow: $form-shadow;
   cursor: pointer;
+  padding-left: $distance--md;
   padding-right: $distance--xl;
 
   &::-ms-expand {

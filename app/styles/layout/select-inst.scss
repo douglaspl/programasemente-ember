@@ -12,12 +12,12 @@
     }
 
     > *:not(:first-of-type) {
-        margin-top: $distance--sm;
+        margin-top: $distance--xxs;
     }
 
     &__link {
         display: block;
-        font-size: $font-size--sm;
+        font-size: $font-size--xxs;
         padding: $distance--sm;
         position: relative;
         text-align: center;

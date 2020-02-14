@@ -3,14 +3,12 @@
 
 
   &__two-col {
-    border-radius: $radius;
     display: flex;
     flex-direction: column;
     padding: $distance--sm;
 
     @include media('>md') {
       flex-direction: row;
-      // padding: $distance--lg $distance--md $distance--xxxl;
       padding: $distance--lg $distance--md;
     }
 
@@ -28,8 +26,6 @@
     }
 
     >*:last-child {
-      // display: flex;
-      // flex: 1;
 
       @include media('>md') {
         margin-left: auto;
@@ -50,7 +46,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    >* {
+    > * {
       $size: 18%;
 
       display: inline-flex;
@@ -80,17 +76,10 @@
     }
 
     @at-root {
-
       #{$this}__main-info {}
-
       #{$this}__correct {}
-
       #{$this}__visualization {}
-
-      #{$this}__feedback {
-        display: none;
-      }
-
+      #{$this}__feedback { display: none; }
       #{$this}__time-spent {}
 
     }
