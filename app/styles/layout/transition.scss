@@ -1,7 +1,7 @@
 .transition {
     $this: &;
 
-    color: $color-white;
+    color: $white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -157,7 +157,7 @@
         position: relative;
 
         &::before {
-            background-color: $color-white;
+            background-color: $white;
             border-radius: $distance--xxl;
             content: '';
             height: calc(100% + #{$distance--xxs});

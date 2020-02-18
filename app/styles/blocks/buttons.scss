@@ -70,16 +70,16 @@
 .btn {
   $this: &;
 
-  $bg-light: $green-30;
-  $bg-dark: $green-50;
+  $bg-light: $clickables-bg-color;
+  $bg-dark: $clickables-bg-color-dark;
 
   @include button;
 
   background-color: $bg-light;
   background-image: linear-gradient(to top, $bg-dark, $bg-light);
-  border-radius: $radius--md;
+  border-radius: $radius;
   box-shadow: 0 3px 6px rgba($bg-light, .11), 0 3px 6px rgba($bg-light, .21);
-  color: $color-white;
+  color: $clickables-color;
   cursor: pointer;
   flex: 0 0 auto;
   padding: 1em 1.5em;
@@ -108,7 +108,7 @@
   &--icon {
     align-items: center;
     align-self: center;
-    border-radius: $radius--md;
+    border-radius: $radius;
     display: inline-flex;
     justify-content: center;
     padding: .572em;
@@ -186,7 +186,7 @@
       }
 
       &:hover {
-        background-color: transparentize($color-black, .85);
+        background-color: transparentize($black, .85);
         background-image: none;
       }
 
@@ -202,7 +202,7 @@
   &--leaf {
     background-color: $leaf-40;
     background-image: linear-gradient(to top, $leaf-50, $leaf-40);
-    color: $color-white;
+    color: $white;
 
     &:hover {
       background-color: $leaf-60;
@@ -271,7 +271,7 @@
     background-color: transparent;
     background-image: none;
     box-shadow: none;
-    color: $color-white;
+    color: $white;
     padding: 0;
     text-shadow: none;
 

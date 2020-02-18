@@ -15,8 +15,8 @@ $popover-distance: $popover-tip-size * 2;
     }
 
     &__balloon {
-        background-color: $color-white;
-        border-radius: $radius--md;
+        background-color: $white;
+        border-radius: $radius;
         box-shadow: $shadow-4;
         opacity: 0;
         padding: $distance--md;
@@ -30,7 +30,7 @@ $popover-distance: $popover-tip-size * 2;
             border-color: currentColor transparent transparent transparent;
             border-style: solid;
             border-width: $popover-tip-size;
-            color: $color-white;
+            color: $white;
             content: '';
             filter: drop-shadow(4px 0px 4px rgba(26, 26, 26, .2));
             position: absolute;

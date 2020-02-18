@@ -29,7 +29,7 @@
 
     &__header {
         align-items: center;
-        color: $color-white;
+        color: $white;
         display: flex;
         flex-direction: column;
         font-size: $font-size--sm;
@@ -95,7 +95,7 @@
         }
 
         #{$this}__feedback-close {
-            color: $color-white;
+            color: $white;
             font-size: $font-size--lg;
             opacity: .8;
             position: absolute;

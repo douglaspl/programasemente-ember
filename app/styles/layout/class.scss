@@ -6,7 +6,7 @@
   $img-width:  18rem * $multiplier;
 
   background-color: $timeline-mark-bg;
-  border-radius: $radius--md;
+  border-radius: $radius;
   box-shadow: $shadow-h-r-2;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
     padding:  0;
     text-transform: uppercase;
     transform: translateX(-8px);
-    
+
     @include media('>lg') {
       padding: $distance--md;
       position: absolute;
@@ -85,9 +85,9 @@
     position: relative;
     width: 100%;
     z-index: 1;
-    
+
     [class*='is-disabled'] &::after {
-      background-color: $color-white;
+      background-color: $white;
       content: '';
       height: 100%;
       left: 0;

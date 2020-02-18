@@ -2,7 +2,7 @@
     $this: &;
     $avatar-default-size: $avatar--md;
 
-    background-color: $color-off-white;
+    background-color: $off-white;
     border-radius: $radius;
     box-shadow: $shadow-1;
     display: inline-block;
@@ -27,7 +27,7 @@
     }
 
     &--bordered {
-        border: 2px solid $color-white;
+        border: 2px solid $white;
     }
 
     &--float {

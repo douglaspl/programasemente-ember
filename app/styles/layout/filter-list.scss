@@ -6,7 +6,7 @@
 
     &__filter {
         background-color: $gray-5;
-        border-radius: $radius--md;
+        border-radius: $radius;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -28,7 +28,7 @@
 
         input,
         select {
-            background-color: $color-white;
+            background-color: $white;
         }
 
     }

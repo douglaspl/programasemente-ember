@@ -16,7 +16,7 @@
     &__content {
         @include overflow-y;
 
-        background-color: $color-white;
+        background-color: $white;
         flex: 1;
         position: relative;
         z-index: 2;

@@ -4,14 +4,14 @@ $highlight-h-padding--md: $distance--xxxl;
 .highlight {
     $this: &;
 
-    color: $color-white;
+    color: $white;
     height: 100%;
     margin-bottom: 0;
     position: relative;
     width: 100%;
 
     &__subtitle {
-        @include title-aux($color: $color-white);
+        @include title-aux($color: $white);
         // @include line;
 
         z-index: 4;

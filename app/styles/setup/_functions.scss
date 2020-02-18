@@ -98,7 +98,7 @@
     //@if abs($color-brightness) < ($light-color / 2) {
     //@if abs($color-brightness) < ($light-color / 1.65) {
     @if abs($color-brightness) < ($light-color / 1.5) {
-        color: $color-white;
+        color: $white;
     }  @else {
         color: $gray-60;
     }

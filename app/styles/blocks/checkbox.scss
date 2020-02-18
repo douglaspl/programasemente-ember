@@ -23,7 +23,7 @@
         user-select: none;
 
         &::after {
-            color: $color-white;
+            color: $checkbox-checked-color;
             content: '\e905'; //Código do check
             font-family: 'icomoon';
             font-size: 1em;
@@ -41,7 +41,7 @@
     &__input:checked ~ &__label {
 
         &::before {
-            background-color: $green-20;
+            background-color: $checkbox-checked-bg-color;
         }
 
         &::after {
@@ -53,7 +53,7 @@
     &--white {
 
         #{$this}__label::before {
-            background-color: $color-white;
+            background-color: $white;
         }
 
     }

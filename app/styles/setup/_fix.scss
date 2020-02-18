@@ -119,9 +119,9 @@ button {
 }
 
 object-fit {
-    border: 1px solid transparentize($color-black, 1);
+    border: 1px solid transparentize($black, 1);
     border-radius: 0;
-    box-shadow: 0 0 0 transparentize($color-black, 1);
+    box-shadow: 0 0 0 transparentize($black, 1);
 
     img {
         margin: 0 !important;

@@ -4,7 +4,7 @@
   @include z-index('alert');
 
   background-color: $gray-0;
-  border-radius: $radius--md;
+  border-radius: $radius;
   box-shadow: $shadow-3;
   color: $gray-60;
   font-size: $font-size--md;
@@ -79,22 +79,22 @@
 
   &--green-40 {
     background-color: transparentize($green-40, .05);
-    color: $color-white;
+    color: $white;
   }
 
   &--error {
     background-color: transparentize($color-error, .15);
-    color: $color-white;
+    color: $white;
   }
 
   &--success {
     background-color: transparentize($color-success, .25);
-    color: $color-white;
+    color: $white;
   }
 
   &--warning {
     background-color: $color-warning;
-    color: $color-white;
+    color: $white;
   }
 
   &--has-interaction {

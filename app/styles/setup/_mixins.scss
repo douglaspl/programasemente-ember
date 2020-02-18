@@ -43,7 +43,7 @@
 //    #CARD
 //------------------------------------
 @mixin card($theme: false, $padding: false) {
-  border-radius: $radius--md;
+  border-radius: $radius;
   box-shadow: $shadow-1;
 
   @if $padding {
@@ -51,13 +51,13 @@
   }
 
   @if $theme=='light' {
-    background-color: $color-white;
+    background-color: $white;
     color: $gray-60;
   }
 
   @else if $theme=='dark' {
     background-color: $gray-60;
-    color: $color-white;
+    color: $white;
   }
 
   @else {
@@ -541,9 +541,9 @@
 //------------------------------------
 //    #SCROLLING SHADOWS
 //------------------------------------
-@mixin scrolling-shadows($bg-color: $color-white,
+@mixin scrolling-shadows($bg-color: $white,
 $shadow-intensity: 0.2,
-$shadow-color: $color-black,
+$shadow-color: $black,
 $cover-size: 40px,
 $shadow-size: 14px,
 $shadow-width: 100%) {
@@ -672,10 +672,10 @@ $shadow-width: 100%) {
 //
 @mixin text-contrast($n) {
   $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
-  $light-color: round((red($color-white) * 299) + (green($color-white) * 587) + (blue($color-white) * 114) / 1000);
+  $light-color: round((red($white) * 299) + (green($white) * 587) + (blue($white) * 114) / 1000);
 
   @if abs($color-brightness) < ($light-color / 2) {
-    color: $color-white;
+    color: $white;
   }
 
   @else {
@@ -811,33 +811,47 @@ $shadow-width: 100%) {
 
 @mixin title-4( $color: $gray-50,
                 $size: $font-size--xs,
-                $size--lg: $font-size--md,
-                $weight: 600,
-                $letter: $letter-spacing--sm) {
+                $size--lg: $font-size--sm,
+                $weight: 500,
+                $letter: $letter-spacing--md) {
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    vertical-align: middle;
 
-  @include media('>lg') { font-size: $size--lg; }
+    @include media('>lg') { font-size: $size--lg; }
+}
+
+@mixin title-5( $color: $gray-50,
+                $size: $font-size--xs,
+                $weight: 500,
+                $letter: $letter-spacing--md) {
+
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    vertical-align: middle;
 }
 
 @mixin title-aux($color: $gray-40,
                  $display: inline-block,
                  $family: $font-base,
-                 $weight: 600) {
+                 $size: $font-size--xxs,
+                 $weight: 300) {
 
-  color: $color;
-  display: $display;
-  font-family: $font-base;
-  font-size: $font-size--xxs;
-  font-weight: $weight;
-  letter-spacing: $letter-spacing--xl;
-  text-transform: uppercase;
-  vertical-align: middle;
+    color: $color;
+    display: $display;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter-spacing--lg;
+    text-transform: uppercase;
+    vertical-align: middle;
 }
 
 

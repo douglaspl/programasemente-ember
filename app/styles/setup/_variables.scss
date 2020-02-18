@@ -1,25 +1,26 @@
 :root {
-  --ease-in-quad: cubic-bezier(.55, .085, .68, .53);
-  --ease-in-cubic: cubic-bezier(.550, .055, .675, .19);
-  --ease-in-quart: cubic-bezier(.895, .03, .685, .22);
-  --ease-in-quint: cubic-bezier(.755, .05, .855, .06);
-  --ease-in-expo: cubic-bezier(.95, .05, .795, .035);
-  --ease-in-circ: cubic-bezier(.6, .04, .98, .335);
+    --ease-in-quad: cubic-bezier(.55, .085, .68, .53);
+    --ease-in-cubic: cubic-bezier(.550, .055, .675, .19);
+    --ease-in-quart: cubic-bezier(.895, .03, .685, .22);
+    --ease-in-quint: cubic-bezier(.755, .05, .855, .06);
+    --ease-in-expo: cubic-bezier(.95, .05, .795, .035);
+    --ease-in-circ: cubic-bezier(.6, .04, .98, .335);
 
-  --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
-  --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
-  --ease-out-quart: cubic-bezier(.165, .84, .44, 1);
-  --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
-  --ease-out-expo: cubic-bezier(.19, 1, .22, 1);
-  --ease-out-circ: cubic-bezier(.075, .82, .165, 1);
+    --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+    --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
+    --ease-out-quart: cubic-bezier(.165, .84, .44, 1);
+    --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
+    --ease-out-expo: cubic-bezier(.19, 1, .22, 1);
+    --ease-out-circ: cubic-bezier(.075, .82, .165, 1);
 
-  --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
-  --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
-  --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
-  --ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
-  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
-  --ease-in-out-circ: cubic-bezier(.785, .135, .15, .86);
+    --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
+    --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
+    --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
+    --ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
+    --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+    --ease-in-out-circ: cubic-bezier(.785, .135, .15, .86);
 }
+
 
 //------------------------------------
 //    #AUX
@@ -51,29 +52,20 @@ $sanitize: false;
 //
 // }
 
-// scss-lint:disable ZeroUnit
 
 // Referência para tamanhos: https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862.
-$breakpoints: (xs: 0rem, // Extra small screen / phone
-sm: 37.5rem, // 600px   // Small screen / phone
-md: 56.25rem, // 900px   // Medium screen / tablet
-lg: 75rem, // 1200px  // Large screen / desktop
-xl: 112.5rem, // 1800px  // Extra large screen / wide desktop / TV
+
+// scss-lint:disable ZeroUnit
+// Considerando 16px como base
+$breakpoints: (
+    xs: 0, // Extra small screen / phone
+    sm: 600px, //544px  // Small screen / phone
+    md: 900px, //768px  // Medium screen / tablet
+    lg: 1200px, //992px  // Large screen / desktop
+    xl: 1800px, //1200px // Extra large screen / wide desktop
+    xxl: 2200px // acima de 2000px
 ) !default;
 // scss-lint:enable ZeroUnit
-
-
-
-
-
-//------------------------------------
-//    #BUTTONS
-//------------------------------------
-$btn-pad--sm: .65em 1.75em .6em;
-$btn-pad--md: .65em 1.5em;
-$btn-pad--lg: .75em 1.5em;
-$btn-pad--xl: 1em 2em;
-
 
 
 
@@ -130,6 +122,7 @@ $leaf-shades: (
 
 
 
+
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=14#lum_curve=linear#lock_hex=e5e552#minor_steps_map=0
 $lemon-shades: (
     0:  hsl(54, 60%, 71%),
@@ -148,7 +141,7 @@ $lemon-shades: (
 
 // https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
 $gray-shades: (
-    0:  hsl(148, 3%, 98%), // #f2f9fa
+    0:  hsl(148, 3%, 96%), // #f2f9fa
     5:  hsl(148, 3%, 93%), // #d8e6e3
     10: hsl(148, 3%, 80%), // #c0d2c9
     20: hsl(148, 3%, 65%), // #93aa99
@@ -207,14 +200,17 @@ $gray-60: gray-shades(60);
 $hue: 148;
 
 // grays
-$color-white: hsla(0, 0%, 100%, 1) !default;
-$color-off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
-$color-black: hsla($hue, 20%, 4%, 1) !default;
+$off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
+$off-green: hsl(120, 33%, 97%) !default; //#F5FAF5 // VINCE
+$dark-green: hsl(166, 37%, 18%) !default; // VINCE
+$blue-educacao: hsl(206, 99%, 35%);
+$white: hsla(0, 0%, 100%, 1) !default;
+$black: hsla($hue, 20%, 4%, 1) !default;
 
 // aux
-$color-error: hsla(2, 60%, 45%, 1) !default;
+$color-error: hsla(2, 60%, 50%, 1) !default;
 $color-info: hsla(210, 60%, 36%, 1) !default;
-$color-success: hsla(115, 45%, 25%, 1) !default;
+$color-success: hsla(115, 60%, 40%, 1) !default;
 $color-warning: hsla(38, 87%, 50%, 1) !default;
 
 $colors: ((blue-navy-0, $blue-navy-0),
@@ -262,17 +258,15 @@ $colors: ((blue-navy-0, $blue-navy-0),
 (gray-50, $gray-50),
 (gray-60, $gray-60),
 
-(black, $color-black),
-(white, $color-white),
+(black, $black),
+(white, $white),
 
 (error, $color-error),
 (info, $color-info),
 (success, $color-success),
 (warning, $color-warning));
 
-$header-bg-color: $color-white;
-$body-bg-color: $gray-0;
-$body-bg-color--dark: transparentize(darken($color-off-white, 10%), .2);
+
 
 
 
@@ -303,26 +297,14 @@ $distance--super: 6rem;
 $distance--max: 8rem;
 
 $distances: (
-  (xxs, $distance--xxs),
-  (xs, $distance--xs),
-  (sm, $distance--sm),
-  (md, $distance--md),
-  (lg, $distance--lg),
-  (xl, $distance--xl),
-  (xxl, $distance--xxl)
+    (xxs, $distance--xxs),
+    (xs, $distance--xs),
+    (sm, $distance--sm),
+    (md, $distance--md),
+    (lg, $distance--lg),
+    (xl, $distance--xl),
+    (xxl, $distance--xxl)
 );
-
-
-
-
-
-//------------------------------------
-//    #AVATAR SIZES
-//------------------------------------
-$avatar--sm: 2rem;
-$avatar--md: 3.5rem;
-$avatar--lg: 5rem;
-$avatar--xl: 8rem;
 
 
 
@@ -335,17 +317,43 @@ $avatar--xl: 8rem;
 
 $multiplier: 0.15rem;
 
-$font-size--xxs: 1rem;
-$font-size--xs:  $font-size--xxs + (1 * $multiplier);
-$font-size--sm:  $font-size--xs  + (2 * $multiplier);
-$font-size--md:  $font-size--sm  + (1 * $multiplier);
-$font-size--lg:  $font-size--md  + (1 * $multiplier);
-$font-size--xl:  $font-size--lg  + (1 * $multiplier);
-$font-size--xxl: $font-size--xl  + (2 * $multiplier);
+$font-size--xxs:  1rem;
+$font-size--xxxs: $font-size--xxs - (1 * $multiplier);
+$font-size--xs:   $font-size--xxs + (1 * $multiplier);
+$font-size--sm:   $font-size--xs  + (1 * $multiplier);
+$font-size--md:   $font-size--sm  + (1 * $multiplier);
+$font-size--lg:   $font-size--md  + (1 * $multiplier);
+$font-size--xl:   $font-size--lg  + (1 * $multiplier);
+$font-size--xxl:  $font-size--xl  + (2 * $multiplier);
 
 // Very few uses.
 $font-size--super: 3rem;
 $font-size--max: 3.5rem;
+
+
+
+
+
+//------------------------------------
+//    #GENERAL DEF
+//------------------------------------
+$header-bg-color: $white;
+$body-bg-color: $gray-0;
+
+$font-base: 'Raleway', 'Titillium Web', sans-serif;
+$font-title: filson-soft, Arial, sans-serif;
+
+$header-height: 3rem;
+$header-v-padding: .5rem;
+
+$main-border-color: transparentize($gray-10, .5);
+
+$clickables-bg-color: $lemon-20;
+$clickables-bg-color-dark: $lemon-40;
+$clickables-color: $blue-navy-60;
+
+$checkbox-checked-bg-color: $clickables-bg-color;
+$checkbox-checked-color: $clickables-color;
 
 
 
@@ -413,6 +421,8 @@ $icon-play: "\e910";
 
 
 
+
+
 //------------------------------------
 //    #INPUT
 //------------------------------------
@@ -421,7 +431,7 @@ $input-radio-selected-size: .6em;
 
 $input-check-radio-size: 1.75rem;
 $input-check-radio-distance-between: $distance--lg;
-$input-check-radio-label-margin: $input-check-radio-size + $distance--sm;
+$input-check-radio-label-margin: $input-check-radio-size + $distance--xs;
 
 
 
@@ -431,12 +441,12 @@ $input-check-radio-label-margin: $input-check-radio-size + $distance--sm;
 //    #LETTER SPACING
 //------------------------------------
 $letter-spacing--xxs: -.075em;
-$letter-spacing--xs: -.045em;
-$letter-spacing--sm: -.015em;
-$letter-spacing--md: .015em;
-$letter-spacing--lg: .03em;
-$letter-spacing--xl: .05em;
-$letter-spacing--xxl: .15em;
+$letter-spacing--xs:  -.045em;
+$letter-spacing--sm:  -.015em;
+$letter-spacing--md:   .015em;
+$letter-spacing--lg:   .03em;
+$letter-spacing--xl:   .05em;
+$letter-spacing--xxl:  .15em;
 
 
 
@@ -448,7 +458,7 @@ $letter-spacing--xxl: .15em;
 $h-padding--xs: $distance--sm;
 $h-padding--sm: $distance--md;
 $h-padding--md: $distance--lg;
-$h-padding--lg: $distance--xl;
+$h-padding--lg: $distance--xxxl;
 
 
 
@@ -457,10 +467,72 @@ $h-padding--lg: $distance--xl;
 //------------------------------------
 //    #RADIUS
 //------------------------------------
-$radius: 1px;
-$radius--md: $radius * 2;
+$radius: 2px;
 $radius--lg: $radius * 4;
 $radius--capsule: 99rem;
+
+
+
+
+
+//------------------------------------
+//    #SHADOW DEPTH
+//------------------------------------
+$shadow-1: 0 1px 3px rgba($gray-40, .02),           0 1px 2px rgba($gray-40, .017);
+$shadow-2: 0 3px 6px rgba($gray-40, .06),           0 3px 6px rgba($gray-40, .016);
+$shadow-3: 0 10px 20px rgba($gray-40, .10),         0 6px 6px rgba($gray-40, .016);
+$shadow-4: 0 14px 28px rgba($gray-40, .13),         0 10px 10px rgba($gray-40, .02);
+$shadow-5: 0 19px 38px rgba($gray-40, .13),          0 15px 12px rgba($gray-40, .02);
+
+$shadow-v-u-1: 0 -1px 3px rgba($gray-40, .02),      0 -1px 2px rgba($gray-40, .10);
+$shadow-v-u-2: 0 -3px 6px rgba($gray-40, .06),      0 -3px 6px rgba($gray-40, .14);
+$shadow-v-u-3: 0 -10px 20px rgba($gray-40, .10),    0 -6px 6px rgba($gray-40, .17);
+$shadow-v-u-4: 0 -14px 28px rgba($gray-40, .13),    0 -10px 10px rgba($gray-40, .18);
+$shadow-v-u-5: 0 -19px 38px rgba($gray-40, .13),     0 -15px 12px rgba($gray-40, .2);
+
+$shadow-h-r-1: 1px 0 3px rgba($gray-40, .02),       1px 0 2px rgba($gray-40, .017),   2px 0 6px rgba($gray-40, .015);
+$shadow-h-r-2: 3px 0 6px rgba($gray-40, .06),       3px 0 6px rgba($gray-40, .016),   2px 0 6px rgba($gray-40, .015);
+$shadow-h-r-3: 10px 0 20px rgba($gray-40, .10),     6px 0 6px rgba($gray-40, .016),   2px 0 6px rgba($gray-40, .015);
+$shadow-h-r-4: 14px 0 28px rgba($gray-40, .13),     10px 0 10px rgba($gray-40, .02),  2px 0 6px rgba($gray-40, .015);
+$shadow-h-r-5: 19px 0 38px rgba($gray-40, .13),      15px 0 12px rgba($gray-40, .02),  2px 0 6px rgba($gray-40, .015);
+
+$shadow-h-l-1: -1px 0 3px rgba($gray-40, .02),      -1px 0 2px rgba($gray-40, .017),  -2px 0 6px rgba($gray-40, .015);
+$shadow-h-l-2: -3px 0 6px rgba($gray-40, .06),      -3px 0 6px rgba($gray-40, .016),  -2px 0 6px rgba($gray-40, .015);
+$shadow-h-l-3: -10px 0 20px rgba($gray-40, .10),    -6px 0 6px rgba($gray-40, .016),  -2px 0 6px rgba($gray-40, .015);
+$shadow-h-l-4: -14px 0 28px rgba($gray-40, .13),    -10px 0 10px rgba($gray-40, .02), -2px 0 6px rgba($gray-40, .015);
+$shadow-h-l-5: -19px 0 38px rgba($gray-40, .13),     -15px 0 12px rgba($gray-40, .02), -2px 0 6px rgba($gray-40, .015);
+
+$shadow-i-1: inset 0 1px 3px rgba($gray-40, .02),   inset  0 1px 2px rgba($gray-40, .06);
+$shadow-i-2: inset 0 3px 6px rgba($gray-40, .06),   inset  0 3px 6px rgba($gray-40, .10);
+$shadow-i-3: inset 0 10px 20px rgba($gray-40, .09), inset  0 6px 6px rgba($gray-40, .13);
+$shadow-i-4: inset 0 14px 28px rgba($gray-40, .10), inset  0 10px 10px rgba($gray-40, .15);
+$shadow-i-5: inset 0 19px 38px rgba($gray-40, .12), inset  0 15px 12px rgba($gray-40, .17);
+
+
+
+
+
+//------------------------------------
+//    #AVATAR SIZES
+//------------------------------------
+$avatar--sm: 2rem;
+$avatar--md: 3.5rem;
+$avatar--lg: 5rem;
+$avatar--xl: 8rem;
+$avatar--xxl-wide-h: 9rem;
+$avatar--xxl-wide-w: 16rem;
+
+
+
+
+
+//------------------------------------
+//    #BUTTONS
+//------------------------------------
+$btn-pad--sm: .65em 1.75em .6em;
+$btn-pad--md: .65em 1.5em;
+$btn-pad--lg: .75em 1.5em;
+$btn-pad--xl: 1em 2em;
 
 
 
@@ -471,67 +543,15 @@ $radius--capsule: 99rem;
 //------------------------------------
 $scrollbar-width: 8px;
 
-$scrollbar-handle-bg: transparentize($color-white, .2);
-$scrollbar-handle-bg-inactive: transparentize($color-black, .6);
+$scrollbar-handle-bg: transparentize($white, .2);
+$scrollbar-handle-bg-inactive: transparentize($black, .6);
 $scrollbar-handle-radius: 6px;
-$scrollbar-handle-shadow-color: transparentize($color-black, .5);
+$scrollbar-handle-shadow-color: transparentize($black, .5);
 $scrollbar-handle-shadow: inset 0 0 2px $scrollbar-handle-shadow-color;
 
 $scrollbar-track-radius: 6px;
-$scrollbar-track-shadow-color: transparentize($color-black, .7);
+$scrollbar-track-shadow-color: transparentize($black, .7);
 $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
-
-
-
-
-
-//------------------------------------
-//    #SHADOW DEPTH
-//------------------------------------
-$shadow-1: 0 1px 3px rgba($color-black, .02), 0 1px 2px rgba($color-black, .17), 0 0 2px rgba($color-black, .12);
-$shadow-2: 0 3px 6px rgba($color-black, .06), 0 3px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-3: 0 10px 20px rgba($color-black, .09), 0 6px 6px rgba($color-black, .16), 0 0 2px rgba($color-black, .12);
-$shadow-4: 0 14px 28px rgba($color-black, .15), 0 10px 10px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
-$shadow-5: 0 19px 38px rgba($color-black, .2), 0 15px 12px rgba($color-black, .2), 0 0 2px rgba($color-black, .12);
-
-$shadow-h-r-1: 1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-2: 3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-3: 10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-4: 14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
-$shadow-h-r-5: 19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), 2px 0 6px rgba($color-black, .2);
-
-$shadow-h-l-1: -1px 0 3px rgba($color-black, .02), 1px 0 2px rgba($color-black, .17), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-2: -3px 0 6px rgba($color-black, .06), 3px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-3: -10px 0 20px rgba($color-black, .09), 06px 0 6px rgba($color-black, .16), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-4: -14px 0 28px rgba($color-black, .15), 10px 0 10px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
-$shadow-h-l-5: -19px 0 38px rgba($color-black, .2), 15px 0 12px rgba($color-black, .2), -2px 0 6px rgba($color-black, .2);
-
-$shadow-i-1: inset 0 1px 3px rgba($color-black, .02), inset 0 1px 2px rgba($color-black, .17);
-$shadow-i-2: inset 0 3px 6px rgba($color-black, .06), inset 0 3px 6px rgba($color-black, .16);
-$shadow-i-3: inset 0 10px 20px rgba($color-black, .09), inset 0 6px 6px rgba($color-black, .16);
-$shadow-i-4: inset 0 14px 28px rgba($color-black, .15), inset 0 10px 10px rgba($color-black, .15);
-$shadow-i-5: inset 0 19px 38px rgba($color-black, .2), inset 0 15px 12px rgba($color-black, .15);
-// -0.05, -0.02
-
-
-
-
-
-//------------------------------------
-//    #SHARED
-//------------------------------------
-$header-height: 3rem;
-$header-v-padding: .5rem;
-
-
-
-
-
-//------------------------------------
-//    #TYPE
-//------------------------------------
-$font-title: filson-soft, Arial, sans-serif;
-$font-base: 'Titillium Web', sans-serif; //'Raleway',
 
 
 
@@ -548,20 +568,11 @@ $timeline-main-steps-background: $timeline-color;
 $timeline-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
 $timeline-translation: $timeline-gap + $timeline-tip-size;
 
-$timeline-mark-bg: $color-white;
+$timeline-mark-bg: $white;
 
-$timeline-date-bg-color: $color-white;
+$timeline-date-bg-color: $white;
 $timeline-status-size: 3rem;
 
-
-
-
-
-//------------------------------------
-//    #TYPE
-//------------------------------------
-$font-title: filson-soft, Arial, sans-serif;
-$font-base: 'Titillium Web', sans-serif; //'Raleway',
 
 
 
@@ -570,7 +581,8 @@ $font-base: 'Titillium Web', sans-serif; //'Raleway',
 //------------------------------------
 //    #Z-INDEX
 //------------------------------------
-$z-index: ('loader': 800,
+$z-index: (
+'loader': 800,
 'alert': 750,
 'modal': 700,
 'menu': 600,
@@ -580,4 +592,5 @@ $z-index: ('loader': 800,
 'help': 325,
 'header': 300,
 'body': 200,
-'main': 100);
+'main': 100
+);

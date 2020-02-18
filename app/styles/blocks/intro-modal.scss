@@ -10,9 +10,9 @@
     right: 0;
     top: 0;
     z-index: 1983;
-    
+
     &__container {
-        background-color: $color-white;
+        background-color: $white;
         border-radius: $radius--sm;
         box-shadow: 0 4px 32px 0px rgba(0, 0, 0, 0.8);
         flex: 0 0 60vw;
@@ -42,9 +42,9 @@
     // &__check {
     //     align-items: center;
     //     display: flex;
-    //     flex-direction: row; 
+    //     flex-direction: row;
     //     margin-top: 16px;
-        
+
     //     label {
     //         margin-bottom: 0;
     //     }
@@ -59,7 +59,7 @@
     .video-wrapper {
         padding-top: 0;
     }
-    
+
     // &__overlayer {
 
     // }

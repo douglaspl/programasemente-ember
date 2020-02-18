@@ -1,7 +1,7 @@
 .progress {
     $this: &;
 
-    background-color: $color-white;
+    background-color: $white;
     border-radius: $radius;
     box-shadow: $shadow-1;
     display: block;
@@ -25,7 +25,7 @@
         background-color: $color-success;
         border-radius: inherit;
         bottom: 3px;
-        box-shadow: $shadow-2, inset 0 2px 3px transparentize($color-white, .75);
+        box-shadow: $shadow-2, inset 0 2px 3px transparentize($white, .75);
         display: block;
         height: 100%;
     }

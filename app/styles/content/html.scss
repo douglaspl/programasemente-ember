@@ -66,7 +66,7 @@ $html-width--lg: 50rem;
   }
 
   img:not([class*='cover']) {
-    border-radius: $radius--md;
+    border-radius: $radius;
     display: block;
     margin: 0 auto $html-v-gutter;
     max-width: initial;
@@ -109,7 +109,7 @@ $html-width--lg: 50rem;
 
     tr:nth-child(odd) {
       td {
-        background-color: $color-white;
+        background-color: $white;
       }
     }
 
@@ -123,7 +123,7 @@ $html-width--lg: 50rem;
 
       td {
         background-color: $gray-50;
-        color: $color-white;
+        color: $white;
       }
 
     }
@@ -213,7 +213,7 @@ $html-width--lg: 50rem;
     background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy-50 $cave-size-smooth);
     border-radius: $radius;
     box-shadow: $shadow-2;
-    color: $color-white;
+    color: $white;
     margin-bottom: $distance--xxl;
     margin-top: $distance--xxl + ($ball-shift * 2);
     padding: ($cave-size * 0.65) 1.25em 1.5em;
@@ -232,7 +232,7 @@ $html-width--lg: 50rem;
       border-radius: 50%;
       box-shadow: $shadow-3;
       display: flex;
-      color: $color-white;
+      color: $white;
       color: $color-warning;
       content: $icon-award;
       font-size: ($ball-size / 2);

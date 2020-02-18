@@ -63,7 +63,7 @@ input {
   font-family: inherit;
 
   &[type='text'] {
-    border-radius: $radius--md;
+    border-radius: $radius;
   }
 
   &[type*='radio'],
@@ -76,7 +76,7 @@ input {
 select {
   @include inputs;
 
-  border-radius: $radius--md;
+  border-radius: $radius;
   box-shadow: $form-shadow;
   cursor: pointer;
   padding-left: $distance--md;

@@ -14,17 +14,17 @@
     &--bordered {
         background-color: $gray-0;
         border: 1px solid $gray-5;
-        border-radius: $radius--md;
+        border-radius: $radius;
         padding: $distance--md;
         min-width: 8rem;
     }
 
     &--light {
-        background-color: $color-white;
+        background-color: $white;
     }
 
     &--success {
-        background-color: $color-white;
+        background-color: $white;
         border: 2px solid transparentize($color-success, .5);
         min-width: 8rem;
     }

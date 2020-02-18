@@ -3,7 +3,7 @@
 
     align-items: center;
     background-color: $header-bg-color;
-    box-shadow: $shadow-1;
+    border-bottom: 1px solid $main-border-color;
     display: flex;
     flex-direction: row;
     min-height: $header-height;

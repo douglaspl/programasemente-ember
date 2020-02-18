@@ -7,7 +7,7 @@
 
   &::before {
     background-color: transparentize($gray-0, .25);
-    border-radius: $radius--md;
+    border-radius: $radius;
     bottom: 0;
     content: '';
     left: 0;
@@ -32,7 +32,7 @@
     align-items: center;
     background-color: $bg-light;
     background-image: linear-gradient(to top, $bg-dark, $bg-light);
-    border-radius: $radius--md;
+    border-radius: $radius;
     box-shadow: $shadow-5;
     display: flex;
     flex-direction: row;

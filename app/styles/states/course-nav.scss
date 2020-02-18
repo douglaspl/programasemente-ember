@@ -12,7 +12,7 @@
     $course-nav-lateral-pad: $distance--sm;
 
     background-color: $course-nav-bg-color;
-    color: $color-white;
+    color: $white;
     display: flex;
     flex-direction: column;
     height: 64px;
@@ -34,7 +34,7 @@
     }
 
     &::after {
-        background-color: $color-white; // same background as .course__content
+        background-color: $white; // same background as .course__content
         content: '';
         display: block;
         flex: 1;
@@ -86,7 +86,7 @@
     }
 
     &__menu-toggle {
-        background-color: $color-black;
+        background-color: $black;
         border-radius: 50%;
         color: inherit;
         flex: 0 0 auto;
@@ -234,7 +234,7 @@
         }
 
         &--question {
-            background-color: transparentize($color-white, .9);
+            background-color: transparentize($white, .9);
             border-bottom: 1px solid $course-nav-bg-color;
             padding-bottom: $distance--xs;
             padding-top: $distance--xs;
@@ -263,7 +263,7 @@
             position: relative;
 
             &::after {
-                background-color: $color-white;
+                background-color: $white;
                 background-color: $lemon-10;
                 content: '';
                 height: 100%;
@@ -289,8 +289,8 @@
 
     &__link {
         align-items: center;
-        background-color: $color-black;
-        border-radius: $radius--md;
+        background-color: $black;
+        border-radius: $radius;
         pointer-events: none;
         display: flex;
         flex-direction: column;
@@ -341,7 +341,7 @@
     }
 
     &__class {
-        background-color: transparentize($color-white, .9);
+        background-color: transparentize($white, .9);
         margin: 0;
         padding: $distance--lg $course-nav-lateral-pad;
         text-align: center;

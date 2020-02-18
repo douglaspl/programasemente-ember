@@ -35,7 +35,7 @@
 
     &__label {
         background-color: $form-background-color;
-        border-radius: $radius--md;
+        border-radius: $radius;
         box-shadow: $shadow-i-1;
         cursor: pointer;
         display: block;
@@ -93,7 +93,7 @@
 
     &__head {
         background-color: $color-error;
-        border-radius: $radius--md;
+        border-radius: $radius;
         box-shadow: $shadow-2;
         height: $switch-head;
         position: absolute;
