@@ -105,12 +105,15 @@
 
   // MODIFIERS
   &--icon {
+    $size: 3rem;
+
     align-items: center;
-    align-self: center;
     border-radius: $radius;
     display: inline-flex;
+    height: $size;
     justify-content: center;
-    padding: .572em;
+    padding: 0;
+    width: $size;
 
     &::before {
       align-items: center;

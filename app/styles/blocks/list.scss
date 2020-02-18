@@ -28,8 +28,7 @@
       @include media('>md') {
         flex-direction: row;
 
-        > *:nth-child(2) {
-          margin-left: $distance--md;
+        > *:nth-child(1) {
           margin-right: auto;
         }
 
@@ -74,13 +73,15 @@
 
     #{$this}__name {
       flex-shrink: 1;
-      margin-bottom: $distance--sm;
+      margin-right: auto;
+      max-width: 60%;
       text-align: left;
       text-transform: none;
       white-space: normal;
 
       @include media('>md') {
         margin-bottom: 0;
+        max-width: none;
       }
 
     }

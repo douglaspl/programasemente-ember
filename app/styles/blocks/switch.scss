@@ -24,6 +24,7 @@
     $switch-width: 6rem;
 
     display: inline-block;
+    flex-shrink: 0;
     position: relative;
     text-align: left;
     user-select: none;
@@ -36,7 +37,7 @@
     &__label {
         background-color: $form-background-color;
         border-radius: $radius;
-        box-shadow: $shadow-i-1;
+        box-shadow: inset $form-shadow;
         cursor: pointer;
         display: block;
         height: $switch-height;
@@ -45,9 +46,8 @@
         transform: translate3d(0, 0, 0); // Evita problema de renderização
 
         [disabled] + & {
-            background-color: $gray-5;
+            background-color: $gray-30;
             cursor: not-allowed;
-            opacity: .85;
         }
 
     }
@@ -58,10 +58,10 @@
         position: absolute;
         text-transform: uppercase;
         top: 0;
-        transform: translateX(-200%);
+        transform: translateX(-75%);
 
-        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-        transition: 300ms var(--ease-in-out-quad);
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
 
         width: 100%;
     }
@@ -70,13 +70,13 @@
     &__inner::after {
         box-sizing: border-box;
         color: $gray-50;
-        font-size: $font-size--xxs;
+        font-size: .85em;
         font-weight: bold;
         padding: 0;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 190%;
+        width: 110%;
     }
 
     &__inner::before {
@@ -97,7 +97,7 @@
         box-shadow: $shadow-2;
         height: $switch-head;
         position: absolute;
-        right: 5px;
+        right: 4px;
         top: 50%;
 
         transform: translate(-550%, -50%); // IE fallback
