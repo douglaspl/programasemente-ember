@@ -31,4 +31,9 @@
     width: $tree-width * $multiplier;
   }
 
+
+  img {
+    transform: translateX(-2px);
+  }
+
 }

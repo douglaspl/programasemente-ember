@@ -1,14 +1,3 @@
-@mixin icon-placeholder {
-  box-shadow: 0 0 5px $black;
-  color: $white;
-  filter: blur(5px);
-  font-size: 800px;
-  left: 0;
-  opacity: .1;
-  position: fixed;
-  top: 0;
-}
-
 .main {
   $this: &;
   $container-diff: 6rem;
@@ -20,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   min-height: 100%;
-  padding: $distance--xs $h-padding--xs;
+  padding: 0 $h-padding--xs $distance--xs;
   position: relative;
   width: 100%;
 
@@ -42,15 +31,11 @@
     $temp: map-get($breakpoints, lg);
 
     max-width: calc(#{$temp} + #{$container-diff});
-    padding: $distance--xxl $h-padding--lg $distance--md;
+    padding: $distance--xxl $h-padding--lg $distance--xxl;
   }
 
   &--highlight {
-    display: flex;
-    flex-direction: row;
-    height: calc(100vh - (3 * #{$header-height}));
-    max-width: none;
-    padding: 0;
+    padding-top: 0;
   }
 
 
@@ -87,33 +72,34 @@
   }
 
   &__header {
-    margin: 0 (-$h-padding--xs) $distance--sm;
-    padding: $distance--md $distance--xs $distance--sm;
+    margin: 0 (-$h-padding--xs) $distance--lg;
+    padding: $distance--sm $distance--xs 0;
 
     @include media('>sm') {
       margin-left: (-$h-padding--sm);
       margin-right: (-$h-padding--sm);
       padding-left: $h-padding--sm;
       padding-right: $h-padding--sm;
-    }
+      padding-top: 0;
+  }
 
-    @include media('>md') {
+  @include media('>md') {
       margin-left: (-$h-padding--md);
       margin-right: (-$h-padding--md);
       padding-left: $h-padding--md;
       padding-right: $h-padding--md;
-    }
+  }
 
-    @include media('>lg') {
+  @include media('>lg') {
       margin-left: (-$h-padding--lg);
       margin-right: (-$h-padding--lg);
       padding-left: $h-padding--lg;
       padding-right: $h-padding--lg;
-    }
+  }
 
-    @include media('>xl') {
+  @include media('>xl') {
       margin-bottom: $distance--xxl;
-    }
+  }
 
     &--has-side-info {
       display: flex;
@@ -222,32 +208,6 @@
 
     > * {
        margin-bottom: $distance--xxl;
-    }
-
-  }
-
-
-  &__icon-1 {
-    display: none;
-
-    @include media('>lg') {
-      @include icon-placeholder;
-
-      display: block;
-      transform: rotate(-30deg);
-    }
-  }
-
-  &__icon-2 {
-    display: none;
-
-    @include media('>lg') {
-      @include icon-placeholder;
-
-      display: block;
-      left: 50%;
-      top: 50%;
-      transform: rotate(30deg);
     }
 
   }

@@ -78,7 +78,6 @@
   background-color: $bg-light;
   background-image: linear-gradient(to top, $bg-dark, $bg-light);
   border-radius: $radius;
-  box-shadow: 0 3px 6px rgba($bg-light, .11), 0 3px 6px rgba($bg-light, .21);
   color: $clickables-color;
   cursor: pointer;
   flex: 0 0 auto;
@@ -250,7 +249,6 @@
   &--text {
     background-color: transparent;
     background-image: none;
-    box-shadow: none;
     color: $gray-60;
     opacity: .75;
     padding: 0;
@@ -261,7 +259,6 @@
     &:hover {
       background-color: transparent;
       background-image: none;
-      box-shadow: none;
       opacity: 1;
     }
 
@@ -270,7 +267,6 @@
   &--text-inverted {
     background-color: transparent;
     background-image: none;
-    box-shadow: none;
     color: $white;
     padding: 0;
     text-shadow: none;
@@ -278,7 +274,6 @@
     &:hover {
       background-color: transparent;
       background-image: none;
-      box-shadow: none;
       opacity: 1;
       transform: translateY(0);
     }

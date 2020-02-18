@@ -367,7 +367,6 @@
 //    #INPUTS
 //------------------------------------
 @mixin inputs {
-  // appearance: none;
   background-color: $form-background-color;
   border: 0 solid transparent;
   border-radius: $radius;
@@ -714,7 +713,7 @@ $shadow-width: 100%) {
                 $size: $font-size--lg,
                 $size--sm: $font-size--xl,
                 $size--lg: $font-size--xxl,
-                $weight: 900,
+                $weight: 800,
                 $letter: $letter-spacing--sm) {
 
   color: $color;
@@ -722,12 +721,12 @@ $shadow-width: 100%) {
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $letter;
-  line-height: 1.25;
+  line-height: 1.05;
   vertical-align: middle;
 
   @include media('>sm') { font-size: $size; }
   @include media('>md') { font-size: $size--sm; }
-  @include media('>lg') { font-size: $size--lg; }
+  @include media('>lg') { font-size: $size--lg; font-size: calc(#{$size--lg} + .5vw); }
 }
 
 @mixin title-2( $case: uppercase,

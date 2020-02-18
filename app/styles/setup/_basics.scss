@@ -1,3 +1,12 @@
+@if ($debugger == true) {
+  *,
+  *::before,
+  *::after {
+      background-color: rgba(0, 0, 0, .15);
+      outline: 1px solid $color-error;
+  }
+}
+
 * {
   box-sizing: border-box;
   line-height: 1;
@@ -12,7 +21,7 @@ body {
   font-family: $font-base;
   font-size: 14px;
   font-variant-numeric: lining-nums;
-  font-weight: 300;
+  font-weight: normal;
   line-height: 1;
   min-height: 100%;
   text-align: left;
@@ -76,7 +85,6 @@ input {
 select {
   @include inputs;
 
-  border-radius: $radius;
   box-shadow: $form-shadow;
   cursor: pointer;
   padding-left: $distance--md;
@@ -88,6 +96,10 @@ select {
     display: none;
   }
 
+}
+
+strong {
+  font-weight: bolder;
 }
 
 textarea {
@@ -104,10 +116,12 @@ table {
 }
 
 th {
-  font-weight: normal;
+  font-size: $font-size--xxxs;
+  font-weight: bold;
+  letter-spacing: $letter-spacing--lg;
   padding: 0 $distance--sm $distance--xs;
-  text-transform: uppercase;
   vertical-align: middle;
+  text-transform: uppercase;
   white-space: normal;
   word-wrap: normal;
 }
@@ -125,4 +139,32 @@ td {
 
 [data-ember-action] {
   cursor: pointer;
+}
+
+[contenteditable] {
+  padding: $distance--xs;
+  position: relative;
+  min-width: 5rem;
+  outline: 0 solid transparent;
+
+  &::before {
+      background-color: transparentize($green-30, .9);
+      border-bottom: 4px dotted $green-30;
+      content: '';
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+      transition: 200ms var(--ease-in-out-quad);
+      visibility: visible;
+      width: 100%;
+  }
+
+}
+
+[contenteditable='true']::before {
+  opacity: 1;
+  visibility: visible;
 }

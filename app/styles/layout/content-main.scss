@@ -3,8 +3,8 @@
 // Seu nome acabou sendo herdado pelo id da tag.
 .content-main {
     @include overflow-y;
-    // height: calc(100vh - #{$header-height} - (2 * #{$header-v-padding}));
-    height: calc(100vh - #{$header-height});
+
+    height: calc(100vh - #{$header-height} - (2 * #{$header-v-padding}));
     z-index: 1;
 
     &--in-course {

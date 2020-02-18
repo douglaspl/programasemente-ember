@@ -91,13 +91,14 @@
     }
 
     &__link {
-        @include title-aux($color: $gray-60);
+        @include title-aux($size: .85rem);
 
-        align-items: center;
         border-radius: $radius;
         display: flex;
+        font-weight: 700;
+        letter-spacing: $letter-spacing--xl;
         opacity: .65;
-        padding: $distance--sm $distance--md;
+        padding: $distance--md $distance--lg;
         position: relative;
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
         transition: 300ms var(--ease-out-quad);
