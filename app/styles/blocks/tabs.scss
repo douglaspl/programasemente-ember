@@ -1,6 +1,7 @@
 .tabs {
     $this: &;
 
+    align-items: flex-end;
     border-bottom: 1px solid $gray-5;
     display: flex;
     flex-direction: row;
@@ -9,7 +10,7 @@
     font-weight: bolder;
 
     &__tab {
-        padding: 1em;
+        padding: $font-size--xs;
 
         > * { opacity: .5; }
 
@@ -20,6 +21,10 @@
 
         }
 
+    }
+
+    &__not-tab {
+        margin-bottom: $font-size--xs;
     }
 
 }

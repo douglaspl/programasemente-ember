@@ -91,6 +91,7 @@
   &--striped {
 
     > li {
+      align-items: center;
       padding: $distance--md;
 
       &:nth-child(odd) {

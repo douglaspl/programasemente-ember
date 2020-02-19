@@ -34,6 +34,14 @@ $i: 5;
 
     }
 
+
+    [flex = '#{$i}--lg'] {
+        $perc: $i+'%';
+
+        flex: 0 1 calc(#{$perc} + #{$distance--lg});
+
+    }
+
     $i: $i + 5;
 
 }
