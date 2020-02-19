@@ -305,12 +305,12 @@
           {{#if (equalstr secao.conteudo.type 'html')}}
 
           {{#if (equalstr secao.conteudo.percent '100')}}
-          <li class="data data--bordered data--success data--short">
+          <li class="data data--shadowed data--success data--short">
             <span class="icon-check icon--success icon--lg"></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>
           {{else}}
-          <li class="data data--bordered data--light data--short">
+          <li class="data data--shadowed data--light data--short">
             <span class="icon-minus icon--lg"></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>
@@ -319,12 +319,12 @@
           {{else if (equalstr secao.conteudo.type 'video')}}
 
           {{#if (equalstr secao.conteudo.percent '100')}}
-          <li class="data data--bordered data--success data--short">
+          <li class="data data--shadowed data--success data--short">
             <span class="icon-check icon--success icon--lg"></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>
           {{else}}
-          <li class="data data--bordered data--light data--short">
+          <li class="data data--shadowed data--light data--short">
             <span class="icon-minus icon--lg"></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>
@@ -333,13 +333,13 @@
           {{else}}
 
           {{#if secao.conteudo.respondidas}}
-          <li class="data data--bordered data--success data--short">
+          <li class="data data--shadowed data--success data--short">
             <span class="data__value">{{format-decimal secao.conteudo.aproveitamento}}<span
                 class="small">%</span></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>
           {{else}}
-          <li class="data data--bordered data--light data--short">
+          <li class="data data--shadowed data--light data--short">
             <span class="icon-minus icon--lg"></span>
             <span class="data__label">{{secao.nome}}</span>
           </li>

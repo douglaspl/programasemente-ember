@@ -292,14 +292,14 @@
       <span>{{selected_pessoa.pessoa.email}}</span>
     </div>
 
-    <div class="data data--bordered">
+    <div class="data data--shadowed">
       <span class="data__value">
         {{selected_pessoa.cadastrado}}
       </span>
       <span class="data__label">cadastrado em</span>
     </div>
 
-    <div class="data data--bordered">
+    <div class="data data--shadowed">
       <span class="data__value">{{selected_pessoa.pessoa.nracessos}}</span>
       <span class="data__label">acessos</span>
     </div>
@@ -338,32 +338,32 @@
             {{#each atividade.secoes as |secao|}}
             {{#if (equalstr secao.conteudo.type 'html')}}
             {{#if (equalstr secao.conteudo.percent '100')}}
-            <li class="data data--bordered data--success data--short">
+            <li class="data data--shadowed data--success data--short">
               <span class="icon-check icon--success"></span>
             </li>
             {{else}}
-            <li class="data data--bordered data--light data--short">
+            <li class="data data--shadowed data--light data--short">
               <span class="icon-minus"></span>
             </li>
             {{/if}}
             {{else if (equalstr secao.conteudo.type 'video')}}
             {{#if (equalstr secao.conteudo.percent '100')}}
-            <li class="data data--bordered data--success data--short">
+            <li class="data data--shadowed data--success data--short">
               <span class="icon-check icon--success"></span>
             </li>
             {{else}}
-            <li class="data data--bordered data--light data--short">
+            <li class="data data--shadowed data--light data--short">
               <span class="icon-minus"></span>
             </li>
             {{/if}}
             {{else}}
             {{#if secao.conteudo.respondidas}}
-            <li class="data data--bordered data--success data--short">
+            <li class="data data--shadowed data--success data--short">
               <span class="data__value">{{secao.conteudo.aproveitamento}}<span class="small">%</span></span>
               <span class="data__label">aproveitamento</span>
             </li>
             {{else}}
-            <li class="data data--bordered data--light data--short">
+            <li class="data data--shadowed data--light data--short">
               <span class="icon-minus"></span>
             </li>
             {{/if}}

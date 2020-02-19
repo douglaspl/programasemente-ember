@@ -11,6 +11,13 @@
         flex-direction: row;
     }
 
+    &--shadowed {
+        border-radius: $radius;
+        box-shadow: $shadow-2;
+        padding: $distance--md;
+        min-width: 8rem;
+    }
+
     &--bordered {
         background-color: $gray-0;
         border: 1px solid $gray-5;

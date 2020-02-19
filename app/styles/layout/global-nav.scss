@@ -135,10 +135,11 @@
 
 
         @include media('>sm') {
+            margin-right: -14px; // deslocamento do chevron
 
-            [class*='is-show'] ~ & #{$this}__avatar {
-                transform: scale(2);
-            }
+            // [class*='is-show'] ~ & #{$this}__avatar {
+            //     transform: scale(2);
+            // }
 
         }
 

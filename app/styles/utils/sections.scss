@@ -1,0 +1,40 @@
+.sections {
+    &__section {
+        margin-bottom: $distance--lg;
+        position: relative;
+        z-index: 1;
+
+        &:last-child { margin-bottom: 0; }
+
+        > * {
+            margin-bottom: $distance--lg;
+            &:last-child { margin-bottom: 0; }
+        }
+
+        @include media('>md') {
+            margin-bottom: $distance--xxxl;
+            &:last-child { margin-bottom: 0; }
+
+            > * {
+                margin-bottom: $distance--xxxl;
+                &:last-child { margin-bottom: 0; }
+            }
+
+        }
+
+    }
+
+    &__subsection {
+
+        > * {
+           margin-bottom: $distance--md;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+        }
+
+    }
+
+}

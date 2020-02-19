@@ -103,7 +103,7 @@
       <div class="modal__body">
         <!-- new institution step 1 -->
         <div class="institutions__step-content {{if goToStepTwo '' 'institutions__step-content--is-show'}}">
-          <section class="main__subsection">
+          <section class="sections__subsection">
             <h4 class="main__subsubtitle">Básicas</h4>
             <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
               <div class="form-group form-group--vertical form-group--aired-h" flex="20">
@@ -140,7 +140,7 @@
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
           </section>
-          <section class="main__subsection">
+          <section class="sections__subsection">
             <h4 class="main__subsubtitle">Número de usuários</h4>
             <div class="institutions__config">
               <div class="form-group form-group--vertical" flex="20">
@@ -161,7 +161,7 @@
               </div>
             </div>
           </section>
-          <section class="main__subsection">
+          <section class="sections__subsection">
             <h4 class="main__subsubtitle">Recursos extras</h4>
             <div class="checkbox m-bottom--md">
               <input class="checkbox__input" id="new_inst_changePassword" type="checkbox"
@@ -173,7 +173,7 @@
               <label class="checkbox__label" for="new_inst_library">Biblioteca de materiais</label>
             </div>
           </section>
-          <section class="main__subsection">
+          <section class="sections__subsection">
             <h4 class="main__subsubtitle">Sistemas</h4>
             <div class="checkbox m-bottom--md">
               <input class="checkbox__input" id="new_sis_1" type="checkbox">
@@ -251,7 +251,7 @@
     </button>
     {{/if}}
   </div>
-  <section class="main__subsection">
+  <section class="sections__subsection">
     <h3 class="main__subsubtitle">Básicas</h3>
     <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
       <div class="form-group form-group--vertical form-group--aired-h" flex="20">
@@ -289,7 +289,7 @@
     </div>
     --}}
   </section>
-  <section class="main__subsection">
+  <section class="sections__subsection">
     <h3 class="main__subsubtitle">Número de usuários</h3>
     <div class="institutions__config">
 
@@ -344,7 +344,7 @@
           Salvar alterações
         </button>
       </div>
-      <section class="main__subsection">
+      <section class="sections__subsection">
         <ul class="list list--img-name-action list--striped">
           {{#each modulos_list as |mod|}}
           <li>
@@ -377,7 +377,7 @@
         <button class="btn btn--green-ghost btn--xs m-left--md" {{action 'newArea'}}>
           <span class="btn__icon icon-plus"></span>Nova Turma</button>
       </div>
-      <section class="main__subsection">
+      <section class="sections__subsection">
         <ul class="institutions__areas list list--striped">
 
 
@@ -433,7 +433,7 @@
 
     </div>
   </section>
-  <section class="main__subsection">
+  <section class="sections__subsection">
     <h3 class="main__subsubtitle">Recursos extras</h3>
     <div class="checkbox m-bottom--md">
       <input class="checkbox__input" id="inst_changePassword" type="checkbox"
@@ -447,7 +447,7 @@
       <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
     </div>
   </section>
-  <section class="main__subsection">
+  <section class="sections__subsection">
         <h3 class="main__subsubtitle">Sistemas</h3>
         <div class="checkbox m-bottom--md">
           <input class="checkbox__input" id="sis_1" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temMedio}}
@@ -477,7 +477,7 @@
       Salvar alterações
     </button>
   </div>
-  <section class="main__subsection">
+  <section class="sections__subsection">
     <ul class="list list--img-name-action list--striped">
       {{#each modulos_list as |mod|}}
       <li>
@@ -546,7 +546,7 @@
       </select>
     </div>
   </div>
-  <section class="main__subsection">
+  <section class="sections__subsection">
     <ul class="institutions__areas list">
       <li id="newArea" style="display:none;">
         <div class="form-group form-group--select-wrapper m-right--md">
