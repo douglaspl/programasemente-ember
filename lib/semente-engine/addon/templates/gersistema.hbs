@@ -240,6 +240,13 @@
           <button class="j-areaFocus tabs__not-tab btn btn--xxs m-left--auto m-right--md" {{action 'newArea'}}>
             <span class="btn__icon icon-plus"></span>Nova Turma</button>
         {{/if}}
+
+        {{#if selectedInstTabs.users}}
+          <button class="tabs__not-tab btn btn--xxs m-left--auto" {{action 'userModal'}}>
+            <span class="btn__icon icon-plus"></span>Novo Usuário</button>
+          <button class="tabs__not-tab btn btn--xxs m-left--md m-right--md" {{action 'cadastroLote'}}>
+            <span class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
+        {{/if}}
       </div>
     <!-- selected institution tab information -->
     {{#if selectedInstTabs.informations}}
