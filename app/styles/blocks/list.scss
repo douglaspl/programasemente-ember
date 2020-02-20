@@ -95,7 +95,7 @@
       padding: $distance--md;
 
       &:nth-child(odd) {
-        background-color: $gray-0;
+        background-color: $stripe-bg-color;
         border-radius: $radius;
       }
 

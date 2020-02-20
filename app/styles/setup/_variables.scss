@@ -355,7 +355,7 @@ $clickables-color: $blue-navy-60;
 $checkbox-checked-bg-color: $clickables-bg-color;
 $checkbox-checked-color: $clickables-color;
 
-
+$stripe-bg-color: transparentize($gray-0, .4);
 
 
 
@@ -363,7 +363,7 @@ $checkbox-checked-color: $clickables-color;
 //    #FORM
 //------------------------------------
 $form-shadow: 0 2px 0 rgba($gray-60, .12);
-$form-background-color: $gray-0;
+$form-background-color: $gray-5;
 
 
 

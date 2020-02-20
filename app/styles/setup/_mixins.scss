@@ -107,7 +107,7 @@
     &::before {
       background-color: $gray-0;
       border-radius: $radius;
-      box-shadow: $shadow-1;
+      box-shadow: $form-shadow;
       content: '';
       cursor: pointer;
       display: inline-block;

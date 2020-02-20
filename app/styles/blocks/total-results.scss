@@ -4,15 +4,14 @@
     @include title-4;
 
     margin-bottom: $distance--xl;
-    margin-top: $distance--xl;
     position: relative;
-    text-transform: uppercase;
     text-align: center;
     width: 100%;
 
     &__results {
+        @include title-aux;
+
         background-color: $gray-5;
-        color: $gray-20;
         padding: $distance--xs $distance--md;
         position: relative;
         z-index: 2;

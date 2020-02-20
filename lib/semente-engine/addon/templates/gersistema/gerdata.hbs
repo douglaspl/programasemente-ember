@@ -1,20 +1,17 @@
-<section class="main__section">
+<section class="sections__section">
 
   <!-- ---------------------------------------- administration users header -->
   <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
-    <h2 class="main__subtitle">Usuários</h2>
     <div class="institutions__btn-group">
-      <button class="btn btn--xxs btn--green-ghost m-left--md" {{action 'userModal'}}><span
-          class="btn__icon icon-plus"></span>Novo
-        Usuário</button>
-      <button class="btn btn--xxs btn--green-ghost m-left--md" {{action 'cadastroLote'}}><span
+      <button class="btn btn--xs btn--secondary" {{action 'userModal'}}><span
+          class="btn__icon icon-plus"></span>Novo Usuário</button>
+      <button class="btn btn--xs btn--secondary" {{action 'cadastroLote'}}><span
           class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
-     
     </div>
   </div>
 
   <!-- ------------------------------------------ administration users body -->
-  <section class="report__section report-people" id="report-people-gersistema" style="display: block;">
+  <section class="sections__subsection report__section report-people" id="report-people-gersistema" style="display: block;">
 
     <div class="filter-list">
       <div class="filter-list__filter">
@@ -84,156 +81,171 @@
     </div>
 
     <!-- users list pagination -->
-    <div class="report__pagination">
-      <div class="form-group form-group--select-wrapper">
+    <div class="d-flex d-flex-align--center d-flex-justify--between m-bottom--lg">
+      <div class="form-group form-group--vertical">
         <label class="form-group__label" for="amount">Exibir</label>
-        <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
-          {{action 'setExibir' on='change'}}>
-          <option value="5" selected={{paginationSelected.p5}}>5</option>
-          <option value="10" selected={{paginationSelected.p10}}>10</option>
-          <option value="25" selected={{paginationSelected.p25}}>25</option>
-          <option value="50" selected={{paginationSelected.p50}}>50</option>
-          <option value="100" selected={{paginationSelected.p100}}>100</option>
-          <option value="500" selected={{paginationSelected.p500}}>500</option>
-          <option value="1000" selected={{paginationSelected.p1000}}>1000</option>
-        </select>
+        <div class="a-self--fs">
+          <span class="form-group--select-wrapper m-right--sm">
+            <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
+              {{action 'setExibir' on='change'}}>
+              <option value="5" selected={{paginationSelected.p5}}>5</option>
+              <option value="10" selected={{paginationSelected.p10}}>10</option>
+              <option value="25" selected={{paginationSelected.p25}}>25</option>
+              <option value="50" selected={{paginationSelected.p50}}>50</option>
+              <option value="100" selected={{paginationSelected.p100}}>100</option>
+              <option value="500" selected={{paginationSelected.p500}}>500</option>
+              <option value="1000" selected={{paginationSelected.p1000}}>1000</option>
+            </select>
+          </span><span>resultados por página</span>
+        </div>
       </div>
+
       <div {{action staticAlert 'close'}}>
-        {{page-numbers content=pagedContent}}
+
       </div>
-      <div></div>
+
     </div>
 
-    <div class="loader-local {{if (equalstr gerdataLoaderState 1) 'loader-local--is-show' ''}}">
+    <div class="filter-list__list">
 
-      <div class="loader-local__loader">
-        <span class="icon icon-reload icon--xl"></span>
-        Buscando
-      </div>
-      <!-- ------------------------------------------------------- users list -->
-      <table class="institutions__table table table--striped table--users">
-        <!-- users list header -->
-        <thead>
-          <tr>
-            <th class="table__check" scope="col">
-              <span class="checkbox">
-                <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
-                  {{action 'listItemCheck' 'all' on='change'}}>
-                <label class="checkbox__label" for="usersListCheckAll"></label>
-              </span>
-            </th>
-            <th class="table__name" scope="col">
-              <div {{action 'setSort' 'name'}}>
-                Nome
-                {{#if (equalstr sortCol 'name')}}
-                  <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div>
-            </th>
-            <th class="table__email" scope="col">
-              <div {{action 'setSort' 'email'}}>
-                E-mail
-                {{#if (equalstr sortCol 'email')}}
-                  <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div>
-            </th>
-            <th class="table__class" scope="col">
-              <div {{action 'setSort' 'area.name'}}>
-                Ano
-                {{#if (equalstr sortCol 'area.name')}}
-                  <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div>
-            </th>
-            <th class="table__total"><span class="d--none d-lg--inline">Total de </span>turmas</th>
-            <th class="table__enabled" scope="col">Hab<span class="hide-on--sm">ilitado</span>
-            </th>
-            <th class="table__sent" scope="col">
-              <span class="d-lg--none">@ BV</span>
-              <span class="d-none d-lg--inline">boas-vindas</span>
-            </th>
-            <th class="table__actions" scope="col">Ações</th>
-          </tr>
-        </thead>
-        <!-- users list content -->
-        <tbody>
-          {{#each pessoas_sorted as |pessoa|}}
+      {{page-numbers content=pagedContent class="pagination--right"}}
+
+      <div class="loader-local {{if (equalstr gerdataLoaderState 1) 'loader-local--is-show' ''}}">
+        <div class="loader-local__loader">
+          <span class="icon icon-reload icon--xl"></span>
+          Buscando
+        </div>
+        <!-- ------------------------------------------------------- users list -->
+
+        <table class="institutions__table table table--striped table--users">
+          <!-- users list header -->
+          <thead>
             <tr>
-              <td class="table__check">
+              <th class="table__check" scope="col">
                 <span class="checkbox">
-                  <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
-                    {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
-                  <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
+                  <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
+                    {{action 'listItemCheck' 'all' on='change'}}>
+                  <label class="checkbox__label" for="usersListCheckAll"></label>
                 </span>
-              </td>
-              <td class="table__name">
-                <strong class="title-4 d-block">{{pessoa.name}}</strong>
-                <span class='color-green-40'>{{pessoa.role}}</span></td>
-              <td class="table__email">{{pessoa.email}}</td>
-              <!--- PRECISA DE VALORES DINÂMICOS -->
-              <td class="table__class popover" id="epic{{pessoa.id}}">
-                <button data-target="#epic{{pessoa.id}}" class="btn btn--link popover__trigger">
-                  <span>
-                    {{#each pessoa.modulos as |anos index|}}
-                      {{#if (equalstr anos.idx '4')}}
-                        <span>{{if index ", "}}PV</span>
-                      {{else}}
-                        <span>{{if index ", "}}{{anos.idx}}</span>
-                      {{/if}}
-                    {{/each}}
-                  </span></button>
-
-                <div class="popover__balloon popover__balloon--right-bottom ta-l">
-                  <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
-                  <h3 class="title-aux m-top--xs">Total por ano</h3>
-                  <ul>
-                    {{#each pessoa.modulos as |mod|}}
-                      <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
-                        <strong>{{mod.name}}</strong>
-                        {{#each pessoa.turmas as |tur|}}
-                          {{#if (equalstr tur.modulo.id mod.id)}}
-                            <ul>
-                              <li>{{tur.name}}</li>
-                            </ul>
-                          {{/if}}
-                        {{/each}}
-                      </li>
-                    {{/each}}
-                  </ul>
-                </div>
-              </td>
-              <td class="table__total">
-                {{pessoa.turmas.length}}
-              </td>
-              <!--- /PRECISA DE VALORES DINÂMICOS -->
-              <td class="table__icon">
-                <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
-              </td>
-              <td class="table__icon">
-                <span class="{{if pessoa.emailsent 'icon-check icon--success' 'icon-x icon--error'}}"></span>
-              </td>
-              <!-- user action -->
-              <td class="table__actions">
-                <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon icon-more_vert"
-                  {{action 'userActionDisplay' pessoa.id}}></button>
-                <!-- dropdown user actions list -->
-                <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu j-user-action">
-                  {{#if (equalstr pessoa.role 'admin')}}
-                    {{!--<button class="btn btn--icon btn--disabled icon-trash-2" disabled></button>--}}
-                  {{else}}
-                    <button class="btn btn--leaf btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
+              </th>
+              <th class="table__name" scope="col">
+                <div {{action 'setSort' 'name'}}>
+                  Nome
+                  {{#if (equalstr sortCol 'name')}}
+                    <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
                   {{/if}}
-                  <button class="btn btn--leaf btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
-                  <button class="btn btn--leaf btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
                 </div>
-              </td>
+              </th>
+              <th class="table__email" scope="col">
+                <div {{action 'setSort' 'email'}}>
+                  E-mail
+                  {{#if (equalstr sortCol 'email')}}
+                    <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+                  {{/if}}
+                </div>
+              </th>
+              <th class="table__class" scope="col">
+                <div {{action 'setSort' 'area.name'}}>
+                  Ano
+                  {{#if (equalstr sortCol 'area.name')}}
+                    <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
+                  {{/if}}
+                </div>
+              </th>
+              <th class="table__total"><span class="d--none d-lg--inline">Total de </span>turmas</th>
+              <th class="table__enabled" scope="col">Hab<span class="hide-on--sm">ilitado</span>
+              </th>
+              <th class="table__sent" scope="col">
+                <span class="d-lg--none">@ BV</span>
+                <span class="d-none d-lg--inline">boas-vindas</span>
+              </th>
+              <th class="table__actions" scope="col">Ações</th>
             </tr>
-          {{/each}}
-        </tbody>
-      </table>
+          </thead>
+          <!-- users list content -->
+          <tbody>
+            {{#each pessoas_sorted as |pessoa|}}
+              <tr>
+                <td class="table__check">
+                  <span class="checkbox">
+                    <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
+                      {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
+                    <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
+                  </span>
+                </td>
+                <td class="table__name">
+                  <strong class="title-4 d-block">{{pessoa.name}}</strong>
+                  <span class='color-green-40'>{{pessoa.role}}</span></td>
+                <td class="table__email">{{pessoa.email}}</td>
+                <!--- PRECISA DE VALORES DINÂMICOS -->
+                <td class="table__class popover" id="epic{{pessoa.id}}">
+                  <button data-target="#epic{{pessoa.id}}" class="btn btn--link popover__trigger">
+                    <span>
+                      {{#each pessoa.modulos as |anos index|}}
+                        {{#if (equalstr anos.idx '4')}}
+                          <span>{{if index ", "}}PV</span>
+                        {{else}}
+                          <span>{{if index ", "}}{{anos.idx}}</span>
+                        {{/if}}
+                      {{/each}}
+                    </span></button>
+
+                  <div class="popover__balloon popover__balloon--right-bottom ta-l">
+                    <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
+                    <h3 class="title-aux m-top--xs">Total por ano</h3>
+                    <ul>
+                      {{#each pessoa.modulos as |mod|}}
+                        <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                          <strong>{{mod.name}}</strong>
+                          {{#each pessoa.turmas as |tur|}}
+                            {{#if (equalstr tur.modulo.id mod.id)}}
+                              <ul>
+                                <li>{{tur.name}}</li>
+                              </ul>
+                            {{/if}}
+                          {{/each}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                </td>
+                <td class="table__total">
+                  {{pessoa.turmas.length}}
+                </td>
+                <!--- /PRECISA DE VALORES DINÂMICOS -->
+                <td class="table__icon">
+                  <span class="{{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
+                </td>
+                <td class="table__icon">
+                  <span class="{{if pessoa.emailsent 'icon-check icon--success' 'icon-x icon--error'}}"></span>
+                </td>
+                <!-- user action -->
+                <td class="table__actions">
+                  <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--lg btn--text icon-more__vert"
+                    {{action 'userActionDisplay' pessoa.id}}></button>
+                  <!-- dropdown user actions list -->
+                  <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu j-user-action">
+                    {{#if (equalstr pessoa.role 'admin')}}
+                      {{!--<button class="btn btn--icon btn--disabled icon-trash-2" disabled></button>--}}
+                    {{else}}
+                      <button class="btn btn--leaf btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
+                    {{/if}}
+                    <button class="btn btn--leaf btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
+                    <button class="btn btn--leaf btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      {{page-numbers content=pagedContent class="pagination--right"}}
+
     </div>
+
   </section>
+
 </section>
 
 <!-- -------------------------------------------------- administration users alert -->
@@ -513,7 +525,7 @@
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
-                    <h4 class="title-4 m-bottom--sm">Turma</h4>                  
+                    <h4 class="title-4 m-bottom--sm">Turma</h4>
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
@@ -550,7 +562,7 @@
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
                   <h3 class="list__name title-3">{{mod.name}}</h3>
                   <div class="m-top--xl w100">
-                    <h4 class="title-4 m-bottom--sm">Turma</h4>             
+                    <h4 class="title-4 m-bottom--sm">Turma</h4>
                     <ul class="list list--3-col">
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
