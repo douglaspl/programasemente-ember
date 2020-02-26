@@ -121,6 +121,7 @@
     @include title-1($color: $gray-50);
 
     margin-bottom: $distance--lg;
+    margin-top: $distance--xs;
 
     [class*='is-disabled'] & { opacity: .7; }
   }

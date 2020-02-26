@@ -233,6 +233,10 @@
 //------------------------------------
 //    #HAS CAPSULE ON HOVER
 //------------------------------------
+$capsule-on-hover-bg-color: $lemon-30;
+$capsule-on-hover-color: $blue-navy-60;
+$capsule-on-hover-radius: $radius;
+
 @mixin has-capsule-on-hover {
   position: relative;
   overflow: visible;
@@ -243,8 +247,8 @@
   }
 
   &::before {
-    background-color: $lemon-30;
-    border-radius: $radius;
+    background-color: $capsule-on-hover-bg-color;
+    border-radius: $capsule-on-hover-radius;
     box-shadow: $shadow-5;
     content: '';
     height: calc(100% + (#{$distance--xs} * 2));
@@ -263,6 +267,8 @@
   }
 
   &:hover {
+
+    color: $capsule-on-hover-color;
 
     &::before {
       opacity: 1;
@@ -780,6 +786,7 @@ $shadow-width: 100%) {
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $letter;
+  line-height: .9;
   opacity: .85;
   vertical-align: middle;
 

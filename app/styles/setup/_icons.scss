@@ -107,11 +107,13 @@
 .icon-chevron-left {
   &:before {
     content: $icon-chevron-left;
+    font-size: 1.5em;
   }
 }
 .icon-chevron-right {
   &:before {
     content: $icon-chevron-right;
+    font-size: 1.5em;
   }
 }
 .icon-chevron-up {

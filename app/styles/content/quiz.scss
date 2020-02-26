@@ -95,10 +95,10 @@
     margin: 1em 0;
     opacity: .75;
 
-    >p {
+    > p {
       line-height: 1;
 
-      +p {
+      + p {
         margin-top: $distance--xs;
       }
 
@@ -178,13 +178,13 @@
     margin-bottom: $distance--md;
     position: relative;
 
-    @include media('>sm') {
-      margin-bottom: $distance--lg;
-    }
+    // @include media('>sm') {
+    //   margin-bottom: $distance--lg;
+    // }
 
-    @include media('>xl') {
-      font-size: $font-size--sm;
-    }
+    // @include media('>xl') {
+    //   font-size: $font-size--sm;
+    // }
 
   }
 

@@ -335,31 +335,6 @@ $font-size--max: 3.5rem;
 
 
 //------------------------------------
-//    #GENERAL DEF
-//------------------------------------
-$header-bg-color: $white;
-$body-bg-color: $gray-0;
-
-$font-base: 'Raleway', 'Titillium Web', sans-serif;
-$font-title: filson-soft, Arial, sans-serif;
-
-$header-height: 3rem;
-$header-v-padding: .5rem;
-
-$main-border-color: transparentize($gray-10, .5);
-
-$clickables-bg-color: $lemon-20;
-$clickables-bg-color-dark: $lemon-40;
-$clickables-color: $blue-navy-60;
-
-$checkbox-checked-bg-color: $clickables-bg-color;
-$checkbox-checked-color: $clickables-color;
-
-$stripe-bg-color: transparentize($gray-0, .4);
-
-
-
-//------------------------------------
 //    #FORM
 //------------------------------------
 $form-shadow: 0 2px 0 rgba($gray-60, .12);
@@ -594,3 +569,34 @@ $z-index: (
 'body': 200,
 'main': 100
 );
+
+
+
+
+
+//------------------------------------
+//    #GENERAL DEF
+//------------------------------------
+$header-bg-color: $white;
+$body-bg-color: $gray-0;
+
+$font-base: filson-soft, 'Raleway', sans-serif;
+$font-title: filson-soft, Arial, sans-serif;
+
+$header-height: 3rem;
+$header-v-padding: .5rem;
+
+$main-border-color: transparentize($gray-10, .5);
+
+$button-radius: $radius;
+
+$overlayer-color: $blue-navy-50;
+
+$clickables-bg-color: $lemon-20;
+$clickables-bg-color-dark: $lemon-40;
+$clickables-color: $blue-navy-60;
+
+$checkbox-checked-bg-color: $clickables-bg-color;
+$checkbox-checked-color: $clickables-color;
+
+$stripe-bg-color: transparentize($gray-0, .4);

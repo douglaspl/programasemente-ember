@@ -16,7 +16,7 @@
     &__container {
         background-color: $gray-0;
         bottom: 0;
-        box-shadow: $shadow-5;
+        box-shadow: $shadow-h-r-5, $shadow-h-l-5;
         height: 100%;
         opacity: 0;
         padding: $help-container-padding;

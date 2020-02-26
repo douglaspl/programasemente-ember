@@ -23,6 +23,8 @@
 
     $global-nav-gradient-light: $lemon-5;
     $global-nav-gradient-dark:  $lemon-40;
+    $global-nav-active-color: $lemon-30;
+    $global-nav-active-bg-color: $blue-navy-60;
 
     &__list {
         @include z-index('offcanvas');
@@ -114,11 +116,10 @@
         }
 
         &--is-active {
-            @include text-contrast($global-nav-gradient-dark);
-
-            background-color: $global-nav-gradient-dark;
-            background-image: linear-gradient(to top, $global-nav-gradient-dark, $global-nav-gradient-light);
+            background-color: $global-nav-active-bg-color;
+            color: $global-nav-active-color;
             opacity: 1;
+            pointer-events: none;
         }
 
         [class*='icon-'] {
