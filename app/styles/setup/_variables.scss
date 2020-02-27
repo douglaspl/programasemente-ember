@@ -97,8 +97,8 @@ $green-shades: (
     5:  hsl(86, 48%, 85%),
     10: hsl(86, 52%, 75%),
     20: hsl(86, 54%, 51%), // #8BC63F, // CRANE
-    30: hsl(86, 58%, 44%),
-    40: hsl(86, 62%, 37%),
+    30: hsl(86, 58%, 42%),
+    40: hsl(86, 62%, 35%),
     50: hsl(86, 66%, 30%),
     60: hsl(86, 70%, 23%)
 );
@@ -535,17 +535,25 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 //------------------------------------
 //    #TIMELINE
 //------------------------------------
-$timeline-color: $lemon-40;
+$timeline-color: transparentize($white, .65);
 $timeline-tip-size: 1rem;
 
 $timeline-gap: $distance--lg;
-$timeline-main-steps-background: $timeline-color;
-$timeline-main-steps-background-gradient: linear-gradient(to top, $lemon-40, $lemon-5);
 $timeline-translation: $timeline-gap + $timeline-tip-size;
 
-$timeline-mark-bg: $white;
+$timeline-mark-info-bg-color: $white;
 
-$timeline-date-bg-color: $white;
+$timeline-date-bg-color: transparentize($blue-navy-60, .65);
+$timeline-date-color: $green-0;
+$timeline-begin-end-bg-color: $green-0;
+
+$timeline-marks-bg-color: $green-10;
+$timeline-marks-bg-color--locked: $leaf-0;
+$timeline-marks-border-color: $timeline-color;
+$timeline-marks-color: color-contrast($timeline-marks-bg-color, $green-0, $blue-navy-60);
+$timeline-marks-radius: $radius--capsule;
+$timeline-marks-shadow: $shadow-3;
+
 $timeline-status-size: 3rem;
 
 
@@ -592,11 +600,20 @@ $button-radius: $radius;
 
 $overlayer-color: $blue-navy-50;
 
-$clickables-bg-color: $lemon-20;
-$clickables-bg-color-dark: $lemon-40;
-$clickables-color: $blue-navy-60;
+// CLICKABLES
+$clickables-bg-color: $green-30;
+$clickables-bg-color-dark: $green-40;
+$clickables-color: $white;
 
+// CHECKBOX
 $checkbox-checked-bg-color: $clickables-bg-color;
 $checkbox-checked-color: $clickables-color;
 
+// STRIPE
 $stripe-bg-color: transparentize($gray-0, .4);
+
+// GLOBAL NAV
+$global-nav-gradient-light: $green-5;
+$global-nav-gradient-dark:  $green-10;
+$global-nav-active-color: $white;
+$global-nav-active-bg-color: $green-40;

@@ -5,9 +5,8 @@
   $img-height: 10rem * $multiplier;
   $img-width:  18rem * $multiplier;
 
-  background-color: $timeline-mark-bg;
   border-radius: $radius;
-  box-shadow: $shadow-h-r-2;
+  box-shadow: $shadow-3, $shadow-2, $shadow-h-l-2, $shadow-h-r-2;
   display: flex;
   flex-direction: column;
   padding: $distance--md;
@@ -36,19 +35,14 @@
 
   &__date-block {
     align-items: center;
-    background-color: $timeline-mark-bg;
     display: flex;
     margin-bottom: $distance--lg;
     padding:  0;
     text-transform: uppercase;
-    transform: translateX(-8px);
+
 
     @include media('>lg') {
       padding: $distance--md;
-      position: absolute;
-      right: calc(100% + #{$timeline-gap});
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     > * {
@@ -68,8 +62,12 @@
     margin-left: $distance--sm;
   }
 
+  &__day-aux {
+    opacity: .5;
+  }
+
   &__day {
-    @include title-2;
+    @include title-2($color: inherit);
     white-space: nowrap;
   }
 
@@ -77,7 +75,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: $radius--lg;
+    border-radius: $radius;
     display: block;
     flex: 0 0 auto;
     height: 20vh;
@@ -88,6 +86,7 @@
 
     [class*='is-disabled'] &::after {
       background-color: $white;
+      border-radius: inherit;
       content: '';
       height: 100%;
       left: 0;
@@ -100,7 +99,7 @@
     @include media('>md') {
       $multiplier: .85;
 
-      box-shadow: $shadow-4;
+      box-shadow: $shadow-5, $shadow-3, $shadow-h-l-2, $shadow-h-r-2;
       height: $img-height * $multiplier;
       margin: (-($img-height * $multiplier)/4) 0 0;
       transform: translate(10%, 0);
@@ -135,6 +134,14 @@
     @include media('>lg') {
       font-size: $font-size--sm;
       line-height: 1.5;
+    }
+
+  }
+
+  &__skills {
+
+    [class*='is-disabled'] & {
+      opacity: .7;
     }
 
   }

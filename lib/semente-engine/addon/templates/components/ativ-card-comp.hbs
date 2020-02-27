@@ -8,28 +8,28 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Data de liberação</span>
+                <span class="class__day-aux">Data de liberação</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
 
             <div class="class__subtitle title-aux">Aula {{atividade.idx}}</div>
            <h3 class="class__title">{{atividade.name}}</h3>
-     
+
         {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -37,7 +37,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -48,21 +48,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -74,14 +74,14 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -89,7 +89,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -101,7 +101,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -110,14 +110,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -130,14 +130,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -145,12 +145,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -158,7 +158,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -167,7 +167,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -176,7 +176,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -189,7 +189,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -197,7 +197,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -205,7 +205,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -218,7 +218,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -226,7 +226,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -234,7 +234,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -246,71 +246,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -323,14 +323,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -338,7 +338,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -351,7 +351,7 @@
 
             <p class="class__description">{{atividade.description}}</p>
             {{#if temSecoes}}
-              <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Ver</button>
+              <button class='class__cta btn btn--lg' {{action 'transitToAtividade' atividade.Id}}>Ver</button>
             {{/if}}
           </div>
 
@@ -370,10 +370,10 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada desde</span>
+                <span class="class__day-aux">Liberada desde</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -382,14 +382,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -397,7 +397,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -408,21 +408,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -434,23 +434,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -462,7 +462,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -471,14 +471,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -491,14 +491,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -506,12 +506,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -519,7 +519,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -528,7 +528,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -537,7 +537,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -550,7 +550,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -558,7 +558,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -566,7 +566,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -579,7 +579,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -587,7 +587,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -595,7 +595,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -607,71 +607,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -684,14 +684,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -699,7 +699,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -710,7 +710,7 @@
 
             {{!-- FIM IFS para Competências Alvo--}}
             <p class="class__description">{{atividade.description}}</p>
-            <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
+            <button class='class__cta btn btn--lg' {{action 'transitToAtividade' atividade.Id}}>Iniciar</button>
           </div>
 
           <span class="class__img" style="{{atividade.backgroundImage}}"></span>
@@ -723,10 +723,10 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada a partir de</span>
+                <span class="class__day-aux">Liberada a partir de</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -735,14 +735,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -750,7 +750,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -761,21 +761,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -787,23 +787,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -815,7 +815,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -824,14 +824,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -844,14 +844,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -859,12 +859,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -872,7 +872,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -881,7 +881,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -890,7 +890,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -903,7 +903,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -911,7 +911,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -919,7 +919,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -932,7 +932,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -940,7 +940,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -948,7 +948,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -960,71 +960,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -1037,14 +1037,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1052,7 +1052,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -1079,10 +1079,10 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada desde</span>
+                <span class="class__day-aux">Liberada desde</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -1091,14 +1091,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1106,7 +1106,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1117,21 +1117,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1143,23 +1143,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -1171,7 +1171,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1180,14 +1180,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -1200,14 +1200,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1215,12 +1215,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -1228,7 +1228,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1237,7 +1237,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1246,7 +1246,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1259,7 +1259,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1267,7 +1267,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1275,7 +1275,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -1288,7 +1288,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1296,7 +1296,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1304,7 +1304,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -1316,71 +1316,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -1393,14 +1393,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1408,7 +1408,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -1420,7 +1420,7 @@
             {{!-- FIM IFS para Competências Alvo--}}
             <p class="class__description">{{atividade.description}}</p>
             {{#if temSecoes}}
-              <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
+              <button class='class__cta btn btn--lg' {{action 'transitToAtividade' atividade.Id}}>Rever</button>
             {{/if}}
           </div>
 
@@ -1435,10 +1435,10 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada a partir de</span>
+                <span class="class__day-aux">Liberada a partir de</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -1447,14 +1447,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1462,7 +1462,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1473,21 +1473,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1499,23 +1499,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -1527,7 +1527,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1536,14 +1536,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -1556,14 +1556,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1571,12 +1571,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -1584,7 +1584,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1593,7 +1593,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1602,7 +1602,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1615,7 +1615,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1623,7 +1623,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1631,7 +1631,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -1644,7 +1644,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1652,7 +1652,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1660,7 +1660,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -1672,71 +1672,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -1749,14 +1749,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1764,7 +1764,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -1792,10 +1792,10 @@
           </span>
 
           <div class="class__info">
-            <div class="class__date-block capsule capsule--lemon">
+            <div class="timeline__date-block class__date-block capsule capsule--lemon">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada desde</span>
+                <span class="class__day-aux">Liberada desde</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -1805,14 +1805,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1820,7 +1820,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1831,21 +1831,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -1857,23 +1857,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -1885,7 +1885,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1894,14 +1894,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -1914,14 +1914,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1929,12 +1929,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -1942,7 +1942,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -1951,7 +1951,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1960,7 +1960,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -1973,7 +1973,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1981,7 +1981,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -1989,7 +1989,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -2002,7 +2002,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2010,7 +2010,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2018,7 +2018,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -2030,71 +2030,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -2107,14 +2107,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2122,7 +2122,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -2134,7 +2134,7 @@
             {{!-- FIM IFS para Competências Alvo--}}
             <p class="class__description">{{atividade.description}}</p>
             {{#if temSecoes}}
-              <button class='class__cta btn btn--lg btn--leaf' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
+              <button class='class__cta btn btn--lg' {{action 'transitToAtividade' atividade.Id}}>Continuar</button>
             {{/if}}
           </div>
 
@@ -2150,10 +2150,10 @@
           </span>
 
           <div class="class__info"> capsule capsule--lemon
-            <div class="class__date-block">
+            <div class="timeline__date-block class__date-block">
               <span class="icon icon-calendar icon--xxl"></span>
               <span class="class__date">
-                <span class="title-aux">Liberada a partir de</span>
+                <span class="class__day-aux">Liberada a partir de</span>
                 <span class="class__day">{{dia}} {{mensagem_mes}}</span>
               </span>
             </div>
@@ -2163,14 +2163,14 @@
              {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2178,7 +2178,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2189,21 +2189,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2215,23 +2215,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -2243,7 +2243,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -2252,14 +2252,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -2272,14 +2272,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2287,12 +2287,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -2300,7 +2300,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -2309,7 +2309,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2318,7 +2318,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2331,7 +2331,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2339,7 +2339,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2347,7 +2347,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -2360,7 +2360,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2368,7 +2368,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2376,7 +2376,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -2388,71 +2388,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -2465,14 +2465,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2480,7 +2480,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
@@ -2508,10 +2508,10 @@
   </span>
 
   <div class="class__info">
-    <div class="class__date-block">
+    <div class="timeline__date-block class__date-block">
       <span class="icon icon-calendar icon--xxl"></span>
       <span class="class__date">
-        <span class="title-aux">Liberada a partir de</span>
+        <span class="class__day-aux">Liberada a partir de</span>
         <span class="class__day">{{dia}} {{mensagem_mes}}</span>
       </span>
     </div>
@@ -2521,14 +2521,14 @@
      {{!-- INÍCIO IFS para Competências Alvo--}}
                {{#if (equalstr atividade.idx 1)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.10.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2536,7 +2536,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2547,21 +2547,21 @@
 
               {{#if (equalstr atividade.idx 2)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.6.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
@@ -2573,23 +2573,23 @@
 
               {{#if (equalstr atividade.idx 3)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
                       <li>{{competencias.6.nome}}</li>
-                       
+
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.8.nome}}</li>
@@ -2601,7 +2601,7 @@
 
               {{#if (equalstr atividade.idx 4)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -2610,14 +2610,14 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
@@ -2630,14 +2630,14 @@
 
               {{#if (equalstr atividade.idx 5)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.1.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2645,12 +2645,12 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
                       <li>{{competencias.1.nome}}</li>
-                      
+
                     </ul>
                   </div>
                   {{/if}}
@@ -2658,7 +2658,7 @@
 
               {{#if (equalstr atividade.idx 6)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.7.nome}}</li>
@@ -2667,7 +2667,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2676,7 +2676,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.0.nome}}</li>
@@ -2689,7 +2689,7 @@
 
                {{#if (equalstr atividade.idx 7)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2697,7 +2697,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2705,7 +2705,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.9.nome}}</li>
@@ -2718,7 +2718,7 @@
 
               {{#if (equalstr atividade.idx 8)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2726,7 +2726,7 @@
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2734,7 +2734,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.13.nome}}</li>
@@ -2746,71 +2746,71 @@
 
               {{#if (equalstr atividade.idx 9)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}   
+                  {{/if}}
 
               {{#if (equalstr atividade.idx 10)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                   {{/if}}
-                  {{/if}}           
-              
+                  {{/if}}
+
               {{#if (equalstr atividade.idx 11)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.13.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.5.nome}}</li>
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.2.nome}}</li>
@@ -2823,14 +2823,14 @@
 
                  {{#if (equalstr atividade.idx 12)}}
                 {{#if (equalstr modulo.idx 1) }}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.4.nome}}</li>
                     </ul>
                   </div>
                 {{else if (equalstr modulo.idx 2)}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                       <li>{{competencias.11.nome}}</li>
@@ -2838,7 +2838,7 @@
                     </ul>
                   </div>
                 {{else}}
-                <div class="skills">
+                <div class="class__skills skills">
                   <h2 class="skills__title">Competências alvo</h2>
                     <ul class="skills__list">
                      <li>{{competencias.4.nome}}</li>
