@@ -114,7 +114,12 @@
             background-color: $global-nav-active-bg-color;
             color: $global-nav-active-color;
             opacity: 1;
-            pointer-events: none;
+
+            &:hover {
+                background-color: darken($global-nav-active-bg-color, 5%);
+                opacity: 1;
+            }
+
         }
 
         [class*='icon-'] {

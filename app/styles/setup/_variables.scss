@@ -535,7 +535,7 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 //------------------------------------
 //    #TIMELINE
 //------------------------------------
-$timeline-color: transparentize($white, .65);
+$timeline-color: transparentize($green-0, .65);
 $timeline-tip-size: 1rem;
 
 $timeline-gap: $distance--lg;
@@ -544,7 +544,7 @@ $timeline-translation: $timeline-gap + $timeline-tip-size;
 $timeline-mark-info-bg-color: $white;
 
 $timeline-date-bg-color: transparentize($blue-navy-60, .65);
-$timeline-date-color: $green-0;
+$timeline-date-color: $blue-navy-0;
 $timeline-begin-end-bg-color: $green-0;
 
 $timeline-marks-bg-color: $green-10;
