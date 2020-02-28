@@ -54,14 +54,6 @@
 
     }
 
-    &__close {
-        // border: 2px solid $white;
-        box-shadow: $shadow-3;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
     &__header {
         flex: 0 0 auto;
         padding-bottom: $distance--lg;

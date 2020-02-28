@@ -45,24 +45,6 @@
 
     }
 
-    &__close {
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: translate(-25%, 25%);
-        z-index: 3;
-
-        @include media('>sm') {
-            transform: translate(25%, -25%);
-
-            &:hover {
-                transform: translate(25%, -25%);
-            }
-
-        }
-
-    }
-
     &__form,
     &__success {
         bottom: 0;

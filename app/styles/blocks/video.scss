@@ -16,7 +16,6 @@ $video-size: 56.25%;
     padding-bottom: $video-size;
     position: relative;
     width: 100%;
-    z-index: 2;
 
     @include media('landscape', 'height<sm') {
         padding-bottom: 40%;
