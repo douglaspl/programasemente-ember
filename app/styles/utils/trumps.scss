@@ -1,34 +1,3 @@
-.augmented-link {
-    position: relative;
-
-    > * {
-        opacity: .99;
-        pointer-events: none;
-        position: relative;
-        z-index: 2;
-    }
-
-    > a {
-        background-color: $lemon-5;
-        background-image: linear-gradient(to top, $lemon-40, $lemon-5);
-        height: 100%;
-        left: 0;
-        opacity: 0;
-        pointer-events: auto;
-        position: absolute;
-        top: 0;
-        transition: 200ms;
-        width: 100%;
-        z-index: 1;
-
-        &:hover {
-            opacity: 1;
-        }
-
-    }
-
-}
-
 .bg--students {
     background-color: $blue-navy-50;
     background-image: url('/assets/img/bg--login.jpg');
@@ -36,11 +5,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-.d-block {
-    display: block;
-}
-
 
 .d-i-block {
     display: inline-block;
@@ -51,6 +15,11 @@
 
     display: inline-block;
 }
+
+.numbers {
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
 
 .is-hidden--v {
     opacity: 0;

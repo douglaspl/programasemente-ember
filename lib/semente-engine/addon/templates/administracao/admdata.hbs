@@ -206,7 +206,7 @@
         </div>
         <ul class="report-people__list">
           {{#each pagedContent.content as |pessoa|}}
-          <li class="report-people__person augmented-link">
+          <li class="report-people__person report-people__person--is-augmented-link">
             <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
             <span class="report-people__avatar avatar avatar--lg">
               {{#if pessoa.uriAvatar}}
@@ -254,7 +254,7 @@
       <div>
         <span class="person__email title-aux">{{selected_pessoa.pessoa.email}}</span>
       </div>
-      <span class="d-i-block popover">
+      <div class="popover">
         <button class="btn btn--text btn--xxs popover__trigger">mais informações</button>
 
         <div class="popover__balloon popover__balloon--lemon popover__balloon--right-bottom about-author">
@@ -265,7 +265,7 @@
             <li class="">Matrícula: <strong>{{selected_pessoa.pessoa.matricula}}</strong></li>
           </ul>
         </div>
-      </span>
+      </div>
     </div>
 
     <ul class="person__info m-left--auto">

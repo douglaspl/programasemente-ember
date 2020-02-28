@@ -123,6 +123,37 @@
 
         }
 
+        &--is-augmented-link {
+            position: relative;
+
+            > * {
+                opacity: .99;
+                pointer-events: none;
+                position: relative;
+                z-index: 2;
+            }
+
+            > a {
+                background-color: $lemon-5;
+                background-image: linear-gradient(to top, $lemon-40, $lemon-5);
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                pointer-events: auto;
+                position: absolute;
+                top: 0;
+                transition: 200ms;
+                width: 100%;
+                z-index: 1;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+            }
+
+        }
+
     }
 
     &__data {

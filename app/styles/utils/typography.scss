@@ -11,3 +11,5 @@
     &-4         { @include title-4; }
     &-aux       { @include title-aux;}
 }
+
+.fs--xxxs { font-size: $font-size--xxxs; }

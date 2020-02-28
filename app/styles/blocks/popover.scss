@@ -4,6 +4,8 @@ $popover-distance: $popover-tip-size * 2;
 .popover {
     $this: &;
 
+    display: inline-block;
+
     @include  z-index('popover');
     overflow: visible;
     position: relative;
