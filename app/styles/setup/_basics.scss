@@ -1,170 +1,172 @@
 @if ($debugger == true) {
-  *,
-  *::before,
-  *::after {
-      background-color: rgba(0, 0, 0, .15);
-      outline: 1px solid $color-error;
-  }
+
+    *,
+    *::before,
+    *::after {
+        background-color: rgba(0, 0, 0, .15);
+        outline: 1px solid $color-error;
+    }
+
 }
 
 * {
-  box-sizing: border-box;
-  line-height: 1;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  background-color: $body-bg-color;
-  color: $gray-60;
-  font-family: $font-base;
-  font-size: 14px;
-  font-variant-numeric: lining-nums;
-  font-weight: normal;
-  line-height: 1;
-  min-height: 100%;
-  text-align: left;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: $body-bg-color;
+    height: 100%;
+    color: $gray-60;
+    font-family: $font-base;
+    font-size: 14px;
+    font-variant-numeric: lining-nums;
+    font-weight: normal;
+    line-height: 1;
+    overflow-x: hidden;
+    text-align: left;
 
-  >.ember-view {
-    min-height: 100vh;
-    max-height: 100%;
-  }
+    > .ember-view {
+        min-height: 100vh;
+        max-height: 100%;
+    }
 
 }
 
 a,
 a:hover,
 a:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 button {
-  outline: -webkit-focus-ring-color auto 0;
-  outline: 0 solid transparent;
+    outline: -webkit-focus-ring-color auto 0;
+    outline: 0 solid transparent;
 }
 
 p {
-  line-height: 1.4;
+    line-height: 1.5;
 }
 
 pre {
-  display: block;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  overflow: auto;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow: auto;
 }
 
 pre code {
-  font-size: inherit;
-  color: inherit;
-  word-break: normal;
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
 }
 
-input:not([disabled])+label[for] {
-  cursor: pointer;
+input:not([disabled]) + label[for] {
+    cursor: pointer;
 }
 
 input {
-  @include inputs;
+    @include inputs;
 
-  box-shadow: inset $form-shadow;
-  font-family: inherit;
+    box-shadow: inset $form-shadow;
+    font-family: inherit;
 
-  &[type='text'] {
-    border-radius: $radius;
-  }
+    &[type='text'] {
+        border-radius: $radius;
+    }
 
-  &[type*='radio'],
-  &[type*='checkbox'] {
-    height: unset;
-  }
+    &[type*='radio'],
+    &[type*='checkbox'] {
+        height: unset;
+    }
 
 }
 
 select {
-  @include inputs;
+    @include inputs;
 
-  box-shadow: $form-shadow;
-  cursor: pointer;
-  padding-left: $distance--md;
-  padding-right: $distance--xl;
+    box-shadow: $form-shadow;
+    cursor: pointer;
+    padding-left: $distance--md;
+    padding-right: $distance--xl;
 
-  &::-ms-expand {
-    background-color: transparent;
-    border: 0 solid transparent;
-    display: none;
-  }
+    &::-ms-expand {
+        background-color: transparent;
+        border: 0 solid transparent;
+        display: none;
+    }
 
 }
 
 strong {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 textarea {
-  padding: $distance--xs;
+    padding: $distance--xs;
 }
 
 table {
-  a {
-    cursor: pointer;
-    display: inline-block;
-    line-height: 1.2;
-    text-decoration: underline;
-  }
+    a {
+        cursor: pointer;
+        display: inline-block;
+        line-height: 1.2;
+        text-decoration: underline;
+    }
 }
 
 th {
-  font-size: $font-size--xxxs;
-  font-weight: bold;
-  letter-spacing: $letter-spacing--lg;
-  padding: 0 $distance--sm $distance--xs;
-  vertical-align: middle;
-  text-transform: uppercase;
-  white-space: normal;
-  word-wrap: normal;
+    font-size: $font-size--xxxs;
+    font-weight: bold;
+    letter-spacing: $letter-spacing--lg;
+    padding: 0 $distance--sm $distance--xs;
+    vertical-align: middle;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: normal;
 }
 
 tbody {
-  -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
 
 td {
-  overflow: hidden;
-  padding: $distance--sm;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    padding: $distance--sm;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 [data-ember-action] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 [contenteditable] {
-  padding: $distance--xs;
-  position: relative;
-  min-width: 5rem;
-  outline: 0 solid transparent;
+    padding: $distance--xs;
+    position: relative;
+    min-width: 5rem;
+    outline: 0 solid transparent;
 
-  &::before {
-      background-color: transparentize($green-30, .9);
-      border-bottom: 4px dotted $green-30;
-      content: '';
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      height: 100%;
-      top: 0;
-      transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-      transition: 200ms var(--ease-in-out-quad);
-      visibility: visible;
-      width: 100%;
-  }
+    &::before {
+        background-color: transparentize($green-30, .9);
+        border-bottom: 4px dotted $green-30;
+        content: '';
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
+        visibility: visible;
+        width: 100%;
+    }
 
 }
 
 [contenteditable='true']::before {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }

@@ -9,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   min-height: 100%;
-  padding: 0 $h-padding--xs $distance--xs;
+  padding: 0 $h-padding--xs $distance--xs ($h-padding--xs * 2);
   position: relative;
   width: 100%;
 

@@ -70,13 +70,9 @@
 .btn {
   $this: &;
 
-  $bg-light: $clickables-bg-color;
-  $bg-dark: $clickables-bg-color-dark;
-
   @include button;
 
-  background-color: $bg-light;
-  background-image: linear-gradient(to top, $bg-dark, $bg-light);
+  background-color: $clickables-bg-color;
   border-radius: $button-radius;
   color: $clickables-color;
   cursor: pointer;
@@ -86,8 +82,7 @@
   transition: 200ms var(--ease-in-out-quad);
 
   &:hover {
-    background-color: $green-60;
-    background-image: linear-gradient(to top, $green-60, $green-40);
+    background-color: $clickables-bg-color-dark;
   }
 
   // ELEMENTS
@@ -148,17 +143,12 @@
   }
 
   &--is-toggle {
-    height: 1rem;
-    line-height: 1.25;
+    height: $input-height;
     justify-content: flex-start;
     overflow: hidden;
+    padding: 0;
     position: relative;
     text-align: left;
-
-    &:focus,
-    &:hover {
-      background-color: transparent;
-    }
 
     [class*='__default'] {
       @extend %btn-steps;
@@ -171,6 +161,8 @@
     [class*='__disabled'] {
       @extend %btn-steps;
 
+      height: 100%;
+      position: absolute;
       transform: translateY(-100%);
     }
 
@@ -195,9 +187,15 @@
 
       &:hover {
         background-color: transparentize($black, .85);
-        background-image: none;
       }
 
+    }
+
+    [class*='__label'] > * {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
   }
@@ -207,40 +205,23 @@
 
 
   // THEMES
+  &--ghost {
+    background-color: transparent;
+    border: 1px solid $clickables-bg-color;
+    color: $clickables-bg-color-dark;
+
+    &:hover {
+      background-color: $default-hover-bg-color;
+    }
+
+  }
+
   &--leaf {
     background-color: $leaf-40;
-    background-image: linear-gradient(to top, $leaf-50, $leaf-40);
     color: $white;
 
     &:hover {
       background-color: $leaf-60;
-      background-image: none;
-    }
-
-  }
-
-  &--leaf-ghost {
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid $leaf-40;
-    color: $leaf-50;
-
-    &:hover {
-      background-color: $leaf-5;
-      background-image: none;
-    }
-
-  }
-
-  &--green-ghost {
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid $green-40;
-    color: $green-50;
-
-    &:hover {
-      background-color: $green-5;
-      background-image: none;
     }
 
   }
@@ -250,24 +231,22 @@
 
     &:hover {
       background-color: transparent;
-      background-image: none;
     }
 
   }
 
   &--text {
     background-color: transparent;
-    background-image: none;
+    box-shadow: none;
     color: $gray-60;
     opacity: .75;
-    padding: 0;
+    // padding: 0;
     text-shadow: none;
     transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
     transition: 200ms var(--ease-in-out-quad);
 
     &:hover {
       background-color: transparent;
-      background-image: none;
       opacity: 1;
     }
 
@@ -275,14 +254,12 @@
 
   &--text-inverted {
     background-color: transparent;
-    background-image: none;
     color: $white;
     padding: 0;
     text-shadow: none;
 
     &:hover {
       background-color: transparent;
-      background-image: none;
       opacity: 1;
       transform: translateY(0);
     }
@@ -291,11 +268,9 @@
 
   &--success {
     background-color: saturate(darken($color-success, 6%), 6%);
-    background-image: none;
 
     &:hover {
       background-color: saturate(darken($color-success, 8%), 8%);
-      background-image: none;
     }
 
   }

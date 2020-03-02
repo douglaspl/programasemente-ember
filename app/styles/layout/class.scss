@@ -35,20 +35,30 @@
 
   &__date-block {
     align-items: center;
+    border-bottom: 1px solid $gray-0;
     display: flex;
     margin-bottom: $distance--lg;
-    padding:  0;
+    padding: 0 0 $distance--md 0;
     text-transform: uppercase;
+    width: 100%;
 
 
     @include media('>lg') {
+      border-bottom: none;
       padding: $distance--md;
+      width: auto;
     }
 
     > * {
 
       &:first-child {
+        display: none;
         opacity: .75;
+
+        @include media('>lg') {
+          display: inline-block;
+        }
+
       }
 
     }
@@ -58,8 +68,13 @@
   &__date {
     align-items: flex-start;
     display: flex;
-    flex-direction: column;
-    margin-left: $distance--sm;
+    flex-direction: row;
+
+    @include media('>lg') {
+      flex-direction: column;
+      margin-left: $distance--sm;
+    }
+
   }
 
   &__day-aux {
@@ -67,8 +82,14 @@
   }
 
   &__day {
-    @include title-2($color: inherit);
+    font-weight: bolder;
+    margin-left: $distance--xxs;
     white-space: nowrap;
+
+    @include media('>lg') {
+      @include title-2($color: inherit);
+    }
+
   }
 
   &__img {

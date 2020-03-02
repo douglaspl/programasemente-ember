@@ -1,7 +1,7 @@
 <main class="main main--timeline">
   <!-- Decorativos -->
-  <!--<span class="icon icon-bar-chart main__icon-1"></span>-->
-  <!--<span class="icon icon-at-sign main__icon-2"></span>-->
+  <!--<span class="icon-bar-chart main__icon-1"></span>-->
+  <!--<span class="icon-at-sign main__icon-2"></span>-->
   <!-- / Decorativos -->
 
 
@@ -15,11 +15,11 @@
           {{#if (equalstr model.idx 1)}}
             primeiro
           {{/if}}
-          
+
           {{#if (equalstr model.idx 2)}}
             segundo
           {{/if}}
-          
+
           {{#if (equalstr model.idx 3)}}
             terceiro
           {{/if}}
@@ -28,7 +28,7 @@
 
       <ol class="timeline__line">
         {{#each model.atividades as |atividade idx|}}
-          
+
           {{#if (equalstr (get listaStartUnit idx) 1)}}
         <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
             {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
@@ -43,11 +43,11 @@
           {{#if (equalstr model.idx 1)}}
             primeiro
           {{/if}}
-          
+
           {{#if (equalstr model.idx 2)}}
             segundo
           {{/if}}
-          
+
           {{#if (equalstr model.idx 3)}}
             terceiro
           {{/if}}

@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: $distance--xxs;
+    min-height: $input-height;
 
     @include media('>sm') {
         margin-bottom: 0;
@@ -50,12 +51,8 @@
 
     }
 
-    &--white {
-
-        #{$this}__label::before {
-            background-color: $white;
-        }
-
+    [class*='__filter'] &__label::before {
+        background-color: $white;
     }
 
 }

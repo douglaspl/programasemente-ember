@@ -74,16 +74,17 @@
   }
 
   &__date-block {
-    background-color: $timeline-date-bg-color;
-    color: $timeline-date-color;
-    transform: translateX(-8px);
 
     @include media('>lg') {
+      background-color: $timeline-date-bg-color;
+      border: none;
+      color: $timeline-date-color;
       background-color: $timeline-date-bg-color;
       position: absolute;
       right: calc(100% + #{$timeline-gap});
       top: 50%;
       transform: translateY(-50%);
+      width: auto;
     }
 
   }

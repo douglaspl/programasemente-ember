@@ -121,7 +121,7 @@
               <label class="form-group__label">Marca</label>
               <div class="image-change">
                 <span class="image-change__image image-change__image--empty" id="new_inst_uploadPreview"></span>
-                <label class="image-change__cta btn btn--green-ghost btn--xxs" for="new_inst_uploadImage">Buscar imagem
+                <label class="image-change__cta btn btn--ghost btn--xxs" for="new_inst_uploadImage">Buscar imagem
                   <input id="new_inst_uploadImage" type="file" name="myPhoto" {{action 'previewImage' 'new' on="change"}} style="display: none;">
                 </label>
                 <button class="btn btn--text m-left--md">Redefinir</button>
@@ -252,7 +252,7 @@
     {{#if selectedInstTabs.informations}}
       {{#if (equalstr role 'admin')}}
         <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start" style="display:none" id="btn_save_inst">
-          <button class="btn btn--green-ghost btn--xxs m-left--md" {{action 'saveInformations' inst_selected.id}}>
+          <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveInformations' inst_selected.id}}>
             <span class="btn__icon icon-save"></span> Salvar alterações
           </button>
         </div>
@@ -291,7 +291,7 @@
           <label class="form-group__label">Marca</label>
           <div class="image-change">
             <span class="image-change__image image-change__image--empty"><img id="uploadPreview"></span>
-            <label class="image-change__cta btn btn--green-ghost btn--xxs" for="uploadImage">Buscar imagem
+            <label class="image-change__cta btn btn--ghost btn--xxs" for="uploadImage">Buscar imagem
               <input id="uploadImage" type="file" name="myPhoto" {{action 'previewImage' on="change"}} style="display: none;">
             </label>
             <button class="btn btn--text m-left--md">Redefinir</button>
@@ -348,7 +348,7 @@
           {{#if selectedInstTabs.courses}}
           <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
             <h2 class="main__subtitle">Anos</h2>
-            <button class="btn btn--green-ghost m-left--md" style="display:none" id="btn_save_courses"
+            <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses"
               {{action 'saveCourses' inst_selected.id}}>
               <span class="btn__icon icon-save"></span>
               Salvar alterações
@@ -384,7 +384,7 @@
           {{#if selectedInstTabs.areas}}
           <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
             <h2 class="main__subtitle">Turmas</h2>
-            <button class="btn btn--green-ghost btn--xs m-left--md" {{action 'newArea'}}>
+            <button class="btn btn--ghost btn--xs m-left--md" {{action 'newArea'}}>
               <span class="btn__icon icon-plus"></span>Nova Turma</button>
           </div>
           <section class="sections__subsection">
@@ -418,10 +418,10 @@
                   </div>
                 </div>
                 <div id="areaItemOptions{{turma.id}}" class="btn-group">
-                  <button class="btn btn--xs btn--text color-error" {{action 'deleteArea' turma.id}}>
+                  <button class="btn btn--text color-error" {{action 'deleteArea' turma.id}}>
                     <span class="btn__icon icon-trash-2"></span> Remover
                   </button>
-                  <button class="btn btn--green-ghost btn--xs" style="width: 120px;" {{action 'editArea' turma.id}}>
+                  <button class="btn btn--ghost btn--xs" style="width: 120px;" {{action 'editArea' turma.id}}>
                     <span class="btn__icon icon-edit"></span> Editar
                   </button>
                 </div>
@@ -480,7 +480,7 @@
     <!-- selected institutiton tab courses -->
     {{#if selectedInstTabs.courses}}
       <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start" style="display:none" id="btn_save_courses">
-        <button class="btn btn--green-ghost btn--xxs m-left--md" {{action 'saveCourses' inst_selected.id}}>
+        <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveCourses' inst_selected.id}}>
           <span class="btn__icon icon-save"></span>
           Salvar alterações
         </button>
@@ -495,10 +495,10 @@
                 {{!-- <img class="list__img list__img--auto-height"
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}"> --}}
                 <h3 class="list__name title-4">{{mod.name}}</h3>
-                <button id="cta{{mod.id}}" class="btn btn--green-ghost btn--xs btn--is-toggle m-left--xl"
-                  {{action displayAccordion mod.id}} style="height: 2rem; width: 9rem;">
-                  <span class="btn__label label__default">Exibir calendário</span>
-                  <span class="btn__label label__active">Fechar calendário</span>
+                <button id="cta{{mod.id}}" class="btn btn--ghost btn--xs btn--is-toggle m-left--xl"
+                  {{action displayAccordion mod.id}} style="width: 9rem;">
+                  <span class="btn__label label__default"><span>Exibir calendário</span></span>
+                  <span class="btn__label label__active"><span>Fechar calendário</span></span>
                 </button>
               </div>
             </div>
@@ -591,7 +591,7 @@
               <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>{{turma.pessoas.length}} alunos</em></div>
             </div>
             <div class="btn-group m-left--auto" id="areaItemOptions{{turma.id}}">
-              <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' turma.id}}>
+              <button class="j-areaFocus btn btn--text color-error" {{action 'deleteArea' turma.id}}>
                 <span class="btn__icon icon-trash-2"></span> Remover
               </button>
               <button class="j-areaFocus btn btn--leaf btn--sm" style="width: 120px;" {{action 'editArea' turma.id}}>

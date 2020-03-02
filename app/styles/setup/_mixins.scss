@@ -2,10 +2,10 @@
 //    #BG AS THUMB
 //------------------------------------
 @mixin bg-as-thumb($size: cover) {
-  background-clip: content-box;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: $size;
+    background-clip: content-box;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: $size;
 }
 
 
@@ -16,23 +16,23 @@
 //    #BUTTON DEFAULT APPEARANCE
 //------------------------------------
 @mixin button {
-  align-items: center;
-  border: 0 solid transparent;
-  box-shadow: $shadow-1;
-  display: inline-flex;
-  flex-direction: row;
-  font-family: $font-title;
-  font-size: $font-size--xxxs;
-  font-weight: 500;
-  justify-content: center;
-  letter-spacing: $letter-spacing--lg;
-  line-height: 1;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-  transition: 200ms var(--ease-in-out-quad);
-  white-space: nowrap;
+    align-items: center;
+    border: 0 solid transparent;
+    box-shadow: $shadow-1;
+    display: inline-flex;
+    flex-direction: row;
+    font-family: $font-title;
+    font-size: $font-size--xxxs;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: $letter-spacing--lg;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+    transition: 200ms var(--ease-in-out-quad);
+    white-space: nowrap;
 }
 
 
@@ -43,27 +43,23 @@
 //    #CARD
 //------------------------------------
 @mixin card($theme: false, $padding: false) {
-  border-radius: $radius;
-  box-shadow: $shadow-1;
+    border-radius: $radius;
+    box-shadow: $shadow-3;
 
-  @if $padding {
-    padding: $padding;
-  }
+    @if $padding {
+        padding: $padding;
+    }
 
-  @if $theme=='light' {
-    background-color: $white;
-    color: $gray-60;
-  }
-
-  @else if $theme=='dark' {
-    background-color: $gray-60;
-    color: $white;
-  }
-
-  @else {
-    background-color: $gray-0;
-    color: $gray-60;
-  }
+    @if $theme == 'light' {
+        background-color: $white;
+        color: $gray-60;
+    } @else if $theme == 'dark' {
+        background-color: $gray-60;
+        color: $white;
+    } @else {
+        background-color: $gray-0;
+        color: $gray-60;
+    }
 
 
 }
@@ -76,65 +72,67 @@
 //    #CHECK RADIO
 //------------------------------------
 @mixin check-radio($size: 'default') {
-  position: relative;
-
-  &__input {
-    @include input-hide;
-  }
-
-  &__label {
-    align-items: center;
-    cursor: pointer; //Label por padrão não possui o cursor como pointer
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    font-weight: normal; //Como é um label vinculado a check/radio, não deve ser bold(default)
-    letter-spacing: 0;
-    min-height: 2em;
-    padding-left: $input-check-radio-label-margin;
     position: relative;
 
-    @include target-ie() {
-      flex: 0 0 auto;
-      line-height: 2em;
+    &__input {
+        @include input-hide;
     }
 
-    &:active,
-    &:focus {
-      background-color: none;
+    &__label {
+        align-items: center;
+        cursor: pointer; //Label por padrão não possui o cursor como pointer
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        font-weight: normal; //Como é um label vinculado a check/radio, não deve ser bold(default)
+        letter-spacing: 0;
+        min-height: 2em;
+        padding-left: $input-check-radio-label-margin;
+        position: relative;
+
+        @include target-ie() {
+            flex: 0 0 auto;
+            line-height: 2em;
+        }
+
+        &:active,
+        &:focus {
+            background-color: none;
+        }
+
+        &::before {
+            background-color: $form-bg-color;
+            border-radius: $radius;
+            box-shadow: $form-shadow;
+            content: '';
+            cursor: pointer;
+            display: inline-block;
+            height: $input-check-radio-size;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
+            width: $input-check-radio-size;
+        }
+
+        &::after {
+            opacity: 0;
+            position: absolute;
+            text-shadow: $shadow-2;
+            top: 50%;
+            transform: translateY(-100%);
+            transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
+        }
+
     }
 
-    &::before {
-      background-color: $gray-0;
-      border-radius: $radius;
-      box-shadow: $form-shadow;
-      content: '';
-      cursor: pointer;
-      display: inline-block;
-      height: $input-check-radio-size;
-      left: 0;
-      position: absolute;
-      text-align: center;
-      transform: translateY(-50%);
-      transition: 300ms;
-      top: 50%;
-      width: $input-check-radio-size;
+    &__input:checked ~ &__label::after {
+        transform: translateY(-50%);
     }
-
-    &::after {
-      text-shadow: $shadow-2;
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-100%);
-      transition: 300ms;
-    }
-
-  }
-
-  &__input:checked~&__label::after {
-    transform: translateY(-50%);
-  }
 
 }
 
@@ -150,37 +148,53 @@
 // $pos
 // $size
 @mixin divider($color: $light-gray, $direction: 'horizontal', $pos: 'none', $size: 2px, $opacity: .25) {
-  position: relative;
+    position: relative;
 
-  &::after {
-    background-color: $color;
-    content: '';
-    left: 0;
-    opacity: $opacity;
-    position: absolute;
+    &::after {
+        background-color: $color;
+        content: '';
+        left: 0;
+        opacity: $opacity;
+        position: absolute;
 
-    @if ($pos=='top') {
-      bottom: 100%;
+        @if ($pos == 'top') {
+            bottom: 100%;
+        }
+
+        @if ($pos == 'bottom') {
+            top: 100%;
+        }
+
+        @if ($direction == 'horizontal') {
+            height: $size;
+            width: 100%;
+        }
+
+        @if ($direction == 'vertical') {
+            height: 100%;
+            top: 0;
+            width: $size;
+        }
+
+
     }
 
-    @if ($pos=='bottom') {
-      top: 100%;
-    }
-
-    @if ($direction=='horizontal') {
-      height: $size;
-      width: 100%;
-    }
-
-    @if ($direction=='vertical') {
-      height: 100%;
-      top: 0;
-      width: $size;
-    }
+}
 
 
-  }
 
+
+
+//------------------------------------
+//    #FULL WIDTH CONTAINER
+//------------------------------------
+@mixin full-width-container {
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    position: relative;
+    right: 50%;
+    width: 100vw;
 }
 
 
@@ -191,38 +205,36 @@
 //    #DOTTED LINK
 //------------------------------------
 @mixin dotted-link {
-  @include has-capsule-on-hover;
+    @include has-capsule-on-hover;
 
-  background-color: transparent;
-  background-image: none;
-  border-radius: 0;
-  box-shadow: none;
-  color: $gray-60;
-  padding: 0;
-  text-shadow: none;
-  z-index: 2;
-
-  &::after {
-    border-bottom: 4px dotted $gray-5;
-    content: '';
-    left: 0;
-    opacity: 1;
-    position: absolute;
-    top: 100%;
-
-    transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-    transition: 300ms var(--ease-in-out-quad);
-
-    width: 100%;
-  }
-
-  &:hover {
+    background-color: transparent;
+    background-image: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: $gray-60;
+    padding: 0;
+    text-shadow: none;
+    z-index: 2;
 
     &::after {
-      opacity: 0;
+        border-bottom: 4px dotted $gray-5;
+        content: '';
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        top: 100%;
+        transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 300ms var(--ease-in-out-quad);
+        width: 100%;
     }
 
-  }
+    &:hover {
+
+        &::after {
+            opacity: 0;
+        }
+
+    }
 
 }
 
@@ -233,64 +245,58 @@
 //------------------------------------
 //    #HAS CAPSULE ON HOVER
 //------------------------------------
-$capsule-on-hover-bg-color: $green-10;
-$capsule-on-hover-color: $blue-navy-60;
-$capsule-on-hover-radius: $radius;
-
 @mixin has-capsule-on-hover {
-  position: relative;
-  overflow: visible;
-
-  > * {
+    overflow: visible;
     position: relative;
-    z-index: 2;
-  }
 
-  &::before {
-    background-color: $capsule-on-hover-bg-color;
-    border-radius: $capsule-on-hover-radius;
-    box-shadow: $shadow-5;
-    content: '';
-    height: calc(100% + (#{$distance--xs} * 2));
-    left: 50%;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-    transition: 200ms var(--ease-in-out-quad);
-
-    visibility: hidden;
-    width: calc(100% + #{$distance--sm});
-    z-index: 1;
-  }
-
-  &:hover {
-
-    color: $capsule-on-hover-color;
-
-    &::before {
-      opacity: 1;
-      visibility: visible;
+    > * {
+        position: relative;
+        z-index: 2;
     }
 
-  }
-
-  @include target-ie {
-    border-radius: $radius;
-    background-color: transparent;
-    padding: $distance--xs $distance--sm;
-
     &::before {
-      display: none;
+        background-color: $capsule-on-hover-bg-color;
+        border-radius: $capsule-on-hover-radius;
+        box-shadow: $shadow-5;
+        content: '';
+        height: calc(100% + (#{$distance--xs} * 2));
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.9);
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
+        visibility: hidden;
+        width: calc(100% + #{$distance--sm});
+        z-index: 1;
     }
 
     &:hover {
-      background-color: $green-20;
+        color: $capsule-on-hover-color;
+
+        &::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            visibility: visible;
+        }
+
     }
 
-  }
+    @include target-ie {
+        background-color: transparent;
+        border-radius: $radius;
+        padding: $distance--xs $distance--sm;
+
+        &::before {
+            display: none;
+        }
+
+        &:hover {
+            background-color: $capsule-on-hover-bg-color;
+        }
+
+    }
 
 }
 
@@ -302,30 +308,30 @@ $capsule-on-hover-radius: $radius;
 //    #HOVER
 //------------------------------------
 @mixin hover($self: true, $pseudo: '') {
-  @media (-moz-touch-enabled: 1), (hover:hover), (hover:on-demand) {
-    @if $self==true {
-      &:hover#{$pseudo} {
-        @content;
-      }
+    @media (-moz-touch-enabled: 1), (hover:hover), (hover:on-demand) {
+        @if $self == true {
+            &:hover#{$pseudo} {
+                @content;
+            }
+        }
+
+        @if $self == false {
+            @content;
+        }
+
     }
 
-    @if $self==false {
-      @content;
-    }
+    @include target-ff {
+        @if $self == true {
+            &:hover#{$pseudo} {
+                @content;
+            }
+        }
 
-  }
-
-  @include target-ff {
-    @if $self==true {
-      &:hover#{$pseudo} {
-        @content;
-      }
+        @if $self == false {
+            @content;
+        }
     }
-
-    @if $self==false {
-      @content;
-    }
-  }
 
 }
 
@@ -337,19 +343,19 @@ $capsule-on-hover-radius: $radius;
 //    #ICON
 //------------------------------------
 @mixin icon {
-  color: inherit;
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: middle;
+    color: inherit;
+    font-family: '#{$icomoon-font-family}' !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    speak: none;
+    text-transform: none;
+    vertical-align: middle;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -360,9 +366,9 @@ $capsule-on-hover-radius: $radius;
 //    #IMG RESPONSIVE
 //------------------------------------
 @mixin img-responsive {
-  display: block;
-  height: auto;
-  max-width: 100%;
+    display: block;
+    height: auto;
+    max-width: 100%;
 }
 
 
@@ -373,14 +379,15 @@ $capsule-on-hover-radius: $radius;
 //    #INPUTS
 //------------------------------------
 @mixin inputs {
-  background-color: $form-background-color;
-  border: 0 solid transparent;
-  border-radius: $radius;
-  color: $gray-60;
-  font-size: 1rem;
-  height: $input-height;
-  padding-left: $distance--sm;
-  padding-right: $distance--sm;
+    background-color: $form-bg-color;
+    border-radius: $radius;
+    border: 0 solid transparent;
+    color: $form-color;
+    font-size: 1rem;
+    font-weight: 300;
+    height: $input-height;
+    padding-left: $distance--sm;
+    padding-right: $distance--sm;
 }
 
 
@@ -391,11 +398,8 @@ $capsule-on-hover-radius: $radius;
 //    #INPUT HIDE
 //------------------------------------
 @mixin input-hide {
-  // left: -9999px;
-  opacity: 0;
-  position: absolute;
-  // top: -9999px;
-  // visibility: hidden;
+    opacity: 0;
+    position: absolute;
 }
 
 
@@ -406,26 +410,26 @@ $capsule-on-hover-radius: $radius;
 //    #LINE
 //------------------------------------
 @mixin line($color: $green-20, $height: .075em, $width: 4rem, $line: 'under') {
-  position: relative;
+    position: relative;
 
-  &::after {
-    background-color: $color;
-    border-radius: 50%;
-    content: '';
-    height: $height;
-    left: 0;
-    position: absolute;
-    width: $width;
+    &::after {
+        background-color: $color;
+        border-radius: 50%;
+        content: '';
+        height: $height;
+        left: 0;
+        position: absolute;
+        width: $width;
 
-    @if $line=='under' {
-      top: calc(100% + .35em);
+        @if $line=='under' {
+            top: calc(100% + .35em);
+        }
+
+        @if $line=='left' {
+            bottom: $height;
+        }
+
     }
-
-    @if $line=='left' {
-      bottom: $height;
-    }
-
-  }
 
 }
 
@@ -437,36 +441,36 @@ $capsule-on-hover-radius: $radius;
 //    #N COLUMNS
 //------------------------------------
 @mixin n-columns($min-width, $gutter, $last-equal: false, $max-cols: 5) {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: -$gutter;
-  margin-top: -$gutter;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -$gutter;
+    margin-top: -$gutter;
 
-  >* {
-    flex: 1 0 $min-width;
-    margin-left: $gutter;
-    margin-top: $gutter;
+    > * {
+        flex: 1 0 $min-width;
+        margin-left: $gutter;
+        margin-top: $gutter;
 
-    @if $last-equal {
-      @for $i from 2 through $max-cols {
-        $screen-width: ($min-width * $i) + ($gutter * $i);
-        $column-width: (100% / $i);
+        @if $last-equal {
+            @for $i from 2 through $max-cols {
+                $screen-width: ($min-width * $i) + ($gutter * $i);
+                $column-width: (100% / $i);
 
-        @media (min-width: $screen-width) {
-          max-width: calc(#{$column-width} - #{$gutter});
+                @media (min-width: $screen-width) {
+                    max-width: calc(#{$column-width} - #{$gutter});
+                }
+            }
+
+            $column-width: (100% / $max-cols);
+
+            @media (min-width: $min-width * $max-cols) {
+                min-width: calc(#{$column-width} - #{$gutter});
+            }
+
         }
-      }
-
-      $column-width: (100% / $max-cols);
-
-      @media (min-width: $min-width * $max-cols) {
-        min-width: calc(#{$column-width} - #{$gutter});
-      }
 
     }
-
-  }
 
 }
 
@@ -477,17 +481,17 @@ $capsule-on-hover-radius: $radius;
 //------------------------------------
 //    #OVERFLOW Y
 //------------------------------------
-@mixin overflow-y($shadows: false, $bg-color: transparent) {
-  @include scrollbar($shadows, $bg-color);
+@mixin overflow-y($bg-color: transparent) {
+    @include scrollbar($bg-color);
 
-  max-height: 100%;
-  -webkit-overflow-scrolling: touch; // Melhora comportamento do scroll em iOS;
-  overflow-y: auto;
-  overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; // Melhora comportamento do scroll em iOS;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-  @media (landscape) {
-    padding-right: .75rem;
-  }
+    @media (landscape) {
+        padding-right: .75rem;
+    }
 
 }
 
@@ -509,71 +513,29 @@ $capsule-on-hover-radius: $radius;
 //    @include scrollbar;
 // }
 //
-@mixin scrollbar($shadows: false, $bg-color: transparent) {
-  &::-webkit-scrollbar {
-    width: $scrollbar-width;
-  }
+@mixin scrollbar($bg-color: transparent) {
+    &::-webkit-scrollbar {
+        width: $scrollbar-width;
+    }
 
-  // Pista / Track
-  &::-webkit-scrollbar-track {
-    border-radius: $scrollbar-track-radius;
-    box-shadow: $scrollbar-track-shadow;
-  }
+    // Pista / Track
+    &::-webkit-scrollbar-track {
+        border-radius: $scrollbar-track-radius;
+        box-shadow: $scrollbar-track-shadow;
+    }
 
-  // Parte clicável / Handle
-  &::-webkit-scrollbar-thumb {
-    background: $scrollbar-handle-bg;
-    border-radius: $scrollbar-handle-radius;
-    box-shadow: $scrollbar-handle-shadow;
-  }
+    // Parte clicável / Handle
+    &::-webkit-scrollbar-thumb {
+        background: $scrollbar-handle-bg;
+        border-radius: $scrollbar-handle-radius;
+        box-shadow: $scrollbar-handle-shadow;
+    }
 
-  // Parte clicável / Handle quando a janela estiver inativa
-  &::-webkit-scrollbar-thumb:window-inactive {
-    background: $scrollbar-handle-bg-inactive;
-  }
+    // Parte clicável / Handle quando a janela estiver inativa
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: $scrollbar-handle-bg-inactive;
+    }
 
-  @if $shadows==true {
-    @include scrolling-shadows($bg-color);
-  }
-
-}
-
-
-
-
-
-//------------------------------------
-//    #SCROLLING SHADOWS
-//------------------------------------
-@mixin scrolling-shadows($bg-color: $white,
-$shadow-intensity: 0.2,
-$shadow-color: $black,
-$cover-size: 40px,
-$shadow-size: 14px,
-$shadow-width: 100%) {
-
-  background:
-    // Shadow covers
-    linear-gradient($bg-color 30%, rgba($bg-color, 0)),
-    linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
-
-    // Shadows
-    radial-gradient(farthest-side 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
-    radial-gradient(farthest-side 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
-  background:
-    // Shadow covers
-    linear-gradient($bg-color 30%, rgba($bg-color, 0)),
-    linear-gradient(rgba($bg-color, 0), $bg-color 70%) 0 100%,
-
-    // Shadows
-    radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
-    radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
-  background-repeat: no-repeat;
-  background-color: $bg-color;
-  background-size: $shadow-width $cover-size, $shadow-width $cover-size, $shadow-width $shadow-size, $shadow-width $shadow-size;
-
-  // Opera doesn't support this in the shorthand
-  background-attachment: local, local, scroll, scroll;
 }
 
 
@@ -599,9 +561,9 @@ $shadow-width: 100%) {
 //------------------------------------
 // Caso queira atingir exclusivamente navegadores como Safari e Chrome.
 @mixin target-webkit {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    @content;
-  }
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        @content;
+    }
 }
 
 
@@ -613,9 +575,9 @@ $shadow-width: 100%) {
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Firefox.
 @mixin target-edge {
-  @supports (-ms-ime-align: auto) {
-    @content;
-  }
+    @supports (-ms-ime-align: auto) {
+        @content;
+    }
 }
 
 
@@ -627,9 +589,9 @@ $shadow-width: 100%) {
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Firefox.
 @mixin target-ff {
-  @-moz-document url-prefix() {
-    @content;
-  }
+    @-moz-document url-prefix() {
+        @content;
+    }
 }
 
 
@@ -641,9 +603,9 @@ $shadow-width: 100%) {
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Internet Explorer.
 @mixin target-ie {
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    @content;
-  }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
 }
 
 
@@ -655,9 +617,9 @@ $shadow-width: 100%) {
 //------------------------------------
 // Caso queira atingir exclusivamente o navegador Internet Explorer.
 @mixin target-ipad {
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    @content;
-  }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        @content;
+    }
 }
 
 
@@ -675,16 +637,14 @@ $shadow-width: 100%) {
 // }
 //
 @mixin text-contrast($n) {
-  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
-  $light-color: round((red($white) * 299) + (green($white) * 587) + (blue($white) * 114) / 1000);
+    $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+    $light-color: round((red($white) * 299) + (green($white) * 587) + (blue($white) * 114) / 1000);
 
-  @if abs($color-brightness) < ($light-color / 2) {
-    color: $white;
-  }
-
-  @else {
-    color: $gray-60;
-  }
+    @if abs($color-brightness) < ($light-color / 2) {
+        color: $white;
+    } @else {
+        color: $gray-60;
+    }
 }
 
 
@@ -694,104 +654,133 @@ $shadow-width: 100%) {
 //------------------------------------
 //    #TITLES
 //------------------------------------
-@mixin title-0( $color: inherit,
-                $size: $font-size--xxl,
-                $size--sm: $font-size--super,
-                $size--lg: $font-size--max,
-                $weight: 800,
-                $letter: $letter-spacing--sm) {
+@mixin title-0(     $color: inherit,
+                    $size: $font-size--xxl,
+                    $size--sm: $font-size--super,
+                    $size--lg: $font-size--max,
+                    $weight: 800,
+                    $letter: $letter-spacing--sm) {
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  line-height: 1;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1;
+    vertical-align: middle;
 
-  @include media('>sm') { font-size: $size--sm; }
-  @include media('>lg') { font-size: $size--lg; }
-  @include media('>xl') { font-size: calc(#{$size--lg} + .5vw); }
+    @include media('>sm') {
+        font-size: $size--sm;
+    }
+
+    @include media('>lg') {
+        font-size: $size--lg;
+    }
+
+    @include media('>xl') {
+        font-size: calc(#{$size--lg} + .5vw);
+    }
+
 }
 
-@mixin title-1( $color: inherit,
-                $size: $font-size--lg,
-                $size--sm: $font-size--xl,
-                $size--lg: $font-size--xxl,
-                $weight: 800,
-                $letter: $letter-spacing--sm) {
+@mixin title-1(     $color: inherit,
+                    $size: $font-size--lg,
+                    $size--sm: $font-size--xl,
+                    $size--lg: $font-size--xxl,
+                    $weight: 800,
+                    $letter: $letter-spacing--sm) {
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  line-height: 1.05;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1.05;
+    vertical-align: middle;
 
-  @include media('>sm') { font-size: $size; }
-  @include media('>md') { font-size: $size--sm; }
-  @include media('>lg') { font-size: $size--lg; font-size: calc(#{$size--lg} + .5vw); }
+    @include media('>sm') {
+        font-size: $size;
+    }
+
+    @include media('>md') {
+        font-size: $size--sm;
+    }
+
+    @include media('>lg') {
+        font-size: $size--lg;
+        font-size: calc(#{$size--lg} + .5vw);
+    }
+
 }
 
-@mixin title-2( $case: uppercase,
-                $color: $gray-60,
-                $line-height: 1.2,
-                $size: $font-size--md,
-                $size--sm: $font-size--lg,
-                $size--lg: $font-size--xl,
-                $weight: 600,
-                $letter: $letter-spacing--xs) {
+@mixin title-2(     $case: uppercase,
+                    $color: $gray-60,
+                    $line-height: 1.2,
+                    $size: $font-size--md,
+                    $size--sm: $font-size--lg,
+                    $size--lg: $font-size--xl,
+                    $weight: 600,
+                    $letter: $letter-spacing--xs) {
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  line-height: $line-height;
-  text-transform: $case;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: $line-height;
+    text-transform: $case;
+    vertical-align: middle;
 
-  @include media('>sm') { font-size: $size--sm; }
-  @include media('>lg') { font-size: $size--lg; }
+    @include media('>sm') {
+        font-size: $size--sm;
+    }
+
+    @include media('>lg') {
+        font-size: $size--lg;
+    }
+
 }
 
-@mixin title-2--u( $color: $gray-60,
-                   $size: $font-size--sm,
-                   $size--sm: $font-size--md,
-                   $size--lg: $font-size--lg,
-                   $weight: normal,
-                   $letter: $letter-spacing--xl) {
-  color: $color;
-  font-family: $font-base;
-  font-size: calc(#{$size} + .75vw);
-  font-weight: $weight;
-  letter-spacing: $letter;
-  text-transform: uppercase;
-  vertical-align: middle;
+@mixin title-2--u(  $color: $gray-60,
+                    $size: $font-size--sm,
+                    $size--sm: $font-size--md,
+                    $size--lg: $font-size--lg,
+                    $weight: normal,
+                    $letter: $letter-spacing--xl) {
 
-//   @include media('>sm') { font-size: $size--sm; }
-//   @include media('>lg') { font-size: $size--lg; }
+    color: $color;
+    font-family: $font-base;
+    font-size: calc(#{$size} + .75vw);
+    font-weight: $weight;
+    letter-spacing: $letter;
+    text-transform: uppercase;
+    vertical-align: middle;
 }
 
-@mixin title-3( $color: $gray-60,
-                $size: $font-size--sm,
-                $size--sm: $font-size--md,
-                $size--lg: $font-size--lg,
-                $weight: 500,
-                $letter: $letter-spacing--sm) {
+@mixin title-3(     $color: $gray-60,
+                    $size: $font-size--sm,
+                    $size--sm: $font-size--md,
+                    $size--lg: $font-size--lg,
+                    $weight: 500,
+                    $letter: $letter-spacing--sm) {
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  line-height: .9;
-  opacity: .85;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: .9;
+    opacity: .85;
+    vertical-align: middle;
 
-  @include media('>sm') { font-size: $size--sm; }
-  @include media('>lg') { font-size: $size--lg; }
+    @include media('>sm') {
+        font-size: $size--sm;
+    }
+
+    @include media('>lg') {
+        font-size: $size--lg;
+    }
+
 }
 
 @mixin title-3--alt (   $color: $gray-50,
@@ -800,25 +789,28 @@ $shadow-width: 100%) {
                         $weight: 600,
                         $letter: $letter-spacing--lg) {
 
-  $width: .5em;
+    $width: .5em;
 
-  color: $color;
-  font-family: $font-title;
-  font-size: $size;
-  font-weight: $weight;
-  letter-spacing: $letter;
-  line-height: 1.5;
-  text-transform: uppercase;
-  vertical-align: middle;
+    color: $color;
+    font-family: $font-title;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: $letter;
+    line-height: 1.5;
+    text-transform: uppercase;
+    vertical-align: middle;
 
-  @include media('>lg') { font-size: $size--lg; }
+    @include media('>lg') {
+        font-size: $size--lg;
+    }
+
 }
 
-@mixin title-4( $color: $gray-50,
-                $size: $font-size--xs,
-                $size--lg: $font-size--sm,
-                $weight: 500,
-                $letter: $letter-spacing--md) {
+@mixin title-4(     $color: $gray-50,
+                    $size: $font-size--xs,
+                    $size--lg: $font-size--sm,
+                    $weight: 500,
+                    $letter: $letter-spacing--md) {
 
     color: $color;
     font-family: $font-title;
@@ -827,13 +819,16 @@ $shadow-width: 100%) {
     letter-spacing: $letter;
     vertical-align: middle;
 
-    @include media('>lg') { font-size: $size--lg; }
+    @include media('>lg') {
+        font-size: $size--lg;
+    }
+
 }
 
-@mixin title-5( $color: $gray-50,
-                $size: $font-size--xs,
-                $weight: 500,
-                $letter: $letter-spacing--md) {
+@mixin title-5(     $color: $gray-50,
+                    $size: $font-size--xs,
+                    $weight: 500,
+                    $letter: $letter-spacing--md) {
 
     color: $color;
     font-family: $font-title;
@@ -843,11 +838,11 @@ $shadow-width: 100%) {
     vertical-align: middle;
 }
 
-@mixin title-aux($color: $gray-40,
-                 $display: inline-block,
-                 $family: $font-base,
-                 $size: $font-size--xxs,
-                 $weight: 300) {
+@mixin title-aux(   $color: $gray-40,
+                    $display: inline-block,
+                    $family: $font-base,
+                    $size: $font-size--xxs,
+                    $weight: 300) {
 
     color: $color;
     display: $display;
@@ -874,8 +869,8 @@ $shadow-width: 100%) {
 // }
 //
 @mixin transition($args: '200ms') {
-  transition: unquote($args);
-  transition-timing-function: var(--ease-in-out-quad);
+    transition: unquote($args);
+    transition-timing-function: var(--ease-in-out-quad);
 }
 
 
@@ -885,9 +880,9 @@ $shadow-width: 100%) {
 //    #TRUNCATE (one line)
 //------------------------------------
 @mixin truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -905,5 +900,5 @@ $shadow-width: 100%) {
 // }
 //
 @mixin z-index($key) {
-  z-index: z-index($key);
+    z-index: z-index($key);
 }

@@ -76,10 +76,10 @@
       </li>
     {{else}}
       <li class="global-nav__item" id="header-modulos">
-        <a href="#" class="global-nav__link p-right--sm j-timeline">Percurso <span class="icon icon-chevron-down"></span></a>
+        <a href="#" class="global-nav__link p-right--sm j-timeline">Percurso <span class="icon-chevron-down"></span></a>
 
         <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
-          <ul>
+          <ul class="submenu__body">
             {{#if primeiroAno}}
             <li class="submenu__item">
               <a class="submenu__link"{{action 'goToModulo' primeiroAno on="click"}}>
@@ -116,7 +116,7 @@
       {{#if (equalstr role 'aluno')}}{{else}}
           <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
             <a class="global-nav__link">
-              {{!-- <span class="icon icon-activity"></span> --}}
+              {{!-- <span class="icon-activity"></span> --}}
               <span>Acompanhamento</span></a>
         	</li>
       {{/if}}
@@ -152,16 +152,12 @@
       <!-- /MOBILE -->
 
       <li class="global-nav__item global-nav__submenu-holder">
-
         <div class="global-nav__submenu submenu submenu--header" id="thumbSubmenu">
-
           <p class="global-nav__call">Olá, <strong>{{username}}</strong></p>
-
-          <ul>
+          <ul class="submenu__body">
             <li class="submenu__item">
               <a href="#" id="change_image_trigger" class="submenu__link">
                 <span>Alterar imagem do perfil</span></a></li>
-
             <li class="submenu__item">
               <a href="#" id="change_pass_trigger" class="submenu__link">
                 <span>Alterar senha</span></a></li>
@@ -176,7 +172,7 @@
           <span class="global-nav__avatar avatar">
             <img class="j-application-avatar" src={{uri_avatar}}>
           </span>
-          <span class="icon-chevron-down"></span>
+          <span class="icon-chevron-down hide-on--xs"></span>
         </a>
 
       </li>
@@ -193,7 +189,7 @@
   {{outlet}} {{else}}
   <aside id="select_inst_modal" class="modal modal--is-show">
 
-    <form class="modal__content modal__content--sm" autocomplete="off" aria-autocomplete="none">
+    <form class="modal__content modal__content--md" autocomplete="off" aria-autocomplete="none">
       <header class="modal__header">
         <h3 class="modal__title">Selecione uma instituição</h3>
       </header>
@@ -299,7 +295,7 @@
 <!-- MUDANÇA DE AVATAR -->
 <aside id="change_image_modal" class="modal">
 
-  <div class="modal__content modal__content--sm">
+  <div class="modal__content modal__content--md">
 
     <header class="modal__header">
       <button id="change_image_close" class="modal__close btn-close icon-x" type="submit"></button>
@@ -308,31 +304,36 @@
     </header>
 
     <div class="modal__body">
-      <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
 
-      <div class="image-change">
-        <div class="avatar avatar--lg">
-          <div class="avatar__img avatar__img--as-bg" id="avatar-modale" style="background-image: url('{{uri_avatar}}');"></div>
-          {{!-- <img class="avatar__img" id="avatar-modal" src={{uri_avatar}}> --}}
+      <div class="m-bottom--none">
+
+        <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
+
+        <div class="image-change">
+          <div class="avatar avatar--lg">
+            <div class="avatar__img avatar__img--as-bg" id="avatar-modale" style="background-image: url('{{uri_avatar}}');"></div>
+          </div>
+
+          <label class="image-change__cta btn">Buscar imagem
+            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;" name="file">
+          </label>
         </div>
 
-        <label class="image-change__cta btn">Buscar imagem
-          <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;" name="file">
-        </label>
       </div>
+
     </div>
 
     {{#if selected_file_avatar}}
-    <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control" readonly><strong>{{selected_file_avatar}}</strong></span>
+      <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control" readonly><strong>{{selected_file_avatar}}</strong></span>
     {{/if}}
 
     <div class="modal__footer">
       {{#if avatar_loading}}
-      <button class="btn btn--leaf-ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i class="fa fa-spinner fa-pulse fa-2x"></i></button>
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i class="fa fa-spinner fa-pulse fa-2x"></i></button>
       {{else if selected_file_avatar}}
-      <button class="btn btn--leaf-ghost btn--xxs" type="submit" id="botaEnviarAvatar" {{action 'sendAvatar'}}>Salvar</button>
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" {{action 'sendAvatar'}}>Salvar</button>
       {{else}}
-      <button class="btn btn--leaf-ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button>
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button>
       {{/if}}
     </div>
   </div>

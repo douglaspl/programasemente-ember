@@ -34,7 +34,7 @@
         max-width: 70rem;
         outline: 0;
         opacity: 0;
-        padding: $distance--xxl $distance--md $distance--md;
+        padding: $distance--lg $distance--md $distance--md;
         position: relative;
         top: 50%;
         transform: translateY(-45%);
@@ -50,6 +50,11 @@
 
         &--sm {
            max-width: 24rem;
+        }
+
+
+        &--md {
+            max-width: 32rem;
         }
 
     }
@@ -74,7 +79,8 @@
     &__body {
 
         @include overflow-y;
-        padding-bottom: $distance--sm;
+
+        max-height: 60vh;
         padding-right: $distance--md;
 
         @include target-ipad {
@@ -83,11 +89,14 @@
 
         @include target-ie {
             flex: 1 0 auto;
-            max-height: 60vh;
         }
 
         &--inside-scroll {
             overflow: visible;
+        }
+
+        > * {
+            margin-bottom: $distance--xxxl;
         }
 
     }
@@ -117,7 +126,8 @@
         position: absolute;
         right: 0;
         top: 0;
-        transition: 300ms;
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
 
         [class*='is-show'] & {
             opacity: .95;

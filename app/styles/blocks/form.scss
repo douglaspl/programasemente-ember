@@ -71,7 +71,7 @@
 
         &__input {
             flex: 1;
-            min-height: 40px;
+            min-height: $input-height;
             -webkit-appearance: none;
 
             @include target-ie {

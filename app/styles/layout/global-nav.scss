@@ -106,8 +106,10 @@
         }
 
         &:hover {
-            background-color: $global-nav-gradient-dark;
-            // background-image: linear-gradient(to top, $global-nav-gradient-dark, $global-nav-gradient-light);
+            @include text-contrast($global-nav-gradient-hover);
+
+            background-color: $global-nav-gradient-hover;
+            opacity: .6;
         }
 
         &--is-active {
@@ -116,7 +118,8 @@
             opacity: 1;
 
             &:hover {
-                background-color: darken($global-nav-active-bg-color, 5%);
+                background-color: $global-nav-active-bg-color-hover;
+                color: $global-nav-active-color;
                 opacity: 1;
             }
 
@@ -195,7 +198,7 @@
         position: absolute;
         right: 50%;
         top: calc(100% - #{$distance--md});
-        width: 20rem;
+        width: $global-nav-submenu-width;
 
         @include media('<=sm') {
             display: none;
@@ -206,9 +209,9 @@
     &__call {
         @include truncate;
 
-        border-bottom: 1px solid $gray-0;
-        font-size: $font-size--md;
-        padding: $distance--sm $distance--md;
+        border-bottom: 1px solid $gray-5;
+        font-size: $font-size--sm;
+        padding: $distance--xs $distance--sm;
     }
 
 

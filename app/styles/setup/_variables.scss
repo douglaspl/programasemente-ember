@@ -22,6 +22,9 @@
 }
 
 
+
+
+
 //------------------------------------
 //    #AUX
 //------------------------------------
@@ -338,7 +341,8 @@ $font-size--max: 3.5rem;
 //    #FORM
 //------------------------------------
 $form-shadow: 0 2px 0 rgba($gray-60, .12);
-$form-background-color: $gray-5;
+$form-bg-color: $gray-5;
+$form-color: $gray-60;
 
 
 
@@ -401,7 +405,7 @@ $icon-play: "\e910";
 //------------------------------------
 //    #INPUT
 //------------------------------------
-$input-height: 2.5rem;
+$input-height: 3rem;
 $input-radio-selected-size: .6em;
 
 $input-check-radio-size: 1.75rem;
@@ -533,50 +537,44 @@ $scrollbar-track-shadow: inset 0 0 6px $scrollbar-track-shadow-color;
 
 
 //------------------------------------
+//    #Z-INDEX
+//------------------------------------
+$z-index: (
+    'loader': 800,
+    'alert': 750,
+    'modal': 700,
+    'menu': 600,
+    'offcanvas': 500,
+    'overlayer': 400,
+    'popover': 350,
+    'help': 325,
+    'header': 300,
+    'body': 200,
+    'main': 100
+);
+
+
+
+
+
+//------------------------------------
 //    #TIMELINE
 //------------------------------------
 $timeline-color: transparentize($green-0, .65);
 $timeline-tip-size: 1rem;
-
 $timeline-gap: $distance--lg;
 $timeline-translation: $timeline-gap + $timeline-tip-size;
-
 $timeline-mark-info-bg-color: $white;
-
 $timeline-date-bg-color: transparentize($blue-navy-60, .65);
 $timeline-date-color: $blue-navy-0;
 $timeline-begin-end-bg-color: $green-0;
-
 $timeline-marks-bg-color: $green-10;
 $timeline-marks-bg-color--locked: $leaf-0;
 $timeline-marks-border-color: $timeline-color;
 $timeline-marks-color: color-contrast($timeline-marks-bg-color, $green-0, $blue-navy-60);
 $timeline-marks-radius: $radius--capsule;
 $timeline-marks-shadow: $shadow-3;
-
 $timeline-status-size: 3rem;
-
-
-
-
-
-
-//------------------------------------
-//    #Z-INDEX
-//------------------------------------
-$z-index: (
-'loader': 800,
-'alert': 750,
-'modal': 700,
-'menu': 600,
-'offcanvas': 500,
-'overlayer': 400,
-'popover': 350,
-'help': 325,
-'header': 300,
-'body': 200,
-'main': 100
-);
 
 
 
@@ -598,11 +596,17 @@ $main-border-color: transparentize($gray-10, .5);
 
 $button-radius: $radius;
 
+$default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-50;
+
+// CAPSULE
+$capsule-on-hover-bg-color: $green-10;
+$capsule-on-hover-color: $blue-navy-60;
+$capsule-on-hover-radius: $radius;
 
 // CLICKABLES
 $clickables-bg-color: $green-30;
-$clickables-bg-color-dark: $green-40;
+$clickables-bg-color-dark: $leaf-50;
 $clickables-color: $white;
 
 // CHECKBOX
@@ -613,7 +617,9 @@ $checkbox-checked-color: $clickables-color;
 $stripe-bg-color: transparentize($gray-0, .4);
 
 // GLOBAL NAV
-$global-nav-gradient-light: $green-5;
-$global-nav-gradient-dark:  $green-10;
-$global-nav-active-color: $white;
-$global-nav-active-bg-color: $green-40;
+$global-nav-gradient-light: $green-5 !default;
+$global-nav-gradient-hover: $default-hover-bg-color !default;
+$global-nav-active-bg-color: $green-30 !default;
+$global-nav-active-bg-color-hover: $green-40 !default;
+$global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-60) !default;
+$global-nav-submenu-width: 24rem !default;
