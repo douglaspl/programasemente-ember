@@ -1,0 +1,173 @@
+<section style="display: block;" id="report-person-specific" class="report__person-specific">
+
+  <button id="back-person-specific_old" class="btn btn--text" {{action 'closeEspecifico'}}>
+    <span class="icon-arrow-left"></span>voltar
+  </button>
+  {{#if selected_pessoa}}
+  <header class="report-person__header person">
+    <div class="avatar avatar--xl">
+      {{#if selected_pessoa.pessoa.uriAvatar}}
+      <img src={{selected_pessoa.pessoa.uriAvatar}}>
+      {{else}}
+      <img src="/assets/img/avatar-default.svg">
+      {{/if}}
+    </div>
+
+    <div>
+      {{selected_pessoa.lastAccess}}
+      <h1 class="title-1">{{selected_pessoa.pessoa.name}}</h1>
+      <div>
+        <span class="person__email title-aux">{{selected_pessoa.pessoa.email}}</span>
+      </div>
+      <div class="popover">
+        <button class="btn btn--text btn--xxs popover__trigger">mais informações</button>
+
+        <div class="popover__balloon popover__balloon--lemon popover__balloon--right-bottom about-author">
+          <button class="popover__close icon-x"></button>
+          <ul class="">
+            <li class="m-bottom--xs">Nascimento: <strong>{{selected_pessoa.pessoa.dataNascimento}}</strong></li>
+            <li class="m-bottom--xs">Sexo: <strong>{{capitalize selected_pessoa.pessoa.genero}}</strong></li>
+            <li class="">Matrícula: <strong>{{selected_pessoa.pessoa.matricula}}</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <ul class="person__info m-left--auto">
+      <li class="person__other">Cadastrado em: <strong>{{selected_pessoa.cadastrado}}</strong></li>
+      <li class="person__other">Último acesso: <strong>{{selected_pessoa.pessoa.lastAccess}}</strong></li>
+      <li class="person__other">Total de acessos: <strong>{{selected_pessoa.pessoa.nracessos}}</strong></li>
+    </ul>
+
+  </header>
+
+  {{#if selected_pessoa.matriculado}}
+  <section class="report-person__body">
+    <div class="form-group form-group--select-wrapper">
+      {{moduloPercent}}
+      <label class="form-group__label" for="select_course">Percurso</label>
+      <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}}
+        id="select_course_pessoa" value="select_inst">
+        {{#each selected_pessoa.modulos as |modulo|}}
+        {{#if (equalstr curso_selected.id modulo.id)}}
+        <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+        {{else}}
+        <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+        {{/if}}
+        {{/each}}
+      </select>
+    </div>
+    {{#if curso_selected}}
+    <ul>
+      {{#each curso_selected.atividades as |atividade|}}
+      <li class="report-person__class">
+        <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm">
+          <span class="title-aux">Aula {{atividade.idx}}</span>
+          <h3 class="title-2">{{atividade.name}}</h3>
+        </div>
+        <ul class="report-class__progress">
+          {{#each atividade.secoes as |secao|}}
+          {{#if (equalstr secao.conteudo.type 'html')}}
+
+          {{#if (equalstr secao.conteudo.percent '100')}}
+          <li class="data data--shadowed data--success data--short">
+            <span class="icon-check icon--success icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{else}}
+          <li class="data data--shadowed data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{/if}}
+
+          {{else if (equalstr secao.conteudo.type 'video')}}
+
+          {{#if (equalstr secao.conteudo.percent '100')}}
+          <li class="data data--shadowed data--success data--short">
+            <span class="icon-check icon--success icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{else}}
+          <li class="data data--shadowed data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{/if}}
+
+          {{else}}
+
+          {{#if secao.conteudo.respondidas}}
+          <li class="data data--shadowed data--success data--short">
+            <span class="data__value">{{format-decimal secao.conteudo.aproveitamento}}<span
+                class="small">%</span></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{else}}
+          <li class="data data--shadowed data--light data--short">
+            <span class="icon-minus icon--lg"></span>
+            <span class="data__label">{{secao.nome}}</span>
+          </li>
+          {{/if}}
+
+          {{/if}}
+
+          {{/each}}
+        </ul>
+
+        <h4 class="report-class__subtitle">Dados dos quizes</h4>
+        {{#each atividade.secoes as |secao|}}
+        {{#if (equalstr secao.conteudo.type 'quiz')}}
+        <table class="report-class__table table table--striped">
+          <thead>
+            <tr class="table__subheader">
+              <th class="report-class__main-info">{{secao.nome}}</th>
+              <th class="report-class__correct">acertou</th>
+              <th class="report-class__visualization">% visualização do feedback</th>
+              <th class="report-class__feedback">quantidade de vezes que o feedback foi reassistido</th>
+              <th class="report-class__time-spent">tempo de permanência na questão</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each secao.conteudo.questoes as |questao|}}
+            <tr>
+              <td class="report-class__main-info">Questão {{questao.idx}}</td>
+              {{#if questao.respondida}}
+              {{#if questao.acertou}}
+              <td class="report-class__correct"><span class="icon-check icon--success"></span></td>
+              {{else}}
+              <td class="report-class__correct"><span class="icon-x icon--error"></span></td>
+              {{/if}}
+              {{else}}
+              <td class="report-class__correct"><span class="icon-minus"></span></td>
+              {{/if}}
+              <td class="report-class__visualization">{{questao.visfeedback}}%</td>
+              <td class="report-class__feedback">{{questao.qtdefeedback}}</td>
+              <td class="report-class__time-spent">{{questao.tempoquestaoalias}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+        {{/each}}
+      </li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </section>
+  {{else}}
+  <!-- INÍCIO DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
+  <div class="empty">
+    <span class="empty__icon icon-frown-o icon--xxl"></span>
+    Esse usuário não está matriculado em nenhum percurso.
+  </div>
+  <!-- FIM DO CASO 0, O USUÁRIO SEM MATRÍCULAS -->
+  {{/if}}
+  {{else}}
+  <div class="loader" id="firstAccessLoader">
+    <div class="loader__circle">
+      <img src="/assets/img/loader.gif">
+    </div>
+  </div>
+  {{/if}}
+</section>
