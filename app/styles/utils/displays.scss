@@ -3,6 +3,8 @@
 //------------------------------------
 // Somente utilizar quando não houver
 // mudança de direção por conta de responsividade
+.d-block { display: block; }
+.d-i-block { display: inline-block; }
 .d-flex {
     display: flex;
 
@@ -46,17 +48,27 @@ $i: 5;
 
 }
 
-
-
 .d-none,
 .d--none,
 .is-hidden {
     display: none;
 }
 
+.is-hidden--v {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+
+
 //------------------------------------
 //    #RESPONSIVE VISIBILITY
 //------------------------------------
+.d-xs--none,
+.hide-on--xs { @include media('<=sm') { display: none; } }
+
 .d-sm--none,
 .hide-on--sm { @include media('>sm') { display: none; } }
 

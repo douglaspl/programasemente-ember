@@ -6,45 +6,13 @@
     background-size: cover;
 }
 
-.d-i-block {
-    display: inline-block;
-}
-
-.link--dotted {
-    @include dotted-link;
-
-    display: inline-block;
-}
-
-.numbers {
-    font-feature-settings: 'tnum';
-    font-variant-numeric: tabular-nums;
-  }
-
-.is-hidden--v {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.overflow-hidden {
-    overflow: hidden;
-}
-
-.ta-c {
-    text-align: center;
-}
-
-.ta-l {
-    text-align: left;
-}
-
-.tt-u {
-    text-transform: uppercase;
-}
-
-.small {
-    font-size: .75em;
-}
+.overflow-hidden { overflow: hidden; }
+.pos-rel { position: relative; }
+.small { font-size: .75em; }
+.ta-c { text-align: center; }
+.ta-l { text-align: left; }
+.tt-u { text-transform: uppercase; }
+.w100 { width: 100%; }
 
 .scr-only {
     height: 1px;
@@ -60,7 +28,7 @@
     display: block;
 }
 
-.w100 {
-    width: 100%;
+.numbers {
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
 }
-

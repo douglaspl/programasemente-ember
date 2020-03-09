@@ -212,7 +212,7 @@
               {{/if}}
             </span>
             <div class="person">
-              <span class="person__name">
+              <span class="person__name truncate">
                 <a class="person__link" href="#" {{action 'selectPessoa' pessoa.id}}>{{pessoa.name}}</a>
               </span>
               <span class="person__email">{{pessoa.email}}</span>
@@ -288,7 +288,7 @@
     </div>
 
     <div class="person">
-      <span class="person__name">{{selected_pessoa.pessoa.name}}</span>
+      <span class="person__name truncate">{{selected_pessoa.pessoa.name}}</span>
       <span>{{selected_pessoa.pessoa.email}}</span>
     </div>
 

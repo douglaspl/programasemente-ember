@@ -783,29 +783,6 @@
 
 }
 
-@mixin title-3--alt (   $color: $gray-50,
-                        $size: $font-size--xs,
-                        $size--lg: $font-size--sm,
-                        $weight: 600,
-                        $letter: $letter-spacing--lg) {
-
-    $width: .5em;
-
-    color: $color;
-    font-family: $font-title;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $letter;
-    line-height: 1.5;
-    text-transform: uppercase;
-    vertical-align: middle;
-
-    @include media('>lg') {
-        font-size: $size--lg;
-    }
-
-}
-
 @mixin title-4(     $color: $gray-50,
                     $size: $font-size--xs,
                     $size--lg: $font-size--sm,

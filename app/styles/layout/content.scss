@@ -93,15 +93,28 @@
             transition: opacity 300ms;
             z-index: 9;
         }
-
         #{$this}__feedback-close {
+            $distance: $distance--sm;
+
+            background-color: transparent;
             color: $white;
-            font-size: $font-size--lg;
+            font-size: $font-size--xxs;
+            letter-spacing: $letter-spacing--xl;
             opacity: .8;
+            padding: $distance--xs $distance--md;
             position: absolute;
-            right: $distance--xs;
-            top: $distance--xs;
+            right: $distance;
+            text-transform: uppercase;
+            transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
+            top: $distance;
             z-index: 11;
+
+            &:hover {
+                background-color: $blue-navy-60;
+                opacity: 1;
+            }
+
         }
 
         &::before {

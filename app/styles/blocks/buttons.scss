@@ -82,7 +82,8 @@
   transition: 200ms var(--ease-in-out-quad);
 
   &:hover {
-    background-color: $clickables-bg-color-dark;
+    background-color: $clickables-bg-color-hover;
+    color: $clickables-color-hover;
   }
 
   // ELEMENTS
@@ -128,12 +129,6 @@
         content: 'SPAN DESNECESSÁRIO'
       }
     }
-  }
-
-  &--near-form {
-    height: 40px;
-    font-size: 1.25rem;
-    width: 40px;
   }
 
   &--disabled {
@@ -200,6 +195,12 @@
 
   }
 
+  &--near-form {
+    height: $input-height;
+    font-size: 1.25rem;
+    width: $input-height;
+  }
+
 
 
 
@@ -208,20 +209,10 @@
   &--ghost {
     background-color: transparent;
     border: 1px solid $clickables-bg-color;
-    color: $clickables-bg-color-dark;
+    color: $clickables-color;
 
     &:hover {
       background-color: $default-hover-bg-color;
-    }
-
-  }
-
-  &--leaf {
-    background-color: $leaf-40;
-    color: $white;
-
-    &:hover {
-      background-color: $leaf-60;
     }
 
   }
@@ -266,15 +257,73 @@
 
   }
 
-  &--success {
-    background-color: saturate(darken($color-success, 6%), 6%);
+  // THEMES
+  @if $btn--leaf {
 
-    &:hover {
-      background-color: saturate(darken($color-success, 8%), 8%);
+    &--leaf {
+      background-color: $btn--leaf-bg-color;
+      color: $btn--leaf-color;
+
+      &:hover {
+        background-color: $btn--leaf-bg-color-hover;
+        color: $btn--leaf-color-hover;
+      }
+
     }
 
   }
 
+  @if $btn--success {
+
+    &--success {
+      background-color: $btn--success-bg-color;
+      color: $btn--success-color;
+
+      &:hover {
+        background-color: $btn--success-bg-color-hover;
+        color: $btn--success-color-hover;
+      }
+
+    }
+
+  }
+
+
+
+
+
+  // Sizes
+  @if $btn--xxs {
+    &--xxs {
+      font-size: $font-size--xxs * .65;
+      letter-spacing: $letter-spacing--xl;
+    }
+  }
+
+  @if $btn--xs {
+    &--xs {
+      font-size: $font-size--xs * .65;
+      letter-spacing: $letter-spacing--lg;
+    }
+  }
+
+  @if $btn--md {
+    &--md {
+      font-size: $font-size--md * .65;
+    }
+  }
+
+  @if $btn--lg {
+    &--lg {
+      font-size: $font-size--lg * .65;
+    }
+  }
+
+
+
+
+
+  // Container
   &-close {
     background-color: transparent;
     border-radius: $radius;
@@ -293,26 +342,6 @@
 
   }
 
-  // Sizes
-  &--xxs {
-    font-size: $font-size--xxs * .65;
-    letter-spacing: $letter-spacing--xl;
-  }
-
-  &--xs {
-    font-size: $font-size--xs * .65;
-    letter-spacing: $letter-spacing--lg;
-  }
-
-  &--md {
-    font-size: $font-size--md * .6;
-  }
-
-  &--lg {
-    font-size: $font-size--lg * .6;
-  }
-
-  // Container
   &-group {
 
     >*:not(:last-child) {
