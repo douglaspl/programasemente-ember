@@ -66,6 +66,8 @@ export default Ember.Controller.extend({
     },
     authenticate() {
       document.getElementById('login_button').disabled = true;
+      document.getElementById('login_button').innerHTML =  'Aguarde...'
+
       let life = 0;
       if (document.getElementById('remember').checked) life = 1;
       let username = document.getElementById('identification').value;
@@ -74,6 +76,7 @@ export default Ember.Controller.extend({
         if (reason.error_description) {
           this.set('errorMessage', reason.error_description);
           this.set('success_mail', '');
+          document.getElementById('login_button').innerHTML =  'Entrar'
         } else if (reason) {
           this.set('errorMessage', reason.error || reason);
           this.set('success_mail', '');
