@@ -94,7 +94,7 @@
         display: flex;
         font-weight: 700;
         letter-spacing: $letter-spacing--xl;
-        opacity: .65;
+        // opacity: .65;
         padding: $distance--md $distance--lg;
         position: relative;
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
@@ -109,13 +109,13 @@
             @include text-contrast($global-nav-gradient-hover);
 
             background-color: $global-nav-gradient-hover;
-            opacity: .6;
+            // opacity: .6;
         }
 
         &--is-active {
             background-color: $global-nav-active-bg-color;
             color: $global-nav-active-color;
-            opacity: 1;
+            // opacity: 1;
 
             &:hover {
                 background-color: $global-nav-active-bg-color-hover;
@@ -210,7 +210,7 @@
         position: absolute;
         right: 0;
         top: calc(100% + 1px);
-        width: $global-nav-submenu-width;
+        min-width: $global-nav-submenu-width;
 
         @include media('<=sm') {
             display: none;

@@ -623,7 +623,7 @@ $global-nav-gradient-hover: $default-hover-bg-color !default;
 $global-nav-active-bg-color: $green-30 !default;
 $global-nav-active-bg-color-hover: $green-40 !default;
 $global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-60) !default;
-$global-nav-submenu-width: calc(100% - 3rem) !default;
+$global-nav-submenu-width: 10rem !default;
 
 // BUTTONS
 $btn--leaf: true;
