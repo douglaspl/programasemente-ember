@@ -94,7 +94,7 @@
         display: flex;
         font-weight: 700;
         letter-spacing: $letter-spacing--xl;
-        opacity: .65;
+        // opacity: .65;
         padding: $distance--md $distance--lg;
         position: relative;
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
@@ -109,13 +109,13 @@
             @include text-contrast($global-nav-gradient-hover);
 
             background-color: $global-nav-gradient-hover;
-            opacity: .6;
+            // opacity: .6;
         }
 
         &--is-active {
             background-color: $global-nav-active-bg-color;
             color: $global-nav-active-color;
-            opacity: 1;
+            // opacity: 1;
 
             &:hover {
                 background-color: $global-nav-active-bg-color-hover;
@@ -167,6 +167,15 @@
 
     }
 
+    &__user-info {
+        $distance: $distance--sm;
+
+        border-left: 1px solid $main-border-color;
+        margin-left: $distance;
+        margin-right: $distance;
+        padding-left: $distance;
+    }
+
     &__trigger {
         padding: $distance--xxs;
 
@@ -191,14 +200,17 @@
     &__submenu-holder {
         @include z-index('menu');
 
+        align-items: center;
+        align-self: stretch;
+        display: flex;
         position: relative;
     }
 
     &__submenu {
         position: absolute;
-        right: 50%;
-        top: calc(100% - #{$distance--md});
-        width: $global-nav-submenu-width;
+        right: 0;
+        top: calc(100% + 1px);
+        min-width: $global-nav-submenu-width;
 
         @include media('<=sm') {
             display: none;
