@@ -159,7 +159,19 @@
           </span>
           <span class="global-nav__user-info">
             <span>{{username}}</span>
-            <span class="text-aux d-block m-top--xxs">1º ano do Ensino Médio</span>
+          {{#if (equalstr role 'aluno')}} 
+            <span class="text-aux d-block m-top--xxs">
+          {{#if primeiroAno}}
+          1º ano do ensino médio
+          {{/if}}
+          {{#if segundoAno}}
+          2º ano do ensino médio
+          {{/if}}
+          {{#if terceiroAno}}
+          3º ano do ensino médio
+          {{/if}}
+            </span>
+          {{/if}}  
           </span>
           <span class="icon-chevron-down hide-on--xs"></span>
         </a>
