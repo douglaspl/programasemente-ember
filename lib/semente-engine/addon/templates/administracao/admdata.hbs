@@ -49,9 +49,9 @@
           <div class="d-flex">
             {{#each inst_selected.modulos as |mod|}}
             <span class="checkbox m-right--lg">
-              <input class="checkbox__input" id="ano_{{mod.id}}" name="year" type="checkbox" value="year{{mod.id}}"
-                {{action 'filterano' mod.id on='change'}}>
-              <label class="checkbox__label bg--white" for="ano_{{mod.id}}">{{mod.name}}</label>
+              <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
+                {{action 'filterano' mod.idx on='change'}}>
+              <label class="checkbox__label bg--white" for="ano_{{mod.idx}}">{{mod.name}}</label>
             </span>
             {{/each}}
           </div>
