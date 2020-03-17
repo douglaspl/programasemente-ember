@@ -209,10 +209,11 @@
   &--ghost {
     background-color: transparent;
     border: 1px solid $clickables-bg-color;
-    color: $clickables-color;
+    color: $clickables-bg-color;
 
     &:hover {
-      background-color: $default-hover-bg-color;
+      background-color: transparentize($default-hover-bg-color, .75);
+      color: $clickables-bg-color;
     }
 
   }

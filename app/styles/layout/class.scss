@@ -4,6 +4,8 @@
   $multiplier: 1.8;
   $img-height: 10rem * $multiplier;
   $img-width:  18rem * $multiplier;
+  // $img-height: 10rem;
+  // $img-width:  18rem;
 
   border-radius: $radius;
   box-shadow: $shadow-3, $shadow-2, $shadow-h-l-2, $shadow-h-r-2;
