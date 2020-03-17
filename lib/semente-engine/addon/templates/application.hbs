@@ -36,11 +36,6 @@
   </div>
 </aside>
 
-<aside class="alert alert--blue-navy alert--xs alert--fixed-top">
-    <a class="icon-x m-right--lg" href="#"></a>
-    <p>Olá, <strong>{{username}}</strong>! Caso esse não seja seu nome, faça <a class="alert__link" href="#">logout</a>.</p>
-</aside>
-
 <header class="header" id="header_layout">
   {{!-- <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" stroke-linejoin="round"
     stroke-miterlimit="1.41421" clip-rule="evenodd" viewBox="0 0 454 71">
@@ -164,7 +159,7 @@
           </span>
           <span class="global-nav__user-info">
             <span>{{username}}</span>
-          {{#if (equalstr role 'aluno')}} 
+          {{#if (equalstr role 'aluno')}}
             <span class="text-aux d-block m-top--xxs">
           {{#if primeiroAno}}
           1º ano do ensino médio
@@ -176,7 +171,7 @@
           3º ano do ensino médio
           {{/if}}
             </span>
-          {{/if}}  
+          {{/if}}
           </span>
           <span class="icon-chevron-down hide-on--xs"></span>
         </a>
@@ -204,6 +199,11 @@
   </nav>
 
 </header>
+
+<aside class="alert alert--blue-navy alert--xs alert--fixed-top">
+    <a class="icon-x m-right--lg" href="#"></a>
+    <p>Olá, <strong>{{username}}</strong>! Caso esse não seja seu nome, faça <a class="alert__link" href="#">logout</a>.</p>
+</aside>
 
 <section id="content-main" class="content-main">
   {{#if role}}
