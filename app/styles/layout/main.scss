@@ -41,7 +41,7 @@
 
   &--timeline {
     background-color: $green-50;
-    background-image: linear-gradient(-115deg, transparentize($green-20, .6) 0%, transparentize($leaf-60, .2) 50%), url("https://res.cloudinary.com/douglaslinhares/image/upload/v1561988509/M%C3%A9dio-Assets/fundo8.jpg");
+    background-image: linear-gradient(-115deg, transparentize($green-20, .6) 0%, transparentize($leaf-60, .2) 50%), url("/assets/img/fundo8.jpg");
     background-attachment: fixed, fixed;
     background-position: cover, cover;
     background-size: cover, cover;

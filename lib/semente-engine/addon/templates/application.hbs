@@ -75,7 +75,7 @@
         {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}} Percurso {{/link-to}}
       </li>
     {{else}}
-      <li class="global-nav__item" id="header-modulos">
+      <li class="global-nav__item global-nav__submenu-holder" id="header-modulos">
         <a href="#" class="global-nav__link p-right--sm j-timeline">Percurso <span class="icon-chevron-down"></span></a>
 
         <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
@@ -152,8 +152,32 @@
       <!-- /MOBILE -->
 
       <li class="global-nav__item global-nav__submenu-holder">
-        <div class="global-nav__submenu submenu submenu--header" id="thumbSubmenu">
-          <p class="global-nav__call">Olá, <strong>{{username}}</strong></p>
+
+        <a class="global-nav__thumb j-thumb" href="#">
+          <span class="global-nav__avatar avatar">
+            <img class="j-application-avatar" src={{uri_avatar}}>
+          </span>
+          <span class="global-nav__user-info">
+            <span>{{username}}</span>
+          {{#if (equalstr role 'aluno')}} 
+            <span class="text-aux d-block m-top--xxs">
+          {{#if primeiroAno}}
+          1º ano do ensino médio
+          {{/if}}
+          {{#if segundoAno}}
+          2º ano do ensino médio
+          {{/if}}
+          {{#if terceiroAno}}
+          3º ano do ensino médio
+          {{/if}}
+            </span>
+          {{/if}}  
+          </span>
+          <span class="icon-chevron-down hide-on--xs"></span>
+        </a>
+
+        <div class="global-nav__submenu submenu submenu--header submenu--user" id="thumbSubmenu">
+          {{!-- <p class="global-nav__call">Olá, <strong>{{username}}</strong></p> --}}
           <ul class="submenu__body">
             <li class="submenu__item">
               <a href="#" id="change_image_trigger" class="submenu__link">
@@ -167,13 +191,6 @@
           </ul>
 
         </div>
-
-        <a class="global-nav__thumb j-thumb" href="#">
-          <span class="global-nav__avatar avatar">
-            <img class="j-application-avatar" src={{uri_avatar}}>
-          </span>
-          <span class="icon-chevron-down hide-on--xs"></span>
-        </a>
 
       </li>
 

@@ -2,7 +2,7 @@
   $this: &;
 
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(-8px);
   transition-delay: 150ms;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.25, .46, .45, .94); // IE fallback
@@ -43,7 +43,11 @@
   &--header {
     background-color: $white;
     border-radius: $radius;
-    box-shadow: $shadow-4;
+    box-shadow: $shadow-1, $shadow-h-l-2,  $shadow-h-r-2;
+  }
+
+  &--user {
+    width: calc(100% - 3rem);
   }
 
   &--is-show {
