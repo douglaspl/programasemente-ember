@@ -12,4 +12,8 @@
         overflow: hidden;
     }
 
+    [class*="alert--fixed-top"] ~ & {
+        height: calc(100vh - #{$header-height} - (2 * #{$header-v-padding}) - #{$alert-fixed-top});
+    }
+
 }

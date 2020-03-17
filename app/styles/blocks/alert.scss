@@ -84,9 +84,10 @@
   }
 
   &--blue-navy {
-    background-color: transparentize($blue-navy-40, .025);
-    background-image: linear-gradient(to bottom, transparent 40%, transparentize($blue-navy-60, .075));
+    background-color: transparentize($blue-navy-60, .025);
     color: $blue-navy-0;
+
+    [class*='__link'] { color: $green-20; }
   }
 
   &--green {
@@ -108,6 +109,22 @@
   &--warning {
     background-color: $color-warning;
     color: $white;
+  }
+
+  &--fixed-top {
+    align-items: center;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    font-weight: 300;
+    min-height: $alert-fixed-top;
+    justify-content: flex-start;
+    left: 0;
+    margin-bottom: 0;
+    padding: 1rem 2rem;
+    position: relative;
+    transform: none;
   }
 
   &--has-interaction {
