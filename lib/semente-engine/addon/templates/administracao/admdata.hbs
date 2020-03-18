@@ -65,11 +65,11 @@
             <option value="0" selected>Escolha uma turma</option>
             {{#if (equalstr pessoaLogged.role "instrutor")}}
             {{#each pessoaLogged.turmas as |turma|}}
-            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
             {{/each}}
             {{else}}
             {{#each inst_selected.turmas as |turma|}}
-            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
             {{/each}}
             {{/if}}
           </select>
