@@ -76,8 +76,13 @@
     </div>
     {{/if}}
 
-    <h1 class="main__title">{{inst_selected.name}}</h1>
-  </header>
+<div class="d-flex m-top--md">
+      <h1 class="main__title">{{inst_selected.name}}</h1>
+      {{#if inst_selected}}
+        <button class="btn btn--ghost btn--xs m-left--sm" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
+      {{/if}}
+    </div>
+</header>
 
   {{/if}}
 
