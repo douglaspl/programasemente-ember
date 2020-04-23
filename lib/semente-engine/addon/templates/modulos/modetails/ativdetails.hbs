@@ -45,7 +45,7 @@
     </div>
     <nav id="scroller_menu" class="course-nav__nav">
       <ul class="course-nav__nodes">
-        {{#each model.secoes as |secao|}}
+        {{#each sortedSecoes as |secao|}}
           {{#if (isinarray secao secoes_enabled)}}
             {{#each secao.conteudos as |conteudo|}}
               {{#if conteudo.quiz}}
