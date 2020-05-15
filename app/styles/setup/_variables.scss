@@ -636,6 +636,9 @@ $global-nav-active-bg-color-hover: $green-40 !default;
 $global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-60) !default;
 $global-nav-submenu-width: 10rem !default;
 
+// TRANSITION
+$transition-bg-color: $blue-navy-50;
+
 // BUTTONS
 $btn--leaf: true;
 $btn--leaf-bg-color: $leaf-40;

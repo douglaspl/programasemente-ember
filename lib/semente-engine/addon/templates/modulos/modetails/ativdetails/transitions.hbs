@@ -1,4 +1,5 @@
 <section id="transition_aula_{{model.id}}" class="course__transition transition">
+	<span class="stealth-info-congrats">{{nomeAluno}}</span>
 	{{#if next_section}}
 		{{#if model.ultimaObrigatoria}}
 			{{#if next_atividade}}
@@ -95,7 +96,8 @@
 						<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
 						<div class="transition__cta-group">
 							<button class="transition__cta btn btn--md animated fadeIn d2750" {{action 'goNext' next_atividade_id next_ativsec_id 'atividade'}}>Continuar para a próxima aula</button>
-							<button class="transition__cta btn btn--md btn--ghost animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+							<button class="transition__cta btn btn--md btn--ghost animated fadeIn d3000" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
+							<button class="transition__cta btn btn--md btn--ghost animated fadeIn d3000" {{action 'goBack' next_atividade_id next_ativsec_id 'atividade'}}>Voltar para o percurso</button>
 							<p class="transition__countdown animated fadeIn d2750">Continuará automaticamente em {{countdown}} segundos.</p>
 						</div>
 					</div>
@@ -135,10 +137,13 @@
 				<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
 				<div class="transition__cta-group">
 					<button class="transition__cta btn btn--md btn--ghost animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
-					{{#link-to 'modulos.modlist' ModuloIdx class="transition__cta btn btn--md animated fadeIn d2750"}}Voltar à página de aulas{{/link-to}}
+					<button class="transition__cta btn btn--md animated fadeIn d2750" {{action 'goBack' next_atividade_id next_ativsec_id 'atividade'}}>Voltar para o percurso</button>
 					<p class="transition__countdown animated fadeIn d2750">Voltará automaticamente em {{countdown}} segundos.</p>
 				</div>
 			</div>
 		{{/if}}
 	{{/if}}
+
 </section>
+
+

@@ -40,11 +40,17 @@
     font-variant-numeric: tabular-nums;
 }
 
-.stealth-info {
+[class*='stealth-info']{
     bottom: $distance--xs;
-    color: desaturate(lighten($course-nav-bg-color, $amount: 1.5%), $amount: 3%);
     left: 50%;
     pointer-events: none;
     position: absolute;
     transform: translateX(-50%);
+}
+.stealth-info-navbar {
+    color: desaturate(lighten($course-nav-bg-color, $amount: 1.5%), $amount: 3%);
+}
+
+.stealth-info-congrats {
+    color: desaturate(lighten($transition-bg-color, $amount: 15%), $amount: 14%);
 }
