@@ -39,3 +39,12 @@
     font-feature-settings: 'tnum';
     font-variant-numeric: tabular-nums;
 }
+
+.stealth-info {
+    bottom: $distance--xs;
+    color: desaturate(lighten($course-nav-bg-color, $amount: 1.5%), $amount: 3%);
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%);
+}

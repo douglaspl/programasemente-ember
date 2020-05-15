@@ -617,6 +617,17 @@ $checkbox-checked-color: $clickables-color;
 // STRIPE
 $stripe-bg-color: transparentize($gray-0, .4);
 
+// COURSE NAV
+$course-nav-bg-color: $blue-navy-60;
+$course-nav-menu-size: 32px;
+$course-nav-active-bg-color: $lemon-10;
+$course-nav-current-bar-color: $lemon-60;
+$course-nav-icon-active-color:  inherit;
+$course-nav-icon-current-color: inherit;
+$course-nav-icon-is-done-color: $lemon-40;
+$course-nav-not-done-opacity: .5;
+$course-nav-lateral-pad: $distance--sm;
+
 // GLOBAL NAV
 $global-nav-gradient-light: $green-5 !default;
 $global-nav-gradient-hover: $default-hover-bg-color !default;

@@ -8,6 +8,7 @@
       </button>
 
       <h1 class="course-nav__course-title">{{model.modulo.name}}</h1>
+      
       {{#if (equalstr role 'aluno')}}
       {{#link-to 'modulos.modlist' model.modulo.id class="course-nav__back"}}
       <span class="icon-chevron-left"></span>
@@ -21,6 +22,8 @@
       {{/if}}
 
     </div>
+
+    <span class="stealth-info">{{nomeAluno}}</span>
 
     <!-- Marca da instituição -->
 
