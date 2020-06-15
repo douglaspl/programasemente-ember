@@ -79,9 +79,7 @@
             }
 
             &--amount {
-                flex: 0 0 auto;
-                min-width: 0;
-                width: 6rem;
+                flex: 1 0 auto;
             }
 
             & + #{$this}__input:not(.pwdt) {
@@ -179,8 +177,8 @@
                 pointer-events: none;
                 position: absolute;
                 right: .5em;
-                top: 100%;
-                transform: translateY(-27px); // (form height / 2) + (icon height /2)
+                top: 50%;
+                transform: translateY(-50%);
                 z-index: 2;
             }
         }

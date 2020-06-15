@@ -3,201 +3,39 @@
 
     position: relative;
 
-    &__list {
-        // align-items: flex-start;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        // justify-content: flex-start;
-        margin-top: $distance--md;
-    }
+    &__table {
+        th {
+            position: sticky;
+            top: 0;
+        }
 
-    &__check {
-        width: 100%;
+        th,
+        td {
+            flex-basis: 2rem;
 
-        @include media('>md') {
-            width: auto;
+            &[class*="bg-"] {
+                color: $white;
+            }
+
+            &:not(:last-child) {
+                border-right: 4px solid transparentize($color: $white, $amount: .85);
+            }
+
+        }
+
+        td:not(:last-child) {
+            font-size: .9em;
         }
 
     }
 
     &__avatar {
-        box-shadow: $shadow-3;
-        display: inline-block;
-        margin-bottom: $distance--sm;
     }
 
     &__person {
-        $gutter: $distance--sm;
-        $total-items: 2;
-        $total-items-sm: 3;
-        $total-items-md: 4;
-        $total-items-lg: 5;
-        $total-distance: ($total-items - 1) * $gutter;
-
-        align-items: center;
-        background-color: $gray-0;
-        background-image: linear-gradient(to top, $gray-0, $white);
-        border-radius: $radius;
-        box-shadow: $shadow-1;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        flex: 0 0 auto;
-        justify-content: flex-start;
-        margin: 0 $gutter $gutter 0;
-        padding: $distance--md;
-        width: calc((100% - #{$total-distance}) / #{$total-items});
-
-        &:nth-child(#{$total-items}n) {
-            margin-right: 0;
-        }
-
-        @include media('>sm') {
-            $gutter: $distance--sm;
-            $total-distance: ($total-items-sm - 1) * $gutter;
-
-            margin: 0 $gutter $gutter 0;
-            width: calc((100% - #{$total-distance}) / #{$total-items-sm});
-
-            &:nth-child(n + 1) {
-                margin-right: $gutter;
-            }
-
-            &:nth-child(#{$total-items-sm}n) {
-                margin-right: 0;
-            }
-
-        }
-
-        @include media('>md') {
-            $gutter: $distance--md;
-            $total-distance: ($total-items-md - 1) * $gutter;
-
-            margin: 0 $gutter $gutter 0;
-            width: calc((100% - #{$total-distance}) / #{$total-items-md});
-
-            &:nth-child(n + 1) {
-                margin-right: $gutter;
-            }
-
-            &:nth-child(#{$total-items-md}n) {
-                margin-right: 0;
-            }
-
-        }
-
-        @include media('>lg') {
-            $gutter: $distance--lg;
-            $total-distance: ($total-items-lg - 1) * $gutter;
-
-            margin: 0 $gutter $gutter 0;
-            width: calc((100% - #{$total-distance}) / #{$total-items-lg});
-
-            &:nth-child(n + 1) {
-                margin-right: $gutter;
-            }
-
-            &:nth-child(#{$total-items-lg}n) {
-                margin-right: 0;
-            }
-
-        }
-
-        [class*='has-stats'] & {
-            // background-color: $gray-0;
-            border: 3px solid transparent;
-            box-shadow: $shadow-1;
-            flex-wrap: wrap;
-            margin: $distance--sm 0;
-            padding: $distance--xs;
-
-            &--has-completed { border-left-color: $color-success; }
-            &--has-init { border-left-color: $color-warning; }
-            &--has-not-init { border-left-color: $color-error; }
-
-            @include media('>md') {
-                border-radius: $radius;
-                padding: $distance--sm $distance--md;
-            }
-
-        }
-
-        &--is-augmented-link {
-            position: relative;
-
-            > * {
-                opacity: .99;
-                pointer-events: none;
-                position: relative;
-                z-index: 2;
-            }
-
-            > a {
-                background-color: $lemon-5;
-                background-image: linear-gradient(to top, $lemon-40, $lemon-5);
-                height: 100%;
-                left: 0;
-                opacity: 0;
-                pointer-events: auto;
-                position: absolute;
-                top: 0;
-                transition: 200ms;
-                width: 100%;
-                z-index: 1;
-
-                &:hover {
-                    opacity: 1;
-                }
-
-            }
-
-        }
-
     }
 
     &__data {
-        align-items: flex-start;
-        border-top: 1px solid $gray-5;
-        display: flex;
-        flex-direction: row;
-        margin-top: $distance--xs;
-        padding-bottom: $distance--xxs;
-        padding-top: $distance--xs;
-        width: 100%;
-
-        @include media('>md') {
-            border: 0 solid transparent;
-            margin-top: $distance--xs;
-            padding: 0;
-            width: auto;
-        }
-
-        > * {
-            flex: 1;
-        }
-
-    }
-
-    // Alerta indicando quantos usuários foram selecionados
-    &__selected-users {
-        left: 50%;
-        min-width: 32rem;
-        opacity: 0;
-        padding: $distance--lg;
-        position: fixed;
-        top: $distance--xxl;
-        transform: translate(-50%, 5%);
-        transition: 300ms;
-        visibility: hidden;
-        z-index: 2;
-
-        &--is-show {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, 0);
-        }
-
     }
 
 }

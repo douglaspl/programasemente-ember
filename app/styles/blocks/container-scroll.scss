@@ -1,0 +1,35 @@
+.container-scroll {
+    $this: &;
+
+    position: relative;
+
+    &--v {
+
+      #{$this}__scroll {
+        max-height: 27rem;
+        overflow: auto;
+      }
+
+    }
+
+    &--h {
+
+      #{$this}__scroll {
+        @include scrollbar;
+
+        overflow-x: scroll;
+      }
+
+      &::after {
+        background-image: linear-gradient(to left, $body-bg-color, transparent);
+        content: '';
+        height: calc(100% - 2rem);
+        position: absolute;
+        right: 0;
+        top: 2rem;
+        width: 6em;
+      }
+
+    }
+
+  }

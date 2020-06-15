@@ -211,10 +211,10 @@ $white: hsla(0, 0%, 100%, 1) !default;
 $black: hsla($hue, 20%, 4%, 1) !default;
 
 // aux
-$color-error: hsla(2, 60%, 50%, 1) !default;
-$color-info: hsla(210, 60%, 36%, 1) !default;
-$color-success: hsla(115, 60%, 40%, 1) !default;
-$color-warning: hsla(38, 87%, 50%, 1) !default;
+$color-error: hsla(2, 60%, 40%, 1) !default;
+$color-info: hsla(210, 60%, 30%, 1) !default;
+$color-success: hsla(115, 60%, 33%, 1) !default;
+$color-warning: hsla(46, 90%, 45%, 1) !default;
 
 $colors: ((blue-navy-0, $blue-navy-0),
 (blue-navy-5, $blue-navy-5),
@@ -520,7 +520,7 @@ $btn-pad--xl: 1em 2em;
 //------------------------------------
 //    #SCROLLBAR
 //------------------------------------
-$scrollbar-width: 8px;
+$scrollbar-width: .25rem;
 
 $scrollbar-handle-bg: transparentize($white, .2);
 $scrollbar-handle-bg-inactive: transparentize($black, .6);
@@ -615,7 +615,7 @@ $checkbox-checked-bg-color: $clickables-bg-color;
 $checkbox-checked-color: $clickables-color;
 
 // STRIPE
-$stripe-bg-color: transparentize($gray-0, .4);
+$stripe-bg-color: $gray-0;
 
 // COURSE NAV
 $course-nav-bg-color: $blue-navy-60;

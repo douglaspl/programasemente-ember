@@ -1,17 +1,6 @@
 <!-- INÍCIO DE TODOS EM UMA INSTITUIÇÃO -->
 <section class="report__section report-people report__section--is-active" id="report-people">
 
-  <!-- INÍCIO DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
-  <div class="report-people__selected-users alert alert--blue-navy-50" id="report-people-compare">
-    <p>Você está com <strong>{{ap_length}} usuários</strong> selecionados.</p>
-    <div class="alert__footer">
-      <button class="btn btn--text" {{action 'deselectPessoaCompare'}}>Desmarcar todos</button>
-      <button class="btn" {{action 'showComparison'}}>Comparar</button>
-    </div>
-  </div>
-  <!-- FIM DO ALERTA PARA TOTAL DE USUÁRIOS MARCADOS PARA COMPARAÇÃO -->
-
-
 
   <div class="filter-list">
 
@@ -173,7 +162,7 @@
           </div>
         </div>
 
-        <div class="form-group form-group--vertical m-left--xxl">
+        {{!-- <div class="form-group form-group--vertical m-left--xxl">
           <label class="form-group__label" for="order">Ordenação</label>
           <div class="form-group--select-wrapper">
             <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order"
@@ -193,7 +182,7 @@
               {{/if}}
             </select>
           </div>
-        </div>
+        </div> --}}
 
         {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
       </div>
@@ -204,25 +193,82 @@
           <span class="icon-reload icon--xl"></span>
           Buscando
         </div>
-        <ul class="report-people__list">
-          {{#each pagedContent.content as |pessoa|}}
-          <li class="report-people__person report-people__person--is-augmented-link">
-            <a href="#" {{action 'selectPessoa' pessoa.id}}></a>
-            <span class="report-people__avatar avatar avatar--lg">
-              {{#if pessoa.uriAvatar}}
-              <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-              {{else}}
-              <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-              {{/if}}
-            </span>
-            <div class="person">
-              <span class="person__name truncate">
-                {{pessoa.name}}
-              </span>
-            </div>
-          </li>
-          {{/each}}
-        </ul>
+
+        <div class="container-scroll container-scroll--v">
+          <div class="container-scroll__scroll">
+            <table class="report-people__table table table--striped table--short table--fix-col">
+              <thead>
+                <tr>
+                  <th>Aluno/Aulas</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                  <th>6</th>
+                  <th>7</th>
+                  <th>8</th>
+                  <th>9</th>
+                  <th>10</th>
+                  <th>11</th>
+                  <th>12</th>
+                </tr>
+              </thead>
+              <tbody>
+
+
+
+
+
+
+                {{#each pagedContent.content as |pessoa|}}
+                  <tr {{action 'selectPessoa' pessoa.id}}>
+                    <td class="report-people__person d-flex d-flex-align--center d-flex-justify--start">
+                      <span class="report-people__avatar avatar avatar--sm m-right--xs">
+                        {{#if pessoa.uriAvatar}}
+                        <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+                        {{else}}
+                        <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+                        {{/if}}
+                      </span>
+                      <span class="truncate">
+                        {{pessoa.name}}
+                      </span>
+                    </td>
+                    <td class="bg-success"><span class="report-people__status">100%</span></td>
+                    <td class="bg-success"><span class="report-people__status">100%</span></td>
+                    <td class="bg-success"><span class="report-people__status">100%</span></td>
+                    <td class="bg-success"><span class="report-people__status">100%</span></td>
+                    <td class="bg-success"><span class="report-people__status">100%</span></td>
+                    <td class="bg-warning"><span class="report-people__status">75%</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                  </tr>
+                {{/each}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
       {{page-numbers content=pagedContent perPage=perPage class="pagination--right"}}
 

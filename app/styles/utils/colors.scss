@@ -3,19 +3,19 @@
 //------------------------------------
 @each $color-name, $color in $colors {
     .bg-#{$color-name} {
-        background-color: $color;
+        background-color: $color !important;
     }
 
     .border-1--#{$color-name} {
-        border: 1px solid $color;
+        border: 1px solid $color !important;
     }
 
     .color-#{$color-name} {
-        color: $color;
+        color: $color !important;
     }
 
     .fill-#{$color-name} {
-        fill: $color;
+        fill: $color !important;
     }
 
 }
