@@ -235,6 +235,21 @@
   &--fix-col {
     position: relative;
 
+    td:first-of-type {
+      color: $gray-60;
+      transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+      transition: 200ms var(--ease-in-out-quad);
+    }
+
+    &:hover {
+
+      td:first-of-type {
+        background-color: transparent;
+        color: $gray-20;
+      }
+
+    }
+
     thead th {
       background-color: $white;
     }
@@ -266,8 +281,13 @@
 
       &:hover td {
 
-        &:first-child::before {
-          opacity: .25;
+        &:first-child {
+          color: $gray-60;
+
+          &::before {
+            opacity: .25;
+          }
+
         }
 
         &:not(:first-child)::before {
