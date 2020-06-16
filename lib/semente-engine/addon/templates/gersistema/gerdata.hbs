@@ -1,7 +1,7 @@
 <section class="sections__section">
 
   <!-- ---------------------------------------- administration users header -->
-  <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+  <div class="flex flex-row  items-center justify-start">
     <div class="institutions__btn-group">
       <button class="btn btn--xs btn--secondary" {{action 'userModal'}}><span
           class="btn__icon icon-plus"></span>Novo Usuário</button>
@@ -13,8 +13,8 @@
   <!-- ------------------------------------------ administration users body -->
   <section class="sections__subsection report__section report-people" id="report-people-gersistema" style="display: block;">
 
-    <div class="filter-list">
-      <div class="filter-list__filter">
+    <div class="flex flex-col">
+      <div class="flex flex-row items-start">
 
         <!-- users list search/filter -->
         <form class="form-group form-group--vertical form-group--full-width m-top--sm m-bottom--xs" autocomplete="off"
@@ -34,11 +34,11 @@
         </form>
 
         <!-- ano e turma -->
-        <div class="d-flex m-top--lg d--none faster" id="year-class-filter">
+        <div class="flex flex-row m-top--lg hidden faster" id="year-class-filter">
 
-          <div class="form-group form-group--vertical" flex="1">
+          <div class="form-group form-group--vertical flex-1">
             <span class="form-group__label">Ano</span>
-            <div class="d-flex">
+            <div class="flex flex-row">
             {{#each inst_selected.modulos as |mod|}}
               <span class="checkbox m-right--lg">
                 <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
@@ -49,7 +49,7 @@
             </div>
           </div>
 
-          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+          <div class="form-group form-group--vertical form-group--select-wrapper flex-1">
             <label class="form-group__label">Turma</label>
 
             <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
@@ -62,7 +62,7 @@
 
         </div>
 
-        <div class="d-flex d-flex-justify--center m-top--lg">
+        <div class="flex flex-row justify-center m-top--lg">
           <button class="btn btn--xxs btn--ghost btn--is-toggle" {{action toggle 'year-class-filter'}}
             id="year-class-toggle" data-target="year-class-filter" style="width: 9rem;">
             <span class="btn__label label__default"><span>Mostrar mais</span></span>
@@ -81,10 +81,10 @@
     </div>
 
     <!-- users list pagination -->
-    <div class="d-flex d-flex-align--center d-flex-justify--between m-bottom--lg">
+    <div class="flex flex-row items-center justify-between m-bottom--lg">
       <div class="form-group form-group--vertical">
         <label class="form-group__label" for="amount">Exibir</label>
-        <div class="a-self--fs">
+        <div class="self-start">
           <span class="form-group--select-wrapper m-right--sm">
             <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
               {{action 'setExibir' on='change'}}>
@@ -106,7 +106,7 @@
 
     </div>
 
-    <div class="filter-list__list">
+    <div class="flex-1">
 
       {{page-numbers content=pagedContent class="pagination--right"}}
 
@@ -152,12 +152,12 @@
                   {{/if}}
                 </div>
               </th>
-              <th class="table__total"><span class="d--none d-lg--inline">Total de </span>turmas</th>
+              <th class="table__total"><span class="hidden d-lg--inline">Total de </span>turmas</th>
               <th class="table__enabled" scope="col">Hab<span class="hide-on--sm">ilitado</span>
               </th>
               <th class="table__sent" scope="col">
                 <span class="d-lg--none">@ BV</span>
-                <span class="d-none d-lg--inline">boas-vindas</span>
+                <span class="hidden lg:inline">boas-vindas</span>
               </th>
               <th class="table__actions" scope="col">Ações</th>
             </tr>
@@ -195,7 +195,7 @@
                     <h3 class="title-aux m-top--xs">Total por ano</h3>
                     <ul>
                       {{#each pessoa.modulos as |mod|}}
-                        <li class="d-flex d-flex--r d-flex-justify--space-between m-top--md">
+                        <li class="flex flex-row justify-between m-top--md">
                           <strong>{{mod.name}}</strong>
                           {{#each pessoa.turmas as |tur|}}
                             {{#if (equalstr tur.modulo.id mod.id)}}
@@ -346,7 +346,7 @@
 
     <div class="modal__body">
 
-      <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
+      <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
         <div flex="20" class="form-group--aired-h">
           <div class="form-group form-group--vertical form-group--select-wrapper w100">
             <label class="form-group__label" for="new_user_role">Perfil</label>
@@ -364,7 +364,7 @@
         </div>
       </div>
 
-      <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
+      <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
         <div class="form-group form-group--vertical form-group--aired-h" flex="20">
           <label class="form-group__label" for="new_user_name">Nome</label>
           <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
@@ -375,7 +375,7 @@
           <input class="form-group__input" type="textbox" id="new_user_email"
             value={{if new_user_email new_user_email}}>
         </div>
-        <div flex="20" class="form-group--aired-h a-self--fe p-bottom--xxs">
+        <div flex="20" class="form-group--aired-h self-end p-bottom--xxs">
           <div class="form-group checkbox">
             <input class="checkbox__input" type="checkbox" id="new_user_enabled">
             <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
@@ -386,7 +386,7 @@
       <!-- INFORMAÇÕES EXTRAS SOMENTE PARA ALUNOS -->
       {{!-- {{#if (equalstr perfil "aluno")}} --}}
       {{#if (equalstr activeProfile "aluno")}}
-        <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start form-group--aired-v">
+        <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
           <div flex="20" class="m-right--lg">
             <div class="form-group form-group--vertical form-group--select-wrapper w100">
               <label class="form-group__label" for="new_user_gender">Sexo</label>
@@ -608,7 +608,7 @@
 
 
       <!-- se retirar esse select para de funcionar -->
-      <section class="d-none">
+      <section class="hidden">
         <select class="form-group__input" id="new_user_area">
           <option value="">Selecione...</option>
           {{#each inst_selected.areas as |area|}}

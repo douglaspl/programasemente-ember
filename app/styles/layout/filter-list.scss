@@ -1,47 +1,8 @@
-.filter-list {
-    $this: &;
+// .filter-list {
+//     $this: &;
 
-    display: flex;
-    flex-direction: column;
+//     // &__filter {}
+//     // &__list {}
+//     // &__ordering {}
 
-    &__filter {
-        background-color: $gray-5;
-        border-radius: $radius;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin: 0 (-$h-padding--xs) $distance--xl;
-        padding: $distance--sm #{$h-padding--xs};
-
-        @include media('>sm') {
-            margin: 0 (-$h-padding--sm) $distance--xl;
-            padding: $distance--sm #{$h-padding--sm};
-        }
-        @include media('>md') {
-            margin: 0 (-$h-padding--md) $distance--xl;
-            padding: $distance--sm #{$h-padding--md};
-        }
-        @include media('>lg') {
-            margin: 0 (-$h-padding--lg) $distance--xl;
-            padding: $distance--sm #{$h-padding--lg};
-        }
-
-        input,
-        select {
-            background-color: $white;
-        }
-
-    }
-
-    &__list {
-        flex: 1;
-    }
-
-    &__ordering {
-        align-items: flex-end;
-        display: flex;
-        flex-direction: row;
-        margin-bottom: $distance--xl;
-    }
-
-}
+// }

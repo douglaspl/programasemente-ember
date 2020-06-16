@@ -1,0 +1,21 @@
+//------------------------------------
+//    #FLEX
+//------------------------------------
+$flexs: (
+  flex-initial: 0 1 auto,
+  flex-1:       1 1 0%,
+  flex-auto:    1 1 auto,
+  flex-none:    none,
+);
+
+@each $flex, $flex-value in $flexs {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex} { flex: $flex-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex} { flex: $flex-value; }
+      }
+    }
+  }
+}

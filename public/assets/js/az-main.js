@@ -232,7 +232,7 @@ $(document).on('click', '#side-arrows-container-arrow-right', function () { ques
 
 // function filterToggle(el) {
 //     el.toggleClass('btn--is-toggle--on');
-//     $('#' + el.data('target')).toggleClass('d--none');
+//     $('#' + el.data('target')).toggleClass('hidden');
 // }
 
 // $(document).on('click', '#year-class-toggle', function () { filterToggle($(this)); });

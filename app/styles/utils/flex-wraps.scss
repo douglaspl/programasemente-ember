@@ -1,0 +1,20 @@
+//------------------------------------
+//    #FLEX WRAPS
+//------------------------------------
+$flex-wraps: (
+  flex-no-wrap: nowrap,
+  flex-wrap: wrap,
+  flex-wrap-reverse: wrap-reverse
+);
+
+@each $flex-wrap, $flex-wrap-value in $flex-wraps {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-wrap} { flex-wrap: $flex-wrap-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-wrap} { flex-wrap: $flex-wrap-value; }
+      }
+    }
+  }
+}

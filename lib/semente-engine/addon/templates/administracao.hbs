@@ -76,7 +76,7 @@
     </div>
     {{/if}}
 
-<div class="d-flex m-top--md">
+<div class="flex flex-row m-top--md">
       <h1 class="main__title">{{inst_selected.name}}</h1>
       {{#if inst_selected}}
         <button class="btn btn--ghost btn--xs m-left--sm" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
@@ -124,12 +124,12 @@
       </div>
 
 
-      <div class="filter-list__filter">
-        <div class="d-flex d-flex-align--start">
-          <div class="form-group form-group--vertical m-right--md" flex="1">
+      <div class="flex flex-row items-start">
+        <div class="flex flex-row items-start">
+          <div class="form-group form-group--vertical m-right--md flex-1">
             <label class="form-group__label" for="search">Busca</label>
 
-            <form class="d-flex d-flex--c" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+            <form class="flex flex-col" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
 
               <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
                 {{input class="form-group__input" aria-describedby="basic-addon1" id="matchClass"
@@ -137,7 +137,7 @@
               </div>
 
               <div class="m-top--sm">
-                <button class="btn btn--text btn--xs a-self--fs" {{action 'exitpagedsearch'}}>
+                <button class="btn btn--text btn--xs self-start" {{action 'exitpagedsearch'}}>
                   <span class="btn__icon icon-x"></span>Limpar</button>
               </div>
 
@@ -145,7 +145,7 @@
 
           </div>
 
-          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+          <div class="form-group form-group--vertical form-group--select-wrapper flex-1">
             <label class="form-group__label">Turma</label>
 
             <select id="turma_selector" class="form-group__input form-group__input--select"
@@ -167,14 +167,14 @@
       </div>
 
       {{#if curso_selected}}
-      <div class="filter-list">
+      <div class="flex flex-col">
 
 
 
         <!-- ========================
               ########### LIST ############
               ========================= -->
-        <div class="filter-list__list">
+        <div class="flex-1">
 
           {{!-- <div class="total-results">
             <span class="total-results__results">Total de <strong>{{curso_selected.atividades.length}}</strong>
@@ -201,7 +201,7 @@
             <ul class="report-course__body report-class" id="acomp_classes">
               {{#each turma_selected.acompanhamentosatividades as |acomp|}}
               <li class="report-class__two-col">
-                <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
+                <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
                   <span class="title-aux">Aula {{acomp.atividade.idx}}</span>
                   <h3><a class="title-3 m-top--xs"
                       {{action 'goToAtividade' acomp.atividade.modulo.id acomp.atividade.id on="click"}}><span>{{acomp.atividade.name}}</span></a>
@@ -274,7 +274,7 @@
             <ul class="report-course__body report-class" id="acomp_classes">
               {{#each curso_selected.atividades as |atividade|}}
               <li class="report-class__two-col">
-                <div class="d-flex d-flex--c d-flex-justify--center d-flex-align--start m-bottom--sm m-top--sm">
+                <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
                   <span class="title-aux">Aula {{atividade.idx}}</span>
                   <h3 class="title-3 m-top--xs"><a class="link--dotted"
                       {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>

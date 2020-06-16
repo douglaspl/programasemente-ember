@@ -97,7 +97,7 @@
         <div class="institutions__step-content {{if goToStepTwo '' 'institutions__step-content--is-show'}}">
           <section class="sections__subsection">
             <h4 class="main__subsubtitle">Básicas</h4>
-            <div class="form-group form-group--horizontal form-group--full-width d-flex-align--start">
+            <div class="form-group form-group--horizontal form-group--full-width items-start">
               <div class="form-group form-group--vertical form-group--aired-h" flex="20">
                 <label class="form-group__label">Nome</label>
                 <input class="form-group__input" type="textbox" id="new_inst_name" value={{new_inst_name}}>
@@ -219,7 +219,7 @@
     {{/if}}
     <!-- / back to institutions list -->
     <header class="main__header">
-      <div class="d-flex m-top--md">
+      <div class="flex flex-row m-top--md">
         <!-- institutions selected name -->
         <h1 class="main__title">{{inst_selected.name}}</h1>
       </div>
@@ -251,7 +251,7 @@
     <!-- selected institution tab information -->
     {{#if selectedInstTabs.informations}}
       {{#if (equalstr role 'admin')}}
-        <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start" style="display:none" id="btn_save_inst">
+        <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_inst">
           <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveInformations' inst_selected.id}}>
             <span class="btn__icon icon-save"></span> Salvar alterações
           </button>
@@ -346,7 +346,7 @@
 
           <!-- selected institutiton tab courses -->
           {{#if selectedInstTabs.courses}}
-          <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+          <div class="flex flex-row  items-center justify-start">
             <h2 class="main__subtitle">Anos</h2>
             <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses"
               {{action 'saveCourses' inst_selected.id}}>
@@ -382,7 +382,7 @@
           <!-- /selected institutiton tab courses -->
           <!-- selected institutions tab areas -->
           {{#if selectedInstTabs.areas}}
-          <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+          <div class="flex flex-row  items-center justify-start">
             <h2 class="main__subtitle">Turmas</h2>
             <button class="btn btn--ghost btn--xs m-left--md" {{action 'newArea'}}>
               <span class="btn__icon icon-plus"></span>Nova Turma</button>
@@ -479,7 +479,7 @@
     <!-- /selected institution tab information -->
     <!-- selected institutiton tab courses -->
     {{#if selectedInstTabs.courses}}
-      <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start" style="display:none" id="btn_save_courses">
+      <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_courses">
         <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveCourses' inst_selected.id}}>
           <span class="btn__icon icon-save"></span>
           Salvar alterações
@@ -490,8 +490,8 @@
           {{#each modulos_list as |mod|}}
           <li>
             {{!-- <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span> --}}
-            <div flex="1">
-              <div class="d-flex d-flex-align--center">
+            <div class="flex-1">
+              <div class="flex flex-row items-center">
                 {{!-- <img class="list__img list__img--auto-height"
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}"> --}}
                 <h3 class="list__name title-4">{{mod.name}}</h3>
@@ -524,7 +524,7 @@
                   <time class="calendar__date date" datetime="2019-02-15">
                     <span class="date__day">{{atv.dia}}</span><span class="date__month">{{atv.mes}}</span>
                   </time>
-                  <div class="d-flex d-flex--c d-flex-justify--center">
+                  <div class="flex flex-col justify-center">
                     <span class="title-aux m-bottom--xxs">{{atv.id}}</span>
                     <h3 class="title-4">{{atv.name}}</h3>
                   </div>
@@ -540,7 +540,7 @@
     <!-- /selected institutiton tab courses -->
     <!-- selected institutions tab areas -->
     {{#if selectedInstTabs.areas}}
-      <div class="d-flex d-flex--r d-flex-align--center d-flex--justify--start">
+      <div class="flex flex-row  items-center justify-start">
         <button class="j-areaFocus btn btn--xs" {{action 'newArea'}}>
           <span class="btn__icon icon-plus"></span>Nova Turma</button>
       </div>
@@ -565,7 +565,7 @@
                 {{/each}}
               </select>
             </div>
-            <div flex="1" class="m-right--lg">
+            <div class="flex-1 m-right--lg">
               <div class="edit-text">
                 <input class="j-areaFocus edit-text__input form-group__input title-3" type="textbox" id="newAreaName"
                   value="{{turma.name}}">
@@ -583,7 +583,7 @@
           </li>
           {{#each inst_selected.turmas as |turma idx|}}
           <li>
-            <div flex="1" class="m-right--lg">
+            <div class="flex-1 m-right--lg">
               <div class="edit-text">
                 <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}">
                 <span class="edit-text__indicator"></span>

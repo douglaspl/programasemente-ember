@@ -19,24 +19,24 @@
 
   <h2 class="main__title">Todos os matriculados em {{admController.curso_selected.name}}</h2>
 
-  <div class="filter-list">
+  <div class="flex flex-col">
 
-    <div class="filter-list__filter">
+    <div class="flex flex-row items-start">
 
-      <div class="form-group form-group--vertical" flex="1">
+      <div class="form-group form-group--vertical flex-1">
         <label class="form-group__label" for="search">Busca</label>
-        <form class="d-flex d-flex--r d-flex-align--center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+        <form class="flex flex-row  items-center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
           <div class="form-group__wrapper form-group__wrapper--search" flex="100">
             <input class="form-group__input bg-white" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="search_input_pessoas_adm" onkeyup="{{action 'pagedsearch'}}" type="text" value={{read_str}}>
           </div>
           <button class="btn" type="submit" {{action 'pagedsearch'}}>Buscar</button>
         </form>
-        <button class="btn btn--text btn--xs a-self--fs m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
+        <button class="btn btn--text btn--xs self-start m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
       </div>
 
       <div class="form-group form-group--vertical">
         <label class="form-group__label" for="amount">Exibir</label>
-        <div class="d-flex d-flex-align--center a-self--fs">
+        <div class="flex flex-row items-center self-start">
           <div class="form-group--select-wrapper m-right--md">
             <select id="amount" class="form-group__input form-group__input--select bg-white" name="order" {{action 'setExibir' on='change'}}>
               {{#if (equalstr perPage 5)}}
@@ -119,18 +119,18 @@
       </div>
 
 
-      <div class="form-group form-group--vertical" flex="0">
+      <div class="form-group form-group--vertical flex-none">
         <label class="form-group__label" for="search">Busca</label>
-        <form class="d-flex d-flex--r d-flex-align--center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+        <form class="flex flex-row  items-center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
           <div class="form-group__wrapper form-group__wrapper--search" flex="100">
             <input class="form-group__input bg-white" aria-describedby="basic-addon1" autocomplete="off" aria-autocomplete="none" id="search_input_pessoas_adm" onkeyup="{{action 'pagedsearch'}}" type="text" value={{read_str}}>
           </div>
           <button class="btn btn--leaf" type="submit" {{action 'pagedsearch'}}>Buscar</button>
         </form>
-        <button class="btn btn--text btn--xs a-self--fs m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
+        <button class="btn btn--text btn--xs self-start m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
       </div>
 
-      <div class="filter-list__list">
+      <div class="flex-1">
 
         {{#if load_state}}
         <div class="loader" id="firstAccessLoader">
@@ -140,7 +140,7 @@
         </div>
         {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
         {{else}}
-        <div class="filter-list__ordering ordering">
+        <div class="flex flex-row items-end m-bottom--xl ordering">
           <div class="form-group form-group--select-wrapper ordering__order">
             <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order" {{action 'ordenaPessoas' on='change'}}>
               {{#if (equalstr ordem 'completeness')}}
@@ -330,7 +330,7 @@
       {{#each curso_selected.atividades as |atividade|}}
       <li class="report-person__class">
         <div class="report-class__two-col">
-          <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm m-top--sm">
+          <div class="flex flex-col justify-center m-bottom--sm m-top--sm">
             <span class="title-aux">Aula {{atividade.idx}}</span>
             <h3 class="title-3 m-top--xs">{{atividade.name}}</h3>
           </div>

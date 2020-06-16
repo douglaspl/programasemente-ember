@@ -2,14 +2,15 @@
 <section class="report__section report-people report__section--is-active" id="report-people">
 
 
-  <div class="filter-list">
+  <div class="flex flex-col">
 
-    <div class="filter-list__filter">
+    <div class="flex flex-row items-start justify-between">
 
-      <div class="form-group form-group--vertical w100">
+      <div class="form-group form-group--vertical">
+
         <label class="form-group__label" for="search">Busca</label>
 
-        <form class="d-flex d-flex--c" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+        <form class="flex flex-col" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
 
           <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
             {{input class="form-group__input"
@@ -22,7 +23,7 @@
           </div>
 
           <div class="m-top--sm">
-            <button class="btn btn--text btn--xs a-self--fs" {{action 'exitpagedsearch'}}>
+            <button class="btn btn--text btn--xs self-start" {{action 'exitpagedsearch'}}>
               <span class="btn__icon icon-x"></span>Limpar</button>
           </div>
 
@@ -30,71 +31,58 @@
 
       </div>
 
-      <!-- ano e turma -->
-      <div class="d-flex m-top--lg d--none animated fadeIn faster" id="year-class-filter">
-
-        <div class="form-group form-group--vertical" flex="1">
-          <span class="form-group__label">Ano</span>
-          <div class="d-flex">
-            {{#each inst_selected.modulos as |mod|}}
-            <span class="checkbox m-right--lg">
-              <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
-                {{action 'filterano' mod.idx on='change'}}>
-              <label class="checkbox__label bg--white" for="ano_{{mod.idx}}">{{mod.name}}</label>
-            </span>
-            {{/each}}
-          </div>
+      <div class="form-group form-group--vertical">
+        <span class="form-group__label">Ano</span>
+        <div class="flex flex-row">
+          {{#each inst_selected.modulos as |mod|}}
+          <span class="checkbox m-right--lg">
+            <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
+              {{action 'filterano' mod.idx on='change'}}>
+            <label class="checkbox__label" for="ano_{{mod.idx}}">{{mod.name}}</label>
+          </span>
+          {{/each}}
         </div>
+      </div>
 
-        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
-          <label class="form-group__label">Turma</label>
+      <div class="form-group form-group--vertical form-group--select-wrapper">
+        <label class="form-group__label">Turma</label>
 
-          <select id="turma_selector" class="form-group__input form-group__input--select"
-            {{action 'filterTurma' on='change'}}>
-            <option value="0" selected>Escolha uma turma</option>
-            {{#if (equalstr pessoaLogged.role "instrutor")}}
+        <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+          <option value="0" selected>Escolha uma turma</option>
+          {{#if (equalstr pessoaLogged.role "instrutor")}}
+
             {{#each pessoaLogged.turmas as |turma|}}
-            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
+              <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
             {{/each}}
+
             {{else}}
-            {{#each inst_selected.turmas as |turma|}}
-            <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
+              {{#each inst_selected.turmas as |turma|}}
+                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
             {{/each}}
-            {{/if}}
-          </select>
-        </div>
 
+          {{/if}}
+        </select>
       </div>
-
-      <div class="d-flex d-flex-justify--center m-top--lg">
-        <button class="btn btn--xxs btn--is-toggle" {{action toggle 'year-class-filter'}} id="year-class-toggle"
-          data-target="year-class-filter" style="width: 9rem;">
-          <span class="btn__label label__default"><span>Mostrar mais</span></span>
-          <span class="btn__label label__active"><span>Mostrar menos</span></span>
-        </button>
-      </div>
-
-
 
     </div>
 
     <!-- ========================
         ########### LIST ############
         ========================= -->
-    <div class="filter-list__list">
+    <div class="flex-1">
 
       <div class="total-results">
         <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
       </div>
 
-      <div class="filter-list__ordering">
+      <div class="flex flex-row items-end m-bottom--xl">
         <!-- ========================
                 ######### ORDERING ##########
                 ========================= -->
 
         <div class="form-group form-group--vertical">
           <label class="form-group__label" for="amount">Exibir</label>
-          <div class="d-flex d-flex-align--center a-self--fs" flex-align="center">
+          <div class="flex flex-row items-center self-start" flex-align="center">
 
             <div class="form-group--select-wrapper m-right--md">
               <select id="amount" class="form-group__input form-group__input--select form-group__input--amount"
@@ -199,7 +187,7 @@
             <table class="report-people__table table table--striped table--short table--fix-col">
               <thead>
                 <tr>
-                  <th>Aluno<span class="d-i-block m-h--xs">/</span>Aulas</th>
+                  <th>Aluno<span class="inline-block m-h--xs">/</span>Aulas</th>
                   <th>1</th>
                   <th>2</th>
                   <th>3</th>
@@ -223,7 +211,7 @@
 
                 {{#each pagedContent.content as |pessoa|}}
                   <tr {{action 'selectPessoa' pessoa.id}}>
-                    <td class="report-people__person d-flex d-flex-align--center d-flex-justify--start">
+                    <td class="report-people__person flex flex-row items-center justify-start">
                       <span class="report-people__avatar avatar avatar--sm m-right--xs">
                         {{#if pessoa.uriAvatar}}
                         <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
@@ -342,7 +330,7 @@
     <ul>
       {{#each curso_selected.atividades as |atividade|}}
       <li class="report-person__class">
-        <div class="d-flex d-flex--c d-flex-justify--center m-bottom--sm">
+        <div class="flex flex-col justify-center m-bottom--sm">
           <span class="title-aux">Aula {{atividade.idx}}</span>
           <h3 class="title-2">{{atividade.name}}</h3>
         </div>

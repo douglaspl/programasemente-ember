@@ -1,0 +1,21 @@
+//------------------------------------
+//    #FLEX DIRECTIONS
+//------------------------------------
+$flex-directions: (
+    flex-row: row,
+    flex-row-reverse: row-reverse,
+    flex-col: column,
+    flex-col-reverse: column-reverse
+) !default;
+
+@each $flex-direction, $flex-direction-value in $flex-directions {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-direction} { flex-direction: $flex-direction-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-direction} { flex-direction: $flex-direction-value; }
+      }
+    }
+  }
+}

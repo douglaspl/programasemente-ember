@@ -1,0 +1,22 @@
+//------------------------------------
+//    #FLEX ALIGN CONTENT
+//------------------------------------
+$flex-align-contents: (
+  content-start:   flex-start,
+  content-center:  center,
+  content-end:     flex-end,
+  content-between: space-between,
+  content-around:  space-around,
+);
+
+@each $flex-align-content, $flex-align-content-value in $flex-align-contents {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-align-content} { align-content: $flex-align-content-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-align-content} { align-content: $flex-align-content-value; }
+      }
+    }
+  }
+}

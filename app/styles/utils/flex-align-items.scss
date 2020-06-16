@@ -1,0 +1,22 @@
+//------------------------------------
+//    #FLEX ALIGN ITEMS
+//------------------------------------
+$flex-align-items: (
+  items-stretch: stretch,
+  items-start:   flex-start,
+  items-center:  center,
+  items-end:     flex-end,
+  items-baseline: baseline,
+);
+
+@each $flex-align-item, $flex-align-item-value in $flex-align-items {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-align-item} { align-items: $flex-align-item-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-align-item} { align-items: $flex-align-item-value; }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+//------------------------------------
+//    #FLEX JUSTIFY CONTENT
+//------------------------------------
+$flex-justify-contents: (
+  justify-start:   flex-start,
+  justify-center:  center,
+  justify-end:     flex-end,
+  justify-between: space-between,
+  justify-around:  space-around,
+);
+
+@each $flex-justify-content, $flex-justify-content-value in $flex-justify-contents {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-justify-content} { justify-content: $flex-justify-content-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-justify-content} { justify-content: $flex-justify-content-value; }
+      }
+    }
+  }
+}
