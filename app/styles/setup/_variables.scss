@@ -211,10 +211,19 @@ $white: hsla(0, 0%, 100%, 1) !default;
 $black: hsla($hue, 20%, 4%, 1) !default;
 
 // aux
-$color-error: hsla(2, 60%, 40%, 1) !default;
-$color-info: hsla(210, 60%, 30%, 1) !default;
-$color-success: hsla(115, 60%, 33%, 1) !default;
-$color-warning: hsla(46, 90%, 45%, 1) !default;
+$color-error--light:        hsl(8, 40%, 79%) !default;
+$color-error:               hsla(2, 70%, 44%, 1) !default;
+$color-error--dark:         hsl(2, 96%, 20%) !default;
+
+$color-info:                hsla(210, 60%, 30%, 1) !default;
+
+$color-success--light:      hsla(90, 35%, 85%, 1) !default;
+$color-success:             hsla(115, 60%, 35%, 1) !default;
+$color-success--dark:       hsl(150, 79%, 15%) !default;
+
+$color-warning--light:      hsla(52, 70%, 85%, 1) !default;
+$color-warning:             hsla(48, 90%, 50%, 1) !default;
+$color-warning--dark:       hsla(40, 100%, 42%, 1) !default;
 
 $colors: ((blue-navy-0, $blue-navy-0),
 (blue-navy-5, $blue-navy-5),
@@ -264,10 +273,20 @@ $colors: ((blue-navy-0, $blue-navy-0),
 (black, $black),
 (white, $white),
 
-(error, $color-error),
+(error--light,  $color-error--light),
+(error,         $color-error),
+(error--dark,   $color-error--dark),
+
 (info, $color-info),
-(success, $color-success),
-(warning, $color-warning));
+
+(success--light, $color-success--light),
+(success,        $color-success),
+(success--dark,  $color-success--dark),
+
+(warning--light, $color-warning--light),
+(warning,        $color-warning),
+(warning--dark,  $color-warning--dark),
+);
 
 
 
@@ -318,7 +337,7 @@ $distances: (
 //------------------------------------
 // Basic sizes.
 
-$multiplier: 0.2rem;
+$multiplier: 0.25rem;
 
 $font-size--xxs:  1rem;
 $font-size--xxxs: $font-size--xxs - (1 * $multiplier);

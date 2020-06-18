@@ -2,7 +2,6 @@
 // @import "semente-styles.scss";
 
 // Novo comeca aqui
-
 @import "setup/_functions";
 @import "setup/_variables";
 @import "setup/_fix";
@@ -102,12 +101,18 @@
 @import "utils/colors";
 @import "utils/displays";
 @import "utils/distances";
-@import "utils/flex-align-content";
-@import "utils/flex-align-items";
-@import "utils/flex-align-self";
-@import "utils/flex-directions";
-@import "utils/flex-justify-content";
-@import "utils/flex-wraps";
 @import "utils/sections";
 @import "utils/trumps";
 @import "utils/typography";
+
+// Flexbox
+@import "utils/flexbox/flex";
+@import "utils/flexbox/flex-align-content";
+@import "utils/flexbox/flex-align-items";
+@import "utils/flexbox/flex-align-self";
+@import "utils/flexbox/flex-directions";
+@import "utils/flexbox/flex-grow";
+@import "utils/flexbox/flex-justify-content";
+@import "utils/flexbox/flex-order";
+@import "utils/flexbox/flex-shrink";
+@import "utils/flexbox/flex-wraps";

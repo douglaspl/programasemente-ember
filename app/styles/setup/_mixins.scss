@@ -708,7 +708,6 @@
 
     @include media('>lg') {
         font-size: $size--lg;
-        font-size: calc(#{$size--lg} + .5vw);
     }
 
 }
@@ -818,7 +817,7 @@
 @mixin title-aux(   $color: $gray-40,
                     $display: inline-block,
                     $family: $font-base,
-                    $size: $font-size--xxs,
+                    $size: $font-size--xxxs,
                     $weight: 300) {
 
     color: $color;
@@ -826,7 +825,7 @@
     font-family: $font-title;
     font-size: $size;
     font-weight: $weight;
-    letter-spacing: $letter-spacing--lg;
+    letter-spacing: $letter-spacing--xl;
     text-transform: uppercase;
     vertical-align: middle;
 }

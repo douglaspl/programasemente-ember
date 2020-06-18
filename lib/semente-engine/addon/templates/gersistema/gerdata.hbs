@@ -17,7 +17,7 @@
       <div class="flex flex-row items-start">
 
         <!-- users list search/filter -->
-        <form class="form-group form-group--vertical form-group--full-width m-top--sm m-bottom--xs" autocomplete="off"
+        <form class="form-group form-group--full-width m-top--sm m-bottom--xs" autocomplete="off"
           aria-autocomplete="none">
           <label class="form-group__label" for="search">Busca</label>
           <div class="form-group__wrapper form-group__wrapper--search">
@@ -36,7 +36,7 @@
         <!-- ano e turma -->
         <div class="flex flex-row m-top--lg hidden faster" id="year-class-filter">
 
-          <div class="form-group form-group--vertical flex-1">
+          <div class="form-group flex-1">
             <span class="form-group__label">Ano</span>
             <div class="flex flex-row">
             {{#each inst_selected.modulos as |mod|}}
@@ -49,15 +49,16 @@
             </div>
           </div>
 
-          <div class="form-group form-group--vertical form-group--select-wrapper flex-1">
+          <div class="form-group flex-1">
             <label class="form-group__label">Turma</label>
-
-            <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
-              <option value="0" selected>Escolha uma turma</option>
-              {{#each inst_selected.turmas as |turma|}}
-                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
-              {{/each}}
-            </select>
+            <div class="form-group__wrapper form-group__wrapper--search">
+              <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+                <option value="0" selected>Escolha uma turma</option>
+                {{#each inst_selected.turmas as |turma|}}
+                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                {{/each}}
+              </select>
+            </div>
           </div>
 
         </div>
@@ -82,7 +83,7 @@
 
     <!-- users list pagination -->
     <div class="flex flex-row items-center justify-between m-bottom--lg">
-      <div class="form-group form-group--vertical">
+      <div class="form-group">
         <label class="form-group__label" for="amount">Exibir</label>
         <div class="self-start">
           <span class="form-group--select-wrapper m-right--sm">
@@ -348,29 +349,31 @@
 
       <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
         <div flex="20" class="form-group--aired-h">
-          <div class="form-group form-group--vertical form-group--select-wrapper w100">
+          <div class="form-group w100">
             <label class="form-group__label" for="new_user_role">Perfil</label>
-            <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
-              <option value="">Selecione...</option>
-              <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
-              <option value="instrutor" selected={{thisUserRole.instrutor}}>Professor</option>
-              <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
-              <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
-              {{#if (equalstr new_user_role 'admin')}}
-                <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
-              {{/if}}
-            </select>
+            <div class="form-group__wrapper form-group__wrapper--search">
+              <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
+                <option value="">Selecione...</option>
+                <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
+                <option value="instrutor" selected={{thisUserRole.instrutor}}>Professor</option>
+                <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
+                <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
+                {{#if (equalstr new_user_role 'admin')}}
+                  <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
+                {{/if}}
+              </select>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+        <div class="form-group form-group--aired-h" flex="20">
           <label class="form-group__label" for="new_user_name">Nome</label>
           <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
         </div>
 
-        <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+        <div class="form-group form-group--aired-h" flex="20">
           <label class="form-group__label">E-mail</label>
           <input class="form-group__input" type="textbox" id="new_user_email"
             value={{if new_user_email new_user_email}}>
@@ -388,16 +391,18 @@
       {{#if (equalstr activeProfile "aluno")}}
         <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
           <div flex="20" class="m-right--lg">
-            <div class="form-group form-group--vertical form-group--select-wrapper w100">
+            <div class="form-group w100">
               <label class="form-group__label" for="new_user_gender">Sexo</label>
-              <select class="form-group__input" id="new_user_gender">
-                <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
-                <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
-                <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
-              </select>
+              <div class="form-group__wrapper form-group__wrapper--search">
+                <select class="form-group__input" id="new_user_gender">
+                  <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
+                  <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
+                  <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <div class="form-group form-group--aired-h" flex="20">
             <label class="form-group__label" for="new_user_birth">Nascimento</label>
             <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
               maxlength="10" onkeyup="var v = this.value;
@@ -408,7 +413,7 @@
                           }">
             <div class="m-top--xxs">(dd/mm/aaaa)</div>
           </div>
-          <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+          <div class="form-group form-group--aired-h" flex="20">
             <label class="form-group__label" for="new_user_subsc">Matrícula</label>
             <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
           </div>

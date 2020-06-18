@@ -65,7 +65,7 @@
     padding-bottom: $distance--md;
     width: 100%;
 
-    +#{$this}__title {
+    + #{$this}__title {
       padding-top: 0;
     }
 
@@ -127,7 +127,6 @@
   &__title {
     @include title-1;
 
-    color: $gray-60;
     display: table;
     margin-bottom: $distance--xl;
     margin-right: auto;
@@ -144,7 +143,7 @@
       margin-bottom: 0;
     }
 
-    >[class*='icon'] {
+    > [class*='icon'] {
       color: $lemon-40;
       margin-right: $distance--sm;
     }

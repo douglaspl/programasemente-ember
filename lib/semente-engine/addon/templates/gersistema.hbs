@@ -98,11 +98,11 @@
           <section class="sections__subsection">
             <h4 class="main__subsubtitle">Básicas</h4>
             <div class="form-group form-group--horizontal form-group--full-width items-start">
-              <div class="form-group form-group--vertical form-group--aired-h" flex="20">
+              <div class="form-group form-group--aired-h" flex="20">
                 <label class="form-group__label">Nome</label>
                 <input class="form-group__input" type="textbox" id="new_inst_name" value={{new_inst_name}}>
               </div>
-              <div class="form-group form-group--vertical">
+              <div class="form-group">
                 <label class="form-group__label">Status</label>
                 <span class="switch switch--institutions">
                   <input class="switch__checkbox" id="new_inst_enabled" type="checkbox" checked={{new_inst_enabled}}>
@@ -117,7 +117,7 @@
             <!-- comentar depois de estilizar -->
             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             <!--
-            <div class="form-group form-group--vertical form-group--full-width m-top--md">
+            <div class="form-group form-group--full-width m-top--md">
               <label class="form-group__label">Marca</label>
               <div class="image-change">
                 <span class="image-change__image image-change__image--empty" id="new_inst_uploadPreview"></span>
@@ -135,19 +135,19 @@
           <section class="sections__subsection">
             <h4 class="main__subsubtitle">Número de usuários</h4>
             <div class="institutions__config">
-              <div class="form-group form-group--vertical" flex="20">
+              <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nrgest">Gestores</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nrgest" value={{new_inst_nrgest}}>
               </div>
-              <div class="form-group form-group--vertical" flex="20">
+              <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nrcoord">Coordenadores</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nrcoord" value={{new_inst_nrcoord}}>
               </div>
-              <div class="form-group form-group--vertical" flex="20">
+              <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nrinstr">Professores</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nrinstr" value={{new_inst_nrinstr}}>
               </div>
-              <div class="form-group form-group--vertical" flex="20">
+              <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nralunos">Alunos</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nralunos" value={{new_inst_nralunos}}>
               </div>
@@ -260,7 +260,7 @@
       <section class="sections__subsection">
         <h3 class="main__subsubtitle">Básicas</h3>
         <div class="form-group form-group--horizontal form-group--full-width">
-          <div class="form-group form-group--vertical form-group--aired-h" flex="40--lg">
+          <div class="form-group form-group--aired-h" flex="40--lg">
             <label class="form-group__label">Nome</label>
             {{#if (equalstr role 'admin')}}
               <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}}
@@ -270,7 +270,7 @@
             {{!-- {{inst_selected.name}} --}}
             {{/if}}
           </div>
-          <div class="form-group form-group--vertical">
+          <div class="form-group">
             <label class="form-group__label">Status</label>
             <span class="switch switch--institutions">
               <input  class="switch__checkbox"
@@ -287,7 +287,7 @@
           </div>
         </div>
         {{!--
-        <div class="form-group form-group--vertical form-group--full-width m-top--md">
+        <div class="form-group form-group--full-width m-top--md">
           <label class="form-group__label">Marca</label>
           <div class="image-change">
             <span class="image-change__image image-change__image--empty"><img id="uploadPreview"></span>
@@ -303,7 +303,7 @@
         <h3 class="main__subsubtitle">Número de usuários</h3>
         <div class="institutions__config">
 
-          <div class="form-group form-group--vertical" flex="20">
+          <div class="form-group" flex="20">
             <label class="form-group__label">Gestores</label>
             {{#if (equalstr role 'admin')}}
             <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
@@ -314,7 +314,7 @@
             {{/if}}
           </div>
 
-          <div class="form-group form-group--vertical" flex="20">
+          <div class="form-group" flex="20">
             <label class="form-group__label">Coordenadores</label>
             {{#if (equalstr role 'admin')}}
             <input class="form-group__input" type="textbox" id="nr_coordenadores" value={{inst_selected.nrcoordenadores}}
@@ -323,7 +323,7 @@
             {{inst_selected.nrcoordenadores}}
             {{/if}}
           </div>
-          <div class="form-group form-group--vertical" flex="20">
+          <div class="form-group" flex="20">
             <label class="form-group__label">Professores</label>
             {{#if (equalstr role 'admin')}}
             <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.nrinstrutores}}
@@ -333,7 +333,7 @@
             {{/if}}
           </div>
 
-          <div class="form-group form-group--vertical" flex="20">
+          <div class="form-group" flex="20">
             <label class="form-group__label">Alunos</label>
             {{#if (equalstr role 'admin')}}
             <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
@@ -545,25 +545,27 @@
           <span class="btn__icon icon-plus"></span>Nova Turma</button>
       </div>
       <section class="sections__subsection">
-        <div class="form-group form-group--select-wrapper m-left--auto">
+        <div class="form-group m-left--auto">
           <label class="form-group__label" for="select_course">Ano</label>
-          <select class="form-group__input form-group__input--select" id="select_year" value="select_inst"
-            style="min-width: 10rem;">
-            <option value="1" selected>1º ano</option>
-            <option value="2">2º ano</option>
-            <option value="3">3º ano</option>
-          </select>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input form-group__input--select" id="select_year" value="select_inst">
+              <option value="1" selected>1º ano</option>
+              <option value="2">2º ano</option>
+              <option value="3">3º ano</option>
+            </select>
+          </div>
         </div>
         <ul class="institutions__areas list list--striped">
           <li id="newArea" style="display:none;">
-            <div class="form-group form-group--select-wrapper m-right--md">
-              <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst"
-                style="min-width: 5    rem;">
-              <option value="0" selected>Selecionar percurso</option>
-                {{#each modulos_list as |mod|}}
-                <option value={{mod.id}}>{{mod.name}}</option>
-                {{/each}}
-              </select>
+            <div class="form-group m-right--md">
+              <div class="form-group__wrapper form-group__wrapper--select">
+                <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst">
+                  <option value="0" selected>Selecionar percurso</option>
+                  {{#each modulos_list as |mod|}}
+                  <option value={{mod.id}}>{{mod.name}}</option>
+                  {{/each}}
+                </select>
+              </div>
             </div>
             <div class="flex-1 m-right--lg">
               <div class="edit-text">

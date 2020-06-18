@@ -4,11 +4,11 @@
 
   <div class="flex flex-col">
 
-    <div class="flex flex-row items-start justify-between">
+    <div class="flex flex-row items-start justify-between m-bottom--sm">
 
-      <div class="form-group form-group--vertical">
+      <div class="form-group">
 
-        <label class="form-group__label" for="search">Busca</label>
+        <label class="form-group__label" for="search">Busca (<strong>{{totalPessoas}} pessoas</strong>)</label>
 
         <form class="flex flex-col" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
 
@@ -22,48 +22,121 @@
                     type="text"}}
           </div>
 
-          <div class="m-top--sm">
-            <button class="btn btn--text btn--xs self-start" {{action 'exitpagedsearch'}}>
-              <span class="btn__icon icon-x"></span>Limpar</button>
-          </div>
+          <button class="btn btn--text btn--xxs self-start" {{action 'exitpagedsearch'}}>
+            <span class="btn__icon icon-x icon icon--lg"></span>
+            <span class="btn__label">Limpar</span>
+          </button>
 
         </form>
 
       </div>
 
-      <div class="form-group form-group--vertical">
+      <div class="form-group">
         <span class="form-group__label">Ano</span>
         <div class="flex flex-row">
           {{#each inst_selected.modulos as |mod|}}
-          <span class="checkbox m-right--lg">
+          <span class="checkbox">
             <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
               {{action 'filterano' mod.idx on='change'}}>
-            <label class="checkbox__label" for="ano_{{mod.idx}}">{{mod.name}}</label>
+            <label class="checkbox__label" for="ano_{{mod.idx}}">{{mod.idx}}º ano</label><!-- {{mod.name}}-->
           </span>
           {{/each}}
         </div>
       </div>
 
-      <div class="form-group form-group--vertical form-group--select-wrapper">
+      <div class="form-group">
         <label class="form-group__label">Turma</label>
 
-        <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
-          <option value="0" selected>Escolha uma turma</option>
-          {{#if (equalstr pessoaLogged.role "instrutor")}}
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+            <option value="0" selected>Escolha uma turma</option>
+            {{#if (equalstr pessoaLogged.role "instrutor")}}
 
-            {{#each pessoaLogged.turmas as |turma|}}
-              <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
-            {{/each}}
-
-            {{else}}
-              {{#each inst_selected.turmas as |turma|}}
+              {{#each pessoaLogged.turmas as |turma|}}
                 <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
-            {{/each}}
+              {{/each}}
 
-          {{/if}}
-        </select>
+              {{else}}
+                {{#each inst_selected.turmas as |turma|}}
+                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.modulo.name}} - {{turma.name}}</option>
+              {{/each}}
+
+            {{/if}}
+          </select>
+        </div>
       </div>
 
+      <!-- ========================
+      ######### ORDERING ##########
+      ========================= -->
+      <div class="form-group">
+        <label class="form-group__label" for="amount">Exibir</label>
+
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select id="amount" class="form-group__input form-group__input--select form-group__input--amount"
+              name="order" {{action 'setExibir' on='change'}}>
+              {{#if (equalstr perPage 5)}}
+              <option value="5" selected>5</option>
+              <option value="10">10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{else if (equalstr perPage 25)}}
+              <option value="5">5 resultados</option>
+              <option value="10">10 resultados</option>
+              <option value="25" selected>25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{else if (equalstr perPage 50)}}
+              <option value="5">5 resultados</option>
+              <option value="10">10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50" selected>50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{else if (equalstr perPage 100)}}
+              <option value="5">5 resultados</option>
+              <option value="10">10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100" selected>100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{else if (equalstr perPage 500)}}
+              <option value="5">5 resultados</option>
+              <option value="10">10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500" selected>500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{else if (equalstr perPage 1000)}}
+              <option value="5">5 resultados</option>
+              <option value="10">10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000" selected>1000 resultados</option>
+              {{else}}
+              <option value="5">5 resultados</option>
+              <option value="10" selected>10 resultados</option>
+              <option value="25">25 resultados</option>
+              <option value="50">50 resultados</option>
+              <option value="100">100 resultados</option>
+              <option value="500">500 resultados</option>
+              <option value="1000">1000 resultados</option>
+              {{/if}}
+            </select>
+          </div>
+          {{!-- <span>resultados por página</span> --}}
+
+      </div>
     </div>
 
     <!-- ========================
@@ -71,86 +144,13 @@
         ========================= -->
     <div class="flex-1">
 
-      <div class="total-results">
-        <span class="total-results__results">Total de <strong>{{totalPessoas}}</strong> pessoas</span>
-      </div>
+      {{!-- <div class="flex flex-row items-end m-bottom--xl">
 
-      <div class="flex flex-row items-end m-bottom--xl">
-        <!-- ========================
-                ######### ORDERING ##########
-                ========================= -->
-
-        <div class="form-group form-group--vertical">
-          <label class="form-group__label" for="amount">Exibir</label>
-          <div class="flex flex-row items-center self-start" flex-align="center">
-
-            <div class="form-group--select-wrapper m-right--md">
-              <select id="amount" class="form-group__input form-group__input--select form-group__input--amount"
-                name="order" {{action 'setExibir' on='change'}}>
-                {{#if (equalstr perPage 5)}}
-                <option value="5" selected>5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                {{else if (equalstr perPage 25)}}
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25" selected>25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                {{else if (equalstr perPage 50)}}
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50" selected>50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                {{else if (equalstr perPage 100)}}
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100" selected>100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                {{else if (equalstr perPage 500)}}
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500" selected>500</option>
-                <option value="1000">1000</option>
-                {{else if (equalstr perPage 1000)}}
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000" selected>1000</option>
-                {{else}}
-                <option value="5">5</option>
-                <option value="10" selected>10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-                {{/if}}
-              </select>
-            </div>
-            <span>resultados por página</span>
-          </div>
+        <div class="total-results">
+          <span class="total-results__results">Total de <strong>{{totalPessoas}} pessoas</strong></span>
         </div>
 
-        {{!-- <div class="form-group form-group--vertical m-left--xxl">
+        <div class="form-group m-left--xxl">
           <label class="form-group__label" for="order">Ordenação</label>
           <div class="form-group--select-wrapper">
             <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order"
@@ -170,12 +170,12 @@
               {{/if}}
             </select>
           </div>
-        </div> --}}
+        </div>
 
         {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
-      </div>
+      </div> --}}
 
-      <div class="loader-local {{if (equalstr admdataLoaderState 1) 'loader-local--is-show' ''}}">
+      <div class="m-bottom--xs loader-local {{if (equalstr admdataLoaderState 1) 'loader-local--is-show' ''}}">
 
         <div class="loader-local__loader">
           <span class="icon-reload icon--xl"></span>
@@ -223,18 +223,18 @@
                         {{pessoa.name}}
                       </span>
                     </td>
-                    <td class="bg-success"><span class="report-people__status">100%</span></td>
-                    <td class="bg-success"><span class="report-people__status">100%</span></td>
-                    <td class="bg-success"><span class="report-people__status">100%</span></td>
-                    <td class="bg-success"><span class="report-people__status">100%</span></td>
-                    <td class="bg-success"><span class="report-people__status">100%</span></td>
-                    <td class="bg-warning"><span class="report-people__status">75%</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
-                    <td class="bg-error"><span class="report-people__status">-</span></td>
+                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
+                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
+                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
+                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
+                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
+                    <td class="color-warning--dark bg-warning--light"><span class="report-people__status">75%</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
                   </tr>
                 {{/each}}
 
@@ -258,7 +258,8 @@
         </div>
 
       </div>
-      {{page-numbers content=pagedContent perPage=perPage class="pagination--right"}}
+
+      {{page-numbers content=pagedContent perPage=perPage class="pagination--sm pagination--right"}}
 
     </div>
 
@@ -312,19 +313,21 @@
 
   {{#if selected_pessoa.matriculado}}
   <section class="report-person__body">
-    <div class="form-group form-group--select-wrapper">
+    <div class="form-group">
       {{moduloPercent}}
       <label class="form-group__label" for="select_course">Percurso</label>
-      <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}}
-        id="select_course_pessoa" value="select_inst">
-        {{#each selected_pessoa.modulos as |modulo|}}
-        {{#if (equalstr curso_selected.id modulo.id)}}
-        <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-        {{else}}
-        <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-        {{/if}}
-        {{/each}}
-      </select>
+      <div class="form-group__wrapper form-group__wrapper--select">
+        <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}}
+          id="select_course_pessoa" value="select_inst">
+          {{#each selected_pessoa.modulos as |modulo|}}
+          {{#if (equalstr curso_selected.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
     </div>
     {{#if curso_selected}}
     <ul>
@@ -450,38 +453,42 @@
 
     <h2 class="main__subtitle">Comparar alunos</h2>
     <div class="filter filter--all-left">
-      <div class="form-group form-group--select-wrapper">
+      <div class="form-group">
         <label class="form-group__label" for="select_course">Curso</label>
-        <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}}
-          id="select_course_compare" value="select_inst">
-          {{#if curso_selected_compare}}
-          <option value="none" style="font-style: italic;">Selecione o percurso...</option>
-          {{else}}
-          <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
-          {{/if}}
-          {{#each modulos as |modulo|}}
-          {{#if (equalstr curso_selected_compare.id modulo.id)}}
-          <option value={{modulo.id}} selected>{{modulo.name}}</option>
-          {{else}}
-          <option value={{modulo.id}}>{{modulo.name}}</option>
-          {{/if}}
-          {{/each}}
-        </select>
+        <div class="form-group__wrapper form-group__wrapper--search">
+          <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}}
+            id="select_course_compare" value="select_inst">
+            {{#if curso_selected_compare}}
+            <option value="none" style="font-style: italic;">Selecione o percurso...</option>
+            {{else}}
+            <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
+            {{/if}}
+            {{#each modulos as |modulo|}}
+            {{#if (equalstr curso_selected_compare.id modulo.id)}}
+            <option value={{modulo.id}} selected>{{modulo.name}}</option>
+            {{else}}
+            <option value={{modulo.id}}>{{modulo.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+        </div>
       </div>
 
       {{#if curso_selected_compare}}
-      <div class="form-group form-group--select-wrapper">
-        <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst"
-          {{action 'selectAtividadeCompare' on="change"}}>
-          <option value="all" style="font-style: italic;">Todas as aulas</option>
-          {{#each curso_selected_compare.atividades as |atividade|}}
-          {{#if (equalstr atividade_selected_compare.id atividade.id)}}
-          <option value={{atividade.id}} selected>{{atividade.name}}</option>
-          {{else}}
-          <option value={{atividade.id}}>{{atividade.name}}</option>
-          {{/if}}
-          {{/each}}
-        </select>
+      <div class="form-group">
+        <div class="form-group__wrapper form-group__wrapper--search">
+          <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst"
+            {{action 'selectAtividadeCompare' on="change"}}>
+            <option value="all" style="font-style: italic;">Todas as aulas</option>
+            {{#each curso_selected_compare.atividades as |atividade|}}
+            {{#if (equalstr atividade_selected_compare.id atividade.id)}}
+            <option value={{atividade.id}} selected>{{atividade.name}}</option>
+            {{else}}
+            <option value={{atividade.id}}>{{atividade.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+        </div>
       </div>
       {{else}}
       {{/if}}

@@ -43,19 +43,21 @@
 
   {{#if selected_pessoa.matriculado}}
   <section class="report-person__body">
-    <div class="form-group form-group--select-wrapper">
+    <div class="form-group">
       {{moduloPercent}}
       <label class="form-group__label" for="select_course">Percurso</label>
-      <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}}
-        id="select_course_pessoa" value="select_inst">
-        {{#each selected_pessoa.modulos as |modulo|}}
-        {{#if (equalstr curso_selected.id modulo.id)}}
-        <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-        {{else}}
-        <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
-        {{/if}}
-        {{/each}}
-      </select>
+      <div class="form-group__wrapper form-group__wrapper--search">
+        <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}}
+          id="select_course_pessoa" value="select_inst">
+          {{#each selected_pessoa.modulos as |modulo|}}
+          {{#if (equalstr curso_selected.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}} ({{modulo.progressPercentReal}} completo)</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
     </div>
     {{#if curso_selected}}
     <ul>

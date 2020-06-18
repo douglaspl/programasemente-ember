@@ -2,15 +2,29 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+// const isProduction = EmberApp.env() === 'production';
+
+// const purgeCSS = {
+//   module: require('@fullhuman/postcss-purgecss'),
+//   options: {
+//     content: [
+//       // add extra paths here for components/controllers which include tailwind classes
+//       './app/index.html',
+//       './app/templates/**/*.hbs'
+//     ],
+//     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+//   }
+// }
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     fingerprint: {
       exclude: ['jpg', 'png', 'ico', 'fontawesome']
     },
+
     'ember-bootstrap': {
       'bootstrapVersion': 3,
-      'importBootstrapFont': true,
+      'importBootstrapFont': false,
       'importBootstrapCSS': false
     },
 
@@ -26,16 +40,32 @@ module.exports = function (defaults) {
     autoprefixer: {
       browsers: ['last 3 versions']
     },
+
     'ember-cli-babel': {
       includePolyfill: true
     },
 
     'sourcemaps': {
       enabled: true,
-      extensions: ['js', 'css'],
+      extensions: ['js', 'css', 'scss'],
       mapCommentType: "block"
 
-    }
+    },
+
+    // postcssOptions: {
+    //   compile: {
+    //     plugins: [
+    //       {
+    //         module: require('postcss-import'),
+    //         options: {
+    //           path: ['node_modules']
+    //         }
+    //       },
+    //       require('tailwindcss')('./app/tailwind/config.js'),
+    //       ...isProduction ? [purgeCSS] : []
+    //     ]
+    //   }
+    // }
 
   });
 

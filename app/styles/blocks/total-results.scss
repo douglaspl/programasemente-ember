@@ -1,31 +1,31 @@
 .total-results {
     $this: &;
 
-    @include title-4;
+    // @include title-4;
 
-    margin-bottom: $distance--xl;
-    position: relative;
-    text-align: center;
-    width: 100%;
+    // margin-bottom: $distance--xl;
+    // position: relative;
+    // text-align: center;
+    // width: 100%;
 
     &__results {
         @include title-aux;
 
-        background-color: $gray-5;
-        padding: $distance--xs $distance--md;
-        position: relative;
-        z-index: 2;
+        // background-color: $gray-5;
+        // padding: $distance--xs $distance--md;
+        // position: relative;
+        // z-index: 2;
     }
 
-    &::before {
-        background-color: $gray-5;
-        content: '';
-        height: 1px;
-        left: 0;
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        z-index: 1;
-    }
+    // &::before {
+    //     background-color: $gray-5;
+    //     content: '';
+    //     height: 1px;
+    //     left: 0;
+    //     position: absolute;
+    //     top: 50%;
+    //     width: 100%;
+    //     z-index: 1;
+    // }
 
 }

@@ -23,7 +23,7 @@
 
     <div class="flex flex-row items-start">
 
-      <div class="form-group form-group--vertical flex-1">
+      <div class="form-group flex-1">
         <label class="form-group__label" for="search">Busca</label>
         <form class="flex flex-row  items-center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
           <div class="form-group__wrapper form-group__wrapper--search" flex="100">
@@ -34,7 +34,7 @@
         <button class="btn btn--text btn--xs self-start m-top--xxs" {{action 'exitpagedsearch'}}><span class="btn__icon icon-x"></span>Limpar</button>
       </div>
 
-      <div class="form-group form-group--vertical">
+      <div class="form-group">
         <label class="form-group__label" for="amount">Exibir</label>
         <div class="flex flex-row items-center self-start">
           <div class="form-group--select-wrapper m-right--md">
@@ -102,7 +102,7 @@
         </div>
       </div>
 
-      <div class="form-group form-group--vertical">
+      <div class="form-group">
         <span class="form-group__label">Status</span>
         <span class="checkbox">
           <input class="checkbox__input" id="not-initiated" type="checkbox" checked {{action 'selectNotInitiated' preventDefault=false}}>
@@ -119,7 +119,7 @@
       </div>
 
 
-      <div class="form-group form-group--vertical flex-none">
+      <div class="form-group flex-none">
         <label class="form-group__label" for="search">Busca</label>
         <form class="flex flex-row  items-center" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
           <div class="form-group__wrapper form-group__wrapper--search" flex="100">
@@ -141,22 +141,24 @@
         {{!-- Aguarde...<i class="fa fa-spinner fa-pulse fa-2x"></i> --}}
         {{else}}
         <div class="flex flex-row items-end m-bottom--xl ordering">
-          <div class="form-group form-group--select-wrapper ordering__order">
-            <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order" {{action 'ordenaPessoas' on='change'}}>
-              {{#if (equalstr ordem 'completeness')}}
-              <option value="az">Ordem alfabética A-Z</option>
-              <option value="access">Acessos</option>
-              <option value="completeness" selected>Completude</option>
-              {{else if (equalstr ordem 'access')}}
-              <option value="az">Ordem alfabética A-Z</option>
-              <option value="access" selected>Acessos</option>
-              <option value="completeness">Completude</option>
-              {{else}}
-              <option value="az" selected>Ordem alfabética A-Z</option>
-              <option value="access">Acessos</option>
-              <option value="completeness">Completude</option>
-              {{/if}}
-            </select>
+          <div class="form-group ordering__order">
+            <div class="form-group__wrapper form-group__wrapper--search">
+              <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order" {{action 'ordenaPessoas' on='change'}}>
+                {{#if (equalstr ordem 'completeness')}}
+                <option value="az">Ordem alfabética A-Z</option>
+                <option value="access">Acessos</option>
+                <option value="completeness" selected>Completude</option>
+                {{else if (equalstr ordem 'access')}}
+                <option value="az">Ordem alfabética A-Z</option>
+                <option value="access" selected>Acessos</option>
+                <option value="completeness">Completude</option>
+                {{else}}
+                <option value="az" selected>Ordem alfabética A-Z</option>
+                <option value="access">Acessos</option>
+                <option value="completeness">Completude</option>
+                {{/if}}
+              </select>
+            </div>
           </div>
 
           <div class="report__total-results ordering__results">Total de <strong>{{totalPessoas}}</strong> pessoas</div>
@@ -308,22 +310,24 @@
 
   {{#if selected_pessoa.matriculado}}
   <section class="report-person__body">
-    <div class="form-group form-group--select-wrapper">
+    <div class="form-group">
       <label class="form-group__label" for="select_course">Percurso</label>
-      <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course_pessoa" value="select_inst">
-        {{!-- {{#if curso_selected}}
-        <option value="none" style="font-style: italic;">Selecione o percurso...</option>
-        {{else}}
-        <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
-        {{/if}} --}}
-        {{#each selected_pessoa.modulos as |modulo|}}
-        {{#if (equalstr curso_selected.id modulo.id)}}
-        <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.percent_alias}} completo)</option>
-        {{else}}
-        <option value={{modulo.id}}>{{modulo.name}} ({{modulo.percent_alias}} completo)</option>
-        {{/if}}
-        {{/each}}
-      </select>
+      <div class="form-group__wrapper form-group__wrapper--search">
+        <select class="form-group__input form-group__input--select" {{action 'selectCurso' on="change"}} id="select_course_pessoa" value="select_inst">
+          {{!-- {{#if curso_selected}}
+          <option value="none" style="font-style: italic;">Selecione o percurso...</option>
+          {{else}}
+          <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
+          {{/if}} --}}
+          {{#each selected_pessoa.modulos as |modulo|}}
+          {{#if (equalstr curso_selected.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}} ({{modulo.percent_alias}} completo)</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}} ({{modulo.percent_alias}} completo)</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
     </div>
     {{#if curso_selected}}
     <ul>
@@ -455,40 +459,44 @@
 
     <h2 class="main__subtitle">Comparar alunos</h2>
     <div class="filter filter--all-left">
-      <div class="form-group form-group--select-wrapper">
+      <div class="form-group">
         <label class="form-group__label" for="select_course">Percurso</label>
-        <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}} id="select_course_compare" value="select_inst">
-          {{#if curso_selected_compare}}
-          <option value="none" style="font-style: italic;">Selecione o percurso...</option>
-          {{else}}
-          <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
-          {{/if}}
-          {{#each modulos as |modulo|}}
-          {{#if (equalstr curso_selected_compare.id modulo.id)}}
-          <option value={{modulo.id}} selected>{{modulo.name}}</option>
-          {{else}}
-          <option value={{modulo.id}}>{{modulo.name}}</option>
-          {{/if}}
-          {{/each}}
-        </select>
+        <div class="form-group__wrapper form-group__wrapper--search">
+          <select class="form-group__input form-group__input--select" {{action 'selectCursoCompare' on="change"}} id="select_course_compare" value="select_inst">
+            {{#if curso_selected_compare}}
+            <option value="none" style="font-style: italic;">Selecione o percurso...</option>
+            {{else}}
+            <option value="none" selected style="font-style: italic;">Selecione o percurso...</option>
+            {{/if}}
+            {{#each modulos as |modulo|}}
+            {{#if (equalstr curso_selected_compare.id modulo.id)}}
+            <option value={{modulo.id}} selected>{{modulo.name}}</option>
+            {{else}}
+            <option value={{modulo.id}}>{{modulo.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
+        </div>
       </div>
 
-      <div class="form-group form-group--select-wrapper">
-        {{#if curso_selected_compare}}
-        <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst" {{action 'selectAtividadeCompare' on="change"}}>
-          {{!-- <option value="none" style="font-style: italic;">Selecione a aula...</option> --}}
-          <option value="all" style="font-style: italic;">Todas as aulas</option>
-          {{#each curso_selected_compare.atividades as |atividade|}}
-          {{#if (equalstr atividade_selected_compare.id atividade.id)}}
-          <option value={{atividade.id}} selected>{{atividade.name}}</option>
+      <div class="form-group">
+        <div class="form-group__wrapper form-group__wrapper--search">
+          {{#if curso_selected_compare}}
+          <select class="form-group__input form-group__input--select" id="select_atividade_compare" value="select_inst" {{action 'selectAtividadeCompare' on="change"}}>
+            {{!-- <option value="none" style="font-style: italic;">Selecione a aula...</option> --}}
+            <option value="all" style="font-style: italic;">Todas as aulas</option>
+            {{#each curso_selected_compare.atividades as |atividade|}}
+            {{#if (equalstr atividade_selected_compare.id atividade.id)}}
+            <option value={{atividade.id}} selected>{{atividade.name}}</option>
+            {{else}}
+            <option value={{atividade.id}}>{{atividade.name}}</option>
+            {{/if}}
+            {{/each}}
+          </select>
           {{else}}
-          <option value={{atividade.id}}>{{atividade.name}}</option>
+          {{!-- <option value="none" selected>...</option> --}}
           {{/if}}
-          {{/each}}
-        </select>
-        {{else}}
-        {{!-- <option value="none" selected>...</option> --}}
-        {{/if}}
+        </div>
       </div>
     </div>
 

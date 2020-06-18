@@ -87,6 +87,10 @@
   }
 
   // ELEMENTS
+  &__label {
+    transform: translateY(1px);
+  }
+
   &__count {
     font-style: italic;
     opacity: .85;
@@ -101,7 +105,7 @@
 
   // MODIFIERS
   &--icon {
-    $size: 3rem;
+    $size: 2rem;
 
     align-items: center;
     border-radius: $radius;
@@ -232,7 +236,8 @@
     box-shadow: none;
     color: $gray-60;
     opacity: .75;
-    // padding: 0;
+    padding-left: 0;
+    padding-right: 0;
     text-shadow: none;
     transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
     transition: 200ms var(--ease-in-out-quad);

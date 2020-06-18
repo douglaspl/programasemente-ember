@@ -21,7 +21,7 @@ body {
     height: 100%;
     color: $gray-60;
     font-family: $font-base;
-    font-size: 14px;
+    font-size: 16px;
     font-variant-numeric: lining-nums;
     font-weight: normal;
     line-height: 1;
@@ -31,6 +31,10 @@ body {
     > .ember-view {
         min-height: 100vh;
         max-height: 100%;
+    }
+
+    @include media('height<md') {
+        font-size: 14px;
     }
 
 }
@@ -90,7 +94,7 @@ select {
     box-shadow: $form-shadow;
     cursor: pointer;
     padding-left: $distance--md;
-    padding-right: $distance--xl;
+    padding-right: $distance--xxl;
 
     &::-ms-expand {
         background-color: transparent;
