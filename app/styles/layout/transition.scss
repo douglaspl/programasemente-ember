@@ -117,7 +117,7 @@
     }
 
     &__subtitle {
-        @include title-2--u($color: inherit);
+        @include title-2($color: inherit);
 
         margin-bottom: $distance--xs;
 

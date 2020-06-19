@@ -8,7 +8,12 @@
       #{$this}__scroll {
         max-height: 27rem;
         overflow: auto;
+
+        @include media('height>sm') {
+          max-height: 30rem;
+        }
       }
+
 
     }
 

@@ -88,12 +88,16 @@
 
   <section class="sections__section">
     {{#if inst_selected}}
-    <div class="report__tabs tabs">
-      <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-courses" id="button_tab_cursos"
-        {{action 'selectTab' 'cursos'}}><span>Anos</span></button>
-      <button class="report__tab tabs__tab" data-target="report-people" id="button_tab_pessoas"
-        {{action 'selectTab' 'pessoas'}}><span>Alunos</span></button>
-    </div>
+      {{#if selected_pessoa}}
+
+        {{else}}
+          <div class="report__tabs tabs" id="report-tabs">
+            <button class="report__tab tabs__tab tabs__tab--is-active" data-target="report-courses" id="button_tab_cursos"
+              {{action 'selectTab' 'cursos'}}><span>Anos</span></button>
+            <button class="report__tab tabs__tab" data-target="report-people" id="button_tab_pessoas"
+              {{action 'selectTab' 'pessoas'}}><span>Alunos</span></button>
+          </div>
+      {{/if}}
 
 
 
@@ -189,7 +193,7 @@
               <div class="report-course__header">
                 <div class="report-course__title-block">
                   <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
-                  <h2 class="title-2--u">{{curso_selected.name}}</h2>
+                  <h2 class="title-2">{{curso_selected.name}}</h2>
                   {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
                                                     <span>Ver todos os matriculados</span>
                                                 </button> --}}
@@ -259,7 +263,7 @@
               <div class="report-course__header">
                 <div class="report-course__title-block">
                   <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
-                  <h2 class="title-2--u">{{curso_selected.name}}</h2>
+                  <h2 class="title-2">{{curso_selected.name}}</h2>
                   {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
                                                     <span>Ver todos os matriculados</span>
                                                 </button> --}}

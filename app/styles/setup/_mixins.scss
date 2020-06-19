@@ -740,22 +740,6 @@
 
 }
 
-@mixin title-2--u(  $color: $gray-60,
-                    $size: $font-size--sm,
-                    $size--sm: $font-size--md,
-                    $size--lg: $font-size--lg,
-                    $weight: normal,
-                    $letter: $letter-spacing--xl) {
-
-    color: $color;
-    font-family: $font-base;
-    font-size: calc(#{$size} + .75vw);
-    font-weight: $weight;
-    letter-spacing: $letter;
-    text-transform: uppercase;
-    vertical-align: middle;
-}
-
 @mixin title-3(     $color: $gray-60,
                     $size: $font-size--sm,
                     $size--sm: $font-size--md,

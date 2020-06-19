@@ -68,6 +68,12 @@
     th,
     td {
       padding: $distance--xxs $distance--md;
+
+      @include media('height>sm') {
+        padding-bottom: $distance--xs;
+        padding-top: $distance--xs;
+      }
+
     }
 
   }
