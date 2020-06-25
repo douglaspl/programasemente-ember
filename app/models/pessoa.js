@@ -58,6 +58,9 @@ export default DS.Model.extend({
   leituras: DS.hasMany('leitura', {
     async: true
   }),
+  progressoAtividades: DS.hasMany('acompanhamento-atividade', {
+    async: true
+  }),
   // matriculas: DS.hasMany('matricula', {async: true}),
   dataVisualizacaoBiblioteca: DS.attr(),
 });

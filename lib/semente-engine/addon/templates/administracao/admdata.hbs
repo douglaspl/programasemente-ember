@@ -210,48 +210,47 @@
 
 
                 {{#each pagedContent.content as |pessoa|}}
-                  <tr {{action 'selectPessoa' pessoa.id}}>
-                    <td class="report-people__person flex flex-row items-center justify-start">
-                      <span class="report-people__avatar avatar avatar--sm m-right--xs">
-                        {{#if pessoa.uriAvatar}}
-                        <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-                        {{else}}
-                        <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-                        {{/if}}
-                      </span>
-                      <span class="truncate">
-                        {{pessoa.name}}
-                      </span>
-                    </td>
-                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
-                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
-                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
-                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
-                    <td class="color-success--dark bg-success--light"><span class="report-people__status">100%</span></td>
-                    <td class="color-warning--dark bg-warning--light"><span class="report-people__status">75%</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                    <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                  </tr>
+                  {{!-- {{#if (equalstr pessoa.role 'aluno')}} --}}
+                    <tr {{action 'selectPessoa' pessoa.id}}>
+                      <td class="report-people__person flex flex-row items-center justify-start">
+                        <span class="report-people__avatar avatar avatar--sm m-right--xs">
+                          {{#if pessoa.uriAvatar}}
+                          <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+                          {{else}}
+                          <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+                          {{/if}}
+                        </span>
+                        <span class="truncate">
+                          {{pessoa.name}}
+                        </span>
+                      </td>
+                      {{#if (equalstr pessoa.progressoAtividades.length '0')}}
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                      {{else}}
+                        {{#each pessoa.progressoAtividades as |prog|}}
+                          {{#if (equalstr prog.percentFixed '100')}}
+                            <td class="color-success--dark bg-success--light"><span class="report-people__status">{{prog.percentFixed}}%</span></td>
+                          {{else if (equalstr prog.percentFixed '0')}}
+                            <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                          {{else}}
+                            <td class="color-warning--dark bg-warning--light"><span class="report-people__status">{{prog.percentFixed}}%</span></td>
+                          {{/if}}
+                        {{/each}}
+                      {{/if}}
+                    </tr>
+                  {{!-- {{/if}} --}}
                 {{/each}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               </tbody>
             </table>
           </div>
