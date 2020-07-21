@@ -56,7 +56,8 @@
           <span class="checkbox">
             <input class="checkbox__input" id="ano_{{mod.id}}" name="year" type="checkbox" value="year{{mod.id}}"
               {{action 'filterano' mod.id on='change'}}>
-            <label class="checkbox__label" for="ano_{{mod.id}}">{{visible-index index}}º ano</label><!-- {{mod.name}}-->
+            <label class="checkbox__label" for="ano_{{mod.id}}">{{mod.name}}</label>
+            {{!-- <label class="checkbox__label" for="ano_{{mod.id}}">{{visible-index index}}º ano</label><!-- {{mod.name}}--> --}}
           </span>
           {{/each}}
         </div>
@@ -192,7 +193,7 @@
       {{/unless}}
     </div>
     {{#if hasChildren}}
-      <div class="form-group form-group--horizontal m-left--auto m-bottom--sm">
+      <div class="form-group form-group--horizontal m-left--auto m-v--md">
         <label class="form-group__label" for="amount">Exibir</label>
 
         <div class="form-group__wrapper form-group__wrapper--select">
