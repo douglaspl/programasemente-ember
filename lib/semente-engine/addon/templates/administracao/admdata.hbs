@@ -36,15 +36,72 @@
         <div class="flex flex-row">
           {{#each inst_selected.modulos as |mod|}}
           <span class="checkbox">
-            <input class="checkbox__input" id="ano_{{mod.idx}}" name="year" type="checkbox" value="year{{mod.idx}}"
-              {{action 'filterano' mod.idx on='change'}}>
-            <label class="checkbox__label" for="ano_{{mod.idx}}">{{mod.idx}}º ano</label><!-- {{mod.name}}-->
+            <input class="checkbox__input" id="ano_{{mod.id}}" name="year" type="checkbox" value="year{{mod.id}}"
+              {{action 'filterano' mod.id on='change'}}>
+            <label class="checkbox__label" for="ano_{{mod.id}}">{{mod.name}}</label><!-- {{mod.name}}-->
           </span>
           {{/each}}
         </div>
       </div>
+      {{#if hasChildren}}
+        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+          <label class="form-group__label">Instituição</label>
 
-      <div class="form-group">
+          <select id="inst_selector" class="form-group__input form-group__input--select"
+            {{action 'filterInstF' on='change'}}>
+            <option value="0" selected>Escolha uma instituição</option>
+            {{#each inst_selected.instituicaoFilhas as |instF|}}
+              <option id="opt_{{instF.id}}" style="display: block" value={{instF.id}}>{{instF.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+      {{/if}}
+      {{#if inst_filtered}}
+        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+          <label class="form-group__label">Turma</label>
+
+          <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+            <option value="0" selected>Escolha uma turma</option>
+            {{#if (equalstr pessoaLogged.role "instrutor")}}
+              {{#each pessoaLogged.turmas as |turma|}}
+                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+              {{/each}}
+            {{else}}
+              {{#each inst_filtered.turmas as |turma|}}
+                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+              {{/each}}
+            {{/if}}
+          </select>
+        </div>
+      {{else}}
+        {{#if hasChildren}}
+          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+            <label class="form-group__label">Turma</label>
+
+            <select id="turma_selector" class="form-group__input form-group__input--select" disabled>
+              <option value="0" selected>Escolha uma turma</option>
+            </select>
+          </div>
+        {{else}}
+          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+            <label class="form-group__label">Turma</label>
+
+            <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+              <option value="0" selected>Escolha uma turma</option>
+              {{#if (equalstr pessoaLogged.role "instrutor")}}
+                {{#each pessoaLogged.turmas as |turma|}}
+                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                {{/each}}
+              {{else}}
+                {{#each inst_selected.turmas as |turma|}}
+                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+                {{/each}}
+              {{/if}}
+            </select>
+          </div>
+        {{/if}}
+      {{/if}}
+      {{!-- <div class="form-group">
         <label class="form-group__label">Turma</label>
 
         <div class="form-group__wrapper form-group__wrapper--select">
@@ -64,7 +121,7 @@
             {{/if}}
           </select>
         </div>
-      </div>
+      </div> --}}
 
       <!-- ========================
       ######### ORDERING ##########
