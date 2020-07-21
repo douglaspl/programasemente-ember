@@ -1,4 +1,6 @@
 .form {
+    $this: &;
+
     &__msg {
         align-items: center;
         bottom: calc(100% + #{$distance--xxs});
@@ -106,6 +108,18 @@
 
         }
         // Fim de não bom...
+
+        &--horizontal {
+            align-items: center;
+            flex-direction: row;
+
+            > [class*='__label'] {
+                margin-bottom: 0;
+                margin-right: $distance--xs;
+                margin-top: 2px; //compensar visualmente a sombra do input
+                min-width: 0;
+            }
+        }
 
         &__wrapper {
             display: inline-flex;

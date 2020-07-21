@@ -54,3 +54,51 @@
 .stealth-info-congrats {
     color: desaturate(lighten($transition-bg-color, $amount: 15%), $amount: 14%);
 }
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > * {
+        flex: 0 0 100%;
+        margin-bottom: $distance--sm;
+
+        @include media('>sm') {
+            flex: 1 0 40%;
+            margin-right: $distance--sm;
+
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+        }
+
+        @include media('>md') {
+            flex: 0 0 30%;
+
+            &:nth-child(even) {
+                margin-right: initial;
+            }
+
+            &:nth-child(n + 3) {
+                margin-right: 0;
+            }
+
+        }
+
+        @include media('>lg') {
+            flex: 1 0 40%;
+
+            &:nth-child(n + 3) {
+                margin-right: initial;
+            }
+
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+
+        }
+    }
+
+}
