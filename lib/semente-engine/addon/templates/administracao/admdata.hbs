@@ -6,6 +6,21 @@
 
     <div class="flex flex-row items-start justify-between m-bottom--sm">
 
+
+      {{#if hasChildren}}
+      <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+        <label class="form-group__label">Instituição</label>
+
+        <select id="inst_selector" class="form-group__input form-group__input--select"
+          {{action 'filterInstF' on='change'}}>
+          <option value="0" selected>Escolha uma instituição</option>
+          {{#each inst_selected.instituicaoFilhas as |instF|}}
+          <option id="opt_{{instF.id}}" style="display: block" value={{instF.id}}>{{instFilter instF.name "Fundação"}}</option>
+          {{/each}}
+        </select>
+      </div>
+      {{/if}}
+
       <div class="form-group">
 
         <label class="form-group__label" for="search">Busca (<strong>{{totalPessoas}} pessoas</strong>)</label>
@@ -43,63 +58,53 @@
           {{/each}}
         </div>
       </div>
-      {{#if hasChildren}}
-        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
-          <label class="form-group__label">Instituição</label>
 
-          <select id="inst_selector" class="form-group__input form-group__input--select"
-            {{action 'filterInstF' on='change'}}>
-            <option value="0" selected>Escolha uma instituição</option>
-            {{#each inst_selected.instituicaoFilhas as |instF|}}
-              <option id="opt_{{instF.id}}" style="display: block" value={{instF.id}}>{{instF.name}}</option>
-            {{/each}}
-          </select>
-        </div>
-      {{/if}}
       {{#if inst_filtered}}
-        <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
-          <label class="form-group__label">Turma</label>
+      <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+        <label class="form-group__label">Turma</label>
 
-          <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
-            <option value="0" selected>Escolha uma turma</option>
-            {{#if (equalstr pessoaLogged.role "instrutor")}}
-              {{#each pessoaLogged.turmas as |turma|}}
-                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
-              {{/each}}
-            {{else}}
-              {{#each inst_filtered.turmas as |turma|}}
-                <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
-              {{/each}}
-            {{/if}}
-          </select>
-        </div>
+        <select id="turma_selector" class="form-group__input form-group__input--select"
+          {{action 'filterTurma' on='change'}}>
+          <option value="0" selected>Escolha uma turma</option>
+          {{#if (equalstr pessoaLogged.role "instrutor")}}
+          {{#each pessoaLogged.turmas as |turma|}}
+          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+          {{/each}}
+          {{else}}
+          {{#each inst_filtered.turmas as |turma|}}
+          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+          {{/each}}
+          {{/if}}
+        </select>
+      </div>
       {{else}}
-        {{#if hasChildren}}
-          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
-            <label class="form-group__label">Turma</label>
+      {{#if hasChildren}}
+      <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+        <label class="form-group__label">Turma</label>
 
-            <select id="turma_selector" class="form-group__input form-group__input--select" disabled>
-              <option value="0" selected>Escolha uma turma</option>
-            </select>
-          </div>
-        {{else}}
-          <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
-            <label class="form-group__label">Turma</label>
+        <select id="turma_selector" class="form-group__input form-group__input--select" disabled>
+          <option value="0" selected>Escolha uma turma</option>
+        </select>
+      </div>
+      {{else}}
+      <div class="form-group form-group--vertical form-group--select-wrapper" flex="1">
+        <label class="form-group__label">Turma</label>
 
-            <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
-              <option value="0" selected>Escolha uma turma</option>
-              {{#if (equalstr pessoaLogged.role "instrutor")}}
-                {{#each pessoaLogged.turmas as |turma|}}
-                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
-                {{/each}}
-              {{else}}
-                {{#each inst_selected.turmas as |turma|}}
-                  <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
-                {{/each}}
-              {{/if}}
-            </select>
-          </div>
-        {{/if}}
+        <select id="turma_selector" class="form-group__input form-group__input--select"
+          {{action 'filterTurma' on='change'}}>
+          <option value="0" selected>Escolha uma turma</option>
+          {{#if (equalstr pessoaLogged.role "instrutor")}}
+          {{#each pessoaLogged.turmas as |turma|}}
+          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+          {{/each}}
+          {{else}}
+          {{#each inst_selected.turmas as |turma|}}
+          <option id="opt_{{turma.id}}" style="display: block" value={{turma.id}}>{{turma.name}}</option>
+          {{/each}}
+          {{/if}}
+        </select>
+      </div>
+      {{/if}}
       {{/if}}
       {{!-- <div class="form-group">
         <label class="form-group__label">Turma</label>
@@ -129,69 +134,69 @@
       <div class="form-group">
         <label class="form-group__label" for="amount">Exibir</label>
 
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select id="amount" class="form-group__input form-group__input--select form-group__input--amount"
-              name="order" {{action 'setExibir' on='change'}}>
-              {{#if (equalstr perPage 5)}}
-              <option value="5" selected>5</option>
-              <option value="10">10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{else if (equalstr perPage 25)}}
-              <option value="5">5 resultados</option>
-              <option value="10">10 resultados</option>
-              <option value="25" selected>25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{else if (equalstr perPage 50)}}
-              <option value="5">5 resultados</option>
-              <option value="10">10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50" selected>50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{else if (equalstr perPage 100)}}
-              <option value="5">5 resultados</option>
-              <option value="10">10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100" selected>100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{else if (equalstr perPage 500)}}
-              <option value="5">5 resultados</option>
-              <option value="10">10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500" selected>500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{else if (equalstr perPage 1000)}}
-              <option value="5">5 resultados</option>
-              <option value="10">10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000" selected>1000 resultados</option>
-              {{else}}
-              <option value="5">5 resultados</option>
-              <option value="10" selected>10 resultados</option>
-              <option value="25">25 resultados</option>
-              <option value="50">50 resultados</option>
-              <option value="100">100 resultados</option>
-              <option value="500">500 resultados</option>
-              <option value="1000">1000 resultados</option>
-              {{/if}}
-            </select>
-          </div>
-          {{!-- <span>resultados por página</span> --}}
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select id="amount" class="form-group__input form-group__input--select form-group__input--amount" name="order"
+            {{action 'setExibir' on='change'}}>
+            {{#if (equalstr perPage 5)}}
+            <option value="5" selected>5</option>
+            <option value="10">10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{else if (equalstr perPage 25)}}
+            <option value="5">5 resultados</option>
+            <option value="10">10 resultados</option>
+            <option value="25" selected>25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{else if (equalstr perPage 50)}}
+            <option value="5">5 resultados</option>
+            <option value="10">10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50" selected>50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{else if (equalstr perPage 100)}}
+            <option value="5">5 resultados</option>
+            <option value="10">10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100" selected>100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{else if (equalstr perPage 500)}}
+            <option value="5">5 resultados</option>
+            <option value="10">10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500" selected>500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{else if (equalstr perPage 1000)}}
+            <option value="5">5 resultados</option>
+            <option value="10">10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000" selected>1000 resultados</option>
+            {{else}}
+            <option value="5">5 resultados</option>
+            <option value="10" selected>10 resultados</option>
+            <option value="25">25 resultados</option>
+            <option value="50">50 resultados</option>
+            <option value="100">100 resultados</option>
+            <option value="500">500 resultados</option>
+            <option value="1000">1000 resultados</option>
+            {{/if}}
+          </select>
+        </div>
+        {{!-- <span>resultados por página</span> --}}
 
       </div>
     </div>
@@ -267,46 +272,48 @@
 
 
                 {{#each pagedContent.content as |pessoa|}}
-                  {{!-- {{#if (equalstr pessoa.role 'aluno')}} --}}
-                    <tr {{action 'selectPessoa' pessoa.id}}>
-                      <td class="report-people__person flex flex-row items-center justify-start">
-                        <span class="report-people__avatar avatar avatar--sm m-right--xs">
-                          {{#if pessoa.uriAvatar}}
-                          <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-                          {{else}}
-                          <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-                          {{/if}}
-                        </span>
-                        <span class="truncate">
-                          {{pessoa.name}}
-                        </span>
-                      </td>
-                      {{#if (equalstr pessoa.progressoAtividades.length '0')}}
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                {{!-- {{#if (equalstr pessoa.role 'aluno')}} --}}
+                <tr {{action 'selectPessoa' pessoa.id}}>
+                  <td class="report-people__person flex flex-row items-center justify-start">
+                    <span class="report-people__avatar avatar avatar--sm m-right--xs">
+                      {{#if pessoa.uriAvatar}}
+                      <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
                       {{else}}
-                        {{#each pessoa.progressoAtividades as |prog|}}
-                          {{#if (equalstr prog.percentFixed '100')}}
-                            <td class="color-success--dark bg-success--light"><span class="report-people__status">{{prog.percentFixed}}%</span></td>
-                          {{else if (equalstr prog.percentFixed '0')}}
-                            <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                          {{else}}
-                            <td class="color-warning--dark bg-warning--light"><span class="report-people__status">{{prog.percentFixed}}%</span></td>
-                          {{/if}}
-                        {{/each}}
+                      <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
                       {{/if}}
-                    </tr>
-                  {{!-- {{/if}} --}}
+                    </span>
+                    <span class="truncate">
+                      {{pessoa.name}}
+                    </span>
+                  </td>
+                  {{#if (equalstr pessoa.progressoAtividades.length '0')}}
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  {{else}}
+                  {{#each pessoa.progressoAtividades as |prog|}}
+                  {{#if (equalstr prog.percentFixed '100')}}
+                  <td class="color-success--dark bg-success--light"><span
+                      class="report-people__status">{{prog.percentFixed}}%</span></td>
+                  {{else if (equalstr prog.percentFixed '0')}}
+                  <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                  {{else}}
+                  <td class="color-warning--dark bg-warning--light"><span
+                      class="report-people__status">{{prog.percentFixed}}%</span></td>
+                  {{/if}}
+                  {{/each}}
+                  {{/if}}
+                </tr>
+                {{!-- {{/if}} --}}
                 {{/each}}
               </tbody>
             </table>
