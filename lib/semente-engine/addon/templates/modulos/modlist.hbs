@@ -35,7 +35,7 @@
       </div>
 
       <ol class="timeline__line">
-        {{#each model.atividades as |atividade idx|}}
+        {{#each sortedAtividades as |atividade idx|}}
 
           {{#if (equalstr (get listaStartUnit idx) 1)}}
         <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
