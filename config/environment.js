@@ -21,9 +21,9 @@ module.exports = function(environment) {
 
     APP: {
 
-      //host: 'http://localhost:64568',
+      host: 'http://localhost:64568',
       //  host:  'http://sementeapidev.minimo.com.br',
-      host:  'https://sementeapi.minimo.com.br',
+      // host:  'https://sementeapi.minimo.com.br',
       namespace: 'api/v0',
       // Here you can pass flags/options to your application instance
       // when it is created
