@@ -46,6 +46,9 @@ export default DS.Model.extend({
   respostas: DS.hasMany('resposta', {
     async: true
   }),
+  plataformaAnos: DS.hasMany('plataforma-ano', {
+    async: true
+  }),
   estadoVideos: DS.hasMany('estado-video', {
     async: true
   }),
