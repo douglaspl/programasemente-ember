@@ -12,10 +12,9 @@ Router.map(function() {
   this.route('webapp', function() {
     this.mount('semente-engine', {path: '/'});
   });
-
-  this.route('modulos', function() {
-    this.route('modetails');
-  });
+  // this.route('modulos', function() {
+  //   this.route('modetails');
+  // });
   this.route('firstaccess');
 });
 
