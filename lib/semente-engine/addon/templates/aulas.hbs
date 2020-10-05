@@ -6,8 +6,6 @@
 
 <ul>
   {{#each plataformaAno.aulas as |aula|}}
-      {{aula-card transit=(action 'goTransition') goquestao=(action 'goQuestao') gonext=(action 'goNext')
-    html=conteudo.html video=conteudo.video quiz=conteudo.quiz ide=conteudo.id model=model questao=questao
-    upState=upState videoini=videoini questoes_timing=questoes_timing}}
+      {{aula-card transit=(action 'goToAula') aula=aula}}
   {{/each}}
 </ul>
