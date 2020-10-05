@@ -1,3 +1,13 @@
-{{pessoa.name}}
-{{plataformaAno.name}}
-{{segmento.titulo}}
+
+<p>{{pessoa.name}}</p>
+<p>{{segmento.titulo}}</p>
+<p>{{plataformaAno.name}}</p>
+<p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
+
+<ul>
+  {{#each plataformaAno.aulas as |aula|}}
+      {{aula-card transit=(action 'goTransition') goquestao=(action 'goQuestao') gonext=(action 'goNext')
+    html=conteudo.html video=conteudo.video quiz=conteudo.quiz ide=conteudo.id model=model questao=questao
+    upState=upState videoini=videoini questoes_timing=questoes_timing}}
+  {{/each}}
+</ul>

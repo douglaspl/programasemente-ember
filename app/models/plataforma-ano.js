@@ -5,6 +5,7 @@ import segmento from './segmento';
 export default DS.Model.extend({
     name: DS.attr(),
     descricao: DS.attr(),
+    urlLivro: DS.attr(),
     instituicoes: DS.hasMany('instituicao', { async: true }),
     segmento: DS.belongsTo('segmento', { async: true }),
     aulas: DS.hasMany('aula', { async: true })
