@@ -1,0 +1,10 @@
+<p>{{pessoa.name}}</p>
+<p>{{segmento.titulo}}</p>
+<p>{{plataformaAno.name}}</p>
+<p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
+
+<ul>
+  {{#each plataformaAno.aulas as |aula|}}
+      {{aula-card transit=(action 'goToAula') aula=aula}}
+  {{/each}}
+</ul>
