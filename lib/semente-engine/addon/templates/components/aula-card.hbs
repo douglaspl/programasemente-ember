@@ -1,4 +1,10 @@
+{{#if aula.unidade}}
+  {{aula.unidade.titulo}}
+{{/if}}
 {{aula.titulo}}
+{{#if aplicacao}}
+  Aplicada em: {{aplicacao.dataAplicacao}}
+{{/if}}
 <p class="global-nav__item" id="header-indicadores" {{action 'transitToAula' aula.id on="click"}}>
   <span>Ir para aula</span>
 </p>
