@@ -5,6 +5,6 @@
 
 <ul>
   {{#each plataformaAno.aulas as |aula|}}
-      {{aula-card transit=(action 'goToAula') aula=aula}}
+      {{aula-card transit=(action 'goToAula') aula=aula aulaDestaque=aulaDestaque}}
   {{/each}}
 </ul>
