@@ -8,6 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('autoregister', function() {
+    this.route('form', { path: '/form/:instituicao_id' });
+    this.route('index', { path: '/'});
+  });
   this.route('firstaccess'),
   this.route('webapp', function() {
     this.mount('semente-engine', {path: '/'});

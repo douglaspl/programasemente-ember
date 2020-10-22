@@ -103,6 +103,9 @@ export default Ember.Controller.extend({
       this.set('errorMessage', '');
       document.getElementById('forgot_modal').classList.add('modal--is-show');
     },
+    autoRegister(){
+      this.transitionToRoute('autoregister');
+    },
     cancelForgot() {
       document.getElementById('forgot_modal').classList.remove('modal--is-show');
       document.getElementById('user_email').value = '';
