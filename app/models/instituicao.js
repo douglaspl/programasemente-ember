@@ -22,5 +22,8 @@ export default DS.Model.extend({
     instituicaoFilhas: DS.hasMany('instituicao', {async:true}),
     plataformaAnos: DS.hasMany('plataforma-ano', {
         async: true
+    }),
+    plataformaTurmas: DS.hasMany('plataforma-turma', {
+        async: true
     })
 });

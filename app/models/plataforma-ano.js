@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 import segmento from './segmento';
+import plataformaTurma from './plataforma-turma';
 
 export default DS.Model.extend({
     name: DS.attr(),

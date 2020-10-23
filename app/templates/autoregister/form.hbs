@@ -1,1 +1,38 @@
+<h1>O cadastro será feito em {{escola.name}}</h1>
+
+<div class="row">
+    <label for="login">Login</label>
+    <input type="text" id="login">
+</div>
+<div class="row">
+    <label for="senha">Senha</label>
+    <input type="password" id="senha">
+</div>
+<div class="row">
+    <label for="name">Nome Completo</label>
+    <input type="text" id="name">
+</div>
+<div class="row">
+    <label for="serie">Serie</label>
+    <select name="serie" id="serie">
+        <option value="">---</option>
+        {{#each plataformaAnos as |pa|}}
+            <option value="{{pa.id}}">{{pa.name}}</option>
+        {{/each}}
+    </select>
+</div>
+<div class="row">
+    <label for="turma">Turma</label>
+    <select name="turma" id="turma">
+        <option value="">---</option>
+        {{#each plataformaTurmas as |pt|}}
+            <option value="{{pt.id}}">{{pt.name}}</option>
+        {{/each}}
+    </select>
+</div>
+
+<button type="button" class="login__cta btn">Salvar e Avançar</button>
+
+
+
 {{teste}}
