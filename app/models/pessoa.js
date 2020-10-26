@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import moment from 'moment';
 import Ember from 'ember';
+import { memberAction } from 'ember-api-actions';
 
 export default DS.Model.extend({
   name: DS.attr(),
@@ -70,4 +71,7 @@ export default DS.Model.extend({
   }),
   // matriculas: DS.hasMany('matricula', {async: true}),
   dataVisualizacaoBiblioteca: DS.attr(),
+
+  verifyEmail: memberAction({ path: 'verifyEmail', type: 'get' }),
+  autoRegister: memberAction({ path: 'autoRegisterPlataforma', type: 'post' }),
 });

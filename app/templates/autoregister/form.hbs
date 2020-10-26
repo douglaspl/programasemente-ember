@@ -2,37 +2,17 @@
 
 <div class="row">
     <label for="login">Login</label>
-    <input type="text" id="login">
+    <input type="text" id="login" onblur={{action 'verifyEmail'}}>
+    <span id='login-error'></span>
 </div>
 <div class="row">
     <label for="senha">Senha</label>
     <input type="password" id="senha">
+    <span id='password-error'></span>
 </div>
 <div class="row">
-    <label for="name">Nome Completo</label>
-    <input type="text" id="name">
-</div>
-<div class="row">
-    <label for="serie">Serie</label>
-    <select name="serie" id="serie">
-        <option value="">---</option>
-        {{#each plataformaAnos as |pa|}}
-            <option value="{{pa.id}}">{{pa.name}}</option>
-        {{/each}}
-    </select>
-</div>
-<div class="row">
-    <label for="turma">Turma</label>
-    <select name="turma" id="turma">
-        <option value="">---</option>
-        {{#each plataformaTurmas as |pt|}}
-            <option value="{{pt.id}}">{{pt.name}}</option>
-        {{/each}}
-    </select>
+    <label for="senha">Repetir Senha</label>
+    <input type="password" id="senha2" onkeyup={{action 'verifyPassword'}}>
 </div>
 
-<button type="button" class="login__cta btn">Salvar e Avançar</button>
-
-
-
-{{teste}}
+<button type="button" id='submit' class="login__cta btn" disabled="true" onclick={{action 'createUser'}}>Salvar</button>
