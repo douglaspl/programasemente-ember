@@ -3,6 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   store: Ember.inject.service(),
+  session: Ember.inject.service('session'),
   escola: Ember.computed('model', function(){
     let escola = this.get('model').get('instituicao');
     return escola;
@@ -42,15 +43,19 @@ export default Ember.Controller.extend({
         }
       })
       let pessoa = this.get('store').createRecord('pessoa');
+      let that = this;
       pessoa.autoRegister({
         login: login,
         password: password,
         instituicaoId: this.get('escola').get('id'),
         sistemaId: sistema.get('id'),
-        role: this.get('model').get('typeCadastro')
-      });
-
-
+        role: this.get('model').get('typeCadastro'),
+        name: login
+      }).catch(function(error){
+        debugger;
+        that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {
+        });
+      })
     }
   }
 });
