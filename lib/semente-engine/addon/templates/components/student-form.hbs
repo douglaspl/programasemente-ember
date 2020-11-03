@@ -1,0 +1,49 @@
+{{!-- <div class="row">
+    <label for="login">Login</label>
+    <input type="text" id="login"  >
+    <span id='login-error'></span>
+</div> --}}
+
+<div class="row">
+    <label for="name">Senha</label>
+    <button type="button" class="login__cta btn">Alterar senha</button>
+</div>
+
+<div class="row">
+    <label for="name_student{{pessoa.id}}">Nome Completo</label>
+    <input type="text" name="name" id="name_student{{pessoa.id}}" value="{{pessoa.name}}">
+</div>
+
+<div class="row">
+    <label for="genero_student{{pessoa.id}}">Gênero</label>
+    <select name="genero" id="genero_student{{pessoa.id}}" onchange={{action 'refreshSelectedGenero' value='target.value'}}>
+        <option value="">---</option>
+        <option value="masculino"  selected={{if this.isMasculino "selected"}}>Masculino</option>
+        <option value="feminino" selected={{if this.isFeminino "selected"}}>Feminino</option>
+        <option value="">Prefiro não dizer</option>
+    </select>
+</div>
+
+<div class="row">
+    <label for="serie_student{{pessoa.id}}">Serie</label>
+    <select name="serie" id="serie_student{{pessoa.id}}" onchange={{action 'refreshSelectedAno' value='target.value'}}>
+        <option value="">---</option>
+        {{#each pessoa.instituicao.plataformaAnos as |pa|}}
+            <option value="{{pa.id}}" selected={{if (equalstr pa.id selectedAno.id) "selected"}}>{{pa.name}}</option>
+        {{/each}}
+    </select>
+</div>
+
+<div class="row">
+    <label for="turma_student{{pessoa.id}}">Turma</label>
+    <select name="turma" id="turma_student{{pessoa.id}}" onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
+        <option value="">---</option>
+        {{#each plataformaTurmas as |pt|}}
+            {{#if (equalstr pt.plataformaAno.id selectedAno.id)}}
+                <option value="{{pt.id}}" selected={{if (equalstr pt.id selectedTurma.id) "selected"}}>{{pt.name}}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+</div>
+
+<button type="button" class="login__cta btn" {{action "saveProfile"}}>Salvar</button>

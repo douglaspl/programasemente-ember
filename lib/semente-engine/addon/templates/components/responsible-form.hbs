@@ -1,0 +1,22 @@
+<div class="row">
+    <label for="name_responsavel">Nome Completo</label>
+    {{input name='name_responsavel' value=responsavel.name placeholder='Nome Completo'}}
+    {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+</div>
+
+<div class="row">
+    <label for="email_responsavel">Email</label>
+    {{input name='email_responavel' value=responsavel.email placeholder='E-mail '}}
+    {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
+</div>
+
+<div class="row">
+    <label for="celular">Número de Celular</label>
+    {{input name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx '}}
+    {{!-- <select name="celular" id="celular">
+        <option value="">---</option>
+    </select> --}}
+</div>
+
+
+<button type="button" class="login__cta btn" {{action "saveResponsavel" responsavel}}>Salvar</button>

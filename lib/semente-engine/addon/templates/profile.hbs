@@ -1,1 +1,18 @@
-<h3>Profile</h3>
+{{#if  (equalstr model.role "aluno") }}
+
+    <h3>Dados pessoais</h3>
+    {{student-form pessoa=model}}
+
+    <h3>Dados de Responsáveis</h3>
+    {{#each model.responsaveis as |responsavel| }}
+        {{responsible-form responsavel=responsavel model=model}}
+    {{/each}}
+
+    {{#if canAddResponsibles}}
+        <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
+    {{/if}}
+
+{{else if (equalstr model.role "professor") }}
+    {{teacher-form}}
+
+{{/if}}

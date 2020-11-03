@@ -28,6 +28,7 @@ export default DS.Model.extend({
   numeroCursos: DS.attr(),
   cursosConcluidos: DS.attr(),
   shouldReviewProdile: DS.attr(),
+  telefone: DS.attr(),
   area: DS.belongsTo('area', {
     async: true
   }),
@@ -68,6 +69,12 @@ export default DS.Model.extend({
   }),
   progressoAtividades: DS.hasMany('acompanhamento-atividade', {
     async: true
+  }),
+  responsaveis: DS.hasMany('pessoa', {
+    async: true,inverse: null
+  }),
+  dependentes: DS.hasMany('pessoa', {
+    async: true, inverse: null
   }),
   // matriculas: DS.hasMany('matricula', {async: true}),
   dataVisualizacaoBiblioteca: DS.attr(),
