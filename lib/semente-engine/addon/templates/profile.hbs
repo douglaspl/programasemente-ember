@@ -1,3 +1,7 @@
+{{#if model.shouldReviewProfile }}
+    <h2>Por favor, revise as informações do seu perfil antes de acessar os conteúdos SEMENTE</h2>
+{{/if}}
+
 {{#if  (equalstr model.role "aluno") }}
 
     <h3>Dados pessoais</h3>
@@ -11,6 +15,32 @@
     {{#if canAddResponsibles}}
         <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
     {{/if}}
+    
+    <h3>Resumo das Informações</h3>
+
+    Informações Pessoais
+    <ul>
+        <li>{{model.name}}</li>
+        <li>{{model.genero}}</li>
+        {{#each model.plataformaAnos as |pa| }}
+            <li>{{pa.name}}</li>
+        {{/each}}
+        {{#each model.plataformaTurmas as |pt| }}
+            <li>{{pt.name}}</li>
+        {{/each}}
+    </ul>
+
+    <h3>Responsaveis</h3>
+    {{#each model.responsaveis as |resp| }}
+    <ul>
+        <li>{{resp.name}}</li>
+        <li>{{resp.email}}</li>
+        <li>{{resp.telefone}}</li>
+    </ul>
+    {{/each}}
+
+    <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+
 
 {{else if (equalstr model.role "professor") }}
     {{teacher-form}}

@@ -27,7 +27,7 @@ export default DS.Model.extend({
   uriAvatar: DS.attr(),
   numeroCursos: DS.attr(),
   cursosConcluidos: DS.attr(),
-  shouldReviewProdile: DS.attr(),
+  shouldReviewProfile: DS.attr(),
   telefone: DS.attr(),
   area: DS.belongsTo('area', {
     async: true
