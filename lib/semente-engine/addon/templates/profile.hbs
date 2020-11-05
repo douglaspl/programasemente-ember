@@ -47,24 +47,14 @@
 
 {{else if (equalstr model.role "responsavel") }}
     <h3>Dados pessoais</h3>
-    <div class="row">
-        <label for="name">Nome Completo</label>
-        {{input name='name' value=model.name placeholder='Nome Completo'}}
-    </div>
-
-    <div class="row">
-        <label for="celular">Número de Celular</label>
-        {{input name='celular' value=model.telefone placeholder='(xx) xxxxx-xxxx'}}
-    </div>
-    
+    {{profile-form pessoa=model}}
 
     {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
 
-    
     <h3>Dados dos Dependentes</h3>
     
     {{#each model.dependentes as |dependente| }}
-        {{student-form pessoa=dependente addLogin=true}}
+        {{student-form pessoa=dependente}}
     {{/each}}
 
     {{#if canAddDependents }}

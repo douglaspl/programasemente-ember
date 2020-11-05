@@ -1,21 +1,12 @@
-{{#if addLogin}}
-    <div class="row">
-        <label for="login">Login</label>
-        {{input name="login" value=pessoa.email placeholder='Login'}}
-    </div>
-    
-    <div class="row">
-        <label for="senha">Senha</label>
-        {{input name="senha" value=pessoa.password placeholder='Senha'}}
-    </div>
-{{else}}
-    <div class="row">
-        <label for="name">Senha</label>
-        <button type="button" class="login__cta btn">Alterar senha</button>
-    </div>
-{{/if}}
+<div class="row">
+    <label for="login">Login</label>
+    {{input name="login" value=pessoa.email placeholder='Login'}}
+</div>
 
-
+<div class="row">
+    <label for="senha">Senha</label>
+    {{input name="senha" value=pessoa.password placeholder='Senha'}}
+</div>
 
 <div class="row">
     <label for="name">Nome Completo</label>

@@ -1,0 +1,65 @@
+{{#if  (equalstr pessoa.role "aluno") }}
+    
+    <div class="row">
+        <label for="name">Senha</label>
+        <button type="button" class="login__cta btn">Alterar senha</button>
+    </div>
+
+    <div class="row">
+        <label for="name">Nome Completo</label>
+        {{input name="name" value=pessoa.name placeholder='Nome Completo'}}
+    </div>
+
+    <div class="row">
+        <label for="genero_student{{pessoa.id}}">Gênero</label>
+        <select name="genero" id="genero_student{{pessoa.id}}" onchange={{action 'refreshSelectedGenero' value='target.value'}}>
+            <option value="">---</option>
+            <option value="masculino"  selected={{if this.isMasculino "selected"}}>Masculino</option>
+            <option value="feminino" selected={{if this.isFeminino "selected"}}>Feminino</option>
+            <option value="">Prefiro não dizer</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <label for="serie_student{{pessoa.id}}">Serie</label>
+        <select name="serie" id="serie_student{{pessoa.id}}" onchange={{action 'refreshSelectedAno' value='target.value'}}>
+            <option value="">---</option>
+            {{#each pessoa.instituicao.plataformaAnos as |pa|}}
+                <option value="{{pa.id}}" selected={{if (equalstr pa.id selectedAno.id) "selected"}}>{{pa.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="row">
+        <label for="turma_student{{pessoa.id}}">Turma</label>
+        <select name="turma" id="turma_student{{pessoa.id}}" onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
+            <option value="">---</option>
+            {{#each plataformaTurmas as |pt|}}
+                {{#if (equalstr pt.plataformaAno.id selectedAno.id)}}
+                    <option value="{{pt.id}}" selected={{if (equalstr pt.id selectedTurma.id) "selected"}}>{{pt.name}}</option>
+                {{/if}}
+            {{/each}}
+        </select>
+    </div>
+
+    <button type="button" class="login__cta btn" {{action "saveProfile" pessoa}}>Salvar</button>
+
+{{else if (equalstr pessoa.role "professor") }}
+
+{{else if (equalstr pessoa.role "responsavel") }}
+    <div class="row">
+        <label for="name_responsavel">Nome Completo</label>
+        {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
+        {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    </div>
+
+    <div class="row">
+        <label for="celular">Número de Celular</label>
+        {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
+        {{!-- <select name="celular" id="celular">
+            <option value="">---</option>
+        </select> --}}
+    </div>
+
+    <button type="button" class="login__cta btn" {{action "saveResponsible" pessoa}}>Salvar</button>
+{{/if}}
