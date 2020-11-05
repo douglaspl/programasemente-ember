@@ -53,7 +53,6 @@ export default Ember.Controller.extend({
         shouldReviewProfile: true,
         name: login
       }).catch(function(error){
-        debugger;
         that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {
         });
       })
