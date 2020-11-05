@@ -60,4 +60,15 @@
     {{#if canAddDependents }}
         <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
     {{/if}}
+
+    <h3>Resumo das Informações</h3>
+
+    {{responsible-info-card responsavel=model}}
+
+    {{#each model.dependentes as |dependente| }}
+        {{student-info-card student=dependente}}
+    {{/each}}
+
+    <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+
 {{/if}}
