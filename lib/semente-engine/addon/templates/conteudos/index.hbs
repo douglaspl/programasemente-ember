@@ -1,1 +1,10 @@
-<h1>Deu certooo!</h1>
+<ul>
+    <li>
+        <a {{action 'goToCreateConteudo' on="click"}}>Criar conteúdo</a>
+    </li>
+
+    {{#each conteudos as |conteudo|}}
+      {{conteudo-card conteudo=conteudo}}
+    {{/each}}
+
+</ul>
