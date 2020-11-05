@@ -1,0 +1,30 @@
+<div class="row">
+    <h1>Origem</h1>
+    <label for="">Endereço de Vídeo</label>
+    {{input name='' value=conteudo.videoUrl placeholder='Endereço de Vídeo'}}
+    
+    <label for="">Arquivo PDF</label>
+    {{input name='' value=conteudo.path placeholder='Arquivo PDF'}}
+</div>
+
+<div class="row">
+    <h1>Configuração</h1>
+    <label for="">Titulo do Conteúdo</label>
+    {{input name='' value=conteudo.titulo placeholder='Titulo do Conteúdo'}}
+</div>
+
+{{!-- <div class="row">
+    <h1>Público</h1>
+    <label for="">Quem se destina</label>
+    {{#each publicos as |publico|}}
+        {{publico.name}}
+    {{/each}}
+</div> --}}
+
+{{!-- <div class="row">
+    <label for="celular">Público</label>
+    {{input name='celular' value=conteudo.publicos placeholder='(xx) xxxxx-xxxx '}}
+</div> --}}
+
+
+<button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>
