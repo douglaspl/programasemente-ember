@@ -1,17 +1,25 @@
-{{!-- <div class="row">
-    <label for="login">Login</label>
-    <input type="text" id="login"  >
-    <span id='login-error'></span>
-</div> --}}
+{{#if addLogin}}
+    <div class="row">
+        <label for="login">Login</label>
+        {{input name="login" value=pessoa.email placeholder='Login'}}
+    </div>
+    
+    <div class="row">
+        <label for="senha">Senha</label>
+        {{input name="senha" value=pessoa.password placeholder='Senha'}}
+    </div>
+{{else}}
+    <div class="row">
+        <label for="name">Senha</label>
+        <button type="button" class="login__cta btn">Alterar senha</button>
+    </div>
+{{/if}}
+
+
 
 <div class="row">
-    <label for="name">Senha</label>
-    <button type="button" class="login__cta btn">Alterar senha</button>
-</div>
-
-<div class="row">
-    <label for="name_student{{pessoa.id}}">Nome Completo</label>
-    <input type="text" name="name" id="name_student{{pessoa.id}}" value="{{pessoa.name}}">
+    <label for="name">Nome Completo</label>
+    {{input name="name" value=pessoa.name placeholder='Nome Completo'}}
 </div>
 
 <div class="row">
@@ -46,4 +54,4 @@
     </select>
 </div>
 
-<button type="button" class="login__cta btn" {{action "saveProfile"}}>Salvar</button>
+<button type="button" class="login__cta btn" {{action "saveProfile" pessoa}}>Salvar</button>
