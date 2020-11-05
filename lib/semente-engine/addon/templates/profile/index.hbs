@@ -1,3 +1,72 @@
 <div style="display: none;">{{shouldReview}}</div>
 
-deu ceerto
+deu certo
+
+<h2>Nome:</h2>
+{{pessoa.name}}
+
+<h2>Avatar:</h2>
+{{uri_avatar}}
+<button class="login__cta btn" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button>
+
+
+{{pessoa.email}}
+
+{{pessoa.genero}}
+
+{{dataNascimento}}
+
+<h2>Escola:</h2>
+{{pessoa.instituicao.name}}
+
+
+
+<aside id="change_image_modal" class="modal">
+
+  <div class="modal__content modal__content--md">
+
+    <header class="modal__header">
+      <button class="modal__close btn-close icon-x" type="submit" {{action 'toggleAvatarModal'}}></button>
+
+      <h3 class="modal__title">Alterar imagem do perfil</h3>
+    </header>
+
+    <div class="modal__body">
+
+      <div class="m-bottom--none">
+
+        <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
+
+        <div class="image-change">
+          <div class="avatar avatar--lg">
+            <div class="avatar__img avatar__img--as-bg" id="avatar-modale" style="background-image: url('{{uri_avatar}}');"></div>
+          </div>
+
+          <label class="image-change__cta btn">Buscar imagem
+            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;" name="file">
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+    {{#if selected_file_avatar}}
+      <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control" readonly><strong>{{selected_file_avatar}}</strong></span>
+    {{/if}}
+
+    <div class="modal__footer">
+      {{#if avatar_loading}}
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i class="fa fa-spinner fa-pulse fa-2x"></i></button>
+      {{else if selected_file_avatar}}
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" {{action 'sendAvatar'}}>Salvar</button>
+      {{else}}
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="modal__overlayer"></div>
+  <div style="display: none;">{{avatar}}</div>
+
+</aside>

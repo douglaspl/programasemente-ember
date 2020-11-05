@@ -191,6 +191,10 @@
       <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
         <a href="#" class="global-nav__link header-indicadores" id="change_pass_trigger">
           <span>Alterar senha</span></a></li>
+      
+      <li class="global-nav__item global-nav--mob-only" {{action 'goToProfile'}}>
+        <a href="#" class="global-nav__link header-indicadores">
+          <span>Meu perfil</span></a></li>
 
       <li class="global-nav__item global-nav--mob-only" style="margin-top: auto;">
         <a href="#" class="global-nav__link header-indicadores" {{action 'invalidateSession'}}>
@@ -231,6 +235,9 @@
             <li class="submenu__item">
               <a href="#" id="change_pass_trigger" class="submenu__link">
                 <span>Alterar senha</span></a></li>
+            <li class="submenu__item">
+              <a href="#" class="submenu__link" {{action 'goToProfile'}}>
+                <span>Meu perfil</span></a></li>
             <li class="submenu__item">
               <a href="#" class="submenu__link" {{action 'invalidateSession'}}>
                 <span>Fazer Logout</span></a></li>

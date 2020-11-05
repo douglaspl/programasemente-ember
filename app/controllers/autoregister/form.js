@@ -52,7 +52,6 @@ export default Ember.Controller.extend({
         role: this.get('model').get('typeCadastro'),
         name: login
       }).catch(function(error){
-        debugger;
         that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {
         });
       })
