@@ -15,17 +15,33 @@
     
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
+
     {{#each agrupamento as |a|}}
+        {{#radio-button value= a.name 
+            groupValue= agrupamento.name 
+            changed=(action "agrupamentoChanged") }}  
+            <span>Agrupamento</span>
+        {{/radio-button}}
+    {{/each}}
+
+    {{!-- {{#each agrupamento as |a|}}
         <li>{{a.name}}</li>
         {{!-- {{#if a.temas.size }} --}}
-        {{#each a.temas as |t|}}
+        {{!-- {{#each a.temas as |t|}}
             <li>{{t.name}}</li>
         {{/each}}
-    {{/each}}
+    {{/each}} --}}
     
     <div></div>
     <div>Qual a situação após o cadastro?</div>
-
+    <div class="row">
+        <label for="conteudoId">Gênero</label>
+        <select name="genero" id="conteudoId" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+            <option value="">---</option>
+            <option value="true"  selected={{if (equalstr 'selectedSituacao' "true") "selected"}}>Ativo</option>
+            <option value="false"  selected={{if (equalstr 'selectedSituacao' "false") "selected"}}>Inativo</option>
+        </select>
+    </div>
 </div>
 
 

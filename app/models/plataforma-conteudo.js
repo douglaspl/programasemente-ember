@@ -9,4 +9,5 @@ export default DS.Model.extend({
     path: DS.attr(),
     coverImage: DS.attr(),
     aula: DS.belongsTo('aula', { async: true }),
+    situacao: DS.attr(),
 });
