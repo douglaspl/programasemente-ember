@@ -7,24 +7,38 @@
     {{input name='' value=conteudo.path placeholder='Arquivo PDF'}}
 </div>
 
+<div></div>
 <div class="row">
     <h1>Configuração</h1>
     <label for="">Titulo do Conteúdo</label>
     {{input name='' value=conteudo.titulo placeholder='Titulo do Conteúdo'}}
+    
+    <div></div>
+    <div>Faz parte de qual agrupamento?</div>
+    {{#each agrupamento as |a|}}
+        <li>{{a.name}}</li>
+        {{!-- {{#if a.temas.size }} --}}
+        {{#each a.temas as |t|}}
+            <li>{{t.name}}</li>
+        {{/each}}
+    {{/each}}
+    
+    <div></div>
+    <div>Qual a situação após o cadastro?</div>
+
 </div>
 
-{{!-- <div class="row">
+
+<div></div>
+
+
+<div class="row">
     <h1>Público</h1>
     <label for="">Quem se destina</label>
-    {{#each publicos as |publico|}}
-        {{publico.name}}
+    {{#each publico as |pub|}}
+        <li>{{pub.name}}</li>
     {{/each}}
-</div> --}}
-
-{{!-- <div class="row">
-    <label for="celular">Público</label>
-    {{input name='celular' value=conteudo.publicos placeholder='(xx) xxxxx-xxxx '}}
-</div> --}}
+</div> 
 
 
 <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>
