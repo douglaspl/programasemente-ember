@@ -50,9 +50,9 @@ export default Ember.Controller.extend({
         instituicaoId: this.get('escola').get('id'),
         sistemaId: sistema.get('id'),
         role: this.get('model').get('typeCadastro'),
+        shouldReviewProfile: true,
         name: login
       }).catch(function(error){
-        debugger;
         that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {
         });
       })

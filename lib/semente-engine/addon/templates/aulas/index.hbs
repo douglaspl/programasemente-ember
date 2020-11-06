@@ -1,3 +1,5 @@
+{{#if (equalstr pessoa.role "aluno")}}
+
 <p>{{pessoa.name}}</p>
 <p>{{segmento.titulo}}</p>
 <p>{{plataformaAno.name}}</p>
@@ -8,3 +10,13 @@
       {{aula-card transit=(action 'goToAula') aula=aula aulaDestaque=aulaDestaque}}
   {{/each}}
 </ul>
+
+{{else if (equalstr pessoa.role "responsavel")}}
+
+{{pessoa.name}}
+
+{{#each pessoa.dependentes as |dep| }}
+  {{dep.name}}
+{{/each}}
+
+{{/if}}
