@@ -8,6 +8,9 @@ export default DS.Model.extend({
     videoUrl: DS.attr(),
     path: DS.attr(),
     coverImage: DS.attr(),
-    aula: DS.belongsTo('aula', { async: true }),
+    aula: DS.hasMany('aula', { async: true }),
+    agrupamento: DS.belongsTo('agrupamento', { async: true }),
+    tema: DS.belongsTo('tema', { async: true }),
+    publicos: DS.hasMany('publico', { async: true }),
     situacao: DS.attr(),
 });

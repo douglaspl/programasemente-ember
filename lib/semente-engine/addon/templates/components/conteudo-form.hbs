@@ -17,44 +17,57 @@
     <div>Faz parte de qual agrupamento?</div>
 
     {{#each agrupamento as |a|}}
-        {{#radio-button value= a.name 
-            groupValue= agrupamento.name 
-            changed=(action "agrupamentoChanged") }}  
-            <span>Agrupamento</span>
-        {{/radio-button}}
-    {{/each}}
+        <input type="radio" id={{a.id}} name="nomeagrupamento" 
+        onchange={{ action 'agrupamentoChanged' a.id }}>
+        <label>{{a.name}}</label>
+        <div>{{a.descricao}}</div>
+        <div> </div>
 
-    {{!-- {{#each agrupamento as |a|}}
-        <li>{{a.name}}</li>
-        {{!-- {{#if a.temas.size }} --}}
-        {{!-- {{#each a.temas as |t|}}
-            <li>{{t.name}}</li>
-        {{/each}}
-    {{/each}} --}}
+        {{#if (equalstr a.id conteudo.agrupamento.id)}}
+            {{#if a.temas.length}}
+                <label>TEMA</label>
+                <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+                    <option value="">---</option>
+                    {{#each a.temas as |t|}}
+                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.tema.firstObject.id) "selected"}}>{{t.name}}</option>
+                    {{/each}}
+                </select> 
+                <div> </div>
+            {{/if}}
+        {{/if}}
+    {{/each}}
     
-    <div></div>
+    <div> </div>
+    <div> </div>
     <div>Qual a situação após o cadastro?</div>
     <div class="row">
-        <label for="conteudoId">Gênero</label>
-        <select name="genero" id="conteudoId" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
-            <option value="">---</option>
-            <option value="true"  selected={{if (equalstr 'selectedSituacao' "true") "selected"}}>Ativo</option>
-            <option value="false"  selected={{if (equalstr 'selectedSituacao' "false") "selected"}}>Inativo</option>
-        </select>
+        <input type="radio" id={{conteudo.id}} name="situacao" 
+        onchange={{ action 'refreshSelectedSituacao' "true" }}>
+        <label>Ativo</label>
+        <div></div>
+        <input type="radio" id={{conteudo.id}} name="situacao" 
+        onchange={{ action 'refreshSelectedSituacao' "false" }}>
+        <label>Inativo</label>
     </div>
 </div>
 
-
 <div></div>
-
-
 <div class="row">
     <h1>Público</h1>
-    <label for="">Quem se destina</label>
-    {{#each publico as |pub|}}
-        <li>{{pub.name}}</li>
-    {{/each}}
-</div> 
+    <label for={{pub.id}}>A quem se destina?</label>
+    <div class="row">
+        {{#each publico as |pub|}}
+            <input
+            type="checkbox"
+            checked={{checked}}
+            value={{pub.id}}
+            onchange={{action 'publicoChanged' value='target.value'}} />
+            <label>{{pub.name}}</label>
+        {{/each}}
+    </div> 
+    <div class="row"></div>
+    {{!-- <label for={{aula.id}}>Atrelar a que ano/aula?</label> --}}
+</div>
 
 
 <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>
