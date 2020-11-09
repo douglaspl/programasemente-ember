@@ -13,10 +13,34 @@
 
 {{else if (equalstr pessoa.role "responsavel")}}
 
+<h2>Nome Responsável:</h2>
 {{pessoa.name}}
 
-{{#each pessoa.dependentes as |dep| }}
-  {{dep.name}}
-{{/each}}
+<h2>Selecione o Dependente:</h2>
+<div class="row">
+    <select onchange={{action 'refreshSelectedDependente' value='target.value'}}>
+      <option value="">---</option>
+      {{#each pessoa.dependentes as |dep| }}
+          <option value={{dep.id}} >{{dep.name}}</option>
+      {{/each}}
+    </select>
+</div>
+
+<p></p>
+
+{{#if selectedDependente}}
+  {{#each selectedDependente.plataformaAnos as |plat_ano| }}
+      {{#each plat_ano.aulas as |aula_dep| }}
+        {{aula-card transit=(action 'goToAula') aula=aula aulaDestaque=aulaDestaque}}
+        {{aula_dep.titulo}}
+        {{aula_dep.descricao}} 
+        {{aula_dep.segmento}}
+        {{aula_dep.urlLivro}}<br>
+
+      {{/each}}
+  {{/each}}
+{{/if}}
+
+
 
 {{/if}}
