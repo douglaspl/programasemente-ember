@@ -1,0 +1,10 @@
+.self-registration {
+  position: relative;
+
+  &__img {
+    bottom: 0;
+    max-width: 46vw;
+    position: absolute;
+    right: -5%;
+  }
+}
