@@ -1,11 +1,19 @@
+
 <main class="main main--timeline">
   <!-- Decorativos -->
   <!--<span class="icon-bar-chart main__icon-1"></span>-->
   <!--<span class="icon-at-sign main__icon-2"></span>-->
   <!-- / Decorativos -->
 
+{{scrollToNext}}
+
 
   <section class="main__section">
+<div>
+  <button class="btn" {{action 'scrollToCurrent'}}>Ir para a última liberada</button>
+  <button class="btn" {{action 'scrollToLast'}}>Ir para a última acessada</button>
+</div>
+
 <!-- Bem-vindo de volta 
     {{!-- <div class="alert alert--blue-navy alert--xs alert--no-interaction alert--is-show">
       <h1 class="alert__title">Olá, {{username}}</h1>
