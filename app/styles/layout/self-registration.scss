@@ -11,10 +11,15 @@
   }
 
   &__img {
-    bottom: 0;
-    max-width: 46vw;
-    position: absolute;
-    right: -5%;
+    display: none;
+
+    @include media('>md') {
+      bottom: 0;
+      max-width: 46vw;
+      position: absolute;
+      right: -5%;
+    }
+
   }
 
   &__input {
