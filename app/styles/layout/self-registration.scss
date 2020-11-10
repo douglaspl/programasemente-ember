@@ -15,4 +15,19 @@
     position: absolute;
     right: -5%;
   }
+
+  &__input {
+    width: 100%;
+
+    @include media('>md') {
+      font-size: 3rem;
+      height: 8rem;
+      flex: 0 0 auto;
+      padding-left: 1em;
+      padding-right: 1em;
+      text-transform: uppercase;
+      width: 32rem;
+    }
+  }
+
 }
