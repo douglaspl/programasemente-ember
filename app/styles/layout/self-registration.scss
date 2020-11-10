@@ -18,6 +18,8 @@
   }
 
   &__input {
+    flex: 0 0 auto;
+    height: 4rem;
     width: 100%;
 
     @include media('>md') {
