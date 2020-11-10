@@ -26,8 +26,8 @@
         <label class="form-group__label" for="codigo-escola">Código da escola</label>
         <input class="form-group__input self-registration__input" type="text" id="codigo-escola" maxlength="12">
         <p class="m-top--xs title-aux">Exemplo de código: <em>12AL001-0000</em></p>
+        <p class="alert alert--error alert--no-interaction ta-c" id="codigo-error"></p>
       </div>
-      <span id="codigo-error"></span>
       <div>
         <button id="inicia-cadastro" class="btn btn--lg" onclick={{action 'checkForm'}}>Iniciar cadastro</button>
       </div>

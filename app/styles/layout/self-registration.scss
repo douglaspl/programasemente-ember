@@ -15,7 +15,8 @@
 
     @include media('>md') {
       bottom: 0;
-      max-width: 46vw;
+      display: block;
+      max-width: 48vw;
       position: absolute;
       right: -5%;
     }
