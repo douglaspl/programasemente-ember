@@ -74,6 +74,7 @@
 
   background-color: $clickables-bg-color;
   border-radius: $button-radius;
+  box-shadow: 0 .5rem 1rem 0 transparentize($color: $clickables-bg-color, $amount: .8);
   color: $clickables-color;
   cursor: pointer;
   flex: 0 0 auto;
@@ -316,12 +317,14 @@
 
   @if $btn--md {
     &--md {
+      border-radius: $button-radius--md;
       font-size: $font-size--md * .65;
     }
   }
 
   @if $btn--lg {
     &--lg {
+      border-radius: $button-radius--lg;
       font-size: $font-size--lg * .65;
     }
   }

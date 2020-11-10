@@ -467,6 +467,7 @@ $h-padding--lg: $distance--xxxl;
 //    #RADIUS
 //------------------------------------
 $radius: 2px;
+$radius--md: $radius * 2;
 $radius--lg: $radius * 4;
 $radius--capsule: 99rem;
 
@@ -612,9 +613,13 @@ $font-title: filson-soft, Arial, sans-serif;
 $header-height: 3rem;
 $header-v-padding: .5rem;
 
+$container-fluid-pad: $distance--md;
+
 $main-border-color: transparentize($gray-10, .5);
 
 $button-radius: $radius;
+$button-radius--md: $radius--md;
+$button-radius--lg: $radius--lg;
 
 $default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-50;
@@ -625,7 +630,7 @@ $capsule-on-hover-color: $blue-navy-60;
 $capsule-on-hover-radius: $radius;
 
 // CLICKABLES
-$clickables-bg-color: $green-30;
+$clickables-bg-color: $leaf-30;
 $clickables-bg-color-hover: $leaf-50;
 $clickables-color: color-contrast($clickables-bg-color, $white, $blue-navy-60);
 $clickables-color-hover: $clickables-color;
