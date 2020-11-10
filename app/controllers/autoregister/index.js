@@ -5,6 +5,13 @@ export default Ember.Controller.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service('session'),
   transitionToForm: function(e) { this.transitionToRoute('autoregister.form', e.get('id')); },
+  
+  preventDefault: Ember.run.later(function(){
+    document.getElementById("inicia-cadastro").addEventListener("click", function(event){
+      event.preventDefault()
+    });
+  }),
+  
   actions: {
     makeAjax(){
     },
@@ -13,7 +20,6 @@ export default Ember.Controller.extend({
       $('form').removeData('unobtrusiveValidation');
       $.validator.unobtrusive.parse('form');
       let that = this;
-
       let schoolCode = document.getElementById('codigo-escola').value;
       let codigo = this.get('store').queryRecord('codigo-cadastro', {
         include: 'instituicao.plataforma-anos, instituicao.plataforma-turmas',
