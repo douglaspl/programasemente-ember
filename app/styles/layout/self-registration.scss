@@ -1,4 +1,5 @@
 .self-registration {
+  flex: 1;
   position: relative;
 
   &__title {
@@ -10,13 +11,20 @@
   }
 
   &__img {
-    bottom: 0;
-    max-width: 46vw;
-    position: absolute;
-    right: -5%;
+    display: none;
+
+    @include media('>md') {
+      bottom: 0;
+      max-width: 46vw;
+      position: absolute;
+      right: -5%;
+    }
+
   }
 
   &__input {
+    flex: 0 0 auto;
+    height: 4rem;
     width: 100%;
 
     @include media('>md') {
@@ -26,7 +34,7 @@
       padding-left: 1em;
       padding-right: 1em;
       text-transform: uppercase;
-      width: 32rem;
+      width: 28rem;
     }
   }
 
