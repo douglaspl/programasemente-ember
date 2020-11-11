@@ -4,17 +4,16 @@
   @include z-index('alert');
 
   background-color: $gray-0;
-  border-radius: $radius;
+  border-radius: $alert-radius;
   box-shadow: $shadow-3, $shadow-h-l-3, $shadow-h-r-3;
   color: $gray-60;
-  font-size: $font-size--md;
+  font-size: $font-size--xs;
   line-height: 1;
   margin-bottom: $distance--xs;
   padding: .5em 1em;
 
   @include media('>sm') {
-    // padding: $distance--sm;
-    padding: 2em 2.5em;
+    padding: 1em;
   }
 
   &-container {
@@ -96,8 +95,8 @@
   }
 
   &--error {
-    background-color: transparentize($color-error, .15);
-    color: $white;
+    background-color: transparentize(lighten($color-error, 50%), .05);
+    color: transparentize($color-error, .15);
   }
 
   &--success {

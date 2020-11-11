@@ -6,16 +6,20 @@
         background-color: $color !important;
     }
 
-    .border-1--#{$color-name} {
-        border: 1px solid $color !important;
-    }
-
     .color-#{$color-name} {
         color: $color !important;
     }
 
     .fill-#{$color-name} {
         fill: $color !important;
+    }
+
+    .border {
+        @each $direction in $directions {
+            &-#{$direction}-4--#{$color-name} {
+                border-#{$direction}: 4px solid transparentize($color, .5);
+            }
+        }
     }
 
 }

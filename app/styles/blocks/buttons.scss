@@ -74,6 +74,7 @@
 
   background-color: $clickables-bg-color;
   border-radius: $button-radius;
+  box-shadow: 0 .5rem 1rem 0 transparentize($color: $clickables-bg-color, $amount: .8);
   color: $clickables-color;
   cursor: pointer;
   flex: 0 0 auto;
@@ -302,27 +303,29 @@
   // Sizes
   @if $btn--xxs {
     &--xxs {
-      font-size: $font-size--xxs * .65;
+      font-size: $font-size--xxs;
       letter-spacing: $letter-spacing--xl;
     }
   }
 
   @if $btn--xs {
     &--xs {
-      font-size: $font-size--xs * .65;
+      font-size: $font-size--xs;
       letter-spacing: $letter-spacing--lg;
     }
   }
 
   @if $btn--md {
     &--md {
-      font-size: $font-size--md * .65;
+      border-radius: $button-radius--md;
+      font-size: $font-size--md;
     }
   }
 
   @if $btn--lg {
     &--lg {
-      font-size: $font-size--lg * .65;
+      border-radius: $button-radius--lg;
+      font-size: $font-size--lg;
     }
   }
 

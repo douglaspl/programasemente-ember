@@ -11,4 +11,10 @@
 }
 
 .text-aux { @include text-aux; }
-.fs--xxxs { font-size: $font-size--xxxs; }
+.fs--xxs { font-size: $font-size--xxs; }
+.fs--xs { font-size: $font-size--xs; }
+.fs--sm { font-size: $font-size--sm; }
+.fs--md { font-size: $font-size--md; }
+.fs--lg { font-size: $font-size--lg; }
+.fs--xl { font-size: $font-size--xl; }
+.fs--xxl { font-size: $font-size--xxl; }
