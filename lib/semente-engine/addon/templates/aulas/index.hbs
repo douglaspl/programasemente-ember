@@ -17,6 +17,8 @@
 {{pessoa.name}}
 
 <h2>Selecione o Dependente:</h2>
+
+<!--
 <div class="row">
     <select onchange={{action 'refreshSelectedDependente' value='target.value'}}>
       <option value="">---</option>
@@ -25,6 +27,15 @@
       {{/each}}
     </select>
 </div>
+-->
+
+
+<div>
+      {{#each pessoa.dependentes as |dep| }}
+        <button type="button"  {{action 'refreshSelectedDependente' value=dep.id}}> {{dep.name}} </button>
+      {{/each}}
+</div>
+
 
 <p></p>
 
