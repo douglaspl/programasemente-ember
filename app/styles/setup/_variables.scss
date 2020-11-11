@@ -337,17 +337,22 @@ $distances: (
 //    #FONT SIZES
 //------------------------------------
 // Basic sizes.
+$font-size--xxs: .75rem; // 12
+$font-size--xs:  .875rem; // 14
+$font-size--sm:   1rem; // 16
+$font-size--md:   1.125rem; // 18
+$font-size--lg:   1.5rem; // 24
+$font-size--xl:   1.75rem; // 28
+$font-size--xxl:  2.375rem; // 38
 
-$multiplier: 0.25rem;
-
-$font-size--xxs:  1rem;
-$font-size--xxxs: $font-size--xxs - (1 * $multiplier);
-$font-size--xs:   $font-size--xxs + (1 * $multiplier);
-$font-size--sm:   $font-size--xs  + (1 * $multiplier);
-$font-size--md:   $font-size--sm  + (1 * $multiplier);
-$font-size--lg:   $font-size--md  + (1 * $multiplier);
-$font-size--xl:   $font-size--lg  + (1 * $multiplier);
-$font-size--xxl:  $font-size--xl  + (2 * $multiplier);
+// $font-size--xxs:  1rem;
+// $font-size--xxxs: $font-size--xxs - (1 * $multiplier);
+// $font-size--xs:   $font-size--xxs + (1 * $multiplier);
+// $font-size--sm:   $font-size--xs  + (1 * $multiplier);
+// $font-size--md:   $font-size--sm  + (1 * $multiplier);
+// $font-size--lg:   $font-size--md  + (1 * $multiplier);
+// $font-size--xl:   $font-size--lg  + (1 * $multiplier);
+// $font-size--xxl:  $font-size--xl  + (2 * $multiplier);
 
 // Very few uses.
 $font-size--super: 3rem;
@@ -442,7 +447,7 @@ $input-check-radio-label-margin: $input-check-radio-size + $distance--xs;
 $letter-spacing--xxs: -.075em;
 $letter-spacing--xs:  -.045em;
 $letter-spacing--sm:  -.015em;
-$letter-spacing--md:   .015em;
+$letter-spacing--md:   .02em;
 $letter-spacing--lg:   .03em;
 $letter-spacing--xl:   .05em;
 $letter-spacing--xxl:  .15em;
@@ -467,6 +472,7 @@ $h-padding--lg: $distance--xxxl;
 //    #RADIUS
 //------------------------------------
 $radius: 2px;
+$radius--md: $radius * 2;
 $radius--lg: $radius * 4;
 $radius--capsule: 99rem;
 
@@ -606,18 +612,25 @@ $timeline-status-size: 3rem;
 $header-bg-color: $white;
 $body-bg-color: $gray-0;
 
-$font-base: filson-soft, 'Raleway', sans-serif;
-$font-title: filson-soft, Arial, sans-serif;
+$font-base:  'Source Sans Pro', sans-serif;
+$font-title: filson-pro, sans-serif;
 
 $header-height: 3rem;
 $header-v-padding: .5rem;
 
+$container-fluid-pad: $distance--md;
+
 $main-border-color: transparentize($gray-10, .5);
 
 $button-radius: $radius;
+$button-radius--md: $radius--md;
+$button-radius--lg: $radius--lg;
 
 $default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-50;
+
+// ALERT
+$alert-radius: $radius--md;
 
 // CAPSULE
 $capsule-on-hover-bg-color: $green-10;
@@ -625,7 +638,7 @@ $capsule-on-hover-color: $blue-navy-60;
 $capsule-on-hover-radius: $radius;
 
 // CLICKABLES
-$clickables-bg-color: $green-30;
+$clickables-bg-color: $leaf-30;
 $clickables-bg-color-hover: $leaf-50;
 $clickables-color: color-contrast($clickables-bg-color, $white, $blue-navy-60);
 $clickables-color-hover: $clickables-color;

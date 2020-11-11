@@ -32,18 +32,39 @@
 
     <h3>Responsaveis</h3>
     {{#each model.responsaveis as |resp| }}
-    <ul>
-        <li>{{resp.name}}</li>
-        <li>{{resp.email}}</li>
-        <li>{{resp.telefone}}</li>
-    </ul>
+        {{responsible-info-card responsavel=resp}}
     {{/each}}
 
     <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
 
 
-{{else if (equalstr model.role "professor") }}
-    {{teacher-form}}
+{{else if (equalstr model.role "instrutor") }}
+    <h3>Dados pessoais</h3>
+    {{profile-form pessoa=model}}
+
+    <h3>Dados Responsavel</h3>
+
+    {{input type="checkbox" checked=model.isAlsoResponsible click=(action (action "initTeacherResponsible" model) value='target.checked')}}
+    <label> Você é responsavel por algum aluno na Educação Infantil ou Fundamental 1? </label>
+
+    {{#if model.isAlsoResponsible }}
+        <h3>Dados Dependentes</h3>
+        {{#each model.dependentes as |dep| }}
+            {{student-form pessoa=dep}}
+        {{/each}}
+        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+    {{/if}}
+
+    <h3>Resumo das Informações</h3>
+    {{teacher-info-card instrutor=model}}
+
+    {{#if model.dependentes }}
+        {{#each model.dependentes as |dependente| }}
+            {{student-info-card student=dependente}}
+        {{/each}}
+    {{/if}}
+
+    <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
 
 {{else if (equalstr model.role "responsavel") }}
     <h3>Dados pessoais</h3>
@@ -51,7 +72,7 @@
 
     {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
 
-    <h3>Dados dos Dependentes</h3>
+    <h3>Dados dos Dependentes</h3> 
     
     {{#each model.dependentes as |dependente| }}
         {{student-form pessoa=dependente}}

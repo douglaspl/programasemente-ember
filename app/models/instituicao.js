@@ -12,6 +12,8 @@ export default DS.Model.extend({
     temBiblioteca: DS.attr(),
     nrinstrutores: DS.attr(),
     nrcoordenadores: DS.attr(),
+    uf: DS.attr(),
+    cidade: DS.attr(),
     areas: DS.hasMany('area', {async: true}),
     turmas: DS.hasMany('turma', {async: true}),
     pessoas: DS.hasMany('pessoa', {async: true}),
