@@ -23,7 +23,7 @@
     flex-direction: row;
     font-family: $font-base;
     font-size: $font-size--xxs;
-    font-weight: 500;
+    font-weight: $font-weight-4;
     justify-content: center;
     letter-spacing: $letter-spacing--lg;
     line-height: 1;
@@ -748,7 +748,6 @@
                     $letter: $letter-spacing--xs) {
 
     color: $color;
-    font-family: $font-base;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -771,7 +770,6 @@
                     $letter: $letter-spacing--md) {
 
     color: $color;
-    font-family: $font-base;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -793,7 +791,6 @@
 
     color: $color;
     display: $display;
-    font-family: $font-title;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
