@@ -28,12 +28,28 @@ export default Ember.Controller.extend({
         that.transitionToForm(e);
       }).catch(function(error) {
         if (error.errors) {
-          let errorCompartiment = document.getElementById('codigo-error');
-          let errorStatus =  error.errors[0].status;
-          errorCompartiment.innerHTML = errorStatus === "400" ? 'Verifique o código inserido' : 'Erro genérico';
-          errorCompartiment.classList.add('alert--is-show');
-          // errorCompartiment.innerHTML = error.errors[0].title;
+          // Pega alerta
+          const errorCompartiment = document.getElementById('codigo-error');
+          // Pega animação do alerta
+          const alertAnimation = errorCompartiment.dataset.animation;
+          // Pega container da mensagem a ser escrita
+          const msg = errorCompartiment.querySelector('[class*="__msg"]');
+          // Pega a identificação do erro
+          const errorStatus =  error.errors[0].status;
+          // Define mensagem de erro, caso seja o erro XYZ
+          let errorMsg = errorStatus === "400" ? 'Por favor verifique código inserido.' : 'Ocorreu um erro geral, mas nossos desenvolvedores já foram alertados e iremos corrigir em breve.';
+
+          // Injeta mensagem de erro.
+          msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+
+          // Confere se o elemento já está aparecendo
+          if(!errorCompartiment.classList.contains('alert--is-show')) {
+            // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+            errorCompartiment.classList.add('alert--is-show', alertAnimation);
+          }
+
         }
+
       })
     }
 
