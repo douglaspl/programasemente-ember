@@ -1,13 +1,15 @@
 <div style="display: none;">{{shouldReview}}</div>
 
-deu certo
-
 <h2>Nome:</h2>
 {{pessoa.name}}
 
 <h2>Avatar:</h2>
 {{uri_avatar}}
 <button class="login__cta btn" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button>
+
+
+<h2>Alterar senha:</h2>
+<button class="login__cta btn" onclick={{action 'togglePassModal'}}>Alterar senha</button>
 
 
 {{pessoa.email}}
@@ -74,5 +76,64 @@ deu certo
 
   <div class="modal__overlayer"></div>
   <div style="display: none;">{{avatar}}</div>
+
+</aside>
+
+
+
+
+
+<aside id="change_pass_modal" class="modal">
+
+  <div class="modal__content modal__content--sm">
+
+    <header class="modal__header">
+      <button id="change_pass_close" class="modal__close btn-close icon-x" type="submit"></button>
+
+      <h3 class="modal__title">Alterar senha</h3>
+    </header>
+
+    <div class="modal__body">
+
+      <div class="form-group form-group--full-width form-group--aired-v">
+        <label class="form-group__label" for="pass">Senha atual</label>
+        <input class="form-group__input" type="password" id="pass" value="">
+      </div>
+
+      <div class="form-group form-group--full-width form-group--aired-v">
+        <label class="form-group__label" for="pass_new">Nova senha</label>
+        <input class="form-group__input" type="password" id="pass_new" value="">
+      </div>
+
+      <div class="form-group form-group--full-width">
+        <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
+        <!-- melhorar classes do form... -->
+        <div class="form-group__container form-group">
+          <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span class="form__msg-icon icon-check"></span>Par
+            de senhas perfeito!</span>
+          <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span class="form__msg-icon icon-alert-triangle"></span>Senhas
+            não batem...</span>
+          <input class="form-group__input" type="password" id="pass_new_copy" value="">
+        </div>
+      </div>
+
+      {{#if error_forgot}}
+      <div class="alert alert--warning alert--has-icon">
+        <span class="alert__icon icon-alert-triangle"></span>
+        <p>
+          {{{error_forgot}}}
+        </p>
+      </div>
+      {{/if}}
+
+    </div>
+
+    <div class="modal__footer">
+      <button class="btn" type="submit" {{action 'changePw'}}>Atualizar senha</button>
+    </div>
+
+  </div>
+
+  <div class="modal__overlayer"></div>
 
 </aside>
