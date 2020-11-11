@@ -1,0 +1,48 @@
+{{#if (equalstr this.adicionarAula "true")}}
+    <div class="row" id="newconteudo">
+        <label>Atrelar a que ano/aula?</label>
+        <label>Segmento</label>
+        <select name="segmento" id="segmento" onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
+            <option value="">---</option>
+            {{#each segmentos as |seg|}}
+                <option value="{{seg.id}}" selected={{if (equalstr seg.id conteudo.aula.plataformaAno.segmento.firstObject.id) "selected"}}>{{seg.titulo}}</option>
+            {{/each}}
+        </select>
+
+        <div class="row"></div>
+        <label>Ano</label>
+        <select name="ano" id="ano" onchange={{action 'refreshSelectedAno' value='target.value'}}>
+            <option value="">---</option>
+            {{#each anos as |ano|}}
+                {{#if this.selectedSegmento}}
+                    {{#if (equalstr ano.segmento.id selectedSegmento.id)}}
+                        <option value="{{ano.id}}" selected={{if (equalstr ano.id selectedAno.id) "selected"}}>{{ano.name}}</option>
+                    {{/if}}
+                {{else}}
+                    <option value="{{ano.id}}" selected={{if (equalstr ano.id selectedAno.id) "selected"}}>{{ano.name}}</option>
+                {{/if}}
+            {{/each}}
+        </select>
+
+        <div class="row"></div>
+        <label>Aula</label>
+        <select name="aula" id="aula" onchange={{action 'refreshSelectedAula' value='target.value'}}>
+            <option value="">---</option>
+            {{#each aulas as |aula|}}
+                {{#if this.selectedSegmento}}
+                    {{#if (equalstr aula.plataformaAno.segmento.id selectedSegmento.id)}}
+                        {{#if this.selectedAno}}
+                            {{#if (equalstr aula.plataformaAno.id selectedAno.id)}}
+                                <option value="{{aula.id}}" selected={{if (equalstr aula.id selectedAula.id) "selected"}}>{{aula.titulo}}</option>
+                            {{/if}}
+                        {{else}}
+                            <option value="{{aula.id}}" selected={{if (equalstr aula.id selectedAula.id) "selected"}}>{{aula.titulo}}</option>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/each}}
+        </select>
+
+        <button type="button" class="btn" {{action "salvarAula" selectedAula}}>Atrelar a este Ano/Aula</button>
+    </div>  
+{{/if}}
