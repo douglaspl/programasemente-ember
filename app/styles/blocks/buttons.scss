@@ -303,14 +303,14 @@
   // Sizes
   @if $btn--xxs {
     &--xxs {
-      font-size: $font-size--xxs * .65;
+      font-size: $font-size--xxs;
       letter-spacing: $letter-spacing--xl;
     }
   }
 
   @if $btn--xs {
     &--xs {
-      font-size: $font-size--xs * .65;
+      font-size: $font-size--xs;
       letter-spacing: $letter-spacing--lg;
     }
   }
@@ -318,14 +318,14 @@
   @if $btn--md {
     &--md {
       border-radius: $button-radius--md;
-      font-size: $font-size--md * .65;
+      font-size: $font-size--md;
     }
   }
 
   @if $btn--lg {
     &--lg {
       border-radius: $button-radius--lg;
-      font-size: $font-size--lg * .65;
+      font-size: $font-size--lg;
     }
   }
 

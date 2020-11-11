@@ -28,6 +28,8 @@ export default DS.Model.extend({
   numeroCursos: DS.attr(),
   cursosConcluidos: DS.attr(),
   shouldReviewProfile: DS.attr(),
+  isAplicador: DS.attr(),
+  isAlsoResponsible: DS.attr(),
   telefone: DS.attr(),
   area: DS.belongsTo('area', {
     async: true

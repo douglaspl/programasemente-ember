@@ -14,8 +14,8 @@
         <label for="genero_student{{pessoa.id}}">Gênero</label>
         <select name="genero" id="genero_student{{pessoa.id}}" onchange={{action 'refreshSelectedGenero' value='target.value'}}>
             <option value="">---</option>
-            <option value="masculino"  selected={{if this.isMasculino "selected"}}>Masculino</option>
-            <option value="feminino" selected={{if this.isFeminino "selected"}}>Feminino</option>
+            <option value="masculino"  selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
+            <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
             <option value="">Prefiro não dizer</option>
         </select>
     </div>
@@ -25,7 +25,7 @@
         <select name="serie" id="serie_student{{pessoa.id}}" onchange={{action 'refreshSelectedAno' value='target.value'}}>
             <option value="">---</option>
             {{#each pessoa.instituicao.plataformaAnos as |pa|}}
-                <option value="{{pa.id}}" selected={{if (equalstr pa.id selectedAno.id) "selected"}}>{{pa.name}}</option>
+                <option value="{{pa.id}}" selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>{{pa.name}}</option>
             {{/each}}
         </select>
     </div>
@@ -34,9 +34,9 @@
         <label for="turma_student{{pessoa.id}}">Turma</label>
         <select name="turma" id="turma_student{{pessoa.id}}" onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
             <option value="">---</option>
-            {{#each plataformaTurmas as |pt|}}
-                {{#if (equalstr pt.plataformaAno.id selectedAno.id)}}
-                    <option value="{{pt.id}}" selected={{if (equalstr pt.id selectedTurma.id) "selected"}}>{{pt.name}}</option>
+            {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
+                {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
+                    <option value="{{pt.id}}" selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>{{pt.name}}</option>
                 {{/if}}
             {{/each}}
         </select>
@@ -44,7 +44,46 @@
 
     <button type="button" class="login__cta btn" {{action "saveProfile" pessoa}}>Salvar</button>
 
-{{else if (equalstr pessoa.role "professor") }}
+{{else if (equalstr pessoa.role "instrutor") }}
+    <div class="row">
+        <label for="name_responsavel">Nome Completo</label>
+        {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
+        {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    </div>
+
+    <div class="row">
+        <label for="celular">Número de Celular</label>
+        {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
+        {{!-- <select name="celular" id="celular">
+            <option value="">---</option>
+        </select> --}}
+    </div>
+
+    <div class="row">
+        {{input type="checkbox" checked=pessoa.isAplicador}}
+        <label for="celular">Você aplica o programa?</label>
+    </div>
+    
+    {{#if pessoa.isAplicador}}
+        <div class="row">
+            {{#each segmentos as |seg| }}
+                <div class="col-2">
+                    <div class="row">
+                        <input type="checkbox" id="segmento{{seg.id}}" onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                        <label>{{seg.titulo}}</label>
+                    </div>
+                    {{#each seg.plataformaAnos as |platAno|}}
+                        <div class="row">
+                            <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}} id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
+                            <label>{{platAno.name}}</label>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <button type="button" class="login__cta btn" {{action "saveResponsible" pessoa}}>Salvar</button>
 
 {{else if (equalstr pessoa.role "responsavel") }}
     <div class="row">

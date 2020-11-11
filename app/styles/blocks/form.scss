@@ -69,16 +69,6 @@
                 flex: 1 0 auto;
             }
 
-            &--self-signup {
-                font-size: 3rem;
-                height: 8rem;
-                flex: 0 0 auto;
-                padding-left: 1em;
-                padding-right: 1em;
-                text-transform: uppercase;
-                width: 32rem;
-            }
-
             & + #{$this}__input:not(.pwdt) {
                 margin-left: $distance--md;
             }

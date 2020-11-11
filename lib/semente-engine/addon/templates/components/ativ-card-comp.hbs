@@ -1,7 +1,7 @@
 {{#if notTravada}}
     {{#if notStudent}}
       <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class">
+        <div id="card_{{atividade.idx}}" class="timeline__class class">
 
           <span class="timeline__status">
             <span class="icon-unlocked"></span>
@@ -364,7 +364,7 @@
     {{#if (equalstr value 0)}}
       {{#if data_ok}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class class--is-completed">
+        <div  id="card_{{atividade.idx}}" class="timeline__class class class--is-completed">
           <span class="timeline__status">
             <span class="icon-unlocked"></span>
           </span>
@@ -717,7 +717,7 @@
         </div>
       {{else}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class class--is-disabled">
+        <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
           <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock"></span>
           </span>
@@ -1073,7 +1073,7 @@
     {{else if (equalstr value 100)}}
       {{#if data_ok}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class class--is-completed">
+        <div id="card_{{atividade.idx}}" class="timeline__class class class--is-completed">
           <span class="timeline__status">
             <span class="icon-check"></span>
           </span>
@@ -1429,7 +1429,7 @@
         </div>
       {{else}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class class--is-disabled">
+        <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
           <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock"></span>
           </span>
@@ -1785,7 +1785,7 @@
     {{else}}
       {{#if data_ok}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class">
+        <div id="card_{{atividade.idx}}" class="timeline__class class">
 
           <span class="timeline__status">
             <span class="icon-unlocked"></span>
@@ -2143,7 +2143,7 @@
         </div>
       {{else}}
         <div class="timeline__end-class">Fim do bloco</div>
-        <div class="timeline__class class class--is-disabled">
+        <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
 
           <span class="timeline__status timeline__status--is-locked">
             <span class="icon-lock"></span>
@@ -2501,7 +2501,7 @@
     {{/if}}
 {{else}}
 <div class="timeline__end-class">Fim do bloco</div>
-<div class="timeline__class class class--is-disabled">
+<div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
 
   <span class="timeline__status timeline__status--is-locked">
     <span class="icon-lock"></span>

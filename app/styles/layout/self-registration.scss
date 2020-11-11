@@ -1,10 +1,42 @@
 .self-registration {
+  flex: 1;
   position: relative;
 
-  &__img {
-    bottom: 0;
-    max-width: 46vw;
-    position: absolute;
-    right: -5%;
+  &__title {
+    @include media('>md') {
+      border-left: 4px solid transparentize($color: $green-10, $amount: .5);
+      margin-left: $distance--md;
+      padding-left: $distance--lg;
+    }
   }
+
+  &__img {
+    display: none;
+
+    @include media('>md') {
+      bottom: 0;
+      display: block;
+      max-width: 48vw;
+      position: absolute;
+      right: -5%;
+    }
+
+  }
+
+  &__input {
+    flex: 0 0 auto;
+    height: 4rem;
+    width: 100%;
+
+    @include media('>md') {
+      font-size: 3rem;
+      height: 8rem;
+      flex: 0 0 auto;
+      padding-left: 1em;
+      padding-right: 1em;
+      text-transform: uppercase;
+      width: 28rem;
+    }
+  }
+
 }
