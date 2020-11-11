@@ -102,6 +102,14 @@
                 <label class="form-group__label">Nome</label>
                 <input class="form-group__input" type="textbox" id="new_inst_name" value={{new_inst_name}}>
               </div>
+              <div class="form-group form-group--aired-h" flex="20">
+                <label class="form-group__label">UF</label>
+                <input class="form-group__input" type="textbox" id="new_inst_uf" value={{new_inst_uf}}>
+              </div>
+              <div class="form-group form-group--aired-h" flex="20">
+                <label class="form-group__label">Cidade</label>
+                <input class="form-group__input" type="textbox" id="new_inst_cidade" value={{new_inst_cidade}}>
+              </div>
               <div class="form-group">
                 <label class="form-group__label">Status</label>
                 <span class="switch switch--institutions">
@@ -270,6 +278,27 @@
             {{!-- {{inst_selected.name}} --}}
             {{/if}}
           </div>
+          <div class="form-group form-group--aired-h" flex="40--lg">
+            <label class="form-group__label">UF</label>
+            {{#if (equalstr role 'admin')}}
+            <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}}
+              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
+              {{!-- {{input value=inst_selected.uf}}  --}}
+            {{else}}
+            <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}} disabled="true">
+            {{/if}}
+          </div>
+        
+          <div class="form-group form-group--aired-h" flex="40--lg">
+            <label class="form-group__label">Cidade</label>
+            {{#if (equalstr role 'admin')}}
+            <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}}
+              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
+            {{else}}
+            <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}} disabled="true">
+            {{/if}}
+          </div>
+
           <div class="form-group">
             <label class="form-group__label">Status</label>
             <span class="switch switch--institutions">
@@ -342,6 +371,9 @@
             <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} disabled="true">
             {{/if}}
           </div>
+
+
+
           <!-- /selected institution tab information -->
 
           <!-- selected institutiton tab courses -->

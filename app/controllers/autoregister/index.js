@@ -13,8 +13,6 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    makeAjax(){
-    },
     checkForm(){
       $('form').removeData('validator');
       $('form').removeData('unobtrusiveValidation');
@@ -25,7 +23,8 @@ export default Ember.Controller.extend({
         include: 'instituicao.plataforma-anos, instituicao.plataforma-turmas',
         codigo: schoolCode
       }).then(function(e){
-        that.transitionToForm(e);
+        // that.transitionToForm(e);
+        that.transitionToRoute('autoregister.form', e.get('id'));
       }).catch(function(error) {
         if (error.errors) {
           // Pega alerta
