@@ -1,13 +1,18 @@
+
+
 <div class="row">
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
-    {{input name='' value=conteudo.videoUrl placeholder='Endereço de Vídeo'}}
+    {{input name='video' value=conteudo.videoUrl placeholder='Endereço de Vídeo' }}
     
-    <label for="">Arquivo PDF</label>
-    {{input name='' value=conteudo.path placeholder='Arquivo PDF'}}
+    <div class="row"> OU </div>
+
+    <label for="">Arquivo em PDF, PNG ou JPEG</label>
+    <input multiple="false" name='pdf' type="file" value=conteudo.path 
+    placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf" 
+    onchange={{action 'Upload'}} />
 </div>
 
-<div></div>
 <div class="row">
     <h1>Configuração</h1>
     <label for="">Titulo do Conteúdo</label>
@@ -15,7 +20,6 @@
     
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
-
     {{#each agrupamento as |a|}}
         <input type="radio" id={{a.id}} name="nomeagrupamento" 
         onchange={{ action 'agrupamentoChanged' a.id }}>
@@ -66,7 +70,36 @@
         {{/each}}
     </div> 
     <div class="row"></div>
-    {{!-- <label for={{aula.id}}>Atrelar a que ano/aula?</label> --}}
+    {{#if (equalstr this.agrupamentoAula "true")}}
+        <div class="row">
+            {{!-- aulas já atreladas a este conteúdo --}}
+            {{#if conteudo.aulas.length}}
+                {{#each conteudo.aulas as |aulacadastrada|}}
+                    <div class="row">
+                        <label>Segmento</label>
+                        <label>{{aulacadastrada.plataformaAno.segmento.titulo}}</label>
+                        
+                        <div class="row"></div>
+                        <label>Ano</label>
+                        <label>{{aulacadastrada.plataformaAno.name}}</label>
+
+                        <div class="row"></div>
+                        <label>Aula</label>
+                        <label>{{aulacadastrada.titulo}}</label>
+                        
+                        <button type="button" class="btn btn-default" {{action "removeAula" aulacadastrada}}>Remover</button>
+                    </div>
+                {{/each}}
+            {{/if}}
+            
+            {{!-- formulário de um conteúdo --}}
+            {{conteudo-aula-form conteudo=conteudo adicionarAula=adicionarAula
+            segmentos=segmentos anos=anos aulas=aulas}}
+        </div>
+        {{#if (equalstr this.adicionarAula "false")}}
+            <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
+        {{/if}}
+    {{/if}}
 </div>
 
 
