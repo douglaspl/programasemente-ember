@@ -3,11 +3,19 @@
   position: relative;
 
   &__title {
+    $v-padding: .75em;
+
+    border-left: 4px solid transparentize($color: $green-10, $amount: .5);
+    margin-left: $distance--xs;
+    padding-bottom: $v-padding;
+    padding-left: $distance--sm;
+    padding-top: $v-padding;
+
     @include media('>md') {
-      border-left: 4px solid transparentize($color: $green-10, $amount: .5);
       margin-left: $distance--md;
       padding-left: $distance--lg;
     }
+
   }
 
   &__img {
@@ -32,10 +40,11 @@
       font-size: 3rem;
       height: 8rem;
       flex: 0 0 auto;
+      max-width: 28rem;
       padding-left: 1em;
       padding-right: 1em;
       text-transform: uppercase;
-      width: 28rem;
+      width: 100%;
     }
   }
 
