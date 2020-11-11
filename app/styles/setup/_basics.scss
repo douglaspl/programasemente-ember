@@ -19,7 +19,7 @@ body {
     -webkit-font-smoothing: antialiased;
     background-color: $body-bg-color;
     height: 100%;
-    color: $gray-60;
+    color: $blue-navy-60;
     font-family: $font-base;
     font-size: 16px;
     font-variant-numeric: lining-nums;
@@ -124,7 +124,7 @@ table {
 }
 
 th {
-    font-size: $font-size--xxxs;
+    font-size: $font-size--xxs;
     font-weight: bold;
     letter-spacing: $letter-spacing--lg;
     padding: 0 $distance--sm $distance--xs;
