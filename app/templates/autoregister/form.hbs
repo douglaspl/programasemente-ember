@@ -1,18 +1,20 @@
-<h1>O cadastro será feito em {{escola.name}}</h1>
+<main class="main">
+    <h1>O cadastro será feito em {{escola.name}}</h1>
 
-<div class="row">
-    <label for="login">Login</label>
-    <input type="text" id="login" onblur={{action 'verifyEmail'}}>
-    <span id='login-error'></span>
-</div>
-<div class="row">
-    <label for="senha">Senha</label>
-    <input type="password" id="senha">
-    <span id='password-error'></span>
-</div>
-<div class="row">
-    <label for="senha">Repetir Senha</label>
-    <input type="password" id="senha2" onkeyup={{action 'verifyPassword'}}>
-</div>
+    <div class="row">
+        <label for="login">Login</label>
+        <input type="text" id="login" onblur={{action 'verifyEmail'}}>
+        <span id='login-error'></span>
+    </div>
+    <div class="row">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha">
+        <span id='password-error'></span>
+    </div>
+    <div class="row">
+        <label for="senha">Repetir Senha</label>
+        <input type="password" id="senha2" onkeyup={{action 'verifyPassword'}}>
+    </div>
 
-<button type="button" id='submit' class="login__cta btn" disabled="true" onclick={{action 'createUser'}}>Cadastrar</button>
+    <button type="button" id='submit' class="login__cta btn" disabled="true" onclick={{action 'createUser'}}>Cadastrar</button>
+</main>
