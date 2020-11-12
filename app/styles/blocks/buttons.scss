@@ -82,7 +82,7 @@
   transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
   transition: 200ms var(--ease-in-out-quad);
 
-  &:hover {
+  &:hover:not([disabled='true']) {
     background-color: $clickables-bg-color-hover;
     color: $clickables-color-hover;
   }
@@ -136,6 +136,7 @@
     }
   }
 
+  &[disabled='true'],
   &--disabled {
     cursor: not-allowed;
     opacity: .5;
