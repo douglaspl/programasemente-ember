@@ -51,12 +51,13 @@
         color: $white;
         display: flex;
         flex-direction: row;
+        font-size: $font-size--lg;
         height: $size;
         justify-content: center;
         width: $size;
 
-        &--is-active { background-color: $green-20; }
-        // &--is-done { background-color: $color-success; }
+        &--is-active,
+        [class*='--is-active'] & { background-color: $green-20; }
     }
 
     &__label {
