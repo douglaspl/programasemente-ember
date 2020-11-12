@@ -29,3 +29,4 @@ package-lock.json
 package.json
 config/environment.js
 lib/semente-engine/config/environment.js
+.vscode/settings.json
