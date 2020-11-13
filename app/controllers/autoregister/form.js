@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     return escola;
   }),
   actions: {
-    verifyEmail() {
+    verifyEmail: function() {
       let email = document.getElementById('login').value;
       let pessoa = this.get('store').createRecord('pessoa',{ email: email });
 
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
       })
 
     },
-    verifyPassword(){
+    verifyPassword: function() {
       let p1 = document.getElementById('senha').value;
       let p2 = document.getElementById('senha2').value;
       if (p1 === p2) {
@@ -59,7 +59,7 @@ export default Ember.Controller.extend({
         document.getElementById('password-error').innerHTML = 'Senhas não batem';
       }
     },
-    createUser(){
+    createUser: function() {
       let password = document.getElementById('senha').value;
       let login = document.getElementById('login').value;
       let sistemas = this.get('store').peekAll('sistema');
