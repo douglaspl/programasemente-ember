@@ -4,7 +4,8 @@
 
 <aside class="help" id="help">
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
-  <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle" {{action "toggleHelp"}}></button>
+  <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle"
+    {{action "toggleHelp"}}></button>
   <div id="help__container" class="help__container">
     <button id="help__close" class="help__close btn-close icon-x" {{action "toggleHelp"}}></button>
     <div id="formHelp" class="help__form">
@@ -13,11 +14,11 @@
         <div class="overflow-hidden">
           <h2 class="title-2 truncate">{{username}}</h2>
           {{#each model as |pessoa idx|}}
-          {{#if (equalstr id_instituicao pessoa.instituicao_id)}}
-          <span id="instName" class="help__user-institution title-aux">
-            {{pessoa.instituicao_name}}
-          </span>
-          {{/if}}
+            {{#if (equalstr id_instituicao pessoa.instituicao_id)}}
+              <span id="instName" class="help__user-institution title-aux">
+                {{pessoa.instituicao_name}}
+              </span>
+            {{/if}}
           {{/each}}
         </div>
       </div>
@@ -54,58 +55,34 @@
       <button class="global-nav__close icon-x"></button>
 
       <!-- percursos header -->
-    {{#if hasModulo}}
-      {{#if (equalstr role 'aluno')}}
-             <li class="global-nav__item" id="header-modulos">
-          {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}} Percurso {{/link-to}}
-        </li>
+      {{#if hasModulo}}
+        {{#if (equalstr role 'aluno')}}
+          <li class="global-nav__item" id="header-modulos">
+            {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}} Percurso {{/link-to}}
+          </li>
+        {{/if}}
       {{/if}}
-    {{/if}}
-    {{!-- {{else}}
-      <li class="global-nav__item global-nav__submenu-holder" id="header-modulos">
-        <a href="#" class="global-nav__link p-right--sm j-timeline">Percurso <span class="icon-chevron-down"></span></a>
 
-        <div class="global-nav__submenu submenu submenu--header submenu--timeline" id="timelineSubmenu">
-          <ul class="submenu__body">
-            {{#if primeiroAno}}
-            <li class="submenu__item">
-              <a class="submenu__link"{{action 'goToModulo' primeiroAno on="click"}}>
-                <span>Primeiro Ano</span></a></li>
-            {{/if}}
-            {{#if segundoAno}}
-            <li class="submenu__item">
-              <a class="submenu__link"{{action 'goToModulo' segundoAno on="click"}}>
-                <span>Segundo Ano</span></a></li>
-            {{/if}}
-            {{#if terceiroAno}}
-            <li class="submenu__item">
-              <a href="#" class="submenu__link"{{action 'goToModulo' terceiroAno on="click"}}>
-                <span>Terceiro ano</span></a></li>
-            {{/if}}
-          </ul>
-        </div>
 
+      <li class="global-nav__item" id="header-aulas">
+        {{#link-to 'aulas' class="global-nav__link"}} Aulas {{/link-to}}
       </li>
-    {{/if}} --}}
-
-
-     <li class="global-nav__item" id="header-aulas">
-      {{#link-to 'aulas' class="global-nav__link"}} Aulas {{/link-to}}
-    </li>
 
       <!-- lib header -->
-      <li class="global-nav__item counter" id="header-biblioteca" style="display:none;" {{action 'goToBiblioteca' on="click"}}>
-        <a class="global-nav__link"><span>Biblioteca</span><span id="j-libraryNotificationNumber" class="counter__bubble">0</span></a>
+      <li class="global-nav__item counter" id="header-biblioteca" style="display:none;"
+        {{action 'goToBiblioteca' on="click"}}>
+        <a class="global-nav__link"><span>Biblioteca</span><span id="j-libraryNotificationNumber"
+            class="counter__bubble">0</span></a>
       </li>
 
 
       <!-- follow up header -->
       {{#if hasReport}}
-          <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
-            <a class="global-nav__link">
-              {{!-- <span class="icon-activity"></span> --}}
-              <span>Acompanhamento</span></a>
-        	</li>
+        <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
+          <a class="global-nav__link">
+            {{!-- <span class="icon-activity"></span> --}}
+            <span>Acompanhamento</span></a>
+        </li>
       {{else}}
       {{/if}}
 
@@ -123,7 +100,7 @@
           <a class="global-nav__link"><span>Conteúdos</span></a>
         </li>
       {{else}}
-      {{!-- <li class="global-nav__item" id="header-gersistema">{{#link-to 'gersistema.gerdata' (query-params
+        {{!-- <li class="global-nav__item" id="header-gersistema">{{#link-to 'gersistema.gerdata' (query-params
         instituicao_id=0 perPage=10) class="global-nav__link"}}Administração{{/link-to}}</li> --}}
       {{/if}}
 
@@ -156,19 +133,19 @@
           </span>
           <span class="global-nav__user-info">
             <span>{{username}}</span>
-          {{#if (equalstr role 'aluno')}}
-            <span class="text-aux block m-top--xxs">
-          {{#if primeiroAno}}
-          1º ano do ensino médio
-          {{/if}}
-          {{#if segundoAno}}
-          2º ano do ensino médio
-          {{/if}}
-          {{#if terceiroAno}}
-          3º ano do ensino médio
-          {{/if}}
-            </span>
-          {{/if}}
+            {{#if (equalstr role 'aluno')}}
+              <span class="text-aux block m-top--xxs">
+                {{#if primeiroAno}}
+                  1º ano do ensino médio
+                {{/if}}
+                {{#if segundoAno}}
+                  2º ano do ensino médio
+                {{/if}}
+                {{#if terceiroAno}}
+                  3º ano do ensino médio
+                {{/if}}
+              </span>
+            {{/if}}
           </span>
           <span class="icon-chevron-down hide-on--xs"></span>
         </a>
@@ -202,15 +179,16 @@
 
 <section id="content-main" class="content-main">
   {{#if role}}
-  <!-- if an institution is selected, then the output is released. otherwise the intitution select is created -->
-  {{outlet}} {{else}}
-  <aside id="select_inst_modal" class="modal modal--is-show">
+    <!-- if an institution is selected, then the output is released. otherwise the intitution select is created -->
+    {{outlet}}
+  {{else}}
+    <aside id="select_inst_modal" class="modal modal--is-show">
 
-    <form class="modal__content modal__content--md" autocomplete="off" aria-autocomplete="none">
-      <header class="modal__header">
-        <h3 class="modal__title">Selecione uma instituição</h3>
-      </header>
-      {{input class="form-group__input"
+      <form class="modal__content modal__content--md" autocomplete="off" aria-autocomplete="none">
+        <header class="modal__header">
+          <h3 class="modal__title">Selecione uma instituição</h3>
+        </header>
+        {{input class="form-group__input"
       aria-describedby="basic-addon1"
       id="searchValue"
       key-up="instSearch"
@@ -218,34 +196,34 @@
       autocomplete="off"
       aria-autocomplete="none"}}
 
-      {{!-- <div class="modal__body"> --}}
+        {{!-- <div class="modal__body"> --}}
         <ul id="searchDisplay" class="select-inst" style="display:none;">
           {{#each filteredInsts as |inst|}}
-          <li>
-            <a class="select-inst__link" href="#" {{action 'selectPessoa' inst.id on='click'}}>
-              {{inst.instituicao_name}}
-            </a>
-          </li>
+            <li>
+              <a class="select-inst__link" href="#" {{action 'selectPessoa' inst.id on='click'}}>
+                {{inst.instituicao_name}}
+              </a>
+            </li>
           {{/each}}
         </ul>
 
         <ul id="modelList" class="select-inst">
           {{#each instList as |pessoa idx|}}
-          <li>
-            <a class="select-inst__link" href="#" {{action 'selectPessoa' pessoa.id on='click'}}>
-              {{pessoa.instituicao_name}}
-              <!--  {{addone idx}} -  -->
-            </a>
-          </li>
+            <li>
+              <a class="select-inst__link" href="#" {{action 'selectPessoa' pessoa.id on='click'}}>
+                {{pessoa.instituicao_name}}
+                <!--  {{addone idx}} -  -->
+              </a>
+            </li>
           {{/each}}
         </ul>
 
         {{!--
       </div> --}}
-    </form>
-    <div class="modal__overlayer bg--students"></div>
+      </form>
+      <div class="modal__overlayer bg--students"></div>
 
-  </aside>
+    </aside>
   {{/if}}
 </section>
 
@@ -280,21 +258,23 @@
         <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
         <!-- melhorar classes do form... -->
         <div class="form-group__container form-group">
-          <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span class="form__msg-icon icon-check"></span>Par
+          <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
+              class="form__msg-icon icon-check"></span>Par
             de senhas perfeito!</span>
-          <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span class="form__msg-icon icon-alert-triangle"></span>Senhas
+          <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
+              class="form__msg-icon icon-alert-triangle"></span>Senhas
             não batem...</span>
           <input class="form-group__input" type="password" id="pass_new_copy" value="">
         </div>
       </div>
 
       {{#if error_forgot}}
-      <div class="alert alert--warning alert--has-icon">
-        <span class="alert__icon icon-alert-triangle"></span>
-        <p>
-          {{{error_forgot}}}
-        </p>
-      </div>
+        <div class="alert alert--warning alert--has-icon">
+          <span class="alert__icon icon-alert-triangle"></span>
+          <p>
+            {{{error_forgot}}}
+          </p>
+        </div>
       {{/if}}
 
     </div>
@@ -328,11 +308,13 @@
 
         <div class="image-change">
           <div class="avatar avatar--lg">
-            <div class="avatar__img avatar__img--as-bg" id="avatar-modale" style="background-image: url('{{uri_avatar}}');"></div>
+            <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
+              style="background-image: url('{{uri_avatar}}');"></div>
           </div>
 
           <label class="image-change__cta btn">Buscar imagem
-            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;" name="file">
+            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;"
+              name="file">
           </label>
         </div>
 
@@ -341,14 +323,17 @@
     </div>
 
     {{#if selected_file_avatar}}
-      <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control" readonly><strong>{{selected_file_avatar}}</strong></span>
+      <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control"
+        readonly><strong>{{selected_file_avatar}}</strong></span>
     {{/if}}
 
     <div class="modal__footer">
       {{#if avatar_loading}}
-        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i class="fa fa-spinner fa-pulse fa-2x"></i></button>
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i
+            class="fa fa-spinner fa-pulse fa-2x"></i></button>
       {{else if selected_file_avatar}}
-        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" {{action 'sendAvatar'}}>Salvar</button>
+        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar"
+          {{action 'sendAvatar'}}>Salvar</button>
       {{else}}
         <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button>
       {{/if}}
