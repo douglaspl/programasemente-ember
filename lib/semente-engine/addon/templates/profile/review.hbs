@@ -1,44 +1,45 @@
-{{#if model.shouldReviewProfile }}
-    <h2>Por favor, revise as informações do seu perfil antes de acessar os conteúdos SEMENTE</h2>
-{{/if}}
 
-{{#if  (equalstr model.role "aluno") }}
+  {{#if model.shouldReviewProfile }}
+    <h2>Por favor, revise as informações do seu perfil antes de acessar os conteúdos SEMENTE</h2>
+  {{/if}}
+
+  {{#if (equalstr model.role "aluno") }}
 
     <h3>Dados pessoais</h3>
     {{profile-form pessoa=model}}
 
     <h3>Dados de Responsáveis</h3>
     {{#each model.responsaveis as |responsavel| }}
-        {{responsible-form responsavel=responsavel model=model}}
+      {{responsible-form responsavel=responsavel model=model}}
     {{/each}}
 
     {{#if canAddResponsibles}}
-        <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
+      <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
     {{/if}}
-    
+
     <h3>Resumo das Informações</h3>
 
     Informações Pessoais
     <ul>
-        <li>{{model.name}}</li>
-        <li>{{model.genero}}</li>
-        {{#each model.plataformaAnos as |pa| }}
-            <li>{{pa.name}}</li>
-        {{/each}}
-        {{#each model.plataformaTurmas as |pt| }}
-            <li>{{pt.name}}</li>
-        {{/each}}
+      <li>{{model.name}}</li>
+      <li>{{model.genero}}</li>
+      {{#each model.plataformaAnos as |pa| }}
+        <li>{{pa.name}}</li>
+      {{/each}}
+      {{#each model.plataformaTurmas as |pt| }}
+        <li>{{pt.name}}</li>
+      {{/each}}
     </ul>
 
     <h3>Responsaveis</h3>
     {{#each model.responsaveis as |resp| }}
-        {{responsible-info-card responsavel=resp}}
+      {{responsible-info-card responsavel=resp}}
     {{/each}}
 
     <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
 
 
-{{else if (equalstr model.role "instrutor") }}
+  {{else if (equalstr model.role "instrutor") }}
     <h3>Dados pessoais</h3>
     {{profile-form pessoa=model}}
 
@@ -48,38 +49,38 @@
     <label> Você é responsavel por algum aluno na Educação Infantil ou Fundamental 1? </label>
 
     {{#if model.isAlsoResponsible }}
-        <h3>Dados Dependentes</h3>
-        {{#each model.dependentes as |dep| }}
-            {{student-form pessoa=dep}}
-        {{/each}}
-        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+      <h3>Dados Dependentes</h3>
+      {{#each model.dependentes as |dep| }}
+        {{student-form pessoa=dep}}
+      {{/each}}
+      <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
     {{/if}}
 
     <h3>Resumo das Informações</h3>
     {{teacher-info-card instrutor=model}}
 
     {{#if model.dependentes }}
-        {{#each model.dependentes as |dependente| }}
-            {{student-info-card student=dependente}}
-        {{/each}}
+      {{#each model.dependentes as |dependente| }}
+        {{student-info-card student=dependente}}
+      {{/each}}
     {{/if}}
 
     <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
 
-{{else if (equalstr model.role "responsavel") }}
+  {{else if (equalstr model.role "responsavel") }}
     <h3>Dados pessoais</h3>
     {{profile-form pessoa=model}}
 
     {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
 
-    <h3>Dados dos Dependentes</h3> 
-    
+    <h3>Dados dos Dependentes</h3>
+
     {{#each model.dependentes as |dependente| }}
-        {{student-form pessoa=dependente}}
+      {{student-form pessoa=dependente}}
     {{/each}}
 
     {{#if canAddDependents }}
-        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+      <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
     {{/if}}
 
     <h3>Resumo das Informações</h3>
@@ -87,9 +88,9 @@
     {{responsible-info-card responsavel=model}}
 
     {{#each model.dependentes as |dependente| }}
-        {{student-info-card student=dependente}}
+      {{student-info-card student=dependente}}
     {{/each}}
 
     <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
 
-{{/if}}
+  {{/if}}
