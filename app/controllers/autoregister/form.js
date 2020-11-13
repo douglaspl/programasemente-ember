@@ -16,6 +16,8 @@ export default Ember.Controller.extend({
       pessoa.verifyEmail({
         login: pessoa.get('email'),
         instituicaoId: this.get('escola').get('id')
+      }).then(function(response){
+        debugger;
       }).catch(function(error) {
         if (error.errors) {
 
