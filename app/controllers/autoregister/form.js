@@ -18,21 +18,19 @@ export default Ember.Controller.extend({
 
   actions: {
 
-    liveCheckEmail() {
-
+    liveCheckEmail: function() {
       var field = document.getElementById("login");
+      var fieldErrorAlert =  document.getElementById('login-error');
 
       field.addEventListener('keypress', function (event) {
-        var key = event.keyCode;
+        var key = event.key;
         if (key === 32) {
           event.preventDefault();
-          document.getElementById('login-error').innerHTML = 'Espaços não são permitidos';
+          fieldErrorAlert.innerHTML = 'Espaços não são permitidos';
         } else {
-          document.getElementById('login-error').innerHTML = '';
+          fieldErrorAlert.innerHTML = '';
         }
       });
-
-
     },
 
     verifyEmail: function () {
@@ -58,8 +56,6 @@ export default Ember.Controller.extend({
       }).then(function (response) {
         errorCompartiment.classList.remove('alert--is-show', alertAnimation);
         form.classList.add('form-group--is-validated');
-
-
       }).catch(function (error) {
         if (error.errors) {
 
@@ -107,6 +103,7 @@ export default Ember.Controller.extend({
       })
 
     },
+
     verifyPassword: function () {
       let p1 = document.getElementById('senha').value;
       let p2 = document.getElementById('senha2').value;
@@ -124,6 +121,7 @@ export default Ember.Controller.extend({
         msg.innerHTML = '<strong>' + errorMsg + '</strong>';
       }
     },
+
     createUser: function () {
       let password = document.getElementById('senha').value;
       let login = document.getElementById('login').value;
