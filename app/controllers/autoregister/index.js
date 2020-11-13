@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    checkForm() {
+    checkForm: function() {
       $('form').removeData('validator');
       $('form').removeData('unobtrusiveValidation');
       $.validator.unobtrusive.parse('form');
