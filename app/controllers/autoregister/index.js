@@ -39,7 +39,9 @@ export default Ember.Controller.extend({
           const errorStatus =  error.errors[0].status;
           
           // Foco no input
-          input.focus();
+          if (input) {
+            input.focus();
+          }
 
           // Define mensagem de erro, caso seja o erro XYZ
           let errorMsg; 

@@ -59,7 +59,7 @@
             <p>Para iniciar seu cadastro, por favor defina um login e uma senha para você.</p>
             <div id="form-login" class="form-group m-top--lg w100" autocomplete="off">
                 <label class="form-group__label" for="login">Nome de usuário</label>
-                <input class="form-group__input" type="text" id="login" onblur={{action 'verifyEmail'}}
+                <input autofocus class="form-group__input" type="text" id="login" onblur={{action 'verifyEmail'}}
                     onkeydown={{action 'liveCheckEmail'}} autocomplete="off">
                 <span id='login-error'></span>
                 <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="login-error"

@@ -8,6 +8,14 @@ export default Ember.Controller.extend({
     let escola = this.get('model').get('instituicao');
     return escola;
   }),
+
+// formFocus: Ember.run.schedule('afterRender', function(){
+   
+//     let input = document.getElementById("login");
+//     input.focus();
+
+// }),
+
   actions: {
 
     liveCheckEmail() {
@@ -56,7 +64,9 @@ export default Ember.Controller.extend({
         if (error.errors) {
 
           form.classList.remove('form-group--is-validated');
-          input.focus();
+          if (input) {
+            input.focus();
+          }
 
           // Antiga mensagem de erro
           // document.getElementById('login-error').innerHTML = error.errors[0].title;
@@ -138,5 +148,5 @@ export default Ember.Controller.extend({
         that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
       })
     }
-  }
+  },
 });
