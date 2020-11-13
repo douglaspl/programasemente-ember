@@ -19,6 +19,7 @@ export default Ember.Controller.extend({
       $.validator.unobtrusive.parse('form');
       let that = this;
       let schoolCode = document.getElementById('codigo-escola').value;
+      let input = document.getElementById('codigo-escola');
       let codigo = this.get('store').queryRecord('codigo-cadastro', {
         include: 'instituicao.plataforma-anos, instituicao.plataforma-turmas',
         codigo: schoolCode
@@ -27,6 +28,7 @@ export default Ember.Controller.extend({
         that.transitionToRoute('autoregister.form', e.get('id'));
       }).catch(function(error) {
         if (error.errors) {
+                  
           // Pega alerta
           const errorCompartiment = document.getElementById('codigo-error');
           // Pega animação do alerta
@@ -35,8 +37,27 @@ export default Ember.Controller.extend({
           const msg = errorCompartiment.querySelector('[class*="__msg"]');
           // Pega a identificação do erro
           const errorStatus =  error.errors[0].status;
+          
+          // Foco no input
+          input.focus();
+
           // Define mensagem de erro, caso seja o erro XYZ
-          let errorMsg = errorStatus === "400" ? 'Por favor verifique código inserido.' : 'Ocorreu um erro geral, mas nossos desenvolvedores já foram alertados e iremos corrigir em breve.';
+          let errorMsg; 
+          if ( errorStatus === "400") {
+            switch(true) {
+              case schoolCode.length == 0:
+                errorMsg = 'Por favor, insira o código fornecido pela escola.';
+                break;
+              case schoolCode.length > 0:
+                errorMsg = 'Parece que o código informado é inválido, verifique por favor.'
+                break;
+                
+            }
+          } else if (errorStatus === "500") {
+            errorMsg = 'Ocorreu um erro no sistema, mas não se preocupe, nossos desenvolvedores já foram alertados.'
+          }
+                
+                   
 
           // Injeta mensagem de erro.
           msg.innerHTML = '<strong>' + errorMsg + '</strong>';
