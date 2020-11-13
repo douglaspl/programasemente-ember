@@ -146,9 +146,11 @@ export default Ember.Controller.extend({
     const errorMsg = 'As senhas digitadas não são iguais.';
 
     if (p1 === p2) {
-      document.getElementById('submit').disabled = false;
+      document.getElementById('submit').setAttribute('dataDisabled', 'false');
       passAlert.classList.remove('alert--is-show');
     } else {
+      document.getElementById('submit').setAttribute('dataDisabled', 'true');
+      //document.getElementById('submit').classList.add("btn--disabled");
       passAlert.classList.add('alert--is-show', alertAnimation);
       msg.innerHTML = '<strong>' + errorMsg + '</strong>';
     }
