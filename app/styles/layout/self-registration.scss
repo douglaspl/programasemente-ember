@@ -18,13 +18,29 @@
 
   }
 
+  &__graphism {
+    display: none;
+
+    @include media('>md') {
+      background-color: $green-0;
+      border-radius: 50%;
+      bottom: 0;
+      display: block;
+      height: 42vw;
+      position: absolute;
+      right: 5%;
+      width: 42vw;
+    }
+
+  }
+
   &__img {
     display: none;
 
     @include media('>md') {
       bottom: 0;
       display: block;
-      max-width: 48vw;
+      max-width: 42vw;
       position: absolute;
       right: -5%;
     }

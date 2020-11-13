@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    checkForm(){
+    checkForm: function() {
       $('form').removeData('validator');
       $('form').removeData('unobtrusiveValidation');
       $.validator.unobtrusive.parse('form');
@@ -50,6 +50,19 @@ export default Ember.Controller.extend({
         }
 
       })
+    },
+
+    /**
+     * Captura o uso do enter em um input
+     * @param  {Element} elemento que foi usado para acionar a função
+     */
+    checkFormEnter: function(e) {
+      if (e.key === 'Enter') {
+        // Evita do form ser enviado
+        e.preventDefault();
+        // Chama outro método dentro de "actions"
+        this.send(e.target.dataset.function);
+      }
     }
 
   }

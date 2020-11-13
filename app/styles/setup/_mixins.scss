@@ -712,8 +712,7 @@
 
 }
 
-@mixin title-2(     $case: uppercase,
-                    $color: inherit,
+@mixin title-2(     $color: inherit,
                     $line-height: 1,
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
@@ -727,7 +726,6 @@
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: $line-height;
-    text-transform: $case;
     vertical-align: middle;
 
     @include media('>sm') {
