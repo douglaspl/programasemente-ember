@@ -1,3 +1,5 @@
+{{!-- ***** ALUNO ***** --}}
+
 {{#if (equalstr pessoa.role "aluno")}}
 
 <p>{{pessoa.name}}</p>
@@ -11,35 +13,83 @@
   {{/each}}
 </ul>
 
+{{!-- ***** RESPONSÁVEL ***** --}}
 {{else if (equalstr pessoa.role "responsavel")}}
 
 <h2>Nome Responsável:</h2>
 {{pessoa.name}}
 
+<h2>Role:</h2>
+{{pessoa.role}}
+
 <h2>Selecione o Dependente:</h2>
 <div>
-      {{#each pessoa.dependentes as |dep| }}
-        <button type="button"  {{action 'refreshSelectedDependente' dep.id}}> {{dep.name}} </button>
-      {{/each}}
+  {{#each pessoa.dependentes as |dep|}}
+    {{#each dep.plataformaAnos as |plat_ano|}}
+        <button type="button" class="btn btn-primary" {{action 'refreshSelectedDependente' dep.id}}> {{dep.name}} ( {{plat_ano.segmento.titulo}} , {{plat_ano.name}} )</button>
+    {{/each}}
+  {{/each}}
 </div>
+
+
 
 <div class="search">
-  <input type="text" placeholder="Pesquisar Aula">
+  <div>
+    <h2>BUSCA</h2>
+    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
+    <button type="button" class="btn btn-primary"  {{action 'refreshBusca'}}> Pesquisar</button>
+    <div>
+ 
+    <h2>SITUAÇÃO</h2>
+    <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
+      <option value="0">Todas</option>
+      <option value="1">Não Aplicada</option>
+      <option value="2">Parcialmente Aplicada</option>
+      <option value="3">Aplicada</option>
+    </select>
+    </div>
+
+    <div>
+    <h2>ORDENAÇÃO</h2>
+    <select id="ordem" {{!--action 'atualizaAulas' on="change"--}}>
+      <option value="0">Ordem Crescente</option>
+      <option value="1">Ordem Decrescente</option>
+    </select>
+    </div>
+
+  </div>
 </div>
 
-<p></p>
+
 
 {{#if selectedDependente}}
   {{#each selectedDependente.plataformaAnos as |plat_ano| }}
-      {{#each plat_ano.aulas as |aula_dep| }}
-        {{aula-card transit=(action 'goToAula') aula=aula_dep}}
-        {{!-- {{aula_dep.titulo}}
-        {{aula_dep.descricao}} 
-        {{aula_dep.segmento}}
-        {{aula_dep.urlLivro}}<br> --}}
-      {{/each}}
+    {{#each plat_ano.aulas as |aula_dep| }}
+        {{#if busca}}
+          {{!-- {{aula-card transit=(action 'goToAula') aula=aula_dep}} --}}
+          {{!-- {{plat_ano.segmento.titulo}} --}}
+          {{!-- {{aula_dep.titulo}}
+          {{aula_dep.descricao}}
+          {{aula_dep.segmento}}
+          {{aula_dep.urlLivro}}<br> --}}
+
+          {{#if (containStr subStr = busca mainStr = aula_dep.titulo)}}
+            {{aula-card transit=(action 'goToAula') aula=aula_dep}}
+          {{/if}}
+
+        {{else}}
+
+          {{aula-card transit=(action 'goToAula') aula=aula_dep}}
+
+        {{/if}}
+    {{/each}}
   {{/each}}
 {{/if}}
+
+
+
+{{!-- ***** Professor ***** --}}
+{{else if (equalstr pessoa.role "professor")}}
 
 
 
