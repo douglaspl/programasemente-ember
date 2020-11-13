@@ -17,12 +17,9 @@ export default Ember.Controller.extend({
         login: pessoa.get('email'),
         instituicaoId: this.get('escola').get('id')
       }).then(function(response){
-        debugger;
+        // Colocar aqui retorno de positivo. Bordar verde, check verde etc no input validado.
       }).catch(function(error) {
         if (error.errors) {
-
-          // ############ JSON voltando com erro da api
-
           document.getElementById('login-error').innerHTML = error.errors[0].title;
           // Pega alerta
           const errorCompartiment = document.getElementById('codigo-error');
@@ -32,6 +29,10 @@ export default Ember.Controller.extend({
           const msg = errorCompartiment.querySelector('[class*="__msg"]');
           // Pega a identificação do erro
           const errorStatus =  error.errors[0].status;
+
+          // ########################
+          // ######################## Verificar código do erro ou adequar a resposta recebida
+          // ########################
           // Define mensagem de erro, caso seja o erro XYZ
           let errorMsg = errorStatus === "400" ? 'Por favor verifique código inserido.' : 'Ocorreu um erro geral, mas nossos desenvolvedores já foram alertados e iremos corrigir em breve.';
 
@@ -45,6 +46,7 @@ export default Ember.Controller.extend({
           }
 
         } else {
+          // Situação não tratada ainda
           document.getElementById('login-error').innerHTML = '';
         }
 
@@ -54,11 +56,18 @@ export default Ember.Controller.extend({
     verifyPassword: function() {
       let p1 = document.getElementById('senha').value;
       let p2 = document.getElementById('senha2').value;
+
+      const passAlert = document.getElementById('password-error');
+      const alertAnimation = passAlert.dataset.animation;
+      const msg = passAlert.querySelector('[class*="__msg"]');
+      const errorMsg = 'As senhas digitadas não são iguais.';
+
       if (p1 === p2) {
         document.getElementById('submit').disabled = false;
-        document.getElementById('password-error').innerHTML = '';
+        passAlert.classList.remove('alert--is-show');
       } else {
-        document.getElementById('password-error').innerHTML = 'Senhas não batem';
+        passAlert.classList.add('alert--is-show', alertAnimation);
+        msg.innerHTML = '<strong>' + errorMsg + '</strong>';
       }
     },
     createUser: function() {
@@ -70,7 +79,7 @@ export default Ember.Controller.extend({
         if (s.get('idx') == 1){
           sistema = s;
         }
-      })
+      });
       let pessoa = this.get('store').createRecord('pessoa');
       let that = this;
       pessoa.autoRegister({

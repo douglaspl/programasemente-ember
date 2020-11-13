@@ -37,9 +37,9 @@
 </aside>
 
 <header class="header" id="header_layout">
-
+  {{programa-semente-logo class="header__logo"}}
   <!-- short -->
-  <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 394.53 80">
+  {{!-- <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 394.53 80">
     <g>
       <path class="fill-gray-40" d="M23.22 72.14a1.49 1.49 0 01-1.49-1.49V24.71a1.49 1.49 0 013 0v45.94a1.49 1.49 0 01-1.51 1.49z" />
       <path class="fill-gray-40" d="M23.22 45.67a1.51 1.51 0 01-1.06-.44 1.48 1.48 0 010-2.1l8.36-8.36a1.49 1.49 0 112.11 2.1l-8.36 8.36a1.49 1.49 0 01-1.05.44z" />
@@ -51,7 +51,7 @@
       <rect class="fill-green-20" width="56" height="56" x="338.53" y="12" rx="4"/>
       <text class="logo__subproduct" transform="translate(348 48)">EM</text>
     </g>
-  </svg>
+  </svg> --}}
 
   {{!-- <!-- long -->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 80" class="header__logo">
@@ -95,7 +95,7 @@
     <text class="logo__subproduct" transform="translate(358 48)">ENSINO MÉDIO</text>
   </svg> --}}
 
-  <h1 class="scr-only">Bem-vindo ao CORESkills!</h1>
+  <h1 class="scr-only">Bem-vindo ao Programa Semente!</h1>
 
   {{userLastAccess}}
 
@@ -154,7 +154,7 @@
         <a class="global-nav__link"><span>Biblioteca</span><span id="j-libraryNotificationNumber" class="counter__bubble">0</span></a>
       </li>
 
-      
+
       <!-- follow up header -->
       {{#if hasReport}}
           <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
@@ -173,7 +173,7 @@
         </li>
       {{else}}
       {{/if}}
-      
+
       {{#if (equalstr role 'admin')}}
         <li class="global-nav__item" id="header-conteudos" {{action 'goToConteudos' on="click"}}>
           <a class="global-nav__link"><span>Conteúdos</span></a>
@@ -182,7 +182,7 @@
       {{!-- <li class="global-nav__item" id="header-gersistema">{{#link-to 'gersistema.gerdata' (query-params
         instituicao_id=0 perPage=10) class="global-nav__link"}}Administração{{/link-to}}</li> --}}
       {{/if}}
-      
+
 
       <!-- MOBILE -->
       <!-- Em mobile, esses links não ficam dentro de um submenu e por isso tiveram que ser duplicados. -->
@@ -194,7 +194,7 @@
       <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
         <a href="#" class="global-nav__link header-indicadores" id="change_pass_trigger">
           <span>Alterar senha</span></a></li>
-      
+
       <li class="global-nav__item global-nav--mob-only" {{action 'goToProfile'}}>
         <a href="#" class="global-nav__link header-indicadores">
           <span>Meu perfil</span></a></li>
