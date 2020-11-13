@@ -8,7 +8,8 @@ export default Ember.Controller.extend({
        if(input) {
            input.focus();
        }
-    })
+    }),
+    
 });
 
 
