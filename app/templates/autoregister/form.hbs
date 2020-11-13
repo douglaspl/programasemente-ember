@@ -1,5 +1,5 @@
 <main class="main self-registration">
-  {{!-- <header class="row m-bottom--xl m-top--sm middle-xs">
+    {{!-- <header class="row m-bottom--xl m-top--sm middle-xs">
     <div class="col-xs-5 col-md-2">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80">
         <g>
@@ -46,7 +46,8 @@
         </div>
   </div> --}}
     <span class="self-registration__graphism graphism-circle"></span>
-    <img class="self-registration__img" src="/assets/img/img-autocadastro-login.png" alt="Três pessoas sorrindo: uma professora negra, uma aluna pre-adolescente e um aluno do infantil.">
+    <img class="self-registration__img" src="/assets/img/img-autocadastro-login.png"
+        alt="Três pessoas sorrindo: uma professora negra, uma aluna pre-adolescente e um aluno do infantil.">
 
     <div class="row m-bottom--xl m-top--xxl middle-xs">
         <div class="col-xs-5 col-md-3">
@@ -55,13 +56,14 @@
     </div>
     <div class="row">
         <form autocomplete="off" class="col-xs-12 col-md-4">
-        <div >
             <p>Para iniciar seu cadastro, por favor defina um login e uma senha para você.</p>
             <div id="form-login" class="form-group m-top--lg w100" autocomplete="off">
                 <label class="form-group__label" for="login">Nome de usuário</label>
-                <input class="form-group__input" type="text" id="login" onblur={{action 'verifyEmail'}} onkeydown={{action 'liveCheckEmail'}} autocomplete="off">
+                <input class="form-group__input" type="text" id="login" onblur={{action 'verifyEmail'}}
+                    onkeydown={{action 'liveCheckEmail'}} autocomplete="off">
                 <span id='login-error'></span>
-                <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="login-error" data-animation="fadeIn">
+                <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="login-error"
+                    data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>
                     <span class="alert__msg"></span>
                 </p>
@@ -75,22 +77,19 @@
                 <label class="form-group__label" for="senha">Repetir Senha</label>
                 <input class="form-group__input" type="password" id="senha2" onkeyup={{action 'verifyPassword'}}>
             </div>
-        </div>
         </form>
     </div>
-      <div class="row">
-           <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="form-error" data-animation="fadeIn">
+    <div class="row">
+        <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="form-error"
+            data-animation="fadeIn">
             <span class="alert__icon icon-x"></span>
             <span class="alert__msg"></span>
-          </p>
-        </div>
+        </p>
+    </div>
     <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn--md m-top--lg"
-                    disabled="true"
-                    id='submit'
-                    type="button"
-                    onclick={{action 'createUser'}}>Avançar</button>
+            <button class="btn btn--md m-top--lg" disabled="true" id='submit' type="button"
+                onclick={{action 'createUser'}}>Avançar</button>
         </div>
     </div>
 </main>

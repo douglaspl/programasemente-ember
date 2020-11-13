@@ -90,6 +90,7 @@ export default Ember.Controller.extend({
           }
 
         } else {
+          // Situação não tratada ainda
           document.getElementById('login-error').innerHTML = '';
         }
 
@@ -99,11 +100,18 @@ export default Ember.Controller.extend({
     verifyPassword: function () {
       let p1 = document.getElementById('senha').value;
       let p2 = document.getElementById('senha2').value;
+
+      const passAlert = document.getElementById('password-error');
+      const alertAnimation = passAlert.dataset.animation;
+      const msg = passAlert.querySelector('[class*="__msg"]');
+      const errorMsg = 'As senhas digitadas não são iguais.';
+
       if (p1 === p2) {
         document.getElementById('submit').disabled = false;
-        document.getElementById('password-error').innerHTML = '';
+        passAlert.classList.remove('alert--is-show');
       } else {
-        document.getElementById('password-error').innerHTML = 'Senhas não batem sss';
+        passAlert.classList.add('alert--is-show', alertAnimation);
+        msg.innerHTML = '<strong>' + errorMsg + '</strong>';
       }
     },
     createUser: function () {
@@ -115,7 +123,7 @@ export default Ember.Controller.extend({
         if (s.get('idx') == 1) {
           sistema = s;
         }
-      })
+      });
       let pessoa = this.get('store').createRecord('pessoa');
       let that = this;
       pessoa.autoRegister({
