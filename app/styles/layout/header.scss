@@ -46,4 +46,8 @@
         margin-left: auto;
     }
 
+    // Esconde header durante autocadastro
+    .no-header & {
+        display: none;
+    }
 }
