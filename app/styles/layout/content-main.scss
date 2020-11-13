@@ -12,4 +12,18 @@
         overflow: hidden;
     }
 
+    .no-header & {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        > * {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            height: auto;
+        }
+
+    }
+
 }
