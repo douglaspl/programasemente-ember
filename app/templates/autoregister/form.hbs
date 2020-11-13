@@ -13,10 +13,10 @@
         <form autocomplete="off" class="col-xs-12 col-md-4">
             <p>Para iniciar seu cadastro, por favor defina um login e uma senha para você.</p>
             <div id="form-login" class="form-group m-top--lg w100" autocomplete="off">
-                <label class="form-group__label" for="login">Nome de usuário</label>
+                <label class="form-group__label" for="login" maxlength="100">Nome de usuário</label>
                 <input autofocus class="form-group__input" type="text" id="login" onblur={{action 'verifyEmail'}}
                     onkeydown={{action 'liveCheckEmail'}} autocomplete="off">
-                <span id='login-error'></span>
+                {{!-- <span id='login-error'></span> --}}
                 <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="login-error"
                     data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>
@@ -30,17 +30,16 @@
             </div>
             <div class="form-group m-top--sm w100">
                 <label class="form-group__label" for="senha">Repetir Senha</label>
-                <input class="form-group__input" type="password" id="senha2" onkeyup={{action 'verifyPassword'}}>
+                <input class="form-group__input" type="password" id="senha2" onkeyup={{action 'verifyPassword'}} onblur={{action 'verifyPassword'}}>
+                <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="pass-error"
+                    data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
             </div>
         </form>
     </div>
-    <div class="row">
-        <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="form-error"
-            data-animation="fadeIn">
-            <span class="alert__icon icon-x"></span>
-            <span class="alert__msg"></span>
-        </p>
-    </div>
+
     <div class="row">
         <div class="col-xs-12">
             <button class="btn btn--md m-top--lg" disabled="true" id='submit' type="button"
@@ -48,3 +47,4 @@
         </div>
     </div>
 </main>
+{{emailFocus}}
