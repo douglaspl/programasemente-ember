@@ -14,10 +14,9 @@
 
     .no-header & {
         display: block;
-        display: flex;
         flex: 1;
-        flex-direction: column;
         height: auto;
+        overflow: auto;
 
         > * {
             display: flex;

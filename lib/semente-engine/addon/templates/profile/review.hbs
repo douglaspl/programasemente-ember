@@ -97,26 +97,63 @@
 
 
     <section class="j-step03">
-      <h3 class="title-3">Conclusão de cadastro</h3>
+      <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
-      <h4 class="title-4">Aluno</h4>
-      <ul>
-        <li>{{model.name}}</li>
-        <li>{{model.genero}}</li>
-        {{#each model.plataformaAnos as |pa| }}
-          <li>{{pa.name}}</li>
-        {{/each}}
-        {{#each model.plataformaTurmas as |pt| }}
-          <li>{{pt.name}}</li>
-        {{/each}}
-      </ul>
+      <div class="flow--xxl">
+        <section>
+          <h4 class="title-4">Aluno</h4>
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
 
-      <h4 class="title-4">Responsáveis</h4>
-      {{#each model.responsaveis as |resp| }}
-        {{responsible-info-card responsavel=resp}}
-      {{/each}}
+              <ul class="self-registration__review-box flow">
+                {{!-- <li>{{model.thumb}}</li> --}}
+                <li>
+                  <span class="text-aux">Login</span>
+                  {{model.login}}
+                </li>
+                <li>
+                  <span class="text-aux">Nome completo</span>
+                  {{model.name}}
+                </li>
+                <li>
+                  <span class="text-aux">Gênero</span>
+                  {{model.genero}}
+                </li>
+                {{#each model.plataformaAnos as |pa| }}
+                  <li>
+                    <span class="text-aux">Série</span>
+                    {{pa.name}}
+                  </li>
+                {{/each}}
+                {{#each model.plataformaTurmas as |pt| }}
+                  <li>
+                    <span class="text-aux">Turma</span>
+                    {{pt.name}}
+                  </li>
+                {{/each}}
 
-      <button class="btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h4 class="title-4">Responsáveis</h4>
+          <div class="row">
+
+            {{#each model.responsaveis as |resp| }}
+
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp}}
+              </div>
+
+            {{/each}}
+
+          </div>
+        </section>
+
+        <button class="btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+      </div>
 
     </section>
 

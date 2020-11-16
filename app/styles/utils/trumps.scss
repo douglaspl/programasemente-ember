@@ -1,6 +1,7 @@
-.flow > * + * {
-    margin-top: clamp($distance--md, $distance--sm, $distance--lg);
-}
+.flow > * + *      { margin-top: $distance--md; }
+.flow--lg > * + *  { margin-top: $distance--lg; }
+.flow--xl > * + *  { margin-top: $distance--xl; }
+.flow--xxl > * + * { margin-top: $distance--xxl; }
 
 .bg--students {
     background-color: $blue-navy-50;
