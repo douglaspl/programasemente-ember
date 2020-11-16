@@ -70,35 +70,34 @@
     <section class="flow j-step01">
         <h3 class="title-3">Suas informações</h3>
 
-        <div class="flow">
-          <h4 class="title-4">Informações pessoais</h4>
-          <section class="flow">
+        <section class="flow">
+          {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
             {{profile-form pessoa=model}}
-          </section>
-        </div>
+        </section>
+
     </section>
 
-    <section class="j-step02">
-      <section class="flow j-step02">
-        <h3 class="title-3">Dados de Responsáveis</h3>
+    <section class="flow j-step02">
+      <h3 class="title-3">Dados de Responsáveis</h3>
 
-        <div class="flow">
-          {{#each model.responsaveis as |responsavel| }}
-            {{responsible-form responsavel=responsavel model=model}}
-          {{/each}}
+      <section class="flow">
 
-          {{#if canAddResponsibles}}
-            <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
-          {{/if}}
-        </div>
+        {{#each model.responsaveis as |responsavel| }}
+          {{responsible-form responsavel=responsavel model=model}}
+        {{/each}}
+
+        {{#if canAddResponsibles}}
+          <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
+        {{/if}}
       </section>
 
     </section>
 
-    <section class="j-step03">
-      <h4 class="title-4">Resumo das Informações</h4>
 
-      Informações Pessoais
+    <section class="j-step03">
+      <h3 class="title-3">Resumo das Informações</h3>
+
+      <h4 class="title-4">Informações Pessoais</h4>
       <ul>
         <li>{{model.name}}</li>
         <li>{{model.genero}}</li>
@@ -110,7 +109,7 @@
         {{/each}}
       </ul>
 
-      <h3>Responsaveis</h3>
+      <h4 class="title-4">Responsaveis</h4>
       {{#each model.responsaveis as |resp| }}
         {{responsible-info-card responsavel=resp}}
       {{/each}}
