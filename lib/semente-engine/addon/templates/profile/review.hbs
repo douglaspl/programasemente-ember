@@ -1,3 +1,4 @@
+
 <header class="row m-bottom--xl m-top--sm middle-xs">
 
     <div class="col-xs-5 col-md-2">
@@ -224,8 +225,9 @@
         {{student-info-card student=dependente}}
       {{/each}}
 
-      <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+      <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
     </section>
   </section>
   <!-- fim RESPONSÁVEL -->
   {{/if}}
+{{preventDefault}}
