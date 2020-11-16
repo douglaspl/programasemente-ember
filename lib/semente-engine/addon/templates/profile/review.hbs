@@ -65,29 +65,37 @@
 
   {{#if (equalstr model.role "aluno") }}
   <!-- início ALUNO -->
-  <section>
+  <form class="steps j-steps--01" autocomplete="off">
 
-    <section class="steppppp01">
-        <h3 class="title-3 m-bottom--md">Suas informações</h3>
+    <section class="flow j-step01">
+        <h3 class="title-3">Suas informações</h3>
 
-        <h4 class="title-4">Informações pessoais</h4>
-        {{profile-form pessoa=model}}
+        <div class="flow">
+          <h4 class="title-4">Informações pessoais</h4>
+          <section class="flow">
+            {{profile-form pessoa=model}}
+          </section>
+        </div>
     </section>
 
-    <section class="steppppp02">
-      <h4 class="title-4">Dados de Responsáveis</h4>
+    <section class="j-step02">
+      <section class="flow j-step02">
+        <h3 class="title-3">Dados de Responsáveis</h3>
 
-      {{#each model.responsaveis as |responsavel| }}
-        {{responsible-form responsavel=responsavel model=model}}
-      {{/each}}
+        <div class="flow">
+          {{#each model.responsaveis as |responsavel| }}
+            {{responsible-form responsavel=responsavel model=model}}
+          {{/each}}
 
-      {{#if canAddResponsibles}}
-        <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
-      {{/if}}
+          {{#if canAddResponsibles}}
+            <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
+          {{/if}}
+        </div>
+      </section>
 
     </section>
 
-    <section class="steppppp03">
+    <section class="j-step03">
       <h4 class="title-4">Resumo das Informações</h4>
 
       Informações Pessoais
@@ -111,7 +119,7 @@
 
     </section>
 
-  </section>
+  </form>
   <!-- fim ALUNO -->
 
 

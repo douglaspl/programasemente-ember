@@ -1,3 +1,7 @@
+.flow > * + * {
+    margin-top: clamp($distance--md, $distance--sm, $distance--lg);
+}
+
 .bg--students {
     background-color: $blue-navy-50;
     background-image: url('/assets/img/bg--login.jpg');
