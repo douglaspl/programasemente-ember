@@ -67,10 +67,10 @@
 
   {{#if (equalstr model.role "aluno") }}
   <!-- início ALUNO -->
-  <form class="steps-content j-steps-content--01 carousel  carousel--{{step}} j-carousel"  autocomplete="off">
+  <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
     <section class="flow carousel__step carousel__step--1 j-step1">
-        <h3 class="title-3">Suas informações</h3>
+      <h3 class="title-3">Suas informações</h3>
 
         <section class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
@@ -89,7 +89,7 @@
         {{/each}}
 
         {{#if canAddResponsibles}}
-            <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span>Adicionar Responável</button>
+            <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span>Adicionar Responsável</button>
         {{/if}}
 
       </section>
@@ -154,7 +154,7 @@
         </section>
         <button class="btn" onclick={{action 'carouselBackward'}}>Voltar</button>
         <button class="btn btn--md" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
-        
+
       </div>
 
     </section>
@@ -176,42 +176,69 @@
 
   {{else if (equalstr model.role "instrutor") }}
   <!-- início INSTRUTOR -->
-  <section>
-    <section class="steppppp01">
-      <h3>Dados pessoais</h3>
-      {{profile-form pessoa=model}}
+ <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+    <section class="flow carousel__step carousel__step--1 j-step1">
+      <h3 class="title-3">Suas informações</h3>
+      <section class="flow flow--xxl">
+        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+      </section>
     </section>
 
-    <section class="steppppp02">
-      <h3>Dados Responsavel</h3>
+    <section class="flow carousel__step carousel__step--2 j-step2">
+      <h3 class="title-3">Você é responsável por algum aluno na Educação Infantil ou Fundamental 1?</h3>
+      <p>Em caso de resposta positiva, no próximo passo você poderá cadastrar os alunos pelos quais você é responsável.</p>
 
-      {{input type="checkbox" checked=model.isAlsoResponsible click=(action (action "initTeacherResponsible" model) value='target.checked')}}
-      <label> Você é responsavel por algum aluno na Educação Infantil ou Fundamental 1? </label>
+      <section class="flow flow--xxl">
+        <div class="checkbox">
+          <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
+          {{input class="checkbox__input"
+                  checked=model.isAlsoResponsible
+                  click=(action (action "initTeacherResponsible" model)
+                  name="isAlsoResponsible"
+                  type="checkbox"
+                  value='target.checked')}}
+        </div>
+      </section>
 
-      {{#if model.isAlsoResponsible }}
-        <h3>Dados Dependentes</h3>
-        {{#each model.dependentes as |dep| }}
-          {{student-form pessoa=dep}}
-        {{/each}}
-        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
-      {{/if}}
+      <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
+      <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
+
+      <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span><span>Adicionar Responsável</span></button>
+
     </section>
 
-    <section class="steppppp03">
-      <h3>Resumo das Informações</h3>
-      {{teacher-info-card instrutor=model}}
+    <section class="flow carousel__step carousel__step--3 j-step3">
+      <!-- lugar errado -->
+        {{#if model.isAlsoResponsible }}
+          {{#each model.dependentes as |dep index| }}
+            <h3 class="title-3">{{visible-index index}}° Aluno</h3>
+            <section class="flow flow--xxl">
+              {{student-form pessoa=dep}}
+            </section>
+          {{/each}}
 
-      {{#if model.dependentes }}
-        {{#each model.dependentes as |dependente| }}
-          {{student-info-card student=dependente}}
-        {{/each}}
-      {{/if}}
+          <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
+
+        {{/if}}
+    </section>
+
+    <section class="flow carousel__step carousel__step--4 j-step4">
+
+      <h3 class="title-3">Resumo das Informações</h3>
+      <section class="flow flow--xxl">
+        {{teacher-info-card instrutor=model}}
+        {{#if model.dependentes }}
+          {{#each model.dependentes as |dependente| }}
+            {{student-info-card student=dependente}}
+          {{/each}}
+        {{/if}}
+      </section>
 
       <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
 
     </section>
 
-  </section>
+  </form>
   <!-- início INSTRUTOR -->
 
 
@@ -235,10 +262,12 @@
 
   {{else if (equalstr model.role "responsavel") }}
   <!-- início RESPONSÁVEL -->
-  <section>
-    <section class="steppppp01">
-      <h3>Dados pessoais</h3>
-      {{profile-form pessoa=model}}
+  <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+    <section class="flow carousel__step carousel__step--1 j-step1">
+      <h3 class="title-3">Suas informações</h3>
+      <section class="flow flow--xxl">
+        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+      </section>
 
       {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
     </section>
@@ -251,11 +280,11 @@
       {{/each}}
 
       {{#if canAddDependents }}
-        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+        <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
       {{/if}}
     </section>
 
-    <section class="steppppp02">
+    <section class="steppppp03">
       <h3>Resumo das Informações</h3>
 
       {{responsible-info-card responsavel=model}}
@@ -266,7 +295,8 @@
 
       <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
     </section>
-  </section>
+
+  </form>
   <!-- fim RESPONSÁVEL -->
   {{/if}}
 {{preventDefault}}
