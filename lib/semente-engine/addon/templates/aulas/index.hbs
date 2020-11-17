@@ -42,7 +42,7 @@
  
     <h2>SITUAÇÃO</h2>
     <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
-      <option value="0">Todas</option>
+      <option selected="selected" value="0">Todas</option>
       <option value="1">Não Aplicada</option>
       <option value="2">Parcialmente Aplicada</option>
       <option value="3">Aplicada</option>
@@ -51,8 +51,8 @@
 
     <div>
     <h2>ORDENAÇÃO</h2>
-    <select id="ordem" {{!--action 'atualizaAulas' on="change"--}}>
-      <option value="0">Ordem Crescente</option>
+    <select id="order" {{action 'atualizaAulas' on="change"}}>
+      <option selected="selected" value="0">Ordem Crescente</option>
       <option value="1">Ordem Decrescente</option>
     </select>
     </div>
