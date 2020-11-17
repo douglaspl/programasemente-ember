@@ -9,20 +9,32 @@
     <button type="button" {{action "filtroAgrupa" "Biblioteca"}}>Biblioteca</button>
   </div>
 
+
+  <div class="search">
+    <div>
+      <h2>BUSCAR CONTEÚDOS</h2>
+      {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }} 
+    </div>
+  </div>
+
+
   {{#each agrupamentos as |agrupamento|}}
     {{#if (equalstr show 'Biblioteca')}}
       {{#if (equalstr agrupamento.name 'Biblioteca')}}
         <h4 class="title-3 list__name">TIPO: Biblioteca</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        thisIndex=this search=search}}
       {{/if}}
     {{else}}
       {{#if (equalstr agrupamento.name 'Básico')}}
         <h4 class="title-3 list__name">TIPO: Básico</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        thisIndex=this search=search}}
       {{/if}}
       {{#if (equalstr agrupamento.name 'Complementar')}}
         <h4 class="title-3 list__name">TIPO: Complementar</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        thisIndex=this search=search}}
       {{/if}}
     {{/if}}
   {{/each}}
