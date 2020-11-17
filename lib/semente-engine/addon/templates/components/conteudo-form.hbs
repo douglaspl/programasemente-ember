@@ -3,8 +3,8 @@
 <div class="row">
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
-    {{input name='video' value=conteudo.videoUrl placeholder='Endereço de Vídeo' }}
-    
+    <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo' 
+        onchange={{ action 'urlvideoChanged' value='target.value' }}>
     <div class="row"> OU </div>
 
     <label for="">Arquivo em PDF, PNG ou JPEG</label>

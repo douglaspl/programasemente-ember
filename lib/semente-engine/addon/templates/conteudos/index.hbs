@@ -1,10 +1,29 @@
 <ul>
-    <li>
-        <a {{action 'goToCreateConteudo' on="click"}}>Criar conteúdo</a>
-    </li>
+  <li>
+      <button type="button" class="login__cta btn" {{action "goToCreateConteudo"}}>Cadastrar conteúdo</button>
+  </li>
+  <div class="title-3 btn btn--link list__name{{if (equalstr show 'Aulas') '--is-active' ''}}">
+    <button type="button" {{action "filtroAgrupa" "Aulas"}}>Aula</button>
+  </div>
+  <div class="title-3 btn btn--link list__name{{if (equalstr show 'Biblioteca') '--is-active' ''}}">
+    <button type="button" {{action "filtroAgrupa" "Biblioteca"}}>Biblioteca</button>
+  </div>
 
-    {{#each conteudos as |conteudo|}}
-      {{conteudo-card conteudo=conteudo}}
-    {{/each}}
-
+  {{#each agrupamentos as |agrupamento|}}
+    {{#if (equalstr show 'Biblioteca')}}
+      {{#if (equalstr agrupamento.name 'Biblioteca')}}
+        <h4 class="title-3 list__name">TIPO: Biblioteca</h4>
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+      {{/if}}
+    {{else}}
+      {{#if (equalstr agrupamento.name 'Básico')}}
+        <h4 class="title-3 list__name">TIPO: Básico</h4>
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+      {{/if}}
+      {{#if (equalstr agrupamento.name 'Complementar')}}
+        <h4 class="title-3 list__name">TIPO: Complementar</h4>
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos thisIndex=this}}
+      {{/if}}
+    {{/if}}
+  {{/each}}
 </ul>
