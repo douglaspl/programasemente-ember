@@ -9,9 +9,15 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="name">Nome Completo</label>
-                <input type="text" for="validation" class="form-group__input" id="person_name" name="name"
-                    value={{pessoa.name}} placeholder='Nome Completo' onkeydown={{action 'liveCheckName'}}
-                    onfocus={{action 'trimAll'}} onblur={{action 'trimAll'}}>
+                <input  class="form-group__input"
+                        for="validation"
+                        id="person_name"
+                        name="name"
+                        onblur={{action 'trimAll'}}
+                        onfocus={{action 'trimAll'}}
+                        onkeydown={{action 'liveCheckName'}}
+                        type="text"
+                        value={{pessoa.name}}>
 
             </div>
         </div>
@@ -92,56 +98,61 @@
 
 
 {{else if (equalstr pessoa.role "instrutor") }}
+<div class="flow">
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="name_responsavel">Nome Completo</label>
+                {{input     class="form-group__input"
+                            name="name_responsavel"
+                            value=pessoa.name}}
+                {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+            </div>
+        </div>
 
-<div class="row">
+        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+            <div class="form-group w100">
+                <label class="form-group__label" for="celular">Número de Celular</label>
+                {{input class="form-group__input"
+                        name='celular'
+                        value=pessoa.telefone }} <!-- placeholder='(xx) xxxxx-xxxx '-->
+            </div>
+        </div>
 
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-            <label for="name_responsavel">Nome Completo</label>
-            {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
-            {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="checkbox">
+                <label class="checkbox__label" for="celular">Você aplica o programa?</label>
+                {{input class="checkbox__input" type="checkbox" checked=pessoa.isAplicador}}
+            </div>
         </div>
     </div>
 
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-            <label for="celular">Número de Celular</label>
-            {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
-        </div>
-    </div>
+    {{#if pessoa.isAplicador}}
+    <div class="row">
 
-</div>
-
-
-
-
-<div class="row">
-    {{input type="checkbox" checked=pessoa.isAplicador}}
-    <label for="celular">Você aplica o programa?</label>
-</div>
-
-{{#if pessoa.isAplicador}}
-<div class="row">
-
-    {{#each segmentos as |seg| }}
-    <div class="col-xs-2">
-        <div class="row">
-            <input type="checkbox" id="segmento{{seg.id}}"
-                onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
-            <label>{{seg.titulo}}</label>
-        </div>
-        {{#each seg.plataformaAnos as |platAno|}}
-        <div class="row">
-            <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
-            <label>{{platAno.name}}</label>
-        </div>
+        {{#each segmentos as |seg| }}
+            <div class="col-xs-2">
+                <div class="row">
+                    <input type="checkbox" id="segmento{{seg.id}}"
+                        onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                    <label>{{seg.titulo}}</label>
+                </div>
+                {{#each seg.plataformaAnos as |platAno|}}
+                <div class="row">
+                    <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                        id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
+                    <label>{{platAno.name}}</label>
+                </div>
+                {{/each}}
+            </div>
         {{/each}}
-    </div>
-    {{/each}}
 
+    </div>
+    {{/if}}
 </div>
-{{/if}}
 
 <button type="button" class="btn btn--md" {{action "saveResponsible" pessoa}}><span>Avançar</span><span class="btn__icon icon-arrow-right"></span></button>
 
@@ -156,19 +167,26 @@
 
 
 {{else if (equalstr pessoa.role "responsavel") }}
-
-<div class="row">
-    <label for="name_responsavel">Nome Completo</label>
-    {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
-    {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
-</div>
-
-<div class="row">
-    <label for="celular">Número de Celular</label>
-    {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
-    {{!-- <select name="celular" id="celular">
-            <option value="">---</option>
-        </select> --}}
+<div class="flow">
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" >Nome Completo</label>
+                {{input class="form-group__input" name='name_responsavel' value=pessoa.name}}
+            </div>
+        </div>
+        <!-- placeholder='Nome Completo' -->
+        {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+            <div class="form-group w100">
+                <label class="form-group__label" for="celular">Número de Celular</label>
+                {{input class="form-group__input" name="celular" value=pessoa.telefone }} <!-- placeholder='(xx) xxxxx-xxxx '-->
+                {{!-- <select name="celular" id="celular">
+                <option value="">---</option>
+                </select> --}}
+            </div>
+        </div>
+    </div>
 </div>
 
 <button type="button" class="btn btn--md" {{action "saveResponsible" pessoa}}><span>Avançar</span><span class="btn__icon icon-arrow-right"></span></button>
