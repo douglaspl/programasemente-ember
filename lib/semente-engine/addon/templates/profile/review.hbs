@@ -202,7 +202,7 @@
       <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
       <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
 
-      <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span>Adicionar Responsável</button>
+      <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span><span>Adicionar Responsável</span></button>
 
     </section>
 
@@ -216,7 +216,7 @@
             </section>
           {{/each}}
 
-          <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+          <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
 
         {{/if}}
     </section>
@@ -261,10 +261,12 @@
 
   {{else if (equalstr model.role "responsavel") }}
   <!-- início RESPONSÁVEL -->
-  <section>
-    <section class="steppppp01">
-      <h3>Dados pessoais</h3>
-      {{profile-form pessoa=model}}
+  <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+    <section class="flow carousel__step carousel__step--1 j-step1">
+      <h3 class="title-3">Suas informações</h3>
+      <section class="flow flow--xxl">
+        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+      </section>
 
       {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
     </section>
@@ -277,11 +279,11 @@
       {{/each}}
 
       {{#if canAddDependents }}
-        <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
+        <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
       {{/if}}
     </section>
 
-    <section class="steppppp02">
+    <section class="steppppp03">
       <h3>Resumo das Informações</h3>
 
       {{responsible-info-card responsavel=model}}
@@ -292,7 +294,8 @@
 
       <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
     </section>
-  </section>
+
+  </form>
   <!-- fim RESPONSÁVEL -->
   {{/if}}
 {{preventDefault}}
