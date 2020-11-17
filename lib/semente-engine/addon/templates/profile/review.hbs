@@ -22,7 +22,7 @@
 
     <div class="col-xs-12 col-md-8 col-md-offset-1">
       <p class="title-4">Seja bem-vindo(a) ao Programa Semente!</p>
-      <h1 class="title-2">O cadastro será na instituição <span class="color-green-40">{{escola.name}}</span></h1>
+      <h1 class="title-2">O cadastro será na instituição <span class="color-green-40">{{pessoa.instituicao.name}}</span></h1>
     </div>
 
   </header>
@@ -35,15 +35,15 @@
 
         <div class="col-xs-12">
             <ul class="steps m-v--md">
-                <li class="steps__step steps__step--is-active">
+                <li id="s1" class="steps__step steps__step--is-active">
                     <span class="steps__label">Alunos</span>
                     <span class="steps__number">1</span>
                 </li>
-                <li class="steps__step">
+                <li id="s2" class="steps__step">
                     <span class="steps__label">Responsáveis</span>
                     <span class="steps__number">2</span>
                 </li>
-                <li class="steps__step">
+                <li id="s3" class="steps__step">
                     <span class="steps__label">Revisão</span>
                     <span class="steps__number">3</span>
                 </li>
@@ -66,25 +66,25 @@
 
   {{#if (equalstr model.role "aluno") }}
   <!-- início ALUNO -->
-  <form class="steps-content j-steps-content--01" autocomplete="off">
+  <form class="steps-content j-steps-content--01 carousel  carousel--{{step}} j-carousel"  autocomplete="off">
 
-    <section class="flow j-step01">
+    <section class="flow carousel__step carousel__step--1 j-step1">
         <h3 class="title-3">Suas informações</h3>
 
         <section class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
-            {{profile-form pessoa=model}}
+            {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
         </section>
 
     </section>
 
-    <section class="flow j-step02">
+    <section class="flow carousel__step carousel__step--2 j-step2">
       <h3 class="title-3">Dados de Responsáveis</h3>
 
       <section class="flow flow--xxl">
 
         {{#each model.responsaveis as |responsavel| }}
-          {{responsible-form responsavel=responsavel model=model}}
+          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward')}}
         {{/each}}
 
         {{#if canAddResponsibles}}
@@ -96,7 +96,7 @@
     </section>
 
 
-    <section class="j-step03">
+    <section class="carousel__step carousel__step--3 j-step3">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
       <div class="flow--xxl">
@@ -151,8 +151,9 @@
 
           </div>
         </section>
-
+        <button class="btn" onclick={{action 'carouselBackward'}}>Voltar</button>
         <button class="btn btn--md" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+        
       </div>
 
     </section>

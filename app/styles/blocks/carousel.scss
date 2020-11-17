@@ -1,0 +1,69 @@
+.carousel {
+    $this: &;
+
+    //overflow: hidden;
+    position: relative;
+
+    &__step {
+        bottom: 0;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        left: 0;
+        margin: auto;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: 300ms cubic-bezier(.25, .46, .45, .94); // IE fallback
+        transition: 300ms var(--ease-out-quad);
+        visibility: hidden;
+        width: 100%;
+
+        > *:first-child {
+            margin-top: auto;
+        }
+
+        > *:last-child {
+            margin-bottom: auto;
+        }
+
+        &--0,
+        &--1 {
+            position: relative;
+        }
+
+        &--0 + &--1 {
+            position: absolute;
+        }
+    }
+
+    
+    &--1 {
+        [class*='step--1'] { opacity: 1; transform: translateX(0); visibility: visible; };
+        [class*='step--2'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+        [class*='step--3'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+        [class*='step--4'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+    }
+
+    &--2 {
+        [class*='step--1'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--2'] { opacity: 1; transform: translateX(0); visibility: visible; };
+        [class*='step--3'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+        [class*='step--4'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+    }
+
+    &--3 {
+        [class*='step--1'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--2'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--3'] { opacity: 1; transform: translateX(0); visibility: visible; };
+        [class*='step--4'] { opacity: 0; transform: translateX(10%); visibility: hidden; };
+    }
+
+    &--4 {
+        [class*='step--1'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--2'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--3'] { opacity: 0; transform: translateX(-10%); visibility: hidden; };
+        [class*='step--4'] { opacity: 1; transform: translateX(0); visibility: visible; };
+    }
+
+}

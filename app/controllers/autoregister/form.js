@@ -28,16 +28,16 @@ export default Ember.Controller.extend({
           let errorMsg = 'Espaço e caracteres especiais não são permitidos';
 
           if (!regex.test(key)) {
-            // Pega Form e tira classe de validado
-            let form = document.getElementById('form-login');
-            form.classList.remove('form-group--is-validated');
+            // Pega form container e tira classe de validado
+            let inputContainer = document.getElementById('login').closest('.form-group__input-container');
+            inputContainer.classList.remove('form-group__input-container--is-validated');
 
             // Pega alerta
             let errorCompartiment = document.getElementById('login-error');
-           
+
             // Pega animação do alerta
             let alertAnimation = errorCompartiment.dataset.animation;
-           
+
             // Pega container da mensagem a ser escrita
             let msg = errorCompartiment.querySelector('[class*="__msg"]');
             errorCompartiment.classList.remove('alert--is-show', alertAnimation);
@@ -50,17 +50,17 @@ export default Ember.Controller.extend({
               // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
               errorCompartiment.classList.add('alert--is-show', alertAnimation);
             }
-            
+
            event.preventDefault();
            return false;
-            
+
           } else {
             let errorCompartiment = document.getElementById('login-error');
             let alertAnimation = errorCompartiment.dataset.animation;
             errorCompartiment.classList.remove('alert--is-show', alertAnimation);
             return true;
           }
-                        
+
       });
 
   },
@@ -72,7 +72,7 @@ export default Ember.Controller.extend({
     let pessoa = this.get('store').createRecord('pessoa', {
       email: email
     });
-    let form = document.getElementById('form-login');
+    let inputContainer = document.getElementById('login').closest('.form-group__input-container');
     let input = document.getElementById('login');
     // Pega alerta
     const errorCompartiment = document.getElementById('login-error');
@@ -87,11 +87,11 @@ export default Ember.Controller.extend({
       instituicaoId: this.get('escola').get('id')
     }).then(function (response) {
       errorCompartiment.classList.remove('alert--is-show', alertAnimation);
-      form.classList.add('form-group--is-validated');
+      inputContainer.classList.add('form-group__input-container--is-validated');
     }).catch(function (error) {
       if (error.errors) {
 
-        form.classList.remove('form-group--is-validated');
+        inputContainer.classList.remove('form-group__input-container--is-validated');
         if (input) {
           input.focus();
         }
