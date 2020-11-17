@@ -13,4 +13,5 @@ export default DS.Model.extend({
     tema: DS.belongsTo('tema', { async: true }),
     publicos: DS.hasMany('publico', { async: true }),
     situacao: DS.attr(),
+    dataCriacao: DS.attr("date"),
 });
