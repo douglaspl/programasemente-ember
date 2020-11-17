@@ -3,6 +3,33 @@
 .flow--xl > * + *  { margin-top: $distance--xl; }
 .flow--xxl > * + * { margin-top: $distance--xxl; }
 
+@keyframes recent-added {
+    from    { background-color: $green-10; }
+    to      { background-color: transparent; }
+}
+
+.recent-added {
+    position: relative;
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::before {
+        $size: $distance--sm;
+
+        animation: recent-added 3s ease-in-out 0s 1 normal forwards;
+        bottom: -$size;
+        content: '';
+        left: -$size;
+        position: absolute;
+        right: -$size;
+        top: -$size;
+        z-index: 1;
+    }
+}
+
 .bg--students {
     background-color: $blue-navy-50;
     background-image: url('/assets/img/bg--login.jpg');

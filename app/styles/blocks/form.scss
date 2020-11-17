@@ -80,7 +80,7 @@
       &+#{$this}__input:not(.pwdt) {
         margin-left: $distance--md;
       }
-   
+
     }
 
 
@@ -192,27 +192,40 @@
 
     }
 
-    &--is-validated {
-        
-        &::after {
+    &__input-container {
+      position: relative;
 
-            background-color: $lemon-10;
-            color: $lemon-50;
-            content: "";
-            font-family: "icomoon";
-            display: flex;
-            font-size: 1.2rem;
-            font-weight: bold;
-            position: relative;
-            text-align: center;
-            left: 100%;
-            justify-content: flex-start;
-            transform: translate(1rem, -130%);
-            max-width: 20px;
-            padding: 0.2em;
-            border-radius: 50px;
-        }
+      &::after {
+        $size: $distance--md;
+
+        align-items: center;
+        color: $green-50;
+        content: "";
+        display: inline-flex;
+        font-family: "icomoon";
+        font-size: $font-size--lg;
+        height: $size;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        right: $distance--xs;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $size;
       }
+
+      &--is-validated {
+        #{$this}__input {
+          background-color: $green-0;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+
+      }
+
+    }
 
   }
 
