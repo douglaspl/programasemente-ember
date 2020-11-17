@@ -1,14 +1,17 @@
-<ul class="self-registration__review-box flow">
-    <li>
-        <span class="text-aux">E-mail</span>
-        {{responsavel.email}}
-    </li>
-    <li>
-        <span class="text-aux">Nome completo</span>
-        {{responsavel.name}}
-    </li>
-    <li>
-        <span class="text-aux">Celular</span>
-        {{responsavel.telefone}}
-    </li>
-</ul>
+<div class="self-registration__review-box">
+    <h5>{{visible-index index}}° responsável</h5>
+    <ul class="flow">
+        <li>
+            <span class="text-aux">E-mail</span>
+            {{responsavel.email}}
+        </li>
+        <li>
+            <span class="text-aux">Nome completo</span>
+            {{responsavel.name}}
+        </li>
+        <li>
+            <span class="text-aux">Celular</span>
+            {{responsavel.telefone}}
+        </li>
+    </ul>
+</div>

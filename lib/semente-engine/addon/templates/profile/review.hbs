@@ -71,7 +71,7 @@
     <section class="flow j-step01">
         <h3 class="title-3">Suas informações</h3>
 
-        <section class="flow">
+        <section class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
             {{profile-form pessoa=model}}
         </section>
@@ -81,7 +81,7 @@
     <section class="flow j-step02">
       <h3 class="title-3">Dados de Responsáveis</h3>
 
-      <section class="flow">
+      <section class="flow flow--xxl">
 
         {{#each model.responsaveis as |responsavel| }}
           {{responsible-form responsavel=responsavel model=model}}
@@ -141,10 +141,10 @@
           <h4 class="title-4 m-bottom--sm">Responsáveis</h4>
           <div class="row">
 
-            {{#each model.responsaveis as |resp| }}
+            {{#each model.responsaveis as |resp index| }}
 
               <div class="col-xs-12 col-sm-4">
-                {{responsible-info-card responsavel=resp}}
+                {{responsible-info-card responsavel=resp index=index}}
               </div>
 
             {{/each}}
