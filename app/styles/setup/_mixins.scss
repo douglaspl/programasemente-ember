@@ -712,8 +712,7 @@
 
 }
 
-@mixin title-2(     $case: uppercase,
-                    $color: inherit,
+@mixin title-2(     $color: inherit,
                     $line-height: 1,
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
@@ -727,7 +726,6 @@
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: $line-height;
-    text-transform: $case;
     vertical-align: middle;
 
     @include media('>sm') {
@@ -774,7 +772,6 @@
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: 1.125;
-    text-transform: uppercase;
 
     @include media('>lg') {
         font-size: $size--lg;
@@ -785,7 +782,7 @@
 @mixin title-aux(   $color: inherit,
                     $display: inline-block,
                     $family: $font-base,
-                    $size: $font-size--xxs,
+                    $size: $font-size--xs,
                     $weight: 400,
                     $letter: $letter-spacing--xl) {
 
@@ -799,7 +796,8 @@
 
 @mixin text-aux {
     font-size: $font-size--xs;
-    font-style: italic;
+    font-weight: normal;
+    // font-style: italic;
     opacity: .85;
 }
 

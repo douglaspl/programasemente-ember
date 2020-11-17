@@ -1,48 +1,78 @@
-<div class="row">
-    <label for="login">Login</label>
-    {{input name="login" value=pessoa.email placeholder='Login'}}
-</div>
+  <div class="row">
 
-<div class="row">
-    <label for="senha">Senha</label>
-    {{input name="senha" value=pessoa.password placeholder='Senha'}}
-</div>
+    <div class="col-xs-4">
+      <div class="form-group">
+        <label class="form-group__label" for="login">Login</label>
+        {{input class="form-group__input" name="login" value=pessoa.email placeholder='Login'}}
+      </div>
+    </div>
 
-<div class="row">
-    <label for="name">Nome Completo</label>
-    {{input name="name1" value=pessoa.name placeholder='Nome Completo'}}
-</div>
+    <div class="col-xs-4">
+      <div class="form-group">
+        <label class="form-group__label" for="senha">Senha</label>
+        {{input class="form-group__input" name="senha" value=pessoa.password placeholder='Senha'}}
+      </div>
+    </div>
 
-<div class="row">
-    <label for="genero_student{{pessoa.id}}">Gênero</label>
-    <select name="genero" id="genero_student{{pessoa.id}}" onchange={{action 'refreshSelectedGenero' value='target.value'}}>
-        <option value="">---</option>
-        <option value="masculino"  selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
-        <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
-        <option value="">Prefiro não dizer</option>
-    </select>
-</div>
+  </div>
 
-<div class="row">
-    <label for="serie_student{{pessoa.id}}">Serie</label>
-    <select name="serie" id="serie_student{{pessoa.id}}" onchange={{action 'refreshSelectedAno' value='target.value'}}>
-        <option value="">---</option>
-        {{#each pessoa.instituicao.plataformaAnos as |pa|}}
-            <option value="{{pa.id}}" selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>{{pa.name}}</option>
-        {{/each}}
-    </select>
-</div>
+  <div class="row">
 
-<div class="row">
-    <label for="turma_student{{pessoa.id}}">Turma</label>
-    <select name="turma" id="turma_student{{pessoa.id}}" onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
-        <option value="">---</option>
-        {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
+    <div class="col-xs-4">
+      <div class="form-group">
+        <label class="form-group__label" for="name">Nome Completo</label>
+        {{input class="form-group__input" name="name1" value=pessoa.name placeholder='Nome Completo'}}
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="form-group">
+        <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
+        <select class="form-group__input"
+                id="genero_student{{pessoa.id}}"
+                name="genero"
+                onchange={{action 'refreshSelectedGenero' value='target.value'}}>
+          <option value="">---</option>
+          <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
+          <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
+          <option value="">Prefiro não dizer</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+   <div class="col-xs-4">
+      <div class="form-group">
+        <label for="serie_student{{pessoa.id}}">Serie</label>
+        <select name="serie" id="serie_student{{pessoa.id}}" onchange={{action 'refreshSelectedAno' value='target.value'}}>
+          <option value="">---</option>
+          {{#each pessoa.instituicao.plataformaAnos as |pa|}}
+            <option value="{{pa.id}}" selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
+              {{pa.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+   <div class="col-xs-4">
+      <div class="form-group">
+        <label for="turma_student{{pessoa.id}}">Turma</label>
+        <select name="turma" id="turma_student{{pessoa.id}}"
+          onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
+          <option value="">---</option>
+          {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
             {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
-                <option value="{{pt.id}}" selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>{{pt.name}}</option>
+              <option value="{{pt.id}}" selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
+                {{pt.name}}</option>
             {{/if}}
-        {{/each}}
-    </select>
-</div>
+          {{/each}}
+        </select>
+      </div>
+    </div>
 
-<button type="button" class="login__cta btn" {{action "saveProfile" pessoa}}>Salvar</button>
+  </div>
+
+  <button type="button" class="btn btn--md" {{action "saveProfile" pessoa}}><span>Avançar</span><span class="btn__icon icon-arrow-right"></span></button>

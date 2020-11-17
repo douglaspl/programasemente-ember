@@ -1,7 +1,7 @@
 .steps {
     $this: &;
     $font-size: $font-size--sm;
-    $number-border: 2px;
+    $number-border: 4px;
     $size: 2em;
 
     align-items: center;
@@ -18,7 +18,7 @@
     &::before {
         background-color: $gray-0;
         border-radius: $radius;
-        bottom: calc((#{$size} / 2) - #{$number-border});
+        bottom: calc((#{$size} / 2) + #{$number-border});
         content: '';
         height: $distance--xxs;
         left: 50%;
@@ -47,23 +47,24 @@
         background-color: $blue-navy-50;
         border: $number-border solid $white;
         border-radius: 50%;
-        box-shadow: $shadow-2;
+        box-shadow: $shadow-1, $shadow-2, $shadow-3;
         color: $white;
         display: flex;
         flex-direction: row;
+        font-size: $font-size--lg;
         height: $size;
         justify-content: center;
         width: $size;
 
-        &--is-active { background-color: $green-20; }
-        // &--is-done { background-color: $color-success; }
+        &--is-active,
+        [class*='--is-active'] & { background-color: $green-20; }
     }
 
     &__label {
         @include title-aux;
 
         display: block;
-        min-width: 12rem;
+        // min-width: 12rem;
         text-align: center;
         word-wrap: wrap;
     }

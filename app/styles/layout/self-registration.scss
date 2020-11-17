@@ -18,13 +18,29 @@
 
   }
 
+  &__graphism {
+    display: none;
+
+    @include media('>md') {
+      background-color: $green-0;
+      border-radius: 50%;
+      bottom: 0;
+      display: block;
+      height: 30vw;
+      position: absolute;
+      right: 5%;
+      width: 30vw;
+    }
+
+  }
+
   &__img {
     display: none;
 
     @include media('>md') {
       bottom: 0;
       display: block;
-      max-width: 48vw;
+      max-width: 42vw;
       position: absolute;
       right: -5%;
     }
@@ -46,6 +62,25 @@
       text-transform: uppercase;
       width: 100%;
     }
+  }
+
+  &__review-box {
+    background-color: $gray-0;
+    border-top: 2px solid $green-50;
+    padding: $distance--sm;
+
+    > li {
+      display: flex;
+      flex-direction: column;
+      font-weight: $font-weight-4;
+
+      span {
+        display: inline-flex;
+        margin-bottom: .25em;
+      }
+
+    }
+
   }
 
 }

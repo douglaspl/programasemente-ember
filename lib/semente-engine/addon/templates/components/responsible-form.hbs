@@ -1,22 +1,42 @@
-<div class="row">
-    <label for="name_responsavel">Nome Completo</label>
-    {{input name='name_responsavel' value=responsavel.name placeholder='Nome Completo'}}
-    {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
-</div>
+    <div class="flow recent-added">
+        <div class="row">
 
-<div class="row">
-    <label for="email_responsavel">Email</label>
-    {{input name='email_responavel' value=responsavel.email placeholder='E-mail '}}
-    {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
-</div>
+            <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                    <label class="form-group__label" for="name_responsavel">Nome Completo</label>
+                    {{input class="form-group__input" name='name_responsavel' value=responsavel.name placeholder='Nome Completo'}}
+                    {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+                </div>
+            </div>
 
-<div class="row">
-    <label for="celular">Número de Celular</label>
-    {{input name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx '}}
-    {{!-- <select name="celular" id="celular">
-        <option value="">---</option>
-    </select> --}}
-</div>
+            <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+                <div class="form-group w100">
+                    <label class="form-group__label" for="email_responsavel">Email</label>
+                    {{input class="form-group__input" name='email_responavel' value=responsavel.email placeholder='E-mail '}}
+                    {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
+                </div>
+            </div>
 
+        </div>
 
-<button type="button" class="login__cta btn" {{action "saveResponsavel" responsavel}}>Salvar</button>
+        <div class="row">
+
+            <div class="col-xs-4 col-lg-3">
+                <div class="form-group w100">
+                    <label class="form-group__label" for="celular">Número de Celular</label>
+                    {{input class="form-group__input" name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx '}}
+                    {{!-- <select name="celular" id="celular">
+                        <option value="">---</option>
+                    </select> --}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "saveResponsavel" responsavel}}><span>Voltar</span></button>
+            <button class="btn btn--md" {{action "saveResponsavel" responsavel}}><span>Avançar</span><span class="btn__icon icon-arrow-right"></span></button>
+        </div>
+    </div>

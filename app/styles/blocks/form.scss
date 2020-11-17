@@ -1,183 +1,219 @@
 .form {
+  $this: &;
+
+  &__msg {
+    align-items: center;
+    bottom: calc(100% + #{$distance--xxs});
+    display: flex;
+    font-size: $font-size--xxs;
+    line-height: 1;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transform: translateY(4px);
+    transition: 300ms;
+
+    &--bellow {
+      bottom: unset;
+      top: calc(100% + #{$distance--xxs});
+      transform: translateY(-4px);
+    }
+
+    &--error {
+      color: $color-error;
+    }
+
+    &--success {
+      color: $color-success;
+    }
+
+    &--warning {
+      color: $color-warning;
+    }
+
+    &--on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  }
+
+  &__msg-icon {
+    font-size: $font-size--sm;
+    margin-right: $distance--xxs;
+  }
+
+  &-group {
     $this: &;
 
-    &__msg {
-        align-items: center;
-        bottom: calc(100% + #{$distance--xxs});
-        display: flex;
-        font-size: $font-size--xxs;
-        line-height: 1;
-        opacity: 0;
-        position: absolute;
-        right: 0;
-        transform: translateY(4px);
-        transition: 300ms;
+    align-items: stretch;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    max-width: 100%;
 
-        &--bellow {
-            bottom: unset;
-            top: calc(100% + #{$distance--xxs});
-            transform: translateY(-4px);
-        }
+    &__container {
+      position: relative;
+      margin-bottom: $distance--md;
+    }
 
-        &--error   { color: $color-error; }
-        &--success { color: $color-success; }
-        &--warning { color: $color-warning; }
+    &__label {
+      @include title-aux;
 
-        &--on {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      margin-bottom: $distance--xs;
+      min-width: 5rem;
+    }
+
+    &__input {
+      flex: 1;
+      min-height: $input-height;
+      -webkit-appearance: none;
+
+      @include target-ie {
+        flex-basis: auto;
+      }
+
+      &--amount {
+        flex: 1 0 auto;
+      }
+
+      &+#{$this}__input:not(.pwdt) {
+        margin-left: $distance--md;
+      }
+   
+    }
+
+
+    &__cta {
+      align-items: center;
+      bottom: 0;
+      display: flex;
+      height: 40px;
+      justify-content: center;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      width: 40px;
+    }
+
+    // Não bom...
+    &--aired-v {
+      margin-bottom: $distance--md;
+    }
+
+    &--aired-h {
+      margin-right: $distance--lg;
+    }
+
+    &--bottom {
+      align-items: flex-end;
+    }
+
+    &--center {
+      align-items: center;
+    }
+
+    &--full-width {
+      width: 100%;
+
+      [class*='wrapper'] {
+        flex: 1;
+      }
 
     }
 
-    &__msg-icon {
-        font-size: $font-size--sm;
-        margin-right: $distance--xxs;
+    // Fim de não bom...
+
+    &--horizontal {
+      align-items: center;
+      flex-direction: row;
+
+      >[class*='__label'] {
+        margin-bottom: 0;
+        margin-right: $distance--xs;
+        margin-top: 2px; //compensar visualmente a sombra do input
+        min-width: 0;
+      }
     }
 
-    &-group {
-        $this: &;
+    &__wrapper {
+      display: inline-flex;
+      position: relative;
 
-        align-items: stretch;
+      &--search {
+
+        &::after {
+          @include icon;
+
+          content: $icon-search;
+          font-size: $font-size--sm;
+          padding: .25rem .15rem .15rem;
+          pointer-events: none;
+          position: absolute;
+          right: $distance--xxs;
+          top: 50%;
+          transform: translateY(-55%); //posição da lupa é estranha na font. um pouco mais para baixo do que deveria.
+          z-index: 1;
+        }
+
+        [class*='__input'] {
+          padding-right: $distance--xl;
+        }
+
+      }
+
+      &:not[class*='vertical'] {
+
+        ~[class*='btn'] {
+          margin-left: $distance--sm;
+        }
+
+      }
+
+      &--select {
         display: inline-flex;
-        flex: 0 0 auto;
-        flex-direction: column;
-        max-width: 100%;
+        min-width: 9rem;
+        position: relative;
 
-        &__container {
-            position: relative;
-            margin-bottom: $distance--md;
+        &::after {
+          @include icon;
+
+          content: $icon-chevron-down;
+          font-size: $font-size--sm;
+          padding: 0;
+          pointer-events: none;
+          position: absolute;
+          right: $distance--xs;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
         }
-
-        &__label {
-            @include title-aux;
-
-            margin-bottom: $distance--xs;
-            min-width: 5rem;
-        }
-
-        &__input {
-            flex: 1;
-            min-height: $input-height;
-            -webkit-appearance: none;
-
-            @include target-ie {
-                flex-basis: auto;
-            }
-
-            &--amount {
-                flex: 1 0 auto;
-            }
-
-            & + #{$this}__input:not(.pwdt) {
-                margin-left: $distance--md;
-            }
-
-        }
-
-        &__cta {
-            align-items: center;
-            bottom: 0;
-            display: flex;
-            height: 40px;
-            justify-content: center;
-            padding: 0;
-            position: absolute;
-            right: 0;
-            width: 40px;
-        }
-
-        // Não bom...
-        &--aired-v { margin-bottom: $distance--md; }
-        &--aired-h { margin-right: $distance--lg; }
-
-        &--bottom {
-            align-items: flex-end;
-        }
-
-        &--center {
-            align-items: center;
-        }
-
-        &--full-width {
-            width: 100%;
-
-            [class*='wrapper'] {
-                flex: 1;
-            }
-
-        }
-        // Fim de não bom...
-
-        &--horizontal {
-            align-items: center;
-            flex-direction: row;
-
-            > [class*='__label'] {
-                margin-bottom: 0;
-                margin-right: $distance--xs;
-                margin-top: 2px; //compensar visualmente a sombra do input
-                min-width: 0;
-            }
-        }
-
-        &__wrapper {
-            display: inline-flex;
-            position: relative;
-
-            &--search {
-
-                &::after {
-                    @include icon;
-
-                    content: $icon-search;
-                    font-size: $font-size--sm;
-                    padding: .25rem .15rem .15rem;
-                    pointer-events: none;
-                    position: absolute;
-                    right: $distance--xxs;
-                    top: 50%;
-                    transform: translateY(-55%); //posição da lupa é estranha na font. um pouco mais para baixo do que deveria.
-                    z-index: 1;
-                }
-
-                [class*='__input'] {
-                    padding-right: $distance--xl;
-                }
-
-            }
-
-            &:not[class*='vertical'] {
-
-                ~ [class*='btn'] {
-                    margin-left: $distance--sm;
-                }
-
-            }
-
-            &--select {
-                display: inline-flex;
-                min-width: 9rem;
-                position: relative;
-
-                &::after {
-                    @include icon;
-
-                    content: $icon-chevron-down;
-                    font-size: $font-size--sm;
-                    padding: 0;
-                    pointer-events: none;
-                    position: absolute;
-                    right: $distance--xs;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    z-index: 2;
-                }
-            }
-
-        }
-
+      }
 
     }
+
+    &--is-validated {
+        
+        &::after {
+
+            background-color: $lemon-10;
+            color: $lemon-50;
+            content: "";
+            font-family: "icomoon";
+            display: flex;
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: relative;
+            text-align: center;
+            left: 100%;
+            justify-content: flex-start;
+            transform: translate(1rem, -130%);
+            max-width: 20px;
+            padding: 0.2em;
+            border-radius: 50px;
+        }
+      }
+
+  }
 
 }
