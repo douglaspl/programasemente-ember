@@ -20,6 +20,8 @@ export default Ember.Controller.extend({
       let that = this;
       let schoolCode = document.getElementById('codigo-escola').value;
       let input = document.getElementById('codigo-escola');
+      let button =  document.getElementById('inicia-cadastro');
+      button.innerHTML = 'Aguarde...';
       let codigo = this.get('store').queryRecord('codigo-cadastro', {
         include: 'instituicao.plataforma-anos, instituicao.plataforma-turmas',
         codigo: schoolCode
@@ -28,7 +30,8 @@ export default Ember.Controller.extend({
         that.transitionToRoute('autoregister.form', e.get('id'));
       }).catch(function(error) {
         if (error.errors) {
-                  
+           
+          button.innerHTML = 'Iniciar cadastro';
           // Pega alerta
           const errorCompartiment = document.getElementById('codigo-error');
           // Pega animação do alerta

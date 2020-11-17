@@ -196,6 +196,7 @@
         
         &::after {
 
+            background-color: $lemon-10;
             color: $lemon-50;
             content: "";
             font-family: "icomoon";
@@ -206,7 +207,10 @@
             text-align: center;
             left: 100%;
             justify-content: flex-start;
-            transform: translate(1rem, -150%);
+            transform: translate(1rem, -130%);
+            max-width: 20px;
+            padding: 0.2em;
+            border-radius: 50px;
         }
       }
 

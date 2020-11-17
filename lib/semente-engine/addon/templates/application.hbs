@@ -64,7 +64,7 @@
       {{/if}}
 
 
-    
+
 
 
 
@@ -177,8 +177,10 @@
 
 <section id="content-main" class="content-main">
   {{#if role}}
+    <main class="main">
     <!-- if an institution is selected, then the output is released. otherwise the intitution select is created -->
-    {{outlet}}
+      {{outlet}}
+    </main>
   {{else}}
     <aside id="select_inst_modal" class="modal modal--is-show">
 

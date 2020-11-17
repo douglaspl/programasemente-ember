@@ -52,6 +52,12 @@
     text-decoration: underline;
   }
 
+  &__form {
+    position: absolute;
+    flex-wrap: nowrap;
+    font-size: 0.8rem !important;
+  }
+
   &__msg {
 
     &:not(:last-child) {

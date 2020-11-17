@@ -1,95 +1,270 @@
-{{#if model.shouldReviewProfile }}
+
+<header class="row m-bottom--xl m-top--sm middle-xs">
+
+    <div class="col-xs-5 col-md-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80">
+        <g>
+          <path class="fill-gray-40"
+                d="M23.22 72.14a1.49 1.49 0 01-1.49-1.49V24.71a1.49 1.49 0 013 0v45.94a1.49 1.49 0 01-1.51 1.49z" />
+          <path class="fill-gray-40"
+                d="M23.22 45.67a1.51 1.51 0 01-1.06-.44 1.48 1.48 0 010-2.1l8.36-8.36a1.49 1.49 0 112.11 2.1l-8.36 8.36a1.49 1.49 0 01-1.05.44z" />
+          <path class="fill-gray-40"
+                d="M23.22 45.67a1.51 1.51 0 01-1.06-.44l-8.35-8.36a1.48 1.48 0 112.1-2.1l8.36 8.36a1.49 1.49 0 01-1.05 2.54zM23.22 65.36a1.5 1.5 0 01-1.06-.43l-7.86-7.86A1.49 1.49 0 0116.41 55l7.86 7.86a1.5 1.5 0 010 2.11 1.48 1.48 0 01-1.05.39z" />
+          <path class="fill-gray-40"
+                d="M23.22 65.36a1.49 1.49 0 01-1.06-2.54L30 55a1.49 1.49 0 112.11 2.11l-7.86 7.86a1.48 1.48 0 01-1.03.39z" />
+          <path class="fill-green-20"
+                d="M23.22 24.81a8.89 8.89 0 118.89-8.89 8.9 8.9 0 01-8.89 8.89zm0-14.8a5.92 5.92 0 105.91 5.91A5.92 5.92 0 0023.22 10zM37.54 40.33a8.9 8.9 0 118.89-8.89 8.9 8.9 0 01-8.89 8.89zm0-14.81a5.92 5.92 0 105.92 5.92 5.92 5.92 0 00-5.92-5.92zM8.89 40.33a8.9 8.9 0 118.9-8.89 8.9 8.9 0 01-8.9 8.89zm0-14.81a5.92 5.92 0 105.92 5.92 5.92 5.92 0 00-5.92-5.92zM8.94 61.21a8.9 8.9 0 118.9-8.89 8.9 8.9 0 01-8.9 8.89zm0-14.81a5.92 5.92 0 105.92 5.92 5.92 5.92 0 00-5.92-5.92zM37.49 61.21a8.9 8.9 0 118.89-8.89 8.9 8.9 0 01-8.89 8.89zm0-14.81a5.92 5.92 0 105.91 5.92 5.93 5.93 0 00-5.91-5.92z" />
+          <path class="fill-blue-navy-60"
+                d="M65.08 59.61a.63.63 0 01.73.43c.62 2 2.09 3.05 4.43 3.05 2 0 3-.63 3-1.84 0-.89-.74-1.55-2.18-2l-2.91-1.11a15.4 15.4 0 01-5-2.47 6.43 6.43 0 01-2.59-5.09 7.2 7.2 0 012.81-5.93 10.75 10.75 0 017-2.25c4.52 0 7.61 2 9.21 6.07a.62.62 0 01-.41.82l-5 1.43a.63.63 0 01-.75-.36 2.86 2.86 0 00-2.89-2.06c-1.37 0-2.44.59-2.44 1.62 0 .81.7 1.48 2.11 2l2.87 1c5.57 1.92 7.56 4.31 7.67 8.15a6.64 6.64 0 01-3 5.93 13.15 13.15 0 01-7.5 2c-5.81 0-9.72-2.69-10.7-7.48a.62.62 0 01.46-.73zM100.38 68.58H84.89a1.63 1.63 0 01-1.64-1.64V44.41a1.64 1.64 0 011.64-1.64h15.49a1.65 1.65 0 011.62 1.64v3.36a1.64 1.64 0 01-1.64 1.64h-8.7a.69.69 0 00-.69.69v2a.69.69 0 00.69.69H99a1.64 1.64 0 011.64 1.64V57A1.65 1.65 0 0199 58.67h-7.3a.68.68 0 00-.69.68v1.91a.69.69 0 00.69.69h8.7a1.64 1.64 0 011.6 1.64v3.35a1.64 1.64 0 01-1.62 1.64zM120.78 68.33h-2.42a1.93 1.93 0 01-1.81-1.25L113 57.72a.22.22 0 00-.42.06l-.74 9a1.93 1.93 0 01-1.93 1.77h-3.8a1.93 1.93 0 01-1.93-2.11l2-21.94a1.94 1.94 0 011.93-1.76h4.29a1.94 1.94 0 011.8 1.22l5.18 12.95a.21.21 0 00.4 0L124.94 44a2 2 0 011.8-1.22H131a1.94 1.94 0 012 1.75l2 21.94a1.93 1.93 0 01-2 2.11h-3.8a1.94 1.94 0 01-1.93-1.77l-.73-9a.22.22 0 00-.42-.06l-3.57 9.36a2 2 0 01-1.77 1.22zM155 68.58h-15.47a1.64 1.64 0 01-1.64-1.64V44.41a1.65 1.65 0 011.64-1.64H155a1.64 1.64 0 011.64 1.64v3.36a1.63 1.63 0 01-1.64 1.64h-8.7a.68.68 0 00-.68.69v2a.68.68 0 00.68.69h7.3a1.64 1.64 0 011.64 1.64V57a1.65 1.65 0 01-1.64 1.65h-7.3a.67.67 0 00-.68.68v1.91a.68.68 0 00.68.69h8.7a1.63 1.63 0 011.64 1.64v3.35a1.63 1.63 0 01-1.64 1.66zM175.53 67.88l-7.47-10.66a.37.37 0 00-.67.21v9.51a1.64 1.64 0 01-1.64 1.64h-4.46a1.63 1.63 0 01-1.64-1.64V44.41a1.64 1.64 0 011.64-1.64h3.56a1.63 1.63 0 011.33.69l7.44 10.47a.36.36 0 00.66-.21v-9.31a1.65 1.65 0 011.65-1.64h4.46a1.65 1.65 0 011.61 1.64v22.53a1.64 1.64 0 01-1.64 1.64h-3.52a1.63 1.63 0 01-1.31-.7zM185.92 42.77h18.17a1.65 1.65 0 011.65 1.64v3.36a1.64 1.64 0 01-1.65 1.64h-3.72a1.64 1.64 0 00-1.64 1.64v15.89a1.64 1.64 0 01-1.64 1.64h-4.32a1.64 1.64 0 01-1.64-1.64V51.05a1.64 1.64 0 00-1.64-1.64h-3.57a1.63 1.63 0 01-1.64-1.64v-3.36a1.64 1.64 0 011.64-1.64zM225.11 68.58h-15.49a1.64 1.64 0 01-1.62-1.64V44.41a1.65 1.65 0 011.64-1.64h15.49a1.64 1.64 0 011.64 1.64v3.36a1.63 1.63 0 01-1.64 1.64h-8.7a.68.68 0 00-.68.69v2a.68.68 0 00.68.69h7.3a1.63 1.63 0 011.64 1.64V57a1.64 1.64 0 01-1.64 1.65h-7.3a.67.67 0 00-.68.68v1.91a.68.68 0 00.68.69h8.7a1.63 1.63 0 011.64 1.64v3.35a1.63 1.63 0 01-1.66 1.66zM91.9 29.86v5.85a1.87 1.87 0 01-1.9 1.87h-4a1.87 1.87 0 01-1.86-1.87V11.77h12.55a8.58 8.58 0 019.22 9 8.18 8.18 0 01-1.4 4.83 7.39 7.39 0 01-4 2.81 5.23 5.23 0 001 2.67 2.53 2.53 0 002 .9 4.54 4.54 0 00.82-.07 2.87 2.87 0 013.12 1.56 2.86 2.86 0 01-1.7 4A12.85 12.85 0 01102 38a7.76 7.76 0 01-3.41-.72 7 7 0 01-2.32-1.69 9.19 9.19 0 01-1.42-2.36 12.85 12.85 0 01-.79-2.34c-.08-.38-.15-.77-.21-1.16a1 1 0 00-1-.83 1 1 0 00-.95.96zm0-6.72a.39.39 0 00.39.39h3.59a2 2 0 001.62-.78 2.57 2.57 0 00.65-2 2.83 2.83 0 00-.6-1.45 2.06 2.06 0 00-1.67-.86h-3.59a.39.39 0 00-.39.4zM112.62 34.13a13 13 0 01-3.8-9.46 13 13 0 013.8-9.46 13.62 13.62 0 0110.14-3.85 13.62 13.62 0 0110.14 3.85 13 13 0 013.8 9.46 13 13 0 01-3.8 9.46Q129.11 38 122.76 38t-10.14-3.87zm14.68-4.7a7.06 7.06 0 001.7-4.76 7 7 0 00-1.66-4.75 6.32 6.32 0 00-9.07 0 7 7 0 00-1.66 4.75 7 7 0 001.66 4.76 6.32 6.32 0 009.07 0zM159 18.29a2 2 0 01-2.38.47A8.1 8.1 0 00153 18a6.33 6.33 0 00-4.79 1.92 6.57 6.57 0 00-1.85 4.75 6.61 6.61 0 001.85 4.76 6.33 6.33 0 004.79 1.92h.69a2.52 2.52 0 002.41-2.52.71.71 0 00-.71-.71h-2a2.68 2.68 0 01-2.68-2.67v-.22a2.68 2.68 0 012.68-2.68h7.37a2.67 2.67 0 012.67 2.68v3a9.6 9.6 0 01-7.88 9.51A14.76 14.76 0 01153 38a14.24 14.24 0 01-10.38-3.89 12.63 12.63 0 01-4-9.42 12.63 12.63 0 014-9.42A14.29 14.29 0 01153 11.36a14.44 14.44 0 017.28 1.9 2 2 0 01.5 3zM191.9 35.1l8.58-22.17a1.82 1.82 0 011.7-1.16h4.37a1.82 1.82 0 011.7 1.15l8.8 22.16a1.82 1.82 0 01-1.69 2.5h-4.29a1.83 1.83 0 01-1.7-1.17l-.76-2a1.83 1.83 0 00-1.7-1.17h-5.14a1.82 1.82 0 00-1.71 1.21l-.68 1.9a1.84 1.84 0 01-1.72 1.21h-4.06a1.82 1.82 0 01-1.7-2.46zm10.1-7.88h4.85l-2.27-6.69a.22.22 0 00-.41 0l-2.37 6.39a.22.22 0 00.2.3zM231.55 36.1l-3.18-8.33a.47.47 0 00-.91.13l-.65 7.94a1.89 1.89 0 01-1.88 1.74H221a1.89 1.89 0 01-1.88-2.06l2-22a1.88 1.88 0 011.88-1.71h4.37a1.88 1.88 0 011.8 1.19l5 12.39a.47.47 0 00.88 0L240 13a1.89 1.89 0 011.75-1.18h4.37a1.89 1.89 0 011.88 1.66l2 22a1.89 1.89 0 01-1.88 2.06h-3.9a1.89 1.89 0 01-1.88-1.74l-.65-7.94a.47.47 0 00-.91-.13l-3.18 8.33a1.88 1.88 0 01-1.77 1.22h-2.48a1.88 1.88 0 01-1.8-1.18zM78.83 14.4a8.82 8.82 0 00-6.77-2.63h-10.5a2 2 0 00-2 2v21.78a2 2 0 002 2h3.68a2 2 0 002-2v-3.83a2 2 0 012-2H72a9.14 9.14 0 006.79-2.46A8.54 8.54 0 0081.28 21a9.27 9.27 0 00-2.45-6.6zm-8.44 9.13h-3a.17.17 0 01-.17-.17v-1.81a3.15 3.15 0 013.14-3.15h3a.18.18 0 01.17.17v1.81a3.15 3.15 0 01-3.14 3.15zM174.64 29.86v5.85a1.87 1.87 0 01-1.86 1.87h-4a1.87 1.87 0 01-1.87-1.87V11.77h12.54a8.58 8.58 0 019.21 9 8.11 8.11 0 01-1.4 4.83 7.4 7.4 0 01-3.94 2.81 5.06 5.06 0 001.05 2.67 2.51 2.51 0 002 .9 4.65 4.65 0 00.83-.07 2.86 2.86 0 013.11 1.56 2.85 2.85 0 01-1.7 4 12.78 12.78 0 01-3.82.56 7.81 7.81 0 01-3.42-.72 7 7 0 01-2.37-1.74 9.48 9.48 0 01-1.42-2.36 12.85 12.85 0 01-.79-2.34c-.08-.38-.15-.77-.21-1.16a1 1 0 00-1-.83 1 1 0 00-.94.98zm0-6.72a.4.4 0 00.4.39h3.58a2.08 2.08 0 001.63-.78 2.56 2.56 0 00.64-2 2.74 2.74 0 00-.59-1.45 2.07 2.07 0 00-1.68-.86H175a.4.4 0 00-.4.4zM252.16 35.1l8.59-22.17a1.81 1.81 0 011.69-1.16h4.38a1.82 1.82 0 011.69 1.15l8.8 22.16a1.82 1.82 0 01-1.69 2.5h-4.29a1.83 1.83 0 01-1.7-1.17l-.76-2a1.82 1.82 0 00-1.7-1.17H262a1.83 1.83 0 00-1.71 1.21l-.68 1.9a1.84 1.84 0 01-1.72 1.21h-4.06a1.82 1.82 0 01-1.67-2.46zm10.12-7.88h4.85l-2.27-6.69a.22.22 0 00-.41 0l-2.37 6.39a.22.22 0 00.2.3z" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="col-xs-12 col-md-8 col-md-offset-1">
+      <p class="title-4">Seja bem-vindo(a) ao Programa Semente!</p>
+      <h1 class="title-2">O cadastro será na instituição <span class="color-green-40">{{escola.name}}</span></h1>
+    </div>
+
+  </header>
+
+  <div class="row">
+
+        <div class="col-xs-12">
+            <h2 class="title-1">Etapas</h2>
+        </div>
+
+        <div class="col-xs-12">
+            <ul class="steps m-v--md">
+                <li class="steps__step steps__step--is-active">
+                    <span class="steps__label">Alunos</span>
+                    <span class="steps__number">1</span>
+                </li>
+                <li class="steps__step">
+                    <span class="steps__label">Responsáveis</span>
+                    <span class="steps__number">2</span>
+                </li>
+                <li class="steps__step">
+                    <span class="steps__label">Revisão</span>
+                    <span class="steps__number">3</span>
+                </li>
+            </ul>
+        </div>
+
+  </div>
+
+
+
+
+
+  {{!-- {{#if model.shouldReviewProfile }}
     <h2>Por favor, revise as informações do seu perfil antes de acessar os conteúdos SEMENTE</h2>
-{{/if}}
+  {{/if}} --}}
 
-{{#if  (equalstr model.role "aluno") }}
 
-    <h3>Dados pessoais</h3>
-    {{profile-form pessoa=model}}
 
-    <h3>Dados de Responsáveis</h3>
-    {{#each model.responsaveis as |responsavel| }}
-        {{responsible-form responsavel=responsavel model=model}}
-    {{/each}}
 
-    {{#if canAddResponsibles}}
-        <button class="login__cta btn" onclick={{action 'addResponsible'}}> + Adicionar Responável</button>
-    {{/if}}
-    
-    <h3>Resumo das Informações</h3>
 
-    Informações Pessoais
-    <ul>
-        <li>{{model.name}}</li>
-        <li>{{model.genero}}</li>
-        {{#each model.plataformaAnos as |pa| }}
-            <li>{{pa.name}}</li>
+  {{#if (equalstr model.role "aluno") }}
+  <!-- início ALUNO -->
+  <form class="steps-content j-steps-content--01" autocomplete="off">
+
+    <section class="flow j-step01">
+        <h3 class="title-3">Suas informações</h3>
+
+        <section class="flow">
+          {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
+            {{profile-form pessoa=model}}
+        </section>
+
+    </section>
+
+    <section class="flow j-step02">
+      <h3 class="title-3">Dados de Responsáveis</h3>
+
+      <section class="flow">
+
+        {{#each model.responsaveis as |responsavel| }}
+          {{responsible-form responsavel=responsavel model=model}}
         {{/each}}
-        {{#each model.plataformaTurmas as |pt| }}
-            <li>{{pt.name}}</li>
-        {{/each}}
-    </ul>
 
-    <h3>Responsaveis</h3>
-    {{#each model.responsaveis as |resp| }}
-        {{responsible-info-card responsavel=resp}}
-    {{/each}}
+        {{#if canAddResponsibles}}
+            <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span>Adicionar Responável</button>
+        {{/if}}
 
-    <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+      </section>
+
+    </section>
 
 
-{{else if (equalstr model.role "instrutor") }}
-    <h3>Dados pessoais</h3>
-    {{profile-form pessoa=model}}
+    <section class="j-step03">
+      <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
-    <h3>Dados Responsavel</h3>
+      <div class="flow--xxl">
+        <section>
+          <h4 class="title-4">Aluno</h4>
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
 
-    {{input type="checkbox" checked=model.isAlsoResponsible click=(action (action "initTeacherResponsible" model) value='target.checked')}}
-    <label> Você é responsavel por algum aluno na Educação Infantil ou Fundamental 1? </label>
+              <ul class="self-registration__review-box flow">
+                {{!-- <li>{{model.thumb}}</li> --}}
+                <li>
+                  <span class="text-aux">Login</span>
+                  {{model.login}}
+                </li>
+                <li>
+                  <span class="text-aux">Nome completo</span>
+                  {{model.name}}
+                </li>
+                <li>
+                  <span class="text-aux">Gênero</span>
+                  {{model.genero}}
+                </li>
+                {{#each model.plataformaAnos as |pa| }}
+                  <li>
+                    <span class="text-aux">Série</span>
+                    {{pa.name}}
+                  </li>
+                {{/each}}
+                {{#each model.plataformaTurmas as |pt| }}
+                  <li>
+                    <span class="text-aux">Turma</span>
+                    {{pt.name}}
+                  </li>
+                {{/each}}
 
-    {{#if model.isAlsoResponsible }}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h4 class="title-4">Responsáveis</h4>
+          <div class="row">
+
+            {{#each model.responsaveis as |resp| }}
+
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp}}
+              </div>
+
+            {{/each}}
+
+          </div>
+        </section>
+
+        <button class="btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+      </div>
+
+    </section>
+
+  </form>
+  <!-- fim ALUNO -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {{else if (equalstr model.role "instrutor") }}
+  <!-- início INSTRUTOR -->
+  <section>
+    <section class="steppppp01">
+      <h3>Dados pessoais</h3>
+      {{profile-form pessoa=model}}
+    </section>
+
+    <section class="steppppp02">
+      <h3>Dados Responsavel</h3>
+
+      {{input type="checkbox" checked=model.isAlsoResponsible click=(action (action "initTeacherResponsible" model) value='target.checked')}}
+      <label> Você é responsavel por algum aluno na Educação Infantil ou Fundamental 1? </label>
+
+      {{#if model.isAlsoResponsible }}
         <h3>Dados Dependentes</h3>
         {{#each model.dependentes as |dep| }}
-            {{student-form pessoa=dep}}
+          {{student-form pessoa=dep}}
         {{/each}}
         <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
-    {{/if}}
+      {{/if}}
+    </section>
 
-    <h3>Resumo das Informações</h3>
-    {{teacher-info-card instrutor=model}}
+    <section class="steppppp03">
+      <h3>Resumo das Informações</h3>
+      {{teacher-info-card instrutor=model}}
 
-    {{#if model.dependentes }}
+      {{#if model.dependentes }}
         {{#each model.dependentes as |dependente| }}
-            {{student-info-card student=dependente}}
+          {{student-info-card student=dependente}}
         {{/each}}
-    {{/if}}
+      {{/if}}
 
-    <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
+      <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
 
-{{else if (equalstr model.role "responsavel") }}
-    <h3>Dados pessoais</h3>
-    {{profile-form pessoa=model}}
+    </section>
 
-    {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
+  </section>
+  <!-- início INSTRUTOR -->
 
-    <h3>Dados dos Dependentes</h3> 
-    
-    {{#each model.dependentes as |dependente| }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {{else if (equalstr model.role "responsavel") }}
+  <!-- início RESPONSÁVEL -->
+  <section>
+    <section class="steppppp01">
+      <h3>Dados pessoais</h3>
+      {{profile-form pessoa=model}}
+
+      {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
+    </section>
+
+    <section class="steppppp02">
+      <h3>Dados dos Dependentes</h3>
+
+      {{#each model.dependentes as |dependente| }}
         {{student-form pessoa=dependente}}
-    {{/each}}
+      {{/each}}
 
-    {{#if canAddDependents }}
+      {{#if canAddDependents }}
         <button class="login__cta btn" onclick={{action 'addDependent'}}> + Adicionar Dependente</button>
-    {{/if}}
+      {{/if}}
+    </section>
 
-    <h3>Resumo das Informações</h3>
+    <section class="steppppp02">
+      <h3>Resumo das Informações</h3>
 
-    {{responsible-info-card responsavel=model}}
+      {{responsible-info-card responsavel=model}}
 
-    {{#each model.dependentes as |dependente| }}
+      {{#each model.dependentes as |dependente| }}
         {{student-info-card student=dependente}}
-    {{/each}}
+      {{/each}}
 
-    <button class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
-
-{{/if}}
+      <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
+    </section>
+  </section>
+  <!-- fim RESPONSÁVEL -->
+  {{/if}}
+{{preventDefault}}
