@@ -74,7 +74,7 @@
 
         <section class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
-            {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm')}}
+            {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
         </section>
 
     </section>
@@ -85,7 +85,7 @@
       <section class="flow flow--xxl">
 
         {{#each model.responsaveis as |responsavel| }}
-          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward')}}
+          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
         {{/each}}
 
         {{#if canAddResponsibles}}
@@ -339,5 +339,15 @@
   </form>
   <!-- fim RESPONSÁVEL -->
 {{/if}}
+
+
+ 
+ <p class="alert alert__form alert--sm alert--error alert--has-icon animated d250"
+    id="error_form"
+    data-animation="fadeIn">
+    <span class="alert__icon icon-x"></span>
+    <span class="alert__msg"></span>
+  </p>
+
 
 {{preventDefault}}
