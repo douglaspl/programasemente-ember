@@ -183,8 +183,23 @@
  <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
+
       <section class="flow flow--xxl">
         {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+
+
+          <div class="row">
+
+            {{#each model.responsaveis as |resp index| }}
+
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp index=index}}
+              </div>
+
+            {{/each}}
+
+          </div>
+
       </section>
     </section>
 
@@ -272,7 +287,22 @@
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
       <section class="flow flow--xxl">
-        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+
+          {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+
+          {{!-- <div class="row">
+
+            {{#each model.responsaveis as |resp index| }}
+
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp index=index}}
+              </div>
+
+            {{/each}}
+
+          </div> --}}
+
+
       </section>
 
       <p>BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL AINDA NÃO FUNCIONAL</p>
