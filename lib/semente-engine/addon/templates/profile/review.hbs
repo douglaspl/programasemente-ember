@@ -284,7 +284,7 @@
         {{#each model.dependentes as |dep index| }}
           <h3 class="title-3">{{visible-index index}}° Aluno</h3>
           <section class="flow flow--xxl">
-            {{student-form pessoa=dep}}
+            {{student-form pessoa=dep gonext=(action 'carouselFoward')}}
           </section>
         {{/each}}
       </section>
