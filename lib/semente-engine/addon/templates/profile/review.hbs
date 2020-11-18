@@ -35,7 +35,7 @@
       </div>
 
       <div class="col-xs-12">
-          <ul class="steps m-v--md">
+          <ul class="steps j-steps m-v--md">
               <li id="s1" class="steps__step steps__step--is-active">
                   <span class="steps__label">Você</span>
                   <span class="steps__number">1</span>
@@ -67,9 +67,9 @@
 
   {{#if (equalstr model.role "aluno") }}
   <!-- início ALUNO -->
-  <form class="steps-content"  autocomplete="off"><!-- j-steps-content--01 carousel carousel--{{step}} j-carousel -->
+  <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
-    <section class="flow carousel__step carousel__step--1 j-step1">
+    <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
       <h3 class="title-3">Suas informações</h3>
 
         <section class="flow flow--xxl">
@@ -79,7 +79,7 @@
 
     </section>
 
-    <section class="flow carousel__step carousel__step--2 j-step2">
+    <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       <h3 class="title-3">Dados de Responsáveis</h3>
 
       <section class="flow flow--xxl">
@@ -96,7 +96,7 @@
 
     </section>
 
-    <section class="carousel__step carousel__step--3 j-step3">
+    <section class="carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
       <div class="flow--xxl">
@@ -153,7 +153,7 @@
           </div>
         </section>
 
-        <button class="btn" onclick={{action 'carouselBackward'}}>Voltar</button>
+        <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}>Voltar</button>
         <button class="btn btn--md" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
 
       </div>
@@ -177,7 +177,7 @@
 
   {{else if (equalstr model.role "instrutor") }}
   <!-- início INSTRUTOR -->
- <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+ <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
       <section class="flow flow--xxl">
@@ -264,7 +264,7 @@
 
   {{else if (equalstr model.role "responsavel") }}
   <!-- início RESPONSÁVEL -->
-  <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+  <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
