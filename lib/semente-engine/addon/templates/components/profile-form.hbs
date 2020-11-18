@@ -9,7 +9,7 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
             <label class="form-group__label" for="name">Nome Completo</label>
-               <input type="text" for="validation" class="form-group__input" id="person_name" name="name"
+               <input type="text" class="form-group__input j-validate" id="person_name" name="name"
                     value={{pessoa.name}} onkeydown={{action 'liveCheckName'}}
                     onfocus={{action 'trimAll'}} onblur={{action 'trimAll'}} >
              </div>
@@ -23,7 +23,7 @@
             <div class="form-group w100">
                 <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
                 <div class="form-group__wrapper form-group__wrapper--select">
-                    <select class="form-group__input form-group__input--select" for="validation"
+                    <select class="j-validate form-group__input form-group__input--select"
                         id="genero_student{{pessoa.id}}" name="genero"
                         onchange={{action 'refreshSelectedGenero' value='target.value'}}>
                         <option value="" disabled selected>---</option>
@@ -43,7 +43,7 @@
             <div class="form-group w100">
                 <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
                 <div class="form-group__wrapper form-group__wrapper--select">
-                    <select class="form-group__input form-group__input--select" for="validation"
+                    <select class="j-validate form-group__input form-group__input--select"
                         id="serie_student{{pessoa.id}}" name="serie"
                         onchange={{action 'refreshSelectedAno' value='target.value'}}>
                         <option value="" disabled selected>---</option>
@@ -60,7 +60,7 @@
             <div class="form-group w100">
                 <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
                 <div class="form-group__wrapper form-group__wrapper--select">
-                    <select class="form-group__input form-group__input--select" for="validation"
+                    <select class="j-validate form-group__input form-group__input--select"
                         id="turma_student{{pessoa.id}}" name="turma"
                         onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
                         <option value="" disabled selected>---</option>
@@ -101,7 +101,7 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                {{input     class="form-group__input"
+                {{input     class="j-validate form-group__input"
                             name="name_responsavel"
                             value=pessoa.name}}
                 {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
@@ -111,7 +111,7 @@
         <div class="col-xs-4 col-lg-3 col-lg-offset-1">
             <div class="form-group w100">
                 <label class="form-group__label" for="celular">Número de Celular</label>
-                {{input class="form-group__input"
+                {{input class="j-validate form-group__input"
                         name='celular'
                         value=pessoa.telefone }} <!-- placeholder='(xx) xxxxx-xxxx '-->
             </div>
@@ -175,7 +175,7 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" >Nome Completo</label>
-                {{input class="form-group__input"
+                {{input class="form-group__input j-validate"
                         name='name_responsavel'
                         value=pessoa.name}}
             </div>
@@ -185,7 +185,7 @@
         <div class="col-xs-4 col-lg-3 col-lg-offset-1">
             <div class="form-group w100">
                 <label class="form-group__label" for="celular">Número de Celular</label>
-                {{input class="form-group__input" name="celular" value=pessoa.telefone }} <!-- placeholder='(xx) xxxxx-xxxx '-->
+                {{input class="j-validate form-group__input" name="celular" value=pessoa.telefone }} <!-- placeholder='(xx) xxxxx-xxxx '-->
                 {{!-- <select name="celular" id="celular">
                 <option value="">---</option>
                 </select> --}}
@@ -203,9 +203,3 @@
 
 {{/if}}
 
- <p class="m-left--md alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
-    id="error_form"
-    data-animation="fadeIn">
-    <span class="alert__icon icon-x"></span>
-    <span class="alert__msg"></span>
-</p>
