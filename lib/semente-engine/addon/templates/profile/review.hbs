@@ -272,7 +272,12 @@
         {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
       </section>
 
-      <p>AQUI FALTA BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL</p>
+      <p>BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL AINDA NÃO FUNCIONAL</p>
+      <button class="btn btn--add-list-item"
+              onclick={{action 'addResponsible'}}>
+              <span class="btn__icon icon-plus"></span>
+              <span class="btn__label">Adicionar Responsável</span>
+      </button>
 
       {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
     </section>
@@ -284,7 +289,7 @@
         {{#each model.dependentes as |dep index| }}
           <h3 class="title-3">{{visible-index index}}° Aluno</h3>
           <section class="flow flow--xxl">
-            {{student-form pessoa=dep}}
+            {{student-form pessoa=dep gonext=(action 'carouselFoward')}}
           </section>
         {{/each}}
       </section>

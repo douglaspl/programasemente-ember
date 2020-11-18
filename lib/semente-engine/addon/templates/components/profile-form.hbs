@@ -79,9 +79,13 @@
     </div>
 </div>
 
-<button type="button" class="btn btn--md" {{action "saveProfile" pessoa}}><span>Avançar</span><span
-        class="btn__icon icon-arrow-right"></span></button>
-        
+<button class="btn btn--md"
+        type="button"
+        {{action "saveProfile" pessoa}}>
+        <span>Avançar</span>
+        <span class="btn__icon icon-arrow-right"></span>
+</button>
+
 
 
 
@@ -148,8 +152,12 @@
     {{/if}}
 </div>
 
-<button type="button" class="btn btn--md" {{action "saveResponsible" pessoa}}><span>Avançar</span><span
-        class="btn__icon icon-arrow-right"></span></button>
+<button class="btn btn--md"
+        type="button"
+        {{action "saveResponsible" pessoa}}>
+        <span>Avançar</span>
+        <span class="btn__icon icon-arrow-right"></span>
+</button>
 
 
 
@@ -184,13 +192,18 @@
     </div>
 </div>
 
-<button type="button" class="btn btn--md" {{action "saveResponsible" pessoa}}><span>Avançar</span><span
-        class="btn__icon icon-arrow-right"></span></button>
+<button class="btn btn--md"
+        type="button"
+        {{action "saveResponsible" pessoa}}>
+    <span>Avançar</span>
+    <span class="btn__icon icon-arrow-right"></span>
+</button>
 
 {{/if}}
 
  <p class="m-left--md alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
-                    id="error_form" data-animation="fadeIn">
-                    <span class="alert__icon icon-x"></span>
-                    <span class="alert__msg"></span>
-                </p>
+    id="error_form"
+    data-animation="fadeIn">
+    <span class="alert__icon icon-x"></span>
+    <span class="alert__msg"></span>
+</p>
