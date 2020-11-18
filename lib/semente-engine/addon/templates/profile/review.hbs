@@ -285,46 +285,51 @@
   <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
     <section class="flow carousel__step carousel__step--1 j-step1">
-      <h3 class="title-3">Suas informações</h3>
+
       <section class="flow flow--xxl">
-
+        <h3 class="title-3">{{visible-index index}}° Responsável</h3>
+        <div class="flow">
           {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
-
-          {{!-- <div class="row">
-
-            {{#each model.responsaveis as |resp index| }}
-
-              <div class="col-xs-12 col-sm-4">
-                {{responsible-info-card responsavel=resp index=index}}
-              </div>
-
-            {{/each}}
-
-          </div> --}}
-
-
+        </div>
       </section>
 
+      <!-- mundo ideal -->
+      {{!--
+      <section class="flow flow--xxl">
+        {{#each model.dependentes as |dep index| }}
+          <section class="flow--xxl">
+            <h3 class="title-3">{{visible-index index}}° Responsável</h3>
+            <div class="flow">
+              {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+            </div>
+          </section>
+        {{/each}}
+      </section>
+      --}}
+
       <p>BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL AINDA NÃO FUNCIONAL</p>
+
       <button class="btn btn--add-list-item"
               onclick={{action 'addResponsible'}}>
               <span class="btn__icon icon-plus"></span>
               <span class="btn__label">Adicionar Responsável</span>
       </button>
 
-      {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
     </section>
 
     <section class="flow carousel__step carousel__step--2 j-step2">
-      <h3 class="title-3">Dados dos Dependentes</h3>
+      {{!-- <h3 class="title-3">Dados dos Dependentes</h3> --}}
+      <section class="flow flow--xl">
 
-      <section class="flow flow--xxl">
         {{#each model.dependentes as |dep index| }}
-          <h3 class="title-3">{{visible-index index}}° Aluno</h3>
-          <section class="flow flow--xxl">
-            {{student-form pessoa=dep gonext=(action 'carouselFoward')}}
+          <section class="flow">
+            <h3 class="title-3">{{visible-index index}}° Aluno</h3>
+            <div class="flow">
+              {{student-form pessoa=dep gonext=(action 'carouselFoward')}}
+            </div>
           </section>
         {{/each}}
+
       </section>
 
       {{#if canAddDependents }}
