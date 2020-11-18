@@ -8,24 +8,16 @@
     <div class="row">
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
-                <label class="form-group__label" for="name">Nome Completo</label>
-                {{input class="form-group__input"
-                        blur=(action 'trimAll')
-                        focus-in=(action 'removeErrorMark')
-                        for="validation"
-                        id="person_name"
-                        key-down=(action 'liveCheckName')
-                        name="name"
-                        type="text"
-                        value=pessoa.name}}
-
-            </div>
-            <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
-               id="error_name"
-               data-animation="fadeIn">
-                <span class="alert__icon icon-x"></span>
-                <span class="alert__msg"></span>
-            </p>
+            <label class="form-group__label" for="name">Nome Completo</label>
+               <input type="text" for="validation" class="form-group__input" id="person_name" name="name"
+                    value={{pessoa.name}} placeholder='Nome Completo' onkeydown={{action 'liveCheckName'}}
+                    onfocus={{action 'trimAll'}} onblur={{action 'trimAll'}}>
+             </div>
+                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
+                    id="error_name" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
         </div>
         <div class="col-xs-4 col-lg-3 col-lg-offset-1">
             <div class="form-group w100">
@@ -89,13 +81,7 @@
 
 <button type="button" class="btn btn--md" {{action "saveProfile" pessoa}}><span>Avançar</span><span
         class="btn__icon icon-arrow-right"></span></button>
-         <p class="m-left--md alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
-                    id="error_form" data-animation="fadeIn">
-                    <span class="alert__icon icon-x"></span>
-                    <span class="alert__msg"></span>
-                </p>
-
-
+        
 
 
 
@@ -202,3 +188,9 @@
         class="btn__icon icon-arrow-right"></span></button>
 
 {{/if}}
+
+ <p class="m-left--md alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
+                    id="error_form" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>

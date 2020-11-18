@@ -72,9 +72,10 @@
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
 
-      <section class="flow flow--xxl">
-          {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
-      </section>
+        <section class="flow flow--xxl">
+          {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
+            {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'liveCheckForm')}}
+        </section>
 
     </section>
 
