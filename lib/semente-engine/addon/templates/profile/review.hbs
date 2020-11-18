@@ -1,5 +1,5 @@
 
-<header class="row m-bottom--xl m-top--sm middle-xs">
+<header class="row">
 
     <div class="col-xs-5 col-md-2">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80">
@@ -26,32 +26,32 @@
       <p class="m-top--xs">Precisamos que você informe ou valide alguns dados para atualizarmos seu cadastro.</p>
     </div>
 
-  </header>
+</header>
 
-  <div class="row">
+<div class="row">
 
-        <div class="col-xs-12">
-            <h2 class="title-1">Etapas</h2>
-        </div>
+      <div class="col-xs-12">
+          <h2 class="title-1">Etapas</h2>
+      </div>
 
-        <div class="col-xs-12">
-            <ul class="steps m-v--md">
-                <li id="s1" class="steps__step steps__step--is-active">
-                    <span class="steps__label">Você</span>
-                    <span class="steps__number">1</span>
-                </li>
-                <li id="s2" class="steps__step">
-                    <span class="steps__label">Outros</span>
-                    <span class="steps__number">2</span>
-                </li>
-                <li id="s3" class="steps__step">
-                    <span class="steps__label">Revisão</span>
-                    <span class="steps__number">3</span>
-                </li>
-            </ul>
-        </div>
+      <div class="col-xs-12">
+          <ul class="steps m-v--md">
+              <li id="s1" class="steps__step steps__step--is-active">
+                  <span class="steps__label">Você</span>
+                  <span class="steps__number">1</span>
+              </li>
+              <li id="s2" class="steps__step">
+                  <span class="steps__label">Outros</span>
+                  <span class="steps__number">2</span>
+              </li>
+              <li id="s3" class="steps__step">
+                  <span class="steps__label">Revisão</span>
+                  <span class="steps__number">3</span>
+              </li>
+          </ul>
+      </div>
 
-  </div>
+</div>
 
 
 
@@ -67,7 +67,7 @@
 
   {{#if (equalstr model.role "aluno") }}
   <!-- início ALUNO -->
-  <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+  <form class="steps-content"  autocomplete="off"><!-- j-steps-content--01 carousel carousel--{{step}} j-carousel -->
 
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
@@ -94,7 +94,6 @@
       </section>
 
     </section>
-
 
     <section class="carousel__step carousel__step--3 j-step3">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
@@ -133,6 +132,7 @@
                 {{/each}}
 
               </ul>
+
             </div>
           </div>
         </section>
@@ -151,6 +151,7 @@
 
           </div>
         </section>
+
         <button class="btn" onclick={{action 'carouselBackward'}}>Voltar</button>
         <button class="btn btn--md" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
 
@@ -226,6 +227,7 @@
       <h3 class="title-3">Resumo das Informações</h3>
       <section class="flow flow--xxl">
         {{teacher-info-card instrutor=model}}
+
         {{#if model.dependentes }}
           {{#each model.dependentes as |dependente| }}
             {{student-info-card student=dependente}}
@@ -262,40 +264,74 @@
   {{else if (equalstr model.role "responsavel") }}
   <!-- início RESPONSÁVEL -->
   <form class="steps-content j-steps-content--01 carousel carousel--{{step}} j-carousel"  autocomplete="off">
+
     <section class="flow carousel__step carousel__step--1 j-step1">
       <h3 class="title-3">Suas informações</h3>
       <section class="flow flow--xxl">
         {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
       </section>
 
+      <p>AQUI FALTA BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL</p>
+
       {{!-- <button class="login__cta btn" onclick={{action 'addPartner'}}> Adicionar um segundo responsavel </button> --}}
     </section>
 
-    <section class="steppppp02">
-      <h3>Dados dos Dependentes</h3>
+    <section class="flow carousel__step carousel__step--2 j-step2">
+      <h3 class="title-3">Dados dos Dependentes</h3>
 
-      {{#each model.dependentes as |dependente| }}
-        {{student-form pessoa=dependente}}
-      {{/each}}
+      <section class="flow flow--xxl">
+        {{#each model.dependentes as |dep index| }}
+          <h3 class="title-3">{{visible-index index}}° Aluno</h3>
+          <section class="flow flow--xxl">
+            {{student-form pessoa=dep}}
+          </section>
+        {{/each}}
+      </section>
 
       {{#if canAddDependents }}
         <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
       {{/if}}
     </section>
 
-    <section class="steppppp03">
-      <h3>Resumo das Informações</h3>
+    <section class="flow carousel__step carousel__step--3 j-step3">
+      <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
-      {{responsible-info-card responsavel=model}}
+      <section class="flow flow--xxl">
+        <section>
+          <h4 class="title-4 m-bottom--sm">Responsáveis</h4>
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
 
-      {{#each model.dependentes as |dependente| }}
-        {{student-info-card student=dependente}}
-      {{/each}}
+              <p>Aqui deveriam entrar todos os responsáveis</p>
+
+              {{responsible-info-card responsavel=model}}
+
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h4 class="title-4 m-bottom--sm">Alunos</h4>
+          <div class="row">
+
+            {{#each model.dependentes as |dep index| }}
+
+              <div class="col-xs-12 col-sm-4">
+                {{student-info-card student=dep index=index}}
+              </div>
+
+            {{/each}}
+
+          </div>
+        </section>
 
       <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
     </section>
 
+    </section>
+
   </form>
   <!-- fim RESPONSÁVEL -->
-  {{/if}}
+{{/if}}
+
 {{preventDefault}}
