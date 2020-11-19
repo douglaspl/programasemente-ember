@@ -90,7 +90,7 @@
       <section class="flow flow--xxl">
 
         {{#each model.responsaveis as |responsavel| }}
-          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
+          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward') checkform=(action 'validateForm') checkname=(action 'validateName') checkemail=(action 'validateEmail')}}
         {{/each}}
 
         {{#if canAddResponsibles}}
