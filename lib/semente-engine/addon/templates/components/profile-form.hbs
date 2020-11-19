@@ -18,7 +18,9 @@
                         oninput={{action 'checkName'}}
                         {{!-- oninput={{action 'checkform'}} --}}
                         type="text"
-                        value={{pessoa.name}}>
+                        value={{pessoa.name}}
+                        data-type="nome"
+                        data-required="true">
              </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>
@@ -31,7 +33,7 @@
                 <div class="form-group__wrapper form-group__wrapper--select">
                     <select class="j-validate form-group__input form-group__input--select"
                         id="genero_student{{pessoa.id}}" name="genero"
-                        onchange={{action 'refreshSelectedGenero' value='target.value'}}>
+                        onchange={{action 'refreshSelectedGenero' value='target.value'}} data-type="select" data-required="true">
                         <option value="" disabled selected>---</option>
                         <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>
                             Masculino</option>
@@ -53,7 +55,7 @@
                 <div class="form-group__wrapper form-group__wrapper--select">
                     <select class="j-validate form-group__input form-group__input--select"
                         id="serie_student{{pessoa.id}}" name="serie"
-                        onchange={{action 'refreshSelectedAno' value='target.value'}}>
+                        onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="select" data-required="true">
                         <option value="" disabled selected>---</option>
                         {{#each pessoa.instituicao.plataformaAnos as |pa|}}
                         <option value="{{pa.id}}"
@@ -70,7 +72,7 @@
                 <div class="form-group__wrapper form-group__wrapper--select">
                     <select class="j-validate form-group__input form-group__input--select"
                         id="turma_student{{pessoa.id}}" name="turma"
-                        onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}> 
+                        onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}} data-type="select" data-required="true"> 
                         <option value="" disabled selected>---</option>
                         {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
                             {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
