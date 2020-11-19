@@ -1,43 +1,68 @@
-    <div class="flow recent-added">
-        <div class="row">
+<div class="flow recent-added">
+    <div class="row">
 
-            <div class="col-xs-4 col-lg-3">
+        <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                     <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                    {{input class="form-group__input" name='name_responsavel' value=responsavel.name placeholder='Nome Completo'}}
+                    {{input class="form-group__input j-validate"
+                            id="name_responsavel"
+                            name="name_responsavel"
+                            value=responsavel.name
+                            key-down=(action 'checkName')}}
                     {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
-                </div>
             </div>
-
-            <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-                <div class="form-group w100">
-                    <label class="form-group__label" for="email_responsavel">Email</label>
-                    {{input class="form-group__input" name='email_responavel' value=responsavel.email placeholder='E-mail '}}
-                    {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
-                </div>
-            </div>
-
+            <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
+                    id="error_name" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+            </p>
         </div>
 
-        <div class="row">
-
-            <div class="col-xs-4 col-lg-3">
-                <div class="form-group w100">
-                    <label class="form-group__label" for="celular">Número de Celular</label>
-                    {{input class="form-group__input" name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx '}}
-                    {{!-- <select name="celular" id="celular">
-                        <option value="">---</option>
-                    </select> --}}
-                </div>
+        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+            <div class="form-group w100">
+                <label class="form-group__label" for="email_responsavel">Email</label>
+                {{input class="j-validate form-group__input"
+                        id='email_responavel'
+                        name='email_responavel'
+                        value=responsavel.email}}
+                {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
             </div>
-
         </div>
+
     </div>
-
 
     <div class="row">
-        <div class="col-xs-12">
-            <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}}><span>Voltar</span></button>
-            <button class="btn btn--md" {{action "next" responsavel}}><span>Avançar</span><span class="btn__icon icon-arrow-right"></span></button>
+
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="celular">Número de Celular</label>
+                {{!-- {{input class="form-group__input" name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx' maxlength="15" key-press=(action 'phoneMask' value='target.value')}} --}}
+                <input  class="form-group__input"
+                        name='celular' maxlength="15"
+                        onblur={{action 'phoneMask' value='target.value'}}
+                        onkeypress={{action 'phoneMask' value='target.value'}}
+                        placeholder="(xx) xxxxx-xxxx"
+                        type="text"
+                        value={{responsavel.telefone}}>
+
+            </div>
         </div>
+
     </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-xs-12">
+        <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}} type="button">
+            <span class="btn__label">Voltar</span>
+        </button>
+        <button class="btn btn--md" {{action "saveResponsavel" responsavel}} type="button">
+            <span class="btn__label">Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+
+</div>
