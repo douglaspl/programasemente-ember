@@ -1,3 +1,5 @@
+<p class="title-4 bg-lemon-10 tt-u p--sm" style="position: fixed; top: 0; width: 100vw; left: 0; text-align: center;">{{model.role}}</p>
+
 
 <header class="row middle-xs">
 
@@ -92,14 +94,17 @@
         {{/each}}
 
         {{#if canAddResponsibles}}
-            <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span>Adicionar Responsável</button>
+          <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
+            <span class="btn__icon icon-plus"></span>
+            <span class="btn__label">Adicionar Responsável</span>
+          </button>
         {{/if}}
 
       </section>
 
     </section>
 
-    <section class="carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
+    <section class="flow carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
       <div class="flow--xxl">
@@ -181,7 +186,7 @@
   {{else if (equalstr model.role "instrutor") }}
   <!-- início INSTRUTOR -->
  <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
-    <section class="flow carousel__step carousel__step--1 j-step1">
+    <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
       <h3 class="title-3">Suas informações</h3>
 
       <section class="flow flow--xxl">
@@ -203,7 +208,7 @@
       </section>
     </section>
 
-    <section class="flow carousel__step carousel__step--2 j-step2">
+    <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       <h3 class="title-3">Você é responsável por algum aluno na Educação Infantil ou Fundamental 1?</h3>
       <p>Em caso de resposta positiva, no próximo passo você poderá cadastrar os alunos pelos quais você é responsável.</p>
 
@@ -222,11 +227,14 @@
       <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
       <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
 
-      <button class="btn btn--add-list-item" onclick={{action 'addResponsible'}}><span class="btn__icon icon-plus"></span><span>Adicionar Responsável</span></button>
+      <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
+        <span class="btn__icon icon-plus"></span>
+        <span class="btn__label">Adicionar Responsável</span>
+      </button>
 
     </section>
 
-    <section class="flow carousel__step carousel__step--3 j-step3">
+    <section class="flow carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
       <!-- lugar errado -->
         {{#if model.isAlsoResponsible }}
           {{#each model.dependentes as |dep index| }}
@@ -236,7 +244,10 @@
             </section>
           {{/each}}
 
-          <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
+          <button class="btn btn--add-list-item" type="button" onclick={{action 'addDependent'}}>
+            <span class="btn__icon icon-plus"></span>
+            <span class="btn__label">Adicionar Dependente</span>
+          </button>
 
         {{/if}}
     </section>
@@ -284,13 +295,11 @@
   <!-- início RESPONSÁVEL -->
   <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
-    <section class="flow carousel__step carousel__step--1 j-step1">
+    <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
+      <h3 class="title-3">{{visible-index index}}° Responsável</h3>
 
       <section class="flow flow--xxl">
-        <h3 class="title-3">{{visible-index index}}° Responsável</h3>
-        <div class="flow">
           {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
-        </div>
       </section>
 
       <!-- mundo ideal -->
@@ -309,15 +318,14 @@
 
       <p>BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL AINDA NÃO FUNCIONAL</p>
 
-      <button class="btn btn--add-list-item"
-              onclick={{action 'addResponsible'}}>
-              <span class="btn__icon icon-plus"></span>
-              <span class="btn__label">Adicionar Responsável</span>
+      <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
+        <span class="btn__icon icon-plus"></span>
+        <span class="btn__label">Adicionar Responsável</span>
       </button>
 
     </section>
 
-    <section class="flow carousel__step carousel__step--2 j-step2">
+    <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       {{!-- <h3 class="title-3">Dados dos Dependentes</h3> --}}
       <section class="flow flow--xl">
 
@@ -333,11 +341,14 @@
       </section>
 
       {{#if canAddDependents }}
-        <button class="btn btn--add-list-item" onclick={{action 'addDependent'}}><span class="btn__icon icon-plus"></span><span>Adicionar Dependente</span></button>
+        <button class="btn btn--add-list-item" type="button" onclick={{action 'addDependent'}}>
+          <span class="btn__icon icon-plus"></span>
+          <span class="btn__label">Adicionar Dependente</span>
+        </button>
       {{/if}}
     </section>
 
-    <section class="flow carousel__step carousel__step--3 j-step3">
+    <section class="flow carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
       <section class="flow flow--xxl">
@@ -379,7 +390,7 @@
 {{/if}}
 
 
- 
+
  <p class="alert alert__form alert--sm alert--error alert--has-icon animated d250"
     id="error_form"
     data-animation="fadeIn">
