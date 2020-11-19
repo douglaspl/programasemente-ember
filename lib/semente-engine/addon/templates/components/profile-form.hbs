@@ -31,7 +31,7 @@
                             Masculino</option>
                         <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino
                         </option>
-                        <option value="">Prefiro não dizer</option>
+                        <option value="nao_quis_dizer">Prefiro não dizer</option>
                     </select>
                 </div>
             </div>
@@ -79,7 +79,7 @@
     </div>
 </div>
 
-<button class="btn btn--md"
+<button class="j-submit btn btn--md"
         type="button"
         {{action "saveProfile" pessoa}}>
         <span>Avançar</span>
