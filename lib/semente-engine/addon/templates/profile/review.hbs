@@ -79,7 +79,7 @@
 
         <div class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
-            {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
+            {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName') removeerrors=(action 'removeErrorTag')}}
         </div>
 
     </section>
@@ -384,7 +384,7 @@
 {{/if}}
 
 
- 
+
  <p class="m-left--sm alert alert__form alert--sm alert--error alert--has-icon animated d250"
     id="error_form"
     data-animation="fadeIn">
