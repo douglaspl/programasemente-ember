@@ -772,6 +772,7 @@
     font-weight: $weight;
     letter-spacing: $letter;
     line-height: 1.125;
+    text-transform: uppercase;
 
     @include media('>lg') {
         font-size: $size--lg;

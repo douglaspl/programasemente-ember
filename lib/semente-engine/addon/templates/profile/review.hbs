@@ -77,20 +77,25 @@
     <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
       <h3 class="title-3">Suas informações</h3>
 
-        <section class="flow flow--xxl">
+        <div class="flow flow--xxl">
           {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
             {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
-        </section>
+        </div>
 
     </section>
 
     <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       <h3 class="title-3">Dados de Responsáveis</h3>
 
-      <section class="flow flow--xxl">
+      <div class="flow flow--xxl">
 
-        {{#each model.responsaveis as |responsavel| }}
-          {{responsible-form responsavel=responsavel model=model gonext=(action 'carouselFoward') goback=(action 'carouselBackward') checkform=(action 'validateForm') checkname=(action 'validateName')}}
+        {{#each model.responsaveis as |responsavel index| }}
+          {{responsible-form    responsavel=responsavel
+                                index=index model=model
+                                gonext=(action 'carouselFoward')
+                                goback=(action 'carouselBackward')
+                                checkform=(action 'validateForm')
+                                checkname=(action 'validateName')}}
         {{/each}}
 
         {{#if canAddResponsibles}}
@@ -100,7 +105,7 @@
           </button>
         {{/if}}
 
-      </section>
+      </div>
 
     </section>
 
@@ -108,8 +113,8 @@
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
       <div class="flow--xxl">
-        <section>
-          <h4 class="title-4 m-bottom--sm">Aluno</h4>
+        <section class="flow">
+          <h4 class="title-4">Aluno</h4>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
 
@@ -146,8 +151,8 @@
           </div>
         </section>
 
-        <section>
-          <h4 class="title-4 m-bottom--sm">Responsáveis</h4>
+        <section class="flow">
+          <h4 class="title-4">Responsáveis</h4>
           <div class="row">
 
             {{#each model.responsaveis as |resp index| }}
@@ -189,7 +194,7 @@
     <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
       <h3 class="title-3">Suas informações</h3>
 
-      <section class="flow flow--xxl">
+      <div class="flow flow--xxl">
         {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
 
 
@@ -205,14 +210,15 @@
 
           </div>
 
-      </section>
+      </div>
+
     </section>
 
     <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       <h3 class="title-3">Você é responsável por algum aluno na Educação Infantil ou Fundamental 1?</h3>
       <p>Em caso de resposta positiva, no próximo passo você poderá cadastrar os alunos pelos quais você é responsável.</p>
 
-      <section class="flow flow--xxl">
+      <div class="flow flow--xxl">
         <div class="checkbox">
           <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
           {{input class="checkbox__input"
@@ -222,7 +228,7 @@
                   type="checkbox"
                   value='target.checked')}}
         </div>
-      </section>
+      </div>
 
       <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
       <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
@@ -238,9 +244,11 @@
       <!-- lugar errado -->
         {{#if model.isAlsoResponsible }}
           {{#each model.dependentes as |dep index| }}
-            <h3 class="title-3">{{visible-index index}}° Aluno</h3>
-            <section class="flow flow--xxl">
-              {{student-form pessoa=dep}}
+            <section class="flow">
+                <h3 class="title-3">{{visible-index index}}º Aluno</h3>
+                <div class="flow flow--xxl">
+                    {{student-form pessoa=dep}}
+                </div>
             </section>
           {{/each}}
 
@@ -255,7 +263,7 @@
     <section class="flow carousel__step carousel__step--4 j-step4">
 
       <h3 class="title-3">Resumo das Informações</h3>
-      <section class="flow flow--xxl">
+      <div class="flow flow--xxl">
         {{teacher-info-card instrutor=model}}
 
         {{#if model.dependentes }}
@@ -263,7 +271,7 @@
             {{student-info-card student=dependente}}
           {{/each}}
         {{/if}}
-      </section>
+      </div>
 
       <button class="login__cta btn" onclick={{action 'validateTeacherProfile'}}>Confirmar Cadastro</button>
 
@@ -296,25 +304,11 @@
   <form class="steps-content carousel carousel--{{step}} j-carousel"  autocomplete="off">
 
     <section class="flow carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
-      <h3 class="title-3">{{visible-index index}}° Responsável</h3>
+      <h3 class="title-3">{{visible-index index}}º Responsável</h3>
 
-      <section class="flow flow--xxl">
+      <div class="flow flow--xxl">
           {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
-      </section>
-
-      <!-- mundo ideal -->
-      {{!--
-      <section class="flow flow--xxl">
-        {{#each model.dependentes as |dep index| }}
-          <section class="flow--xxl">
-            <h3 class="title-3">{{visible-index index}}° Responsável</h3>
-            <div class="flow">
-              {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
-            </div>
-          </section>
-        {{/each}}
-      </section>
-      --}}
+      </div>
 
       <p>BOTÃO PARA ACRESCENTAR OUTRO RESPONSÁVEL AINDA NÃO FUNCIONAL</p>
 
@@ -327,18 +321,18 @@
 
     <section class="flow carousel__step carousel__step--2 j-step2 animated {{if fromRight 'fadeInLeftShort' 'fadeInRightShort'}}">
       {{!-- <h3 class="title-3">Dados dos Dependentes</h3> --}}
-      <section class="flow flow--xl">
+      <div class="flow flow--xl">
 
         {{#each model.dependentes as |dep index| }}
           <section class="flow">
-            <h3 class="title-3">{{visible-index index}}° Aluno</h3>
+            <h3 class="title-3">{{visible-index index}}º Aluno</h3>
             <div class="flow">
               {{student-form pessoa=dep gonext=(action 'carouselFoward')}}
             </div>
           </section>
         {{/each}}
 
-      </section>
+      </div>
 
       {{#if canAddDependents }}
         <button class="btn btn--add-list-item" type="button" onclick={{action 'addDependent'}}>
@@ -351,9 +345,9 @@
     <section class="flow carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
       <h3 class="title-3 m-bottom--lg">Conclusão de cadastro</h3>
 
-      <section class="flow flow--xxl">
-        <section>
-          <h4 class="title-4 m-bottom--sm">Responsáveis</h4>
+      <div class="flow flow--xxl">
+        <section class="flow">
+          <h4 class="title-4">Responsáveis</h4>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
 
@@ -365,8 +359,8 @@
           </div>
         </section>
 
-        <section>
-          <h4 class="title-4 m-bottom--sm">Alunos</h4>
+        <section class="flow">
+          <h4 class="title-4">Alunos</h4>
           <div class="row">
 
             {{#each model.dependentes as |dep index| }}
@@ -381,7 +375,7 @@
         </section>
 
       <button id="confirmar_cadastro" class="login__cta btn" onclick={{action 'validateStudentProfile'}}>Confirmar Cadastro</button>
-    </section>
+    </div>
 
     </section>
 
