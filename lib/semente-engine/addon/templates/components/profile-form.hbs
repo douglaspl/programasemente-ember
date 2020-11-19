@@ -4,8 +4,9 @@
         <label for="name">Senha</label>
         <button type="button" class="btn btn--md">Alterar senha</button>
     </div> --}}
-<div class="flow">
+<div class="flow flow--xl">
     <div class="row">
+
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
             <label class="form-group__label" for="name">Nome Completo</label>
@@ -24,7 +25,7 @@
                     <span class="alert__msg"></span>
                 </p>
         </div>
-        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+        <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
                 <div class="form-group__wrapper form-group__wrapper--select">
@@ -41,9 +42,11 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
+
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
@@ -61,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+        <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
                 <div class="form-group__wrapper form-group__wrapper--select">
@@ -81,6 +84,7 @@
             </div>
 
         </div>
+
     </div>
 </div>
 
@@ -101,7 +105,7 @@
 
 
 {{else if (equalstr pessoa.role "instrutor") }}
-<div class="flow">
+<div class="flow flow--xl">
     <div class="row">
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
@@ -113,7 +117,7 @@
             </div>
         </div>
 
-        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+        <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="celular">Número de Celular</label>
                 {{input class="j-validate form-group__input"
@@ -176,7 +180,7 @@
 
 
 {{else if (equalstr pessoa.role "responsavel") }}
-<div class="flow">
+<div class="flow flow--xl">
     <div class="row">
 
         <div class="col-xs-4 col-lg-3">
@@ -189,7 +193,7 @@
             </div>
         </div>
 
-        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+        <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="celular">Número de Celular</label>
                 {{input class="j-validate form-group__input"

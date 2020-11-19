@@ -1,110 +1,114 @@
-<div class="row">
+<div class="flow flow--xl">
 
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-        <label class="form-group__label" for="login">Login</label>
-        {{input class="form-group__input"
-                name="login"
-                value=pessoa.email }}
+    <div class="row">
+
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+            <label class="form-group__label" for="login">Login</label>
+            {{input class="form-group__input"
+                    name="login"
+                    value=pessoa.email }}
+            </div>
         </div>
-    </div>
 
-    <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-        <div class="form-group w100">
-        <label class="form-group__label" for="senha">Senha</label>
-        {{input class="form-group__input"
-                name="senha"
-                value=pessoa.password}}
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+            <label class="form-group__label" for="senha">Senha</label>
+            {{input class="form-group__input"
+                    name="senha"
+                    value=pessoa.password}}
+            </div>
         </div>
+
     </div>
 
-</div>
 
 
 
 
+    <div class="row">
 
-<div class="row">
-
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-        <label class="form-group__label" for="name">Nome Completo</label>
-        {{input class="form-group__input"
-                id="name1"
-                name="name1"
-                value=pessoa.name}}
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+            <label class="form-group__label" for="name">Nome Completo</label>
+            {{input class="form-group__input"
+                    id="name1"
+                    name="name1"
+                    value=pessoa.name}}
+            </div>
         </div>
-    </div>
 
-    <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-    <div class="form-group w100">
-    <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
-    <select class="form-group__input" id="genero_student{{pessoa.id}}" name="genero"
-        onchange={{action 'refreshSelectedGenero' value='target.value'}}>
-        <option value="">---</option>
-        <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
-        <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
-        <option value="">Prefiro não dizer</option>
-    </select>
-    </div>
-
-    </div>
-
-</div>
-
-
-
-
-
-<div class="row">
-
-    <div class="col-xs-4 col-lg-3">
+        <div class="col-xs-4 col-lg-3">
         <div class="form-group w100">
-        <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
-        <select class="form-group__input" name="serie" id="serie_student{{pessoa.id}}"
-            onchange={{action 'refreshSelectedAno' value='target.value'}}>
+        <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
+        <select class="form-group__input" id="genero_student{{pessoa.id}}" name="genero"
+            onchange={{action 'refreshSelectedGenero' value='target.value'}}>
             <option value="">---</option>
-            {{#each pessoa.instituicao.plataformaAnos as | pa |}}
-            <option value="{{pa.id}}" selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
-                {{pa.name}}</option>
-            {{/each}}
+            <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
+            <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
+            <option value="">Prefiro não dizer</option>
         </select>
         </div>
-    </div>
 
-    <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-        <div class="form-group w100">
-        <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
-        <select name="turma" id="turma_student{{pessoa.id}}"
-            onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
-            <option value="">---</option>
-            {{#each pessoa.instituicao.plataformaTurmas as | pt |}}
-            {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
-                <option value="{{pt.id}}"
-                selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
-                {{pt.name}}</option>
-            {{/if}}
-            {{/each}}
-        </select>
         </div>
+
     </div>
 
-</div>
+
+
+
+
+    <div class="row">
+
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+            <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
+            <select class="form-group__input" name="serie" id="serie_student{{pessoa.id}}"
+                onchange={{action 'refreshSelectedAno' value='target.value'}}>
+                <option value="">---</option>
+                {{#each pessoa.instituicao.plataformaAnos as | pa |}}
+                <option value="{{pa.id}}" selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
+                    {{pa.name}}</option>
+                {{/each}}
+            </select>
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+            <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
+            <select name="turma" id="turma_student{{pessoa.id}}"
+                onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
+                <option value="">---</option>
+                {{#each pessoa.instituicao.plataformaTurmas as | pt |}}
+                {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
+                    <option value="{{pt.id}}"
+                    selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
+                    {{pt.name}}</option>
+                {{/if}}
+                {{/each}}
+            </select>
+            </div>
+        </div>
+
+    </div>
 
 
 
 
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-xs-12">
-        <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}} type="button">
-            <span class="btn__label">Voltar</span>
-        </button>
-        <button class="btn btn--md" {{action "saveProfile" pessoa}} type="button">
-            <span class="btn__label">Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
-        </button>
+        <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}} type="button">
+                <span class="btn__label">Voltar</span>
+            </button>
+            <button class="btn btn--md" {{action "saveProfile" pessoa}} type="button">
+                <span class="btn__label">Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+            </button>
+        </div>
+
     </div>
 
 </div>
