@@ -70,8 +70,9 @@
     <!-- back to institutions list -->
     {{#if (equalstr role 'admin')}}
     <div class="main__back-container">
-      <button id="backToInstList" class="btn btn--text" {{action 'backToInstList' on="click"}}>
-        <span class="icon-arrow-left"></span>voltar
+      <button class="btn btn--text" id="backToInstList" {{action 'backToInstList' on="click"}} type="button">
+        <span class="icon-arrow-left"></span>
+        <span class="btn__voltar">voltar</span>
       </button>
     </div>
     {{/if}}
@@ -1342,8 +1343,9 @@
     <!-- INÍCIO DA SESSÃO DE QUIZ ESPECÍFICO -->
     <section style="display: none;" id="report-quiz-specific" class="report-quiz">
 
-      <button id="back-quiz-specific" class="btn btn--text">
-        <span class="icon-arrow-left"></span>voltar
+      <button class="btn btn--text" id="back-quiz-specific" type="button">
+        <span class="icon-arrow-left"></span>
+        <span class="btn__label">voltar</span>
       </button>
 
       <h2 class="main__aux-title">Aula 1: O que é resiliência?</h2>

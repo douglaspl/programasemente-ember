@@ -1,5 +1,7 @@
 <div class="flow recent-added">
     <h4 class="title-4">{{visible-index index}}º Responsável</h4>
+    <!-- talvez seja bom criar o caso de se for o primeiro responsável
+    usar o título "Suas informações" e no segundo "2º Responsável"-->
 
     <div class="flow flow--xl">
 
@@ -55,19 +57,7 @@
         </div>
     </div>
 
-</div>
-
-
-<div class="row">
-
-    <div class="col-xs-12">
-        <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}} type="button">
-            <span class="btn__label">Voltar</span>
-        </button>
-        <button class="btn btn--md" {{action "saveResponsavel" responsavel}} type="button">
-            <span class="btn__label">Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
-        </button>
-    </div>
+    <!-- retirar botão depois -->
+    <button {{action "saveResponsavel" responsavel}}>Salvar</button>
 
 </div>

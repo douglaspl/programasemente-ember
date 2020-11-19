@@ -220,8 +220,9 @@
     <!-- back to institutions list -->
     {{#if (equalstr role 'admin')}}
       <div class="main__back-container">
-        <button id="back-person-specific_old" class="btn btn--text" {{action 'backToInstList' on="click"}}>
-          <span class="icon-arrow-left"></span>voltar
+        <button class="btn btn--text" id="back-person-specific_old" {{action 'backToInstList' on="click"}} type="button">
+          <span class="icon-arrow-left"></span>
+          <span class="btn__label">voltar</span>
         </button>
       </div>
     {{/if}}
@@ -288,7 +289,7 @@
             <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}} disabled="true">
             {{/if}}
           </div>
-        
+
           <div class="form-group form-group--aired-h" flex="40--lg">
             <label class="form-group__label">Cidade</label>
             {{#if (equalstr role 'admin')}}
