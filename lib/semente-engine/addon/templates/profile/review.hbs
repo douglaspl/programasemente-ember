@@ -70,7 +70,7 @@
           <span class="steps__number">2</span>
         </li>
         <li id="s2" class="steps__step">
-          <span class="steps__label">Outros Responsáveis</span>
+          <span class="steps__label">Segundo responsável</span>
           <span class="steps__number">3</span>
         </li>
         <li id="s3" class="steps__step">
@@ -354,7 +354,10 @@
   <form class="steps-content carousel carousel--{{step}} j-carousel" autocomplete="off">
 
     <section class="flow flow--xl carousel__step carousel__step--1 j-step1 animated fadeInLeftShort">
-      <h3 class="title-3">{{visible-index index}}º Responsável</h3>
+      <h3 class="title-3">
+        Suas informações
+        <span class="title__sub">1º Responsável</span>
+      </h3>
 
       <div class="flow flow--xxl">
         {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
@@ -421,15 +424,15 @@
         {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
           {{#if (notequalstr resp.id model.id)}}
             <section class="flow">
-              <h3 class="title-3">Adicionar Parceiro</h3>
+              <h3 class="title-3">Adicionar segundo responsável</h3>
               <div class="flow">
                 {{responsible-form  responsavel=resp
-                                gonext=(action 'carouselFoward')
-                                goback=(action 'carouselBackward')
-                                checkform=(action 'validateForm')
-                                checkname=(action 'validateName')
-                                checkemail=(action 'validateEmail')
-                                checkcel=(action 'validateCel')}}
+                                    gonext=(action 'carouselFoward')
+                                    goback=(action 'carouselBackward')
+                                    checkform=(action 'validateForm')
+                                    checkname=(action 'validateName')
+                                    checkemail=(action 'validateEmail')
+                                    checkcel=(action 'validateCel')}}
               </div>
             </section>
           {{/if}}
