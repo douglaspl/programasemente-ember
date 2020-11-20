@@ -1,6 +1,6 @@
 <div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
     {{#if (equalstr model.role 'responsavel')}}
-        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+        {{!-- <h3 class="title-3">{{updatedIndex}}º Responsável</h3> --}}
     {{else}}
         <h4 class="title-4">{{visible-index index}}º Responsável</h4>
     {{/if}}
@@ -12,8 +12,14 @@
             <div class="col-xs-4 col-lg-3">
                 <div class="form-group w100">
                     <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                    <input type="text" class="form-group__input j-validate" id="name_responsavel"
-                        name="name_responsavel" value={{responsavel.name}} onkeydown={{action 'checkName'}} data-type="nome" data-required="true">
+                    {{!-- <input type="text" class="form-group__input j-validate" id="name_responsavel"
+                        name="name_responsavel" value={{responsavel.name}} onkeydown={{action 'checkName'}} data-type="nome" data-required="true"> --}}
+                    {{input class="form-group__input j-validate"
+                        name="name_responsavel"
+                        value=responsavel.name
+                        key-down=(action 'checkName') 
+                        data-type="nome"
+                        data-required="true"}}
 
                 </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
@@ -26,8 +32,13 @@
             <div class="col-xs-4 col-lg-3 col-lg-offset-1">
                 <div class="form-group w100">
                     <label class="form-group__label" for="email_responsavel">Email</label>
-                    <input type="email" class="j-validate form-group__input" id='email_responavel'
-                        name='email_responavel' value={{responsavel.email}} onkeydown={{action 'checkemail'}} data-type="email" data-required="true">
+                    {{input class="form-group__input j-validate"
+                        type="email"
+                        name="email_responavel"
+                        value=responsavel.email
+                        key-down=(action 'checkemail') 
+                        data-type="email"
+                        data-required="true"}}
 
                 </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
@@ -44,10 +55,14 @@
                 <div class="form-group w100">
                     <label class="form-group__label" for="celular">Número de Celular</label>
                     {{!-- {{input class="form-group__input" name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx' maxlength="15" key-press=(action 'phoneMask' value='target.value')}} --}}
-                    <input class="form-group__input" name='celular' maxlength="15"
-                        onblur={{action 'checkcel' value='target.value'}}
-                        onkeypress={{action 'phoneMask' value='target.value'}} placeholder="(xx) xxxxx-xxxx" type="text"
-                        value={{responsavel.telefone}} data-type="celular" data-required="false">
+                    {{input class="form-group__input"
+                        name="celular"
+                        maxlength="15"
+                        value=responsavel.telefone
+                        placeholder="(xx) xxxxx-xxxx"
+                        data-type="celular"
+                        key-press=(action 'phoneMask')
+                        data-required="false"}}
 
                 </div>
                  <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
@@ -61,6 +76,6 @@
     </div>
 
     <!-- retirar botão depois -->
-    <button class="hidden" {{action "saveResponsavel" responsavel}}>Salvar</button>
+    <button class="" {{action "saveResponsavel" responsavel}}>Salvar</button>
 
 </div>
