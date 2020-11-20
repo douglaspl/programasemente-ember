@@ -1,6 +1,11 @@
 <p class="title-4 bg-lemon-10 tt-u p--sm" style="position: fixed; top: 0; width: 100vw; left: 0; text-align: center;">
   {{model.role}}</p>
 
+<p class="m-left--sm alert alert__form alert--sm alert--error alert--has-icon animated d250" id="error_form"
+  data-animation="fadeIn">
+  <span class="alert__icon icon-x"></span>
+  <span class="alert__msg"></span>
+</p>
 
 <header class="row middle-xs">
 
@@ -49,7 +54,7 @@
           <span class="steps__number">1</span>
         </li>
         <li id="s2" class="steps__step">
-          <span class="steps__label">Outros</span>
+          <span class="steps__label">Responsáveis</span>
           <span class="steps__number">2</span>
         </li>
         <li id="s3" class="steps__step">
@@ -70,7 +75,7 @@
           <span class="steps__number">2</span>
         </li>
         <li id="s2" class="steps__step">
-          <span class="steps__label">Outros Responsáveis</span>
+          <span class="steps__label">Outro responsável</span>
           <span class="steps__number">3</span>
         </li>
         <li id="s3" class="steps__step">
@@ -86,10 +91,6 @@
 
 
 
-
-{{!-- {{#if model.shouldReviewProfile }}
-    <h2>Por favor, revise as informações do seu perfil antes de acessar os conteúdos SEMENTE</h2>
-  {{/if}} --}}
 
 
 
@@ -505,15 +506,11 @@
 
   </form>
   <!-- fim RESPONSÁVEL -->
+
 {{/if}}
 
 
 
-<p class="m-left--sm alert alert__form alert--sm alert--error alert--has-icon animated d250" id="error_form"
-  data-animation="fadeIn">
-  <span class="alert__icon icon-x"></span>
-  <span class="alert__msg"></span>
-</p>
 
 
 {{preventDefault}}

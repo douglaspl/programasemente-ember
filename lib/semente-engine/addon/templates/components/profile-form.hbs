@@ -15,7 +15,7 @@
                         name="name"
                         onblur={{action 'trimAll'}}
                         onfocus={{action 'trimAll'}}
-                        oninput={{action 'checkName'}}
+                        onkeydown={{action 'checkName'}}
                         {{!-- oninput={{action 'checkform'}} --}}
                         type="text"
                         value={{pessoa.name}}
