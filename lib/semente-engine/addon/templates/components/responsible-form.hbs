@@ -1,6 +1,12 @@
-<div class="flow recent-added">
+<div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
+    {{#if (equalstr model.role 'responsavel')}}
+        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+    {{else}}
+        <h4 class="title-4">{{visible-index index}}º Responsável</h4>
+    {{/if}}
+    <!-- talvez seja bom criar o caso de se for o primeiro responsável
+    usar o título "Suas informações" e no segundo "2º Responsável"-->
 
-    <h4 class="title-4">{{visible-index index}}º Responsável</h4>
     <div class="flow flow--xl">
         <div class="row">
             <div class="col-xs-4 col-lg-3">
@@ -25,8 +31,7 @@
                         <p class="breadcrumb__link" onclick={{action 'toggleinput'}}>Não possuo e-mail</p>
 
                 </div>
-                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
-                    data-animation="fadeIn">
+                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>
                     <span class="alert__msg"></span>
                 </p>
@@ -57,19 +62,7 @@
         </div>
     </div>
 
-</div>
-
-
-<div class="row">
-
-    <div class="col-xs-12">
-        <button class="btn btn--ghost btn--md m-right--sm" {{action "previous" responsavel}} type="button">
-            <span class="btn__label">Voltar</span>
-        </button>
-        <button class="j-submit btn btn--md" {{action "saveResponsavel" responsavel}} type="button">
-            <span class="btn__label">Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
-        </button>
-    </div>
+    <!-- retirar botão depois -->
+    <button class="hidden" {{action "saveResponsavel" responsavel}}>Salvar</button>
 
 </div>
