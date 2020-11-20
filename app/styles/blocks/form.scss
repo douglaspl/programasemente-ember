@@ -81,6 +81,16 @@
         margin-left: $distance--md;
       }
 
+      &--is-disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+        background: $gray-40;
+        pointer-events: none;
+        -webkit-transition: background-color 500ms linear;
+        -ms-transition: background-color 500ms linear;
+        transition: background-color 500ms linear;
+      }
+      
     }
 
 

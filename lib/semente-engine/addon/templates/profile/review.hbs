@@ -116,15 +116,16 @@
       <div class="flow flow--xxl">
 
         {{#each model.responsaveis as |responsavel index| }}
-          {{responsible-form  responsavel=responsavel
-                              index=index
-                              model=model
-                              gonext=(action 'carouselFoward')
-                              goback=(action 'carouselBackward')
-                              checkform=(action 'validateForm')
-                              checkname=(action 'validateName')
-                              checkemail=(action 'validateEmail')
-                              checkcel=(action 'validateCel')}}
+          {{responsible-form    responsavel=responsavel
+                                index=index model=model
+                                gonext=(action 'carouselFoward')
+                                goback=(action 'carouselBackward')
+                                checkform=(action 'validateForm')
+                                checkname=(action 'validateName')
+                                checkemail=(action 'validateEmail')
+                                checkcel=(action 'validateCel')
+                                toggleinput=(action 'toggleInput')
+                                }}
         {{/each}}
 
         {{#if canAddResponsibles}}
