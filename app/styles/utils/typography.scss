@@ -8,6 +8,15 @@
     &-3         { @include title-3; }
     &-4         { @include title-4; }
     &-aux       { @include title-aux;}
+
+    &__sub {
+        color: $gray-30;
+        font-size: .75em;
+        font-size: clamp(14px, .75em, 18px);
+        font-style: italic;
+        margin-left: $distance--xs;
+    }
+
 }
 
 .text-aux { @include text-aux; }

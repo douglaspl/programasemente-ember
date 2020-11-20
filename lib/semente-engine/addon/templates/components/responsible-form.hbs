@@ -1,9 +1,11 @@
 <div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
+    {{!--
     {{#if (equalstr model.role 'responsavel')}}
-        {{!-- <h3 class="title-3">{{updatedIndex}}º Responsável</h3> --}}
+        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
     {{else}}
-        <h4 class="title-4">{{visible-index index}}º Responsável</h4>
+        <h4 class="title-4">2º Responsável</h4>
     {{/if}}
+    --}}
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
 
@@ -17,7 +19,7 @@
                     {{input class="form-group__input j-validate"
                         name="name_responsavel"
                         value=responsavel.name
-                        key-down=(action 'checkName') 
+                        key-down=(action 'checkName')
                         data-type="nome"
                         data-required="true"}}
 
@@ -36,7 +38,7 @@
                         type="email"
                         name="email_responavel"
                         value=responsavel.email
-                        key-down=(action 'checkemail') 
+                        key-down=(action 'checkemail')
                         data-type="email"
                         data-required="true"}}
 

@@ -18,7 +18,7 @@
     &::before {
         background-color: $gray-0;
         border-radius: $radius;
-        bottom: calc((#{$size} + #{$number-border}) / 2);
+        bottom: calc((#{$size} - #{$number-border}) / 2);
         content: '';
         height: $distance--xxs;
         left: 50%;
