@@ -105,7 +105,13 @@
 
       <div class="flow flow--xxl">
         {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
-        {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName') removeerrors=(action 'removeErrorTag')}}
+        {{profile-form 
+            pessoa=model 
+            gonext=(action 'carouselFoward') 
+            checkform=(action 'validateForm') 
+            checkname=(action 'validateName') 
+            removeerrors=(action 'removeErrorTag')
+            addresponsible=(action 'addResponsible')}}
       </div>
 
     </section>
@@ -142,7 +148,7 @@
             <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
               <span class="btn__label">Voltar</span>
             </button>
-            <button class="btn btn--md" {{action "carouselFoward"}} type="button">
+            <button class="btn btn--md" {{action "saveResponsibles"}} type="button">
               <span class="btn__label">Avançar</span>
               <span class="btn__icon icon-arrow-right"></span>
             </button>
