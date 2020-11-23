@@ -1,11 +1,7 @@
 <div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
-    {{!--
-    {{#if (equalstr model.role 'responsavel')}}
-        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
-    {{else}}
-        <h4 class="title-4">2º Responsável</h4>
-    {{/if}}
-    --}}
+    
+       <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
 
@@ -34,14 +30,15 @@
 
             <div class="col-xs-4 col-lg-3 col-lg-offset-1">
                 <div class="form-group w100">
-                    <label class="form-group__label" for="email_responsavel">Email</label>
+                    <label class="form-group__label" for="email_responsavel">E-mail</label>
                     {{input class="form-group__input j-validate"
                         type="email"
                         name="email_responavel"
                         value=responsavel.email
                         key-down=(action 'checkemail')
-                        data-type="email"
+                        data-type="e-mail"
                         data-required="true"}}
+                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo e-mail</p>
 
                 </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
@@ -67,6 +64,7 @@
                         data-required="false"
                         focus-out=(action 'checkcel')
                         }}
+                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo celular</p>
 
                 </div>
                  <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
