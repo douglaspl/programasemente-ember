@@ -11,13 +11,317 @@
           {{#each conteudos as |conteudo|}}
             {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
               {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+                {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
 
-                {{#if selectedPublicos}}
-                  {{#each selectedPublicos as |item index|}}
-                    {{#if (equalstrmenosum index selectedPublicos.length)}}
-                      {{#if (containInList selectedPublicos conteudo.publicos)}}
-                        {{#if (equalstr conteudo.tema.id tema.id)}}
-                          {{#if (equalstrOrnull selectedTema.id tema.id selectedTema)}}
+                  {{#if selectedPublicos}}
+                    {{#each selectedPublicos as |item index|}}
+                      {{#if (equalstrmenosum index selectedPublicos.length)}}
+                        {{#if (containInList selectedPublicos conteudo.publicos)}}
+                          {{#if (equalstr conteudo.tema.id tema.id)}}
+                            {{#if (equalstrOrnull selectedTema.id tema.id selectedTema)}}
+
+                              <div>
+                                {{!-- CONTEÚDO CARD --}}
+                                <div class="row">
+                                  <div id="Publicos">
+                                    <li class="title-3 list__name">Público(s):</li> 
+                                    {{#if (sizeequals conteudo.publicos 3)}}
+                                        <li class="title-3 list__name">Todos</li>     
+                                    {{else}}
+                                      {{#each conteudo.publicos as |publico|}}
+                                        {{publico.name}}
+                                      {{/each}}
+                                    {{/if}}
+                                  </div>
+                                  <label>Conteúdo: {{conteudo.titulo}}</label>
+                                  <label>Arquivo: {{conteudo.tipo}}</label>
+                                  <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                                  onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                                  <label>{{conteudo.situacao}}</label>
+                                  <li>
+                                    <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                                  </li>
+                                </div>
+                                {{!-- /CONTEÚDO CARD --}}
+                              </div>
+                            {{/if}}
+                          {{/if}}
+                        {{/if}}
+                      {{/if}}
+                    {{/each}}
+                  {{else}}
+                    {{#if (equalstr conteudo.tema.id tema.id)}}
+                      {{#if (equalstrOrnull selectedTema.id tema.id selectedTema)}}
+
+                        <div>
+                          {{!-- CONTEÚDO CARD --}}
+                          <div class="row">
+                            <div id="Publicos">
+                              <li class="title-3 list__name">Público(s):</li> 
+                              {{#if (sizeequals conteudo.publicos 3)}}
+                                  <li class="title-3 list__name">Todos</li>     
+                              {{else}}
+                                {{#each conteudo.publicos as |publico|}}
+                                  {{publico.name}}
+                                {{/each}}
+                              {{/if}}
+                            </div>
+                            <label>Conteúdo: {{conteudo.titulo}}</label>
+                            <label>Arquivo: {{conteudo.tipo}}</label>
+                            <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                            onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                            <label>{{conteudo.situacao}}</label>
+                            <li>
+                              <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                            </li>
+                          </div>
+                          {{!-- /CONTEÚDO CARD --}}
+                        </div>
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          {{/each}}
+          {{!-- /CONTEÚDOS --}}
+        </div>
+      {{else}}
+        {{!-- COM TEMAS --}}
+        {{!-- COM SEGMENTO --}}
+        <div>
+          {{#each segmentos as |segmento|}}
+            {{#if (equalstrOrnull selectedSegmento.id segmento.id selectedSegmento)}}
+              {{#each segmento.plataformaAnos as |ano|}}
+                {{#if (equalstrOrnull selectedAno.id ano.id selectedAno)}}
+                  {{#each ano.aulas as |aula|}}
+                    {{#if (equalstrOrnull selectedAula.id aula.id selectedAula)}}
+
+                      {{!-- CONTEÚDOS --}}
+                      {{#each aula.plataformaConteudos as |conteudo|}}
+                        {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
+                          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+                            {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+
+                              {{#if selectedPublicos}}
+                                {{#each selectedPublicos as |item index|}}
+                                  {{#if (equalstrmenosum index selectedPublicos.length)}}
+                                    {{#if (containInList selectedPublicos conteudo.publicos)}}
+
+                                      <li class="list__name">Segmento: {{segmento.titulo}} </li> 
+                                      <li class="title-2 list__name">Ano: {{ano.name}} </li> 
+                                      <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
+
+                                      {{#if (equalstr conteudo.tema.name tema.name)}}
+                                        <div>
+                                          {{!-- CONTEÚDO CARD --}}
+                                          <div class="row">
+                                            <div id="Publicos">
+                                              <li class="title-3 list__name">Público(s):</li> 
+                                              {{#if (sizeequals conteudo.publicos 3)}}
+                                                  <li class="title-3 list__name">Todos</li>     
+                                              {{else}}
+                                                {{#each conteudo.publicos as |publico|}}
+                                                  {{publico.name}}
+                                                {{/each}}
+                                              {{/if}}
+                                            </div>
+                                            <label>Conteúdo: {{conteudo.titulo}}</label>
+                                            <label>Arquivo: {{conteudo.tipo}}</label>
+                                            <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                                            onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                                            <label>{{conteudo.situacao}}</label>
+                                            <li>
+                                              <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                                            </li>
+                                          </div>
+                                          {{!-- /CONTEÚDO CARD --}}
+                                        </div>
+                                      {{/if}}
+                                    {{/if}}
+                                  {{/if}}
+                                {{/each}}
+                              {{else}}
+
+                                <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
+                                <li class="title-2 list__name">Ano: {{ano.name}} </li> 
+                                <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
+
+                                {{#if (equalstr conteudo.tema.name tema.name)}}
+                                  <div>
+                                    {{!-- CONTEÚDO CARD --}}
+                                    <div class="row">
+                                      <div id="Publicos">
+                                        <li class="title-3 list__name">Público(s):</li> 
+                                        {{#if (sizeequals conteudo.publicos 3)}}
+                                            <li class="title-3 list__name">Todos</li>     
+                                        {{else}}
+                                          {{#each conteudo.publicos as |publico|}}
+                                            {{publico.name}}
+                                          {{/each}}
+                                        {{/if}}
+                                      </div>
+                                      <label>Conteúdo: {{conteudo.titulo}}</label>
+                                      <label>Arquivo: {{conteudo.tipo}}</label>
+                                      <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                                      onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                                      <label>{{conteudo.situacao}}</label>
+                                      <li>
+                                        <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                                      </li>
+                                    </div>
+                                    {{!-- /CONTEÚDO CARD --}}
+                                  </div>
+                                {{/if}}
+                              {{/if}}
+                            {{/if}}
+                          {{/if}}
+                        {{/if}}
+                      {{/each}}
+                      {{!-- /CONTEÚDOS --}}
+                    {{/if}}
+                  {{/each}}
+                {{/if}}
+              {{/each}}
+            {{/if}}
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+{{else}}
+  {{!-- SEM TEMAS --}}
+  {{#if (equalstr agrupamento.name 'Biblioteca')}}
+    {{!-- SEM SEGMENTO: BIBLIOTECA --}}
+    <div>
+      {{!-- CONTEÚDOS --}}
+      {{#each conteudos as |conteudo|}}
+        {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
+          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+            {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+              
+              {{#if selectedPublicos}}
+                {{#each selectedPublicos as |item index|}}
+                  {{#if (equalstrmenosum index selectedPublicos.length)}}
+                    {{#if (containInList selectedPublicos conteudo.publicos)}}
+
+                      <div>
+                        {{!-- CONTEÚDO CARD --}}
+                        <div class="row">
+                          <div id="Publicos">
+                            <li class="title-3 list__name">Público(s):</li> 
+                            {{#if (sizeequals conteudo.publicos 3)}}
+                                <li class="title-3 list__name">Todos</li>     
+                            {{else}}
+                              {{#each conteudo.publicos as |publico|}}
+                                {{publico.name}}
+                              {{/each}}
+                            {{/if}}
+                          </div>
+                          <label>Conteúdo: {{conteudo.titulo}}</label>
+                          <label>Arquivo: {{conteudo.tipo}}</label>
+                          <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                          onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                          <label>{{conteudo.situacao}}</label>
+                          <li>
+                            <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                          </li>
+                        </div>
+                        {{!-- /CONTEÚDO CARD --}}
+                      </div>
+
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+              {{else}}
+                <div>
+                  {{!-- CONTEÚDO CARD --}}
+                  <div class="row">
+                    <div id="Publicos">
+                      <li class="title-3 list__name">Público(s):</li> 
+                      {{#if (sizeequals conteudo.publicos 3)}}
+                          <li class="title-3 list__name">Todos</li>     
+                      {{else}}
+                        {{#each conteudo.publicos as |publico|}}
+                          {{publico.name}}
+                        {{/each}}
+                      {{/if}}
+                    </div>
+                    <label>Conteúdo: {{conteudo.titulo}}</label>
+                    <label>Arquivo: {{conteudo.tipo}}</label>
+                    <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                    onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                    <label>{{conteudo.situacao}}</label>
+                    <li>
+                      <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                    </li>
+                  </div>
+                  {{!-- /CONTEÚDO CARD --}}
+                </div>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      {{/each}}
+      {{!-- /CONTEÚDOS --}}
+    </div>
+  {{else}}
+    {{!-- SEM TEMAS --}}
+    {{!-- COM SEGMENTO --}}
+    <div>
+      {{#each segmentos as |segmento|}}
+        {{#if (equalstrOrnull selectedSegmento.id segmento.id selectedSegmento)}}
+          {{#each segmento.plataformaAnos as |ano|}}
+            {{#if (equalstrOrnull selectedAno.id ano.id selectedAno)}}
+              {{#each ano.aulas as |aula|}}
+                {{#if (equalstrOrnull selectedAula.id aula.id selectedAula)}}
+                  {{!-- CONTEÚDOS --}}
+                  {{#each aula.plataformaConteudos as |conteudo|}}
+                    {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
+                      {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+                        {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+
+                          {{#if selectedPublicos}}
+                            {{#each selectedPublicos as |item index|}}
+                              {{#if (equalstrmenosum index selectedPublicos.length)}}
+                                {{#if (containInList selectedPublicos conteudo.publicos)}}
+
+                                  <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
+                                  <li class="title-2 list__name">Ano: {{ano.name}} </li> 
+                                  <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
+
+                                  <div>
+                                    {{!-- CONTEÚDO CARD --}}
+                                    <div class="row">
+                                      <div id="Publicos">
+                                        <li class="title-3 list__name">Público(s):</li> 
+                                        {{#if (sizeequals conteudo.publicos 3)}}
+                                            <li class="title-3 list__name">Todos</li>     
+                                        {{else}}
+                                          {{#each conteudo.publicos as |publico|}}
+                                            {{publico.name}}
+                                          {{/each}}
+                                        {{/if}}
+                                      </div>
+                                      <label>Conteúdo: {{conteudo.titulo}}</label>
+                                      <label>Arquivo: {{conteudo.tipo}}</label>
+                                      <input type="checkbox" id={{conteudo.id}} name="situacao" 
+                                      onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+                                      <label>{{conteudo.situacao}}</label>
+                                      <li>
+                                        <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
+                                      </li>
+                                    </div>
+                                    {{!-- /CONTEÚDO CARD --}}
+                                  </div>
+                                {{/if}}
+                              {{/if}}
+                            {{/each}}
+                          {{else}}
+
+                            <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
+                            <li class="title-2 list__name">Ano: {{ano.name}} </li> 
+                            <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
 
                             <div>
                               {{!-- CONTEÚDO CARD --}}
@@ -44,274 +348,6 @@
                               {{!-- /CONTEÚDO CARD --}}
                             </div>
                           {{/if}}
-                        {{/if}}
-                      {{/if}}
-                    {{/if}}
-                  {{/each}}
-                {{else}}
-                  {{#if (equalstr conteudo.tema.id tema.id)}}
-                    {{#if (equalstrOrnull selectedTema.id tema.id selectedTema)}}
-
-                      <div>
-                        {{!-- CONTEÚDO CARD --}}
-                        <div class="row">
-                          <div id="Publicos">
-                            <li class="title-3 list__name">Público(s):</li> 
-                            {{#if (sizeequals conteudo.publicos 3)}}
-                                <li class="title-3 list__name">Todos</li>     
-                            {{else}}
-                              {{#each conteudo.publicos as |publico|}}
-                                {{publico.name}}
-                              {{/each}}
-                            {{/if}}
-                          </div>
-                          <label>Conteúdo: {{conteudo.titulo}}</label>
-                          <label>Arquivo: {{conteudo.tipo}}</label>
-                          <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                          onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                          <label>{{conteudo.situacao}}</label>
-                          <li>
-                            <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                          </li>
-                        </div>
-                        {{!-- /CONTEÚDO CARD --}}
-                      </div>
-                    {{/if}}
-                  {{/if}}
-                {{/if}}
-              {{/if}}
-            {{/if}}
-          {{/each}}
-          {{!-- /CONTEÚDOS --}}
-        </div>
-      {{else}}
-        {{!-- COM TEMAS --}}
-        {{!-- COM SEGMENTO --}}
-        <div>
-          {{#each segmentos as |segmento|}}
-            {{#if (equalstrOrnull selectedSegmento.id segmento.id selectedSegmento)}}
-              {{#each segmento.plataformaAnos as |ano|}}
-                {{#if (equalstrOrnull selectedAno.id ano.id selectedAno)}}
-                  {{#each ano.aulas as |aula|}}
-                    {{#if (equalstrOrnull selectedAula.id aula.id selectedAula)}}
-
-                      {{!-- CONTEÚDOS --}}
-                      {{#each aula.plataformaConteudos as |conteudo|}}
-                        {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
-                          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-                            {{#if selectedPublicos}}
-                              {{#each selectedPublicos as |item index|}}
-                                {{#if (equalstrmenosum index selectedPublicos.length)}}
-                                  {{#if (containInList selectedPublicos conteudo.publicos)}}
-
-                                    <li class="list__name">Segmento: {{segmento.titulo}} </li> 
-                                    <li class="title-2 list__name">Ano: {{ano.name}} </li> 
-                                    <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
-
-                                    {{#if (equalstr conteudo.tema.name tema.name)}}
-                                      <div>
-                                        {{!-- CONTEÚDO CARD --}}
-                                        <div class="row">
-                                          <div id="Publicos">
-                                            <li class="title-3 list__name">Público(s):</li> 
-                                            {{#if (sizeequals conteudo.publicos 3)}}
-                                                <li class="title-3 list__name">Todos</li>     
-                                            {{else}}
-                                              {{#each conteudo.publicos as |publico|}}
-                                                {{publico.name}}
-                                              {{/each}}
-                                            {{/if}}
-                                          </div>
-                                          <label>Conteúdo: {{conteudo.titulo}}</label>
-                                          <label>Arquivo: {{conteudo.tipo}}</label>
-                                          <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                                          onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                                          <label>{{conteudo.situacao}}</label>
-                                          <li>
-                                            <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                                          </li>
-                                        </div>
-                                        {{!-- /CONTEÚDO CARD --}}
-                                      </div>
-                                    {{/if}}
-                                  {{/if}}
-                                {{/if}}
-                              {{/each}}
-                            {{else}}
-
-                              <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
-                              <li class="title-2 list__name">Ano: {{ano.name}} </li> 
-                              <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
-
-                              {{#if (equalstr conteudo.tema.name tema.name)}}
-                                <div>
-                                  {{!-- CONTEÚDO CARD --}}
-                                  <div class="row">
-                                    <div id="Publicos">
-                                      <li class="title-3 list__name">Público(s):</li> 
-                                      {{#if (sizeequals conteudo.publicos 3)}}
-                                          <li class="title-3 list__name">Todos</li>     
-                                      {{else}}
-                                        {{#each conteudo.publicos as |publico|}}
-                                          {{publico.name}}
-                                        {{/each}}
-                                      {{/if}}
-                                    </div>
-                                    <label>Conteúdo: {{conteudo.titulo}}</label>
-                                    <label>Arquivo: {{conteudo.tipo}}</label>
-                                    <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                                    onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                                    <label>{{conteudo.situacao}}</label>
-                                    <li>
-                                      <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                                    </li>
-                                  </div>
-                                  {{!-- /CONTEÚDO CARD --}}
-                                </div>
-                              {{/if}}
-                            {{/if}}
-                          {{/if}}
-                        {{/if}}
-                      {{/each}}
-                      {{!-- /CONTEÚDOS --}}
-                    {{/if}}
-                  {{/each}}
-                {{/if}}
-              {{/each}}
-            {{/if}}
-          {{/each}}
-        </div>
-      {{/if}}
-    {{/each}}
-  </div>
-{{else}}
-  {{!-- SEM TEMAS --}}
-  {{#if (equalstr agrupamento.name 'Biblioteca')}}
-    {{!-- SEM SEGMENTO: BIBLIOTECA --}}
-    <div>
-      {{!-- CONTEÚDOS --}}
-      {{#each conteudos as |conteudo|}}
-        {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
-          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{#if selectedPublicos}}
-              {{#each selectedPublicos as |item index|}}
-                {{#if (equalstrmenosum index selectedPublicos.length)}}
-                  {{#if (containInList selectedPublicos conteudo.publicos)}}
-
-                    <div>
-                      {{!-- CONTEÚDO CARD --}}
-                      <div class="row">
-                        <div id="Publicos">
-                          <li class="title-3 list__name">Público(s):</li> 
-                          {{#if (sizeequals conteudo.publicos 3)}}
-                              <li class="title-3 list__name">Todos</li>     
-                          {{else}}
-                            {{#each conteudo.publicos as |publico|}}
-                              {{publico.name}}
-                            {{/each}}
-                          {{/if}}
-                        </div>
-                        <label>Conteúdo: {{conteudo.titulo}}</label>
-                        <label>Arquivo: {{conteudo.tipo}}</label>
-                        <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                        onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                        <label>{{conteudo.situacao}}</label>
-                        <li>
-                          <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                        </li>
-                      </div>
-                      {{!-- /CONTEÚDO CARD --}}
-                    </div>
-
-                  {{/if}}
-                {{/if}}
-              {{/each}}
-            {{/if}}
-          {{/if}}
-        {{/if}}
-      {{/each}}
-      {{!-- /CONTEÚDOS --}}
-    </div>
-  {{else}}
-    {{!-- SEM TEMAS --}}
-    {{!-- COM SEGMENTO --}}
-    <div>
-      {{#each segmentos as |segmento|}}
-        {{#if (equalstrOrnull selectedSegmento.id segmento.id selectedSegmento)}}
-          {{#each segmento.plataformaAnos as |ano|}}
-            {{#if (equalstrOrnull selectedAno.id ano.id selectedAno)}}
-              {{#each ano.aulas as |aula|}}
-                {{#if (equalstrOrnull selectedAula.id aula.id selectedAula)}}
-                  {{!-- CONTEÚDOS --}}
-                  {{#each aula.plataformaConteudos as |conteudo|}}
-                    {{#if (equalstr conteudo.agrupamento.name agrupamento.name)}}
-                      {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-                        {{#if selectedPublicos}}
-                          {{#each selectedPublicos as |item index|}}
-                            {{#if (equalstrmenosum index selectedPublicos.length)}}
-                              {{#if (containInList selectedPublicos conteudo.publicos)}}
-
-                                <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
-                                <li class="title-2 list__name">Ano: {{ano.name}} </li> 
-                                <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
-
-                                <div>
-                                  {{!-- CONTEÚDO CARD --}}
-                                  <div class="row">
-                                    <div id="Publicos">
-                                      <li class="title-3 list__name">Público(s):</li> 
-                                      {{#if (sizeequals conteudo.publicos 3)}}
-                                          <li class="title-3 list__name">Todos</li>     
-                                      {{else}}
-                                        {{#each conteudo.publicos as |publico|}}
-                                          {{publico.name}}
-                                        {{/each}}
-                                      {{/if}}
-                                    </div>
-                                    <label>Conteúdo: {{conteudo.titulo}}</label>
-                                    <label>Arquivo: {{conteudo.tipo}}</label>
-                                    <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                                    onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                                    <label>{{conteudo.situacao}}</label>
-                                    <li>
-                                      <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                                    </li>
-                                  </div>
-                                  {{!-- /CONTEÚDO CARD --}}
-                                </div>
-                              {{/if}}
-                            {{/if}}
-                          {{/each}}
-                        {{else}}
-
-                          <li class="title-2 list__name">Segmento: {{segmento.titulo}} </li> 
-                          <li class="title-2 list__name">Ano: {{ano.name}} </li> 
-                          <li class="title-2 list__name">Aula: {{aula.titulo}} </li> 
-
-                          <div>
-                            {{!-- CONTEÚDO CARD --}}
-                            <div class="row">
-                              <div id="Publicos">
-                                <li class="title-3 list__name">Público(s):</li> 
-                                {{#if (sizeequals conteudo.publicos 3)}}
-                                    <li class="title-3 list__name">Todos</li>     
-                                {{else}}
-                                  {{#each conteudo.publicos as |publico|}}
-                                    {{publico.name}}
-                                  {{/each}}
-                                {{/if}}
-                              </div>
-                              <label>Conteúdo: {{conteudo.titulo}}</label>
-                              <label>Arquivo: {{conteudo.tipo}}</label>
-                              <input type="checkbox" id={{conteudo.id}} name="situacao" 
-                              onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-                              <label>{{conteudo.situacao}}</label>
-                              <li>
-                                <button type="button" class="login__cta btn" {{action 'goToEditConteudo' conteudo.id}}>Editar</button> 
-                              </li>
-                            </div>
-                            {{!-- /CONTEÚDO CARD --}}
-                          </div>
                         {{/if}}
                       {{/if}}
                     {{/if}}

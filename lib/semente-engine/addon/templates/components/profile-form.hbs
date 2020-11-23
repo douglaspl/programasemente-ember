@@ -90,13 +90,16 @@
 
     </div>
 </div>
-
-<button class="j-submit btn btn--md"
-        type="button"
-        {{action "saveProfile" pessoa}}>
-        <span>Avançar</span>
-        <span class="btn__icon icon-arrow-right"></span>
-</button>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveProfile" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+</div>
 
 
 
@@ -159,36 +162,59 @@
         </div>
     </div>
 
+
     {{#if pessoa.isAplicador}}
+    <h2 class="title-2">Você aplica em quais séries?</h2>
+
     <div class="row">
 
         {{#each segmentos as |seg| }}
-            <div class="col-xs-2">
+
+            <div class="col-xs-3">
                 <div class="row">
-                    <input type="checkbox" id="segmento{{seg.id}}"
-                        onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
-                    <label>{{seg.titulo}}</label>
+                    <div class="checkbox">
+                        <input  class="checkbox__input"
+                                type="checkbox"
+                                id="segmento{{seg.id}}"
+                                onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                        <label  class="checkbox__label"
+                                for="segmento{{seg.id}}">{{seg.titulo}}</label>
+                    </div>
                 </div>
+
                 {{#each seg.plataformaAnos as |platAno|}}
-                <div class="row">
-                    <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                        id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
-                    <label>{{platAno.name}}</label>
-                </div>
+                <ul>
+                    <li>
+                        <div class="checkbox">
+                            <input  class="checkbox__input"
+                                    checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                                    id="plat_ano{{platAno.id}}"
+                                    onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                    type="checkbox">
+                            <label  class="checkbox__label"
+                                    for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                        </div>
+                    </li>
+                </ul>
                 {{/each}}
+
             </div>
+
         {{/each}}
 
     </div>
     {{/if}}
 </div>
-
-<button class="j-submit btn btn--md"
-        type="button"
-        {{action "saveResponsible" pessoa}}>
-        <span>Avançar</span>
-        <span class="btn__icon icon-arrow-right"></span>
-</button>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveResponsible" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+</div>
 
 
 
@@ -243,14 +269,14 @@
         </div>
 
     </div>
-    <div class="row">
-        <button class="j-submit btn btn--md"
-                type="button"
-                {{action "saveResponsible" pessoa}}>
-                <span>Avançar</span>
-                <span class="btn__icon icon-arrow-right"></span>
-        </button>
-    </div>
+</div>
+<div class="row">
+    <button class="j-submit btn btn--md"
+            type="button"
+            {{action "saveResponsible" pessoa}}>
+            <span>Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
+    </button>
 </div>
 
 
