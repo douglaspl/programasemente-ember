@@ -320,6 +320,20 @@
         <span class="btn__label">Adicionar Responsável</span>
       </button>
 
+      <div class="row">
+
+        <div class="col-xs-12">
+          <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+            <span class="btn__label">Voltar</span>
+          </button>
+          <button class="j-submit btn btn--md" {{action "saveResponsibles"}} type="button">
+            <span class="btn__label">Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
+          </button>
+        </div>
+
+      </div>
+
     </section>
 
     <section class="flow flow--xl carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
@@ -396,13 +410,13 @@
       </h3>
 
       <div class="flow flow--xxl">
-        {{profile-form 
-            pessoa=model 
-            gonext=(action 'carouselFoward') 
+        {{profile-form
+            pessoa=model
+            gonext=(action 'carouselFoward')
             checkform=(action 'validateForm')
-            checkname=(action 'validateName') 
-            removeerrors=(action 'removeErrorTag') 
-            checkcel=(action 'validateCel') 
+            checkname=(action 'validateName')
+            removeerrors=(action 'removeErrorTag')
+            checkcel=(action 'validateCel')
             maskcel=(action 'phoneMask')
             adddependente=(action 'addDependent')
             trimall=(action 'trimAll')}}
