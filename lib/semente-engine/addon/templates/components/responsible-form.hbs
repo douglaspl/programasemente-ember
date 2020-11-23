@@ -1,6 +1,9 @@
 <div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
     
+       {{#if (equalstr role 'responsavel')}}
+       {{else}}
        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+       {{/if}}
 
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
@@ -10,14 +13,14 @@
             <div class="col-xs-4 col-lg-3">
                 <div class="form-group w100">
                     <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                    {{!-- <input type="text" class="form-group__input j-validate" id="name_responsavel"
-                        name="name_responsavel" value={{responsavel.name}} onkeydown={{action 'checkName'}} data-type="nome" data-required="true"> --}}
                     {{input class="form-group__input j-validate"
                         name="name_responsavel"
                         value=responsavel.name
-                        key-down=(action 'checkName')
                         data-type="nome"
                         data-required="true"
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-down=(action 'checkName')
                         }}
 
                 </div>

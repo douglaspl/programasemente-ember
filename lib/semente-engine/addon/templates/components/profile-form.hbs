@@ -13,9 +13,9 @@
                {{input class="form-group__input j-validate"
                         id="person_name"
                         name="name"
-                        on-blur=(action 'trimAll')
-                        on-focus=(action 'trimAll')
-                        key-down=(action 'checkName')
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-up=(action 'checkName')
                         type=text
                         value=pessoa.name
                         data-type="nome"
@@ -122,9 +122,10 @@
                         value=pessoa.name
                         data-type="nome"
                         data-required="true"
-                        focus-out=(action 'trimAll')
-                        focus=(action 'trimAll')
-                        key-down=(action 'checkName')}}
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-down=(action 'checkName')
+                        }}
             </div>
             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
                 <span class="alert__icon icon-x"></span>
@@ -239,8 +240,8 @@
                         value=pessoa.name
                         data-type="nome"
                         data-required="true"
-                        focus-out=(action 'trimAll')
-                        focus=(action 'trimAll')
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
                         key-down=(action 'checkName')}}
             </div>
              <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
