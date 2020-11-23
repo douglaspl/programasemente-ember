@@ -127,7 +127,11 @@
                 {{input class="j-validate form-group__input"
                         id="celular"
                         name="celular"
-                        value=pessoa.telefone }}
+                        value=pessoa.telefone
+                        data-required="false"
+                        data-type="celular"
+                        key-up=(action 'maskcel')
+                        focus-out=(action 'checkcel') }}
             </div>
         </div>
 
