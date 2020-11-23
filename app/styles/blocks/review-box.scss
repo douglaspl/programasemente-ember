@@ -1,0 +1,18 @@
+.review-box {
+  background-color: $gray-0;
+  border-top: 2px solid $green-50;
+  padding: $distance--sm;
+
+  > li {
+    display: flex;
+    flex-direction: column;
+    font-weight: $font-weight-4;
+
+    span {
+      display: inline-flex;
+      margin-bottom: .25em;
+    }
+
+  }
+
+}

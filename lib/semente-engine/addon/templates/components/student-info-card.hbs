@@ -1,10 +1,28 @@
-<ul>
-    <li>{{student.name}}</li>
-    <li>{{student.genero}}</li>
+  <ul class="review-box flow">
+    {{!-- <li>{{student.thumb}}</li> --}}
+    <li>
+      <span class="text-aux">Login</span>
+      {{student.login}}
+    </li>
+    <li>
+      <span class="text-aux">Nome completo</span>
+      {{student.name}}
+    </li>
+    <li>
+      <span class="text-aux">Gênero</span>
+      {{student.genero}}
+    </li>
     {{#each student.plataformaAnos as |pa| }}
-        <li>{{pa.name}}</li>
+      <li>
+        <span class="text-aux">Série</span>
+        {{pa.name}}
+      </li>
     {{/each}}
     {{#each student.plataformaTurmas as |pt| }}
-        <li>{{pt.name}}</li>
+      <li>
+        <span class="text-aux">Turma</span>
+        {{pt.name}}
+      </li>
     {{/each}}
-</ul>
+
+  </ul>
