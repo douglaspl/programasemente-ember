@@ -1,11 +1,12 @@
-<h1>Cadastro de novo conteúdo!</h1>
+<h1>Edição do conteúdo!</h1>
 
 <ul>
     <li>
-        <h1>Criar conteúdo</h1>
+        <h1>Editar conteúdo</h1>
     </li>
     <div></div>
     {{conteudo-form publicos=publicos agrupamentos=agrupamentos 
     segmentos=segmentos conteudo=conteudo }}
+    
     <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>
 </ul>
