@@ -15,26 +15,87 @@
       <h2>BUSCAR CONTEÚDOS</h2>
       {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }} 
     </div>
+
+    <label>Perfil</label>
+    <div class="row">
+      {{#each publicos as |pub|}}
+        <input
+        type="checkbox"
+        checked={{checked}}
+        value={{pub.id}}
+        onchange={{action 'publicoChanged' value='target.value'}} />
+        <label>{{pub.name}}</label>
+      {{/each}}
+    </div>
+
+    {{#if (equalstr show 'Aulas')}}
+
+      <label>Segmento</label>
+      <select name="segmento" id="segmento" onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
+        <option value="">---</option>
+        {{#each segmentos as |seg|}}
+          <option value="{{seg.id}}" selected="selected">{{seg.titulo}}</option>
+        {{/each}}
+      </select>
+
+      <div class="row"></div>
+      <label>Ano</label>
+      <select name="ano" id="ano" onchange={{action 'refreshSelectedAno' value='target.value'}}>
+        <option value="">---</option>
+        {{#each segmentos as |seg|}}
+          {{#if (equalstr selectedSegmento.id seg.id)}}
+            {{#each seg.plataformaAnos as |ano|}}
+              <option value="{{ano.id}}" selected="selected">{{ano.name}}</option>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </select>
+
+      <div class="row"></div>
+      <label>Aula</label>
+      <select name="aula" id="aula" onchange={{action 'refreshSelectedAula' value='target.value'}}>
+        <option value="">---</option>
+        {{#each segmentos as |seg|}}
+          {{#if (equalstr selectedSegmento.id seg.id)}}
+            {{#each seg.plataformaAnos as |ano|}}
+              {{#if (equalstr selectedAno.id ano.id)}}
+                {{#each ano.aulas as |aula|}}
+                  <option value="{{aula.id}}" selected="selected">{{aula.titulo}}</option>
+                {{/each}}
+              {{/if}}
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </select>
+    {{else}}
+      <label>Tema</label>
+      <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+        <option value="">---</option>
+        {{#each temas as |tema|}}
+          <option value="{{tema.id}}" selected={{if (equalstr tema.id selectedTema.id) "selected"}}>{{tema.name}}</option>
+        {{/each}}
+      </select>
+    {{/if}}
+  
   </div>
 
 
   {{#each agrupamentos as |agrupamento|}}
     {{#if (equalstr show 'Biblioteca')}}
       {{#if (equalstr agrupamento.name 'Biblioteca')}}
-        <h4 class="title-3 list__name">TIPO: Biblioteca</h4>
         {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
-        thisIndex=this search=search}}
+        thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
     {{else}}
       {{#if (equalstr agrupamento.name 'Básico')}}
         <h4 class="title-3 list__name">TIPO: Básico</h4>
         {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
-        thisIndex=this search=search}}
+        thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
       {{#if (equalstr agrupamento.name 'Complementar')}}
         <h4 class="title-3 list__name">TIPO: Complementar</h4>
         {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
-        thisIndex=this search=search}}
+        thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
     {{/if}}
   {{/each}}
