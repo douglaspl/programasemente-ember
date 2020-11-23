@@ -10,17 +10,16 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
             <label class="form-group__label" for="name">Nome Completo</label>
-               <input   class="form-group__input j-validate"
+               {{input class="form-group__input j-validate"
                         id="person_name"
                         name="name"
-                        onblur={{action 'trimAll'}}
-                        onfocus={{action 'trimAll'}}
-                        onkeydown={{action 'checkName'}}
-                        {{!-- oninput={{action 'checkform'}} --}}
-                        type="text"
-                        value={{pessoa.name}}
+                        on-blur=(action 'trimAll')
+                        on-focus=(action 'trimAll')
+                        key-down=(action 'checkName')
+                        type=text
+                        value=pessoa.name
                         data-type="nome"
-                        data-required="true">
+                        data-required="true"}}
              </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>
@@ -91,13 +90,16 @@
 
     </div>
 </div>
-
-<button class="j-submit btn btn--md"
-        type="button"
-        {{action "saveProfile" pessoa}}>
-        <span>Avançar</span>
-        <span class="btn__icon icon-arrow-right"></span>
-</button>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveProfile" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+</div>
 
 
 
@@ -114,11 +116,20 @@
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                {{input class="j-validate form-group__input"
+                 {{input class="form-group__input j-validate"
                         id="name_responsavel"
                         name="name_responsavel"
-                        value=pessoa.name}}
+                        value=pessoa.name
+                        data-type="nome"
+                        data-required="true"
+                        focus-out=(action 'trimAll')
+                        focus=(action 'trimAll')
+                        key-down=(action 'checkName')}}
             </div>
+             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
         </div>
 
         <div class="col-xs-4 col-lg-3">
@@ -133,6 +144,10 @@
                         key-up=(action 'maskcel')
                         focus-out=(action 'checkcel') }}
             </div>
+             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
         </div>
 
     </div>
@@ -146,36 +161,59 @@
         </div>
     </div>
 
+
     {{#if pessoa.isAplicador}}
+    <h2 class="title-2">Você aplica em quais séries?</h2>
+
     <div class="row">
 
         {{#each segmentos as |seg| }}
-            <div class="col-xs-2">
+
+            <div class="col-xs-3">
                 <div class="row">
-                    <input type="checkbox" id="segmento{{seg.id}}"
-                        onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
-                    <label>{{seg.titulo}}</label>
+                    <div class="checkbox">
+                        <input  class="checkbox__input"
+                                type="checkbox"
+                                id="segmento{{seg.id}}"
+                                onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                        <label  class="checkbox__label"
+                                for="segmento{{seg.id}}">{{seg.titulo}}</label>
+                    </div>
                 </div>
+
                 {{#each seg.plataformaAnos as |platAno|}}
-                <div class="row">
-                    <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                        id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
-                    <label>{{platAno.name}}</label>
-                </div>
+                <ul>
+                    <li>
+                        <div class="checkbox">
+                            <input  class="checkbox__input"
+                                    checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                                    id="plat_ano{{platAno.id}}"
+                                    onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                    type="checkbox">
+                            <label  class="checkbox__label"
+                                    for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                        </div>
+                    </li>
+                </ul>
                 {{/each}}
+
             </div>
+
         {{/each}}
 
     </div>
     {{/if}}
 </div>
-
-<button class="btn btn--md"
-        type="button"
-        {{action "saveResponsible" pessoa}}>
-        <span>Avançar</span>
-        <span class="btn__icon icon-arrow-right"></span>
-</button>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveResponsible" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+</div>
 
 
 
@@ -230,14 +268,14 @@
         </div>
 
     </div>
-    <div class="row">
-        <button class="j-submit btn btn--md"
-                type="button"
-                {{action "saveResponsible" pessoa}}>
-                <span>Avançar</span>
-                <span class="btn__icon icon-arrow-right"></span>
-        </button>
-    </div>
+</div>
+<div class="row">
+    <button class="j-submit btn btn--md"
+            type="button"
+            {{action "saveResponsible" pessoa}}>
+            <span>Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
+    </button>
 </div>
 
 
