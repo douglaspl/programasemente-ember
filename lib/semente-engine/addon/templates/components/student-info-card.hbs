@@ -1,10 +1,29 @@
-<ul>
-    <li>{{student.name}}</li>
-    <li>{{student.genero}}</li>
+  <ul class="callout flow flow--lg">
+
+    {{!-- <li>{{student.thumb}}</li> --}}
+    <li class="col fs--md m-v--none">
+      <span class="text-aux m-bottom--xxs">Login</span>
+      <span class="fw--4">{{student.login}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+      <span class="text-aux m-bottom--xxs">Nome completo</span>
+      <span class="fw--4">{{student.name}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+      <span class="text-aux m-bottom--xxs">Gênero</span>
+      <span class="fw--4">{{student.genero}}</span>
+    </li>
     {{#each student.plataformaAnos as |pa| }}
-        <li>{{pa.name}}</li>
+      <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">Série</span>
+        <span class="fw--4">{{pa.name}}</span>
+      </li>
     {{/each}}
     {{#each student.plataformaTurmas as |pt| }}
-        <li>{{pt.name}}</li>
+      <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">Turma</span>
+        <span class="fw--4">{{pt.name}}</span>
+      </li>
     {{/each}}
-</ul>
+
+  </ul>
