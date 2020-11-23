@@ -5,6 +5,7 @@
     flex-direction: row;
     margin-bottom: $distance--sm;
     margin-top: $distance--md;
+    
 
     &__node {
         display: flex;
@@ -27,6 +28,7 @@
 
         @include hover {
             text-decoration: underline;
+            cursor: pointer;
         }
 
     }
