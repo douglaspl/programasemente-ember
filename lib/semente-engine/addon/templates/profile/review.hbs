@@ -128,7 +128,7 @@
                                 index=index model=model
                                 gonext=(action 'carouselFoward')
                                 goback=(action 'carouselBackward')
-                                checkform=(action 'validateForm')
+                                checkform=validateFormFunction
                                 checkname=(action 'validateName')
                                 checkemail=(action 'validateEmail')
                                 checkcel=(action 'validateCel')
@@ -175,7 +175,7 @@
                 {{!-- <li>{{model.thumb}}</li> --}}
                 <li>
                   <span class="text-aux">Login</span>
-                  {{model.login}}
+                  {{model.email}}
                 </li>
                 <li>
                   <span class="text-aux">Nome completo</span>
@@ -373,7 +373,7 @@
         {{profile-form 
             pessoa=model 
             gonext=(action 'carouselFoward') 
-            checkform=(action 'validateForm') 
+            checkform=(action 'validateForm')
             checkname=(action 'validateName') 
             removeerrors=(action 'removeErrorTag') 
             checkcel=(action 'validateCel') 
