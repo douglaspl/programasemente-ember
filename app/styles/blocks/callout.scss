@@ -1,0 +1,7 @@
+// Bloco cinza com uma borda colorida, usado para destaque de informações
+// ou organização de informações, similar a um card, mas não é clicável.
+.callout {
+  background-color: $callout-default-bg-color;
+  border-top: $callout-default-border;
+  padding: $callout-default-padding;
+}

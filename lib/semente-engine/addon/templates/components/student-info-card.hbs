@@ -1,26 +1,26 @@
-  <ul class="review-box flow">
+  <ul class="callout flow flow--lg">
     {{!-- <li>{{student.thumb}}</li> --}}
-    <li>
-      <span class="text-aux">Login</span>
+    <li class="col fs--md">
+      <span class="text-aux m-bottom--xxs">Login</span>
       {{student.login}}
     </li>
-    <li>
-      <span class="text-aux">Nome completo</span>
+    <li class="col fs--md">
+      <span class="text-aux m-bottom--xxs">Nome completo</span>
       {{student.name}}
     </li>
-    <li>
-      <span class="text-aux">Gênero</span>
+    <li class="col fs--md">
+      <span class="text-aux m-bottom--xxs">Gênero</span>
       {{student.genero}}
     </li>
     {{#each student.plataformaAnos as |pa| }}
-      <li>
-        <span class="text-aux">Série</span>
+      <li class="col fs--md">
+        <span class="text-aux m-bottom--xxs">Série</span>
         {{pa.name}}
       </li>
     {{/each}}
     {{#each student.plataformaTurmas as |pt| }}
-      <li>
-        <span class="text-aux">Turma</span>
+      <li class="col fs--md">
+        <span class="text-aux m-bottom--xxs">Turma</span>
         {{pt.name}}
       </li>
     {{/each}}
