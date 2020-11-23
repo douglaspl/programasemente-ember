@@ -126,6 +126,7 @@
                                 checkname=(action 'validateName')
                                 checkemail=(action 'validateEmail')
                                 checkcel=(action 'validateCel')
+                                maskcel=(action 'phoneMask')
                                 toggleinput=(action 'toggleInput')
                                 }}
         {{/each}}
@@ -362,13 +363,13 @@
       </h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+        {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName') removeerrors=(action 'removeErrorTag') checkcel=(action 'validateCel') maskcel=(action 'phoneMask')}}
       </div>
 
       <div class="row">
 
         <div class="col-xs-12">
-          <button class="btn btn--md" {{action "carouselFoward"}} type="button">
+          <button class="j-submit btn btn--md" {{action "carouselFoward"}} type="button">
             <span class="btn__label">Avançar</span>
             <span class="btn__icon icon-arrow-right"></span>
           </button>
