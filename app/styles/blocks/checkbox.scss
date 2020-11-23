@@ -51,4 +51,9 @@
 
     }
 
+    // sanitizer
+    &__label + &__input {
+        outline: 4px solid crimson;
+    }
+
 }

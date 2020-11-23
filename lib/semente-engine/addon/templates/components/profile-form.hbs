@@ -115,10 +115,10 @@
     <div class="row">
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
-                <label class="form-group__label" for="name_responsavel">Nome Completo</label>
+                <label class="form-group__label" for="instrutor_name">Nome Completo</label>
                  {{input class="form-group__input j-validate"
-                        id="name_responsavel"
-                        name="name_responsavel"
+                        id="instrutor_name"
+                        name="instrutor_name"
                         value=pessoa.name
                         data-type="nome"
                         data-required="true"
@@ -126,18 +126,18 @@
                         focus=(action 'trimAll')
                         key-down=(action 'checkName')}}
             </div>
-             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
-                    <span class="alert__icon icon-x"></span>
-                    <span class="alert__msg"></span>
-                </p>
+            <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                <span class="alert__icon icon-x"></span>
+                <span class="alert__msg"></span>
+            </p>
         </div>
 
         <div class="col-xs-4 col-lg-3">
             <div class="form-group w100">
-                <label class="form-group__label" for="celular">Número de Celular</label>
+                <label class="form-group__label" for="instrutor_celular">Número de Celular</label>
                 {{input class="j-validate form-group__input"
-                        id="celular"
-                        name="celular"
+                        id="instrutor_celular"
+                        name="instrutor_celular"
                         value=pessoa.telefone
                         data-required="false"
                         data-type="celular"
@@ -155,22 +155,23 @@
     <div class="row">
         <div class="col-xs-4 col-lg-3">
             <div class="checkbox">
-                <label class="checkbox__label" for="celular">Você aplica o programa?</label>
-                {{input class="checkbox__input" type="checkbox" checked=pessoa.isAplicador}}
+                {{input class="checkbox__input" id="instrutor_aplica-programa" name="instrutor_aplica-programa" type="checkbox" checked=pessoa.isAplicador}}
+                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, Eu aplico o Programa Semente.</label>
             </div>
         </div>
     </div>
 
 
     {{#if pessoa.isAplicador}}
-    <h2 class="title-2">Você aplica em quais séries?</h2>
+    <h4 class="title-4">Você aplica em quais séries?</h4>
 
     <div class="row">
 
         {{#each segmentos as |seg| }}
 
-            <div class="col-xs-3">
-                <div class="row">
+            <div class="col-xs-3 flow flow--sm">
+                <h5 class="title-aux">{{seg.titulo}}</h5>
+                {{!-- <div class="row">
                     <div class="checkbox">
                         <input  class="checkbox__input"
                                 type="checkbox"
@@ -179,7 +180,7 @@
                         <label  class="checkbox__label"
                                 for="segmento{{seg.id}}">{{seg.titulo}}</label>
                     </div>
-                </div>
+                </div> --}}
 
                 {{#each seg.plataformaAnos as |platAno|}}
                 <ul>

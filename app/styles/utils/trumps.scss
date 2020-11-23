@@ -1,4 +1,6 @@
 .flow > * + *      { margin-top: $distance--md; }
+
+.flow--sm > * + *  { margin-top: $distance--sm; }
 .flow--lg > * + *  { margin-top: $distance--lg; }
 .flow--xl > * + *  { margin-top: $distance--xl; }
 .flow--xxl > * + * { margin-top: $distance--xxl; }
