@@ -6,6 +6,7 @@ import plataformaTurma from './plataforma-turma';
 export default DS.Model.extend({
     name: DS.attr(),
     descricao: DS.attr(),
+    idx: DS.attr(),
     urlLivro: DS.attr(),
     instituicoes: DS.hasMany('instituicao', { async: true }),
     segmento: DS.belongsTo('segmento', { async: true }),
