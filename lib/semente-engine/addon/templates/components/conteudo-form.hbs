@@ -12,10 +12,13 @@
     placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf" 
     onchange={{action 'Upload'}} />
 
-    
     {{#if conteudo.path}}
         <h1>Arquivo adicionado: </h1>
-        <object data={{conteudo.path}}></object>
+        {{#if (base64 conteudo.path)}}
+            <object id="showfiles" data={{conteudo.path}} type='application/pdf'></object>
+        {{else}}
+            <object id="showfiles" data={{fileurl}} type='application/pdf'></object>
+        {{/if}}
         <button type="button" class="btn" {{action "removePath"}}>Remover</button>
     {{/if}}
 </div>
@@ -28,7 +31,7 @@
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
     {{#each agrupamentos as |a|}}
-        <input type="radio" id={{a.id}} name="nomeagrupamento" 
+        <input type="radio" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}} name="nomeagrupamento" 
         onchange={{ action 'agrupamentoChanged' a.id }}>
         <label>{{a.name}}</label>
         <div>{{a.descricao}}</div>
@@ -40,7 +43,7 @@
                 <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
                     <option value="">---</option>
                     {{#each a.temas as |t|}}
-                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.tema.firstObject.id) "selected"}}>{{t.name}}</option>
+                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.temas.firstObject.id) "selected"}}>{{t.name}}</option>
                     {{/each}}
                 </select> 
                 <div> </div>

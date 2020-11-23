@@ -28,6 +28,15 @@
       {{/each}}
     </div>
 
+    <label>Tipo do Arquivo</label>
+      <select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
+        <option value="">---</option>
+        {{#each tipos as |tipo|}}
+          <option value="{{tipo}}" selected="selected">{{tipo}}</option>
+        {{/each}}
+      </select>
+
+
     {{#if (equalstr show 'Aulas')}}
 
       <label>Segmento</label>
@@ -83,18 +92,18 @@
   {{#each agrupamentos as |agrupamento|}}
     {{#if (equalstr show 'Biblioteca')}}
       {{#if (equalstr agrupamento.name 'Biblioteca')}}
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos selectedTipo=selectedTipo
         thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
     {{else}}
       {{#if (equalstr agrupamento.name 'Básico')}}
         <h4 class="title-3 list__name">TIPO: Básico</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos selectedTipo=selectedTipo
         thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
       {{#if (equalstr agrupamento.name 'Complementar')}}
         <h4 class="title-3 list__name">TIPO: Complementar</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos 
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos selectedTipo=selectedTipo
         thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
       {{/if}}
     {{/if}}
