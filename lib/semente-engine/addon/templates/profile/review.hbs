@@ -267,13 +267,14 @@
       <h3 class="title-3">Suas informações</h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model
-                       gonext=(action 'carouselFoward')
-                       checkform=(action 'validateForm')
-                       checkname=(action 'validateName')
-                       removeerrors=(action 'removeErrorTag')
-                       checkcel=(action 'validateCel')
-                       maskcel=(action 'phoneMask')}}
+        {{profile-form pessoa=model 
+            gonext=(action 'carouselFoward') 
+            checkform=(action 'validateForm') 
+            checkname=(action 'validateName') 
+            removeerrors=(action 'removeErrorTag') 
+            checkcel=(action 'validateCel') 
+            maskcel=(action 'phoneMask')
+            adddependente=(action 'addDependent')}}
 
 
         <div class="row">
