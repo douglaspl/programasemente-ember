@@ -226,10 +226,19 @@
         </div>
 
     </div>
+    <div class="row">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveResponsible" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
 </div>
 
+
 <!-- retirar botão depois -->
-<button type="button" {{action "saveResponsible" pessoa}}>Salvar</button>
+{{!-- <button type="button" {{action "saveResponsible" pessoa}}>Salvar</button> --}}
 
 {{/if}}
 

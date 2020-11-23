@@ -369,10 +369,18 @@
       </h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName') removeerrors=(action 'removeErrorTag') checkcel=(action 'validateCel') maskcel=(action 'phoneMask')}}
+        {{profile-form 
+            pessoa=model 
+            gonext=(action 'carouselFoward') 
+            checkform=(action 'validateForm') 
+            checkname=(action 'validateName') 
+            removeerrors=(action 'removeErrorTag') 
+            checkcel=(action 'validateCel') 
+            maskcel=(action 'phoneMask')
+            adddependente=(action 'addDependent')}}
       </div>
 
-      <div class="row">
+      {{!-- <div class="row">
 
         <div class="col-xs-12">
           <button class="j-submit btn btn--md" {{action "carouselFoward"}} type="button">
@@ -381,7 +389,7 @@
           </button>
         </div>
 
-      </div>
+      </div> --}}
 
     </section>
 
@@ -416,7 +424,7 @@
           <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
             <span class="btn__label">Voltar</span>
           </button>
-          <button class="btn btn--md" {{action "carouselFoward"}} type="button">
+          <button class="btn btn--md" {{action "saveDependentes"}} type="button">
             <span class="btn__label">Avançar</span>
             <span class="btn__icon icon-arrow-right"></span>
           </button>
@@ -441,7 +449,8 @@
                                     checkform=(action 'validateForm')
                                     checkname=(action 'validateName')
                                     checkemail=(action 'validateEmail')
-                                    checkcel=(action 'validateCel')}}
+                                    checkcel=(action 'validateCel')
+                                    maskcel=(action 'phoneMask')}}
               </div>
             </section>
           {{/if}}
@@ -461,7 +470,7 @@
           <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
             <span class="btn__label">Voltar</span>
           </button>
-          <button class="btn btn--md" {{action "carouselFoward"}} type="button">
+          <button class="btn btn--md" {{action "savePartner"}} type="button">
             <span class="btn__label">Avançar</span>
             <span class="btn__icon icon-arrow-right"></span>
           </button>
@@ -481,10 +490,11 @@
           <div class="row">
             <div class="col-xs-12 col-sm-4">
 
-              {{#each model.responsaveis as |resp index| }}
+              {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
                 {{!-- {{responsible-info-card responsavel=model index=index}} --}}
-                {{responsible-info-card responsavel=resp index=index}}
-
+                  <div class="col-xs-12 col-sm-4">
+                    {{responsible-info-card responsavel=resp index=index}}
+                  </div>
               {{/each}}
 
             </div>
