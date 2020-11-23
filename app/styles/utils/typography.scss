@@ -20,6 +20,14 @@
 }
 
 .text-aux { @include text-aux; }
+
+.fw--1 { font-weight:  200; }
+.fw--2 { font-weight:  300; }
+.fw--3 { font-weight:  400; }
+.fw--4 { font-weight:  600; }
+.fw--5 { font-weight:  700; }
+.fw--6 { font-weight:  900; }
+
 .fs--xxs { font-size: $font-size--xxs; }
 .fs--xs { font-size: $font-size--xs; }
 .fs--sm { font-size: $font-size--sm; }

@@ -53,6 +53,10 @@
     @include media('>xl') { &.reverse-xl { flex-direction: row-reverse; } }
 }
 
+
+// Pode ser usado para empilhar elementos,
+// se utilizar junto m-v--none
+// para cancelar as margens negativas.
 .col {
     box-sizing: border-box;
     display: flex;
