@@ -250,7 +250,8 @@
       <h3 class="title-3">Suas informações</h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model gonext=(action 'carouselFoward')}}
+        {{profile-form pessoa=model 
+            gonext=(action 'carouselFoward') checkform=(action 'validateForm') checkname=(action 'validateName') removeerrors=(action 'removeErrorTag') checkcel=(action 'validateCel') maskcel=(action 'phoneMask')}}
 
 
         <div class="row">
