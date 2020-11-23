@@ -106,6 +106,17 @@
       width: 40px;
     }
 
+    &__link {
+      font-size: 1rem;
+      color: $gray-60;
+      cursor: pointer;
+      //text-decoration-line: underline;
+
+      &:hover{
+        color:$leaf-20;
+      }
+    }
+
     // Não bom...
     &--aired-v {
       margin-bottom: $distance--md;
