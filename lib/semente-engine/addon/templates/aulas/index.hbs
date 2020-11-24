@@ -1,11 +1,16 @@
+<button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+
 {{!-- ** ALUNO ** --}}
 
 {{#if (equalstr pessoa.role "aluno")}}
 
-  <p>{{pessoa.name}}</p>
-  <p>{{segmento.titulo}}</p>
-  <p>{{plataformaAno.name}}</p>
-  <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
+<a href="#" {{action 'invalidateSession'}}>
+  <span>Fazer Logout</span></a>
+
+<p>{{pessoa.name}}</p>
+<p>{{segmento.titulo}}</p>
+<p>{{plataformaAno.name}}</p>
+<p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
 
   <div class="search">
     <div>
