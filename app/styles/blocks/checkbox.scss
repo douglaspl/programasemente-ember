@@ -4,7 +4,7 @@
     @include check-radio;
 
     align-items: center;
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     margin-bottom: $distance--xxs;
     min-height: $input-height;
@@ -37,6 +37,10 @@
             width: calc(#{$input-check-radio-size} + .1rem);
         }
 
+    }
+
+    &__input:focus ~ &__label {
+        outline: $focus-indicator;
     }
 
     &__input:checked ~ &__label {

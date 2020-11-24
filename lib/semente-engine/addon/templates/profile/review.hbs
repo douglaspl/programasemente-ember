@@ -280,12 +280,12 @@
       <h3 class="title-3">Suas informações</h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model 
-            gonext=(action 'carouselFoward') 
-            checkform=(action 'validateForm') 
-            checkname=(action 'validateName') 
-            removeerrors=(action 'removeErrorTag') 
-            checkcel=(action 'validateCel') 
+        {{profile-form pessoa=model
+            gonext=(action 'carouselFoward')
+            checkform=(action 'validateForm')
+            checkname=(action 'validateName')
+            removeerrors=(action 'removeErrorTag')
+            checkcel=(action 'validateCel')
             maskcel=(action 'phoneMask')
             adddependente=(action 'addDependent')
             trimall=(action 'trimAll')}}
@@ -540,8 +540,8 @@
                               gonext=(action 'carouselFoward')
                               goback=(action 'carouselBackward')
                               checkform=(action 'validateForm')
-                              checkname=(action 'validateName') 
-                              removeerrors=(action 'removeErrorTag') 
+                              checkname=(action 'validateName')
+                              removeerrors=(action 'removeErrorTag')
                               trimall=(action 'trimAll')}}
             </div>
           </section>
@@ -628,7 +628,7 @@
         <section class="flow">
           <h4 class="title-4">Responsáveis</h4>
           <div class="row">
-            
+
 
               {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
                 {{!-- {{responsible-info-card responsavel=model index=index}} --}}
@@ -637,7 +637,7 @@
                   </div>
               {{/each}}
 
-            
+
           </div>
         </section>
 
