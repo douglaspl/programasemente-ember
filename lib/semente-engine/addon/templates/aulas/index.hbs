@@ -1,6 +1,11 @@
+<button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+
 {{!-- ** ALUNO ** --}}
 
 {{#if (equalstr pessoa.role "aluno")}}
+
+<a href="#" {{action 'invalidateSession'}}>
+  <span>Fazer Logout</span></a>
 
 <p>{{pessoa.name}}</p>
 <p>{{segmento.titulo}}</p>
