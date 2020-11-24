@@ -113,7 +113,7 @@
 {{else if (equalstr pessoa.role "instrutor") }}
 <div class="flow flow--xl">
     <div class="row">
-        <div class="col-xs-4 col-lg-3">
+        <div class="col-xs-12 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="instrutor_name">Nome Completo</label>
                  {{input class="form-group__input j-validate"
@@ -132,8 +132,7 @@
                 <span class="alert__msg"></span>
             </p>
         </div>
-
-        <div class="col-xs-4 col-lg-3">
+        <div class="col-xs-12 col-lg-3">
             <div class="form-group w100">
                 <label class="form-group__label" for="instrutor_celular">Número de Celular</label>
                 {{input class="j-validate form-group__input"
@@ -150,20 +149,22 @@
                     <span class="alert__msg"></span>
                 </p>
         </div>
-
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-xs-4 col-lg-3">
-            <div class="checkbox">
-                {{input class="checkbox__input" id="instrutor_aplica-programa" name="instrutor_aplica-programa" type="checkbox" checked=pessoa.isAplicador}}
-                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, Eu aplico o Programa Semente.</label>
-            </div>
-        </div>
+
+
+<div class="flow">
+    <h3 class="title-3">Você é professor aplicador?</h3>
+    <div class="checkbox">
+        {{input class="checkbox__input" id="instrutor_aplica-programa" name="instrutor_aplica-programa" type="checkbox" checked=pessoa.isAplicador}}
+        <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
     </div>
+</div>
 
 
-    {{#if pessoa.isAplicador}}
+{{#if pessoa.isAplicador}}
+<section class="recent-added animated fadeIn fast flow">
     <h4 class="title-4">Você aplica em quais séries?</h4>
 
     <div class="row">
@@ -204,8 +205,9 @@
         {{/each}}
 
     </div>
-    {{/if}}
-</div>
+</section>
+{{/if}}
+
 <div class="row">
     <div class="col-xs-12">
         <button class="j-submit btn btn--md"
