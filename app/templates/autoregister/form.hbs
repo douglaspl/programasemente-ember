@@ -32,12 +32,16 @@
             </div>
             <div class="form-group m-top--md w100">
                 <label class="form-group__label" for="senha">Senha</label>
-                <input class="form-group__input" type="password" id="senha" onkeyup={{action 'verifyPassword'}} onblur={{action 'verifyPassword'}} autocomplete="new-password">
+                <div class="j-password form-group__input-container form-group__input-container--has-validation">
+                    <input class="form-group__input w100" type="password" id="senha" onkeyup={{action 'verifyPassword'}} onblur={{action 'verifyPassword'}} autocomplete="new-password">
+                </div>
                 <span id='password-error'></span>
             </div>
             <div class="form-group m-top--sm w100">
                 <label class="form-group__label" for="senha">Repetir Senha</label>
-                <input class="form-group__input" type="password" id="senha2" onkeyup={{action 'verifyPassword'}} onblur={{action 'verifyPassword'}}>
+                <div class="j-password form-group__input-container form-group__input-container--has-validation">
+                    <input class="form-group__input w100" type="password" id="senha2" onkeyup={{action 'verifyPassword'}} onblur={{action 'verifyPassword'}}>
+                </div>
                 <p class="alert alert--sm alert--error alert--has-icon m-top--sm animated d250" id="pass-error"
                     data-animation="fadeIn">
                     <span class="alert__icon icon-x"></span>

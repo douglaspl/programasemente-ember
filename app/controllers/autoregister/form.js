@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
     liveCheckEmail: function () {
 
       $('#login').on('keypress', function (event) {
-          var regex = new RegExp("^[a-zA-Z0-9@.]+$");
+          var regex = new RegExp("^[a-zA-Z0-9@.-]+$");
           var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
           let errorMsg = 'Espaço e caracteres especiais não são permitidos';
 
@@ -144,13 +144,22 @@ export default Ember.Controller.extend({
     const alertAnimation = passAlert.dataset.animation;
     const msg = passAlert.querySelector('[class*="__msg"]');
     const errorMsg = 'As senhas digitadas não são iguais.';
+    const inputsPass = document.querySelectorAll(".j-password");
 
-    if (p1 === p2) {
+    if ((p1.length > 0 && p2.length > 0) && (p1 === p2)) {
       document.getElementById('submit').setAttribute('dataDisabled', 'false');
       passAlert.classList.remove('alert--is-show');
-    } else {
+      inputsPass.forEach(input => {
+        input.classList.add('form-group__input-container--is-validated');
+      });
+      
+
+    } else if (p1.length > 0 || p2.length > 0) {
       document.getElementById('submit').setAttribute('dataDisabled', 'true');
       //document.getElementById('submit').classList.add("btn--disabled");
+      inputsPass.forEach(input => {
+        input.classList.remove('form-group__input-container--is-validated');
+      });
       passAlert.classList.add('alert--is-show', alertAnimation);
       msg.innerHTML = '<strong>' + errorMsg + '</strong>';
     }
