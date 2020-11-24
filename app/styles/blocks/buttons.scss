@@ -73,20 +73,18 @@
   @include button;
 
   background-color: $clickables-bg-color;
-  border: $button-border-width solid transparent;
   border-radius: $button-radius;
   box-shadow: 0 .5rem 1rem 0 transparentize($color: $clickables-bg-color, $amount: .8);
   color: $clickables-color;
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-weight: $font-weight-5;
   padding: 1em 1.5em .9em;
-  transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-  transition: 200ms var(--ease-in-out-quad);
 
-  &:hover:not([disabled='true']) {
+  &:hover {
     background-color: $clickables-bg-color-hover;
     color: $clickables-color-hover;
+  }
+
+  &[disabled='true']:hover {
+    background-color: $clickables-bg-color;
   }
 
   // ELEMENTS
@@ -293,14 +291,12 @@
     box-shadow: none;
     color: $gray-60;
     opacity: .75;
-    padding-left: 0;
-    padding-right: 0;
+    // padding-left: 0;
+    // padding-right: 0;
     text-shadow: none;
-    transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-    transition: 200ms var(--ease-in-out-quad);
 
     &:hover {
-      background-color: transparent;
+      background-color: $gray-5;
       color: $gray-60;
       opacity: 1;
     }
@@ -389,7 +385,7 @@
 
 
 
-  // Container
+  // Botão especial
   &-close {
     background-color: transparent;
     border-radius: $radius;

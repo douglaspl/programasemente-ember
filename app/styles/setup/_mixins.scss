@@ -17,13 +17,14 @@
 //------------------------------------
 @mixin button {
     align-items: center;
-    border: 0 solid transparent;
-    box-shadow: $shadow-1;
+    align-self: flex-start;
+    border: $button-border-width solid transparent;
+    cursor: pointer;
     display: inline-flex;
+    flex: 0 0 auto;
     flex-direction: row;
-    font-family: $font-base;
     font-size: $font-size--xxs;
-    font-weight: $font-weight-4;
+    font-weight: $font-weight-5;
     justify-content: center;
     letter-spacing: $letter-spacing--lg;
     line-height: 1;
