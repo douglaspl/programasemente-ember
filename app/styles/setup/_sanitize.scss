@@ -577,5 +577,11 @@
     label:not([for])::after {
         content: 'Define for this label!' !important;
     }
+
+    // Sanitizer: inputs tem que ter o atributo name
+    input[name=''],
+    input:not([name]) {
+        outline: 8px solid crimson;
+    }
 }
 // scss-lint:enable all

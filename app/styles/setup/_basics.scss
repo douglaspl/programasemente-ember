@@ -13,7 +13,7 @@
     box-sizing: border-box;
 
     &:focus {
-        outline: 3px solid $lemon-40;
+        outline: $focus-indicator;
     }
 
 }
