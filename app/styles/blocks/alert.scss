@@ -52,11 +52,6 @@
     text-decoration: underline;
   }
 
-  &__form {
-    position: relative;
-        
-  }
-
   &__msg {
 
     &:not(:last-child) {
@@ -87,6 +82,16 @@
 
   }
 
+  // Modifiers
+
+  &--form {
+    position: relative;
+    // Por hora desativado como position absolute;
+    // position: absolute;
+    // left: calc(100% + 2rem);
+    // white-space: nowrap;
+  }
+
   &--has-icon {
     align-items: center;
   }
@@ -106,7 +111,7 @@
   &--error {
     background-color: transparentize(lighten($color-error, 50%), .05);
     color: transparentize($color-error, .15);
-  
+
     &::before {
       font-family: '#{$icomoon-font-family}';
       content: $icon-x;

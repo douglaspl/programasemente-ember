@@ -1,13 +1,15 @@
 {{#if aula.unidade}}
   {{aula.unidade.titulo}}
 {{/if}}
-{{aula.titulo}}
+Titulo: {{aula.titulo}}
+Descrição: {{aula.descricao}}
+
 {{#if aplicacao}}
   Aplicada em: {{aplicacao.dataAplicacaoFormat}}
+{{else}}
+  Não aplicada.
 {{/if}}
-{{#if (equalstr aula.id aulaDestaque.id)}}
-  DESTAQUE
-{{/if}}
+
 <p class="global-nav__item" id="header-indicadores" {{action 'transitToAula' aula.id on="click"}}>
-  <span>Ir para aula</span>
+  <span>Ver materiais</span>
 </p>
