@@ -10,7 +10,7 @@
     opacity: 0;
     position: absolute;
     right: 0;
-    transform: translateY(4px);
+    // transform: translateY(4px);
     transition: 300ms;
 
     &--bellow {
@@ -21,7 +21,7 @@
       left: 0;
       padding-top: .5rem;
       top: 100%;
-      transform: translateY(-4px);
+      // transform: translateY(-4px);
     }
 
     &--error {
@@ -41,7 +41,7 @@
     &--on,
     &--is-show {
       opacity: 1;
-      transform: translateY(0);
+      // transform: translateY(0);
     }
 
   }
