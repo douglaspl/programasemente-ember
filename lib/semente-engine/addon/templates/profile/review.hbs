@@ -132,7 +132,7 @@
             addresponsible=(action 'addResponsible')
             trimall=(action 'trimAll')}}
       </div>
-
+      {{checkNameEqualEmail}}
     </section>
 
     <section
@@ -148,9 +148,12 @@
                                 goback=(action 'carouselBackward')
                                 checkform=(action 'validateForm')
                                 checkname=(action 'validateName')
-                                checkemail=(action 'validateEmail')
+                                checkemail=(action 'liveCheckEmail')
+                                validateemail=(action 'validateEmail')
+                                refreshcel=(action 'refreshCel')
                                 checkcel=(action 'validateCel')
                                 maskcel=(action 'phoneMask')
+                                celmaxlength=(action 'celReachedMaxLength')
                                 toggleinput=(action 'toggleInput')
                                 trimall=(action 'trimAll')
                                 }}
@@ -186,7 +189,7 @@
 
       <div class="flow--xxl">
         <section class="flow">
-          <h4 class="title-4">Aluno</h4>
+          <h4 class="title-4">Você</h4>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
 
@@ -224,7 +227,7 @@
         </section>
 
         <section class="flow">
-          <h4 class="title-4">Responsáveis</h4>
+          <h4 class="title-4">Seus responsáveis</h4>
           <div class="row">
 
             {{#each model.responsaveis as |resp index| }}
@@ -494,7 +497,7 @@
                                     goback=(action 'carouselBackward')
                                     checkform=(action 'validateForm')
                                     checkname=(action 'validateName')
-                                    checkemail=(action 'validateEmail')
+                                    checkemail=(action 'liveCheckEmail')
                                     checkcel=(action 'validateCel')
                                     maskcel=(action 'phoneMask')
                                     trimall=(action 'trimAll')

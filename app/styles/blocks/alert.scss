@@ -106,6 +106,12 @@
   &--error {
     background-color: transparentize(lighten($color-error, 50%), .05);
     color: transparentize($color-error, .15);
+  
+    &::before {
+      font-family: '#{$icomoon-font-family}';
+      content: $icon-x;
+      margin-right: .5rem;
+    }
   }
 
   &--success {
