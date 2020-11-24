@@ -169,10 +169,13 @@
                             value=pessoa.telefone
                             data-required="false"
                             data-type="celular"
+                            data-context="personal"
                             key-up=(action 'maskcel')
-                            focus-out=(action 'checkcel') }}
+                            focus-out=(action 'checkcel')
+                            input=(action 'celmaxlength')}}
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                <button class="btn btn--text" {{action 'toggleinput'}}>Não possui celular</button>
             </div>
         </div>
     </div>
@@ -183,9 +186,19 @@
 <div class="flow">
     <h3 class="title-3">Você é professor aplicador?</h3>
     <div class="checkbox">
-        {{input class="checkbox__input" id="instrutor_aplica-programa" name="instrutor_aplica-programa" type="checkbox" checked=pessoa.isAplicador}}
+        {{input
+                class="j-validate checkbox__input"
+                id="instrutor_aplica-programa"
+                name="instrutor_aplica-programa"
+                type="checkbox"
+                checked=pessoa.isAplicador
+                data-type="aplicador"
+                data-required="false"
+                change=(action 'checkaplicador')
+                }}
         <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
     </div>
+    <p id="error_aplicador" class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">Informe pelo menos um ano</p>
 </div>
 
 
@@ -214,7 +227,7 @@
                 <ul>
                     <li>
                         <div class="checkbox">
-                            <input  class="checkbox__input"
+                            <input  class="j-validate-aplicador-child checkbox__input"
                                     checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
                                     id="plat_ano{{platAno.id}}"
                                     onchange={{action (action "selectAno" platAno) value='target.checked'}}

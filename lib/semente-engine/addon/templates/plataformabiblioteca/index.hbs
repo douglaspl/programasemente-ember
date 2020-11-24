@@ -1,0 +1,69 @@
+<select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
+    <option value="">---</option>
+    {{#each tipos as |tipo|}}
+        <option value="{{tipo}}" selected="selected">{{tipo}}</option>
+    {{/each}}
+</select>
+
+
+<div>
+    <h2>BUSCA</h2>
+    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
+</div>
+
+
+<div>
+    <h2>TEMA</h2>
+    <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+    <option value="">---</option>
+    {{#each temas as |tema|}}
+        <option value="{{tema.id}}" selected={{if (equalstr tema.id selectedTema.id) "selected"}}>{{tema.name}}</option>
+    {{/each}}
+    </select>
+</div>
+
+
+
+{{#each conteudos as |conteudo|}}
+
+    <div> 
+        {{#if (equalstr conteudo.agrupamento.name "Biblioteca")}}
+            {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+                {{#if conteudo.situacao}}
+                    {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+                        {{#if (containStr subStr = selectedTema.name mainStr = conteudo.tema.name)}}
+
+                            <label>Titulo: {{conteudo.titulo}} </label>
+                            <label>Arquivo: {{conteudo.tipo}} </label>
+                            <label>Situação: {{conteudo.situacao}} </label>
+                            <label>Tema: {{conteudo.tema.name}} </label>
+                    
+                        {{/if}}
+
+                    {{else}}
+                        {{!-- <label>Titulo: {{conteudo.titulo}} </label>
+                        <label>Arquivo: {{conteudo.tipo}} </label>
+                        <label>Situação: {{conteudo.situacao}} </label>
+                        <label>Tema: {{conteudo.tema}} </label> --}}
+
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    </div>
+    
+    {{conteudo.url}} 
+    <br>
+
+{{/each}}
+
+
+
+{{!-- {{#each agrupamentos as |agrupamento|}}
+    {{#if (equalstr agrupamento.name 'Básico')}}
+        <h4 class="title-3 list__name">TIPO: Básico</h4>
+        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos selectedTipo=selectedTipo
+        thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
+    {{/if}}
+{{/each}} --}}
+
