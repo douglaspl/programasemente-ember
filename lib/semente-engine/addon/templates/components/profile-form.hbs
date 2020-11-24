@@ -1,3 +1,23 @@
+<div class="m-bottom--none">
+
+    <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
+
+    <div class="image-change">
+        <div class="avatar avatar--lg">
+            <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
+                style="background-image: url('{{uri_avatar}}');">
+            </div>
+        </div>
+
+        <label class="image-change__cta btn">Alterar imagem
+        <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;"
+            name="file">
+        </label>
+    </div>
+
+</div>
+
+
 {{#if (equalstr pessoa.role "aluno") }}
 
 {{!-- <div class="row">
@@ -210,7 +230,7 @@
     <div class="col-xs-12">
         <button class="j-submit btn btn--md"
                 type="button"
-                {{action "saveResponsible" pessoa}}>
+                {{action "saveTeacher" pessoa}}>
                 <span>Avançar</span>
                 <span class="btn__icon icon-arrow-right"></span>
         </button>

@@ -86,22 +86,33 @@
       </ul>
     </div>
   {{else if (equalstr model.role "instrutor") }}
-    <div class="col-xs-12">
-      <ul class="steps j-steps m-v--md">
-        <li id="s1" class="steps__step steps__step--is-active">
-          <span class="steps__label">Você</span>
-          <span class="steps__number">1</span>
-        </li>
-        <li id="s2" class="steps__step">
-          <span class="steps__label">Responsável</span>
-          <span class="steps__number">2</span>
-        </li>
-        <li id="s3" class="steps__step">
-          <span class="steps__label">Revisão</span>
-          <span class="steps__number">3</span>
-        </li>
-      </ul>
-    </div>
+      <div class="col-xs-12">
+        <ul class="steps j-steps m-v--md">
+          <li id="s1" class="steps__step steps__step--is-active">
+            <span class="steps__label">Você</span>
+            <span class="steps__number">1</span>
+          </li>
+          <li id="s2" class="steps__step">
+            <span class="steps__label">Alunos</span>
+            <span class="steps__number">2</span>
+          </li>
+      {{#if model.isAlsoResponsible }}
+          <li id="s2" class="steps__step">
+            <span class="steps__label">Responsável</span>
+            <span class="steps__number">3</span>
+          </li>
+          <li id="s3" class="steps__step">
+            <span class="steps__label">Revisão</span>
+            <span class="steps__number">4</span>
+          </li>
+      {{else}}
+          <li id="s3" class="steps__step">
+            <span class="steps__label">Revisão</span>
+            <span class="steps__number">3</span>
+          </li>
+      {{/if}}
+        </ul>
+      </div>
   {{/if}}
 
 </div>
@@ -302,43 +313,17 @@
 
       <div class="flow flow--xxl">
         <div class="checkbox">
-          <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
           {{input class="checkbox__input"
+                  id="isAlsoResponsible"
                   checked=model.isAlsoResponsible
-                  click=(action (action "initTeacherResponsible" model)
                   name="isAlsoResponsible"
-                  type="checkbox"
-                  value='target.checked')}}
+                  type="checkbox"}}
+          <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
         </div>
       </div>
 
-      <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
-      <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
-
-      <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
-        <span class="btn__icon icon-plus"></span>
-        <span class="btn__label">Adicionar Responsável</span>
-      </button>
-
-      <div class="row">
-
-        <div class="col-xs-12">
-          <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
-            <span class="btn__label">Voltar</span>
-          </button>
-          <button class="j-submit btn btn--md" {{action "saveResponsibles"}} type="button">
-            <span class="btn__label">Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
-          </button>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="flow flow--xl carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
-      <!-- lugar errado -->
       {{#if model.isAlsoResponsible }}
+
         {{#each model.dependentes as |dep index| }}
           <section class="flow">
             <h3 class="title-3">{{visible-index index}}º Aluno</h3>
@@ -353,30 +338,137 @@
           <span class="btn__label">Adicionar Dependente</span>
         </button>
 
+        <div class="row">
+
+          <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+              <span class="btn__label">Voltar</span>
+            </button>
+            <button class="j-submit btn btn--md" {{action "saveDependentes"}} type="button">
+              <span class="btn__label">Avançar</span>
+              <span class="btn__icon icon-arrow-right"></span>
+            </button>
+          </div>
+
+        </div>
+      
+      {{else}}
+        <div class="row">
+
+          <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+              <span class="btn__label">Voltar</span>
+            </button>
+            <button class="j-submit btn btn--md" {{action "saveTeacher"}} type="button">
+              <span class="btn__label">Avançar</span>
+              <span class="btn__icon icon-arrow-right"></span>
+            </button>
+          </div>
+
+        </div>
       {{/if}}
+
     </section>
 
-    <section class="flow flow--xl carousel__step carousel__step--4 j-step4">
+    {{#if model.isAlsoResponsible }}
+      <section class="flow flow--xl carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
+          
 
-      <h3 class="title-3">Resumo das Informações</h3>
-      <div class="flow flow--xxl">
 
-        {{teacher-info-card instrutor=model}}
+          <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
+          <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
 
-        {{#if model.dependentes }}
-          {{#each model.dependentes as |dependente| }}
-            {{student-info-card student=dependente}}
+          {{#if canAddPartner}}
+            <button class="btn btn--add-list-item" type="button" onclick={{action 'addPartner'}}>
+              <span class="btn__icon icon-plus"></span>
+              <span class="btn__label">Adicionar Responsável</span>
+            </button>
+          {{/if}}
+
+          <div class="flow flow--xl">
+            {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
+              {{#if (notequalstr resp.id model.id)}}
+                <section class="flow">
+                  <h3 class="title-3">Adicionar segundo responsável</h3>
+                  <div class="flow">
+                    {{responsible-form  responsavel=resp
+                                        gonext=(action 'carouselFoward')
+                                        goback=(action 'carouselBackward')
+                                        checkform=(action 'validateForm')
+                                        checkname=(action 'validateName')
+                                        checkemail=(action 'validateEmail')
+                                        checkcel=(action 'validateCel')
+                                        maskcel=(action 'phoneMask')
+                                        trimall=(action 'trimAll')
+                                        toggleinput=(action 'toggleInput')}}
+                  </div>
+                </section>
+              {{/if}}
+            {{/each}}
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12">
+              <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+                <span class="btn__label">Voltar</span>
+              </button>
+              <button class="j-submit btn btn--md" {{action "savePartner"}} type="button">
+                <span class="btn__label">Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+              </button>
+            </div>
+
+          </div>
+      </section>
+    
+      <section class="flow flow--xl carousel__step carousel__step--4 j-step4">
+
+        <h3 class="title-3">Resumo das Informações</h3>
+        <div class="flow flow--xxl">
+
+          {{teacher-info-card instrutor=model}}
+
+          {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
+            {{#if (notequalstr resp.id model.id)}}
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp index=index}}
+              </div>
+            {{/if}}
           {{/each}}
-        {{/if}}
 
-      </div>
+          {{#if model.dependentes }}
+            {{#each model.dependentes as |dependente| }}
+              {{student-info-card student=dependente}}
+            {{/each}}
+          {{/if}}
 
-      <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
-        type="button">Voltar</button>
-      <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
 
-    </section>
+        <div class="col-xs-12">
+          <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
+            type="button">Voltar</button>
+          <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
 
+      </section>
+    {{else}}
+      <section class="flow flow--xl carousel__step carousel__step--3 j-step3">
+
+        <h3 class="title-3">Resumo das Informações</h3>
+        <div class="flow flow--xxl">
+          {{teacher-info-card instrutor=model}}
+        </div>
+
+        <div class="col-xs-12">
+          <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
+            type="button">Voltar</button>
+          <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
+
+      </section>
+
+    {{/if}}
   </form>
   <!-- início INSTRUTOR -->
 
