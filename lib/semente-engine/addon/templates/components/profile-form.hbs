@@ -2,90 +2,104 @@
 
 {{!-- <div class="row">
         <label for="name">Senha</label>
-        <button type="button" class="btn">Alterar senha</button>
+        <button type="button" class="btn btn--md">Alterar senha</button>
     </div> --}}
+<div class="flow flow--xl">
+    <div class="row">
 
-<div class="row">
-
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
             <label class="form-group__label" for="name">Nome Completo</label>
-            <input type="text" for="validation" class="form-group__input" id="person_name" name="name"
-                value={{pessoa.name}} placeholder='Nome Completo' onkeydown={{action 'liveCheckName'}}
-                onfocus={{action 'trimAll'}} onblur={{action 'trimAll'}}>
-
+               {{input class="form-group__input j-validate"
+                        id="person_name"
+                        name="name"
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-up=(action 'checkName')
+                        type=text
+                        value=pessoa.name
+                        data-type="nome"
+                        data-required="true"}}
+             </div>
+                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
         </div>
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="j-validate form-group__input form-group__input--select"
+                        id="genero_student{{pessoa.id}}" name="genero"
+                        onchange={{action 'refreshSelectedGenero' value='target.value'}} data-type="select" data-required="true">
+                        <option value="" disabled selected>---</option>
+                        <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>
+                            Masculino</option>
+                        <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino
+                        </option>
+                        <option value="nao_quis_dizer">Prefiro não dizer</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-      <div class="form-group w100">
-        <label class="form-group__label" for="genero_student{{pessoa.id}}">Gênero</label>
-        <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--select"
-                    for="validation"
-                    id="genero_student{{pessoa.id}}"
-                    name="genero"
-                    onchange={{action 'refreshSelectedGenero' value='target.value'}}>
-                <option value="">---</option>
-                <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
-                <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino</option>
-                <option value="">Prefiro não dizer</option>
-            </select>
-        </div>
-      </div>
-    </div>
+    <div class="row">
 
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="j-validate form-group__input form-group__input--select"
+                        id="serie_student{{pessoa.id}}" name="serie"
+                        onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="select" data-required="true">
+                        <option value="" disabled selected>---</option>
+                        {{#each pessoa.instituicao.plataformaAnos as |pa|}}
+                            {{#if (isnotinarray pa plataformaAnosToHide)}}
+                                <option value="{{pa.id}}"
+                                    selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
+                                    {{pa.name}}</option>
+                            {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="j-validate form-group__input form-group__input--select"
+                        id="turma_student{{pessoa.id}}" name="turma"
+                        onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}} data-type="select" data-required="true">
+                        <option value="" disabled selected>---</option>
+                        {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
+                            {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
+                            <option value="{{pt.id}}"
+                                selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
+                                {{pt.name}}</option>
+                            {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
-
 <div class="row">
-
-    <div class="col-xs-4 col-lg-3">
-      <div class="form-group w100">
-        <label class="form-group__label" for="serie_student{{pessoa.id}}">Serie</label>
-        <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--select"
-                    for="validation"
-                    id="serie_student{{pessoa.id}}"
-                    name="serie"
-                    onchange={{action 'refreshSelectedAno' value='target.value'}}>
-                <option value="">---</option>
-                {{#each pessoa.instituicao.plataformaAnos as |pa|}}
-                    <option value="{{pa.id}}"
-                            selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
-                        {{pa.name}}</option>
-                {{/each}}
-            </select>
-        </div>
-      </div>
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveProfile" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
     </div>
-
-    <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-      <div class="form-group w100">
-        <label class="form-group__label" for="turma_student{{pessoa.id}}">Turma</label>
-        <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--select"
-                    for="validation"
-                    id="turma_student{{pessoa.id}}"
-                    name="turma"
-                    onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}>
-                <option value="">---</option>
-                {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
-                    {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
-                    <option value="{{pt.id}}"
-                            selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
-                        {{pt.name}}</option>
-                    {{/if}}
-                {{/each}}
-            </select>
-        </div>
-      </div>
-
-    </div>
-
 </div>
-
-<button type="button" class="btn" {{action "saveProfile" pessoa}}>Salvar</button>
-
 
 
 
@@ -97,58 +111,111 @@
 
 
 {{else if (equalstr pessoa.role "instrutor") }}
+<div class="flow flow--xl">
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="instrutor_name">Nome Completo</label>
+                 {{input class="form-group__input j-validate"
+                        id="instrutor_name"
+                        name="instrutor_name"
+                        value=pessoa.name
+                        data-type="nome"
+                        data-required="true"
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-down=(action 'checkName')
+                        }}
+            </div>
+            <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                <span class="alert__icon icon-x"></span>
+                <span class="alert__msg"></span>
+            </p>
+        </div>
 
-<div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="instrutor_celular">Número de Celular</label>
+                {{input class="j-validate form-group__input"
+                        id="instrutor_celular"
+                        name="instrutor_celular"
+                        value=pessoa.telefone
+                        data-required="false"
+                        data-type="celular"
+                        key-up=(action 'maskcel')
+                        focus-out=(action 'checkcel') }}
+            </div>
+             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
+        </div>
 
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-            <label for="name_responsavel">Nome Completo</label>
-            {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
-            {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            <div class="checkbox">
+                {{input class="checkbox__input" id="instrutor_aplica-programa" name="instrutor_aplica-programa" type="checkbox" checked=pessoa.isAplicador}}
+                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, Eu aplico o Programa Semente.</label>
+            </div>
         </div>
     </div>
 
-    <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-            <label for="celular">Número de Celular</label>
-            {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
-        </div>
-    </div>
 
-</div>
+    {{#if pessoa.isAplicador}}
+    <h4 class="title-4">Você aplica em quais séries?</h4>
 
+    <div class="row">
 
+        {{#each segmentos as |seg| }}
 
+            <div class="col-xs-3 flow flow--sm">
+                <h5 class="title-aux">{{seg.titulo}}</h5>
+                {{!-- <div class="row">
+                    <div class="checkbox">
+                        <input  class="checkbox__input"
+                                type="checkbox"
+                                id="segmento{{seg.id}}"
+                                onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                        <label  class="checkbox__label"
+                                for="segmento{{seg.id}}">{{seg.titulo}}</label>
+                    </div>
+                </div> --}}
 
-<div class="row">
-    {{input type="checkbox" checked=pessoa.isAplicador}}
-    <label for="celular">Você aplica o programa?</label>
-</div>
+                {{#each seg.plataformaAnos as |platAno|}}
+                <ul>
+                    <li>
+                        <div class="checkbox">
+                            <input  class="checkbox__input"
+                                    checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                                    id="plat_ano{{platAno.id}}"
+                                    onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                    type="checkbox">
+                            <label  class="checkbox__label"
+                                    for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                        </div>
+                    </li>
+                </ul>
+                {{/each}}
 
-{{#if pessoa.isAplicador}}
-<div class="row">
+            </div>
 
-    {{#each segmentos as |seg| }}
-    <div class="col-xs-2">
-        <div class="row">
-            <input type="checkbox" id="segmento{{seg.id}}"
-                onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
-            <label>{{seg.titulo}}</label>
-        </div>
-        {{#each seg.plataformaAnos as |platAno|}}
-        <div class="row">
-            <input type="checkbox" checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                id="plat_ano{{platAno.id}}" onchange={{action (action "selectAno" platAno) value='target.checked'}}>
-            <label>{{platAno.name}}</label>
-        </div>
         {{/each}}
+
     </div>
-    {{/each}}
-
+    {{/if}}
 </div>
-{{/if}}
-
-<button type="button" class="btn" {{action "saveResponsible" pessoa}}>Salvar</button>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="j-submit btn btn--md"
+                type="button"
+                {{action "saveResponsible" pessoa}}>
+                <span>Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+        </button>
+    </div>
+</div>
 
 
 
@@ -161,27 +228,61 @@
 
 
 {{else if (equalstr pessoa.role "responsavel") }}
+<div class="flow flow--xl">
+    <div class="row">
 
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="name_responsavel">Nome Completo</label>
+                {{input class="form-group__input j-validate"
+                        id="name_responsavel"
+                        name="name_responsavel"
+                        value=pessoa.name
+                        data-type="nome"
+                        data-required="true"
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-down=(action 'checkName')}}
+            </div>
+             <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
+        </div>
+
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group w100">
+                <label class="form-group__label" for="celular">Número de Celular</label>
+                {{input class="j-validate form-group__input"
+                        id="celular"
+                        name="celular"
+                        value=pessoa.telefone
+                        data-required="false"
+                        data-type="celular"
+                        key-up=(action 'maskcel')
+                        focus-out=(action 'checkcel')
+                         }}
+            </div>
+            <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
+        </div>
+
+    </div>
+</div>
 <div class="row">
-    <label for="name_responsavel">Nome Completo</label>
-    {{input name='name_responsavel' value=pessoa.name placeholder='Nome Completo'}}
-    {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    <button class="j-submit btn btn--md"
+            type="button"
+            {{action "saveResponsible" pessoa}}>
+            <span>Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
+    </button>
 </div>
 
-<div class="row">
-    <label for="celular">Número de Celular</label>
-    {{input name='celular' value=pessoa.telefone placeholder='(xx) xxxxx-xxxx '}}
-    {{!-- <select name="celular" id="celular">
-            <option value="">---</option>
-        </select> --}}
-</div>
 
-<button type="button" class="btn" {{action "saveResponsible" pessoa}}>Salvar</button>
+<!-- retirar botão depois -->
+{{!-- <button type="button" {{action "saveResponsible" pessoa}}>Salvar</button> --}}
 
 {{/if}}
 
-
-<p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" id="error_name" data-animation="fadeIn">
-    <span class="alert__icon icon-x"></span>
-    <span class="alert__msg"></span>
-</p>

@@ -1,35 +1,86 @@
-    <div class="row">
+<div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
+    
+       {{#if (equalstr role 'responsavel')}}
+       {{else}}
+       <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+       {{/if}}
 
-        <div class="col-xs-4 col-lg-3">
-        <div class="form-group w100">
-                <label class="form-group__label" for="name_responsavel">Nome Completo</label>
-                {{input class="form-group__input" name='name_responsavel' value=responsavel.name placeholder='Nome Completo'}}
-                {{!-- <input type="text" id="name_responsavel{{responsavel.id}}"> --}}
+    <!-- talvez seja bom criar o caso de se for o primeiro responsável
+    usar o título "Suas informações" e no segundo "2º Responsável"-->
+
+    <div class="flow flow--xl">
+        <div class="row">
+            <div class="col-xs-4 col-lg-3">
+                <div class="form-group w100">
+                    <label class="form-group__label" for="name_responsavel">Nome Completo</label>
+                    {{input class="form-group__input j-validate"
+                        name="name_responsavel"
+                        value=responsavel.name
+                        data-type="nome"
+                        data-required="true"
+                        focus-out=(action 'trimall')
+                        focus=(action 'trimall')
+                        key-down=(action 'checkName')
+                        }}
+
+                </div>
+                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
+                    data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
             </div>
+
+            <div class="col-xs-4 col-lg-3 col-lg-offset-1">
+                <div class="form-group w100">
+                    <label class="form-group__label" for="email_responsavel">E-mail</label>
+                    {{input class="form-group__input j-validate"
+                        type="email"
+                        name="email_responavel"
+                        value=responsavel.email
+                        key-down=(action 'checkemail')
+                        data-type="e-mail"
+                        data-required="true"}}
+                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo e-mail</p>
+
+                </div>
+                <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
+            </div>
+
         </div>
 
-        <div class="col-xs-4 col-lg-3 col-lg-offset-1">
-            <div class="form-group w100">
-                <label class="form-group__label" for="email_responsavel">Email</label>
-                {{input class="form-group__input" name='email_responavel' value=responsavel.email placeholder='E-mail '}}
-                {{!-- <input type="text" id="email_responsavel{{responsavel.id}}"> --}}
-            </div>
-        </div>
+        <div class="row">
 
+            <div class="col-xs-4 col-lg-3">
+                <div class="form-group w100">
+                    <label class="form-group__label" for="celular">Número de Celular</label>
+                    {{input class="form-group__input"
+                        name="celular"
+                        maxlength="15"
+                        value=responsavel.telefone
+                        placeholder="(xx) xxxxx-xxxx"
+                        data-type="celular"
+                        key-up=(action 'maskcel')
+                        data-required="false"
+                        focus-out=(action 'checkcel')
+                        }}
+                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo celular</p>
+
+                </div>
+                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"
+                    data-animation="fadeIn">
+                    <span class="alert__icon icon-x"></span>
+                    <span class="alert__msg"></span>
+                </p>
+            </div>
+
+        </div>
     </div>
 
-    <div class="row">
+    <!-- retirar botão depois -->
+    {{!-- <button class="d-none" {{action "saveResponsavel" responsavel}}>Salvar</button> --}}
 
-        <div class="col-xs-4 col-lg-3">
-            <div class="form-group w100">
-                <label class="form-group__label" for="celular">Número de Celular</label>
-                {{input class="form-group__input" name='celular' value=responsavel.telefone placeholder='(xx) xxxxx-xxxx '}}
-                {{!-- <select name="celular" id="celular">
-                    <option value="">---</option>
-                </select> --}}
-            </div>
-        </div>
-
-    </div>
-
-    <button class="btn" {{action "saveResponsavel" responsavel}}>Salvar</button>
+</div>

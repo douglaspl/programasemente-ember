@@ -1,6 +1,6 @@
 .steps {
     $this: &;
-    $font-size: $font-size--sm;
+    $font-size: $font-size--lg;
     $number-border: 4px;
     $size: 2em;
 
@@ -18,13 +18,13 @@
     &::before {
         background-color: $gray-0;
         border-radius: $radius;
-        bottom: calc((#{$size} / 2) + #{$number-border});
+        bottom: calc((#{$size} - #{$number-border}) / 2);
         content: '';
         height: $distance--xxs;
         left: 50%;
         position: absolute;
         transform: translateX(-50%);
-        width: 100%;
+        width: calc(100% - #{$size});
     }
 
     &__step {
@@ -51,7 +51,6 @@
         color: $white;
         display: flex;
         flex-direction: row;
-        font-size: $font-size--lg;
         height: $size;
         justify-content: center;
         width: $size;

@@ -13,8 +13,9 @@
 
 
 
-  <button id="back-all-enrolled" class="btn btn--text" {{action 'backCourses'}}>
-    <span class="icon-arrow-left"></span>voltar
+  <button class="btn btn--text" id="back-all-enrolled" {{action 'backCourses'}} type="button">
+    <span class="icon-arrow-left"></span>
+    <span class="btn__label">voltar</span>
   </button>
 
   <h2 class="main__title">Todos os matriculados em {{admController.curso_selected.name}}</h2>
@@ -273,8 +274,9 @@
 <!-- INÍCIO DA SESSÃO DE PESSOA ESPECÍFICA -->
 <section style="display: none;" id="report-person-specific" class="report__person-specific">
 
-  <button id="back-person-specific_old" class="btn btn--text" {{action 'closeEspecifico'}}>
-    <span class="icon-arrow-left"></span>voltar
+  <button class="btn btn--text" id="back-person-specific_old" {{action 'closeEspecifico'}} type="button">
+    <span class="icon-arrow-left"></span>
+    <span class="btn__label">voltar</span>
   </button>
 
   <h2 class="main__title">Aluno específico</h2>
@@ -453,8 +455,9 @@
 <section style="display: none;" id="report-people-comparison">
 
   <header class="report__header">
-    <button class="btn btn--text" {{action 'backComparison'}}>
-      <span class="icon-arrow-left"></span>voltar
+    <button class="btn btn--text" {{action 'backComparison'}} type="button">
+      <span class="icon-arrow-left"></span>
+      <span class="btn__label">voltar</span>
     </button>
 
     <h2 class="main__subtitle">Comparar alunos</h2>

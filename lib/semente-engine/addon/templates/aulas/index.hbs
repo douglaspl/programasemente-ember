@@ -1,4 +1,4 @@
-{{!-- ***** ALUNO ***** --}}
+{{!-- ** ALUNO ** --}}
 
 {{#if (equalstr pessoa.role "aluno")}}
 
@@ -7,20 +7,63 @@
 <p>{{plataformaAno.name}}</p>
 <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
 
-<ul>
-  {{#each plataformaAno.aulas as |aula|}}
-      {{aula-card transit=(action 'goToAula') aula=aula aulaDestaque=aulaDestaque}}
-  {{/each}}
-</ul>
+<div class="search">
+  <div>
+    <h2>BUSCA</h2>
+    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
+    <div>
+ 
+    <h2>SITUAÇÃO</h2>
+    <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
+      <option selected="selected" value="0">Todas</option>
+      <option value="1">Não Aplicada</option>
+      <option value="2">Parcialmente Aplicada</option>
+      <option value="3">Aplicada</option>
+    </select>
+    </div>
 
-{{!-- ***** RESPONSÁVEL ***** --}}
-{{else if (equalstr pessoa.role "responsavel")}}
+    <div>
+    <h2>ORDENAÇÃO</h2>
+    <select id="order" {{action 'atualizaAulas' on="change"}}>
+      <option selected="selected" value="0">Ordem Crescente</option>
+      <option value="1">Ordem Decrescente</option>
+    </select>
+    </div>
+
+  </div>
+</div>
+
+{{#each aulasFiltradas as |aulaFiltrada|}}
+{{aulasFiltrada.titulo}}
+  {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+      {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+  {{/if}}
+{{/each}}
+
+
+
+
+{{!-- ###################################################################################################################################################################################### --}}
+{{!-- ** RESPONSÁVEL OU PROFESSOR RESPONSÁVEL ** --}}
+{{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
+{{else if (equalstr toggleRole "responsavel")}}
 
 <h2>Nome Responsável:</h2>
 {{pessoa.name}}
 
 <h2>Role:</h2>
 {{pessoa.role}}
+
+
+{{!-- Checa se o instrutor também é responsável --}}
+{{#if (equalstr pessoa.role 'instrutor')}}
+  <h2>Visualizando como:  {{ toggleRole }}</h2>
+  <div>
+      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
+      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
+  </div>
+{{/if}}
+
 
 <h2>Selecione o Dependente:</h2>
 <div>
@@ -31,13 +74,10 @@
   {{/each}}
 </div>
 
-
-
 <div class="search">
   <div>
     <h2>BUSCA</h2>
     {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
-    <button type="button" class="btn btn-primary"  {{action 'refreshBusca'}}> Pesquisar</button>
     <div>
  
     <h2>SITUAÇÃO</h2>
@@ -61,35 +101,77 @@
 </div>
 
 
-
 {{#if selectedDependente}}
   {{#each selectedDependente.plataformaAnos as |plat_ano| }}
-    {{#each plat_ano.aulas as |aula_dep| }}
-        {{#if busca}}
-          {{!-- {{aula-card transit=(action 'goToAula') aula=aula_dep}} --}}
-          {{!-- {{plat_ano.segmento.titulo}} --}}
-          {{!-- {{aula_dep.titulo}}
-          {{aula_dep.descricao}}
-          {{aula_dep.segmento}}
-          {{aula_dep.urlLivro}}<br> --}}
-
-          {{#if (containStr subStr = busca mainStr = aula_dep.titulo)}}
-            {{aula-card transit=(action 'goToAula') aula=aula_dep}}
-          {{/if}}
-
-        {{else}}
-
-          {{aula-card transit=(action 'goToAula') aula=aula_dep}}
-
-        {{/if}}
-    {{/each}}
+      <p><a href="{{plat_ano.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
   {{/each}}
 {{/if}}
 
 
+{{#each aulasFiltradas as |aulaFiltrada|}}
+{{aulasFiltrada.titulo}}
+  {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+      {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+  {{/if}}
+{{/each}}
 
-{{!-- ***** Professor ***** --}}
-{{else if (equalstr pessoa.role "professor")}}
+
+
+
+{{!-- ###################################################################################################################################################################################### --}}
+{{!-- ** Professor ** --}}
+{{!-- {{else if (equalstr pessoa.role "instrutor")}} --}}
+{{else if (equalstr toggleRole "instrutor")}}
+
+<h2>Nome Professor:</h2>
+{{pessoa.name}}
+
+<h2>Role:</h2>
+{{pessoa.role}}
+
+
+{{!-- Checa se o instrutor também é responsável --}}
+{{#if pessoa.dependentes}}
+  <h2>Visualizando como:  {{ toggleRole }}</h2>
+  <div>
+      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
+      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
+  </div>
+{{/if}}
+
+{{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
+<div>
+    {{#each pessoa.plataformaAnos as |plat_ano|}}
+        <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' plat_ano.segmento.titulo}}> {{plat_ano.segmento.titulo}} </button>
+    {{/each}}
+</div>
+
+
+{{!-- Escolhe Qual Ano: Ex => Sétimo - Oitavo --}}
+<div>
+    {{#each pessoa.plataformaAnos as |plat_ano|}}
+        {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+          <button type="button" class="btn btn-primary" {{action 'refreshSelectedAno' plat_ano.name}}> {{plat_ano.name}} </button>
+        {{/if}}
+    {{/each}}
+</div>
+
+{{selectedSegmento}}
+{{selectedAno}}
+
+
+{{!-- Lista as aulas com base nos dois filtros acima--}}
+<div>
+    {{#each pessoa.plataformaAnos as |plat_ano|}}
+      {{#each plat_ano.aulas as |aula_dep| }}
+        {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+          {{#if (equalstr plat_ano.name selectedAno)}}
+            {{aula-card transit=(action 'goToAula') aula=aula_dep}}
+          {{/if}}
+        {{/if}}
+      {{/each}}
+    {{/each}}
+</div>
 
 
 

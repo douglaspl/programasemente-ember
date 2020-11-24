@@ -1,16 +1,26 @@
 
 
-<div class="row">
+<div class="">
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
-    {{input name='video' value=conteudo.videoUrl placeholder='Endereço de Vídeo' }}
-    
+    <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo' 
+        onchange={{ action 'urlvideoChanged' value='target.value' }}>
     <div class="row"> OU </div>
 
     <label for="">Arquivo em PDF, PNG ou JPEG</label>
-    <input multiple="false" name='pdf' type="file" value=conteudo.path 
+    <input multiple="false" id="file-selector" name='file' type="file" value=''
     placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf" 
     onchange={{action 'Upload'}} />
+
+    {{#if conteudo.path}}
+        <h1>Arquivo adicionado: </h1>
+        {{#if (base64 conteudo.path)}}
+            <object id="showfiles" data={{conteudo.path}} type='application/pdf'></object>
+        {{else}}
+            <object id="showfiles" data={{fileurl}} type='application/pdf'></object>
+        {{/if}}
+        <button type="button" class="btn" {{action "removePath"}}>Remover</button>
+    {{/if}}
 </div>
 
 <div class="row">
@@ -20,8 +30,8 @@
     
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
-    {{#each agrupamento as |a|}}
-        <input type="radio" id={{a.id}} name="nomeagrupamento" 
+    {{#each agrupamentos as |a|}}
+        <input type="radio" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}} name="nomeagrupamento" 
         onchange={{ action 'agrupamentoChanged' a.id }}>
         <label>{{a.name}}</label>
         <div>{{a.descricao}}</div>
@@ -33,7 +43,7 @@
                 <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
                     <option value="">---</option>
                     {{#each a.temas as |t|}}
-                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.tema.firstObject.id) "selected"}}>{{t.name}}</option>
+                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.temas.firstObject.id) "selected"}}>{{t.name}}</option>
                     {{/each}}
                 </select> 
                 <div> </div>
@@ -45,11 +55,11 @@
     <div> </div>
     <div>Qual a situação após o cadastro?</div>
     <div class="row">
-        <input type="radio" id={{conteudo.id}} name="situacao" 
+        <input type="radio" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao" 
         onchange={{ action 'refreshSelectedSituacao' "true" }}>
         <label>Ativo</label>
         <div></div>
-        <input type="radio" id={{conteudo.id}} name="situacao" 
+        <input type="radio" checked={{not conteudo.situacao}} id={{conteudo.id}} name="situacao" 
         onchange={{ action 'refreshSelectedSituacao' "false" }}>
         <label>Inativo</label>
     </div>
@@ -58,49 +68,27 @@
 <div></div>
 <div class="row">
     <h1>Público</h1>
-    <label for={{pub.id}}>A quem se destina?</label>
+    <label>A quem se destina?</label>
     <div class="row">
-        {{#each publico as |pub|}}
+        {{#each publicos as |pub|}}
             <input
             type="checkbox"
-            checked={{checked}}
+            checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
             value={{pub.id}}
             onchange={{action 'publicoChanged' value='target.value'}} />
             <label>{{pub.name}}</label>
         {{/each}}
     </div> 
-    <div class="row"></div>
-    {{#if (equalstr this.agrupamentoAula "true")}}
-        <div class="row">
-            {{!-- aulas já atreladas a este conteúdo --}}
-            {{#if conteudo.aulas.length}}
-                {{#each conteudo.aulas as |aulacadastrada|}}
-                    <div class="row">
-                        <label>Segmento</label>
-                        <label>{{aulacadastrada.plataformaAno.segmento.titulo}}</label>
-                        
-                        <div class="row"></div>
-                        <label>Ano</label>
-                        <label>{{aulacadastrada.plataformaAno.name}}</label>
-
-                        <div class="row"></div>
-                        <label>Aula</label>
-                        <label>{{aulacadastrada.titulo}}</label>
-                        
-                        <button type="button" class="btn btn-default" {{action "removeAula" aulacadastrada}}>Remover</button>
-                    </div>
-                {{/each}}
+    <div class="row">
+        {{#if (equalstr this.agrupamentoAula "true")}}
+            <div class="row">
+                {{!-- aulas já atreladas a este conteúdo + adicionar aulas --}}
+                {{conteudo-aula-form conteudo=conteudo adicionarAula=adicionarAula
+                segmentos=segmentos}}
+            </div>
+            {{#if (equalstr this.adicionarAula "false")}}
+                <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
             {{/if}}
-            
-            {{!-- formulário de um conteúdo --}}
-            {{conteudo-aula-form conteudo=conteudo adicionarAula=adicionarAula
-            segmentos=segmentos anos=anos aulas=aulas}}
-        </div>
-        {{#if (equalstr this.adicionarAula "false")}}
-            <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
         {{/if}}
-    {{/if}}
+    </div>
 </div>
-
-
-<button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>

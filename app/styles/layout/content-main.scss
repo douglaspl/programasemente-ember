@@ -13,17 +13,17 @@
     }
 
     .no-header & {
-        display: block;
-        flex: 1;
-        height: auto;
-        overflow: auto;
+    //     display: block;
+    //     flex: 1;
+        min-height: 100vh;
+    //     overflow: auto;
 
-        > * {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            height: auto;
-        }
+    //     > * {
+    //         display: flex;
+    //         flex: 1;
+    //         flex-direction: column;
+    //         height: auto;
+    //     }
 
     }
 
