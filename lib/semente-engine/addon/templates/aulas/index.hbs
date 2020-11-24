@@ -57,7 +57,7 @@
 
 {{!-- Checa se o instrutor também é responsável --}}
 {{#if (equalstr pessoa.role 'instrutor')}}
-  <h2>Visualizar como:</h2>
+  <h2>Visualizando como:  {{ toggleRole }}</h2>
   <div>
       <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
       <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
@@ -132,7 +132,7 @@
 
 {{!-- Checa se o instrutor também é responsável --}}
 {{#if pessoa.dependentes}}
-  <h2>Visualizar como:</h2>
+  <h2>Visualizando como:  {{ toggleRole }}</h2>
   <div>
       <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
       <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
