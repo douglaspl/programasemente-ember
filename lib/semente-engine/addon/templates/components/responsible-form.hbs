@@ -1,9 +1,12 @@
-<div class="flow recent-added {{if (equalstr model.role 'responsavel') 'flow--xl' ''}}">
-    
-       {{#if (equalstr role 'responsavel')}}
-       {{else}}
-       <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
-       {{/if}}
+<div class="flow recent-added {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
+
+    {{#if (equalstr modelrole 'responsavel')}}
+
+    {{else if (equalstr modelrole 'instrutor')}}
+        <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
+    {{else}}
+        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+    {{/if}}
 
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
@@ -39,9 +42,10 @@
                         name="email_responavel"
                         value=responsavel.email
                         key-down=(action 'checkemail')
+                        focus-out=(action 'validateemail')
                         data-type="e-mail"
                         data-required="true"}}
-                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo e-mail</p>
+                    {{!-- <p class="form-group__link" {{action 'toggleinput'}}>Não possuo e-mail</p> --}}
 
                 </div>
                 <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">
@@ -57,17 +61,20 @@
             <div class="col-xs-4 col-lg-3">
                 <div class="form-group w100">
                     <label class="form-group__label" for="celular">Número de Celular</label>
-                    {{input class="form-group__input"
+                    {{input  id=(concatenate "celular-" updatedIndex)
+                        class="j-validate form-group__input"
                         name="celular"
                         maxlength="15"
                         value=responsavel.telefone
                         placeholder="(xx) xxxxx-xxxx"
                         data-type="celular"
                         key-up=(action 'maskcel')
-                        data-required="false"
-                        focus-out=(action 'checkcel')
+                        data-required="true"
+                        data-type="celular"
+                        on-blur=(action 'checkcel')
+                        input=(action 'celmaxlength')
                         }}
-                    <p class="form-group__link" {{action 'toggleinput'}}>Não possuo celular</p>
+                    <p class="form-group__link" {{action 'toggleinput'}}>Não possui celular</p>
 
                 </div>
                  <p class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250"

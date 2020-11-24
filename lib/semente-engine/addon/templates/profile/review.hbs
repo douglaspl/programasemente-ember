@@ -86,22 +86,33 @@
       </ul>
     </div>
   {{else if (equalstr model.role "instrutor") }}
-    <div class="col-xs-12">
-      <ul class="steps j-steps m-v--md">
-        <li id="s1" class="steps__step steps__step--is-active">
-          <span class="steps__label">Você</span>
-          <span class="steps__number">1</span>
-        </li>
-        <li id="s2" class="steps__step">
-          <span class="steps__label">Responsável</span>
-          <span class="steps__number">2</span>
-        </li>
-        <li id="s3" class="steps__step">
-          <span class="steps__label">Revisão</span>
-          <span class="steps__number">3</span>
-        </li>
-      </ul>
-    </div>
+      <div class="col-xs-12">
+        <ul class="steps j-steps m-v--md">
+          <li id="s1" class="steps__step steps__step--is-active">
+            <span class="steps__label">Você</span>
+            <span class="steps__number">1</span>
+          </li>
+          <li id="s2" class="steps__step">
+            <span class="steps__label">Alunos</span>
+            <span class="steps__number">2</span>
+          </li>
+      {{#if model.isAlsoResponsible }}
+          <li id="s2" class="steps__step">
+            <span class="steps__label">Responsável</span>
+            <span class="steps__number">3</span>
+          </li>
+          <li id="s3" class="steps__step">
+            <span class="steps__label">Revisão</span>
+            <span class="steps__number">4</span>
+          </li>
+      {{else}}
+          <li id="s3" class="steps__step">
+            <span class="steps__label">Revisão</span>
+            <span class="steps__number">3</span>
+          </li>
+      {{/if}}
+        </ul>
+      </div>
   {{/if}}
 
 </div>
@@ -132,7 +143,7 @@
             addresponsible=(action 'addResponsible')
             trimall=(action 'trimAll')}}
       </div>
-
+      {{checkNameEqualEmail}}
     </section>
 
     <section
@@ -148,9 +159,12 @@
                                 goback=(action 'carouselBackward')
                                 checkform=(action 'validateForm')
                                 checkname=(action 'validateName')
-                                checkemail=(action 'validateEmail')
+                                checkemail=(action 'liveCheckEmail')
+                                validateemail=(action 'validateEmail')
+                                refreshcel=(action 'refreshCel')
                                 checkcel=(action 'validateCel')
                                 maskcel=(action 'phoneMask')
+                                celmaxlength=(action 'celReachedMaxLength')
                                 toggleinput=(action 'toggleInput')
                                 trimall=(action 'trimAll')
                                 }}
@@ -186,7 +200,7 @@
 
       <div class="flow--xxl">
         <section class="flow">
-          <h4 class="title-4">Aluno</h4>
+          <h4 class="title-4">Você</h4>
           <div class="row">
             <div class="col-xs-12 col-sm-4">
 
@@ -224,7 +238,7 @@
         </section>
 
         <section class="flow">
-          <h4 class="title-4">Responsáveis</h4>
+          <h4 class="title-4">Seus responsáveis</h4>
           <div class="row">
 
             {{#each model.responsaveis as |resp index| }}
@@ -269,15 +283,18 @@
       <h3 class="title-3">Suas informações</h3>
 
       <div class="flow flow--xxl">
-        {{profile-form pessoa=model 
-            gonext=(action 'carouselFoward') 
-            checkform=(action 'validateForm') 
-            checkname=(action 'validateName') 
-            removeerrors=(action 'removeErrorTag') 
-            checkcel=(action 'validateCel') 
+        {{profile-form pessoa=model
+            gonext=(action 'carouselFoward')
+            checkform=(action 'validateForm')
+            checkname=(action 'validateName')
+            removeerrors=(action 'removeErrorTag')
+            checkcel=(action 'validateCel')
             maskcel=(action 'phoneMask')
             adddependente=(action 'addDependent')
-            trimall=(action 'trimAll')}}
+            trimall=(action 'trimAll')
+            celmaxlength=(action 'celReachedMaxLength')
+            toggleinput=(action 'toggleInput')
+            }}
 
 
         <div class="row">
@@ -302,46 +319,20 @@
 
       <div class="flow flow--xxl">
         <div class="checkbox">
-          <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
           {{input class="checkbox__input"
+                  id="isAlsoResponsible"
                   checked=model.isAlsoResponsible
-                  click=(action (action "initTeacherResponsible" model)
                   name="isAlsoResponsible"
-                  type="checkbox"
-                  value='target.checked')}}
+                  type="checkbox"}}
+          <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
         </div>
       </div>
 
-      <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
-      <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos.</p>
-
-      <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
-        <span class="btn__icon icon-plus"></span>
-        <span class="btn__label">Adicionar Responsável</span>
-      </button>
-
-      <div class="row">
-
-        <div class="col-xs-12">
-          <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
-            <span class="btn__label">Voltar</span>
-          </button>
-          <button class="j-submit btn btn--md" {{action "saveResponsibles"}} type="button">
-            <span class="btn__label">Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
-          </button>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="flow flow--xl carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
-      <!-- lugar errado -->
       {{#if model.isAlsoResponsible }}
+
         {{#each model.dependentes as |dep index| }}
           <section class="flow">
-            <h3 class="title-3">{{visible-index index}}º Aluno</h3>
+            <h4 class="title-4">{{visible-index index}}º Aluno</h4>
             <div class="flow flow--xxl">
               {{student-form pessoa=dep trimall=(action 'trimAll')}}
             </div>
@@ -350,33 +341,145 @@
 
         <button class="btn btn--add-list-item" type="button" onclick={{action 'addDependent'}}>
           <span class="btn__icon icon-plus"></span>
-          <span class="btn__label">Adicionar Dependente</span>
+          <span class="btn__label">Adicionar aluno</span>
         </button>
 
+        <div class="row">
+
+          <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+              <span class="btn__label">Voltar</span>
+            </button>
+            <button class="j-submit btn btn--md" {{action "saveDependentes"}} type="button">
+              <span class="btn__label">Avançar</span>
+              <span class="btn__icon icon-arrow-right"></span>
+            </button>
+          </div>
+
+        </div>
+
+      {{else}}
+        <div class="row">
+
+          <div class="col-xs-12">
+            <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+              <span class="btn__label">Voltar</span>
+            </button>
+            <button class="j-submit btn btn--md" {{action "saveTeacher"}} type="button">
+              <span class="btn__label">Avançar</span>
+              <span class="btn__icon icon-arrow-right"></span>
+            </button>
+          </div>
+
+        </div>
       {{/if}}
+
     </section>
 
-    <section class="flow flow--xl carousel__step carousel__step--4 j-step4">
+    {{#if model.isAlsoResponsible }}
+      <section class="flow flow--xl carousel__step carousel__step--3 j-step3 animated fadeInRightShort">
 
-      <h3 class="title-3">Resumo das Informações</h3>
-      <div class="flow flow--xxl">
 
-        {{teacher-info-card instrutor=model}}
 
-        {{#if model.dependentes }}
-          {{#each model.dependentes as |dependente| }}
-            {{student-info-card student=dependente}}
+          <h3 class="title-3">Você quer já deixar registrado um segundo responsável pelos alunos?</h3>
+          <p>Para facilitar, você pode aproveitar esse momento para acrescentar um segundo responsável pelos alunos
+          <span class="inline-flex">{{#each model.dependentes as |dep index|}}
+            {{#if (equalstr index (sub model.dependentes.length 1))}}<span class="m-h--xxs"> e </span>{{else}}{{#if (isbigger index "0")}}<span class="m-right--xxs">,</span>{{/if}}{{/if}}<span class="strong">{{firststringpart dep.name}}</span>
+          {{/each}}</span>
+          .</p>
+
+          {{#if canAddPartner}}
+            <button class="btn btn--add-list-item" type="button" onclick={{action 'addPartner'}}>
+              <span class="btn__icon icon-plus"></span>
+              <span class="btn__label">Adicionar Responsável</span>
+            </button>
+          {{/if}}
+
+          <div class="flow flow--xl">
+            {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
+              {{#if (notequalstr resp.id model.id)}}
+                <section class="flow">
+                  {{!-- <h3 class="title-3">Adicionar segundo responsável</h3> --}}
+                  <div class="flow">
+                    {{responsible-form  responsavel=resp
+                                        modelrole=model.role
+                                        gonext=(action 'carouselFoward')
+                                        goback=(action 'carouselBackward')
+                                        checkform=(action 'validateForm')
+                                        checkname=(action 'validateName')
+                                        checkemail=(action 'validateEmail')
+                                        checkcel=(action 'validateCel')
+                                        maskcel=(action 'phoneMask')
+                                        trimall=(action 'trimAll')
+                                        toggleinput=(action 'toggleInput')}}
+                  </div>
+                </section>
+              {{/if}}
+            {{/each}}
+          </div>
+
+          <div class="row">
+
+            <div class="col-xs-12">
+              <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
+                <span class="btn__label">Voltar</span>
+              </button>
+              <button class="j-submit btn btn--md" {{action "savePartner"}} type="button">
+                <span class="btn__label">Avançar</span>
+                <span class="btn__icon icon-arrow-right"></span>
+              </button>
+            </div>
+
+          </div>
+      </section>
+
+      <section class="flow flow--xl carousel__step carousel__step--4 j-step4">
+
+        <h3 class="title-3">Resumo das Informações</h3>
+        <div class="flow flow--xxl">
+
+          {{teacher-info-card instrutor=model}}
+
+          {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
+            {{#if (notequalstr resp.id model.id)}}
+              <div class="col-xs-12 col-sm-4">
+                {{responsible-info-card responsavel=resp index=index}}
+              </div>
+            {{/if}}
           {{/each}}
-        {{/if}}
 
-      </div>
+          {{#if model.dependentes }}
+            {{#each model.dependentes as |dependente| }}
+              {{student-info-card student=dependente}}
+            {{/each}}
+          {{/if}}
 
-      <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
-        type="button">Voltar</button>
-      <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
 
-    </section>
+        <div class="col-xs-12">
+          <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
+            type="button">Voltar</button>
+          <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
 
+      </section>
+    {{else}}
+      <section class="flow flow--xl carousel__step carousel__step--3 j-step3">
+
+        <h3 class="title-3">Resumo das Informações</h3>
+        <div class="flow flow--xxl">
+          {{teacher-info-card instrutor=model}}
+        </div>
+
+        <div class="col-xs-12">
+          <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward'}}
+            type="button">Voltar</button>
+          <button class="btn btn--md" onclick={{action 'validateTeacherProfile'}} type="button">Confirmar Cadastro</button>
+        </div>
+
+      </section>
+
+    {{/if}}
   </form>
   <!-- início INSTRUTOR -->
 
@@ -448,8 +551,8 @@
                               gonext=(action 'carouselFoward')
                               goback=(action 'carouselBackward')
                               checkform=(action 'validateForm')
-                              checkname=(action 'validateName') 
-                              removeerrors=(action 'removeErrorTag') 
+                              checkname=(action 'validateName')
+                              removeerrors=(action 'removeErrorTag')
                               trimall=(action 'trimAll')}}
             </div>
           </section>
@@ -494,7 +597,7 @@
                                     goback=(action 'carouselBackward')
                                     checkform=(action 'validateForm')
                                     checkname=(action 'validateName')
-                                    checkemail=(action 'validateEmail')
+                                    checkemail=(action 'liveCheckEmail')
                                     checkcel=(action 'validateCel')
                                     maskcel=(action 'phoneMask')
                                     trimall=(action 'trimAll')
@@ -536,7 +639,7 @@
         <section class="flow">
           <h4 class="title-4">Responsáveis</h4>
           <div class="row">
-            
+
 
               {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
                 {{!-- {{responsible-info-card responsavel=model index=index}} --}}
@@ -545,7 +648,7 @@
                   </div>
               {{/each}}
 
-            
+
           </div>
         </section>
 
