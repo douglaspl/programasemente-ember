@@ -1,12 +1,29 @@
 <div class="flow recent-added {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
 
-    {{#if (equalstr modelrole 'responsavel')}}
+    <div class="row">
+        <div class="col-xs-4 col-lg-3">
+            {{#if (equalstr modelrole 'responsavel')}}
 
-    {{else if (equalstr modelrole 'instrutor')}}
-        <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
-    {{else}}
-        <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
-    {{/if}}
+            {{else if (equalstr modelrole 'instrutor')}}
+                <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4> 
+
+            {{else}}
+                <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
+            {{/if}}
+        </div>
+
+        <div class="col-xs-4 col-lg-3">
+            {{#if (equalstr model.role "aluno")}}
+                {{#if (isbigger model.responsaveis.length "1")}}
+                    <button {{action "removeResponsible" model responsavel}}>Remover Responsável</button>
+                {{/if}}
+            {{else}}
+                <button {{action "removePartner" model responsavel}}>Remover Responsável</button>
+            {{/if}}
+
+
+        </div>
+    </div>
 
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
@@ -67,18 +84,21 @@
                             key-up=(action 'maskcel')
                             data-required="true"
                             data-type="celular"
-                            on-blur=(action 'checkcel')
+                            focus-out=(action 'checkcel')
                             input=(action 'celmaxlength')
                             }}
 
                     </div>
                     <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                    <div>
+                        <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possui celular</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-xs-4 col-lg-3">
-                <button class="btn btn--text" {{action 'toggleinput'}}>Não possui celular</button>
-            </div>
+            {{!-- <div class="col-xs-4 col-lg-3"> --}}
+                
+            {{!-- </div> --}}
 
         </div>
 

@@ -167,7 +167,7 @@
                             id="instrutor_celular"
                             name="instrutor_celular"
                             value=pessoa.telefone
-                            data-required="false"
+                            data-required="true"
                             data-type="celular"
                             data-context="personal"
                             key-up=(action 'maskcel')
@@ -175,7 +175,9 @@
                             input=(action 'celmaxlength')}}
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
-                <button class="btn btn--text" {{action 'toggleinput'}}>Não possui celular</button>
+                <div>
+                    <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possuo celular</button>
+                </div>
             </div>
         </div>
     </div>
@@ -185,27 +187,30 @@
 
 <div class="flow">
     <h3 class="title-3">Você é professor aplicador?</h3>
-    <div class="checkbox">
-        {{input
-                class="j-validate checkbox__input"
-                id="instrutor_aplica-programa"
-                name="instrutor_aplica-programa"
-                type="checkbox"
-                checked=pessoa.isAplicador
-                data-type="aplicador"
-                data-required="false"
-                change=(action 'checkaplicador')
-                }}
-        <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
+    <div class="form-group__container">
+        <div class="form-group w100">
+            <div class="checkbox">
+                {{input
+                        class="j-validate checkbox__input"
+                        id="instrutor_aplica-programa"
+                        name="instrutor_aplica-programa"
+                        type="checkbox"
+                        checked=pessoa.isAplicador
+                        data-type="aplicador"
+                        data-required="false"
+                        change=(action 'checkaplicador')
+                        }}
+                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
+            </div>
+        </div>
     </div>
-    <p id="error_aplicador" class="alert alert__form alert--sm alert--error alert--has-icon m-top--sm animated d250" data-animation="fadeIn">Informe pelo menos um ano</p>
 </div>
 
 
 {{#if pessoa.isAplicador}}
 <section class="recent-added animated fadeIn fast flow">
     <h4 class="title-4">Você aplica em quais séries?</h4>
-
+    <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
     <div class="row">
 
         {{#each segmentos as |seg| }}
