@@ -24,6 +24,7 @@
                         autocomplete="off"
                         data-type="login"
                         data-required="true"
+                        key-down=(action 'checkemail')
                         focus-out=(action 'trimall')
                         focus=(action 'trimall')}}
                     </div>
@@ -67,10 +68,7 @@
                         data-type="nome"
                         data-required="true"
                         focus-out=(action 'trimall')
-                        focus=(action 'trimall')
-                        key-up=(action 'checkName')}}
-                    </div>
-                    <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                        key-down=(action 'checkName')}}
                 </div>
             </div>
 
