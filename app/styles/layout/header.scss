@@ -32,9 +32,9 @@
         height: 2.25rem;
         width: auto;
 
-        @include media('>sm') {
-            margin-left: -$distance--md;
-        }
+        // @include media('>sm') {
+        //     margin-left: -$distance--md;
+        // }
 
         @include target-ie {
             max-width: 12rem;

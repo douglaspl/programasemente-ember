@@ -2,27 +2,58 @@
 .l-user-header {
   $this: &;
 
+  --text-color: #{$white};
+  --dark: #{$gray-60};
+  --light: #{$gray-10};
+
+  background-image: url(../assets/img/fundo8.jpg),
+                    linear-gradient(30deg, var(--dark), var(--light)) ;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light, normal;
+
+  color: var(--text-color);
   outline: 1px solid crimson;
-  padding: $distance--xl $distance--xxxl;
+
   margin-bottom: $distance--md;
   margin-top: 0;
+  padding: $distance--sm;
 
   @include full-width-on-main;
 
   @include media('>sm') {
     margin-bottom: $distance--xl;
     margin-top: -$main-top-padding--sm;
-
+    padding: $distance--md $distance--lg;
   }
 
   @include media('>md') {
     margin-bottom: $distance--xl;
     margin-top: -$main-top-padding--md;
+    padding: $distance--lg $distance--xl;
   }
 
   @include media('>lg') {
     margin-bottom: $distance--xl;
     margin-top: -$main-top-padding--lg;
+    padding: $distance--xl $distance--xxl;
+  }
+
+  @include media('>xl') {
+    padding: $distance--xl $distance--xxxl;
+  }
+
+  &--responsavel {
+    --dark:   #{$gray-50};
+    --light:  #{$gray-10};
+  }
+
+  &--aluno {
+    --dark:   #{$green-60};
+    --light:  #{$green-20};
+
   }
 
 }

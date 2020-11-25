@@ -1,10 +1,29 @@
-{{!-- <button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button> --}}
-<header class="l-user-header">
-  <picture class="avatar avatar--lg">
-    <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
-  </picture>
-  <h2 class="title-1">{{pessoa.name}}</h2>
+<header class="l-user-header l-user-header--{{pessoa.role}}">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="flex itens-start">
+        <picture class="avatar avatar--lg">
+          <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
+        </picture>
+        <div>
+          <h2 class="title-1">{{pessoa.name}}</h2>
+          <span class="block tt-u">{{pessoa.role}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8 col-lg-9 col-xs-offset-4 col-lg-offset-3">
+      <nav>
+        <ul>
+          <li>
+            <button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
+
 
 {{!-- ** ALUNO ** --}}
 

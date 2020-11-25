@@ -40,9 +40,9 @@ body {
         min-height: 100vh;
     }
 
-    @include media('height<md') {
-        font-size: 14px;
-    }
+    // @include media('height<md') {
+    //     font-size: 14px;
+    // }
 
 }
 
