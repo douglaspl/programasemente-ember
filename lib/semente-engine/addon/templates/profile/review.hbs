@@ -168,7 +168,7 @@
                                 }}
         {{/each}}
 
-        {{#if canAddResponsibles}}
+        {{#if (islower model.responsaveis.length "2")}}
           <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible'}}>
             <span class="btn__icon icon-plus"></span>
             <span class="btn__label">Adicionar Responsável</span>
@@ -386,7 +386,7 @@
           {{/each}}</span>
           .</p>
 
-          {{#if canAddPartner}}
+          {{#if (islower model.dependentes.firstObject.responsaveis.length "2") }}
             <button class="btn btn--add-list-item" type="button" onclick={{action 'addPartner'}}>
               <span class="btn__icon icon-plus"></span>
               <span class="btn__label">Adicionar Responsável</span>
@@ -543,16 +543,15 @@
 
         {{#each model.dependentes as |dep index| }}
           <section class="flow">
-            <h3 class="title-3">{{visible-index index}}º Aluno</h3>
-            <div class="flow">
               {{student-form  pessoa=dep
+                              index=index
+                              model=model
                               gonext=(action 'carouselFoward')
                               goback=(action 'carouselBackward')
                               checkform=(action 'validateForm')
                               checkname=(action 'validateName')
                               removeerrors=(action 'removeErrorTag')
                               trimall=(action 'trimAll')}}
-            </div>
           </section>
         {{/each}}
 
@@ -592,9 +591,11 @@
               <div class="flow">
                 {{responsible-form  responsavel=resp
                                     gonext=(action 'carouselFoward')
+                                    model=model
                                     goback=(action 'carouselBackward')
                                     checkform=(action 'validateForm')
                                     checkname=(action 'validateName')
+                                    validateemail=(action 'validateEmail')
                                     checkemail=(action 'liveCheckEmail')
                                     checkcel=(action 'validateCel')
                                     maskcel=(action 'phoneMask')
@@ -606,7 +607,7 @@
         {{/each}}
       </div>
 
-      {{#if canAddPartner}}
+      {{#if (islower model.dependentes.firstObject.responsaveis.length "2") }}
         <button class="btn btn--add-list-item" type="button" onclick={{action 'addPartner'}}>
           <span class="btn__icon icon-plus"></span>
           <span class="btn__label">Adicionar Responsável</span>
