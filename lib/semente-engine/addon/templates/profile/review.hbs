@@ -321,7 +321,8 @@
                   id="isAlsoResponsible"
                   checked=model.isAlsoResponsible
                   name="isAlsoResponsible"
-                  type="checkbox"}}
+                  type="checkbox"
+                 }}
           <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
         </div>
       </div>
@@ -332,7 +333,13 @@
           <section class="flow">
             <h4 class="title-4">{{visible-index index}}º Aluno</h4>
             <div class="flow flow--xxl">
-              {{student-form pessoa=dep trimall=(action 'trimAll')}}
+              {{student-form 
+                      pessoa=dep 
+                      trimall=(action 'trimAll')
+                      checkform=(action 'validateForm')
+                      checkname=(action 'validateName')
+                      checkemail=(action 'liveCheckEmail')
+                      trimall=(action 'trimAll')}}
             </div>
           </section>
         {{/each}}

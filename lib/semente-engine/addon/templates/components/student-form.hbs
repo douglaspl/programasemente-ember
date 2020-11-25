@@ -1,4 +1,4 @@
-<div class="flow flow--xl">
+<div class="flow recent-added flow--xl">
 
     <div class="row">
 
@@ -12,6 +12,7 @@
                         autocomplete="off"
                         data-type="login"
                         data-required="true"
+                        key-down=(action 'checkemail')
                         focus-out=(action 'trimall')
                         focus=(action 'trimall')}}
                 </div>
@@ -55,8 +56,7 @@
                         data-type="nome"
                         data-required="true"
                         focus-out=(action 'trimall')
-                        focus=(action 'trimall')
-                        key-up=(action 'checkName')}}
+                        key-down=(action 'checkName')}}
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
             </div>

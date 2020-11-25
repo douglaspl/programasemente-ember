@@ -1,7 +1,7 @@
 <div class="flow recent-added {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
 
     {{#if (equalstr modelrole 'responsavel')}}
-
+<h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
     {{else if (equalstr modelrole 'instrutor')}}
         <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
     {{else}}
@@ -67,18 +67,21 @@
                             key-up=(action 'maskcel')
                             data-required="true"
                             data-type="celular"
-                            on-blur=(action 'checkcel')
+                            focus-out=(action 'checkcel')
                             input=(action 'celmaxlength')
                             }}
 
                     </div>
                     <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                    <div>
+                        <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possui celular</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-xs-4 col-lg-3">
-                <button class="btn btn--text" {{action 'toggleinput'}}>Não possui celular</button>
-            </div>
+            {{!-- <div class="col-xs-4 col-lg-3"> --}}
+                
+            {{!-- </div> --}}
 
         </div>
 
