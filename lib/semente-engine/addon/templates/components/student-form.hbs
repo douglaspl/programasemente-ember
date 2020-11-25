@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-4 col-lg-3">
-        <h3 class="title-3">{{visible-index index}}º Aluno</h3>
+        <h3 class="title-4">{{visible-index index}}º Aluno</h3>
     </div>
     <div class="col-xs-4 col-lg-3">
         {{#if (isbigger model.dependentes.length "1") }}
@@ -69,6 +69,7 @@
                         data-required="true"
                         focus-out=(action 'trimall')
                         key-down=(action 'checkName')}}
+                    </div>
                 </div>
             </div>
 

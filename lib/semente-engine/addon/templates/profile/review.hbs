@@ -331,16 +331,16 @@
 
         {{#each model.dependentes as |dep index| }}
           <section class="flow">
-            <h4 class="title-4">{{visible-index index}}º Aluno</h4>
-            <div class="flow flow--xxl">
               {{student-form 
                       pessoa=dep 
+                      model=model
+                      index=index
                       trimall=(action 'trimAll')
                       checkform=(action 'validateForm')
                       checkname=(action 'validateName')
+                      removeerrors=(action 'removeErrorTag')
                       checkemail=(action 'liveCheckEmail')
                       trimall=(action 'trimAll')}}
-            </div>
           </section>
         {{/each}}
 
@@ -408,6 +408,7 @@
                   <div class="flow">
                     {{responsible-form  responsavel=resp
                                         modelrole=model.role
+                                        model=model
                                         gonext=(action 'carouselFoward')
                                         goback=(action 'carouselBackward')
                                         checkform=(action 'validateForm')
