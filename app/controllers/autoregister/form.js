@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
     liveCheckEmail: function () {
 
       $('#login').on('keypress', function (event) {
-          var regex = new RegExp("^[a-zA-Z0-9@.-]+$");
+          var regex = new RegExp("^[a-zA-Z0-9@.-_]+$");
           var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
           let errorMsg = 'Espaço e caracteres especiais não são permitidos';
 
