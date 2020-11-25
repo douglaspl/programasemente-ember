@@ -330,7 +330,7 @@
       {{#if model.isAlsoResponsible }}
 
         {{#each model.dependentes as |dep index| }}
-          <section class="flow">
+          <section class="j-student-form-{{visible-index index}} flow">
             <h4 class="title-4">{{visible-index index}}º Aluno</h4>
             <div class="flow flow--xxl">
               {{student-form 
