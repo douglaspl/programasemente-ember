@@ -1,10 +1,25 @@
-<ul>
-    <li>{{instrutor.email}}</li>
-    <li>{{instrutor.name}}</li>
-    <li>{{instrutor.telefone}}</li>
-    <li>{{if instrutor.isAplicador "Aplicador" "Não aplicador"}}</li>
+<ul class="callout flow flow--lg">
+    <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">E-mail</span>
+        <span class="fw--4">{{instrutor.email}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">Nome completo</span>
+        <span class="fw--4">{{instrutor.name}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">Celular</span>
+        <span class="fw--4">{{instrutor.telefone}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+     <span class="text-aux m-bottom--xxs">Tipo de professor</span>
+     <span class="fw--4">{{instrutor.telefone}}{{if instrutor.isAplicador "Aplicador" "Não aplicador"}}</span>
+    </li>
+    <li class="col fs--md m-v--none">
+        <span class="text-aux m-bottom--xxs">Anos nos quais aplica</span>
     {{#each instrutor.plataformaAnos as |pa| }}
-        <li>{{pa.name}}</li>
+        <span class="fw--4 m-top--xxs">{{pa.name}}</span>
     {{/each}}
+    </li>
 </ul>
 
