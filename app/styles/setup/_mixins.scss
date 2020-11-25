@@ -187,6 +187,33 @@
 
 
 //------------------------------------
+//    #FULL WIDTH ON MAIN
+//------------------------------------
+@mixin full-width-on-main {
+    margin-left: -$h-padding--xs;
+    margin-right: -$h-padding--xs;
+
+    @include media('>sm') {
+      margin-left: -$h-padding--sm;
+      margin-right: -$h-padding--sm;
+    }
+
+    @include media('>md') {
+      margin-left: -$h-padding--md;
+      margin-right: -$h-padding--md;
+    }
+
+    @include media('>lg') {
+      margin-left: -$h-padding--lg;
+      margin-right: -$h-padding--lg;
+    }
+}
+
+
+
+
+
+//------------------------------------
 //    #FULL WIDTH CONTAINER
 //------------------------------------
 @mixin full-width-container {

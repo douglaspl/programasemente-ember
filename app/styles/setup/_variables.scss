@@ -455,6 +455,16 @@ $letter-spacing--xxl:  .15em;
 //------------------------------------
 //    #PADDING
 //------------------------------------
+$main-top-padding: 0;
+$main-top-padding--sm: $distance--xxl;
+$main-top-padding--md: $distance--xxl;
+$main-top-padding--lg: $distance--xxl;
+
+$main-bottom-padding: $distance--xs;
+$main-bottom-padding--sm: $distance--md;
+$main-bottom-padding--md: $distance--md;
+$main-bottom-padding--lg: $distance--xxl;
+
 $h-padding--xs: $distance--sm;
 $h-padding--sm: $distance--md;
 $h-padding--md: $distance--lg;
@@ -514,14 +524,16 @@ $shadow-i-5: inset 0 19px 38px rgba($gray-40, .12), inset  0 15px 12px rgba($gra
 
 
 //------------------------------------
-//    #AVATAR SIZES
+//    #AVATAR
 //------------------------------------
 $avatar--sm: 2rem;
 $avatar--md: 3.5rem;
-$avatar--lg: 5rem;
+$avatar--lg: 6.5rem;
 $avatar--xl: 8rem;
 $avatar--xxl-wide-h: 9rem;
 $avatar--xxl-wide-w: 16rem;
+
+$avatar-radius: 50%;
 
 
 

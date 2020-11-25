@@ -1,0 +1,28 @@
+// Cabeçalho geral para todos os usuários do novo Programa Semente
+.l-user-header {
+  $this: &;
+
+  outline: 1px solid crimson;
+  padding: $distance--xl $distance--xxxl;
+  margin-bottom: $distance--md;
+  margin-top: 0;
+
+  @include full-width-on-main;
+
+  @include media('>sm') {
+    margin-bottom: $distance--xl;
+    margin-top: -$main-top-padding--sm;
+
+  }
+
+  @include media('>md') {
+    margin-bottom: $distance--xl;
+    margin-top: -$main-top-padding--md;
+  }
+
+  @include media('>lg') {
+    margin-bottom: $distance--xl;
+    margin-top: -$main-top-padding--lg;
+  }
+
+}

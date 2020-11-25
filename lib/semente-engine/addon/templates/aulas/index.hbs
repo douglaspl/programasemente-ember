@@ -1,11 +1,18 @@
-<button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+{{!-- <button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button> --}}
+<header class="l-user-header">
+  <picture class="avatar avatar--lg">
+    <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
+  </picture>
+  <h2 class="title-1">{{pessoa.name}}</h2>
+</header>
 
 {{!-- ** ALUNO ** --}}
 
 {{#if (equalstr pessoa.role "aluno")}}
 
 <a href="#" {{action 'invalidateSession'}}>
-  <span>Fazer Logout</span></a>
+  <span>Fazer Logout</span>
+</a>
 
 <p>{{pessoa.name}}</p>
 <p>{{segmento.titulo}}</p>
@@ -15,9 +22,9 @@
   <div class="search">
     <div>
       <h2>BUSCA</h2>
-      {{input type="text" id="aulapesquisa" class="search" placeholder="Pesquisar Aula" value=search }} 
+      {{input type="text" id="aulapesquisa" class="search" placeholder="Pesquisar Aula" value=search }}
       <div>
-  
+
       <h2>SITUAÇÃO</h2>
       <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
         <option selected="selected" value="0">Todas</option>
@@ -54,6 +61,11 @@
 {{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
 {{else if (equalstr toggleRole "responsavel")}}
 
+<a href="#" {{action 'invalidateSession'}}>
+  <span>Fazer Logout</span>
+</a>
+
+slsdjllfsj
 <h2>Nome Responsável:</h2>
 {{pessoa.name}}
 
@@ -83,9 +95,9 @@
 <div class="search">
   <div>
     <h2>BUSCA</h2>
-    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
+    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
     <div>
- 
+
     <h2>SITUAÇÃO</h2>
     <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
       <option selected="selected" value="0">Todas</option>
@@ -118,7 +130,7 @@
 {{aulasFiltrada.titulo}}
   {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
       {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-  {{/if}} 
+  {{/if}}
 {{/each}}
 
 

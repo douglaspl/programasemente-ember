@@ -9,8 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   min-height: 100%;
-  // padding: 0 $h-padding--xs $distance--xs ($h-padding--xs * 2);
-  padding: 0 $h-padding--xs $distance--xs;
+  padding: $main-top-padding $h-padding--xs $main-bottom-padding;
   position: relative;
   width: 100%;
 
@@ -18,21 +17,21 @@
     $temp: map-get($breakpoints, sm);
 
     max-width: calc(#{$temp} + #{$container-diff});
-    padding: $distance--xxl $h-padding--sm $distance--md;
+    padding: $main-top-padding--sm $h-padding--sm $main-bottom-padding--sm;
   }
 
   @include media('>md') {
     $temp: map-get($breakpoints, md);
 
     max-width: calc(#{$temp} + #{$container-diff});
-    padding: $distance--xxl $h-padding--md $distance--md;
+    padding: $main-top-padding--md $h-padding--md $main-bottom-padding--md;
   }
 
   @include media('>lg') {
     $temp: map-get($breakpoints, lg);
 
     max-width: calc(#{$temp} + #{$container-diff});
-    padding: $distance--xxl $h-padding--lg $distance--xxl;
+    padding: $main-top-padding--lg $h-padding--lg $main-bottom-padding--lg;
   }
 
   &--highlight {
