@@ -528,7 +528,7 @@ $shadow-i-5: inset 0 19px 38px rgba($gray-40, .12), inset  0 15px 12px rgba($gra
 //------------------------------------
 $avatar--sm: 2rem;
 $avatar--md: 3.5rem;
-$avatar--lg: 6.5rem;
+$avatar--lg: 6.25rem;
 $avatar--xl: 8rem;
 $avatar--xxl-wide-h: 9rem;
 $avatar--xxl-wide-w: 16rem;
@@ -635,6 +635,7 @@ $button-radius: $radius;
 $button-radius--md: $radius--md;
 $button-radius--lg: $radius--lg;
 $button-border-width: 2px;
+$button-letter-spacing: $letter-spacing--lg;
 
 $default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-50;

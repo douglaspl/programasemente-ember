@@ -1,27 +1,29 @@
-<header class="l-user-header l-user-header--{{pessoa.role}}">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="flex itens-start">
-        <picture class="avatar avatar--lg">
-          <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
-        </picture>
-        <div>
-          <h2 class="title-1">{{pessoa.name}}</h2>
-          <span class="block tt-u">{{pessoa.role}}</span>
-        </div>
-      </div>
-    </div>
+<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
 
-    <div class="col-xs-8 col-lg-9 col-xs-offset-4 col-lg-offset-3">
+  <div class="flex itens-start">
+    <picture class="avatar avatar--lg">
+      <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
+    </picture>
+    <div class="flex-auto flow-xs m--sm">
+      <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <h2 class="title-1">{{pessoa.name}}</h2>
+        <button class="btn btn--link m-bottom--xxs m-top--auto">
+          <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+        </button>
+      </div>
+      <span class="title-aux color-gray-5 m-bottom--lg">{{pessoa.role}}</span>
+
       <nav>
-        <ul>
+        <ul class="tabs tabs--full-background">
           <li>
-            <button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+            <button type="button" class="tabs__tab" {{action 'goToBiblioteca' on="click"}}>Biblioteca </button>
           </li>
         </ul>
       </nav>
+
     </div>
   </div>
+
 </header>
 
 

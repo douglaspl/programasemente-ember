@@ -1,11 +1,11 @@
-<div class="flow recent-added {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
+<div class="flow-md recent-added {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
 
     <div class="row">
         <div class="col-xs-4 col-lg-3">
             {{#if (equalstr modelrole 'responsavel')}}
 
             {{else if (equalstr modelrole 'instrutor')}}
-                <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4> 
+                <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
 
             {{else}}
                 <h3 class="title-3">{{updatedIndex}}º Responsável</h3>
@@ -28,7 +28,7 @@
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
 
-    <div class="flow flow--xl">
+    <div class="flow-xl">
         <div class="row">
             <div class="col-xs-4 col-lg-3">
                 <div class="form-group__container">
@@ -97,7 +97,7 @@
             </div>
 
             {{!-- <div class="col-xs-4 col-lg-3"> --}}
-                
+
             {{!-- </div> --}}
 
         </div>

@@ -1,0 +1,24 @@
+//------------------------------------
+//    #FLEX WRAPS
+//------------------------------------
+$flex-gaps: (
+  gap-xxs: $distance--xxs,
+  gap-xs:  $distance--xs,
+  gap-sm:  $distance--sm,
+  gap-md:  $distance--md,
+  gap-lg:  $distance--lg,
+  gap-xl:  $distance--xl,
+  gap-xxl: $distance--xxl
+);
+
+@each $flex-gap, $flex-gap-value in $flex-gaps {
+  @each $bp, $bp-value in $breakpoints {
+    @if $bp == 'xs' {
+      .#{$flex-gap} { gap: $flex-gap-value; }
+    } @else {
+      @include media('>#{$bp}') {
+        .#{$bp}\:#{$flex-gap} { gap: $flex-gap-value; }
+      }
+    }
+  }
+}

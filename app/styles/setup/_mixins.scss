@@ -17,7 +17,7 @@
 //------------------------------------
 @mixin button {
     align-items: center;
-    align-self: flex-start;
+    // align-self: flex-start;
     border: $button-border-width solid transparent;
     cursor: pointer;
     display: inline-flex;
@@ -26,7 +26,7 @@
     font-size: $font-size--xxs;
     font-weight: $font-weight-5;
     justify-content: center;
-    letter-spacing: $letter-spacing--lg;
+    letter-spacing: $button-letter-spacing;
     line-height: 1;
     text-align: center;
     text-decoration: none;
@@ -239,16 +239,15 @@
     background-image: none;
     border-radius: 0;
     box-shadow: none;
-    color: $gray-60;
     padding: 0;
     text-shadow: none;
     z-index: 2;
 
     &::after {
-        border-bottom: 4px dotted $gray-5;
+        border-bottom: 2px dotted $gray-5;
         content: '';
         left: 0;
-        opacity: 1;
+        opacity: .75;
         position: absolute;
         top: 100%;
         transition: 300ms cubic-bezier(.455, .03, .515, .955); // IE fallback
@@ -715,11 +714,11 @@
                     $size: $font-size--lg,
                     $size--sm: $font-size--xl,
                     $size--lg: $font-size--xxl,
-                    $weight: 800,
-                    $letter: $letter-spacing--xs) {
+                    $weight: $font-weight-5,
+                    $letter: $letter-spacing--sm) {
 
     color: $color;
-    font-family: $font-title;
+    // font-family: $font-title;
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
@@ -727,12 +726,12 @@
     vertical-align: middle;
 
     @include media('>sm') {
-        font-size: $size;
-    }
-
-    @include media('>md') {
         font-size: $size--sm;
     }
+
+    // @include media('>md') {
+    //     font-size: $size--sm;
+    // }
 
     @include media('>lg') {
         font-size: $size--lg;
@@ -813,7 +812,7 @@
                     $family: $font-base,
                     $size: $font-size--xs,
                     $weight: 400,
-                    $letter: $letter-spacing--xl) {
+                    $letter: $letter-spacing--xxl) {
 
     color: $color;
     display: $display;
