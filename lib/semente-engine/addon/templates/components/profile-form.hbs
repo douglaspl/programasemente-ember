@@ -175,7 +175,7 @@
                             input=(action 'celmaxlength')}}
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
-                <div>
+                <div class="flex justify-end">
                     <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possuo celular</button>
                 </div>
             </div>
@@ -203,6 +203,7 @@
                 <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
             </div>
         </div>
+        <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
     </div>
 </div>
 
@@ -309,7 +310,9 @@
                             focus-out=(action 'checkcel')
                             }}
                 </div>
-                <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                <div class="flex flex-end">
+                    <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                </div>
             </div>
         </div>
 
