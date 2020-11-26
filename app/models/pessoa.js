@@ -10,6 +10,7 @@ export default DS.Model.extend({
   matricula : DS.attr(),
   genero: DS.attr(),
   nascimento: DS.attr(),
+  nascimentoPlataforma: DS.attr(),
   dataNascimento:  Ember.computed('nascimento', function() {
     return moment(this.get('nascimento')).format('DD/MM/YYYY');
   }),
