@@ -45,6 +45,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 
     > * {
       position: relative;
@@ -66,6 +67,11 @@
       top: 0;
       z-index: 1;
     }
+
+    #{$this}__avatar {
+      box-shadow: $shadow-long;
+    }
+
   }
 
   &--responsavel {
@@ -80,7 +86,9 @@
   }
 
   // Elements
-  &__nav {
+  &__role {
+    margin-bottom: $distance--sm;
+    opacity: .75;
   }
 
 }

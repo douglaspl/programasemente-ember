@@ -1,0 +1,40 @@
+.l-dots-between {
+  $this: &;
+
+  $l-dots-between-gap: $container-fluid-pad;
+  $l-dots-between-dot-color: $green-40;
+  $l-dots-between-dot-size: .15rem;
+
+  display: flex;
+  flex-direction: row;
+  gap: $l-dots-between-gap;
+
+  &::before {
+    background-image: radial-gradient($l-dots-between-dot-color $l-dots-between-dot-size, transparent $l-dots-between-dot-size);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: 1rem 1rem;
+    content: '';
+    order: 1;
+    width: $distance--md;
+  }
+
+  &__side {
+    flex: 0 0 10vw;
+    order: 0;
+  }
+
+  &__content {
+    flex: 1;
+    order: 2;
+  }
+
+  // Usar essa classe para páginas
+  // que precisam da coluna de apoio
+  // após o conteúdo principal.
+  &--is-flipped {
+    #{$this}__side { order: 2; }
+    #{$this}__content { order: 0; }
+  }
+
+}

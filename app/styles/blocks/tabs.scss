@@ -8,7 +8,6 @@
     flex-wrap: wrap;
 
     &__tab {
-        font-family: $font-title;
         font-size: $font-size--xs;
         font-weight: bolder;
         padding: $distance--sm;
@@ -38,7 +37,7 @@
             border-radius: $radius--md;
             color: $white;
             font-size: $font-size--xxs;
-            font-weight: $font-weight-3;
+            font-weight: $font-weight-5;
             letter-spacing: $button-letter-spacing;
             margin-right: $distance--xs;
             padding: $distance--xs $distance--sm;
