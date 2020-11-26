@@ -41,10 +41,31 @@
                                 value=pessoa.name
                                 data-type="nome"
                                 data-required="true"}}
+
+                    
                     <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
                 </div>
             </div>
         </div>
+        
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group__container">
+                <div class="form-group">
+                    <label class="form-group__label" for="data_nascimento">Data de Nascimento</label>
+                    {{input class="form-group__input j-validate"
+                                id="data_nascimento"
+                                name="data_nascimento"
+                                focus-out=(action 'trimall')
+                                focus=(action 'trimall')
+                                type="date"
+                                value=pessoa.nascimentoPlataforma
+                                data-type="datetime-local"
+                                data-required="true"}}
+                    <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                </div>
+            </div>
+        </div>
+        
         <div class="col-xs-4 col-lg-3">
             <div class="form-group__container">
                 <div class="form-group w100">
@@ -128,7 +149,6 @@
         </button>
     </div>
 </div>
-
 
 
 
@@ -332,4 +352,5 @@
 {{!-- <button type="button" {{action "saveResponsible" pessoa}}>Salvar</button> --}}
 
 {{/if}}
+
 
