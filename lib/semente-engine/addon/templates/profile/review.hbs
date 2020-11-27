@@ -322,6 +322,7 @@
                   checked=model.isAlsoResponsible
                   name="isAlsoResponsible"
                   type="checkbox"
+                  action=(action 'removeDependentes')
                  }}
           <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
         </div>
@@ -329,6 +330,7 @@
 
       {{#if model.isAlsoResponsible }}
 
+       {{addFirstDependent}}
         {{#each model.dependentes as |dep index| }}
           <section class="j-student-form-{{index}} flow-md">
               {{student-form
@@ -364,7 +366,7 @@
         </div>
 
       {{else}}
-        <div class="row">
+         <div class="row">
 
           <div class="col-xs-12">
             <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward"}} type="button">
@@ -433,7 +435,6 @@
                                        checkname=(action 'validateName')
                                        checkemail=(action 'liveCheckEmail')
                                        validateemail=(action 'validateEmail')
-                                       refreshcel=(action 'refreshCel')
                                        checkcel=(action 'validateCel')
                                        maskcel=(action 'phoneMask')
                                        celmaxlength=(action 'celReachedMaxLength')
@@ -466,16 +467,17 @@
         <div class="flow-xxl">
            <h4 class="title-4">Você</h4>
           {{teacher-info-card instrutor=model}}
-          <h4 class="title-4">Seus dependentes</h4>
+
+         
           {{#each model.dependentes.firstObject.responsaveis as |resp index| }}
             {{#if (notequalstr resp.id model.id)}}
-              <div class="col-xs-12 col-sm-4">
-                {{responsible-info-card responsavel=resp index=index}}
-              </div>
+             <h4 class="title-4">Responsável adicional</h4>
+              {{responsible-info-card responsavel=resp index=index}}
             {{/if}}
           {{/each}}
-
-          {{#if model.dependentes }}
+          
+          <h4 class="title-4">Seus dependentes</h4>
+            {{#if model.dependentes }}
             {{#each model.dependentes as |dependente| }}
               {{student-info-card student=dependente}}
             {{/each}}
