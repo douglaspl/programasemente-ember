@@ -1,7 +1,36 @@
+<header class="l-user-header l-user-header--{{pessoa.role}}">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="flex itens-start">
+        <picture class="avatar avatar--lg">
+          <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
+        </picture>
+        <div>
+          <h2 class="title-1">{{pessoa.name}}</h2>
+          <span class="block tt-u">{{pessoa.role}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8 col-lg-9 col-xs-offset-4 col-lg-offset-3">
+      <nav>
+        <ul>
+          <li>
+            <button type="button" class="btn btn-primary" {{action 'goToAulas' on="click"}}> Ir para tela Aulas </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+
+
 <select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
-    <option value="">---</option>
+    <option selected="selected" value="">---</option>
     {{#each tipos as |tipo|}}
-        <option value="{{tipo}}" selected="selected">{{tipo}}</option>
+        <option value="{{tipo}}" >{{tipo}}</option>
     {{/each}}
 </select>
 
@@ -15,7 +44,7 @@
 <div>
     <h2>TEMA</h2>
     <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-    <option value="">---</option>
+    <option selected="selected" value="">---</option>
     {{#each temas as |tema|}}
         <option value="{{tema.id}}" selected={{if (equalstr tema.id selectedTema.id) "selected"}}>{{tema.name}}</option>
     {{/each}}
@@ -30,40 +59,29 @@
         {{#if (equalstr conteudo.agrupamento.name "Biblioteca")}}
             {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
                 {{#if conteudo.situacao}}
+                    {{!-- {{selectedTipo}} || {{conteudo.tipo}} --}}
                     {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+                        {{!-- {{selectedTema.name}} || {{conteudo.tema.name}} --}}
                         {{#if (containStr subStr = selectedTema.name mainStr = conteudo.tema.name)}}
+                            {{#each conteudo.publicos as |pub|}}
+                                {{#if (compareRole f_role = pub.name s_role = pessoa.role)}}
 
-                            <label>Titulo: {{conteudo.titulo}} </label>
-                            <label>Arquivo: {{conteudo.tipo}} </label>
-                            <label>Situação: {{conteudo.situacao}} </label>
-                            <label>Tema: {{conteudo.tema.name}} </label>
-                    
+                                    <label>Titulo: {{conteudo.titulo}} </label>
+                                    <label>Cover Img: {{conteudo.coverImage}} </label>
+                                    <label>URL: {{conteudo.videoUrl}} </label>
+                                    <label>Tipo: {{conteudo.tipo}} </label>   <br> 
+
+                                {{/if}}
+                            {{/each}}
                         {{/if}}
-
-                    {{else}}
-                        {{!-- <label>Titulo: {{conteudo.titulo}} </label>
-                        <label>Arquivo: {{conteudo.tipo}} </label>
-                        <label>Situação: {{conteudo.situacao}} </label>
-                        <label>Tema: {{conteudo.tema}} </label> --}}
-
                     {{/if}}
                 {{/if}}
             {{/if}}
         {{/if}}
     </div>
     
-    {{conteudo.url}} 
-    <br>
+
 
 {{/each}}
 
-
-
-{{!-- {{#each agrupamentos as |agrupamento|}}
-    {{#if (equalstr agrupamento.name 'Básico')}}
-        <h4 class="title-3 list__name">TIPO: Básico</h4>
-        {{conteudo-card segmentos=segmentos agrupamento=agrupamento conteudos=conteudos selectedTipo=selectedTipo
-        thisIndex=this search=search selectedPublicos=selectedPublicos selectedSegmento=selectedSegmento selectedAno=selectedAno selectedAula=selectedAula selectedTema=selectedTema}}
-    {{/if}}
-{{/each}} --}}
 
