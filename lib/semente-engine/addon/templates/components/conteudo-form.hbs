@@ -43,7 +43,7 @@
                 <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
                     <option value="">---</option>
                     {{#each a.temas as |t|}}
-                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.agrupamento.temas.firstObject.id) "selected"}}>{{t.name}}</option>
+                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
                     {{/each}}
                 </select> 
                 <div> </div>
