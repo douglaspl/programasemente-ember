@@ -7,7 +7,14 @@
   gap: $distance--sm;
 
   &__thumb {
+    border-radius: $radius--md;
+    overflow: hidden;
     width: $avatar--lg;
+  }
+
+  &--card {
+    box-shadow: $shadow-3;
+    padding: $distance--sm;
   }
 
 }
