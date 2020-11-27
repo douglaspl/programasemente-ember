@@ -12,21 +12,6 @@
   text-align: center;
   text-transform: uppercase;
 
-  &--lemon {
-    background-color: $lemon-10;
-    color: $blue-navy-50;
-  }
-
-  &--navy {
-    background-color: $blue-navy-50;
-    color: $lemon-10;
-  }
-
-  &--green {
-    background-color: $green-20;
-    color: $blue-navy-50;
-  }
-
   &--error {
     background-color: $color-error;
   }
@@ -47,10 +32,6 @@
     font-size: 10px;
     padding-left: 1em;
     padding-right: 1em;
-  }
-
-  &--round {
-    border-radius: $radius--capsule;
   }
 
 }
