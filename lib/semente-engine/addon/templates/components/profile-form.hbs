@@ -24,7 +24,7 @@
         <label for="name">Senha</label>
         <button type="button" class="btn btn--md">Alterar senha</button>
     </div> --}}
-<div class="flow flow--xl">
+<div class="flow-xl">
     <div class="row">
 
         <div class="col-xs-4 col-lg-3">
@@ -161,7 +161,7 @@
 
 
 {{else if (equalstr pessoa.role "instrutor") }}
-<div class="flow flow--xl">
+<div class="flow-xl">
     <div class="row">
         <div class="col-xs-12 col-lg-3">
             <div class="form-group__container">
@@ -207,7 +207,7 @@
 
 
 
-<div class="flow">
+<div class="flow-md">
     <h3 class="title-3">Você é professor aplicador?</h3>
     <div class="form-group__container">
         <div class="form-group w100">
@@ -231,14 +231,14 @@
 
 
 {{#if pessoa.isAplicador}}
-<section class="recent-added animated fadeIn fast flow">
+<section class="recent-added animated fadeIn fast flow-md">
     <h4 class="title-4">Você aplica em quais séries?</h4>
     <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
     <div class="row">
 
         {{#each segmentos as |seg| }}
 
-            <div class="col-xs-3 flow flow--sm">
+            <div class="col-xs-3 flow-sm">
                 <h5 class="title-aux">{{seg.titulo}}</h5>
                 {{!-- <div class="row">
                     <div class="checkbox">
@@ -297,7 +297,7 @@
 
 
 {{else if (equalstr pessoa.role "responsavel") }}
-<div class="flow flow--xl">
+<div class="flow-xl">
     <div class="row">
 
         <div class="col-xs-4 col-lg-3">

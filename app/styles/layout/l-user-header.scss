@@ -2,21 +2,6 @@
 .l-user-header {
   $this: &;
 
-  --text-color: #{$white};
-  --dark: #{$gray-60};
-  --light: #{$gray-10};
-
-  background-image: url(../assets/img/fundo8.jpg),
-                    linear-gradient(30deg, var(--dark), var(--light)) ;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: soft-light, normal;
-
-  color: var(--text-color);
-  outline: 1px solid crimson;
-
   margin-bottom: $distance--md;
   margin-top: 0;
   padding: $distance--sm;
@@ -45,15 +30,65 @@
     padding: $distance--xl $distance--xxxl;
   }
 
+  // Themmes
+  &--themed {
+    --text-color: #{$white};
+
+    color: var(--text-color);
+    position: relative;
+
+    --dark: #{$gray-60};
+    --light: #{$gray-10};
+
+    background-image: linear-gradient(30deg, var(--dark), var(--light)) ;
+    background-blend-mode: normal;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::before {
+      background-blend-mode: soft-light, normal;
+      background-image: url(../assets/img/fundo8.jpg), linear-gradient(30deg, var(--dark), var(--light));
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: .75;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    #{$this}__avatar {
+      box-shadow: $shadow-long;
+    }
+
+  }
+
   &--responsavel {
     --dark:   #{$gray-50};
     --light:  #{$gray-10};
   }
 
   &--aluno {
-    --dark:   #{$green-60};
+    --dark:   #{$leaf-60};
     --light:  #{$green-20};
 
+  }
+
+  // Elements
+  &__role {
+    margin-bottom: $distance--sm;
+    opacity: .75;
   }
 
 }

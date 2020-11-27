@@ -1,9 +1,22 @@
-.flow > * + *      { margin-top: $distance--md; }
+//------------------------------------
+//    #FLOW
+//------------------------------------
+@each $measure, $distance in $distances {
+    .flow-#{$measure} {
+        > * + * {
+            margin-top: $distance;
+        }
+    }
+}
 
-.flow--sm > * + *  { margin-top: $distance--sm; }
-.flow--lg > * + *  { margin-top: $distance--lg; }
-.flow--xl > * + *  { margin-top: $distance--xl; }
-.flow--xxl > * + * { margin-top: $distance--xxl; }
+// .flow > * + *      { margin-top: $distance--md; }
+
+// .flow-xxs > * + *  { margin-top: $distance--xxs; }
+// .flow-xs > * + *  { margin-top: $distance--xs; }
+// .flow-sm > * + *  { margin-top: $distance--sm; }
+// .flow-lg > * + *  { margin-top: $distance--lg; }
+// .flow-xl > * + *  { margin-top: $distance--xl; }
+// .flow-xxl > * + * { margin-top: $distance--xxl; }
 
 @keyframes recent-added {
     from    { background-color: $green-10; }

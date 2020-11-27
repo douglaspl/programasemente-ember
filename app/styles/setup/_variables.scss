@@ -519,6 +519,8 @@ $shadow-i-3: inset 0 10px 20px rgba($gray-40, .09), inset  0 6px 6px rgba($gray-
 $shadow-i-4: inset 0 14px 28px rgba($gray-40, .10), inset  0 10px 10px rgba($gray-40, .15);
 $shadow-i-5: inset 0 19px 38px rgba($gray-40, .12), inset  0 15px 12px rgba($gray-40, .17);
 
+$shadow-long: 0 2.8px 2.2px   rgba($black, .034), 0 6.7px 5.3px   rgba($black, .048), 0 12.5px 10px   rgba($black, .06), 0 22.3px 17.9px rgba($black, .072), 0 41.8px 33.4px rgba($black, .086), 0 100px 80px    rgba($black, .12);
+
 
 
 
@@ -528,7 +530,7 @@ $shadow-i-5: inset 0 19px 38px rgba($gray-40, .12), inset  0 15px 12px rgba($gra
 //------------------------------------
 $avatar--sm: 2rem;
 $avatar--md: 3.5rem;
-$avatar--lg: 6.5rem;
+$avatar--lg: 6.25rem;
 $avatar--xl: 8rem;
 $avatar--xxl-wide-h: 9rem;
 $avatar--xxl-wide-w: 16rem;
@@ -635,6 +637,7 @@ $button-radius: $radius;
 $button-radius--md: $radius--md;
 $button-radius--lg: $radius--lg;
 $button-border-width: 2px;
+$button-letter-spacing: $letter-spacing--lg;
 
 $default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-50;

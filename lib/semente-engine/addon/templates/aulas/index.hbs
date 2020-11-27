@@ -1,28 +1,71 @@
-<header class="l-user-header l-user-header--{{pessoa.role}}">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="flex itens-start">
-        <picture class="avatar avatar--lg">
-          <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
-        </picture>
-        <div>
-          <h2 class="title-1">{{pessoa.name}}</h2>
-          <span class="block tt-u">{{pessoa.role}}</span>
-        </div>
-      </div>
-    </div>
+<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
 
-    <div class="col-xs-8 col-lg-9 col-xs-offset-4 col-lg-offset-3">
+  <div class="flex itens-start gap-lg">
+    <picture class="l-user-header__avatar avatar avatar--lg">
+      <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
+    </picture>
+    <div class="flex-auto flow-xs">
+      <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
+        <button class="btn btn--link m-bottom--xxs m-top--auto">
+          <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+        </button>
+      </div>
+      <span class="l-user-header__role title-aux">{{pessoa.role}}</span>
+
       <nav>
-        <ul>
+        <ul class="tabs tabs--full-background">
           <li>
-            <button type="button" class="btn btn-primary" {{action 'goToBiblioteca' on="click"}}> Ir para tela Biblioteca </button>
+            <button type="button" class="tabs__tab" {{action 'goToBiblioteca' on="click"}}>Biblioteca </button>
           </li>
         </ul>
       </nav>
+
     </div>
   </div>
+
 </header>
+<section class="l-dots-between">
+  <header class="l-dots-between__side flex flex-col flow-md">
+
+    <div class="form-group">
+      <label class="form-group__label">Busca</label>
+      {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+    </div>
+
+    <div class="form-group">
+      <label class="form-group__label">Situação</label>
+      <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
+        <option selected="selected" value="0">Todas</option>
+        <option value="1">Não Aplicada</option>
+        <option value="2">Parcialmente Aplicada</option>
+        <option value="3">Aplicada</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-group__label">Ordenação</label>
+      <select class="form-group__input" id="order" {{action 'atualizaAulas' on="change"}}>
+        <option selected="selected" value="0">Ordem Crescente</option>
+        <option value="1">Ordem Decrescente</option>
+      </select>
+    </div>
+
+  </header>
+
+  <section class="l-dots-between__content">
+
+    {{#each aulasFiltradas as |aulaFiltrada|}}
+      {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
+        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+      {{else}}
+        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+      {{/if}}
+    {{/each}}
+
+  </section>
+
+</section>
 
 
 {{!-- ** ALUNO ** --}}
@@ -37,42 +80,6 @@
 <p>{{segmento.titulo}}</p>
 <p>{{plataformaAno.name}}</p>
 <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
-
-  <div class="search">
-    <div>
-      <h2>BUSCA</h2>
-      {{input type="text" id="aulapesquisa" class="search" placeholder="Pesquisar Aula" value=search }}
-      <div>
-
-      <h2>SITUAÇÃO</h2>
-      <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
-        <option selected="selected" value="0">Todas</option>
-        <option value="1">Não Aplicada</option>
-        <option value="2">Parcialmente Aplicada</option>
-        <option value="3">Aplicada</option>
-      </select>
-      </div>
-
-      <div>
-      <h2>ORDENAÇÃO</h2>
-      <select id="order" {{action 'atualizaAulas' on="change"}}>
-        <option selected="selected" value="0">Ordem Crescente</option>
-        <option value="1">Ordem Decrescente</option>
-      </select>
-      </div>
-
-    </div>
-  </div>
-
-  {{#each aulasFiltradas as |aulaFiltrada|}}
-    {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
-      {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-    {{else}}
-      {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-    {{/if}}
-  {{/each}}
-
-
 
 
 {{!-- ###################################################################################################################################################################################### --}}
