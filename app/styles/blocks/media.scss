@@ -1,0 +1,13 @@
+.media {
+  $this: &;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $distance--sm;
+
+  &__thumb {
+    width: $avatar--lg;
+  }
+
+}

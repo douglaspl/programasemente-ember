@@ -1,0 +1,8 @@
+.l-card-list {
+  $this: &;
+
+  outline: 1px solid crimson;
+  display: grid;
+  gap: $distance--lg;
+  grid-template-columns: 1fr 1fr;
+}

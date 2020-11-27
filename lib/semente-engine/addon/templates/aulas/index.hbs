@@ -54,14 +54,18 @@
   </header>
 
   <section class="l-dots-between__content">
-
-    {{#each aulasFiltradas as |aulaFiltrada|}}
-      {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
-        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-      {{else}}
-        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-      {{/if}}
-    {{/each}}
+    <h3 class="sr-only">Lista de aulas</h3>
+    <ul class="l-card-list">
+      {{#each aulasFiltradas as |aulaFiltrada|}}
+      <li>
+        {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
+          {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+        {{else}}
+          {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+        {{/if}}
+      </li>
+      {{/each}}
+    </ul>
 
   </section>
 
