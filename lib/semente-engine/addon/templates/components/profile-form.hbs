@@ -1,21 +1,28 @@
-<div class="m-bottom--none">
 
-    <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
+    <div class="row">
 
-    <div class="image-change">
-        <div class="avatar avatar--lg">
-            <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
-                style="background-image: url('{{uri_avatar}}');">
+        <div class="col-xs-4 col-lg-3">
+            <div class="form-group__container">
+                <div class="form-group">
+                    {{!-- <label class="form-group__label" for="foto">Sua foto</label> --}}
+
+                    <div id="foto" class="image-change">
+                        <div class="avatar avatar--lg">
+                            <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
+                                style="background-image: url('{{uri_avatar}}');">
+                            </div>
+                        </div>
+
+                        <label class="image-change__cta btn">Alterar imagem
+                            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar"
+                                style="display: none;" name="file">
+                        </label>
+                    </div>
+
+                </div>
             </div>
         </div>
-
-        <label class="image-change__cta btn">Alterar imagem
-        <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;"
-            name="file">
-        </label>
     </div>
-
-</div>
 
 
 {{#if (equalstr pessoa.role "aluno") }}
@@ -42,12 +49,12 @@
                                 data-type="nome"
                                 data-required="true"}}
 
-                    
+
                     <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-xs-4 col-lg-3">
             <div class="form-group__container">
                 <div class="form-group">
@@ -57,6 +64,8 @@
                                 name="data_nascimento"
                                 focus-out=(action 'trimall')
                                 focus=(action 'trimall')
+                                change=(action 'checkDate')
+                                key-down=(action 'checkDate')
                                 type="date"
                                 value=pessoa.nascimentoPlataforma
                                 data-type="datetime-local"
@@ -65,7 +74,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-xs-4 col-lg-3">
             <div class="form-group__container">
                 <div class="form-group w100">
@@ -73,11 +82,13 @@
                     <div class="form-group__wrapper form-group__wrapper--select">
                         <select class="j-validate form-group__input form-group__input--select"
                             id="genero_student{{pessoa.id}}" name="genero"
-                            onchange={{action 'refreshSelectedGenero' value='target.value'}} data-type="select" data-required="true">
+                            onchange={{action 'refreshSelectedGenero' value='target.value'}} data-type="select"
+                            data-required="true">
                             <option value="" disabled selected>---</option>
                             <option value="masculino" selected={{if (equalstr pessoa.genero "masculino") "selected"}}>
                                 Masculino</option>
-                            <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>Feminino
+                            <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>
+                                Feminino
                             </option>
                             <option value="nao_quis_dizer">Prefiro não dizer</option>
                         </select>
@@ -98,14 +109,15 @@
                     <div class="form-group__wrapper form-group__wrapper--select">
                         <select class="j-validate form-group__input form-group__input--select"
                             id="serie_student{{pessoa.id}}" name="serie"
-                            onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="select" data-required="true">
+                            onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="select"
+                            data-required="true">
                             <option value="" disabled selected>---</option>
                             {{#each pessoa.instituicao.plataformaAnos as |pa|}}
-                                {{#if (isnotinarray pa plataformaAnosToHide)}}
-                                    <option value="{{pa.id}}"
-                                        selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
-                                        {{pa.name}}</option>
-                                {{/if}}
+                            {{#if (isnotinarray pa plataformaAnosToHide)}}
+                            <option value="{{pa.id}}"
+                                selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
+                                {{pa.name}}</option>
+                            {{/if}}
                             {{/each}}
                         </select>
                     </div>
@@ -120,14 +132,15 @@
                     <div class="form-group__wrapper form-group__wrapper--select">
                         <select class="j-validate form-group__input form-group__input--select"
                             id="turma_student{{pessoa.id}}" name="turma"
-                            onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}} data-type="select" data-required="true">
+                            onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}} data-type="select"
+                            data-required="true">
                             <option value="" disabled selected>---</option>
                             {{#each pessoa.instituicao.plataformaTurmas as |pt|}}
-                                {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
-                                <option value="{{pt.id}}"
-                                    selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
-                                    {{pt.name}}</option>
-                                {{/if}}
+                            {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
+                            <option value="{{pt.id}}"
+                                selected={{if (equalstr pt.id pessoa.plataformaTurmas.firstObject.id) "selected"}}>
+                                {{pt.name}}</option>
+                            {{/if}}
                             {{/each}}
                         </select>
                     </div>
@@ -141,11 +154,9 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <button class="j-submit btn btn--md"
-                type="button"
-                {{action "saveProfile" pessoa}}>
-                <span>Avançar</span>
-                <span class="btn__icon icon-arrow-right"></span>
+        <button class="j-submit btn btn--md" type="button" {{action "saveProfile" pessoa}}>
+            <span>Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
         </button>
     </div>
 </div>
@@ -196,7 +207,8 @@
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
                 <div class="flex justify-end">
-                    <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possuo celular</button>
+                    <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não
+                        possuo celular</button>
                 </div>
             </div>
         </div>
@@ -220,7 +232,8 @@
                         data-required="false"
                         change=(action 'checkaplicador')
                         }}
-                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do Programa Semente.</label>
+                <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador do
+                    Programa Semente.</label>
             </div>
         </div>
         <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
@@ -236,9 +249,9 @@
 
         {{#each segmentos as |seg| }}
 
-            <div class="col-xs-3 flow-sm">
-                <h5 class="title-aux">{{seg.titulo}}</h5>
-                {{!-- <div class="row">
+        <div class="col-xs-3 flow-sm">
+            <h5 class="title-aux">{{seg.titulo}}</h5>
+            {{!-- <div class="row">
                     <div class="checkbox">
                         <input  class="checkbox__input"
                                 type="checkbox"
@@ -249,23 +262,21 @@
                     </div>
                 </div> --}}
 
-                {{#each seg.plataformaAnos as |platAno|}}
-                <ul>
-                    <li>
-                        <div class="checkbox">
-                            <input  class="j-validate-aplicador-child checkbox__input"
-                                    checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                                    id="plat_ano{{platAno.id}}"
-                                    onchange={{action (action "selectAno" platAno) value='target.checked'}}
-                                    type="checkbox">
-                            <label  class="checkbox__label"
-                                    for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
-                        </div>
-                    </li>
-                </ul>
-                {{/each}}
+            {{#each seg.plataformaAnos as |platAno|}}
+            <ul>
+                <li>
+                    <div class="checkbox">
+                        <input class="j-validate-aplicador-child checkbox__input"
+                            checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                            id="plat_ano{{platAno.id}}"
+                            onchange={{action (action "selectAno" platAno) value='target.checked'}} type="checkbox">
+                        <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                    </div>
+                </li>
+            </ul>
+            {{/each}}
 
-            </div>
+        </div>
 
         {{/each}}
 
@@ -275,11 +286,9 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <button class="j-submit btn btn--md"
-                type="button"
-                {{action "saveTeacher" pessoa}}>
-                <span>Avançar</span>
-                <span class="btn__icon icon-arrow-right"></span>
+        <button class="j-submit btn btn--md" type="button" {{action "saveTeacher" pessoa}}>
+            <span>Avançar</span>
+            <span class="btn__icon icon-arrow-right"></span>
         </button>
     </div>
 </div>
@@ -339,11 +348,9 @@
     </div>
 </div>
 <div class="row">
-    <button class="j-submit btn btn--md"
-            type="button"
-            {{action "saveResponsible" pessoa}}>
-            <span>Avançar</span>
-            <span class="btn__icon icon-arrow-right"></span>
+    <button class="j-submit btn btn--md" type="button" {{action "saveResponsible" pessoa}}>
+        <span>Avançar</span>
+        <span class="btn__icon icon-arrow-right"></span>
     </button>
 </div>
 
@@ -352,5 +359,3 @@
 {{!-- <button type="button" {{action "saveResponsible" pessoa}}>Salvar</button> --}}
 
 {{/if}}
-
-
