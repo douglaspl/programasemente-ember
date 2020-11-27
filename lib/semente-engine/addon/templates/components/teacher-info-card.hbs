@@ -7,19 +7,24 @@
         <span class="text-aux m-bottom--xxs">Nome completo</span>
         <span class="fw--4">{{instrutor.name}}</span>
     </li>
+    {{#if instrutor.telefone}}
     <li class="col fs--md m-v--none">
         <span class="text-aux m-bottom--xxs">Celular</span>
         <span class="fw--4">{{instrutor.telefone}}</span>
     </li>
+    {{/if}}
     <li class="col fs--md m-v--none">
      <span class="text-aux m-bottom--xxs">Tipo de professor</span>
      <span class="fw--4">{{instrutor.telefone}}{{if instrutor.isAplicador "Aplicador" "Não aplicador"}}</span>
     </li>
     <li class="col fs--md m-v--none">
-        <span class="text-aux m-bottom--xxs">Anos nos quais aplica</span>
-    {{#each instrutor.plataformaAnos as |pa| }}
-        <span class="fw--4 m-top--xxs">{{pa.name}}</span>
-    {{/each}}
+    {{#if instrutor.plataformaAnos}}
+            <span class="text-aux m-bottom--xxs">Anos nos quais aplica</span>
+        {{#each instrutor.plataformaAnos as |pa| }}
+            <span class="fw--4 m-top--xxs">{{pa.name}}</span>
+        {{/each}}
+    {{/if}}
+
     </li>
 </ul>
 
