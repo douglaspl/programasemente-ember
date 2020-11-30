@@ -76,7 +76,7 @@
   border-radius: $button-radius;
   box-shadow: 0 .5rem 1rem 0 transparentize($color: $clickables-bg-color, $amount: .8);
   color: $clickables-color;
-  padding: 1em 1.5em .9em;
+  padding: $button-padding;
 
   &:hover {
     background-color: $clickables-bg-color-hover;
@@ -267,7 +267,8 @@
   // THEMES
   &--ghost {
     background-color: transparent;
-    border: $button-border-width solid transparentize($clickables-bg-color, .75);
+    border: $button-border-width solid $clickables-bg-color;
+    box-shadow: none;
     color: $clickables-bg-color;
 
     &:hover {
@@ -357,7 +358,7 @@
     &--xxs {
       font-size: $font-size--xxs;
       letter-spacing: $letter-spacing--xl;
-      padding: .75em 1em .85em;
+      padding: $button-padding--xxs;
     }
   }
 

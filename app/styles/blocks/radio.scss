@@ -47,4 +47,30 @@
         }
     }
 
+    &--as-button {
+
+        #{$this}__label {
+            background-color: $gray-0;
+            border: 3px solid transparent;
+            border-radius: $button-radius;
+            font-size: $font-size--xs;
+            font-weight: $font-weight-4;
+            justify-content: center;
+            letter-spacing: $letter-spacing--lg;
+            padding: .75em 1em;
+            text-align: center;
+
+            &::before,
+            &::after {
+               display: none;
+            }
+
+        }
+
+        #{$this}__input:checked + #{$this}__label {
+            border-color: $global-nav-active-bg-color;
+        }
+
+    }
+
 }

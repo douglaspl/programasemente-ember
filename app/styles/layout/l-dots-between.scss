@@ -1,9 +1,9 @@
 .l-dots-between {
   $this: &;
 
-  $l-dots-between-gap: $container-fluid-pad;
-  $l-dots-between-dot-color: $green-40;
-  $l-dots-between-dot-size: .15rem;
+  $l-dots-between-gap: $distance--lg;
+  $l-dots-between-dot-color: $green-20;
+  $l-dots-between-dot-size: .14rem;
 
   display: flex;
   flex-direction: row;
@@ -11,7 +11,7 @@
 
   &::before {
     background-image: radial-gradient($l-dots-between-dot-color $l-dots-between-dot-size, transparent $l-dots-between-dot-size);
-    background-position: center;
+    background-position: top center;
     background-repeat: repeat-y;
     background-size: 1rem 1rem;
     content: '';

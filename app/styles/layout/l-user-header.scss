@@ -87,8 +87,11 @@
 
   // Elements
   &__role {
+    display: block;
+    letter-spacing: $letter-spacing--md;
     margin-bottom: $distance--sm;
-    opacity: .75;
+    opacity: 0.85;
+    text-transform: uppercase;
   }
 
 }
