@@ -51,6 +51,23 @@
     margin-right: $distance--xxs;
   }
 
+  &__trash-icon {
+    color: $leaf-30;
+    font-size: 1.4rem;
+    content: "";
+
+  
+    &:hover {
+      color: $leaf-60;
+      opacity: 0.9;
+      //transition: transform .5s;
+      //transform: scale(1.2);
+      
+    }
+
+    
+  }
+
   &-group {
     $this: &;
 
