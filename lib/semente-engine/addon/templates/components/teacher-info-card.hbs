@@ -1,7 +1,7 @@
 <ul class="callout flow-lg">
     <li class="col fs--md m-v--none">
         <span class="text-aux m-bottom--xxs">E-mail</span>
-        <span class="fw--4">{{instrutor.email}}</span>
+        <span class="fw--4">{{instrutor.emailCadastrado}}</span>
     </li>
     <li class="col fs--md m-v--none">
         <span class="text-aux m-bottom--xxs">Nome completo</span>
@@ -15,7 +15,7 @@
     {{/if}}
     <li class="col fs--md m-v--none">
      <span class="text-aux m-bottom--xxs">Tipo de professor</span>
-     <span class="fw--4">{{instrutor.telefone}}{{if instrutor.isAplicador "Aplicador" "Não aplicador"}}</span>
+     <span class="fw--4">{{if instrutor.isAplicador "Aplicador" "Não aplicador"}}</span>
     </li>
     <li class="col fs--md m-v--none">
     {{#if instrutor.plataformaAnos}}
