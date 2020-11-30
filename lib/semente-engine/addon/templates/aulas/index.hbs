@@ -33,14 +33,18 @@
       {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
     </div>
 
-    <div class="form-group">
-      <label class="form-group__label">Situação</label>
-      <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
-        <option selected="selected" value="0">Todas</option>
-        <option value="1">Não Aplicada</option>
-        <option value="2">Parcialmente Aplicada</option>
-        <option value="3">Aplicada</option>
-      </select>
+    <div class="form-group__container">
+      <div class="form-group">
+        <label class="form-group__label">Situação</label>
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
+            <option selected="selected" value="0">Todas</option>
+            <option value="1">Não Aplicada</option>
+            <option value="2">Parcialmente Aplicada</option>
+            <option value="3">Aplicada</option>
+          </select>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">

@@ -8,7 +8,7 @@
       </button>
 
       <h1 class="course-nav__course-title">{{model.modulo.name}}</h1>
-      
+
       {{#if (equalstr role 'aluno')}}
       {{#link-to 'modulos.modlist' model.modulo.id class="course-nav__back"}}
       <span class="icon-chevron-left"></span>
@@ -38,13 +38,6 @@
     <div class="course-nav__class">
       <span class="course-nav__class-order">Aula {{model.idx}}</span>
       <h2 class="course-nav__class-title">{{model.name}}</h2>
-
-      {{!-- <div class="course-nav__progress progress-container m-top--sm">
-        <span class="progress progress--xs">
-          <span class="progress__bar" style="{{moduloPercentStyle}}"></span>
-        </span>
-        <span class="progress__value">{{moduloPercent}}%</span>
-      </div> --}}
     </div>
     <nav id="scroller_menu" class="course-nav__nav">
       <ul class="course-nav__nodes">
