@@ -13,6 +13,7 @@
   }
 
   &--card {
+    border-radius: $radius--md;
     box-shadow: $shadow-3;
     padding: $distance--sm;
   }

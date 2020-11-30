@@ -810,9 +810,9 @@
 @mixin title-aux(   $color: inherit,
                     $display: inline-block,
                     $family: $font-base,
-                    $size: $font-size--xs,
+                    $size: $font-size--xxs,
                     $weight: 400,
-                    $letter: $letter-spacing--xl) {
+                    $letter: $letter-spacing--xxl) {
 
     color: $color;
     display: $display;

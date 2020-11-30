@@ -100,8 +100,9 @@ select {
 
     box-shadow: $form-shadow;
     cursor: pointer;
-    padding-left: $distance--md;
-    padding-right: $distance--xxl;
+
+    padding-left: $distance--sm;
+    padding-right: $distance--lg;
 
     &::-ms-expand {
         background-color: transparent;
