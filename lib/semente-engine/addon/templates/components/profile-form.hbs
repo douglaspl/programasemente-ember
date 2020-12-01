@@ -30,7 +30,7 @@
             <div class="form-group__container">
                 <div class="form-group w100">
                     <label class="form-group__label" for="email_cadastrado">Email</label>
-                    {{input class="form-group__input j-validate"
+                    {{input class="j-validate j-dualRequirement form-group__input"
                             id="email_cadastrado"
                             name="email_cadastrado"
                             value=pessoa.emailCadastrado
@@ -38,9 +38,13 @@
                             focus-out=(action 'validateEmail')
                             data-type="e-mail"
                             data-required="true"
+                            data-context="personal"
                             }}
                 </div>
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                <div class="flex justify-end">
+                    <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possuo e-mail</button>
+                </div>
             </div>
         </div>
 
@@ -48,11 +52,11 @@
             <div class="form-group__container">
                 <div class="form-group w100">
                     <label class="form-group__label" for="celular">Número de Celular</label>
-                    {{input class="j-validate form-group__input"
+                    {{input class="j-validate j-dualRequirement form-group__input"
                             id="celular"
                             name="celular"
                             value=pessoa.telefone
-                            data-required="false"
+                            data-required="true"
                             data-type="celular"
                             key-down=(action 'maskcel')
                             focus-out=(action 'checkcel')
