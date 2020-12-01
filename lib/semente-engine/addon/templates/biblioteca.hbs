@@ -33,7 +33,7 @@
 
       <!-- file -->
       {{#if (equalstr file.type '1')}}
-      <a id="file{{file.view.id}}" href="{{file.link}}" target="_blank">
+      <a id="file{{file.view.id}}" href="{{file.link}}" target="_blank" rel="nofollow noopener noreferrer">
         <span class="list__img list__img--xl">
           <img src="{{if file.thumb file.thumb '/assets/img/online-course.png'}}" {{action 'linkView' file.view.id}}>
         </span>

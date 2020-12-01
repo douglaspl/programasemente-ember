@@ -9,6 +9,7 @@
 
     &__tab {
         border-bottom: 4px solid transparent;
+        cursor: pointer;
         display: inline-block;
         font-size: $font-size--sm;
         font-weight: bolder;
@@ -21,6 +22,7 @@
 
         &--is-active {
             border-bottom: 4px solid $global-nav-active-bg-color;
+            cursor: unset;
 
             > * { opacity: 1; }
 
@@ -54,14 +56,16 @@
             transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
             transition: 200ms var(--ease-in-out-quad);
 
-            &:hover {
+            &:hover:not([class*='--is-active']) {
                 background-color: $blue-navy-60;
+                color: $white;
             }
 
             &--is-active {
                 background-color: $white;
                 border-bottom: 0 solid transparent;
                 color: $blue-navy-60;
+                cursor: unset;
             }
 
         }

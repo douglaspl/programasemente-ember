@@ -16,7 +16,7 @@
         <nav>
           <ul class="tabs tabs--full-background">
             <li>
-              <button class="tabs__tab {{checklocation}} {{if (equalstr checklocation 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
+              <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
                 <span>Aulas</span>
               </button>
             </li>
@@ -25,11 +25,15 @@
                 <span>Biblioteca</span>
               </button>
             </li>
-            <li>
-              <a class="tabs__tab" href="{{plataformaAno.urlLivro}}">
-                <span>Livro (PDF)</span>
-              </a>
-            </li>
+
+            {{#if plataformaAno.urlLivro}}
+              <li>
+                <a class="tabs__tab" href="{{plataformaAno.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
+                  <span>Livro (PDF)</span>
+                </a>
+              </li>
+            {{/if}}
+
           </ul>
         </nav>
       </div>
