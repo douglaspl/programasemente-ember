@@ -34,7 +34,9 @@
                             id="email_cadastrado"
                             name="email_cadastrado"
                             value=pessoa.emailCadastrado
-                            data-type="email"
+                            key-down=(action 'checkMail')
+                            focus-out=(action 'validateEmail')
+                            data-type="e-mail"
                             data-required="true"
                             }}
                 </div>
