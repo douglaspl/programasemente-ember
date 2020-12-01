@@ -268,37 +268,6 @@
         ========================= -->
     <div class="flex-1">
 
-      {{!-- <div class="flex flex-row items-end m-bottom--xl">
-
-        <div class="total-results">
-          <span class="total-results__results">Total de <strong>{{totalPessoas}} pessoas</strong></span>
-        </div>
-
-        <div class="form-group m-left--xxl">
-          <label class="form-group__label" for="order">Ordenação</label>
-          <div class="form-group--select-wrapper">
-            <select id="sort_pessoas" class="form-group__input form-group__input--select" name="order"
-              {{action 'ordenaPessoas' on='change'}}>
-              {{#if (equalstr ordem 'completeness')}}
-              <option value="az">Ordem alfabética A-Z</option>
-              <option value="access">Acessos</option>
-              <option value="completeness" selected>Completude</option>
-              {{else if (equalstr ordem 'access')}}
-              <option value="az">Ordem alfabética A-Z</option>
-              <option value="access" selected>Acessos</option>
-              <option value="completeness">Completude</option>
-              {{else}}
-              <option value="az" selected>Ordem alfabética A-Z</option>
-              <option value="access">Acessos</option>
-              <option value="completeness">Completude</option>
-              {{/if}}
-            </select>
-          </div>
-        </div>
-
-        {{page-numbers content=pagedContent perPage=perPage class="m-left--auto pagination--center"}}
-      </div> --}}
-
       <div class="m-bottom--xs loader-local {{if (equalstr admdataLoaderState 1) 'loader-local--is-show' ''}}">
 
         <div class="loader-local__loader">

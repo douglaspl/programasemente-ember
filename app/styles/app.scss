@@ -20,12 +20,12 @@
 @import "blocks/add-user";
 @import "blocks/alert";
 @import "blocks/avatar";
-@import "blocks/breadcrumb";
+// @import "blocks/breadcrumb"; // Não usado no EM
 @import "blocks/buttons";
 @import "blocks/calendar";
 @import "blocks/callout";
 @import "blocks/capsule";
-@import "blocks/card";
+// @import "blocks/card"; // Não usado no EM
 @import "blocks/carousel";
 @import "blocks/checkbox";
 @import "blocks/container-scroll";
@@ -34,23 +34,24 @@
 @import "blocks/date";
 @import "blocks/edit-text";
 @import "blocks/empty";
-@import "blocks/filter";
+@import "blocks/filter"; // REVER PARA PARAR DE USAR
 @import "blocks/form";
-@import "blocks/full-width";
+@import "blocks/full-width"; // MOVER PARA UTILITIES
 @import "blocks/help";
-@import "blocks/inside-scroll";
+@import "blocks/inside-scroll"; // MOVER PARA UTILITIES. REVER PARA PARAR DE USAR ou AMPLIAR USO
 @import "blocks/list";
 @import "blocks/loader";
 @import "blocks/loader-local";
 @import "blocks/logo";
+@import "blocks/media";
 @import "blocks/modal";
 @import "blocks/pagination";
-@import "blocks/person";
+@import "blocks/person"; // REVER PARA TENTAR UNIFICAR COM l-user-header
 @import "blocks/popover";
-@import "blocks/progress";
+// @import "blocks/progress"; // Não usado no EM
 @import "blocks/radio";
 @import "blocks/side-arrows";
-@import "blocks/skills";
+@import "blocks/skills"; // REVER PARA PARAR DE USAR
 @import "blocks/stacked-bar";
 @import "blocks/steps";
 @import "blocks/submenu";
@@ -59,9 +60,9 @@
 @import "blocks/table-flip"; //ok
 @import "blocks/tabs";
 @import "blocks/tooltip"; //ok
-@import "blocks/total-results";
+@import "blocks/total-results"; // REVER PARA PARAR DE USAR
 @import "blocks/video"; //ok
-@import "blocks/well";
+// @import "blocks/well"; // Não usado no EM
 
 @import "layout/content";
 @import "layout/header";
@@ -73,6 +74,7 @@
 @import "layout/class-list";
 @import "layout/class";
 
+@import "layout/l-card-list";
 @import "layout/l-dots-between";
 @import "layout/l-user-header";
 

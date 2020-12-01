@@ -1,0 +1,36 @@
+.media {
+  $this: &;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $distance--md;
+
+  // Elements
+  &__title {
+  }
+
+  &__thumb {
+    border-radius: $radius--md;
+    overflow: hidden;
+    width: $avatar--xl;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Modifiers
+  &--card {
+    border-radius: $radius--md;
+    box-shadow: $shadow-1, $shadow-3;
+    padding: $distance--sm;
+
+    &:focus-within {
+      outline: 2px solid $leaf-10;
+    }
+
+  }
+
+}

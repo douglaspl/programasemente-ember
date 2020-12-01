@@ -9,6 +9,18 @@
     }
 }
 
+.two-col-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $distance--sm;
+
+    > * {
+        flex: 0 0 auto;
+        width: calc(50% - (#{$distance--sm} / 2));
+    }
+}
+
 // .flow > * + *      { margin-top: $distance--md; }
 
 // .flow-xxs > * + *  { margin-top: $distance--xxs; }
@@ -67,6 +79,7 @@
 .strong { font-weight: bolder; }
 .ta-c { text-align: center; }
 .ta-l { text-align: left; }
+.td-u { text-decoration: underline; }
 .tt-u { text-transform: uppercase; }
 .w100 { width: 100%; }
 
@@ -78,6 +91,12 @@
     top: auto;
     width: 1px;
 }
+
+.shadow-1 { box-shadow: $shadow-1; }
+.shadow-2 { box-shadow: $shadow-2; }
+.shadow-3 { box-shadow: $shadow-3; }
+.shadow-4 { box-shadow: $shadow-4; }
+.shadow-5 { box-shadow: $shadow-5; }
 
 .truncate {
     @include truncate;

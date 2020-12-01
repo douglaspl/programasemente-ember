@@ -47,4 +47,37 @@
         }
     }
 
+    &--as-button {
+
+        #{$this}__label {
+            background-color: $gray-0;
+            border: 3px solid transparent;
+            border-radius: $button-radius;
+            font-size: $font-size--xs;
+            font-weight: $font-weight-4;
+            justify-content: center;
+            letter-spacing: $letter-spacing--lg;
+            padding: .75em 1em;
+            text-align: center;
+            transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
+
+            &::before,
+            &::after {
+               display: none;
+            }
+
+        }
+
+        #{$this}__input:checked + #{$this}__label {
+            border-color: $global-nav-active-bg-color;
+        }
+
+
+        #{$this}__input:not(:checked) + #{$this}__label:hover {
+            background-color: $gray-10;
+        }
+
+    }
+
 }

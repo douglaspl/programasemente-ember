@@ -410,8 +410,9 @@
     border-radius: $radius;
     border: 0 solid transparent;
     color: $form-color;
-    font-size: 1rem;
-    font-weight: 300;
+    font-family: $font-base;
+    font-size: $font-size--sm;
+    font-weight: 400;
     height: $input-height;
     padding-left: $distance--sm;
     padding-right: $distance--sm;
@@ -769,7 +770,7 @@
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
-                    $weight: 600,
+                    $weight: 700,
                     $letter: $letter-spacing--xs) {
 
     color: $color;
@@ -810,9 +811,9 @@
 @mixin title-aux(   $color: inherit,
                     $display: inline-block,
                     $family: $font-base,
-                    $size: $font-size--xs,
+                    $size: $font-size--xxs,
                     $weight: 400,
-                    $letter: $letter-spacing--xl) {
+                    $letter: $letter-spacing--lg) {
 
     color: $color;
     display: $display;

@@ -1,0 +1,7 @@
+.l-card-list {
+  $this: &;
+
+  display: grid;
+  gap: $distance--lg;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+}

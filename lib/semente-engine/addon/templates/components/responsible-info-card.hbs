@@ -11,6 +11,10 @@
         </li>
         <li class="col fs--md m-v--none">
             <span class="text-aux m-bottom--xxs">Celular</span>
+            {{#if responsavel.telefone}}
             <span class="fw--4">{{responsavel.telefone}}</span>
+            {{else}}
+            <span class="fw--4">Não possui</span>
+            {{/if}}
         </li>
     </ul>
