@@ -8,10 +8,12 @@
     flex-wrap: wrap;
 
     &__tab {
-        font-size: $font-size--xs;
+        font-size: $font-size--sm;
         font-weight: bolder;
         padding: $distance--sm;
         text-align: center;
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
 
         > * { opacity: .5; }
 
@@ -20,6 +22,10 @@
 
             > * { opacity: 1; }
 
+        }
+
+        &:hover:not([class*='--is-active']) {
+            background-color: $gray-0;
         }
 
     }

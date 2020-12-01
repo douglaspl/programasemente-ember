@@ -1,202 +1,142 @@
-<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
+<div class="flow-lg">
+  <header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
 
-  <div class="flex itens-start gap-lg">
-    <picture class="l-user-header__avatar avatar avatar--lg">
-      <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
-    </picture>
-    <div class="flex-auto flow-xs">
-      <div class="flex flex-row flex-wrap items-baseline gap-xs">
-        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-        <button class="btn btn--link m-bottom--xxs m-top--auto">
-          <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
-        </button>
-      </div>
-      <span class="l-user-header__role title-aux">{{pessoa.role}}</span>
+    <div class="flex itens-start gap-lg">
+      <picture class="l-user-header__avatar avatar avatar--lg">
+        <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
+      </picture>
+      <div class="flex-auto flow-xs">
+        <div class="flex flex-row flex-wrap items-baseline gap-xs">
+          <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
+          <button class="btn btn--link m-bottom--xxs m-top--auto">
+            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+          </button>
+        </div>
+        <span class="l-user-header__role title-aux">{{pessoa.role}}</span>
 
-      <nav>
-        <ul class="tabs tabs--full-background">
-          <li>
-            <button type="button" class="tabs__tab" {{action 'goToBiblioteca' on="click"}}>Biblioteca </button>
-          </li>
-        </ul>
-      </nav>
+        <nav>
+          <ul class="tabs tabs--full-background">
+            <li>
+              <button type="button" class="tabs__tab" {{action 'goToBiblioteca' on="click"}}>Biblioteca </button>
+            </li>
+          </ul>
+        </nav>
 
-    </div>
-  </div>
-
-</header>
-<section class="l-dots-between">
-  <header class="l-dots-between__side flex flex-col flow-md">
-
-    <!-- ####
-    ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
-    #### -->
-    <div class="two-col-wrap">
-      <div class="radio radio--as-button">
-        <input class="radio__input" name="type-filter" id="videos" type="radio" value="videos" checked>
-        <label class="radio__label" for="videos">Videos</label>
-      </div>
-      <div class="radio radio--as-button">
-        <input class="radio__input" name="type-filter" id="pdfs" type="radio" value="pdfs">
-        <label class="radio__label" for="pdfs">PDFs</label>
-      </div>
-      <div class="radio radio--as-button">
-        <input class="radio__input" name="type-filter" id="pdfs2" type="radio" value="pdfs2">
-        <label class="radio__label" for="pdfs2">PDFs2</label>
-      </div>
-    </div>
-    <!-- ####
-    ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
-    #### -->
-
-    <div class="form-group">
-      <label class="form-group__label">Busca</label>
-      {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
-    </div>
-
-    <div class="form-group">
-      <label class="form-group__label">Situação</label>
-      <div class="form-group__wrapper form-group__wrapper--select">
-        <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
-          <option selected="selected" value="0">Todas</option>
-          <option value="1">Não Aplicada</option>
-          <option value="2">Parcialmente Aplicada</option>
-          <option value="3">Aplicada</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-group__label">Ordenação</label>
-      <div class="form-group__wrapper form-group__wrapper--select">
-        <select class="form-group__input" id="order" {{action 'atualizaAulas' on="change"}}>
-          <option selected="selected" value="0">Ordem Crescente</option>
-          <option value="1">Ordem Decrescente</option>
-        </select>
       </div>
     </div>
 
   </header>
-
-  <section class="l-dots-between__content">
-    <h3 class="sr-only">Lista de aulas</h3>
-    <ul class="l-card-list">
-      {{#each aulasFiltradas as |aulaFiltrada|}}
+  <nav>
+    <ul class="tabs">
       <li>
-        {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
-          {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-        {{else}}
-          {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-        {{/if}}
+        <button type="button" class="tabs__tab tabs__tab--is-active">
+          <span>Morgan</span><span class="fs-i fw--3 m-left--xxs">(Infantil, 4 anos)</span>
+        </button>
       </li>
-      {{/each}}
+      <li>
+        <button type="button" class="tabs__tab">
+          <span>Stan</span><span class="fs-i fw--3 m-left--xxs">(Fundamental 1, 4º ano)</span>
+        </button>
+      </li>
     </ul>
+  </nav>
+  <section class="l-dots-between">
+    <header class="l-dots-between__side flex flex-col flow-md">
+
+      <!-- ####
+      ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
+      #### -->
+      <div class="two-col-wrap">
+        <div class="radio radio--as-button">
+          <input class="radio__input" name="type-filter" id="videos" type="radio" value="videos" checked>
+          <label class="radio__label" for="videos">Videos</label>
+        </div>
+        <div class="radio radio--as-button">
+          <input class="radio__input" name="type-filter" id="pdfs" type="radio" value="pdfs">
+          <label class="radio__label" for="pdfs">PDFs</label>
+        </div>
+        <div class="radio radio--as-button">
+          <input class="radio__input" name="type-filter" id="pdfs2" type="radio" value="pdfs2">
+          <label class="radio__label" for="pdfs2">PDFs2</label>
+        </div>
+      </div>
+      <!-- ####
+      ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
+      #### -->
+
+      <div class="form-group">
+        <label class="form-group__label">Busca</label>
+        {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+      </div>
+
+      <div class="form-group">
+        <label class="form-group__label">Situação</label>
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
+            <option selected="selected" value="0">Todas</option>
+            <option value="1">Não Aplicada</option>
+            <option value="2">Parcialmente Aplicada</option>
+            <option value="3">Aplicada</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-group__label">Ordenação</label>
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select class="form-group__input" id="order" {{action 'atualizaAulas' on="change"}}>
+            <option selected="selected" value="0">Ordem Crescente</option>
+            <option value="1">Ordem Decrescente</option>
+          </select>
+        </div>
+      </div>
+
+    </header>
+
+    <section class="l-dots-between__content">
+      <h3 class="sr-only">Lista de aulas</h3>
+      <ul class="l-card-list">
+        {{#each aulasFiltradas as |aulaFiltrada|}}
+        <li>
+          {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
+            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+          {{else}}
+            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+          {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+
+    </section>
 
   </section>
 
-</section>
+
+  {{!-- ** ALUNO ** --}}
+
+  {{#if (equalstr pessoa.role "aluno")}}
+
+  <a href="#" {{action 'invalidateSession'}}>
+    <span>Fazer Logout</span>
+  </a>
+
+  <p>{{pessoa.name}}</p>
+  <p>{{segmento.titulo}}</p>
+  <p>{{plataformaAno.name}}</p>
+  <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
 
 
-{{!-- ** ALUNO ** --}}
+  {{!-- ###################################################################################################################################################################################### --}}
+  {{!-- ** RESPONSÁVEL OU PROFESSOR RESPONSÁVEL ** --}}
+  {{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
+  {{else if (equalstr toggleRole "responsavel")}}
 
-{{#if (equalstr pessoa.role "aluno")}}
+  <a href="#" {{action 'invalidateSession'}}>
+    <span>Fazer Logout</span>
+  </a>
 
-<a href="#" {{action 'invalidateSession'}}>
-  <span>Fazer Logout</span>
-</a>
-
-<p>{{pessoa.name}}</p>
-<p>{{segmento.titulo}}</p>
-<p>{{plataformaAno.name}}</p>
-<p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
-
-
-{{!-- ###################################################################################################################################################################################### --}}
-{{!-- ** RESPONSÁVEL OU PROFESSOR RESPONSÁVEL ** --}}
-{{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
-{{else if (equalstr toggleRole "responsavel")}}
-
-<a href="#" {{action 'invalidateSession'}}>
-  <span>Fazer Logout</span>
-</a>
-
-slsdjllfsj
-<h2>Nome Responsável:</h2>
-{{pessoa.name}}
-
-<h2>Role:</h2>
-{{pessoa.role}}
-
-
-{{!-- Checa se o instrutor também é responsável --}}
-{{#if (equalstr pessoa.role 'instrutor')}}
-  <h2>Visualizando como:  {{ toggleRole }}</h2>
-  <div>
-      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
-      <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
-  </div>
-{{/if}}
-
-
-<h2>Selecione o Dependente:</h2>
-<div>
-  {{#each pessoa.dependentes as |dep|}}
-    {{#each dep.plataformaAnos as |plat_ano|}}
-        <button type="button" class="btn btn-primary" {{action 'refreshSelectedDependente' dep.id}}> {{dep.name}} ( {{plat_ano.segmento.titulo}} , {{plat_ano.name}} )</button>
-    {{/each}}
-  {{/each}}
-</div>
-
-<div class="search">
-  <div>
-    <h2>BUSCA</h2>
-    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
-    <div>
-
-    <h2>SITUAÇÃO</h2>
-    <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
-      <option selected="selected" value="0">Todas</option>
-      <option value="1">Não Aplicada</option>
-      <option value="2">Parcialmente Aplicada</option>
-      <option value="3">Aplicada</option>
-    </select>
-    </div>
-
-    <div>
-    <h2>ORDENAÇÃO</h2>
-    <select id="order" {{action 'atualizaAulas' on="change"}}>
-      <option selected="selected" value="0">Ordem Crescente</option>
-      <option value="1">Ordem Decrescente</option>
-    </select>
-    </div>
-
-  </div>
-</div>
-
-
-{{#if selectedDependente}}
-  {{#each selectedDependente.plataformaAnos as |plat_ano| }}
-      <p><a href="{{plat_ano.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
-  {{/each}}
-{{/if}}
-
-
-{{#each aulasFiltradas as |aulaFiltrada|}}
-{{aulasFiltrada.titulo}}
-  {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
-      {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-  {{/if}}
-{{/each}}
-
-
-
-
-{{!-- ###################################################################################################################################################################################### --}}
-{{!-- ** Professor ** --}}
-{{!-- {{else if (equalstr pessoa.role "instrutor")}} --}}
-{{else if (equalstr toggleRole "instrutor")}}
-
-  <h2>Nome Professor:</h2>
+  slsdjllfsj
+  <h2>Nome Responsável:</h2>
   {{pessoa.name}}
 
   <h2>Role:</h2>
@@ -204,7 +144,7 @@ slsdjllfsj
 
 
   {{!-- Checa se o instrutor também é responsável --}}
-  {{#if pessoa.dependentes}}
+  {{#if (equalstr pessoa.role 'instrutor')}}
     <h2>Visualizando como:  {{ toggleRole }}</h2>
     <div>
         <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
@@ -212,40 +152,116 @@ slsdjllfsj
     </div>
   {{/if}}
 
-  {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
+
+  <h2>Selecione o Dependente:</h2>
   <div>
-      {{#each pessoa.plataformaAnos as |plat_ano|}}
-          <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' plat_ano.segmento.titulo}}> {{plat_ano.segmento.titulo}} </button>
+    {{#each pessoa.dependentes as |dep|}}
+      {{#each dep.plataformaAnos as |plat_ano|}}
+          <button type="button" class="btn btn-primary" {{action 'refreshSelectedDependente' dep.id}}> {{dep.name}} ( {{plat_ano.segmento.titulo}} , {{plat_ano.name}} )</button>
       {{/each}}
+    {{/each}}
+  </div>
+
+  <div class="search">
+    <div>
+      <h2>BUSCA</h2>
+      {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
+      <div>
+
+      <h2>SITUAÇÃO</h2>
+      <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
+        <option selected="selected" value="0">Todas</option>
+        <option value="1">Não Aplicada</option>
+        <option value="2">Parcialmente Aplicada</option>
+        <option value="3">Aplicada</option>
+      </select>
+      </div>
+
+      <div>
+      <h2>ORDENAÇÃO</h2>
+      <select id="order" {{action 'atualizaAulas' on="change"}}>
+        <option selected="selected" value="0">Ordem Crescente</option>
+        <option value="1">Ordem Decrescente</option>
+      </select>
+      </div>
+
+    </div>
   </div>
 
 
-  {{!-- Escolhe Qual Ano: Ex => Sétimo - Oitavo --}}
-  <div>
-      {{#each pessoa.plataformaAnos as |plat_ano|}}
-          {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedAno' plat_ano.name}}> {{plat_ano.name}} </button>
-          {{/if}}
-      {{/each}}
-  </div>
-
-  {{selectedSegmento}}
-  {{selectedAno}}
+  {{#if selectedDependente}}
+    {{#each selectedDependente.plataformaAnos as |plat_ano| }}
+        <p><a href="{{plat_ano.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
+    {{/each}}
+  {{/if}}
 
 
-  {{!-- Lista as aulas com base nos dois filtros acima--}}
-  <div>
-      {{#each pessoa.plataformaAnos as |plat_ano|}}
-        {{#each plat_ano.aulas as |aula_dep| }}
-          {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-            {{#if (equalstr plat_ano.name selectedAno)}}
-              {{aula-card transit=(action 'goToAula') aula=aula_dep}}
-            {{/if}}
-          {{/if}}
+  {{#each aulasFiltradas as |aulaFiltrada|}}
+  {{aulasFiltrada.titulo}}
+    {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+    {{/if}}
+  {{/each}}
+
+
+
+
+  {{!-- ###################################################################################################################################################################################### --}}
+  {{!-- ** Professor ** --}}
+  {{!-- {{else if (equalstr pessoa.role "instrutor")}} --}}
+  {{else if (equalstr toggleRole "instrutor")}}
+
+    <h2>Nome Professor:</h2>
+    {{pessoa.name}}
+
+    <h2>Role:</h2>
+    {{pessoa.role}}
+
+
+    {{!-- Checa se o instrutor também é responsável --}}
+    {{#if pessoa.dependentes}}
+      <h2>Visualizando como:  {{ toggleRole }}</h2>
+      <div>
+          <button type="button" class="btn btn-primary" {{action 'toggleRole' 'instrutor'}}> Professor </button>
+          <button type="button" class="btn btn-primary" {{action 'toggleRole' 'responsavel'}}> Responsável </button>
+      </div>
+    {{/if}}
+
+    {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
+    <div>
+        {{#each pessoa.plataformaAnos as |plat_ano|}}
+            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' plat_ano.segmento.titulo}}> {{plat_ano.segmento.titulo}} </button>
         {{/each}}
-      {{/each}}
+    </div>
+
+
+    {{!-- Escolhe Qual Ano: Ex => Sétimo - Oitavo --}}
+    <div>
+        {{#each pessoa.plataformaAnos as |plat_ano|}}
+            {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+              <button type="button" class="btn btn-primary" {{action 'refreshSelectedAno' plat_ano.name}}> {{plat_ano.name}} </button>
+            {{/if}}
+        {{/each}}
+    </div>
+
+    {{selectedSegmento}}
+    {{selectedAno}}
+
+
+    {{!-- Lista as aulas com base nos dois filtros acima--}}
+    <div>
+        {{#each pessoa.plataformaAnos as |plat_ano|}}
+          {{#each plat_ano.aulas as |aula_dep| }}
+            {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+              {{#if (equalstr plat_ano.name selectedAno)}}
+                {{aula-card transit=(action 'goToAula') aula=aula_dep}}
+              {{/if}}
+            {{/if}}
+          {{/each}}
+        {{/each}}
+    </div>
+
+
+
+  {{/if}}
   </div>
-
-
-
-{{/if}}

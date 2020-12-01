@@ -59,6 +59,8 @@
             letter-spacing: $letter-spacing--lg;
             padding: .75em 1em;
             text-align: center;
+            transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+            transition: 200ms var(--ease-in-out-quad);
 
             &::before,
             &::after {
@@ -69,6 +71,11 @@
 
         #{$this}__input:checked + #{$this}__label {
             border-color: $global-nav-active-bg-color;
+        }
+
+
+        #{$this}__input:not(:checked) + #{$this}__label:hover {
+            background-color: $gray-10;
         }
 
     }
