@@ -16,7 +16,19 @@
         <nav>
           <ul class="tabs tabs--full-background">
             <li>
-              <button type="button" class="tabs__tab" {{action 'goToBiblioteca' on="click"}}>Biblioteca </button>
+              <button class="tabs__tab {{checklocation}} {{if (equalstr checklocation 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
+                <span>Aulas</span>
+              </button>
+            </li>
+            <li>
+              <button class="tabs__tab" type="button" {{action 'goToBiblioteca' on="click"}}>
+                <span>Biblioteca</span>
+              </button>
+            </li>
+            <li>
+              <a class="tabs__tab" href="{{plataformaAno.urlLivro}}">
+                <span>Livro (PDF)</span>
+              </a>
             </li>
           </ul>
         </nav>
@@ -25,23 +37,27 @@
   </header>
 
   <!-- Nav de filhos -->
-  <nav>
-    <ul class="tabs">
-      <li>
-        <button type="button" class="tabs__tab tabs__tab--is-active">
-          <span>Morgan</span><span class="fs-i fw--3 m-left--xxs">(Infantil, 4 anos)</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="tabs__tab">
-          <span>Stan</span><span class="fs-i fw--3 m-left--xxs">(Fundamental 1, 4º ano)</span>
-        </button>
-      </li>
-      <li class="m-left--auto">
-        <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
-      </li>
-    </ul>
-  </nav>
+  {{#if (equalstr pessoa.role "responsavel")}}
+    <nav>
+      <ul class="tabs">
+        {{#each pessoa.dependentes as |dep|}}
+          {{#each dep.plataformaAnos as |plat_ano|}}
+            <li>
+              <button type="button" class="tabs__tab {{if (equalstr selectedDependente.id dep.id) 'tabs__tab--is-active'}}" {{action 'refreshSelectedDependente' dep.id}}>
+                <span>{{dep.name}}</span>
+                <span class="fs-i fw--3 m-left--xxs">({{plat_ano.segmento.titulo}}, {{plat_ano.name}})</span>
+              </button>
+            </li>
+          {{/each}}
+        {{/each}}
+
+        <!-- Só aparece se possui filho de Fund II ou Médio -->
+        <li class="m-left--auto">
+          <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
+        </li>
+      </ul>
+    </nav>
+  {{/if}}
 
   <section class="l-dots-between">
     <header class="l-dots-between__side flex flex-col flow-md">
@@ -68,7 +84,9 @@
 
       <div class="form-group">
         <label class="form-group__label">Busca</label>
-        {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+        <div class="form-group__wrapper form-group__wrapper--search">
+          {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+        </div>
       </div>
 
       <div class="form-group">

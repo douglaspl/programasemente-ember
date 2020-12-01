@@ -628,7 +628,7 @@ $timeline-status-size: 3rem;
 //------------------------------------
 //    #GENERAL DEF
 //------------------------------------
-$focus-indicator: 3px solid $lemon-40;
+$focus-indicator: 4px solid $lemon-40;
 $header-bg-color: $white;
 $body-bg-color: $gray-0;
 
@@ -685,7 +685,7 @@ $course-nav-lateral-pad: $distance--sm;
 // GLOBAL NAV
 $global-nav-gradient-light: $green-5 !default;
 $global-nav-gradient-hover: $default-hover-bg-color !default;
-$global-nav-active-bg-color: $green-30 !default;
+$global-nav-active-bg-color: $green-20 !default;
 $global-nav-active-bg-color-hover: $green-40 !default;
 $global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-60) !default;
 $global-nav-submenu-width: 10rem !default;

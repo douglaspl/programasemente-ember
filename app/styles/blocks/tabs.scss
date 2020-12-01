@@ -8,6 +8,8 @@
     flex-wrap: wrap;
 
     &__tab {
+        border-bottom: 4px solid transparent;
+        display: inline-block;
         font-size: $font-size--sm;
         font-weight: bolder;
         padding: $distance--sm;
@@ -18,7 +20,7 @@
         > * { opacity: .5; }
 
         &--is-active {
-            border-bottom: 2px solid $lemon-30;
+            border-bottom: 4px solid $global-nav-active-bg-color;
 
             > * { opacity: 1; }
 
@@ -35,11 +37,13 @@
     }
 
     &--full-background {
+        align-items: center;
         border-bottom: 0 solid transparent;
         text-transform: uppercase;
 
         #{$this}__tab {
             background-color: transparentize($blue-navy-60, .6);
+            border: 0 solid transparent;
             border-radius: $radius--md;
             color: $white;
             font-size: $font-size--xxs;
