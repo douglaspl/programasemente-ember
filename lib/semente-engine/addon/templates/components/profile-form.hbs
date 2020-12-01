@@ -54,12 +54,14 @@
                             value=pessoa.telefone
                             data-required="false"
                             data-type="celular"
-                            key-up=(action 'maskcel')
+                            key-down=(action 'maskcel')
                             focus-out=(action 'checkcel')
+                            data-context="personal"
                             }}
                 </div>
-                <div class="flex flex-end">
-                    <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+                <div class="flex justify-end">
+                    <button class="btn--text btn--xxs m-top--xs" style="position:absolute" {{action 'toggleinput'}}>Não possuo celular</button>
                 </div>
             </div>
         </div>
