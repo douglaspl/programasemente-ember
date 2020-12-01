@@ -3,7 +3,6 @@
 
 <h2>Escolher outra aula</h2>
 <select name="aulas" id="aulas" onchange={{action 'refreshSelectedAula' value='target.value'}}>
-<option value="">---</option>
 {{#each pessoa.plataformaAnos as |ano|}}
     {{#each ano.aulas as |a|}}
         <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{ano.name}} | {{a.titulo}}</option>
@@ -11,43 +10,11 @@
 {{/each}}
 </select>
 
-Periodo previsto da aplicação: {{aula.dataInicioPrevistaFormat}} | {{aula.dataFimPrevistaFormat}}
-
-{{#if pessoa.plataformaTurmas}}
-    {{#each pessoa.plataformaTurmas as |turma|}}
-        {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
-            {{#if turma.aplicacoes}}
-                {{#each turma.aplicacoes as |aplicacao|}}
-                    {{#if (equalstr aplicacao.aula.id aula.id)}}
-                        Aplicada em: {{aplicacao.dataAplicacaoFormat}}
-                    {{else}}
-                        Parcialmente aplicada.
-                    {{/if}}
-                {{/each}}
-            {{else}}
-                Não aplicada.
-            {{/if}}
-
-            {{!-- <div id="botaoAplicar" class="title-3 btn btn--link list__name" style="display: " {{if (equalstr pessoa.role "instrutor") "block" "none"}}>
-                <button type="button" {{action "" }}>Marcar com aplicada</button>
-            </div> --}}
-            {{!-- MODAL APLICAÇÃO --}}
-            {{!-- <div class="row" style="display: none">
-                {{#each publicos as |pub|}}
-                    <input
-                    type="checkbox"
-                    checked={{checked}}
-                    value={{pub.id}}
-                    onchange={{action 'publicoChanged' value='target.value'}} />
-                    <label>{{pub.name}}</label>
-                {{/each}}
-            </div> --}}
-            {{!-- /MODAL APLICAÇÃO --}}
-
-        {{else}}
-            Não há turmas atreladas a este ano.
-        {{/if}}
-    {{/each}}
-{{else}}
-    Não há turmas atreladas a este ano/série.
+{{#if (equalstr pessoa.plataformaAnos.firstObject.id aula.plataformaAno.id)}}
+    Periodo previsto da aplicação: {{aula.dataInicioPrevistaFormat}} | {{aula.dataFimPrevistaFormat}}
 {{/if}}
+
+<div class="row" id="aplicacaoAula">
+    {{content-aplicacao pessoa=pessoa aula=aula TurmasAplicadas=TurmasAplicadas}}
+</div>
+           
