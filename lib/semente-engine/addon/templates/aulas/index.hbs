@@ -269,8 +269,8 @@
 
     {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
     <div>
-        {{#each pessoa.plataformaAnos as |plat_ano|}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' plat_ano.segmento.titulo}}> {{plat_ano.segmento.titulo}} </button>
+        {{#each segmentos as |seg|}}
+            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
         {{/each}}
     </div>
 
