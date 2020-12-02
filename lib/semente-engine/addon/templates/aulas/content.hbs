@@ -1,3 +1,6 @@
+<a href="#" {{action 'voltar'}}>
+    <span>Voltar</span>
+  </a>
 
 <h1>{{aula.titulo}}</h1> {{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}
 
@@ -15,6 +18,6 @@
 {{/if}}
 
 <div class="row" id="aplicacaoAula">
-    {{content-aplicacao pessoa=pessoa aula=aula TurmasAplicadas=TurmasAplicadas}}
+    {{content-aplicacao pessoa=pessoa aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
 </div>
            

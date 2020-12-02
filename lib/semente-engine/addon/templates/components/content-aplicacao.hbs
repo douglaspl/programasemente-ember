@@ -13,7 +13,8 @@
 </div>
 
 {{!-- MODAL APLICAÇÃO --}}
-<div class="row" style="display: none" id="turmasId{{turma.id}}">
+<div class="" style="display: none" id="turmasId{{turma.id}}">
+    <h1>Situação da aula</h1>
     <input type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} /> <label>Selecionar todas as turmas</label>   
     {{#each pessoa.plataformaTurmas as |turma|}}
         {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
