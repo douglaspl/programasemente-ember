@@ -7,9 +7,11 @@
     <div class="flex-auto flow-xs">
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
         <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-        <button class="btn btn--link m-bottom--xxs m-top--auto">
-          <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
-        </button>
+        {{#if (equalstr pessoa.role 'aluno')}}
+          <button class="btn btn--link m-bottom--xxs m-top--auto">
+            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+          </button>
+        {{/if}}
       </div>
       <span class="l-user-header__role title-aux">
         {{#if (equalstr pessoa.role 'aluno')}}
@@ -18,17 +20,14 @@
           {{pessoa.role}}
         {{/if}}
       </span>
-      {{#if (equalstr pessoa.role 'instrutor')}}
-        {{!-- <h2>Visualizando como:  {{ toggleRole }}</h2> --}}
-        {{#if (equalstr toggleRole 'instrutor')}}
-            <button class="btn btn-link" type="button" {{action 'toggleRole' 'responsavel'}}>
-              <span class="btn__label">Visualizar como responsável</span>
-            </button>
-        {{else}}
-            <button class="btn btn-link" type="button" {{action 'toggleRole' 'instrutor'}}>
-              <span class="btn__label">Visualizar como professor</span>
-            </button>
-        {{/if}}
+      {{#if (equalstr toggleRole 'instrutor')}}
+          <button class="btn btn--link" type="button" {{action 'toggleRole' 'responsavel'}}>
+            <span class="btn__label">Visualizar como responsável</span>
+          </button>
+      {{else}}
+          <button class="btn btn--link" type="button" {{action 'toggleRole' 'instrutor'}}>
+            <span class="btn__label">Visualizar como professor</span>
+          </button>
       {{/if}}
       <nav>
         <ul class="tabs tabs--full-background">
@@ -59,7 +58,8 @@
 
 <div class="flow-xl">
   <!-- Nav de filhos -->
-  {{#if (equalstr pessoa.role "responsavel")}}
+  {{#if (equalstr toggleRole 'instrutor')}}
+  {{else}}
     <nav>
       <ul class="tabs">
         {{#each pessoa.dependentes as |dep|}}
@@ -172,7 +172,7 @@
   {{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
   {{else if (equalstr toggleRole "responsavel")}}
 
-  {{!-- <a href="#" {{action 'invalidateSession'}}>
+  <a href="#" {{action 'invalidateSession'}}>
     <span>Fazer Logout</span>
   </a>
 
@@ -180,7 +180,7 @@
   {{pessoa.name}}
 
   <h2>Role:</h2>
-  {{pessoa.role}} --}}
+  {{pessoa.role}}
 
 
   {{!-- Checa se o instrutor também é responsável --}}
