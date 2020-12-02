@@ -1,0 +1,29 @@
+
+{{#if UltimaAplicacao}}
+    Aplicada em: {{UltimaAplicacao.dataAplicacaoFormat}}
+{{else}}
+    Não aplicada.
+{{/if}}
+
+<div id="botaoAplicar" class="title-3 btn btn--link list__name" style={{if (equalstr pessoa.role "instrutor") "display: block" "display: none"}}>
+    <button type="button" {{action "mostrarTurmas" }}>Marcar como aplicada</button>
+</div>
+<div id="Botaoturmas" class="title-3 btn btn--link list__name" style="display: none">
+    <button type="button" {{action "saveAplicacaoTurmas" aula.aplicacoes}}>Salvar Aplicações</button>
+</div>
+
+{{!-- MODAL APLICAÇÃO --}}
+<div class="row" style="display: none" id="turmasId{{turma.id}}">
+    <input type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} /> <label>Selecionar todas as turmas</label>   
+    {{#each pessoa.plataformaTurmas as |turma|}}
+        {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
+            <input type="checkbox" 
+            checked={{if (containInListID turma.id TurmasAplicadas) "checked" ""}}
+            value={{turma.id}}
+            onchange={{action 'turmasChanged' value='target.value'}} />
+            <label>{{turma.name}}</label>
+        {{/if}}
+    {{/each}}
+</div>
+{{!-- /MODAL APLICAÇÃO --}}
+

@@ -23,5 +23,6 @@ export default DS.Model.extend({
     }),
     plataformaConteudos: DS.hasMany('plataforma-conteudo', { async: true }),
     plataformaAno: DS.belongsTo('plataforma-ano', { async: true }),
+    aplicacoes: DS.hasMany('aplicacao-plataforma-aula', { async: true }),
     unidade: DS.belongsTo('unidade', { async: true }),
 });

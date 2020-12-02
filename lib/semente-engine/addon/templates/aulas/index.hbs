@@ -294,7 +294,7 @@
           {{#each plat_ano.aulas as |aula_dep| }}
             {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
               {{#if (equalstr plat_ano.name selectedAno)}}
-                {{aula-card transit=(action 'goToAula') aula=aula_dep}}
+                {{aula-card transit=(action 'goToAula') aula=aula_dep pessoa=pessoa}}
               {{/if}}
             {{/if}}
           {{/each}}
