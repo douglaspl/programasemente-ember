@@ -30,12 +30,12 @@
 // .flow-xl > * + *  { margin-top: $distance--xl; }
 // .flow-xxl > * + * { margin-top: $distance--xxl; }
 
-@keyframes recent-added {
+@keyframes blink {
     from    { background-color: $green-10; }
     to      { background-color: transparent; }
 }
 
-.recent-added {
+.blink {
     position: relative;
 
     > * {
@@ -46,7 +46,7 @@
     &::before {
         $size: $distance--sm;
 
-        animation: recent-added 3s ease-in-out 0s 1 normal forwards;
+        animation: blink 3s ease-in-out 0s 1 normal forwards;
         bottom: -$size;
         content: '';
         left: -$size;
