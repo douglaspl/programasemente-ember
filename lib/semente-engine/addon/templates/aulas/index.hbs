@@ -1,45 +1,63 @@
-<div class="flow-lg">
-  <!-- Header geral -->
-  <header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
-    <div class="flex itens-start gap-lg">
-      <picture class="l-user-header__avatar avatar avatar--lg">
-        <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
-      </picture>
-      <div class="flex-auto flow-xs">
-        <div class="flex flex-row flex-wrap items-baseline gap-xs">
-          <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-          <button class="btn btn--link m-bottom--xxs m-top--auto">
-            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
-          </button>
-        </div>
-        <span class="l-user-header__role title-aux">{{pessoa.role}}</span>
-        <nav>
-          <ul class="tabs tabs--full-background">
-            <li>
-              <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
-                <span>Aulas</span>
-              </button>
-            </li>
-            <li>
-              <button class="tabs__tab" type="button" {{action 'goToBiblioteca' on="click"}}>
-                <span>Biblioteca</span>
-              </button>
-            </li>
-
-            {{#if plataformaAno.urlLivro}}
-              <li>
-                <a class="tabs__tab" href="{{plataformaAno.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
-                  <span>Livro (PDF)</span>
-                </a>
-              </li>
-            {{/if}}
-
-          </ul>
-        </nav>
+<!-- Header geral -->
+<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
+  <div class="flex itens-start gap-lg">
+    <picture class="l-user-header__avatar avatar avatar--lg">
+      <img class="avatar__img" src="https://placedog.net/500/500" alt="{{pessoa.name}}">
+    </picture>
+    <div class="flex-auto flow-xs">
+      <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
+        <button class="btn btn--link m-bottom--xxs m-top--auto">
+          <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+        </button>
       </div>
-    </div>
-  </header>
+      <span class="l-user-header__role title-aux">
+        {{#if (equalstr pessoa.role 'aluno')}}
+          {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
+        {{else}}
+          {{pessoa.role}}
+        {{/if}}
+      </span>
+      {{#if (equalstr pessoa.role 'instrutor')}}
+        {{!-- <h2>Visualizando como:  {{ toggleRole }}</h2> --}}
+        {{#if (equalstr toggleRole 'instrutor')}}
+            <button class="btn btn-link" type="button" {{action 'toggleRole' 'responsavel'}}>
+              <span class="btn__label">Visualizar como responsável</span>
+            </button>
+        {{else}}
+            <button class="btn btn-link" type="button" {{action 'toggleRole' 'instrutor'}}>
+              <span class="btn__label">Visualizar como professor</span>
+            </button>
+        {{/if}}
+      {{/if}}
+      <nav>
+        <ul class="tabs tabs--full-background">
+          <li>
+            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
+              <span>Aulas</span>
+            </button>
+          </li>
+          <li>
+            <button class="tabs__tab" type="button" {{action 'goToBiblioteca' on="click"}}>
+              <span>Biblioteca</span>
+            </button>
+          </li>
 
+          {{#if plataformaAno.urlLivro}}
+            <li>
+              <a class="tabs__tab" href="{{plataformaAno.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
+                <span>Livro (PDF)</span>
+              </a>
+            </li>
+          {{/if}}
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="flow-xl">
   <!-- Nav de filhos -->
   {{#if (equalstr pessoa.role "responsavel")}}
     <nav>
@@ -139,14 +157,14 @@
 
   {{#if (equalstr pessoa.role "aluno")}}
 
-  <a href="#" {{action 'invalidateSession'}}>
+  {{!-- <a href="#" {{action 'invalidateSession'}}>
     <span>Fazer Logout</span>
   </a>
 
   <p>{{pessoa.name}}</p>
   <p>{{segmento.titulo}}</p>
   <p>{{plataformaAno.name}}</p>
-  <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p>
+  <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p> --}}
 
 
   {{!-- ###################################################################################################################################################################################### --}}
@@ -154,16 +172,15 @@
   {{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
   {{else if (equalstr toggleRole "responsavel")}}
 
-  <a href="#" {{action 'invalidateSession'}}>
+  {{!-- <a href="#" {{action 'invalidateSession'}}>
     <span>Fazer Logout</span>
   </a>
 
-  slsdjllfsj
   <h2>Nome Responsável:</h2>
   {{pessoa.name}}
 
   <h2>Role:</h2>
-  {{pessoa.role}}
+  {{pessoa.role}} --}}
 
 
   {{!-- Checa se o instrutor também é responsável --}}

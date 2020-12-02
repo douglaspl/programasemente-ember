@@ -9,19 +9,17 @@
   @include full-width-on-main;
 
   @include media('>sm') {
-    margin-bottom: $distance--xl;
+    margin-bottom: $distance--lg;
     margin-top: -$main-top-padding--sm;
     padding: $distance--md $distance--lg;
   }
 
   @include media('>md') {
-    margin-bottom: $distance--xl;
     margin-top: -$main-top-padding--md;
     padding: $distance--lg $distance--xl;
   }
 
   @include media('>lg') {
-    margin-bottom: $distance--xl;
     margin-top: -$main-top-padding--lg;
     padding: $distance--xl $distance--xxl;
   }
