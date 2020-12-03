@@ -78,10 +78,17 @@
 
 <div class="flow-xl">
   <!-- Nav de filhos -->
-  {{#if (equalstr toggleRole 'instrutor')}}
-  {{else}}
-    <nav>
-      <ul class="tabs">
+  <nav>
+    <ul class="tabs">
+      {{#if (equalstr toggleRole 'instrutor')}}
+        {{#each segmentos as |seg|}}
+          <li>
+            <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
+              <span>{{seg.titulo}}</span>
+            </button>
+          </li>
+        {{/each}}
+      {{else}}
         {{#each pessoa.dependentes as |dep|}}
           {{#each dep.plataformaAnos as |plat_ano|}}
             <li>
@@ -97,25 +104,29 @@
         <li class="m-left--auto">
           <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
         </li>
-      </ul>
-    </nav>
-  {{/if}}
+      {{/if}}
+
+    </ul>
+  </nav>
 
   <section class="l-dots-between">
     <header class="l-dots-between__side flex flex-col flow-md">
       <!-- ####
       ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
       #### -->
-      <div class="two-col-wrap">
-        <div class="radio radio--as-button">
-          <input class="radio__input" name="type-filter" id="videos" type="radio" value="videos" checked>
-          <label class="radio__label" for="videos">Videos</label>
+      {{#if (equalstr toggleRole 'instrutor')}}
+        <div class="two-col-wrap">
+          {{#each pessoa.plataformaAnos as |plat_ano|}}
+              {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+                <button class="btn btn--as-filter {{if (equalstr selectedAno plat_ano.name) 'btn--is-active'}}"
+                        {{action 'refreshSelectedAno' plat_ano.name}}
+                        type="button">
+                        <span class="btn__label">{{plat_ano.name}}</span>
+                </button>
+              {{/if}}
+          {{/each}}
         </div>
-        <div class="radio radio--as-button">
-          <input class="radio__input" name="type-filter" id="pdfs" type="radio" value="pdfs">
-          <label class="radio__label" for="pdfs">PDFs</label>
-        </div>
-      </div>
+      {{/if}}
       <!-- ####
       ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
       #### -->
