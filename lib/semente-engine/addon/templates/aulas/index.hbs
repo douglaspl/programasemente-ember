@@ -107,18 +107,18 @@
       <div class="form-group">
         <label class="form-group__label">Busca</label>
         <div class="form-group__wrapper form-group__wrapper--search">
-          {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+          <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="change"}}>
         </div>
       </div>
 
       <div class="form-group">
         <label class="form-group__label">Situação</label>
         <div class="form-group__wrapper form-group__wrapper--select">
-          <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
-            <option selected="selected" value="0">Todas</option>
-            <option value="1">Não Aplicada</option>
-            <option value="2">Parcialmente Aplicada</option>
-            <option value="3">Aplicada</option>
+          <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+            <option selected="selected" value="">Todas</option>
+            <option  value="Não aplicada">Não Aplicada</option>
+            <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
+            <option  value="Aplicada">Aplicada</option>
           </select>
         </div>
       </div>
@@ -135,21 +135,25 @@
 
     </header>
 
-    <section class="l-dots-between__content">
+    {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
+
+    {{!-- <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
       <ul class="l-card-list">
         {{#each aulasFiltradas as |aulaFiltrada|}}
-        <li>
-          {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
-            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-          {{else}}
-            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-          {{/if}}
-        </li>
+          <li>
+            {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+              {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+                {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}            
+                  {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          </li>
         {{/each}}
       </ul>
 
-    </section>
+    </section>  --}}
   </section>
 
 
@@ -205,15 +209,15 @@
   <div class="search">
     <div>
       <h2>BUSCA</h2>
-      {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
+      <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} onchange={{action 'atualizaAulas'}}>
       <div>
 
       <h2>SITUAÇÃO</h2>
-      <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
-        <option selected="selected" value="0">Todas</option>
-        <option value="1">Não Aplicada</option>
-        <option value="2">Parcialmente Aplicada</option>
-        <option value="3">Aplicada</option>
+      <select id="situacao" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+        <option selected="selected" value="">Todas</option>
+        <option  value="Não aplicada">Não Aplicada</option>
+        <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
+        <option  value="Aplicada">Aplicada</option>
       </select>
       </div>
 
@@ -237,10 +241,15 @@
 
 
   {{#each aulasFiltradas as |aulaFiltrada|}}
-  {{aulasFiltrada.titulo}}
-    {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
-        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-    {{/if}}
+    <li>
+      {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+        {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+          {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </li>
   {{/each}}
 
 
@@ -269,8 +278,8 @@
 
     {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
     <div>
-        {{#each pessoa.plataformaAnos as |plat_ano|}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' plat_ano.segmento.titulo}}> {{plat_ano.segmento.titulo}} </button>
+        {{#each segmentos as |segmento|}}
+            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' segmento.titulo}}> {{segmento.titulo}} </button>
         {{/each}}
     </div>
 
@@ -290,15 +299,17 @@
 
     {{!-- Lista as aulas com base nos dois filtros acima--}}
     <div>
-        {{#each pessoa.plataformaAnos as |plat_ano|}}
-          {{#each plat_ano.aulas as |aula_dep| }}
-            {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-              {{#if (equalstr plat_ano.name selectedAno)}}
-                {{aula-card transit=(action 'goToAula') aula=aula_dep pessoa=pessoa}}
+      {{#each aulasFiltradas as |aulaFiltrada|}}
+        <li>
+          {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+            {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
               {{/if}}
             {{/if}}
-          {{/each}}
-        {{/each}}
+          {{/if}}
+        </li>
+      {{/each}}
     </div>
 
 
