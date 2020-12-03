@@ -20,15 +20,24 @@
           {{pessoa.role}}
         {{/if}}
       </span>
-      {{#if (equalstr toggleRole 'instrutor')}}
-          <button class="btn btn--link" type="button" {{action 'toggleRole' 'responsavel'}}>
-            <span class="btn__label">Visualizar como responsável</span>
-          </button>
-      {{else}}
-          <button class="btn btn--link" type="button" {{action 'toggleRole' 'instrutor'}}>
-            <span class="btn__label">Visualizar como professor</span>
-          </button>
+
+      <!-- veta quem não é prof -->
+      {{#if (equalstr pessoa.role 'instrutor')}}
+        <!-- veta quem não tem filho -->
+        {{#if pessoa.dependentes}}
+          <!-- alterna entre perfis -->
+          {{#if (equalstr toggleRole 'instrutor')}}
+                <button class="btn btn--link" type="button" {{action 'toggleRole' 'responsavel'}}>
+                  <span class="btn__label">Visualizar como responsável</span>
+                </button>
+          {{else}}
+              <button class="btn btn--link" type="button" {{action 'toggleRole' 'instrutor'}}>
+                <span class="btn__label">Visualizar como professor</span>
+              </button>
+          {{/if}}
+        {{/if}}
       {{/if}}
+
       <nav>
         <ul class="tabs tabs--full-background">
           <li>
@@ -42,6 +51,7 @@
             </button>
           </li>
 
+          <!-- aluno -->
           {{#if plataformaAno.urlLivro}}
             <li>
               <a class="tabs__tab" href="{{plataformaAno.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
@@ -50,7 +60,17 @@
             </li>
           {{/if}}
 
+          <!-- responsável vendo de filho -->
+          {{!-- {{#if selectedDependente}}
+            {{#each selectedDependente.plataformaAnos as |plataformaAno| }}
+                <li>
+                  <a class="tabs__tab" href="{{plataformaAno.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">Livro (PDF)</a>
+                </li>
+            {{/each}}
+          {{/if}} --}}
+
         </ul>
+
       </nav>
     </div>
   </div>
@@ -94,10 +114,6 @@
         <div class="radio radio--as-button">
           <input class="radio__input" name="type-filter" id="pdfs" type="radio" value="pdfs">
           <label class="radio__label" for="pdfs">PDFs</label>
-        </div>
-        <div class="radio radio--as-button">
-          <input class="radio__input" name="type-filter" id="pdfs2" type="radio" value="pdfs2">
-          <label class="radio__label" for="pdfs2">PDFs2</label>
         </div>
       </div>
       <!-- ####
@@ -161,24 +177,18 @@
 
   {{#if (equalstr pessoa.role "aluno")}}
 
-  {{!-- <a href="#" {{action 'invalidateSession'}}>
-    <span>Fazer Logout</span>
-  </a>
 
-  <p>{{pessoa.name}}</p>
-  <p>{{segmento.titulo}}</p>
-  <p>{{plataformaAno.name}}</p>
-  <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p> --}}
+  {{!-- <p><a href="{{plataformaAno.urlLivro}}">VISUALIZAR LIVRO EM PDF</a></p> --}}
 
 
   {{!-- ###################################################################################################################################################################################### --}}
   {{!-- ** RESPONSÁVEL OU PROFESSOR RESPONSÁVEL ** --}}
-  {{!-- {{else if (equalstr pessoa.role "responsavel")}} --}}
+
   {{else if (equalstr toggleRole "responsavel")}}
 
-  <a href="#" {{action 'invalidateSession'}}>
+  {{!-- <a href="#" {{action 'invalidateSession'}}>
     <span>Fazer Logout</span>
-  </a>
+  </a> --}}
 
   <h2>Nome Responsável:</h2>
   {{pessoa.name}}
@@ -278,8 +288,13 @@
 
     {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
     <div>
+<<<<<<< HEAD
         {{#each segmentos as |segmento|}}
             <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' segmento.titulo}}> {{segmento.titulo}} </button>
+=======
+        {{#each segmentos as |seg|}}
+            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
+>>>>>>> d8d0c8d9d1ef133b8d39c63a5e48edc0146cb116
         {{/each}}
     </div>
 

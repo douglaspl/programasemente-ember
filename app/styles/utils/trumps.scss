@@ -30,8 +30,13 @@
 // .flow-xl > * + *  { margin-top: $distance--xl; }
 // .flow-xxl > * + * { margin-top: $distance--xxl; }
 
-@keyframes blink {
+@keyframes blink--green10 {
     from    { background-color: $green-10; }
+    to      { background-color: transparent; }
+}
+
+@keyframes blink--warning {
+    from    { background-color: $color-warning; }
     to      { background-color: transparent; }
 }
 
@@ -46,7 +51,7 @@
     &::before {
         $size: $distance--sm;
 
-        animation: blink 3s ease-in-out 0s 1 normal forwards;
+        animation: blink--green10 3s ease-in-out 0s 1 normal forwards;
         bottom: -$size;
         content: '';
         left: -$size;
@@ -54,6 +59,10 @@
         right: -$size;
         top: -$size;
         z-index: 1;
+    }
+
+    &--warning::before {
+        animation-name: blink--warning;
     }
 }
 
