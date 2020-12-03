@@ -1,6 +1,6 @@
 <a href="#" {{action 'voltar'}}>
     <span>Voltar</span>
-  </a>
+</a>
 
 <h1>{{aula.titulo}}</h1> {{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}
 
@@ -20,4 +20,9 @@
 <div class="row" id="aplicacaoAula">
     {{content-aplicacao pessoa=pessoa aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
 </div>
-           
+
+<div>
+    {{#each aula.plataformaConteudos as |conteudo|}}
+        <h1>{{conteudo.titulo}}</h1>
+    {{/each}}
+</div>

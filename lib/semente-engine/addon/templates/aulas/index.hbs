@@ -78,10 +78,17 @@
 
 <div class="flow-xl">
   <!-- Nav de filhos -->
-  {{#if (equalstr toggleRole 'instrutor')}}
-  {{else}}
-    <nav>
-      <ul class="tabs">
+  <nav>
+    <ul class="tabs">
+      {{#if (equalstr toggleRole 'instrutor')}}
+        {{#each segmentos as |seg|}}
+          <li>
+            <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
+              <span>{{seg.titulo}}</span>
+            </button>
+          </li>
+        {{/each}}
+      {{else}}
         {{#each pessoa.dependentes as |dep|}}
           {{#each dep.plataformaAnos as |plat_ano|}}
             <li>
@@ -97,25 +104,29 @@
         <li class="m-left--auto">
           <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
         </li>
-      </ul>
-    </nav>
-  {{/if}}
+      {{/if}}
+
+    </ul>
+  </nav>
 
   <section class="l-dots-between">
     <header class="l-dots-between__side flex flex-col flow-md">
       <!-- ####
       ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
       #### -->
-      <div class="two-col-wrap">
-        <div class="radio radio--as-button">
-          <input class="radio__input" name="type-filter" id="videos" type="radio" value="videos" checked>
-          <label class="radio__label" for="videos">Videos</label>
+      {{#if (equalstr toggleRole 'instrutor')}}
+        <div class="two-col-wrap">
+          {{#each pessoa.plataformaAnos as |plat_ano|}}
+              {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
+                <button class="btn btn--as-filter {{if (equalstr selectedAno plat_ano.name) 'btn--is-active'}}"
+                        {{action 'refreshSelectedAno' plat_ano.name}}
+                        type="button">
+                        <span class="btn__label">{{plat_ano.name}}</span>
+                </button>
+              {{/if}}
+          {{/each}}
         </div>
-        <div class="radio radio--as-button">
-          <input class="radio__input" name="type-filter" id="pdfs" type="radio" value="pdfs">
-          <label class="radio__label" for="pdfs">PDFs</label>
-        </div>
-      </div>
+      {{/if}}
       <!-- ####
       ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
       #### -->
@@ -123,18 +134,18 @@
       <div class="form-group">
         <label class="form-group__label">Busca</label>
         <div class="form-group__wrapper form-group__wrapper--search">
-          {{input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value=search }}
+          <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="change"}}>
         </div>
       </div>
 
       <div class="form-group">
         <label class="form-group__label">Situação</label>
         <div class="form-group__wrapper form-group__wrapper--select">
-          <select class="form-group__input" id="situation">{{!--action 'atualizaAulas' on="change"--}}
-            <option selected="selected" value="0">Todas</option>
-            <option value="1">Não Aplicada</option>
-            <option value="2">Parcialmente Aplicada</option>
-            <option value="3">Aplicada</option>
+          <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+            <option selected="selected" value="">Todas</option>
+            <option  value="Não aplicada">Não Aplicada</option>
+            <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
+            <option  value="Aplicada">Aplicada</option>
           </select>
         </div>
       </div>
@@ -151,17 +162,21 @@
 
     </header>
 
+    {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
+
     <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
       <ul class="l-card-list">
         {{#each aulasFiltradas as |aulaFiltrada|}}
-        <li>
-          {{#if (and (containStr subStr = search mainStr = aulaFiltrada.titulo) search)}}
-            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
-          {{else}}
-            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+          {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+            {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}            
+                <li>
+                  {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
+                </li>
+              {{/if}}
+            {{/if}}
           {{/if}}
-        </li>
         {{/each}}
       </ul>
 
@@ -215,15 +230,15 @@
   <div class="search">
     <div>
       <h2>BUSCA</h2>
-      {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
+      <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} onchange={{action 'atualizaAulas'}}>
       <div>
 
       <h2>SITUAÇÃO</h2>
-      <select id="situation" {{!--action 'atualizaAulas' on="change"--}}>
-        <option selected="selected" value="0">Todas</option>
-        <option value="1">Não Aplicada</option>
-        <option value="2">Parcialmente Aplicada</option>
-        <option value="3">Aplicada</option>
+      <select id="situacao" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+        <option selected="selected" value="">Todas</option>
+        <option  value="Não aplicada">Não Aplicada</option>
+        <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
+        <option  value="Aplicada">Aplicada</option>
       </select>
       </div>
 
@@ -247,9 +262,14 @@
 
 
   {{#each aulasFiltradas as |aulaFiltrada|}}
-  {{aulasFiltrada.titulo}}
-    {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
-        {{aula-card transit=(action 'goToAula') aula=aulaFiltrada}}
+    {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+      {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+        {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+          <li>
+            {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
+          </li>
+        {{/if}}
+      {{/if}}
     {{/if}}
   {{/each}}
 
@@ -279,9 +299,9 @@
 
     {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
     <div>
-        {{#each segmentos as |seg|}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
-        {{/each}}
+      {{#each segmentos as |seg|}}
+          <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
+      {{/each}}
     </div>
 
 
@@ -300,15 +320,17 @@
 
     {{!-- Lista as aulas com base nos dois filtros acima--}}
     <div>
-        {{#each pessoa.plataformaAnos as |plat_ano|}}
-          {{#each plat_ano.aulas as |aula_dep| }}
-            {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-              {{#if (equalstr plat_ano.name selectedAno)}}
-                {{aula-card transit=(action 'goToAula') aula=aula_dep pessoa=pessoa}}
-              {{/if}}
+      {{#each aulasFiltradas as |aulaFiltrada|}}
+        {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+          {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+            {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+              <li>
+                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
+              </li>
             {{/if}}
-          {{/each}}
-        {{/each}}
+          {{/if}}
+        {{/if}}
+      {{/each}}
     </div>
 
 
