@@ -164,23 +164,23 @@
 
     {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
 
-    {{!-- <section class="l-dots-between__content">
+    <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
       <ul class="l-card-list">
         {{#each aulasFiltradas as |aulaFiltrada|}}
-          <li>
-            {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
-              {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-                {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}            
+          {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+            {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}            
+                <li>
                   {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
-                {{/if}}
+                </li>
               {{/if}}
             {{/if}}
-          </li>
+          {{/if}}
         {{/each}}
       </ul>
 
-    </section>  --}}
+    </section>
   </section>
 
 
@@ -262,15 +262,15 @@
 
 
   {{#each aulasFiltradas as |aulaFiltrada|}}
-    <li>
-      {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
-        {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-          {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+    {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+      {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+        {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+          <li>
             {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
-          {{/if}}
+          </li>
         {{/if}}
       {{/if}}
-    </li>
+    {{/if}}
   {{/each}}
 
 
@@ -299,14 +299,9 @@
 
     {{!-- Escolhe Qual Segmento: Ex => Ensino Medio - Fundamental - Infantil I --}}
     <div>
-<<<<<<< HEAD
-        {{#each segmentos as |segmento|}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' segmento.titulo}}> {{segmento.titulo}} </button>
-=======
-        {{#each segmentos as |seg|}}
-            <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
->>>>>>> d8d0c8d9d1ef133b8d39c63a5e48edc0146cb116
-        {{/each}}
+      {{#each segmentos as |seg|}}
+          <button type="button" class="btn btn-primary" {{action 'refreshSelectedSegmento' seg.titulo}}> {{seg.titulo}} </button>
+      {{/each}}
     </div>
 
 
@@ -326,15 +321,15 @@
     {{!-- Lista as aulas com base nos dois filtros acima--}}
     <div>
       {{#each aulasFiltradas as |aulaFiltrada|}}
-        <li>
-          {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
-            {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+        {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+          {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+            {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
+              <li>
                 {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=pessoa selectedSituacao=selectedSituacao}}
-              {{/if}}
+              </li>
             {{/if}}
           {{/if}}
-        </li>
+        {{/if}}
       {{/each}}
     </div>
 
