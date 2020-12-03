@@ -98,7 +98,7 @@
                             <select class="j-validate form-group__input" id="genero_student{{pessoa.id}}" name="genero"
                                 onchange={{action 'refreshSelectedGenero' value='target.value'}} data-type="nome"
                                 data-required="true">
-                                <option value="">---</option>
+                                <option value="" disabled selected>---</option>
                                 <option value="masculino"
                                     selected={{if (equalstr pessoa.genero "masculino") "selected"}}>Masculino</option>
                                 <option value="feminino" selected={{if (equalstr pessoa.genero "feminino") "selected"}}>
@@ -126,7 +126,7 @@
                             <select class="j-validate form-group__input" name="serie" id="serie_student{{pessoa.id}}"
                                 onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="nome"
                                 data-required="true">
-                                <option value="">---</option>
+                                <option value="" disabled selected>---</option>
                                 {{#each pessoa.instituicao.plataformaAnos as | pa |}}
                                     {{#if (isnotinarray pa plataformaAnosToHide)}}
                                         <option value="{{pa.id}}"
@@ -149,7 +149,7 @@
                             <select class="j-validate form-group__input" name="turma" id="turma_student{{pessoa.id}}"
                                 onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}
                                 data-type="nome" data-required="true">
-                                <option value="">---</option>
+                                <option value="" disabled selected>---</option>
                                 {{#each pessoa.instituicao.plataformaTurmas as | pt |}}
                                 {{#if (equalstr pt.plataformaAno.id pessoa.plataformaAnos.firstObject.id)}}
                                 <option value="{{pt.id}}"
