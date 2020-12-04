@@ -304,6 +304,24 @@
 
   }
 
+  // Douglas
+  &--text-remove {
+    background-color: transparent;
+    box-shadow: none;
+    color: $color-error;
+    opacity: 0.75;
+    // padding-left: 0;
+    // padding-right: 0;
+    text-shadow: none;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 1;
+      color: $color-error--dark;
+    }
+
+  }
+
   &--text-inverted {
     background-color: transparent;
     color: $white;
