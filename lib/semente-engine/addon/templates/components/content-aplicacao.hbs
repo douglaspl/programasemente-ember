@@ -5,6 +5,9 @@
     Não aplicada.
 {{/if}}
 
+{{pessoa.role}}
+{{leitor.role}}
+{{selectedDependentes}}
 <div id="botaoAplicar" class="title-3 btn btn--link list__name" style={{if (equalstr pessoa.role "instrutor") "display: block" "display: none"}}>
     <button type="button" {{action "mostrarTurmas" }}>Marcar como aplicada</button>
 </div>
