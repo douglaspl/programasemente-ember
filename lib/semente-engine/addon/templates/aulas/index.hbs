@@ -73,6 +73,7 @@
 <div class="flow-xl">
   <!-- Nav de filhos ou segmentos -->
   {{#if (equalstr pessoa.role 'aluno')}}
+
   {{else}}
     <nav>
       <ul class="tabs">
@@ -84,44 +85,30 @@
               </button>
             </li>
           {{/each}}
-        {{/each}}
+        {{else}}
+          {{#each pessoa.dependentes as |dep|}}
+            {{#each dep.plataformaAnos as |plat_ano|}}
+              <li>
+                <button type="button" class="tabs__tab {{if (equalstr selectedDependente.id dep.id) 'tabs__tab--is-active'}}" {{action 'refreshSelectedDependente' dep.id}}>
+                  <span>{{dep.name}}</span>
+                  <span class="fs-i fw--3 m-left--xxs">({{plat_ano.segmento.titulo}}, {{plat_ano.name}})</span>
+                </button>
+              </li>
+            {{/each}}
+          {{/each}}
+        {{/if}}
 
         <!-- Só aparece se possui filho de Fund II ou Médio -->
         <li class="m-left--auto">
           <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
         </li>
-      {{/if}}
-
-    </ul>
-  </nav>
-
-  <section class="l-dots-between">
-    <header class="l-dots-between__side flex flex-col flow-md">
-      <!-- ####
-      ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
-      #### -->
-      {{#if (equalstr toggleRole 'instrutor')}}
-        <div class="two-col-wrap">
-          {{#each pessoa.plataformaAnos as |plat_ano|}}
-              {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-                <button class="btn btn--as-filter {{if (equalstr selectedAno plat_ano.name) 'btn--is-active'}}"
-                        {{action 'refreshSelectedAno' plat_ano}}
-                        type="button">
-                        <span class="btn__label">{{plat_ano.name}}</span>
-                </button>
-              </li>
-            {{/each}}
-          {{/each}}
-          <!-- Só aparece se possui filho de Fund II ou Médio -->
-          <li class="m-left--auto">
-            <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
-          </li>
-        {{/if}}
       </ul>
     </nav>
+
   {{/if}}
 
   <section class="l-dots-between">
+    {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
     <header class="l-dots-between__side">
       <form class="flex flex-col flow-md" autocomplete="off">
         <!-- ####
@@ -175,7 +162,6 @@
       </form>
     </header>
 
-    {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
 
     <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
@@ -194,6 +180,7 @@
         {{/each}}
       </ul>
     </section>
+
   </section>
 
 </div>
