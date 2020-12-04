@@ -68,88 +68,83 @@
 
 <div class="flow-xl">
   <!-- Nav de filhos -->
-  <nav>
-    <ul class="tabs">
-      {{#if (equalstr toggleRole 'instrutor')}}
-        {{#each segmentos as |seg|}}
-          <li>
-            <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
-              <span>{{seg.titulo}}</span>
-            </button>
-          </li>
-        {{/each}}
-      {{else}}
-        {{#each pessoa.dependentes as |dep|}}
-          {{#each dep.plataformaAnos as |plat_ano|}}
+  {{#if (equalstr pessoa.role 'aluno')}}
+  {{else}}
+    <nav>
+      <ul class="tabs">
+        {{#if (equalstr toggleRole 'instrutor')}}
+          {{#each segmentos as |seg|}}
             <li>
-              <button type="button" class="tabs__tab {{if (equalstr selectedDependente.id dep.id) 'tabs__tab--is-active'}}" {{action 'refreshSelectedDependente' dep.id}}>
-                <span>{{dep.name}}</span>
-                <span class="fs-i fw--3 m-left--xxs">({{plat_ano.segmento.titulo}}, {{plat_ano.name}})</span>
+              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
+                <span>{{seg.titulo}}</span>
               </button>
             </li>
           {{/each}}
-        {{/each}}
+        {{else}}
+          {{#each pessoa.dependentes as |dep|}}
+            <li>
+              <button type="button" class="tabs__tab {{if (equalstr selectedDependente.id dep.id) 'tabs__tab--is-active'}}" {{action 'refreshSelectedDependente' dep.id}}>
+                <span>{{dep.name}}</span>
+                <span class="fs-i fw--3 m-left--xxs">({{dep.plataformaAnos.firstObject.segmento.titulo}}, {{dep.plataformaAnos.firstObject.name}})</span>
+              </button>
+            </li>
+          {{/each}}
 
-        <!-- Só aparece se possui filho de Fund II ou Médio -->
-        <li class="m-left--auto">
-          <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
-        </li>
-      {{/if}}
+          <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio --> 
+          <li class="m-left--auto">
+            <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
+          </li>
+        {{/if}}
 
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  {{/if}}
 
   <section class="l-dots-between">
-    <header class="l-dots-between__side flex flex-col flow-md">
-      <!-- ####
-      ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
-      #### -->
-      {{#if (equalstr toggleRole 'instrutor')}}
-        <div class="two-col-wrap">
-          {{#each pessoa.plataformaAnos as |plat_ano|}}
+    <header class="l-dots-between__side">
+      <form autocomplete="off" class="flex flex-col flow-md" >
+        <!-- ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO -->
+        {{#if (equalstr toggleRole 'instrutor')}}
+          <div class="two-col-wrap">
+            {{#each pessoa.plataformaAnos as |plat_ano|}}
               {{#if (equalstr plat_ano.segmento.titulo selectedSegmento)}}
-                <button class="btn btn--as-filter {{if (equalstr selectedAno plat_ano.name) 'btn--is-active'}}"
-                        {{action 'refreshSelectedAno' plat_ano}}
-                        type="button">
-                        <span class="btn__label">{{plat_ano.name}}</span>
+                <button class="btn btn--as-filter {{if (equalstr selectedAno plat_ano.name) 'btn--is-active'}}" {{action 'refreshSelectedAno' plat_ano}} type="button">
+                  <span class="btn__label">{{plat_ano.name}}</span>
                 </button>
               {{/if}}
-          {{/each}}
-        </div>
-      {{/if}}
-      <!-- ####
-      ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO
-      #### -->
+            {{/each}}
+          </div>
+        {{/if}}
 
-      <div class="form-group">
-        <label class="form-group__label">Busca</label>
-        <div class="form-group__wrapper form-group__wrapper--search">
-          <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="change"}}>
+        <div class="form-group">
+          <label class="form-group__label">Busca</label>
+          <div class="form-group__wrapper form-group__wrapper--search">
+            <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="change"}}>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label class="form-group__label">Situação</label>
-        <div class="form-group__wrapper form-group__wrapper--select">
-          <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
-            <option selected="selected" value="">Todas</option>
-            <option  value="Não aplicada">Não Aplicada</option>
-            <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
-            <option  value="Aplicada">Aplicada</option>
-          </select>
+        <div class="form-group">
+          <label class="form-group__label">Situação</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+              <option selected="selected" value="">Todas</option>
+              <option  value="Não aplicada">Não Aplicada</option>
+              <option  value="Parcialmente aplicada">Parcialmente Aplicada</option>
+              <option  value="Aplicada">Aplicada</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label class="form-group__label">Ordenação</label>
-        <div class="form-group__wrapper form-group__wrapper--select">
-          <select class="form-group__input" id="order" {{action 'atualizaAulas' on="change"}}>
-            <option selected="selected" value="0">Ordem Crescente</option>
-            <option value="1">Ordem Decrescente</option>
-          </select>
+        <div class="form-group">
+          <label class="form-group__label">Ordenação</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input" id="order" {{action 'atualizaAulas' on="change"}}>
+              <option selected="selected" value="0">Ordem Crescente</option>
+              <option value="1">Ordem Decrescente</option>
+            </select>
+          </div>
         </div>
-      </div>
-
+      </form>
     </header>
 
     {{!-- LISTA LATERAL COM OS FILTROS - FUNCIONANDO CERTINHO --}}
@@ -162,7 +157,6 @@
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
               {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}            
                 <li>
-                  {{aulaFiltrada.plataformaAno.name}}, {{selectedAno}}
                   {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
                 </li>
               {{/if}}
