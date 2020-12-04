@@ -1,5 +1,5 @@
 <!-- Header geral -->
-<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
   <div class="flex itens-start gap-lg">
     <picture class="l-user-header__avatar avatar avatar--lg">
       {{#if pessoa.uriAvatar}}
@@ -21,7 +21,7 @@
         {{#if (equalstr pessoa.role 'aluno')}}
           {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
         {{else}}
-          {{pessoa.role}}
+          {{toggleRole}}
         {{/if}}
       </span>
 
@@ -31,11 +31,11 @@
         {{#if pessoa.dependentes}}
           <!-- alterna entre perfis -->
           {{#if (equalstr toggleRole 'instrutor')}}
-            <button class="btn btn--link" type="button" {{action 'toggleRole' 'responsavel'}}>
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
               <span class="btn__label">Visualizar como responsável</span>
             </button>
           {{else}}
-            <button class="btn btn--link" type="button" {{action 'toggleRole' 'instrutor'}}>
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
               <span class="btn__label">Visualizar como professor</span>
             </button>
           {{/if}}
@@ -94,7 +94,7 @@
             </li>
           {{/each}}
 
-          <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio --> 
+          <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio -->
           <li class="m-left--auto">
             <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
           </li>

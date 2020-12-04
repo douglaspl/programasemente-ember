@@ -32,9 +32,9 @@
         </svg>
 
         {{#if (equalstr situacao "Aplicada")}}
-          Aplicada em: {{UltimaAplicacao.dataAplicacaoFormat}}
+          <span>Aplicada em: {{UltimaAplicacao.dataAplicacaoFormat}}</span>
         {{else}}
-          <button class="td-u">{{situacao}}</button>
+          <span>{{situacao}}</span>
         {{/if}}
       </span>
 
