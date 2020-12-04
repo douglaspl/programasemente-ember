@@ -351,13 +351,19 @@
 
     &:hover {
       color: $gray-60;
+
       &:not([class*='--is-active']) {
         background-color: $gray-10;
       }
+
     }
 
     &[class*='--is-active'] {
       border-color: $global-nav-active-bg-color;
+      cursor: initial;
+
+      &:focus { outline: 0 solid transparent; }
+      &:hover { background-color: $gray-0; }
     }
 
   }
