@@ -331,8 +331,11 @@
     padding: .75em 1em;
     text-transform: initial;
 
-    &:hover:not([class*='--is-active']) {
-      background-color: $gray-10;
+    &:hover {
+      color: $gray-60;
+      &:not([class*='--is-active']) {
+        background-color: $gray-10;
+      }
     }
 
     &[class*='--is-active'] {

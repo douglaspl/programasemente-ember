@@ -32,7 +32,7 @@
     text-decoration: none;
     text-transform: uppercase;
     transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
-    transition: 200ms var(--ease-in-out-quad);
+    transition: 200ms var(--ease-out-quad);
     white-space: nowrap;
 }
 
