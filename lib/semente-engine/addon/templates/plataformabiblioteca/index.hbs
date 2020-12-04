@@ -1,30 +1,51 @@
-<header class="l-user-header l-user-header--{{pessoa.role}}">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="flex itens-start">
-        <picture class="avatar avatar--lg">
-          <img class="avatar__img" src="https://placedog.net/500" alt="{{pessoa.name}}">
-        </picture>
-        <div>
-          <h2 class="title-1">{{pessoa.name}}</h2>
-          <span class="block tt-u">{{pessoa.role}}</span>
-        </div>
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
+  <div class="flex itens-start gap-lg">
+    <picture class="l-user-header__avatar avatar avatar--lg">
+      {{#if pessoa.uriAvatar}}
+        <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+      {{else}}
+        <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+      {{/if}}
+    </picture>
+    <div class="flex-auto flow-xs">
+      <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
       </div>
-    </div>
+      <span class="l-user-header__role title-aux">
+        {{#if (equalstr pessoa.role 'aluno')}}
+          {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
+        {{else}}
+          {{toggleRole}}
+        {{/if}}
+      </span>
 
-    <div class="col-xs-8 col-lg-9 col-xs-offset-4 col-lg-offset-3">
       <nav>
-        <ul>
+        <ul class="tabs tabs--full-background">
           <li>
-            <button type="button" class="btn btn-primary" {{action 'goToAulas' on="click"}}> Ir para tela Aulas </button>
+            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAulas' on="click"}}>
+              <span>Aulas</span>
+            </button>
           </li>
+          <li>
+            <button class="tabs__tab {{if (equalstr thisRoute 'plataformabiblioteca') 'tabs__tab--is-active'}}" type="button" {{action 'goToBiblioteca' on="click"}}>
+              <span>Biblioteca</span>
+            </button>
+          </li>
+
+          {{#if Ano.urlLivro}}
+            <li>
+              <a class="tabs__tab" href="{{Ano.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
+                <span>Livro (PDF) {{selectedAno}}</span>
+              </a>
+            </li>
+          {{/if}}
+
         </ul>
+
       </nav>
     </div>
   </div>
 </header>
-
-
 
 
 <select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
@@ -37,7 +58,7 @@
 
 <div>
     <h2>BUSCA</h2>
-    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }} 
+    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
 </div>
 
 
@@ -55,7 +76,7 @@
 
 {{#each conteudos as |conteudo|}}
 
-    <div> 
+    <div>
         {{#if (equalstr conteudo.agrupamento.name "Biblioteca")}}
             {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
                 {{#if conteudo.situacao}}
@@ -69,7 +90,7 @@
                                     <label>Titulo: {{conteudo.titulo}} </label>
                                     <label>Cover Img: {{conteudo.coverImage}} </label>
                                     <label>URL: {{conteudo.videoUrl}} </label>
-                                    <label>Tipo: {{conteudo.tipo}} </label>   <br> 
+                                    <label>Tipo: {{conteudo.tipo}} </label>   <br>
 
                                 {{/if}}
                             {{/each}}
@@ -79,7 +100,7 @@
             {{/if}}
         {{/if}}
     </div>
-    
+
 
 
 {{/each}}

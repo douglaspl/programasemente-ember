@@ -45,12 +45,12 @@
       <nav>
         <ul class="tabs tabs--full-background">
           <li>
-            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
+            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAulas' on="click"}}>
               <span>Aulas</span>
             </button>
           </li>
           <li>
-            <button class="tabs__tab" type="button" {{action 'goToBiblioteca' on="click"}}>
+            <button class="tabs__tab {{if (equalstr thisRoute 'plataformabiblioteca') 'tabs__tab--is-active'}}" type="button" {{action 'goToBiblioteca' on="click"}}>
               <span>Biblioteca</span>
             </button>
           </li>
