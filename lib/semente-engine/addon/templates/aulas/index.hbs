@@ -171,7 +171,6 @@
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
               {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
                 <li>
-                  {{aulaFiltrada.plataformaAno.name}}, {{selectedAno}}
                   {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
                 </li>
               {{/if}}
