@@ -1,51 +1,3 @@
-<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
-  <div class="flex itens-start gap-lg">
-    <picture class="l-user-header__avatar avatar avatar--lg">
-      {{#if pessoa.uriAvatar}}
-        <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
-      {{else}}
-        <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-      {{/if}}
-    </picture>
-    <div class="flex-auto flow-xs">
-      <div class="flex flex-row flex-wrap items-baseline gap-xs">
-        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-      </div>
-      <span class="l-user-header__role title-aux">
-        {{#if (equalstr pessoa.role 'aluno')}}
-          {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
-        {{else}}
-          {{toggleRole}}
-        {{/if}}
-      </span>
-
-      <nav>
-        <ul class="tabs tabs--full-background">
-          <li>
-            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAulas' on="click"}}>
-              <span>Aulas</span>
-            </button>
-          </li>
-          <li>
-            <button class="tabs__tab {{if (equalstr thisRoute 'plataformabiblioteca') 'tabs__tab--is-active'}}" type="button" {{action 'goToBiblioteca' on="click"}}>
-              <span>Biblioteca</span>
-            </button>
-          </li>
-
-          {{#if Ano.urlLivro}}
-            <li>
-              <a class="tabs__tab" href="{{Ano.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
-                <span>Livro (PDF) {{selectedAno}}</span>
-              </a>
-            </li>
-          {{/if}}
-
-        </ul>
-
-      </nav>
-    </div>
-  </div>
-</header>
 
 
 <div class="two-col-wrap">
@@ -57,33 +9,29 @@
 </div>
 
 <div>
-    <h2>BUSCA</h2>
-    {{input type="text" class="search" placeholder="Pesquisar Aula" value=search }}
+  <h2>BUSCA</h2>
+  {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }}
 </div>
 
-
 <div>
-    <h2>TEMA</h2>
-    <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-    <option selected="selected" value="">---</option>
-    {{#each temas as |tema|}}
-        <option value="{{tema.id}}" selected={{if (equalstr tema.id selectedTema.id) "selected"}}>{{tema.name}}</option>
-    {{/each}}
-    </select>
+  <h2>TEMA</h2>
+  <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+  <option selected="selected" value="">---</option>
+  {{#each temas as |tema|}}
+      <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
+  {{/each}}
+  </select>
 </div>
 
 
 
 {{#each conteudos as |conteudo|}}
   {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-    {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
-    {{selectedTema}}
-      {{#if (equalstr selectedTema.name conteudo.tema.name)}}
-        {{conteudo.titulo}}
-          {{!-- {{#if (compareRole pessoa.role conteudo.publicos)}} --}}
-          <label>Titulo: {{conteudo.titulo}} </label>
-          <label>Vimeo Code: {{conteudo.videoUrl}} </label>
-          <label>Tipo: {{conteudo.tipo}} </label>
+    {{#if (equalstr selectedTipo conteudo.tipo)}}
+      {{#if (equalstr selectedTema conteudo.tema.name)}}
+        <label>Titulo: {{conteudo.titulo}} </label>
+        <label>Vimeo Code: {{conteudo.videoUrl}} </label>
+        <label>Tipo: {{conteudo.tipo}} </label>
       {{/if}}
     {{/if}}
   {{/if}}
