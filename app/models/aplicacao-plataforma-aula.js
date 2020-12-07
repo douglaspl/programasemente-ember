@@ -9,7 +9,7 @@ moment.updateLocale('en', {
 
 export default DS.Model.extend({
   dataAplicacao: DS.attr(),
-  aplicado: DS.attr('boolean'),
+  aplicado: DS.attr(),
   dataAplicacaoFormat: Ember.computed('dataAplicacao', function() {
     let dataformatada = moment(this.get('dataAplicacao'), 'DD/MM/YYYY hh:mm:ss').format('DD MMM');
     return dataformatada;

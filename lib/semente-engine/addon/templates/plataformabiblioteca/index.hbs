@@ -25,15 +25,13 @@
 </header>
 
 
-
-
-<select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
-    <option selected="selected" value="">---</option>
-    {{#each tipos as |tipo|}}
-        <option value="{{tipo}}" >{{tipo}}</option>
-    {{/each}}
-</select>
-
+<div class="two-col-wrap">
+  {{#each tipos as |tipo|}}
+    <button class="btn btn--as-filter {{if (equalstr selectedTipo tipo) 'btn--is-active'}}" {{action 'refreshSelectedTipo' tipo}} type="button">
+      <span class="btn__label">{{tipo}}</span>
+    </button>
+  {{/each}}
+</div>
 
 <div>
     <h2>BUSCA</h2>
@@ -54,34 +52,18 @@
 
 
 {{#each conteudos as |conteudo|}}
-
-    <div> 
-        {{#if (equalstr conteudo.agrupamento.name "Biblioteca")}}
-            {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-                {{#if conteudo.situacao}}
-                    {{!-- {{selectedTipo}} || {{conteudo.tipo}} --}}
-                    {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
-                        {{!-- {{selectedTema.name}} || {{conteudo.tema.name}} --}}
-                        {{#if (containStr subStr = selectedTema.name mainStr = conteudo.tema.name)}}
-                            {{#each conteudo.publicos as |pub|}}
-                                {{#if (compareRole f_role = pub.name s_role = pessoa.role)}}
-
-                                    <label>Titulo: {{conteudo.titulo}} </label>
-                                    <label>Cover Img: {{conteudo.coverImage}} </label>
-                                    <label>URL: {{conteudo.videoUrl}} </label>
-                                    <label>Tipo: {{conteudo.tipo}} </label>   <br> 
-
-                                {{/if}}
-                            {{/each}}
-                        {{/if}}
-                    {{/if}}
-                {{/if}}
-            {{/if}}
-        {{/if}}
-    </div>
-    
-
-
+  {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+    {{#if (containStr subStr = selectedTipo mainStr = conteudo.tipo)}}
+    {{selectedTema}}
+      {{#if (equalstr selectedTema.name conteudo.tema.name)}}
+        {{conteudo.titulo}}
+          {{!-- {{#if (compareRole pessoa.role conteudo.publicos)}} --}}
+          <label>Titulo: {{conteudo.titulo}} </label>
+          <label>Vimeo Code: {{conteudo.videoUrl}} </label>
+          <label>Tipo: {{conteudo.tipo}} </label>
+      {{/if}}
+    {{/if}}
+  {{/if}}
 {{/each}}
 
 

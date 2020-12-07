@@ -79,8 +79,8 @@
         {{#if (equalstr toggleRole 'instrutor')}}
           {{#each segmentos as |seg|}}
             <li>
-              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
-                <span>{{seg.titulo}}</span>
+              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
+                <span>{{seg}}</span>
               </button>
             </li>
           {{/each}}
@@ -95,9 +95,11 @@
           {{/each}}
 
           <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio --> 
-          <li class="m-left--auto">
-            <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
-          </li>
+          {{#if faltaAlguem}}
+            <li class="m-left--auto">
+              <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
+            </li>
+          {{/if}}
         {{/if}}
 
       </ul>
@@ -159,9 +161,7 @@
           {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
               {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
-                <li>
-                  {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
-                </li>
+                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
               {{/if}}
             {{/if}}
           {{/if}}
