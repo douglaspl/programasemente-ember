@@ -136,8 +136,9 @@
         <div class="form-group">
           <label class="form-group__label">Busca</label>
           <div class="form-group__wrapper form-group__wrapper--search">
-            <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="input"}}>
+            <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="input"}} {{action 'atualizaAulas' on="change"}}>
           </div>
+          <a  onclick={{action 'eraseText'}}>Limpar</a>
         </div>
 
         <div class="form-group">
