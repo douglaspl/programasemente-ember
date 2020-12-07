@@ -79,7 +79,6 @@
       background-color: $timeline-date-bg-color;
       border: none;
       color: $timeline-date-color;
-      background-color: $timeline-date-bg-color;
       position: absolute;
       right: calc(100% + #{$timeline-gap});
       top: 50%;
@@ -212,6 +211,20 @@
     }
 
   }
+
+    &__inner-nav {
+      background-color: transparentize($color: $blue-navy-60, $amount: .4);
+      border-radius: $radius;
+      box-shadow: 0 0 24px transparentize($color: $blue-navy-60, $amount: .4);
+      padding: 1rem;
+      position: fixed;
+      right: $distance--xl;
+      
+      li + li {
+        border-top: 1px solid transparentize($color: $white, $amount: .85);
+        padding-top: $distance--xs;
+      }
+    }
 
 
 }

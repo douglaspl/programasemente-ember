@@ -1,0 +1,43 @@
+.l-timeline {
+    
+    // @include full-width-on-main;
+    
+    @include full-width-container;
+
+    background-color: $green-50;
+    background-image: linear-gradient(-115deg, transparentize($green-20, .6) 0%, transparentize($leaf-60, .2) 50%), url("/assets/img/fundo8.jpg");
+    background-attachment: fixed, fixed;
+    background-position: cover, cover;
+    background-size: cover, cover;
+    display: flex;
+    justify-content: center;
+    //max-width: none;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    // @include media('>lg', '<xl') {
+    //   padding-left: 30vw;
+    // }
+
+    >[class*='__section'] {
+      margin-bottom: 0;
+    }
+
+    @include media('>sm') {
+            
+        margin-top: -$main-top-padding--sm;
+      }
+    
+      @include media('>md') {
+            
+        margin-top: -$main-top-padding--md;
+      }
+    
+      @include media('>lg') {
+            
+        margin-top: -$main-top-padding--lg;
+      }
+    
+      
+    
+  }

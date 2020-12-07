@@ -1,5 +1,5 @@
 <!-- Header geral -->
-<header class="l-user-header l-user-header--themed l-user-header--{{pessoa.role}}">
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
   <div class="flex itens-start gap-lg">
     <picture class="l-user-header__avatar avatar avatar--lg">
       {{#if pessoa.uriAvatar}}
@@ -21,7 +21,7 @@
         {{#if (equalstr pessoa.role 'aluno')}}
           {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
         {{else}}
-          {{pessoa.role}}
+          {{toggleRole}}
         {{/if}}
       </span>
 
@@ -31,11 +31,11 @@
         {{#if pessoa.dependentes}}
           <!-- alterna entre perfis -->
           {{#if (equalstr toggleRole 'instrutor')}}
-            <button class="btn btn--link" type="button" {{action 'toggleRole' 'responsavel'}}>
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
               <span class="btn__label">Visualizar como responsável</span>
             </button>
           {{else}}
-            <button class="btn btn--link" type="button" {{action 'toggleRole' 'instrutor'}}>
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
               <span class="btn__label">Visualizar como professor</span>
             </button>
           {{/if}}
@@ -45,12 +45,12 @@
       <nav>
         <ul class="tabs tabs--full-background">
           <li>
-            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAula' on="click"}}>
+            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAulas' on="click"}}>
               <span>Aulas</span>
             </button>
           </li>
           <li>
-            <button class="tabs__tab" type="button" {{action 'goToBiblioteca' on="click"}}>
+            <button class="tabs__tab {{if (equalstr thisRoute 'plataformabiblioteca') 'tabs__tab--is-active'}}" type="button" {{action 'goToBiblioteca' on="click"}}>
               <span>Biblioteca</span>
             </button>
           </li>
@@ -109,6 +109,17 @@
   <section class="l-dots-between">
     <header class="l-dots-between__side">
       <form autocomplete="off" class="flex flex-col flow-md" >
+        <!--
+          ==============
+          Exemplo de botão para tela de acompanhamento, não ficará aqui no hbs de aulas
+          ==============
+        -->
+        <button class="btn btn--ghost">Download como Excel</button>
+        <!--
+          ==============
+          Fim do exemplo
+          ==============
+        -->
         <!-- ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO -->
         {{#if (equalstr toggleRole 'instrutor')}}
           <div class="two-col-wrap">

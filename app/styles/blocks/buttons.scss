@@ -304,14 +304,35 @@
 
   }
 
-  &--text-inverted {
+  // Douglas
+  &--text-remove {
     background-color: transparent;
-    color: $white;
-    padding: 0;
+    box-shadow: none;
+    color: $color-error;
+    opacity: 0.75;
+    // padding-left: 0;
+    // padding-right: 0;
     text-shadow: none;
 
     &:hover {
       background-color: transparent;
+      opacity: 1;
+      color: $color-error--dark;
+    }
+
+  }
+
+  &--text-inverted {
+    background-color: transparent;
+    box-shadow: none;
+    color: white;
+    opacity: .75;
+    // padding-left: 0;
+    // padding-right: 0;
+    text-shadow: none;
+
+    &:hover {
+      background-color: transparentize($color: white, $amount: .9);
       opacity: 1;
       transform: translateY(0);
     }
@@ -333,13 +354,19 @@
 
     &:hover {
       color: $gray-60;
+
       &:not([class*='--is-active']) {
         background-color: $gray-10;
       }
+
     }
 
     &[class*='--is-active'] {
       border-color: $global-nav-active-bg-color;
+      cursor: initial;
+
+      &:focus { outline: 0 solid transparent; }
+      &:hover { background-color: $gray-0; }
     }
 
   }

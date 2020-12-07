@@ -74,6 +74,10 @@ pre code {
     word-break: normal;
 }
 
+img[src*="placedog"] {
+    border: 4px solid crimson;
+}
+
 input:not([disabled]) + label[for] {
     cursor: pointer;
 }
