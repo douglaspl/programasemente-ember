@@ -324,12 +324,15 @@
 
   &--text-inverted {
     background-color: transparent;
-    color: $white;
-    padding: 0;
+    box-shadow: none;
+    color: white;
+    opacity: .75;
+    // padding-left: 0;
+    // padding-right: 0;
     text-shadow: none;
 
     &:hover {
-      background-color: transparent;
+      background-color: transparentize($color: white, $amount: .9);
       opacity: 1;
       transform: translateY(0);
     }

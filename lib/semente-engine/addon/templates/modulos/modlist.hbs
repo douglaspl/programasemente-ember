@@ -1,21 +1,16 @@
-
-<main class="main main--timeline">
+<section class="l-timeline">
   <!-- Decorativos -->
   <!--<span class="icon-bar-chart main__icon-1"></span>-->
   <!--<span class="icon-at-sign main__icon-2"></span>-->
   <!-- / Decorativos -->
 
-{{scrollToNext}}
+  {{scrollToNext}}
 
 
   <section class="main__section">
-<div>
-  <button class="btn" {{action 'scrollToCurrent'}}>Ir para a última liberada</button>
-  <button class="btn" {{action 'scrollToLast'}}>Ir para a última acessada</button>
-  <button class="btn" {{action 'scrollToTop'}} style="position: fixed;left: 92.3%;top: 90%;">Ir ao topo</button>
-</div>
 
-<!-- Bem-vindo de volta 
+
+    <!-- Bem-vindo de volta 
     {{!-- <div class="alert alert--blue-navy alert--xs alert--no-interaction alert--is-show">
       <h1 class="alert__title">Olá, {{username}}</h1>
       <div class="alert__body">
@@ -23,55 +18,69 @@
         <p class="m-top--md small">Caso você não seja a pessoa acima, faça <a class="alert__link" href="#">logout</a>.</p>
       </div>
     </div> --}}-->
-    <h2 class="main__subtitle main__subtitle--timeline">Percurso</h2>
+    <h2 class="main__subtitle main__subtitle--timeline">Aulas</h2>
 
     <div class="timeline">
 
+      <nav class="timeline__inner-nav">
+        <ul class="flow-xs">
+          <li>
+            <button class="btn btn--text-inverted w100" {{action 'scrollToCurrent'}}>Última liberada</button>
+          </li>
+          <li>
+            <button class="btn btn--text-inverted w100" {{action 'scrollToLast'}}>Última acessada</button>
+          </li>
+          <li>
+            <button class="btn btn--text-inverted w100" {{action 'scrollToTop'}}>Ir ao topo</button>
+          </li>
+        </ul>
+      </nav>
+
       <div class="timeline__begin">
         Início do
-          {{#if (equalstr model.idx 1)}}
-            primeiro
-          {{/if}}
+        {{#if (equalstr model.idx 1)}}
+        primeiro
+        {{/if}}
 
-          {{#if (equalstr model.idx 2)}}
-            segundo
-          {{/if}}
+        {{#if (equalstr model.idx 2)}}
+        segundo
+        {{/if}}
 
-          {{#if (equalstr model.idx 3)}}
-            terceiro
-          {{/if}}
-         ano
+        {{#if (equalstr model.idx 3)}}
+        terceiro
+        {{/if}}
+        ano
       </div>
 
       <ol class="timeline__line">
         {{#each sortedAtividades as |atividade idx|}}
 
-          {{#if (equalstr (get listaStartUnit idx) 1)}}
+        {{#if (equalstr (get listaStartUnit idx) 1)}}
         <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
-            {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
-          {{else}}
-            {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
-          {{/if}}
+        {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
+        {{else}}
+        {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
+        {{/if}}
         {{/each}}
       </ol>
 
       <div class="timeline__end">
         Fim do
-          {{#if (equalstr model.idx 1)}}
-            primeiro
-          {{/if}}
+        {{#if (equalstr model.idx 1)}}
+        primeiro
+        {{/if}}
 
-          {{#if (equalstr model.idx 2)}}
-            segundo
-          {{/if}}
+        {{#if (equalstr model.idx 2)}}
+        segundo
+        {{/if}}
 
-          {{#if (equalstr model.idx 3)}}
-            terceiro
-          {{/if}}
-         ano
+        {{#if (equalstr model.idx 3)}}
+        terceiro
+        {{/if}}
+        ano
       </div>
 
     </div>
 
   </section>
-</main>
+</section>
