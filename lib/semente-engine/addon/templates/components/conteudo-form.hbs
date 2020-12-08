@@ -3,13 +3,13 @@
 <div class="">
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
-    <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo' 
+    <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo'
         onchange={{ action 'urlvideoChanged' value='target.value' }}>
     <div class="row"> OU </div>
 
     <label for="">Arquivo em PDF, PNG ou JPEG</label>
     <input multiple="false" id="file-selector" name='file' type="file" value=''
-    placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf" 
+    placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf"
     onchange={{action 'Upload'}} />
 
     {{#if conteudo.path}}
@@ -27,13 +27,13 @@
     <h1>Configuração</h1>
     <label for="">Titulo do Conteúdo</label>
     {{input name='' value=conteudo.titulo placeholder='Titulo do Conteúdo'}}
-    
+
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
     {{#each agrupamentos as |a|}}
-        <input type="radio" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}} name="nomeagrupamento" 
+        <input type="radio" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}} name="nomeagrupamento"
         onchange={{ action 'agrupamentoChanged' a.id }}>
-        <label>{{a.name}}</label>
+        <label for="{{a.id}}">{{a.name}}</label>
         <div>{{a.descricao}}</div>
         <div> </div>
 
@@ -45,21 +45,21 @@
                     {{#each a.temas as |t|}}
                         <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
                     {{/each}}
-                </select> 
+                </select>
                 <div> </div>
             {{/if}}
         {{/if}}
     {{/each}}
-    
+
     <div> </div>
     <div> </div>
     <div>Qual a situação após o cadastro?</div>
     <div class="row">
-        <input type="radio" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao" 
+        <input type="radio" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao"
         onchange={{ action 'refreshSelectedSituacao' "true" }}>
         <label>Ativo</label>
         <div></div>
-        <input type="radio" checked={{not conteudo.situacao}} id={{conteudo.id}} name="situacao" 
+        <input type="radio" checked={{not conteudo.situacao}} id={{conteudo.id}} name="situacao"
         onchange={{ action 'refreshSelectedSituacao' "false" }}>
         <label>Inativo</label>
     </div>
@@ -78,7 +78,7 @@
             onchange={{action 'publicoChanged' value='target.value'}} />
             <label>{{pub.name}}</label>
         {{/each}}
-    </div> 
+    </div>
     <div class="row">
         {{#if (equalstr this.agrupamentoAula "true")}}
             <div class="row">
