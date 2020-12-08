@@ -25,6 +25,10 @@
 
     }
 
+    &--is-square {
+        border-radius: $radius--lg;
+    }
+
     &--bordered {
         border: 2px solid $white;
     }

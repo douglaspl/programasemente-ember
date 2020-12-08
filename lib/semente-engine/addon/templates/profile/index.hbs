@@ -1,22 +1,113 @@
-<div style="display: none;">{{shouldReview}}</div>
+<div class="row flow-lg">
 
-<h2>Nome:</h2>
-{{pessoa.name}}
+  <h2 class="col-xs-12 title-2">Meu Perfil</h2>
 
-<h2>Avatar:</h2>
-{{uri_avatar}}
-<button class="login__cta btn" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button>
 
-<button class="login__cta btn" onclick={{action 'togglePassModal'}}>Alterar senha</button>
+    <div class="col-xs-12 col-sm-7 col-md-6 flow-lg">
+      <section class="flow-sm">
+        <h3 class="title-3">Avatar</h3>
 
-<h2>Email:</h2>
-{{pessoa.email}}
+        <div class="flex flex-row items-start">
+          <picture class="avatar avatar--xl avatar--is-square">
+            {{#if pessoa.uriAvatar}}
+              <img class="avatar__img" src={{uri_avatar}} alt="{{pessoa.name}}">
+            {{else}}
+              <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
+            {{/if}}
+          </picture>
+          <button class="btn btn--ghost btn--xxs m-left--sm" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button>
+        </div>
+
+      </section>
+
+      <section class="flow-sm">
+        <header class="flex flex-row items-baseline">
+          <h3 class="title-3">Senha</h3><span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span>
+        </header>
+
+        <form class="flex flex-col flow-sm" autocomplete="off">
+          <div class="form-group">
+            <label class="form-group__label" for="pass">Defina uma nova senha</label>
+            <input class="form-group__input" type="password" id="pass" value="">
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="pass_new">Confirme a nova senha</label>
+            <input class="form-group__input" type="password" id="pass_new" value="">
+          </div>
+
+          <button class="btn btn--ghost btn--xxs self-start" type="submit" {{action 'changePw'}}>Definir nova senha</button>
+        </form>
+
+      </section>
+    </div>
+
+    <div class="col-xs-12 col-sm-7 col-md-6 flow-md">
+      <section class="flow-sm">
+        <h3 class="title-3">Informações pessoais</h3>
+
+        <form class="flex flex-col flow-sm" autocomplete="off">
+          <div class="form-group">
+            <label class="form-group__label" for="email">E-mail</label>
+            {{input class="form-group__input" type="email" id="email" value=pessoa.email}}
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="nascimento">Data de nascimento</label>
+            {{input class="form-group__input" type="date" id="nascimento" value=pessoa.dataNascimento}}
+          </div>
+
+          <div class="form-group radio">
+            <input  class="radio__input"
+                    checked={{if (equalstr pessoa.genero "feminino") "checked"}}
+                    id="gen_{{pessoa.genero}}"
+                    name="genero"
+                    type="radio">
+            <label class="radio__label" for="gen_{{pessoa.genero}}">{{pessoa.genero}}</label>
+          </div>
+          <div class="form-group radio">
+            <input  class="radio__input"
+                    checked={{if (equalstr pessoa.genero "masculino") "checked"}}
+                    id="gen_{{pessoa.genero}}"
+                    name="genero"
+                    type="radio">
+            <label class="radio__label" for="gen_{{pessoa.genero}}">{{pessoa.genero}}</label>
+          </div>
+          <div class="form-group radio">
+            <input  class="radio__input"
+                    checked={{if (equalstr pessoa.genero "outro") "checked"}}
+                    id="gen_{{pessoa.genero}}"
+                    name="genero"
+                    type="radio">
+            <label class="radio__label" for="gen_{{pessoa.genero}}">{{pessoa.genero}}</label>
+          </div>
+        </form>
+
+      </section>
+
+      <section class="flow-sm">
+        <h3 class="title-3">Informações profissionais</h3>
+      </section>
+    </div>
+
+
+</div>
+
+{{!-- <h2>Nome:</h2>
+{{pessoa.name}} --}}
+
+
+
+{{!-- <button class="btn" onclick={{action 'togglePassModal'}}>Alterar senha</button> --}}
+
+{{!-- <h2>Email:</h2>
+{{pessoa.email}} --}}
 
 <h2>Gênero:</h2>
 {{pessoa.genero}}
 
-<h2>Data de nascimento:</h2>
-{{dataNascimento}}
+{{!-- <h2>Data de nascimento:</h2>
+{{dataNascimento}} --}}
 
 <h2>Escola:</h2>
 {{pessoa.instituicao.name}}
@@ -28,7 +119,8 @@
 {{pessoa.instituicao.cidade}}
 
 
-
+<!-- Modais -->
+<!-- Modal de mudar a imagem do usuário -->
 <aside id="change_image_modal" class="modal">
 
   <div class="modal__content modal__content--md">
@@ -84,10 +176,7 @@
 
 </aside>
 
-
-
-
-
+<!-- Modal de mudar a senha do usuário -->
 <aside id="change_pass_modal" class="modal">
 
   <div class="modal__content modal__content--sm">
@@ -100,28 +189,31 @@
 
     <div class="modal__body">
 
-      <div class="form-group form-group--full-width form-group--aired-v">
-        <label class="form-group__label" for="pass">Senha atual</label>
-        <input class="form-group__input" type="password" id="pass" value="">
-      </div>
-
-      <div class="form-group form-group--full-width form-group--aired-v">
-        <label class="form-group__label" for="pass_new">Nova senha</label>
-        <input class="form-group__input" type="password" id="pass_new" value="">
-      </div>
-
-      <div class="form-group form-group--full-width">
-        <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
-        <!-- melhorar classes do form... -->
-        <div class="form-group__container form-group">
-          <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
-              class="form__msg-icon icon-check"></span>Par
-            de senhas perfeito!</span>
-          <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
-              class="form__msg-icon icon-alert-triangle"></span>Senhas
-            não batem...</span>
-          <input class="form-group__input" type="password" id="pass_new_copy" value="">
+      <div class="flex flex-col flow-sm">
+        <div class="form-group">
+          <label class="form-group__label" for="pass">Senha atual</label>
+          <input class="form-group__input" type="password" id="pass" value="">
         </div>
+
+        <div class="form-group">
+          <label class="form-group__label" for="pass_new">Nova senha</label>
+          <input class="form-group__input" type="password" id="pass_new" value="">
+        </div>
+
+        <div class="form-group">
+          <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
+          <!-- melhorar classes do form... -->
+          <div class="form-group__container form-group">
+            <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
+                class="form__msg-icon icon-check"></span>Par
+              de senhas perfeito!</span>
+            <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
+                class="form__msg-icon icon-alert-triangle"></span>Senhas
+              não batem...</span>
+            <input class="form-group__input" type="password" id="pass_new_copy" value="">
+          </div>
+        </div>
+
       </div>
 
       {{#if error_forgot}}
@@ -144,3 +236,5 @@
   <div class="modal__overlayer"></div>
 
 </aside>
+
+<div style="display: none;">{{shouldReview}}</div>
