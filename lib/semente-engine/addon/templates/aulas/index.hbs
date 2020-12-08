@@ -21,7 +21,31 @@
         {{#if (equalstr pessoa.role 'aluno')}}
           {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
         {{else}}
-          {{toggleRole}}
+          
+          {{#if (equalstr toggleRole 'instrutor')}} 
+            Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
+            {{#if (isbigger segmentos.length "1")}}
+              dos segmentos 
+               {{#each segmentos as |seg index|}}
+                  <span class="fs-i">{{seg}}</span> 
+                   {{#if (equalstr index (sub segmentos.length 2))}} e 
+                   {{else}} 
+                    {{#if (equalstr index (sub segmentos.length 1))}}
+                    {{else}},
+                   {{/if}} 
+                   {{/if}}
+               {{/each}} 
+             {{else}}
+              do
+              {{#each segmentos as |seg|}}
+                <span class="fs-i">{{seg}}</span> 
+               {{/each}}
+            {{/if}}
+
+          {{else}} 
+            {{toggleRole}}
+          {{/if}}
+          
         {{/if}}
       </span>
 
