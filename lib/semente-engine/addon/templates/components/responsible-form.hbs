@@ -1,34 +1,46 @@
 <div class="flow-md blink {{if (equalstr modelrole 'responsavel') 'flow--xl' ''}}">
 
-    <div class="row">
-        <div class="col-xs-4 col-lg-3">
-            {{#if (equalstr modelrole 'responsavel')}}
+    <div class="row items-center">
+        <div>
+            <div class="col-xs-12">
+                {{#if (equalstr modelrole 'responsavel')}}
 
-            {{else if (equalstr modelrole 'instrutor')}}
-                <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
+                {{else if (equalstr modelrole 'instrutor')}}
+                    <h4 class="title-4">{{visible-index updatedIndex}}º Responsável</h4>
 
-            {{else}}
-                <h4 class="title-4">{{updatedIndex}}º Responsável</h4>
-            {{/if}}
+                {{else}}
+                    <h4 class="title-4">{{updatedIndex}}º Responsável</h4>
+                {{/if}}
+            </div>
         </div>
 
-        <div class="col-xs-4 flex justify-end">
-            {{#if (equalstr model.role "aluno")}}
-                {{#if (isbigger model.responsaveis.length "1")}}
-                    <span class="icon-trash-2 form__trash-icon" {{action "removeResponsible" model responsavel}}></span>
+        <div>
+            <div class="col-xs-12 flow-lg">
+                {{#if (equalstr model.role "aluno")}}
+                    {{#if (isbigger model.responsaveis.length "1")}}
+                        {{!-- <span class="icon-trash-2 form__trash-icon" {{action "removeResponsible" model responsavel}}></span> --}}
+                <button class="btn btn--text-remove btn--xxs" {{action "removeResponsible" model responsavel}}>
+                    <span class="icon-trash-2"></span>
+                    <span class="m-left--xxs">Remover responsável</span>
+                </button>
+                    {{/if}}
+                {{else}}
+                    {{!-- <span class="icon-trash-2 form__trash-icon" {{action "removePartner" model responsavel}}></span> --}}
+                
+                <button class="btn btn--text-remove btn--xxs" {{action "removePartner" model responsavel}}>
+                    <span class="icon-trash-2"></span>
+                    <span class="m-left--xxs">Remover responsável</span>
+                </button>
+                
                 {{/if}}
-            {{else}}
-                <span class="icon-trash-2 form__trash-icon" {{action "removePartner" model responsavel}}></span>
-            {{/if}}
-
-
+            </div>
         </div>
     </div>
 
     <!-- talvez seja bom criar o caso de se for o primeiro responsável
     usar o título "Suas informações" e no segundo "2º Responsável"-->
 
-    <div class="flow-xl">
+    <div class="flow-md">
         <div class="row">
             <div class="col-xs-4 col-lg-3">
                 <div class="form-group__container">

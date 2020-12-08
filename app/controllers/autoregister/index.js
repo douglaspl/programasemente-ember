@@ -29,7 +29,9 @@ export default Ember.Controller.extend({
         // that.transitionToForm(e);
         that.transitionToRoute('autoregister.form', e.get('id'));
       }).catch(function(error) {
-        if (error.errors) {
+    
+       // Se existe um erro qualificado
+        if (error.errors && error.errors[0].status != null) {
            
           button.innerHTML = 'Iniciar cadastro';
           // Pega alerta
@@ -73,7 +75,31 @@ export default Ember.Controller.extend({
             errorCompartiment.classList.add('alert--is-show', alertAnimation);
           }
 
+          // Se não existe um erro qualificado
+        } else if (error.errors[0].status == null) {
+          let errorMsg = 'Não conseguimos conexão com nossos servidores. Por favor, tente novamente em instantes.'
+               
+          // Pega alerta
+          const errorCompartiment = document.getElementById('codigo-error');
+          // Pega animação do alerta
+          const alertAnimation = errorCompartiment.dataset.animation;
+          // Pega container da mensagem a ser escrita
+          const msg = errorCompartiment.querySelector('[class*="__msg"]');
+          
+          // Injeta mensagem de erro.
+               msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+
+               button.innerHTML = 'Iniciar cadastro';
+              
+              
+
+               // Confere se o elemento já está aparecendo
+               if(!errorCompartiment.classList.contains('alert--is-show')) {
+                 // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+                 errorCompartiment.classList.add('alert--is-show', alertAnimation);
+               }
         }
+
 
       })
     },

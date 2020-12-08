@@ -64,6 +64,16 @@
     margin-right: $distance--xxs;
   }
 
+  &__aux-link {
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: $distance--xxs;
+
+    &:hover {
+     color: $leaf-40;
+    }
+
+  }
  
   &-group {
     $this: &;
