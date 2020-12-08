@@ -24,6 +24,8 @@
         user-select: none;
 
         &::after {
+            background-color: transparent;
+            color: $check-radio-checked-color;
             content: '\e905'; //Código do check
             font-family: 'icomoon';
             font-size: 1em;
@@ -42,17 +44,16 @@
         outline: $focus-indicator;
     }
 
-    &__input:checked ~ &__label {
+    // &__input:checked ~ &__label {
 
-        &::before {
-            background-color: $checkbox-checked-bg-color;
-        }
+    //     &::before {
+    //     }
 
-        &::after {
-            opacity: 1;
-        }
+    //     &::after {
+    //         opacity: 1;
+    //     }
 
-    }
+    // }
 
     // sanitizer
     &__label + &__input {
