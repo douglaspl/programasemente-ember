@@ -9,6 +9,14 @@
     }
 }
 
+@each $measure, $distance in $distances {
+    .flow-h-#{$measure} {
+        > * + * {
+            margin-left: $distance;
+        }
+    }
+}
+
 .two-col-wrap {
     display: flex;
     flex-direction: row;
