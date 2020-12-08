@@ -143,7 +143,7 @@ export default Ember.Controller.extend({
     const passAlert = document.getElementById('pass-error');
     const alertAnimation = passAlert.dataset.animation;
     const msg = passAlert.querySelector('[class*="__msg"]');
-    const errorMsg = 'As senhas digitadas não são iguais.';
+    const errorMsg = 'As senhas digitadas ainda não são iguais.';
     const inputsPass = document.querySelectorAll(".j-password");
 
     if ((p1.length > 0 && p2.length > 0) && (p1 === p2)) {
