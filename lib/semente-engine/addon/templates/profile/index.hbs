@@ -3,7 +3,7 @@
   <h2 class="col-xs-12 title-2">Meu Perfil</h2>
 
 
-    <div class="col-xs-12 col-sm-7 col-md-6 flow-lg">
+    <div class="col-xs-12 col-sm-7 col-md-5 flow-xl">
       <section class="flow-sm">
         <h3 class="title-3">Avatar</h3>
 
@@ -25,7 +25,7 @@
           <h3 class="title-3">Senha</h3><span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span>
         </header>
 
-        <form class="flex flex-col flow-sm" autocomplete="off">
+        <form class="flex flex-col flow-md" autocomplete="off">
           <div class="form-group">
             <label class="form-group__label" for="pass">Defina uma nova senha</label>
             <input class="form-group__input" type="password" id="pass" value="">
@@ -42,11 +42,11 @@
       </section>
     </div>
 
-    <div class="col-xs-12 col-sm-7 col-md-6 flow-md">
+    <div class="col-xs-12 col-sm-7 col-md-5 col-md-offset-1 flow-xl">
       <section class="flow-sm">
         <h3 class="title-3">Informações pessoais</h3>
 
-        <form class="flex flex-col flow-sm" autocomplete="off">
+        <form class="flex flex-col flow-md" autocomplete="off">
           <div class="form-group">
             <label class="form-group__label" for="email">E-mail</label>
             {{input class="form-group__input" type="email" id="email" value=pessoa.email}}
@@ -57,31 +57,22 @@
             {{input class="form-group__input" type="date" id="nascimento" value=pessoa.dataNascimento}}
           </div>
 
-          <div class="flex flex-row items-center flow-h-md">
-              <div class="form-group radio radio--sm">
-                <input  class="radio__input"
-                        checked={{if (equalstr pessoa.genero "feminino") "checked"}}
-                        id="gen_feminino"
-                        name="genero"
-                        type="radio">
+          <div class="form-group">
+            <span class="form-group__label">Gênero</span>
+            <div class="flex flex-row items-center flow-h-md">
+              <div class="radio radio--sm">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "feminino") "checked"}} id="gen_feminino" name="genero" type="radio">
                 <label class="radio__label" for="gen_feminino">feminino</label>
               </div>
-              <div class="form-group radio radio--sm">
-                <input  class="radio__input"
-                        checked={{if (equalstr pessoa.genero "masculino") "checked"}}
-                        id="gen_masculino"
-                        name="genero"
-                        type="radio">
+              <div class="radio radio--sm">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "masculino") "checked"}} id="gen_masculino" name="genero" type="radio">
                 <label class="radio__label" for="gen_masculino">Masculino</label>
               </div>
-              <div class="form-group radio radio--sm">
-                <input  class="radio__input"
-                        checked={{if (equalstr pessoa.genero "outro") "checked"}}
-                        id="gen_outro"
-                        name="genero"
-                        type="radio">
+              <div class="radio radio--sm">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "outro") "checked"}} id="gen_outro" name="genero" type="radio">
                 <label class="radio__label" for="gen_outro">Prefiro não informar</label>
               </div>
+            </div>
           </div>
         </form>
 
@@ -89,6 +80,10 @@
 
       <section class="flow-sm">
         <h3 class="title-3">Informações profissionais</h3>
+        <ul class="flow-sm">
+          <li>Escola: <span class="fw--4">{{pessoa.instituicao.name}}</span></li>
+          <li>Cidade: <span class="fw--4">{{pessoa.instituicao.cidade}} / {{pessoa.instituicao.uf}}</span></li>
+        </ul>
       </section>
     </div>
 
@@ -98,27 +93,25 @@
 {{!-- <h2>Nome:</h2>
 {{pessoa.name}} --}}
 
-
-
 {{!-- <button class="btn" onclick={{action 'togglePassModal'}}>Alterar senha</button> --}}
 
 {{!-- <h2>Email:</h2>
 {{pessoa.email}} --}}
 
-<h2>Gênero:</h2>
-{{pessoa.genero}}
+{{!-- <h2>Gênero:</h2>
+{{pessoa.genero}} --}}
 
 {{!-- <h2>Data de nascimento:</h2>
 {{dataNascimento}} --}}
 
-<h2>Escola:</h2>
-{{pessoa.instituicao.name}}
+{{!-- <h2>Escola:</h2>
+{{pessoa.instituicao.name}} --}}
 
-<h2>UF:</h2>
-{{pessoa.instituicao.uf}}
+{{!-- <h2>UF:</h2>
+{{pessoa.instituicao.uf}} --}}
 
-<h2>Cidade:</h2>
-{{pessoa.instituicao.cidade}}
+{{!-- <h2>Cidade:</h2>
+{{pessoa.instituicao.cidade}} --}}
 
 
 <!-- Modais -->

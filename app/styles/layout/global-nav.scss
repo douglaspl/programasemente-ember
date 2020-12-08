@@ -210,7 +210,8 @@
         position: absolute;
         right: 0;
         top: calc(100% + 1px);
-        min-width: $global-nav-submenu-width;
+        // min-width: $global-nav-submenu-width;
+        min-width: fit-content;
 
         @include media('<=sm') {
             display: none;
