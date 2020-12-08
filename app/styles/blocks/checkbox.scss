@@ -24,7 +24,6 @@
         user-select: none;
 
         &::after {
-            color: $checkbox-checked-color;
             content: '\e905'; //Código do check
             font-family: 'icomoon';
             font-size: 1em;
