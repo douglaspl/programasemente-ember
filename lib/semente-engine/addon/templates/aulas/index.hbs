@@ -188,15 +188,14 @@
       </form>
     </header>
 
-
     <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each aulasFiltradas as |aulaFiltrada|}}
           {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
-                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
+              {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
               {{/if}}
             {{/if}}
           {{/if}}
