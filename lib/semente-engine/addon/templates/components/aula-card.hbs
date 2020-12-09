@@ -2,8 +2,9 @@
 
   <div class="media media--card">
     <picture class="media__thumb">
-      <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
-      <h1>código do vimeo: {{vimeoCode}}</h1>
+      <img id="vimeo-{{thumb}}{{aula.id}}" src="" alt="{{ aula.titulo }}" />
+      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
+      <h1>código do vimeo: {{thumb}}</h1> --}}
     </picture>
 
     <div class="media__body flow-md">
