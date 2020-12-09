@@ -655,8 +655,8 @@ $callout-default-border: 2px solid $green-50;
 $callout-default-padding: $distance--sm;
 
 // CAPSULE
-$capsule-on-hover-bg-color: $green-10;
-$capsule-on-hover-color: $blue-navy-60;
+$capsule-on-hover-bg-color: $green-30;
+$capsule-on-hover-color: color-contrast($capsule-on-hover-bg-color, $white, $blue-navy-60);
 $capsule-on-hover-radius: $radius;
 
 // CLICKABLES
