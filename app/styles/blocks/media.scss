@@ -12,8 +12,8 @@
 
   &__thumb {
     border-radius: $radius--md;
+    height: $avatar--xl;
     object-fit: cover;
-    overflow: hidden;
     width: $avatar--xl;
   }
 

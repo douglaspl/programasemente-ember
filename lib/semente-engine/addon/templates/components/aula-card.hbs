@@ -1,7 +1,7 @@
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
   <div class="media media--card">
-    <picture class="media__thumb">
-      <img id="vimeo-{{vimeoCode}}{{aula.id}}" src="" alt="{{aula.titulo}}"/>
+    <picture>
+      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{aula.id}}" src="" alt="{{aula.titulo}}"/>
       {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}"> --}}
     </picture>
 

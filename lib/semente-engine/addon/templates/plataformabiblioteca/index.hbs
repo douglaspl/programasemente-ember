@@ -138,8 +138,8 @@
               {{#if (equalstr selectedTipo conteudo.tipo)}}
                 {{#if (equalstr selectedTema conteudo.tema.name)}}
                   <div class="media media--card">
-                    <picture class="media__thumb">
-                      <img id="vimeo-{{thumb}}{{aula.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
+                    <picture>
+                      <img class="media__thumb" id="vimeo-{{thumb}}{{aula.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
                       {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
             <h1>código do vimeo: {{thumb}}</h1> --}}
                     </picture>
