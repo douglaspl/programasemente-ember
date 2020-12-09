@@ -19,7 +19,7 @@
       </div>
       <span class="l-user-header__role title-aux">
         {{#if (equalstr pessoa.role 'aluno')}}
-          {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
+          {{selectedSegmento}} - {{selectedAno}}  
         {{else}}
           
           {{#if (equalstr toggleRole 'instrutor')}} 
