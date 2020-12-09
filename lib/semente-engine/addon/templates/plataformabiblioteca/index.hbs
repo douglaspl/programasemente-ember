@@ -1,49 +1,177 @@
-
-
-<div class="two-col-wrap">
-  {{#each tipos as |tipo|}}
-    <button class="btn btn--as-filter {{if (equalstr selectedTipo tipo) 'btn--is-active'}}" {{action 'refreshSelectedTipo' tipo}} type="button">
-      <span class="btn__label">{{tipo}}</span>
-    </button>
-  {{/each}}
-</div>
-
-<div>
-  <h2>BUSCA</h2>
-  {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }}
-</div>
-
-<div>
-  <h2>TEMA</h2>
-  <select name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-  <option selected="selected" value="">---</option>
-  {{#each temas as |tema|}}
-      <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
-  {{/each}}
-  </select>
-</div>
-
-<!--
-incluir checkboxes de público
-aluno,
-resp,
-professor
--->
-
-
-
-{{#each conteudos as |conteudo|}}
-  {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-    {{#if (equalstr selectedTipo conteudo.tipo)}}
-      {{#if (equalstr selectedTema conteudo.tema.name)}}
-        <label>Titulo: {{conteudo.titulo}} </label>
-        <label>Vimeo Code: {{conteudo.videoUrl}} </label>
-        <label>Tipo: {{conteudo.tipo}} </label>
-        <label>Tema: {{conteudo.tema.name}} </label>
-        <label>Público: {{conteudo.publico}}</label>
+<!-- Header geral -->
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
+  <div class="flex itens-start gap-lg">
+    <picture class="l-user-header__avatar avatar avatar--lg">
+      {{#if pessoa.uriAvatar}}
+        <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
+      {{else}}
+        <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
       {{/if}}
-    {{/if}}
-  {{/if}}
-{{/each}}
+    </picture>
+    <div class="flex-auto flow-xs">
+      <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
+        {{#if (equalstr pessoa.role 'aluno')}}
+          <button class="btn btn--link m-bottom--xxs m-top--auto">
+            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+          </button>
+        {{/if}}
+      </div>
+      <span class="l-user-header__role title-aux">
+        {{#if (equalstr pessoa.role 'aluno')}}
+          {{selectedSegmento}} - {{selectedAno}}
+        {{else}}
+
+          {{#if (equalstr toggleRole 'instrutor')}}
+            Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
+            {{#if (isbigger segmentos.length "1")}}
+              dos segmentos
+               {{#each segmentos as |seg index|}}
+                  <span class="fs-i">{{seg}}</span>
+                   {{#if (equalstr index (sub segmentos.length 2))}} e
+                   {{else}}
+                    {{#if (equalstr index (sub segmentos.length 1))}}
+                    {{else}},
+                   {{/if}}
+                   {{/if}}
+               {{/each}}
+             {{else}}
+              do
+              {{#each segmentos as |seg|}}
+                <span class="fs-i">{{seg}}</span>
+               {{/each}}
+            {{/if}}
+
+          {{else}}
+            {{toggleRole}}
+          {{/if}}
+
+        {{/if}}
+      </span>
+
+      <!-- veta quem não é prof -->
+      {{#if (equalstr pessoa.role 'instrutor')}}
+        <!-- veta quem não tem filho -->
+        {{#if pessoa.dependentes}}
+          <!-- alterna entre perfis -->
+          {{#if (equalstr toggleRole 'instrutor')}}
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
+              <span class="btn__label">Visualizar como responsável</span>
+            </button>
+          {{else}}
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
+              <span class="btn__label">Visualizar como professor</span>
+            </button>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+
+      <nav>
+        <ul class="tabs tabs--full-background">
+          <li>
+            <button class="tabs__tab {{if (equalstr thisRoute 'aulas') 'tabs__tab--is-active'}}" type="button" {{action 'goToAulas' on="click"}}>
+              <span>Aulas</span>
+            </button>
+          </li>
+          <li>
+            <button class="tabs__tab {{if (equalstr thisRoute 'plataformabiblioteca') 'tabs__tab--is-active'}}" type="button" {{action 'goToBiblioteca' on="click"}}>
+              <span>Biblioteca</span>
+            </button>
+          </li>
+
+          {{#if Ano.urlLivro}}
+            <li>
+              <a class="tabs__tab" href="{{Ano.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
+                <span>Livro (PDF) {{selectedAno}}</span>
+              </a>
+            </li>
+          {{/if}}
+
+        </ul>
+
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="flow-xl">
+  <div class="l-dots-between">
+    <header class="l-dots-between__side">
+      <form autocomplete="off" class="flex flex-col flow-md" >
+        <div class="two-col-wrap">
+          {{#each tipos as |tipo|}}
+            <button class="btn btn--as-filter {{if (equalstr selectedTipo tipo) 'btn--is-active'}}" {{action 'refreshSelectedTipo' tipo}} type="button">
+              <span class="btn__label">{{tipo}}</span>
+            </button>
+          {{/each}}
+        </div>
+        <div class="form-group">
+          <label class="form-group__label" for="search">Busca</label>
+          {{input class="form-group__input" id="search" type="text" value=search }}
+        </div>
+        <div class="form-group">
+          <label class="form-group__label" for="tema">Tema</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input" name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+              <option selected="selected" value="">---</option>
+              {{#each temas as |tema|}}
+                  <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <!--
+        incluir checkboxes de público
+        aluno,
+        resp,
+        professor
+        -->
+      </form>
+    </header>
+
+    <section class="l-dots-between__content">
+      <h3 class="sr-only">Lista de conteúdos</h3>
+      <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
+        {{#each conteudos as |conteudo|}}
+          <li>
+            {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+              {{#if (equalstr selectedTipo conteudo.tipo)}}
+                {{#if (equalstr selectedTema conteudo.tema.name)}}
+                  <div class="media media--card">
+                    <picture class="media__thumb">
+                      <img id="vimeo-{{thumb}}{{aula.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
+                      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
+            <h1>código do vimeo: {{thumb}}</h1> --}}
+                    </picture>
+
+                    <div class="media__body flow-md">
+                      <div>
+                        <span class="title-aux">{{conteudo.tema.name}}</span>
+                        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
+                      </div>
+
+                      <!-- mores contents -->
+                    </div>
+
+                  </div>
+                  {{!-- <label>Titulo: {{conteudo.titulo}} </label>
+                  <label>Vimeo Code: {{conteudo.videoUrl}} </label>
+                  <label>Tipo: {{conteudo.tipo}} </label>
+                  <label>Público: {{conteudo.publico}}</label> --}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
 
 
