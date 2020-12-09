@@ -283,6 +283,8 @@
 //    #HAS CAPSULE ON HOVER
 //------------------------------------
 @mixin has-capsule-on-hover {
+    $darker-than-bg: saturate(darken($capsule-on-hover-bg-color, .7), .5);
+
     overflow: visible;
     position: relative;
 
@@ -294,7 +296,16 @@
     &::before {
         background-color: $capsule-on-hover-bg-color;
         border-radius: $capsule-on-hover-radius;
-        box-shadow: $shadow-5;
+        box-shadow: 10px 0 20px rgba($darker-than-bg, .10),
+                    6px 0 6px rgba($darker-than-bg, .0716),
+                    2px 0 6px rgba($darker-than-bg, .0715),
+                    -10px 0 20px rgba($darker-than-bg, .10),
+                    -6px 0 6px rgba($darker-than-bg, .0716),
+                    -2px 0 6px rgba($darker-than-bg, .0715),
+                    0 10px 20px rgba($darker-than-bg, .10),
+                    0 6px 6px rgba($darker-than-bg, .0716),
+                    0 19px 38px rgba($darker-than-bg, .13),
+                    0 15px 12px rgba($darker-than-bg, .072);
         content: '';
         height: calc(100% + (#{$distance--xs} * 2));
         left: 50%;
@@ -311,6 +322,7 @@
 
     &:hover {
         color: $capsule-on-hover-color;
+        text-shadow: 0 1px 3px $darker-than-bg;
 
         &::before {
             opacity: 1;

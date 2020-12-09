@@ -23,6 +23,13 @@
   </select>
 </div>
 
+<!--
+incluir checkboxes de público
+aluno,
+resp,
+professor
+-->
+
 
 
 {{#each conteudos as |conteudo|}}
@@ -32,6 +39,8 @@
         <label>Titulo: {{conteudo.titulo}} </label>
         <label>Vimeo Code: {{conteudo.videoUrl}} </label>
         <label>Tipo: {{conteudo.tipo}} </label>
+        <label>Tema: {{conteudo.tema.name}} </label>
+        <label>Público: {{conteudo.publico}}</label>
       {{/if}}
     {{/if}}
   {{/if}}
