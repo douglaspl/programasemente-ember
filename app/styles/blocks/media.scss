@@ -7,25 +7,42 @@
   gap: $distance--md;
 
   // Elements
-  &__title {
+  // &__title {
+  // }
+
+  &__picture {
+    flex: 0 0 auto;
   }
 
   &__thumb {
+    $size: $avatar--md;
+
     border-radius: $radius--md;
-    height: $avatar--xl;
+    height: $size;
+    max-width: 100%;
     object-fit: cover;
-    width: $avatar--xl;
+    width: $size;
+
+    @include media('>lg') {
+      $size: $avatar--xl;
+
+      height: $size;
+      width: $size;
+    }
+
   }
 
   &__body {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
 
   // Modifiers
   &--card {
     border-radius: $radius--md;
     box-shadow: $shadow-1, $shadow-3;
+    min-height: 100%;
     padding: $distance--sm;
 
     &:focus-within {
