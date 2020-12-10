@@ -14,7 +14,6 @@
         }
 
         &::after {
-            background-color: $white;
             content: '';
             height: $input-radio-selected-size;
             left: calc((#{$input-check-radio-size} - #{$input-radio-selected-size}) / 2);
@@ -23,27 +22,22 @@
 
     }
 
-    &__input:checked + &__label {
-        &::before {
-            background-color: $green-20;
-        }
-
-        &::after {
-            opacity: 1;
-
-        }
-    }
-
     &--sm {
         #{$this}__label {
-            padding-left: $distance--lg;
+            padding-left: calc(#{$input-check-radio-size--sm} + #{$distance--xs});
 
             &::before {
-                height: $distance--sm * .75;
-                left: $distance--xs;
-                width: $distance--sm * .75;
+                height: $input-check-radio-size--sm;
+                width: $input-check-radio-size--sm;
             }
 
+            &::after {
+                $after-size: $input-check-radio-size--sm / 2;
+
+                height: $after-size;
+                left: calc((#{$input-check-radio-size--sm} - #{$after-size}) / 2);
+                width: $after-size;
+            }
         }
     }
 

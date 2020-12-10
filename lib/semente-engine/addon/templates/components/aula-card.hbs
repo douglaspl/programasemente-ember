@@ -1,8 +1,8 @@
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
-
   <div class="media media--card">
-    <picture class="media__thumb">
-      <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
+    <picture>
+      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{aula.id}}" src="" alt="{{aula.titulo}}"/>
+      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}"> --}}
     </picture>
 
     <div class="media__body flow-md">
@@ -32,7 +32,7 @@
         </svg>
 
         {{#if (equalstr situacao "Aplicada")}}
-          <span>Aplicada em: {{UltimaAplicacao.dataAplicacaoFormat}}</span>
+          <span>Aplicada em: <span class="fw--4">{{UltimaAplicacao.dataAplicacaoFormat}}</span></span>
         {{else}}
           <span>{{situacao}}</span>
         {{/if}}

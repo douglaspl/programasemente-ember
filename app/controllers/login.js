@@ -74,6 +74,14 @@ export default Ember.Controller.extend({
       if (document.getElementById('remember').checked) life = 1;
       let username = document.getElementById('identification').value;
       let password = trim(document.getElementById('password').value);
+      if (this.get('session.isAuthenticated'))
+      {
+        localStorage.clear();
+        this.get('session').invalidate();
+        return;
+      }
+
+
       this.get('session').authenticate('authenticator:authold', username, password, life).then(() => {}).catch((reason) => {
         if (reason.error_description) {
           this.set('errorMessage', reason.error_description);

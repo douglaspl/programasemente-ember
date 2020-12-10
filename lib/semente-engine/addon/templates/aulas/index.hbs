@@ -19,9 +19,33 @@
       </div>
       <span class="l-user-header__role title-aux">
         {{#if (equalstr pessoa.role 'aluno')}}
-          {{plataformaAno.segmento.titulo}} - {{plataformaAno.name}}
+          {{selectedSegmento}} - {{selectedAno}}
         {{else}}
-          {{toggleRole}}
+
+          {{#if (equalstr toggleRole 'instrutor')}}
+            Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
+            {{#if (isbigger segmentos.length "1")}}
+              dos segmentos
+               {{#each segmentos as |seg index|}}
+                  <span class="fs-i">{{seg}}</span>
+                   {{#if (equalstr index (sub segmentos.length 2))}} e
+                   {{else}}
+                    {{#if (equalstr index (sub segmentos.length 1))}}
+                    {{else}},
+                   {{/if}}
+                   {{/if}}
+               {{/each}}
+             {{else}}
+              do
+              {{#each segmentos as |seg|}}
+                <span class="fs-i">{{seg}}</span>
+               {{/each}}
+            {{/if}}
+
+          {{else}}
+            {{toggleRole}}
+          {{/if}}
+
         {{/if}}
       </span>
 
@@ -94,7 +118,7 @@
             </li>
           {{/each}}
 
-          <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio --> 
+          <!-- Só aparece se possui filho de (Infantil ou Fund I) e (Fund II ou Médio) se um dos dependentes tiver no fund 2 ou medio -->
           {{#if faltaAlguem}}
             <li class="m-left--auto">
               <button class="btn btn--text tabs__not-tab">Sentindo falta de alguém?</button>
@@ -106,7 +130,7 @@
     </nav>
   {{/if}}
 
-  <section class="l-dots-between">
+  <div class="l-dots-between">
     <header class="l-dots-between__side">
       <form autocomplete="off" class="flex flex-col flow-md" >
         <!--
@@ -120,7 +144,6 @@
           Fim do exemplo
           ==============
         -->
-        <!-- ISSO É SÓ UM EXEMPLO DE BOTÕES DE TIPO -->
         {{#if (equalstr toggleRole 'instrutor')}}
           <div class="two-col-wrap">
             {{#each pessoa.plataformaAnos as |plat_ano|}}
@@ -138,7 +161,7 @@
           <div class="form-group__wrapper form-group__wrapper--search">
             <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}} {{action 'atualizaAulas' on="input"}}>
           </div>
-          <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar</a>
+          <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a>
         </div>
 
         <div class="form-group">
@@ -165,15 +188,14 @@
       </form>
     </header>
 
-
     <section class="l-dots-between__content">
       <h3 class="sr-only">Lista de aulas</h3>
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each aulasFiltradas as |aulaFiltrada|}}
           {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-              {{#if (or (containStr subStr = search mainStr = aulaFiltrada.titulo) (equalstr search ""))}}
-                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=leitor selectedSituacao=selectedSituacao}}
+              {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
               {{/if}}
             {{/if}}
           {{/if}}
@@ -181,6 +203,6 @@
       </ul>
     </section>
 
-  </section>
+  </div>
 
 </div>

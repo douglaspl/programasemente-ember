@@ -430,6 +430,7 @@ $icon-play: "\e910";
 $input-height: 2.25rem;
 $input-radio-selected-size: .6em;
 
+$input-check-radio-size--sm: 1.5rem;
 $input-check-radio-size: 1.75rem;
 $input-check-radio-distance-between: $distance--lg;
 $input-check-radio-label-margin: $input-check-radio-size + $distance--xs;
@@ -546,7 +547,7 @@ $avatar-radius: 50%;
 //    #BUTTONS
 //------------------------------------
 $button-padding: 1em 1.5em .95em;
-$button-padding--xxs: .75em 1em .85em;
+$button-padding--xxs: .75em 1em;
 $button-radius: $radius--md;
 $button-radius--md: $radius--md;
 $button-radius--lg: $radius--lg;
@@ -654,8 +655,8 @@ $callout-default-border: 2px solid $green-50;
 $callout-default-padding: $distance--sm;
 
 // CAPSULE
-$capsule-on-hover-bg-color: $green-10;
-$capsule-on-hover-color: $blue-navy-60;
+$capsule-on-hover-bg-color: $green-30;
+$capsule-on-hover-color: color-contrast($capsule-on-hover-bg-color, $white, $blue-navy-60);
 $capsule-on-hover-radius: $radius;
 
 // CLICKABLES
@@ -664,9 +665,11 @@ $clickables-bg-color-hover: $leaf-50;
 $clickables-color: color-contrast($clickables-bg-color, $white, $blue-navy-60);
 $clickables-color-hover: $clickables-color;
 
-// CHECKBOX
+// CHECKBOX & RADIO
 $checkbox-checked-bg-color: $clickables-bg-color;
-$checkbox-checked-color: $clickables-color;
+$check-radio-bg-color: $form-bg-color;
+$check-radio-checked-color: $green-20;
+$check-radio-checked-bg-color: $blue-navy-60;
 
 // STRIPE
 $stripe-bg-color: $gray-0;
