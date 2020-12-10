@@ -71,6 +71,8 @@ $i: 5;
 //------------------------------------
 //    #RESPONSIVE VISIBILITY
 //------------------------------------
+.d--none { display: none; }
+
 .d-xs--none,
 .hide-on--xs { @include media('<=sm') { display: none; } }
 
