@@ -14,14 +14,45 @@
         <h3 class="title-3">Avatar</h3>
 
         <div class="flex flex-row items-start">
-          <picture class="avatar avatar--xl avatar--is-square">
+          <div class="form-group">
+            {{!-- <label class="form-group__label" for="foto">Sua foto</label> --}}
+
+            <div id="foto" class="image-change">
+                <div class="avatar avatar--lg">
+                    <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
+                        style="background-image: url('{{uri_avatar}}');">
+                    </div>
+                </div>
+
+                <label class="image-change__cta btn">Alterar imagem
+                    <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar"
+                        style="display: none;" name="file">
+                </label>
+                
+                {{#if selected_file_avatar}}
+                  <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control"
+                    readonly><strong>{{selected_file_avatar}}</strong></span>
+                {{/if}}
+
+                {{#if avatar_loading}}
+                  <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i
+                      class="fa fa-spinner fa-pulse fa-2x"></i></button>
+                {{else if selected_file_avatar}}
+                  <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar"
+                    {{action 'sendAvatar'}}>Salvar</button>
+                {{else}}
+                  {{!-- <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button> --}}
+                {{/if}}
+            </div>
+          </div>
+          {{!-- <picture class="avatar avatar--xl avatar--is-square">
             {{#if pessoa.uriAvatar}}
               <img class="avatar__img" src={{uri_avatar}} alt="{{pessoa.name}}">
             {{else}}
               <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
             {{/if}}
           </picture>
-          <button class="btn btn--ghost btn--xxs m-left--sm" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button>
+          <button class="btn btn--ghost btn--xxs m-left--sm" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button> --}}
         </div>
 
       </section>
@@ -122,7 +153,7 @@
 
 <!-- Modais -->
 <!-- Modal de mudar a imagem do usuário -->
-<aside id="change_image_modal" class="modal">
+{{!-- <aside id="change_image_modal" class="modal">
 
   <div class="modal__content modal__content--md">
 
@@ -175,7 +206,7 @@
   <div class="modal__overlayer"></div>
   <div style="display: none;">{{avatar}}</div>
 
-</aside>
+</aside> --}}
 
 <!-- Modal de mudar a senha do usuário -->
 <aside id="change_pass_modal" class="modal">
