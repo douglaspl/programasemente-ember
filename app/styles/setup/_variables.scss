@@ -61,7 +61,7 @@ $sanitize: false;
 // scss-lint:disable ZeroUnit
 // Considerando 16px como base
 $breakpoints: (
-    xs: 0, // Extra small screen / phone
+    xs: 0px, // Extra small screen / phone
     sm: 600px, //544px  // Small screen / phone
     md: 900px, //768px  // Medium screen / tablet
     lg: 1200px, //992px  // Large screen / desktop
