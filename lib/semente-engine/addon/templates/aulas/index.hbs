@@ -201,6 +201,12 @@
           {{/if}}
         {{/each}}
       </ul>
+     
+     
+     
+      {{#if (equalstr quantityCards "0")}}
+        <p class="fs--lg ta-c bg-blue-navy-0 p--sm animated flipInX">Nenhuma aula corresponde aos filtros selecionados</p>
+      {{/if}}
     </section>
 
   </div>
