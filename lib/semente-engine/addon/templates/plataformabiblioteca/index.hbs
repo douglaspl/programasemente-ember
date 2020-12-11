@@ -142,33 +142,7 @@
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{#if (equalstr selectedTipo conteudo.tipo)}}
-              {{#if (equalstr selectedTema conteudo.tema.name)}}
-                <li>
-                  <div class="media media--card">
-                    <picture class="media__picture">
-                      <img class="media__thumb" id="{{conteudo.titulo}}" src="https://place-puppy.com/300x300" alt="{{conteudo.titulo}}" />
-                      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
-            <h1>código do vimeo: {{thumb}}</h1> --}}
-                    </picture>
-
-                    <div class="media__body flow-md">
-                      <div>
-                        <span class="title-aux">{{conteudo.tema.name}}</span>
-                        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
-                      </div>
-
-                      <!-- mores contents -->
-                    </div>
-
-                  </div>
-                  {{!-- <label>Titulo: {{conteudo.titulo}} </label>
-                  <label>Vimeo Code: {{conteudo.videoUrl}} </label>
-                  <label>Tipo: {{conteudo.tipo}} </label>
-                  <label>Público: {{conteudo.publico}}</label> --}}
-                </li>
-              {{/if}}
-            {{/if}}
+            {{plataforma-biblioteca-card conteudo=conteudo selectedTipo=selectedTipo selectedTema=selectedTema}}
           {{/if}}
         {{/each}}
       </ul>
