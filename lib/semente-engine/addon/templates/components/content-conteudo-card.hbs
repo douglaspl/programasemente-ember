@@ -1,0 +1,17 @@
+<div class="media media--card">
+  <picture class="media__thumb">
+    {{#if (equalstr conteudo.tipo 'Video')}}
+      <img id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
+    {{else}}
+      <img id="vimeo-{{conteudo.path}}{{conteudo.id}}" src="{{fileThumb}}" alt="{{conteudo.titulo}}"/>
+    {{/if}}
+  </picture>
+
+  <div class="media__body flow-md">
+    <div>
+      <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
+    </div>
+    <h2>3 marcações</h2>
+    {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
+  </div>
+</div>

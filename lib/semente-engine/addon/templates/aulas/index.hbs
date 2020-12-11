@@ -49,11 +49,8 @@
         {{/if}}
       </span>
 
-      <!-- veta quem não é prof -->
       {{#if (equalstr pessoa.role 'instrutor')}}
-        <!-- veta quem não tem filho -->
         {{#if pessoa.dependentes}}
-          <!-- alterna entre perfis -->
           {{#if (equalstr toggleRole 'instrutor')}}
             <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
               <span class="btn__label">Visualizar como responsável</span>
