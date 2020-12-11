@@ -99,7 +99,7 @@
 
     @include media('>md') {
       margin-top: 33vh;
-      max-width: 960px;
+      max-width: 50vw;
     }
 
     &--start-unit {
@@ -219,7 +219,7 @@
       padding: 1rem;
       position: fixed;
       right: $distance--xl;
-      
+
       li + li {
         border-top: 1px solid transparentize($color: $white, $amount: .85);
         padding-top: $distance--xs;
