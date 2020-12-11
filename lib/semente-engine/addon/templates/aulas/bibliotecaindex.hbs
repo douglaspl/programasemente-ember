@@ -94,7 +94,7 @@
   </div>
 </header> --}}
 
-{{header-geral  
+{{header-geral
       pessoa=pessoa
       toggleRole=this.parentController.toggleRole
       selectedSegmento=selectedSegmento
@@ -133,7 +133,7 @@
         </div>
 
         <div class="flex flex-col flow-xs">
-          <h3 class="title-aux">Conteúdo de:</h3>
+          <h3 class="title-aux">Público</h3>
           <div class="checkbox">
             <input class="checkbox__input" id="alunos-content" type="checkbox">
             <label class="checkbox__label" for="alunos-content">Alunos</label>
@@ -155,15 +155,15 @@
       <h3 class="sr-only">Lista de conteúdos</h3>
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
-          <li>
-            {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-              {{#if (equalstr selectedTipo conteudo.tipo)}}
-                {{#if (equalstr selectedTema conteudo.tema.name)}}
+          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+            {{#if (equalstr selectedTipo conteudo.tipo)}}
+              {{#if (equalstr selectedTema conteudo.tema.name)}}
+                <li>
                   <div class="media media--card">
                     <picture>
-                      <img class="media__thumb" id="vimeo-{{thumb}}{{aula.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
-                      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
-            <h1>código do vimeo: {{thumb}}</h1> --}}
+                      <img class="media__thumb" id="vimeo-{{thumb}}{{aula.id}}"
+                        src="https://place-puppy.com/300x300"
+                        alt="{{ conteudo.titulo }}" />
                     </picture>
 
                     <div class="media__body flow-md">
@@ -180,10 +180,10 @@
                   <label>Vimeo Code: {{conteudo.videoUrl}} </label>
                   <label>Tipo: {{conteudo.tipo}} </label>
                   <label>Público: {{conteudo.publico}}</label> --}}
-                {{/if}}
+                </li>
               {{/if}}
             {{/if}}
-          </li>
+          {{/if}}
         {{/each}}
       </ul>
     </section>
