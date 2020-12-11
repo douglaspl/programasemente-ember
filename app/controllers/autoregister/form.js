@@ -115,7 +115,9 @@ export default Ember.Controller.extend({
 
           }
         } else if (errorStatus === "500") {
-          errorMsg = 'Ocorreu um erro no sistema, mas não se preocupe, nossos desenvolvedores já foram alertados.'
+          errorMsg = 'Ocorreu um erro no sistema, mas não se preocupe! Nossos desenvolvedores já foram alertados.'
+        } else {
+          errorMsg = 'Ops! Parece que não conseguimos conexão com nossos servidores. Por favor, tente novamente em instantes.'
         }
 
         // Injeta mensagem de erro.
@@ -166,6 +168,8 @@ export default Ember.Controller.extend({
   },
 
   createUser: function () {
+    let button = document.getElementById('submit');
+    button.innerHTML = "Aguarde..."
     let password = document.getElementById('senha').value;
     let login = document.getElementById('login').value;
     let sistemas = this.get('store').peekAll('sistema');
@@ -186,7 +190,35 @@ export default Ember.Controller.extend({
       shouldReviewProfile: true,
       name: login
     }).catch(function (error) {
-      that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
+       // Se existe um erro qualificado
+       if (error.errors) {
+           
+        button.innerHTML = 'Avançar';
+        // Pega alerta
+        const errorCompartiment = document.getElementById('codigo-error');
+        // Pega animação do alerta
+        const alertAnimation = errorCompartiment.dataset.animation;
+        // Pega container da mensagem a ser escrita
+        const msg = errorCompartiment.querySelector('[class*="__msg"]');
+        // Pega a identificação do erro
+        const errorStatus =  error.errors[0].status;
+       
+        // Define mensagem de erro, caso seja o erro XYZ
+        let errorMsg = "Ops! Tivemos um problema para registrar seu usuário. Tente novamente em instantes."
+       
+        // Injeta mensagem de erro.
+        msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+
+        // Confere se o elemento já está aparecendo
+        if(!errorCompartiment.classList.contains('alert--is-show')) {
+          // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+          errorCompartiment.classList.add('alert--is-show', alertAnimation);
+        }
+
+
+        } else {
+        that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
+      }
     })
   }
 },
