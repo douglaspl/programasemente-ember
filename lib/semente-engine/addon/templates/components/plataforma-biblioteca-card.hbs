@@ -1,22 +1,18 @@
-{{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
-  <div class="media media--card">
-    <picture>
-      <img class="media__thumb" id="vimeo-{{thumb}}{{conteudo.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
-      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}"> --}}
-    </picture>
-
-    <div class="media__body flow-md">
-      <div>
-        <span class="title-aux">{{conteudo.tema.name}}</span>
-        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
-      </div>
-
-      {{!-- <label>Titulo: {{conteudo.titulo}} </label>
-      <label>Vimeo Code: {{conteudo.videoUrl}} </label>
-      <label>Tipo: {{conteudo.tipo}} </label>
-      <label>Público: {{conteudo.publico}}</label> --}}
+<div class="media media--card">
+  <picture>
+    {{#if (equalstr conteudo.tipo 'Video')}}
+      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
+    {{else}}
+      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{conteudo.titulo}}"> --}}
+      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}">
+      {{!-- <object id="showfiles" data="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" type='application/pdf'></object> --}}
+    {{/if}}
+  </picture>
+  <div class="media__body flow-md">
+    <div>
+      <span class="title-aux">{{conteudo.tema.name}}</span>
+      <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
-
   </div>
+</div>
   
-{{/if}}
