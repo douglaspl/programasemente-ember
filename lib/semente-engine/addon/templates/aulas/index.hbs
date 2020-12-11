@@ -50,7 +50,7 @@
           Exemplo de botão para tela de acompanhamento, não ficará aqui no hbs de aulas
           ==============
         -->
-        <button class="btn btn--ghost">Download como Excel</button>
+        {{!-- <button class="btn btn--ghost">Download como Excel</button> --}}
         <!--
           ==============
           Fim do exemplo
@@ -71,7 +71,7 @@
         <div class="form-group">
           <label class="form-group__label">Busca</label>
           <div class="form-group__wrapper form-group__wrapper--search">
-            <input class="form-group__input" type="text" id="aulapesquisa" placeholder="Pesquisar Aula" value={{search}}
+            <input class="form-group__input" type="text" id="aulapesquisa" value={{search}}
               {{action 'atualizaAulas' on="input"}}>
           </div>
           <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a>
@@ -103,7 +103,7 @@
     </header>
 
     <section class="l-dots-between__content flow-md">
-      <h3 class="title-4">{{selectedAno}}</h3>
+      <h3 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}} aulas)</span></h3>
      
         <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
           {{#each aulasFiltradas as |aulaFiltrada|}}

@@ -37,7 +37,7 @@
         </div>
 
         <div class="flex flex-col flow-xs">
-          <h3 class="title-aux">Conteúdo de:</h3>
+          <h3 class="title-aux">Público</h3>
           <div class="checkbox">
             <input class="checkbox__input" id="alunos-content" type="checkbox">
             <label class="checkbox__label" for="alunos-content">Alunos</label>
@@ -60,7 +60,37 @@
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+<<<<<<< HEAD
             {{plataforma-biblioteca-card conteudo=conteudo}}
+=======
+            {{#if (equalstr selectedTipo conteudo.tipo)}}
+              {{#if (equalstr selectedTema conteudo.tema.name)}}
+                <li>
+                  <div class="media media--card">
+                    <picture>
+                      <img class="media__thumb" id="vimeo-{{thumb}}{{aula.id}}"
+                        src="https://place-puppy.com/300x300"
+                        alt="{{ conteudo.titulo }}" />
+                    </picture>
+
+                    <div class="media__body flow-md">
+                      <div>
+                        <span class="title-aux">{{conteudo.tema.name}}</span>
+                        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
+                      </div>
+
+                      <!-- mores contents -->
+                    </div>
+
+                  </div>
+                  {{!-- <label>Titulo: {{conteudo.titulo}} </label>
+                  <label>Vimeo Code: {{conteudo.videoUrl}} </label>
+                  <label>Tipo: {{conteudo.tipo}} </label>
+                  <label>Público: {{conteudo.publico}}</label> --}}
+                </li>
+              {{/if}}
+            {{/if}}
+>>>>>>> 9844666b60d19426beb0828a453da938f7581a75
           {{/if}}
         {{/each}}
       </ul>
