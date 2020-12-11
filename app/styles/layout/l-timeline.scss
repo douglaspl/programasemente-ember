@@ -1,7 +1,7 @@
 .l-timeline {
-    
+
     // @include full-width-on-main;
-    
+
     @include full-width-container;
 
     background-color: $green-50;
@@ -12,32 +12,28 @@
     display: flex;
     justify-content: center;
     //max-width: none;
-    padding-bottom: 0;
-    padding-top: 0;
-
-    // @include media('>lg', '<xl') {
-    //   padding-left: 30vw;
-    // }
+    padding: 0;
 
     >[class*='__section'] {
       margin-bottom: 0;
     }
 
     @include media('>sm') {
-            
+        padding-left: 10vw;
+        margin-bottom: -$main-bottom-padding--sm;
         margin-top: -$main-top-padding--sm;
       }
-    
+
       @include media('>md') {
-            
+
+        margin-bottom: -$main-bottom-padding--md;
         margin-top: -$main-top-padding--md;
       }
-    
+
       @include media('>lg') {
-            
+
+        margin-bottom: -$main-bottom-padding--lg;
         margin-top: -$main-top-padding--lg;
       }
-    
-      
-    
+
   }
