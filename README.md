@@ -20,9 +20,9 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* In windows, config your c:/windows/system32/drivers/etc/hosts file adding the following line: 127.0.0.1 porto.com
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+* Visit your app at [http://porto.com:4200](http://porto.com:4200).
 
 ### Code Generators
 

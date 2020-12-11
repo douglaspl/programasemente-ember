@@ -49,7 +49,22 @@
         {{/if}}
       </span>
 
- 
+      <!-- veta quem não é prof -->
+      {{#if (equalstr pessoa.role 'instrutor')}}
+        <!-- veta quem não tem filho -->
+        {{#if pessoa.dependentes}}
+          <!-- alterna entre perfis -->
+          {{#if (equalstr toggleRole 'instrutor')}}
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
+              <span class="btn__label">Visualizar como responsável</span>
+            </button>
+          {{else}}
+            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
+              <span class="btn__label">Visualizar como professor</span>
+            </button>
+          {{/if}}
+        {{/if}}
+      {{/if}}
 
       <nav>
         <ul class="tabs tabs--full-background">
@@ -81,14 +96,13 @@
 
 {{header-geral  
       pessoa=pessoa
-      toggleRole=toggleRole
+      toggleRole=this.parentController.toggleRole
       selectedSegmento=selectedSegmento
       selectedAno=selectedAno
       segmentos=segmentos
       thisRoute=thisRoute
       Ano=Ano
       togglerole=(action 'toggleRole')
-      transitToBiblioteca=(action 'goToBiblioteca')
       }}
 
 <div class="flow-xl">
@@ -110,7 +124,7 @@
           <label class="form-group__label" for="tema">Tema</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input" name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-              <option selected="selected" value="" disabled>---</option>
+              <option selected="selected" value="">---</option>
               {{#each temas as |tema|}}
                   <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
               {{/each}}
@@ -119,7 +133,7 @@
         </div>
 
         <div class="flex flex-col flow-xs">
-          <h3 class="title-aux">Público</h3>
+          <h3 class="title-aux">Conteúdo de:</h3>
           <div class="checkbox">
             <input class="checkbox__input" id="alunos-content" type="checkbox">
             <label class="checkbox__label" for="alunos-content">Alunos</label>
@@ -141,9 +155,35 @@
       <h3 class="sr-only">Lista de conteúdos</h3>
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
-          {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{plataforma-biblioteca-card conteudo=conteudo selectedTipo=selectedTipo selectedTema=selectedTema}}
-          {{/if}}
+          <li>
+            {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
+              {{#if (equalstr selectedTipo conteudo.tipo)}}
+                {{#if (equalstr selectedTema conteudo.tema.name)}}
+                  <div class="media media--card">
+                    <picture>
+                      <img class="media__thumb" id="vimeo-{{thumb}}{{aula.id}}" src="http://ts.vimeo.com.s3.amazonaws.com/235/662/{{conteudo.videoUrl}}_200.jpg" alt="{{ conteudo.titulo }}" />
+                      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{aula.titulo}}">
+            <h1>código do vimeo: {{thumb}}</h1> --}}
+                    </picture>
+
+                    <div class="media__body flow-md">
+                      <div>
+                        <span class="title-aux">{{conteudo.tema.name}}</span>
+                        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
+                      </div>
+
+                      <!-- mores contents -->
+                    </div>
+
+                  </div>
+                  {{!-- <label>Titulo: {{conteudo.titulo}} </label>
+                  <label>Vimeo Code: {{conteudo.videoUrl}} </label>
+                  <label>Tipo: {{conteudo.tipo}} </label>
+                  <label>Público: {{conteudo.publico}}</label> --}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          </li>
         {{/each}}
       </ul>
     </section>

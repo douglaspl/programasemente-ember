@@ -42,6 +42,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
         if (this.readyState === this.DONE) {
           if (this.status === 200 || this.status === 204) {
             let data = this.response.data;
+
+            if (data.length === 0) {
+              localStorage.clear();
+              window.location = '/login';
+            }
+
             let included = this.response.included;
             if (!data) {
               let temp = JSON.parse(this.response);
@@ -55,7 +61,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
             let log = JSON.parse(logStorage);
             if (logStorage) {
               //console.log(log.role);
-              // ------------------------------------ institution param 
+              // ------------------------------------ institution param
               let institutions = included.filter(function (i) {
                 return i.id === log.instituicao_id;
               });

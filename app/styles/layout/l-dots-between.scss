@@ -1,13 +1,19 @@
 .l-dots-between {
   $this: &;
 
-  $l-dots-between-gap: $distance--lg;
+  $l-dots-between-gap: $distance--sm;
+  $l-dots-between-gap--lg: $distance--lg;
   $l-dots-between-dot-color: $green-20;
   $l-dots-between-dot-size: .14rem;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: $l-dots-between-gap;
+
+  @include media('>md') {
+    flex-direction: row;
+    gap: $l-dots-between-gap--lg;
+  }
 
   &::before {
     background-image: radial-gradient($l-dots-between-dot-color $l-dots-between-dot-size, transparent $l-dots-between-dot-size);
@@ -15,13 +21,13 @@
     background-repeat: repeat-y;
     background-size: 1rem 1rem;
     content: '';
+    flex: 0 0 auto;
     order: 1;
     width: $distance--md;
   }
 
   &__side {
     flex: 0 0 20%;
-    max-width: 20%;
     order: 0;
   }
 
