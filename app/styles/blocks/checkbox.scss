@@ -14,7 +14,9 @@
         margin-right: $distance--md;
     }
 
-    @include media('>md') { margin-right: $distance--sm; }
+    @include media('>md') {
+        margin-right: $distance--sm;
+    }
 
     &:last-of-type {
         margin-right: 0;
@@ -34,7 +36,7 @@
             position: absolute;
             text-align: center;
             text-rendering: auto;
-            top: calc(50% - 2px);
+            top: 50%;
             width: calc(#{$input-check-radio-size} + .1rem);
         }
 
@@ -43,17 +45,6 @@
     &__input:focus ~ &__label {
         outline: $focus-indicator;
     }
-
-    // &__input:checked ~ &__label {
-
-    //     &::before {
-    //     }
-
-    //     &::after {
-    //         opacity: 1;
-    //     }
-
-    // }
 
     // sanitizer
     &__label + &__input {
