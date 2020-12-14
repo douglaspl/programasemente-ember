@@ -147,7 +147,10 @@
         </li>
         <div>
           {{#each conteudos as |conteudo|}}
-            {{content-conteudo-card conteudo=conteudo selectedAgrupamento=selectedAgrupamento}}
+            {{content-conteudo-card 
+                conteudo=conteudo 
+                selectedAgrupamento=selectedAgrupamento
+                toggleModal=(action 'toggleModal')}}
           {{/each}}
         </div>
       </section>
@@ -155,3 +158,31 @@
 
 
 </div>
+
+
+<!-- Modal de mudar a senha do usuário -->
+<aside id="content-modal" class="modal">
+
+  <div class="modal__content modal__content--sm">
+
+    <header class="modal__header">
+      header
+    </header>
+
+    <div class="modal__body">
+      {{#if selectedConteudo}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=pessoa}}
+      {{/if}}
+    </div>
+
+    <div class="modal__footer">
+      footer
+      <button onclick={{action 'closeConteudoModal'}}>
+        Fechar Conteúdo
+      </button>
+    </div>
+
+  </div>
+  <div class="modal__overlayer"></div>
+
+</aside>
