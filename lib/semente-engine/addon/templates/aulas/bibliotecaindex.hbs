@@ -38,21 +38,15 @@
         </div>
 
        
-       {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
+        {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
           <div class="flex flex-col flow-xs">
             <h3 class="title-aux">Público</h3>
-            <div class="checkbox">
-              <input class="checkbox__input" id="alunos-content" type="checkbox">
-              <label class="checkbox__label" for="alunos-content">Alunos</label>
-            </div>
-            <div class="checkbox">
-              <input class="checkbox__input" id="responsaveis-content" type="checkbox">
-              <label class="checkbox__label" for="responsaveis-content">Responsáveis</label>
-            </div>
-            <div class="checkbox">
-              <input class="checkbox__input" id="professor-content" type="checkbox">
-              <label class="checkbox__label" for="professor-content">Professores</label>
-            </div>
+              {{#each publicos as |pub|}}
+                <div class="checkbox">
+                  <input class="checkbox__input" id="{{pub.name}}-content" type="checkbox" checked={{if (containInListID pub.id selectedPublicos) "checked"}} value={{pub.id}} onchange={{action 'refreshSelectedPublicos' value='target.value'}}>
+                  <label class="checkbox__label" for="{{pub.name}}-content">{{pub.nameFormat}}</label>
+                </div>
+              {{/each}}
           </div>
         {{/if}}
 
