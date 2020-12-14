@@ -222,7 +222,7 @@
     &__call {
         @include truncate;
 
-        border-bottom: 1px solid $gray-5;
+        border-bottom: 1px solid $gray-10;
         font-size: $font-size--sm;
         padding: $distance--xs $distance--sm;
     }

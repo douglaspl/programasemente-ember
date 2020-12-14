@@ -4,17 +4,14 @@
   $multiplier: 1.8;
   $img-height: 10rem * $multiplier;
   $img-width:  18rem * $multiplier;
-  // $img-height: 10rem;
-  // $img-width:  18rem;
 
-  border-radius: $radius;
   box-shadow: $shadow-3, $shadow-2, $shadow-h-l-2, $shadow-h-r-2;
   display: flex;
   flex-direction: column;
-  padding: $distance--md;
   text-align: left;
 
   @include media('>md') {
+    border-radius: $radius;
     flex-direction: row;
   }
 
@@ -31,7 +28,7 @@
   &__info {
     align-items: flex-start;
     display: flex;
-    flex: 1;
+    flex: 1 0 40%;
     flex-direction: column;
   }
 
@@ -39,10 +36,10 @@
     align-items: center;
     border-bottom: 1px solid $gray-0;
     display: flex;
-    margin-bottom: $distance--lg;
+    flex-direction: row;
+    gap: $distance--md;
     padding: 0 0 $distance--md 0;
     text-transform: uppercase;
-    width: 100%;
 
 
     @include media('>lg') {
@@ -71,25 +68,24 @@
     align-items: flex-start;
     display: flex;
     flex-direction: row;
+    gap: $distance--xxs;
 
-    @include media('>lg') {
+    @include media('>md') {
       flex-direction: column;
-      margin-left: $distance--sm;
     }
 
   }
 
   &__day-aux {
-    opacity: .5;
+    opacity: .75;
   }
 
   &__day {
     font-weight: bolder;
-    margin-left: $distance--xxs;
     white-space: nowrap;
 
-    @include media('>lg') {
-      @include title-2($color: inherit);
+    @include media('>md') {
+      @include title-2;
     }
 
   }
@@ -140,10 +136,7 @@
   }
 
   &__title {
-    @include title-1($color: $gray-50);
-
-    margin-bottom: $distance--lg;
-    margin-top: $distance--xs;
+    @include title-1;
 
     [class*='is-disabled'] & { opacity: .7; }
   }

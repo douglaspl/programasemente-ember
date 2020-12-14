@@ -2,17 +2,17 @@
     $this: &;
 
     align-items: flex-end;
-    border-bottom: 1px solid $gray-5;
+    border-bottom: 1px solid $gray-10;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
     &__tab {
-        border-bottom: 4px solid transparent;
+        border-bottom: 3px solid transparent;
         cursor: pointer;
         display: inline-block;
         font-size: $font-size--sm;
-        font-weight: bolder;
+        font-weight: $font-weight-4;
         padding: $distance--sm;
         text-align: center;
         transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
@@ -29,7 +29,7 @@
         }
 
         &:hover:not([class*='--is-active']) {
-            background-color: $gray-0;
+            background-color: $gray-10;
         }
 
     }
@@ -44,7 +44,7 @@
         text-transform: uppercase;
 
         #{$this}__tab {
-            background-color: transparentize($blue-navy-60, .6);
+            background-color: transparentize($blue-navy-70, .6);
             border: 0 solid transparent;
             border-radius: $radius--md;
             color: $white;
@@ -57,14 +57,14 @@
             transition: 200ms var(--ease-in-out-quad);
 
             &:hover:not([class*='--is-active']) {
-                background-color: $blue-navy-60;
+                background-color: $blue-navy-70;
                 color: $white;
             }
 
             &--is-active {
                 background-color: $white;
                 border-bottom: 0 solid transparent;
-                color: $blue-navy-60;
+                color: $blue-navy-70;
                 cursor: unset;
             }
 

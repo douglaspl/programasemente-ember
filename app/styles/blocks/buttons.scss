@@ -88,10 +88,6 @@
   }
 
   // ELEMENTS
-  &__label {
-    transform: translateY(1px);
-  }
-
   &__count {
     font-style: italic;
     opacity: .85;
@@ -116,7 +112,7 @@
   &--add-list-item {
     align-self: stretch;
     background-color: transparent;
-    border: ($button-border-width * 2) dotted $green-5;
+    border: ($button-border-width * 2) dotted $green-10;
     box-shadow: none;
     color: $clickables-bg-color;
     display: flex;
@@ -297,7 +293,7 @@
     text-shadow: none;
 
     &:hover {
-      background-color: $gray-5;
+      background-color: $gray-10;
       color: $gray-60;
       opacity: 1;
     }
@@ -308,7 +304,7 @@
   &--text-remove {
     background-color: transparent;
     box-shadow: none;
-    color: $color-error;
+    color: $error-30;
     opacity: 0.75;
     // padding-left: 0;
     // padding-right: 0;
@@ -317,7 +313,7 @@
     &:hover {
       background-color: transparent;
       opacity: 1;
-      color: $color-error--dark;
+      color: $error-60;
     }
 
   }
@@ -334,7 +330,6 @@
     &:hover {
       background-color: transparentize($color: white, $amount: .9);
       opacity: 1;
-      transform: translateY(0);
     }
 
   }
@@ -344,7 +339,7 @@
     border: 3px solid transparent;
     border-radius: $button-radius;
     box-shadow: none;
-    color: $gray-60;
+    color: $gray-70;
     font-size: $font-size--xs;
     font-weight: $font-weight-4;
     justify-content: center;
@@ -353,10 +348,11 @@
     text-transform: initial;
 
     &:hover {
-      color: $gray-60;
+      color: $gray-70;
 
       &:not([class*='--is-active']) {
-        background-color: $gray-10;
+        background-color: $gray-20;
+        color: $gray-90;
       }
 
     }
@@ -454,7 +450,7 @@
     z-index: 2;
 
     &:hover {
-        background-color: $gray-5;
+        background-color: $gray-10;
     }
 
   }

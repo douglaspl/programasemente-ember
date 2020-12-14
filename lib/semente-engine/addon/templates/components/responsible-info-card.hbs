@@ -1,15 +1,15 @@
     <ul class="callout flow-lg">
     <h5>{{visible-index index}}º responsável</h5>
 
-        <li class="col fs--md m-v--none">
+        <li class="flex flex-col">
             <span class="text-aux m-bottom--xxs">E-mail</span>
             <span class="fw--4">{{responsavel.email}}</span>
         </li>
-        <li class="col fs--md m-v--none">
+        <li class="flex flex-col">
             <span class="text-aux m-bottom--xxs">Nome completo</span>
             <span class="fw--4">{{responsavel.name}}</span>
         </li>
-        <li class="col fs--md m-v--none">
+        <li class="flex flex-col">
             <span class="text-aux m-bottom--xxs">Celular</span>
             {{#if responsavel.telefone}}
             <span class="fw--4">{{responsavel.telefone}}</span>

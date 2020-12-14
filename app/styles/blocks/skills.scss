@@ -2,27 +2,16 @@
     $this: &;
 
     font-size: $font-size--xs;
-    margin-bottom: 2rem;
-    padding: $distance--xs 0 $distance--md 0;
     position: relative;
 
-    &__title {
-        @include title-aux;
-        margin-bottom: $distance--xs;
-
-    }
-
     &__list {
+        border-left: 2px solid $green-50;
+        padding: $distance--xs 0;
 
         > li {
-            border-left: 2px solid $green-40;
-            letter-spacing: $letter-spacing--lg;
             padding-bottom: $distance--xxs;
             padding-left: $distance--sm;
-
-            &:first-child {
-                padding-top: $distance--xxs;
-            }
+            padding-top: $distance--xxs;
         }
 
     }

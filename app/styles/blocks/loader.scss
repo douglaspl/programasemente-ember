@@ -3,11 +3,11 @@
   $tree-width: 64px;
 
   align-items: center;
-  background-color: transparentize($blue-navy-50, .2);
+  background-color: transparentize($blue-navy-60, .2);
   background-image: linear-gradient(-30deg,
-    transparentize($blue-navy-60, .2),
-    transparentize($blue-navy-50, .2) 65%,
-    transparentize($blue-navy-20, .2) 96%);
+    transparentize($blue-navy-70, .2),
+    transparentize($blue-navy-60, .2) 65%,
+    transparentize($blue-navy-30, .2) 96%);
   display: flex;
   justify-content: center;
   height: 100vh;

@@ -10,7 +10,7 @@
   <section class="main__section">
 
 
-    <!-- Bem-vindo de volta 
+    <!-- Bem-vindo de volta
     {{!-- <div class="alert alert--blue-navy alert--xs alert--no-interaction alert--is-show">
       <h1 class="alert__title">Olá, {{username}}</h1>
       <div class="alert__body">
@@ -54,13 +54,14 @@
 
       <ol class="timeline__line">
         {{#each sortedAtividades as |atividade idx|}}
-
-        {{#if (equalstr (get listaStartUnit idx) 1)}}
-        <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
-        {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
-        {{else}}
-        {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
-        {{/if}}
+          <li>
+            {{#if (equalstr (get listaStartUnit idx) 1)}}
+              <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
+              {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
+            {{else}}
+              {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
+            {{/if}}
+          </li>
         {{/each}}
       </ol>
 

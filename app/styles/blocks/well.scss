@@ -2,7 +2,7 @@
   $this: &;
 
   background-color: $gray-0;
-  border: 1px solid $gray-5;
+  border: 1px solid $gray-10;
   border-radius: $radius;
   box-shadow: $shadow-i-1;
   padding: $distance--xs $distance--sm;
@@ -13,12 +13,12 @@
 
   &--white {
     background-color: transparentize($white, .25);
-    border: 1px solid $gray-5;
+    border: 1px solid $gray-10;
   }
 
   &--primary-light {
-    background-color: transparentize($lemon-10, .9);
-    border: 1px solid $green-20;
+    background-color: transparentize($lemon-20, .9);
+    border: 1px solid $green-10;
   }
 
 }

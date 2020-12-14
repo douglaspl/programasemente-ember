@@ -5,36 +5,6 @@
 // de forma que a ordem deles nesse arquivo não seja crucial para o SCSS ser compilado.
 
 
-
-
-
-//------------------------------------
-//    #COLOR ARRAYS
-//------------------------------------
-@function blue-navy-shades($key) {
-    @return map-get($blue-navy-shades, $key);
-};
-
-@function gray-shades($key) {
-    @return map-get($gray-shades, $key);
-};
-
-@function green-shades($key) {
-    @return map-get($green-shades, $key);
-};
-
-@function leaf-shades($key) {
-    @return map-get($leaf-shades, $key);
-};
-
-@function lemon-shades($key) {
-    @return map-get($lemon-shades, $key);
-};
-
-
-
-
-
 //------------------------------------
 //    #COLOR CONTRAST
 //------------------------------------

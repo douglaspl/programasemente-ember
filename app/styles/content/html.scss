@@ -210,7 +210,7 @@ $html-width--lg: 50rem;
     $cave-size: ($ball-size/2 + $ball-shift / 2) * .9;
     $cave-size-smooth: $cave-size + 0.1rem;
 
-    background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy-50 $cave-size-smooth);
+    background: radial-gradient(circle at 50% (-$ball-shift), transparent $cave-size, $blue-navy-60 $cave-size-smooth);
     border-radius: $radius;
     box-shadow: $shadow-2;
     color: $white;
@@ -223,17 +223,17 @@ $html-width--lg: 50rem;
 
     &::before {
       $border: 4px;
-      $color: $blue-navy-50;
+      $color: $blue-navy-60;
 
       @include icon;
 
       align-items: center;
-      background-color: $green-20;
+      background-color: $green-10;
       border-radius: 50%;
       box-shadow: $shadow-3;
       display: flex;
       color: $white;
-      color: $color-warning;
+      color: $warning-30;
       content: $icon-award;
       font-size: ($ball-size / 2);
       height: $ball-size;
@@ -263,7 +263,7 @@ $html-width--lg: 50rem;
   }
 
   &__footer {
-    border-top: 1px solid $gray-5;
+    border-top: 1px solid $gray-10;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
