@@ -27,7 +27,7 @@ module.exports = function (defaults) {
 
     sassOptions: {
       onlyIncluded: false,
-      includePaths: ['../../../../git/common-files/']
+      includePaths: ['../common-files/']
     },
 
     autoprefixer: {
