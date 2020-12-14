@@ -3,7 +3,7 @@
   toggleRole=this.parentController.toggleRole
   selectedSegmento=selectedSegmento
   selectedAno=selectedAno
-  segmentos=segmentos
+  segmentos=this.parentController.segmentos
   thisRoute=thisRoute
   Ano=Ano
   togglerole=(action 'toggleRole')
@@ -61,7 +61,7 @@
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{plataforma-biblioteca-card conteudo=conteudo}}
+            {{plataforma-biblioteca-card conteudo=conteudo }}
           {{/if}}
         {{/each}}
       </ul>
