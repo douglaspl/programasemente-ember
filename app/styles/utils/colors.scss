@@ -18,12 +18,4 @@
         stroke: $color !important;
     }
 
-    .border {
-        @each $direction in $directions {
-            &-#{$direction}-4--#{$color-name} {
-                border-#{$direction}: 4px solid transparentize($color, .5);
-            }
-        }
-    }
-
 }

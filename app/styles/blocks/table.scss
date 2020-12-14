@@ -12,7 +12,7 @@
   }
 
   &__subheader {
-    border-bottom: 1px solid $gray-5;
+    border-bottom: 1px solid $gray-10;
     font-size: .85em;
     font-weight: bold;
     opacity: .85;
@@ -272,7 +272,7 @@
         }
 
         &::before {
-          background-color: $lemon-40;
+          background-color: $lemon-50;
           bottom: 0;
           content: '';
           left: 0;

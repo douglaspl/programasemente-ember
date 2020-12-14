@@ -254,7 +254,7 @@
     z-index: 2;
 
     &::after {
-        border-bottom: 2px dotted $gray-5;
+        border-bottom: 2px dotted $gray-10;
         content: '';
         left: 0;
         opacity: .75;
@@ -459,7 +459,7 @@
 //------------------------------------
 //    #LINE
 //------------------------------------
-@mixin line($color: $green-20, $height: .075em, $width: 4rem, $line: 'under') {
+@mixin line($color: $green-10, $height: .075em, $width: 4rem, $line: 'under') {
     position: relative;
 
     &::after {

@@ -74,11 +74,16 @@
   }
 
   &__date-block {
+    background-color: $gray-10;
+    margin-left: $timeline-translation;
+    padding: $distance--xs $distance--md;
 
     @include media('>lg') {
       background-color: $timeline-date-bg-color;
       border: none;
       color: $timeline-date-color;
+      margin-left: 0;
+      padding: $distance--md;
       position: absolute;
       right: calc(100% + #{$timeline-gap});
       top: 50%;
@@ -158,6 +163,7 @@
   &__class {
     background-color: $timeline-mark-info-bg-color;
     margin-left: $timeline-translation;
+    padding: $distance--md;
 
     &::before {
       border-color: transparent $timeline-mark-info-bg-color transparent transparent;
@@ -213,9 +219,9 @@
   }
 
     &__inner-nav {
-      background-color: transparentize($color: $blue-navy-60, $amount: .4);
+      background-color: transparentize($color: $blue-navy-70, $amount: .4);
       border-radius: $radius;
-      box-shadow: 0 0 24px transparentize($color: $blue-navy-60, $amount: .4);
+      box-shadow: 0 0 24px transparentize($color: $blue-navy-70, $amount: .4);
       padding: 1rem;
       position: fixed;
       right: $distance--xl;

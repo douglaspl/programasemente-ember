@@ -2,7 +2,7 @@
   $this: &;
 
   background-color: $gray-30;
-  border-radius: $radius;
+  border-radius: $radius--capsule;
   color: $white;
   display: inline-block;
   font-size: $font-size--xxs;
@@ -12,26 +12,20 @@
   text-align: center;
   text-transform: uppercase;
 
-  &--error {
-    background-color: $color-error;
-  }
-
-  &--info {
-    background-color: $color-info;
-  }
-
-  &--success {
-    background-color: $color-success;
-  }
-
-  &--warning {
-    background-color: $color-warning;
-  }
-
   &--xxs {
     font-size: 10px;
     padding-left: 1em;
     padding-right: 1em;
   }
 
+  &--engagement { background-color: transparentize($domain-engagement, .9); color: $domain-engagement; }
+  &--kindness   { background-color: transparentize($domain-kindness, .9);   color: $domain-kindness; }
+  &--management { background-color: transparentize($domain-management, .9); color: $domain-management; }
+  &--openness   { background-color: transparentize($domain-openness, .9);   color: $domain-openness; }
+  &--resilience { background-color: transparentize($domain-resilience, .9); color: $domain-resilience; }
+
+  &--error   { background-color: $error-0;   color: $error-30; }
+  &--info    { background-color: $info-0;    color: $info-30; }
+  &--success { background-color: $success-0; color: $success-40; }
+  &--warning { background-color: $warning-0; color: $warning-40; }
 }

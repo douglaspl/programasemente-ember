@@ -70,8 +70,8 @@ $highlight-h-padding--md: $distance--xxxl;
         }
 
         &::before {
-            background-color: $blue-navy-50;
-            background-image: linear-gradient(-30deg, $blue-navy-60, $blue-navy-50 65%, $blue-navy-20 96%);
+            background-color: $blue-navy-60;
+            background-image: linear-gradient(-30deg, $blue-navy-70, $blue-navy-60 65%, $blue-navy-30 96%);
             content: '';
             left: 0;
             height: 100%;
