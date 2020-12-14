@@ -1,4 +1,4 @@
-{{header-geral  
+{{header-geral
   pessoa=selectedDependente
   toggleRole=this.parentController.toggleRole
   selectedSegmento=selectedSegmento
@@ -132,12 +132,7 @@
           <li>
             <div class="flex flex-row items-center">
               <span class="flex flex-row items-center">
-                <svg class="color-green-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" style="margin: 2px;">
-                  <g id="domains" transform="translate(-2929.5 30.5)">
-                    <path stroke="currentColor" fill="transparent" d="M12,3h7a2,2,0,0,1,2,2V19a2,2,0,0,1-2,2H12M12,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2h7M12,3V21" transform="translate(2927.5 -32.5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    <line stroke="currentColor" x2="18" transform="translate(2930.5 -20.5)" stroke-width="2"/>
-                  </g>
-                </svg>
+                {{icon-competencias}}
                 <span class="m-left--xs">Competências:</span>
               </span>
               <span class="m-left--xs">
@@ -152,13 +147,7 @@
             <li>
               <div class="flex flex-row items-center">
                 <span class="flex flex-row items-center">
-                  <svg class="color-green-30" xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" width="24">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
+                  {{icon-prevista-para}}
                   <span class="m-left--xs">Periodo previsto da aplicação:</span>
                   <span class="m-left--xs fw--5">
                     {{aula.dataInicioPrevistaFormat}} | {{aula.dataFimPrevistaFormat}}
