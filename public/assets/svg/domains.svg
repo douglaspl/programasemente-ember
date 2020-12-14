@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="domains" transform="translate(-2929.5 30.5)">
+    <path class="stroke-green-30" d="M12,3h7a2,2,0,0,1,2,2V19a2,2,0,0,1-2,2H12M12,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2h7M12,3V21" transform="translate(2927.5 -32.5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line class="stroke-green-30" x2="18" transform="translate(2930.5 -20.5)" stroke-width="2"/>
+  </g>
+</svg>

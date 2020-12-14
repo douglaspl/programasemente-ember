@@ -138,7 +138,7 @@
     margin: 1rem 0;
 
     >* {
-      $border-color: $lemon-50;
+      $border-color: $lemon-60;
       $size: 7rem;
 
       @include bg-as-thumb;
@@ -171,7 +171,7 @@
 
   &__image-zoom {
       align-items: center;
-      background-color: $blue-navy-50;
+      background-color: $blue-navy-60;
       bottom: 0;
       display: flex;
       left: 0;
@@ -275,12 +275,12 @@
 
       [class*='--user'] &::before,
       #{$this}__input:checked+&::before {
-        background-color: $green-20;
+        background-color: $green-10;
         color: $white;
       }
 
       [class*='--correct'] &::before {
-        background-color: $color-success !important; // Garante que ficará verde independente de for a resposta do usuário ou não.
+        background-color: $success-30 !important; // Garante que ficará verde independente de for a resposta do usuário ou não.
         color: $white;
         content: "\e905";
         font-family: 'icomoon';

@@ -3,6 +3,7 @@
     {{#if (equalstr conteudo.tipo 'Video')}}
       <img id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
     {{else}}
+      <h1>outro tipo de arquivo</h1>
       <img id="vimeo-{{conteudo.path}}{{conteudo.id}}" src="{{fileThumb}}" alt="{{conteudo.titulo}}"/>
     {{/if}}
   </picture>

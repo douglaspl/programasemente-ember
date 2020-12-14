@@ -1,21 +1,21 @@
 .sg {
-  
+
   margin: 0 auto;
   max-width: 960px;
   width: 90%;
-  
+
   nav {
     margin-top: 1em;
 
     a {
-      background-color: $gray-5;
+      background-color: $gray-10;
       font-weight: 900;
       margin-right: 1em;
       padding: .5em 1em;
       text-transform: uppercase;
 
       &:hover {
-        background-color: $lemon-30;
+        background-color: $lemon-40;
       }
 
     }
@@ -50,7 +50,7 @@
     align-items: flex-start;
     display: flex;
     margin-top: 2em;
-    
+
     > *:first-child {
       flex: 0 0 auto;
       margin-right: 2em;

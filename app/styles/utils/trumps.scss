@@ -44,7 +44,7 @@
 }
 
 @keyframes blink--warning {
-    from    { background-color: $color-warning; }
+    from    { background-color: $warning-30; }
     to      { background-color: transparent; }
 }
 
@@ -75,7 +75,7 @@
 }
 
 .bg--students {
-    background-color: $blue-navy-50;
+    background-color: $blue-navy-60;
     background-image: url('/assets/img/bg--login.jpg');
     background-position: bottom;
     background-repeat: no-repeat;

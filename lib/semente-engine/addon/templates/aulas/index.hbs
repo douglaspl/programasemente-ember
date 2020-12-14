@@ -1,19 +1,16 @@
 {{header-geral  
-      pessoa=pessoa
-      toggleRole=this.parentController.toggleRole
-      selectedSegmento=selectedSegmento
-      selectedAno=selectedAno
-      segmentos=this.parentController.segmentos
-      thisRoute=thisRoute
-      Ano=Ano
-      togglerole=(action 'toggleRole')
-      transitToBiblioteca=(action 'goToBiblioteca')
-      }}
+  pessoa=pessoa
+  toggleRole=this.parentController.toggleRole
+  selectedSegmento=selectedSegmento
+  selectedAno=selectedAno
+  segmentos=this.parentController.segmentos
+  thisRoute=thisRoute
+  Ano=Ano
+  togglerole=(action 'toggleRole')
+  }}
 
 <div class="flow-xl">
-  <!-- Nav de filhos -->
-  {{#if (equalstr pessoa.role 'aluno')}}
-  {{else}}
+  {{#if (not (equalstr pessoa.role 'aluno'))}}
     <nav>
       <ul class="tabs">
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
@@ -41,9 +38,8 @@
             </li>
           {{/if}}
         {{/if}}
-
-    </ul>
-  </nav>
+      </ul>
+    </nav>
   {{/if}}
 
   <div class="l-dots-between">

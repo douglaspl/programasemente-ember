@@ -4,8 +4,8 @@
 
     @include full-width-container;
 
-    background-color: $green-50;
-    background-image: linear-gradient(-115deg, transparentize($green-20, .6) 0%, transparentize($leaf-60, .2) 50%), url("/assets/img/fundo8.jpg");
+    background-color: $green-60;
+    background-image: linear-gradient(-115deg, transparentize($green-10, .6) 0%, transparentize($leaf-70, .2) 50%), url("/assets/img/fundo8.jpg");
     background-attachment: fixed, fixed;
     background-position: cover, cover;
     background-size: cover, cover;
@@ -19,7 +19,7 @@
     }
 
     @include media('>sm') {
-        padding-left: 10vw;
+        padding-left: 15vw;
         margin-bottom: -$main-bottom-padding--sm;
         margin-top: -$main-top-padding--sm;
       }

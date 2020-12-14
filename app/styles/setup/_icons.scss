@@ -59,8 +59,8 @@
 .icon-users:before { content: $icon-users; }
 .icon-x:before { content: $icon-x; }
 
-.icon--error { color: $color-error; }
-.icon--success { color: $color-success; }
+.icon--error { color: $error-30; }
+.icon--success { color: $success-30; }
 
 .icon--lg { font-size: 1.5em; }
 .icon--xl { font-size: 2em; }

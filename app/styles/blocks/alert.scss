@@ -97,20 +97,20 @@
   }
 
   &--blue-navy {
-    background-color: transparentize($blue-navy-40, .025);
-    background-image: linear-gradient(to bottom, transparent 40%, transparentize($blue-navy-60, .075));
+    background-color: transparentize($blue-navy-50, .025);
+    background-image: linear-gradient(to bottom, transparent 40%, transparentize($blue-navy-70, .075));
     color: $blue-navy-0;
   }
 
   &--green {
-    background-color: transparentize($green-40, .04);
-    background-image: linear-gradient(to bottom, transparent 40%, transparentize($green-60, .075));
+    background-color: transparentize($green-50, .04);
+    background-image: linear-gradient(to bottom, transparent 40%, transparentize($green-70, .075));
     color: $white;
   }
 
   &--error {
-    background-color: transparentize(lighten($color-error, 50%), .05);
-    color: transparentize($color-error, .15);
+    background-color: transparentize(lighten($error-30, 50%), .05);
+    color: transparentize($error-30, .15);
 
     // &::before {
     //   font-family: '#{$icomoon-font-family}';
@@ -120,12 +120,12 @@
   }
 
   &--success {
-    background-color: transparentize($color-success, .25);
+    background-color: transparentize($success-30, .25);
     color: $white;
   }
 
   &--warning {
-    background-color: $color-warning;
+    background-color: $warning-30;
     color: $white;
   }
 
