@@ -1,19 +1,16 @@
 {{header-geral  
-      pessoa=pessoa
-      toggleRole=this.parentController.toggleRole
-      selectedSegmento=selectedSegmento
-      selectedAno=selectedAno
-      segmentos=this.parentController.segmentos
-      thisRoute=thisRoute
-      Ano=Ano
-      togglerole=(action 'toggleRole')
-      transitToBiblioteca=(action 'goToBiblioteca')
-      }}
+  pessoa=pessoa
+  toggleRole=this.parentController.toggleRole
+  selectedSegmento=selectedSegmento
+  selectedAno=selectedAno
+  segmentos=this.parentController.segmentos
+  thisRoute=thisRoute
+  Ano=Ano
+  togglerole=(action 'toggleRole')
+  }}
 
 <div class="flow-xl">
-  <!-- Nav de filhos -->
-  {{#if (equalstr pessoa.role 'aluno')}}
-  {{else}}
+  {{#if (not (equalstr pessoa.role 'aluno'))}}
     <nav>
       <ul class="tabs">
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
@@ -41,9 +38,8 @@
             </li>
           {{/if}}
         {{/if}}
-
-    </ul>
-  </nav>
+      </ul>
+    </nav>
   {{/if}}
 
   <div class="l-dots-between">
@@ -107,7 +103,7 @@
     </header>
 
     <section class="l-dots-between__content flow-md">
-      <h3 class="title-4">{{selectedAno}}<span class="fs--xs fw--3"> ({{aulasFiltradas.length}} aulas)</span></h3>
+      <h3 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}} aulas)</span></h3>
      
         <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
           {{#each aulasFiltradas as |aulaFiltrada|}}

@@ -1,5 +1,15 @@
-<!-- Header geral -->
-<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr selectedDependente.role 'aluno') selectedDependente.role toggleRole}}">
+{{header-geral  
+  pessoa=selectedDependente
+  toggleRole=this.parentController.toggleRole
+  selectedSegmento=selectedSegmento
+  selectedAno=selectedAno
+  segmentos=this.parentController.segmentos
+  thisRoute=thisRoute
+  Ano=Ano
+  togglerole=(action 'toggleRole')
+  }}
+
+{{!-- <header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr selectedDependente.role 'aluno') selectedDependente.role toggleRole}}">
   <div class="flex itens-start gap-lg">
     <picture class="l-user-header__avatar avatar avatar--lg">
       {{#if selectedDependente.uriAvatar}}
@@ -89,7 +99,7 @@
       </nav>
     </div>
   </div>
-</header>
+</header> --}}
 
 <div class="flow-md">
     <button class="btn btn--text" {{action 'voltar'}}>
