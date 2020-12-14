@@ -29,9 +29,9 @@
           <label class="form-group__label" for="tema">Tema</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input" name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-              <option selected="selected" value="">---</option>
+              <option selected="selected" value="Todos">Todos</option>
               {{#each temas as |tema|}}
-                  <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
+                  <option value="{{tema}}">{{tema}}</option>
               {{/each}}
             </select>
           </div>
@@ -61,7 +61,9 @@
 
     <section class="l-dots-between__content flow-md">
       <h3 class="sr-only">Lista de conteúdos</h3>
-      <h4 class="title-5"><span class="fs--sm fw--3 color-blue-navy-30 m-right--xxs">Você está vendo o tema</span> {{selectedTema}}</h4>
+      <h4 class="title-4">Tema: {{selectedTema}}</h4>
+      
+      
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
