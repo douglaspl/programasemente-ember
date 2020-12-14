@@ -16,6 +16,11 @@
       <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
     <h2>3 marcações</h2>
+    <h2>{{conteudo.id}}</h2>
     {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
   </div>
+
+  {{#if (equalstr conteudo.tipo 'Video')}}
+    <button onclick={{action 'openModal' conteudo.Id}}> Assistir ao vídeo</button>
+  {{/if}}
 </div>

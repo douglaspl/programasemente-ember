@@ -29,20 +29,6 @@
                         style="display: none;" name="file">
                 </label>
                 
-                {{#if selected_file_avatar}}
-                  <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control"
-                    readonly><strong>{{selected_file_avatar}}</strong></span>
-                {{/if}}
-
-                {{#if avatar_loading}}
-                  <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i
-                      class="fa fa-spinner fa-pulse fa-2x"></i></button>
-                {{else if selected_file_avatar}}
-                  <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar"
-                    {{action 'sendAvatar'}}>Salvar</button>
-                {{else}}
-                  {{!-- <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button> --}}
-                {{/if}}
             </div>
           </div>
           {{!-- <picture class="avatar avatar--xl avatar--is-square">
@@ -64,16 +50,34 @@
 
         <form class="flex flex-col flow-md" autocomplete="off">
           <div class="form-group">
-            <label class="form-group__label" for="pass">Defina uma nova senha</label>
-            <input class="form-group__input" type="password" id="pass" value="">
+            <label class="form-group__label" for="pass">Senha antiga</label>
+            <input class="form-group__input" type="password" id="pass" value="" onchange={{action 'updatePasswordChanged'}} >
           </div>
 
           <div class="form-group">
             <label class="form-group__label" for="pass_new">Confirme a nova senha</label>
-            <input class="form-group__input" type="password" id="pass_new" value="">
+            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new" value="" onchange="{{action 'updatePasswordChanged'}}">
           </div>
 
-          <button class="btn btn--ghost btn--xxs self-start" type="submit" {{action 'changePw'}}>Definir nova senha</button>
+          <div class="form-group">
+            <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
+            <!-- melhorar classes do form... -->
+            <div class="form-group__container form-group">
+              <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
+                  class="form__msg-icon icon-check"></span>Par
+                de senhas perfeito!</span>
+              <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
+                  class="form__msg-icon icon-alert-triangle"></span>Senhas
+                não batem...</span>
+              <input class="form-group__input" type="password" id="pass_new_copy" value="">
+            </div>
+          </div>
+
+          {{#if success_pwd}}
+            {{success_pwd}}
+          {{/if}}
+
+          <button class="btn btn--ghost btn--xxs self-start" type="button" disabled="{{if passwordChanged '' 'disabled'}}" {{action 'changePw'}}>Definir nova senha</button>
         </form>
 
       </section>
@@ -209,7 +213,7 @@
 </aside> --}}
 
 <!-- Modal de mudar a senha do usuário -->
-<aside id="change_pass_modal" class="modal">
+{{!-- <aside id="change_pass_modal" class="modal">
 
   <div class="modal__content modal__content--sm">
 
@@ -267,6 +271,6 @@
 
   <div class="modal__overlayer"></div>
 
-</aside>
+</aside> --}}
 
 <div style="display: none;">{{shouldReview}}</div>
