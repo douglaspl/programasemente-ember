@@ -59,8 +59,9 @@
       </form>
     </header>
 
-    <section class="l-dots-between__content">
+    <section class="l-dots-between__content flow-md">
       <h3 class="sr-only">Lista de conteúdos</h3>
+      <h4 class="title-5"><span class="fs--sm fw--3 color-blue-navy-30 m-right--xxs">Você está vendo o tema</span> {{selectedTema}}</h4>
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
