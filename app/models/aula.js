@@ -21,6 +21,7 @@ export default DS.Model.extend({
         let dataformatada = moment(this.get('dataFimPrevista'), 'DD/MM/YYYY hh:mm:ss').format('DD MMM');
         return dataformatada;
     }),
+    thumbnail: DS.attr(),
     plataformaConteudos: DS.hasMany('plataforma-conteudo', { async: true }),
     plataformaAno: DS.belongsTo('plataforma-ano', { async: true }),
     aplicacoes: DS.hasMany('aplicacao-plataforma-aula', { async: true }),
