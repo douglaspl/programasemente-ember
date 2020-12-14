@@ -10,7 +10,7 @@
   }}
 
 <div class="flow-xl">
-  {{#if (not (equalstr pessoa.role 'aluno'))}}
+  {{#unless (equalstr pessoa.role 'aluno')}}
     <nav>
       <ul class="tabs">
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
@@ -40,7 +40,7 @@
         {{/if}}
       </ul>
     </nav>
-  {{/if}}
+  {{/unless}}
 
   <div class="l-dots-between">
     <header class="l-dots-between__side">

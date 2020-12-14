@@ -44,7 +44,7 @@
 
     &__number {
         align-items: center;
-        background-color: $blue-navy-50;
+        background-color: $blue-navy-60;
         border: $number-border solid $white;
         border-radius: 50%;
         box-shadow: $shadow-1, $shadow-2, $shadow-3;
@@ -56,7 +56,7 @@
         width: $size;
 
         &--is-active,
-        [class*='--is-active'] & { background-color: $green-20; }
+        [class*='--is-active'] & { background-color: $green-40; }
     }
 
     &__label {

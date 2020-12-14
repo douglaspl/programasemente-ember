@@ -1,33 +1,7 @@
-:root {
-    --ease-in-quad: cubic-bezier(.55, .085, .68, .53);
-    --ease-in-cubic: cubic-bezier(.550, .055, .675, .19);
-    --ease-in-quart: cubic-bezier(.895, .03, .685, .22);
-    --ease-in-quint: cubic-bezier(.755, .05, .855, .06);
-    --ease-in-expo: cubic-bezier(.95, .05, .795, .035);
-    --ease-in-circ: cubic-bezier(.6, .04, .98, .335);
-
-    --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
-    --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
-    --ease-out-quart: cubic-bezier(.165, .84, .44, 1);
-    --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
-    --ease-out-expo: cubic-bezier(.19, 1, .22, 1);
-    --ease-out-circ: cubic-bezier(.075, .82, .165, 1);
-
-    --ease-in-out-quad: cubic-bezier(.455, .03, .515, .955);
-    --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
-    --ease-in-out-quart: cubic-bezier(.77, 0, .175, 1);
-    --ease-in-out-quint: cubic-bezier(.86, 0, .07, 1);
-    --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
-    --ease-in-out-circ: cubic-bezier(.785, .135, .15, .86);
-}
-
-
-
-
-
 //------------------------------------
 //    #AUX
 //------------------------------------
+$dark-mode: false;
 $debugger: false;
 $show-rhythm: false;
 $show-v-rhythm: true;
@@ -39,254 +13,100 @@ $sanitize: false;
 
 
 //------------------------------------
-//    #BREAKPOINTS
-//------------------------------------
-// Referência para uso http://include-media.com/#features.
-// Os nomes pré-definidos foram trocados para xs, sm, md, lg, xl.
-
-// EXEMPLO
-
-// .douglas {
-//    color: #bada55;
-//
-//    @include media('sm') {
-//        color: #c0ffee;
-//    }
-//
-// }
-
-
-// Referência para tamanhos: https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862.
-
-// scss-lint:disable ZeroUnit
-// Considerando 16px como base
-$breakpoints: (
-    xs: 0px, // Extra small screen / phone
-    sm: 600px, //544px  // Small screen / phone
-    md: 900px, //768px  // Medium screen / tablet
-    lg: 1200px, //992px  // Large screen / desktop
-    xl: 1800px, //1200px // Extra large screen / wide desktop
-    xxl: 2200px // acima de 2000px
-) !default;
-// scss-lint:enable ZeroUnit
-
-
-
-
-
-//------------------------------------
 //    #COLORS
 //------------------------------------
-// https://www.colorbox.io/#steps=7#hue_start=181#hue_end=201#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=8#lum_curve=linear#lock_hex=#1c292c#minor_steps_map=0
-$blue-navy-shades: (
-    0:  hsl(189, 7%,  90%),
-    5:  hsl(189, 10%, 84%),
-    10: hsl(189, 13%, 71%),
-    20: hsl(189, 16%, 49%),
-    30: hsl(189, 19%, 35%),
-    40: hsl(189, 22%, 25%),
-    50: hsl(189, 25%, 16%),
-    60: hsl(189, 27%, 14%), // #1A2A2D // CRANE
-    70: hsl(189, 35%, 10%)
-);
-
-
-
-
-
-// https://www.colorbox.io/#steps=7#hue_start=80#hue_end=88#hue_curve=easeInQuad#sat_start=4#sat_end=90#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=30#lum_curve=linear#lock_hex=#97c454#minor_steps_map=0
-$green-shades: (
-    0:  hsl(86, 62%, 96%),
-    5:  hsl(86, 55%, 85%),
-    10: hsl(86, 52%, 75%),
-    20: hsl(86, 54%, 51%), // #8BC63F, // CRANE
-    30: hsl(86, 60%, 42%),
-    40: hsl(86, 66%, 35%),
-    50: hsl(86, 72%, 30%),
-    60: hsl(86, 85%, 23%)
-);
-
-
-
-
-
-// https://www.colorbox.io/#steps=7#hue_start=138#hue_end=158#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutQuad#sat_rate=130#lum_start=100#lum_end=17#lum_curve=linear#lock_hex=#189a54#minor_steps_map=0
-$leaf-shades: (
-    0:  hsl(143, 45%, 80%),
-    5:  hsl(144, 55%, 70%),
-    10: hsl(145, 70%, 60%),
-    20: hsl(146, 85%, 40%),
-    30: hsl(147, 100%, 31%), // #009C4D // CRANE
-    40: hsl(148, 95%, 25%),
-    50: hsl(149, 95%, 19%),
-    60: hsl(150, 95%, 13%)
-);
-
-
-
-
-
-// https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=100#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=14#lum_curve=linear#lock_hex=e5e552#minor_steps_map=0
-$lemon-shades: (
-    0:  hsl(54, 60%, 71%),
-    5:  hsl(57, 70%, 61%),
-    10: hsl(60, 79%, 51%), // #E5E521 // CRANE E5E521
-    20: hsl(63, 83%, 48%),
-    30: hsl(66, 87%, 45%),
-    40: hsl(69, 92%, 42%),
-    50: hsl(72, 96%, 36%),
-    60: hsl(75, 100%, 30%)
-);
-
-
-
-
-
-// https://www.colorbox.io/#steps=7#hue_start=60#hue_end=80#hue_curve=easeInQuad#sat_start=4#sat_end=18#sat_curve=easeOutSine#sat_rate=130#lum_start=95#lum_end=5#lum_curve=linear#lock_hex=#f2f9fa#minor_steps_map=0
-$gray-shades: (
-    0:  hsl(148, 3%, 96%), // #f2f9fa
-    5:  hsl(148, 3%, 93%), // #d8e6e3
-    10: hsl(148, 3%, 80%), // #c0d2c9
-    20: hsl(148, 3%, 65%), // #93aa99
-    30: hsl(148, 3%, 45%), // #6c836c
-    40: hsl(148, 3%, 28%), // #4d5b48
-    50: hsl(148, 3%, 15%), // #2e3428
-    60: hsl(148, 3%, 5%) // #0c0d0a
-);
-
-$blue-navy-0: blue-navy-shades(0);
-$blue-navy-5: blue-navy-shades(5);
-$blue-navy-10: blue-navy-shades(10);
-$blue-navy-20: blue-navy-shades(20);
-$blue-navy-30: blue-navy-shades(30);
-$blue-navy-40: blue-navy-shades(40);
-$blue-navy-50: blue-navy-shades(50);
-$blue-navy-60: blue-navy-shades(60);
-$blue-navy-60: blue-navy-shades(70);
-
-$green-0: green-shades(0);
-$green-5: green-shades(5);
-$green-10: green-shades(10);
-$green-20: green-shades(20);
-$green-30: green-shades(30);
-$green-40: green-shades(40);
-$green-50: green-shades(50);
-$green-60: green-shades(60);
-
-$leaf-0: leaf-shades(0);
-$leaf-5: leaf-shades(5);
-$leaf-10: leaf-shades(10);
-$leaf-20: leaf-shades(20);
-$leaf-30: leaf-shades(30);
-$leaf-40: leaf-shades(40);
-$leaf-50: leaf-shades(50);
-$leaf-60: leaf-shades(60);
-
-$lemon-0: lemon-shades(0);
-$lemon-5: lemon-shades(5);
-$lemon-10: lemon-shades(10);
-$lemon-20: lemon-shades(20);
-$lemon-30: lemon-shades(30);
-$lemon-40: lemon-shades(40);
-$lemon-50: lemon-shades(50);
-$lemon-60: lemon-shades(60);
-
-$gray-0: gray-shades(0);
-$gray-5: gray-shades(5);
-$gray-10: gray-shades(10);
-$gray-20: gray-shades(20);
-$gray-30: gray-shades(30);
-$gray-40: gray-shades(40);
-$gray-50: gray-shades(50);
-$gray-60: gray-shades(60);
-
-$hue: 148;
-
-// grays
-$off-white: hsla(187, 44%, 96%, 1) !default; // #f2f9fa // CRANE;
-$off-green: hsl(120, 33%, 97%) !default; //#F5FAF5 // VINCE
-$dark-green: hsl(166, 37%, 18%) !default; // VINCE
-$blue-educacao: hsl(206, 99%, 35%);
-$white: hsla(0, 0%, 100%, 1) !default;
-$black: hsla($hue, 20%, 4%, 1) !default;
-
-// aux
-$color-error--light:        hsl(8, 40%, 79%) !default;
-$color-error:               hsla(2, 70%, 44%, 1) !default;
-$color-error--dark:         hsl(2, 96%, 20%) !default;
-
-$color-info:                hsla(210, 60%, 30%, 1) !default;
-
-$color-success--light:      hsla(90, 35%, 85%, 1) !default;
-$color-success:             hsla(115, 60%, 35%, 1) !default;
-$color-success--dark:       hsl(150, 79%, 15%) !default;
-
-$color-warning--light:      hsla(52, 70%, 85%, 1) !default;
-$color-warning:             hsla(48, 90%, 50%, 1) !default;
-$color-warning--dark:       hsla(40, 100%, 42%, 1) !default;
+$white: hsla(148, 15%, 100%, 1) !default;
+$black: hsla(148, 20%, 4%, 1) !default;
 
 $colors: (
-("blue-navy-0", $blue-navy-0),
-("blue-navy-5", $blue-navy-5),
+("blue-navy-0",  $blue-navy-0),
 ("blue-navy-10", $blue-navy-10),
 ("blue-navy-20", $blue-navy-20),
 ("blue-navy-30", $blue-navy-30),
 ("blue-navy-40", $blue-navy-40),
 ("blue-navy-50", $blue-navy-50),
 ("blue-navy-60", $blue-navy-60),
+("blue-navy-70", $blue-navy-70),
 
 ("green-0", $green-0),
-("green-5", $green-5),
 ("green-10", $green-10),
 ("green-20", $green-20),
 ("green-30", $green-30),
 ("green-40", $green-40),
 ("green-50", $green-50),
 ("green-60", $green-60),
+("green-70", $green-70),
 
-("leaf-0", $leaf-0),
-("leaf-5", $leaf-5),
+("leaf-0",  $leaf-0),
 ("leaf-10", $leaf-10),
 ("leaf-20", $leaf-20),
 ("leaf-30", $leaf-30),
 ("leaf-40", $leaf-40),
 ("leaf-50", $leaf-50),
 ("leaf-60", $leaf-60),
+("leaf-70", $leaf-70),
 
-("lemon-0", $lemon-0),
-("lemon-5", $lemon-5),
+("lemon-0",  $lemon-0),
 ("lemon-10", $lemon-10),
 ("lemon-20", $lemon-20),
 ("lemon-30", $lemon-30),
 ("lemon-40", $lemon-40),
 ("lemon-50", $lemon-50),
 ("lemon-60", $lemon-60),
+("lemon-70", $lemon-70),
 
 ("gray-0", $gray-0),
-("gray-5", $gray-5),
 ("gray-10", $gray-10),
 ("gray-20", $gray-20),
 ("gray-30", $gray-30),
 ("gray-40", $gray-40),
 ("gray-50", $gray-50),
 ("gray-60", $gray-60),
+("gray-70", $gray-70),
+("gray-80", $gray-80),
+("gray-90", $gray-90),
 
 ("black", $black),
 ("white", $white),
 
-("error--light",  $color-error--light),
-("error",         $color-error),
-("error--dark",   $color-error--dark),
+("error-0",  $error-0),
+("error-10", $error-10),
+("error-20", $error-20),
+("error-30", $error-30),
+("error-40", $error-40),
+("error-50", $error-50),
+("error-60", $error-60),
 
-("info", $color-info),
+("info-0",  $info-0),
+("info-10", $info-10),
+("info-20", $info-20),
+("info-30", $info-30),
+("info-40", $info-40),
+("info-50", $info-50),
+("info-60", $info-60),
 
-("success--light", $color-success--light),
-("success",        $color-success),
-("success--dark",  $color-success--dark),
+("success-0",  $success-0),
+("success-10", $success-10),
+("success-20", $success-20),
+("success-30", $success-30),
+("success-40", $success-40),
+("success-50", $success-50),
+("success-60", $success-60),
 
-("warning--light", $color-warning--light),
-("warning",        $color-warning),
-("warning--dark",  $color-warning--dark),
+("warning-0",  $warning-0),
+("warning-10", $warning-10),
+("warning-20", $warning-20),
+("warning-30", $warning-30),
+("warning-40", $warning-40),
+("warning-50", $warning-50),
+("warning-60", $warning-60),
+
+("engagement", $domain-engagement),
+("kindness", $domain-kindness),
+("management", $domain-management),
+("management-darker", $domain-management--darker),
+("openness", $domain-openness),
+("resilience", $domain-resilience)
 );
 
 
@@ -363,8 +183,8 @@ $font-weight-6: 900;
 //------------------------------------
 // $form-shadow: 0 2px 0 rgba($gray-60, .12);
 $form-shadow: 0 0 0 rgba($gray-60, 1);
-$form-bg-color: $gray-0;
-$form-color: $gray-60;
+$form-bg-color: $gray-10;
+$form-color: $gray-70;
 
 
 
@@ -611,13 +431,13 @@ $timeline-tip-size: 1rem;
 $timeline-gap: $distance--lg;
 $timeline-translation: $timeline-gap + $timeline-tip-size;
 $timeline-mark-info-bg-color: $white;
-$timeline-date-bg-color: transparentize($blue-navy-60, .65);
+$timeline-date-bg-color: transparentize($blue-navy-70, .65);
 $timeline-date-color: $blue-navy-0;
 $timeline-begin-end-bg-color: $green-0;
 $timeline-marks-bg-color: $green-10;
 $timeline-marks-bg-color--locked: $leaf-0;
 $timeline-marks-border-color: $timeline-color;
-$timeline-marks-color: color-contrast($timeline-marks-bg-color, $green-0, $blue-navy-60);
+$timeline-marks-color: color-contrast($timeline-marks-bg-color, $green-0, $blue-navy-70);
 $timeline-marks-radius: $radius--capsule;
 $timeline-marks-shadow: $shadow-3;
 $timeline-status-size: 3rem;
@@ -629,7 +449,7 @@ $timeline-status-size: 3rem;
 //------------------------------------
 //    #GENERAL DEF
 //------------------------------------
-$focus-indicator: 4px solid $lemon-40;
+$focus-indicator: 4px solid $lemon-50;
 $header-bg-color: $white;
 $body-bg-color: $gray-0;
 
@@ -644,69 +464,69 @@ $container-fluid-pad: $distance--md;
 $main-border-color: transparentize($gray-10, .5);
 
 $default-hover-bg-color: $green-10;
-$overlayer-color: $blue-navy-50;
+$overlayer-color: $blue-navy-60;
 
 // ALERT
 $alert-radius: $radius--md;
 
 // CALLOUT
 $callout-default-bg-color: $gray-0;
-$callout-default-border: 2px solid $green-50;
+$callout-default-border: 2px solid $green-60;
 $callout-default-padding: $distance--sm;
 
 // CAPSULE
-$capsule-on-hover-bg-color: $green-30;
-$capsule-on-hover-color: color-contrast($capsule-on-hover-bg-color, $white, $blue-navy-60);
+$capsule-on-hover-bg-color: $green-40;
+$capsule-on-hover-color: color-contrast($capsule-on-hover-bg-color, $white, $blue-navy-70);
 $capsule-on-hover-radius: $radius;
 
 // CLICKABLES
-$clickables-bg-color: $leaf-30;
-$clickables-bg-color-hover: $leaf-50;
-$clickables-color: color-contrast($clickables-bg-color, $white, $blue-navy-60);
+$clickables-bg-color: $leaf-40;
+$clickables-bg-color-hover: $leaf-60;
+$clickables-color: color-contrast($clickables-bg-color, $white, $blue-navy-70);
 $clickables-color-hover: $clickables-color;
 
 // CHECKBOX & RADIO
 $checkbox-checked-bg-color: $clickables-bg-color;
 $check-radio-bg-color: $form-bg-color;
-$check-radio-checked-color: $green-20;
-$check-radio-checked-bg-color: $blue-navy-60;
+$check-radio-checked-color: $green-40;
+$check-radio-checked-bg-color: $blue-navy-70;
 
 // STRIPE
 $stripe-bg-color: $gray-0;
 
 // COURSE NAV
-$course-nav-bg-color: $blue-navy-60;
+$course-nav-bg-color: $blue-navy-70;
 $course-nav-menu-size: 32px;
-$course-nav-active-bg-color: $lemon-10;
-$course-nav-current-bar-color: $lemon-60;
+$course-nav-active-bg-color: $lemon-20;
+$course-nav-current-bar-color: $lemon-70;
 $course-nav-icon-active-color:  inherit;
 $course-nav-icon-current-color: inherit;
-$course-nav-icon-is-done-color: $lemon-40;
+$course-nav-icon-is-done-color: $lemon-50;
 $course-nav-not-done-opacity: .5;
 $course-nav-lateral-pad: $distance--sm;
 
 // GLOBAL NAV
-$global-nav-gradient-light: $green-5 !default;
+$global-nav-gradient-light: $green-10 !default;
 $global-nav-gradient-hover: $default-hover-bg-color !default;
-$global-nav-active-bg-color: $green-20 !default;
-$global-nav-active-bg-color-hover: $green-40 !default;
-$global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-60) !default;
+$global-nav-active-bg-color: $green-40 !default;
+$global-nav-active-bg-color-hover: $green-60 !default;
+$global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-70) !default;
 $global-nav-submenu-width: 10rem !default;
 
 // TRANSITION
-$transition-bg-color: $blue-navy-50;
+$transition-bg-color: $blue-navy-60;
 
 // BUTTONS
 $btn--leaf: true;
-$btn--leaf-bg-color: $leaf-40;
-$btn--leaf-bg-color-hover: $leaf-60;
-$btn--leaf-color: color-contrast($btn--leaf-bg-color, $white, $blue-navy-60);
+$btn--leaf-bg-color: $leaf-50;
+$btn--leaf-bg-color-hover: $leaf-70;
+$btn--leaf-color: color-contrast($btn--leaf-bg-color, $white, $blue-navy-70);
 $btn--leaf-color-hover: $btn--leaf-color;
 
 $btn--success: false;
-$btn--success-bg-color: saturate(darken($color-success, 6%), 6%);
-$btn--success-bg-color-hover: saturate(darken($color-success, 8%), 8%);
-$btn--success-color: color-contrast($btn--success-bg-color, $white, $blue-navy-60);
+$btn--success-bg-color: saturate(darken($success-30, 6%), 6%);
+$btn--success-bg-color-hover: saturate(darken($success-30, 8%), 8%);
+$btn--success-color: color-contrast($btn--success-bg-color, $white, $blue-navy-70);
 $btn--success-color-hover: $btn--success-color;
 
 $btn--xxs: true;

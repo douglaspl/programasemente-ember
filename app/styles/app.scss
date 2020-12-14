@@ -1,7 +1,15 @@
 // @import "ember-bootstrap/bootstrap";
 // @import "semente-styles.scss";
 
-// Novo comeca aqui
+// Common files
+@import "_breakpoints";
+@import "_color--grays";
+@import "_color--aux";
+@import "_color--domains";
+@import "_color--prog-semente";
+@import "_cubic-bezier";
+
+// Specific files
 @import "setup/_functions";
 @import "setup/_variables";
 @import "setup/_fix";

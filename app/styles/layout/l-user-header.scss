@@ -78,14 +78,14 @@
   }
 
   &--aluno {
-    --dark:   #{$leaf-60};
-    --light:  #{$green-20};
+    --dark:   #{$leaf-70};
+    --light:  #{$green-10};
 
   }
 
   &--instrutor {
-    --dark: #{$leaf-60};
-    --light: #{$leaf-20};
+    --dark: #{$leaf-70};
+    --light: #{$leaf-30};
   }
 
   // Elements

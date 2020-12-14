@@ -25,6 +25,11 @@ module.exports = function (defaults) {
       versionStrategy: 'every-build'
     },
 
+    sassOptions: {
+      onlyIncluded: false,
+      includePaths: ['../common-files/']
+    },
+
     autoprefixer: {
       browsers: ['last 3 versions']
     },

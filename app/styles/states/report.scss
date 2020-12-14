@@ -53,9 +53,9 @@
             flex: 0 0 130px;
         }
 
-        &--error { border-left: 4px solid $color-error; }
-        &--success { border-left: 4px solid $color-success; }
-        &--warning { border-left: 4px solid $color-warning; }
+        &--error { border-left: 4px solid $error-30; }
+        &--success { border-left: 4px solid $success-30; }
+        &--warning { border-left: 4px solid $warning-30; }
 
     }
 

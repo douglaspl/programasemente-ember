@@ -92,7 +92,7 @@
     }
 
     &__head {
-        background-color: $color-error;
+        background-color: $error-30;
         border-radius: $radius;
         box-shadow: $shadow-2;
         height: $switch-head;
@@ -112,7 +112,7 @@
     &__checkbox:checked + &__label {
 
         #{$this}__head {
-            background-color: $color-success;
+            background-color: $success-30;
         }
 
         #{$this}__inner {
