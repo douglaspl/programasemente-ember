@@ -38,7 +38,7 @@
           --}}
         </header>
         <ul class="flow-sm">
-          <li>           
+          <li>
             <div class="flex flex-row items-center">
               <span class="flex flex-row items-center">
                 {{icon-competencias}}
@@ -71,36 +71,41 @@
           </li>
         </ul>
 
-        <ul class="tabs">
-          <li>
-            <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Básico') 'tabs__tab--is-active'}}"
-                    type="button"
-                    {{action 'refreshSelectedAgrupamento' 'Básico'}}>
-              <span>Conteúdos básicos</span>
-            </button>
-          </li>
-          <li>
-            <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Complementar') 'tabs__tab--is-active'}}"
-                    type="button"
-                    {{action 'refreshSelectedAgrupamento' 'Complementar'}}>
-              <span>Conteúdos complementares</span>
-            </button>
-          </li>
-          {{#if aula.atividade}}
+        <div>
+          <h2 class="title-2 m-bottom--xxs hide-on--sm">Contéudos</h2>
+          <ul class="tabs">
             <li>
-              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Ead') 'tabs__tab--is-active'}}"
+              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Básico') 'tabs__tab--is-active'}}"
                       type="button"
-                      {{action 'refreshSelectedAgrupamento' 'Ead'}}>
-                <span>EAD</span>
+                      {{action 'refreshSelectedAgrupamento' 'Básico'}}>
+                <span class="hide-on--sm">Básicos</span>
+                <span class="hide-on--xs">Conteúdos básicos</span>
               </button>
             </li>
-          {{/if}}
-        </ul>
+            <li>
+              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Complementar') 'tabs__tab--is-active'}}"
+                      type="button"
+                      {{action 'refreshSelectedAgrupamento' 'Complementar'}}>
+                <span class="hide-on--sm">Complementares</span>
+                <span class="hide-on--xs">Conteúdos complementares</span>
+              </button>
+            </li>
+            {{#if aula.atividade}}
+              <li>
+                <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Ead') 'tabs__tab--is-active'}}"
+                        type="button"
+                        {{action 'refreshSelectedAgrupamento' 'Ead'}}>
+                  <span>EAD</span>
+                </button>
+              </li>
+            {{/if}}
+          </ul>
+        </div>
 
         <div>
           {{#each conteudos as |conteudo|}}
-            {{content-conteudo-card 
-                conteudo=conteudo 
+            {{content-conteudo-card
+                conteudo=conteudo
                 selectedAgrupamento=selectedAgrupamento
                 toggleModal=(action 'toggleModal')}}
           {{/each}}
