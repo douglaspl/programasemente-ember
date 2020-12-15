@@ -22,7 +22,7 @@
       <ul class="tabs">
             {{#each this.parentController.segmentos as |seg|}}
                   <li>
-                  <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
+                  <button type="button" class="tabs__tab {{if (equalstr selectedSegmentoLocal seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
                   <span>{{seg}}</span>
                   </button>
                   </li>
@@ -69,7 +69,7 @@
                                           {{p.name}}
                                     </td>
                                     <td>
-                                          {{arraysize p.conteudoPessoas}}
+                                          {{arraysize p.conteudoPessoasPreparacao}}
                                     </td>
                                     <td>
                                           {{p.nrVideosAlunos}}
