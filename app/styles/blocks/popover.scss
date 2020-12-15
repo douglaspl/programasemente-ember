@@ -10,6 +10,34 @@ $popover-distance: $popover-tip-size * 2;
     overflow: visible;
     position: relative;
 
+    &::before {
+        background-color: $overlayer-color;
+        bottom: 0;
+        content: '';
+        opacity: 0;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
+        visibility: hidden;
+        z-index: 1;
+
+        // Não precisa de overlayer em telas em que o popover não ocupa a "tela toda".
+        @include media('>sm') {
+            display: none;
+        }
+
+    }
+
+    // Mostra overlayer quando o popover for aberto.
+    &[class*='is-show']::before {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
     &__close {
         position: absolute;
         right: $distance--xs;
@@ -26,13 +54,20 @@ $popover-distance: $popover-tip-size * 2;
         padding: $distance--md;
         position: fixed;
         left: 50%;
-        height: calc(100vh - #{$header-height} - (2 * #{$margin}));
-        width: 100vw;
-        top: #{$header-height};
-        transform: translateX(-50%);
-        transition: 300ms;
+        max-height: calc(100vh - #{$header-height} - (2 * #{$margin}));
+        width: calc(100vw - (2 * #{$margin}));
+        top: calc(#{$header-height} + #{$margin});
+        transform: translate(-50%, $popover-distance);
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
         visibility: hidden;
         z-index: 2;
+
+        [class*='is-show'] & {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
 
         @include media('>sm') {
             height: auto;
@@ -43,19 +78,20 @@ $popover-distance: $popover-tip-size * 2;
             top: unset;
             transform: none;
             width: auto;
+
+            &::before {
+                border-color: currentColor transparent transparent transparent;
+                border-style: solid;
+                border-width: $popover-tip-size;
+                color: $white;
+                content: '';
+                filter: drop-shadow(4px 0px 4px rgba(26, 26, 26, .2));
+                position: absolute;
+            }
+
         }
 
         @include media('>lg') { min-width: 24rem; }
-
-        &::before {
-            border-color: currentColor transparent transparent transparent;
-            border-style: solid;
-            border-width: $popover-tip-size;
-            color: $white;
-            content: '';
-            filter: drop-shadow(4px 0px 4px rgba(26, 26, 26, .2));
-            position: absolute;
-        }
 
         // Abaixo de sm o comportamento é padrão tomando quase toda a tela
         @include media('>sm') {
@@ -138,11 +174,6 @@ $popover-distance: $popover-tip-size * 2;
             &::before {
                 color: $color;
             }
-        }
-
-        [class*='is-show'] & {
-            opacity: 1;
-            visibility: visible;
         }
 
     }
