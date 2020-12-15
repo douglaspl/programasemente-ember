@@ -1,12 +1,13 @@
 <!-- Header geral -->
 <header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
   <div class="flex itens-start gap-lg">
-    <picture class="l-user-header__avatar avatar avatar--lg">
+    <picture class="l-user-header__avatar avatar avatar--lg flex justify-center" {{action 'toggleAvatarModal'}}>
       {{#if pessoa.uriAvatar}}
         <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
       {{else}}
         <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
       {{/if}}
+      <div class="avatar__placeholder icon-edit icon--xl"></div>
     </picture>
     <div class="flex-auto flow-xs">
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
