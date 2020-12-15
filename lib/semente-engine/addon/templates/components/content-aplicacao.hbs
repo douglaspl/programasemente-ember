@@ -1,33 +1,56 @@
-<span class="flex flex-row items-center m-bottom--md">
+<div class="flex flex-row items-center m-bottom--md">
     {{icon-aplicada-em}}
     {{#if UltimaAplicacao}}
-        <span class="m-left--xs">Aplicada em:</span>
-        <span class="m-left--xs fw--5">{{UltimaAplicacao.dataAplicacaoFormat}}</span>
+        <span class="flex-none m-left--xs">Aplicada em:</span>
+        <span class="flex-none m-left--xs fw--5">{{UltimaAplicacao.dataAplicacaoFormat}}</span>
     {{else}}
-        <span class="m-left--xs">Não aplicada.</span>
+        <span class="flex-none m-left--xs">Não aplicada.</span>
     {{/if}}
-</span>
+    {{#if (equalstr toggleRole "instrutor")}}
+        <div class="popover m-left--xs">
+            <button class="btn btn--text popover__trigger" type="button" {{action "mostrarTurmas" }}>Marcar como aplicada</button>
 
-<div id="botaoAplicar" class="title-3 btn btn--link list__name" style={{if (equalstr toggleRole "instrutor") "display: block" "display: none"}}>
-    <button type="button" {{action "mostrarTurmas" }}>Marcar como aplicada</button>
-</div>
-<div id="Botaoturmas" class="title-3 btn btn--link list__name" style="display: none">
-    <button type="button" {{action "saveAplicacaoTurmas" aula.aplicacoes}}>Salvar Aplicações</button>
-</div>
+            {{!-- MODAL APLICAÇÃO --}}
+            <div class="popover__balloon popover__balloon--right-bottom" id="turmasId{{turma.id}}">
+                <button class="popover__close icon-x"></button>
 
-{{!-- MODAL APLICAÇÃO --}}
-<div class="" style="display: none" id="turmasId{{turma.id}}">
-    <h1>Situação da aula</h1>
-    <input type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} /> <label>Selecionar todas as turmas</label>
-    {{#each pessoa.plataformaTurmas as |turma|}}
-        {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
-            <input type="checkbox"
-            checked={{if (containInListID turma.id TurmasAplicadas) "checked" ""}}
-            value={{turma.id}}
-            onchange={{action 'turmasChanged' value='target.value'}} />
-            <label>{{turma.name}}</label>
-        {{/if}}
-    {{/each}}
+                <div class="flex flex-col flow-md">
+                    <h2 class="title-3">Situação da aula</h2>
+                    <div class="checkbox">
+                        <input class="checkbox__input" id="selectAllTurmas" type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} />
+                        <label class="checkbox__label" for="selectAllTurmas">Selecionar todas as turmas</label>
+                    </div>
+                    <span class="divider"></span>
+                    <div class="flex flex-col flow-sm">
+                        {{#each pessoa.plataformaTurmas as |turma|}}
+                            {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
+                                <div class="checkbox">
+                                    <input  class="checkbox__input"
+                                            id="{{turma.id}}"
+                                            type="checkbox"
+                                            checked={{if (containInListID turma.id TurmasAplicadas) "checked" ""}}
+                                            value={{turma.id}}
+                                            onchange={{action 'turmasChanged' value='target.value'}} />
+                                    <label class="checkbox__label" for="{{turma.id}}">{{turma.name}}</label>
+                                </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+
+                    <button class="btn btn--xxs btn--ghost self-start"
+                            id="Botaoturmas"
+                            disabled
+                            type="button"
+                            {{action "saveAplicacaoTurmas" aula.aplicacoes}}>
+                        <span class="btn__label">Salvar Aplicações</span>
+                    </button>
+                </div>
+
+            </div>
+            {{!-- /MODAL APLICAÇÃO --}}
+
+        </div>
+    {{/if}}
 </div>
-{{!-- /MODAL APLICAÇÃO --}}
+{{!-- <div id="botaoAplicar" class="title-3 btn btn--link list__name" style={{if (equalstr toggleRole "instrutor") "display: block" "display: none"}}></div> --}}
 

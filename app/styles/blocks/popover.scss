@@ -17,16 +17,35 @@ $popover-distance: $popover-tip-size * 2;
     }
 
     &__balloon {
+        $margin: $distance--md;
+
         background-color: $white;
         border-radius: $radius;
         box-shadow: $shadow-4;
         opacity: 0;
         padding: $distance--md;
-        position: absolute;
-        min-width: 24rem;
+        position: fixed;
+        left: 50%;
+        height: calc(100vh - #{$header-height} - (2 * #{$margin}));
+        width: 100vw;
+        top: #{$header-height};
+        transform: translateX(-50%);
         transition: 300ms;
         visibility: hidden;
         z-index: 2;
+
+        @include media('>sm') {
+            height: auto;
+            left: unset;
+            height: auto;
+            min-width: 20rem;
+            position: absolute;
+            top: unset;
+            transform: none;
+            width: auto;
+        }
+
+        @include media('>lg') { min-width: 24rem; }
 
         &::before {
             border-color: currentColor transparent transparent transparent;
@@ -38,72 +57,75 @@ $popover-distance: $popover-tip-size * 2;
             position: absolute;
         }
 
-        &--left {
-            right: calc(100% + #{$popover-distance});
-            top: 50%;
-            transform: translate($popover-distance, -50%);
-
-            &::before {
-                border-color: transparent transparent transparent currentColor;
-                left: 100%;
+        // Abaixo de sm o comportamento é padrão tomando quase toda a tela
+        @include media('>sm') {
+            &--left {
+                right: calc(100% + #{$popover-distance});
                 top: 50%;
-                transform: translateY(-50%);
+                transform: translate($popover-distance, -50%);
+
+                &::before {
+                    border-color: transparent transparent transparent currentColor;
+                    left: 100%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                [class*='is-show'] & {
+                    transform: translate(0, -50%);
+                }
+
             }
 
-            [class*='is-show'] & {
-                transform: translate(0, -50%);
+            &--left-top {
+                right: calc(100% + #{$popover-distance});
+                top: 50%;
+                transform: translate($popover-distance, -20%);
+
+                &::before {
+                    border-color: transparent transparent transparent currentColor;
+                    left: 100%;
+                    top: 20%;
+                    transform: translateY(-50%);
+                }
+
+                [class*='is-show'] & {
+                    transform: translate(0, -20%);
+                }
             }
 
-        }
+            &--right-top {
+                left: calc(100% + #{$popover-distance});
+                top: 50%;
+                transform: translate($popover-distance, -20%);
 
-        &--left-top {
-            right: calc(100% + #{$popover-distance});
-            top: 50%;
-            transform: translate($popover-distance, -20%);
+                &::before {
+                    border-color: transparent transparent transparent currentColor;
+                    right: 100%;
+                    top: 20%;
+                    transform: translateY(-50%);
+                }
 
-            &::before {
-                border-color: transparent transparent transparent currentColor;
-                left: 100%;
-                top: 20%;
-                transform: translateY(-50%);
+                [class*='is-show'] & {
+                    transform: translate(0, -20%);
+                }
             }
 
-            [class*='is-show'] & {
-                transform: translate(0, -20%);
-            }
-        }
+            &--right-bottom {
+                left: calc(100% + #{$popover-distance});
+                bottom: 50%;
+                transform: translate($popover-distance, 15%);
 
-        &--right-top {
-            left: calc(100% + #{$popover-distance});
-            top: 50%;
-            transform: translate($popover-distance, -20%);
+                &::before {
+                    border-color: transparent transparent transparent currentColor;
+                    bottom: 13%;
+                    right: 100%;
+                    transform: translateX(0%) rotate(180deg);
+                }
 
-            &::before {
-                border-color: transparent transparent transparent currentColor;
-                right: 100%;
-                top: 20%;
-                transform: translateY(-50%);
-            }
-
-            [class*='is-show'] & {
-                transform: translate(0, -20%);
-            }
-        }
-
-        &--right-bottom {
-            left: calc(100% + #{$popover-distance});
-            bottom: 50%;
-            transform: translate($popover-distance, +20%);
-
-            &::before {
-                border-color: transparent transparent transparent currentColor;
-                bottom: 13%;
-                right: 100%;
-                transform: translateX(0%) rotate(180deg);
-            }
-
-            [class*='is-show'] & {
-                transform: translate(0, +20%);
+                [class*='is-show'] & {
+                    transform: translate(0, 15%);
+                }
             }
         }
 
