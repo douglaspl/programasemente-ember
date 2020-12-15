@@ -158,7 +158,7 @@
 // $direction
 // $pos
 // $size
-@mixin divider($color: $light-gray, $direction: 'horizontal', $pos: 'none', $size: 2px, $opacity: .25) {
+@mixin divider($color: $gray-10, $direction: 'horizontal', $pos: 'none', $size: 2px, $opacity: .25) {
     position: relative;
 
     &::after {
