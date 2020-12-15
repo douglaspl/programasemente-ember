@@ -1,10 +1,13 @@
 <div class="media media--card">
   <picture class="media__thumb">
     {{#if (equalstr conteudo.tipo 'Video')}}
-      <img id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
-    {{else}}
-      <h1>outro tipo de arquivo</h1>
-      <img id="vimeo-{{conteudo.path}}{{conteudo.id}}" src="{{fileThumb}}" alt="{{conteudo.titulo}}"/>
+      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
+    {{/if}}
+    {{#if (equalstr conteudo.tipo 'Imagem')}}
+      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}" width="160px">
+    {{/if}}
+    {{#if (equalstr conteudo.tipo 'Documento')}}
+      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{filejpg}}" alt="{{conteudo.titulo}}" width="160px">
     {{/if}}
   </picture>
 
@@ -13,6 +16,11 @@
       <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
     <h2>3 marcações</h2>
+    <h2>{{conteudo.id}}</h2>
     {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
   </div>
+
+  {{#if (equalstr conteudo.tipo 'Video')}}
+    <button onclick={{action 'openModal' conteudo.Id}}> Assistir ao vídeo</button>
+  {{/if}}
 </div>

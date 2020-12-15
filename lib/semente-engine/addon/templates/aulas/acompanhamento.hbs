@@ -1,0 +1,130 @@
+{{header-geral  
+      pessoa=model.pessoa
+      toggleRole=this.parentController.toggleRole
+      selectedSegmento=selectedSegmento
+      selectedAno=selectedAno
+      segmentos=this.parentController.segmentos
+      thisRoute=thisRoute
+      Ano=Ano
+      togglerole=(action 'toggleRole')
+      }}
+
+
+
+{{#if isAdmin }}
+      <label for="professores">Professores</label>
+      <input type="radio" name="selectedFilteredRole" onchange={{action 'refreshSelectedFilteredRole' "professores"}} id="professores" checked={{if (equalstr selectedFilteredRole "professores") "checked"}}/>
+      <label for="alunos">Alunos</label>
+      <input type="radio" name="selectedFilteredRole" onchange={{action 'refreshSelectedFilteredRole' "alunos"}} id="alunos" checked={{if (equalstr selectedFilteredRole "alunos") "checked"}}/>
+{{/if}}
+
+<nav>
+      <ul class="tabs">
+            {{#each this.parentController.segmentos as |seg|}}
+                  <li>
+                  <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
+                  <span>{{seg}}</span>
+                  </button>
+                  </li>
+            {{/each}}
+    </ul>
+  </nav>
+
+<div class="form-group">
+      <label class="form-group__label">Busca</label>
+      <div class="form-group__wrapper form-group__wrapper--search">
+      {{!-- <input class="form-group__input" type="text" id="pesquisaperfil" placeholder="Pesquisar Perfil" value={{this.search}}
+            {{action 'filter' on="input"}}> --}}
+      {{input type="text" class="form-group__input" id="pesquisaperfil" placeholder="Pesquisar Perfil" value=this.search}}
+      </div>
+      <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a>
+</div>
+
+{{#if (equalstr selectedFilteredRole 'professores')}} 
+      <table>
+            <thead>
+                  <tr>
+                        <th>
+                              Nome
+                        </th>
+                        <th>
+                              Videos Vistos de preparação de aula
+                        </th>
+                        <th>
+                              Videos de alunos reproduzidos
+                        </th>
+                        <th>
+                              Aulas marcadas como aplicadas
+                        </th>
+                        <th>
+                              acessos
+                        </th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {{#each professores as |p|}}
+                        {{#if (containStr subStr = this.search mainStr = p.name)}}
+                              <tr>
+                                    <td>
+                                          {{p.name}}
+                                    </td>
+                                    <td>
+                                          {{arraysize p.conteudoPessoas}}
+                                    </td>
+                                    <td>
+                                          {{p.nrVideosAlunos}}
+                                    </td>
+                                    <td>
+                                          {{p.nrAplicacaoPlataformaAulas}}
+                                    </td>
+                                    <td>
+                                          {{p.lastAccess}}
+                                          {{p.nracessos}}
+                                    </td>
+                              </tr>
+                        {{/if}}
+                  {{/each}}
+            </tbody>
+      </table>
+            
+{{else}}
+      <table>
+            <thead>
+                  <tr>
+                        <th>
+                              Nome
+                        </th>
+                        <th>
+                              Videos assistidos
+                        </th>
+                        <th>
+                              acessos
+                        </th>
+                        <th>
+                              último acesso
+                        </th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {{#each alunos as |a|}}
+                        {{#if (containStr subStr = this.search mainStr = a.name)}}
+                              <tr>
+                                    <td>
+                                          {{a.name}}
+                                    </td>
+                                    <td>
+                                          {{a.nrVideosAlunos}}
+                                    </td>
+                                    <td>
+                                          {{a.nracessos}}
+                                    </td>
+                                    
+                                    <td>
+                                          {{a.lastAccess}}
+                                    </td>
+                              </tr>
+                        {{/if}}
+                  {{/each}}
+            </tbody>
+      </table>
+{{/if}}

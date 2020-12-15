@@ -11,7 +11,7 @@
     <div class="flex-auto flow-xs">
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
         <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-        {{#if (equalstr pessoa.role 'aluno')}}
+        {{#if (equalstr toggleRole 'aluno')}}
           <button class="btn btn--link m-bottom--xxs m-top--auto">
             <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
           </button>
@@ -19,7 +19,7 @@
       </div>
       <span class="l-user-header__role title-aux">
         {{#if (equalstr pessoa.role 'aluno')}}
-          {{selectedSegmento}} - {{selectedAno}}
+          {{pessoa.plataformaAnos.firstObject.segmento.titulo}} - {{pessoa.plataformaAnos.firstObject.name}}
         {{else}}
 
           {{#if (equalstr toggleRole 'instrutor')}}
@@ -76,6 +76,11 @@
           <li>
             {{#link-to 'aulas.bibliotecaindex' class="tabs__tab"}}
                 <span>Biblioteca</span>
+            {{/link-to}}
+          </li>
+          <li>
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
             {{/link-to}}
           </li>
 

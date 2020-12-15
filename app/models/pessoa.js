@@ -24,6 +24,9 @@ export default DS.Model.extend({
     return moment(this.get('ultimoacesso'), 'X').format('DD/MM/YYYY');
   }),
   nracessos: DS.attr(),
+  nrVideosPreparacao: DS.attr(),
+  nrVideosAlunos: DS.attr(),
+  nrAplicacaoPlataformaAulas: DS.attr(),
   emailsent: DS.attr(),
   progressototal: DS.attr(),
   uriAvatar: DS.attr(),
@@ -44,6 +47,9 @@ export default DS.Model.extend({
   matriculas: DS.hasMany('matricula', {
     async: true
   }),
+  conteudoPessoas: DS.hasMany('conteudo-pessoa', {
+    async: true
+  }),
   instituicao: DS.belongsTo('instituicao', {
     async: true
   }),
@@ -51,6 +57,9 @@ export default DS.Model.extend({
     async: true
   }),
   respostas: DS.hasMany('resposta', {
+    async: true
+  }),
+  aplicacaoPlataformaAulas: DS.hasMany('aplicacao-plataforma-aula', {
     async: true
   }),
   plataformaAnos: DS.hasMany('plataforma-ano', {

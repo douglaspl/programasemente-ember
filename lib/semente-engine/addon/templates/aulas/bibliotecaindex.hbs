@@ -1,8 +1,8 @@
 {{header-geral  
   pessoa=pessoa
   toggleRole=this.parentController.toggleRole
-  selectedSegmento=selectedSegmento
-  selectedAno=selectedAno
+  selectedSegmento=this.parentController.selectedSegmento
+  selectedAno=this.parentController.selectedAno
   segmentos=this.parentController.segmentos
   thisRoute=thisRoute
   Ano=Ano
@@ -29,45 +29,52 @@
           <label class="form-group__label" for="tema">Tema</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input" name="tema" id="tema" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-              <option selected="selected" value="">---</option>
+              <option selected="selected" value="Todos">Todos</option>
               {{#each temas as |tema|}}
-                  <option value="{{tema}}" selected={{if (equalstr tema selectedTema) "selected"}}>{{tema}}</option>
+                  <option value="{{tema}}">{{tema}}</option>
               {{/each}}
             </select>
           </div>
         </div>
 
        
-       {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
+        {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
           <div class="flex flex-col flow-xs">
             <h3 class="title-aux">Público</h3>
-            <div class="checkbox">
-              <input class="checkbox__input" id="alunos-content" type="checkbox">
-              <label class="checkbox__label" for="alunos-content">Alunos</label>
-            </div>
-            <div class="checkbox">
-              <input class="checkbox__input" id="responsaveis-content" type="checkbox">
-              <label class="checkbox__label" for="responsaveis-content">Responsáveis</label>
-            </div>
-            <div class="checkbox">
-              <input class="checkbox__input" id="professor-content" type="checkbox">
-              <label class="checkbox__label" for="professor-content">Professores</label>
-            </div>
+              {{#each publicos as |pub|}}
+                <div class="checkbox">
+                  <input class="checkbox__input" id="{{pub.name}}-content" type="checkbox" checked={{if (containInListID pub.id selectedPublicos) "checked"}} value={{pub.id}} onchange={{action 'refreshSelectedPublicos' value='target.value'}}>
+                  <label class="checkbox__label" for="{{pub.name}}-content">{{pub.nameFormat}}</label>
+                </div>
+              {{/each}}
           </div>
         {{/if}}
 
       </form>
     </header>
 
-    <section class="l-dots-between__content">
+    <section class="l-dots-between__content flow-md">
       <h3 class="sr-only">Lista de conteúdos</h3>
-      <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
+      <h4 class="title-4">Tema: {{selectedTema}}</h4>
+      
+      
+      <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
             {{plataforma-biblioteca-card conteudo=conteudo }}
           {{/if}}
         {{/each}}
       </ul>
+
+      {{#if noCards}}
+      
+        <div class="empty animated fadeIn">
+         <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
+          <span class="empty__icon icon-frown-o icon--xl"></span>
+          <p class="m-top--xs">Não encontramos nenhum conteúdo com os filtros selecionados</p>
+         </div>
+        </div>
+      {{/if}}
     </section>
   </div>
 </div>
