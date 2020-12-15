@@ -1,0 +1,32 @@
+<div class="media media--card">
+  <picture class="media__thumb">
+    {{#each secao.conteudos as |conteudo|}}
+        {{#if videoId}}
+            <img class="media__thumb" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' videoId}} style="cursor: pointer"/>
+        {{else}}
+            <img class="media__thumb" id="file-{{conteudo.id}}" src="/assets/img/dark__thumb.png"/>
+        {{/if}}
+    {{/each}}
+  </picture>
+
+  <div class="media__body flow-md">
+    <div>
+      <h4 class="media__title title-2 m-top--xxs">{{secao.nome}}</h4>
+    </div>
+    <h2>3 marcações</h2>
+    {{#if quiz}}
+            {{#each quiz.questoes as |questao|}}
+                <h2>Questão {{questao.idx}}</h2>
+                {{{questao.texto}}}
+                {{#each questao.alternativas as |alternativa|}}
+                    {{#if alternativa.correta}}
+                        <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
+                    {{else}}
+                        <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
+                    {{/if}}
+                {{/each}}
+            {{/each}}
+    {{/if}}
+    {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
+  </div>
+</div>

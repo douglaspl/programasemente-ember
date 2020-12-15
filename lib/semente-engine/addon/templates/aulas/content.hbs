@@ -85,6 +85,15 @@
               <span>Conteúdos complementares</span>
             </button>
           </li>
+          {{#if aula.atividade}}
+            <li>
+              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Ead') 'tabs__tab--is-active'}}"
+                      type="button"
+                      {{action 'refreshSelectedAgrupamento' 'Ead'}}>
+                <span>EAD</span>
+              </button>
+            </li>
+          {{/if}}
         </ul>
 
         <div>
@@ -94,6 +103,13 @@
                 selectedAgrupamento=selectedAgrupamento
                 toggleModal=(action 'toggleModal')}}
           {{/each}}
+          {{#if (equalstr selectedAgrupamento 'Ead')}}
+            {{#each aula.atividade.secoes as |secao|}}
+              {{secao-card
+                secao=secao
+                toggleModalEad=(action 'toggleModalEad')}}
+            {{/each}}
+          {{/if}}
         </div>
 
       </section>
@@ -121,6 +137,32 @@
     <div class="modal__footer">
       footer
       <button onclick={{action 'closeConteudoModal'}}>
+        Fechar Conteúdo
+      </button>
+    </div>
+
+  </div>
+  <div class="modal__overlayer"></div>
+
+</aside>
+
+<aside id="content-modal-ead" class="modal">
+
+  <div class="modal__content modal__content--sm">
+
+    <header class="modal__header">
+      header
+    </header>
+
+    <div class="modal__body">
+      {{#if videoId}}
+        {{ead-video-player videoId=videoId}}
+      {{/if}}
+    </div>
+
+    <div class="modal__footer">
+      footer
+      <button onclick={{action 'closeConteudoModalEad'}}>
         Fechar Conteúdo
       </button>
     </div>
