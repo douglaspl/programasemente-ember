@@ -13,20 +13,18 @@
     <div>
       <h4 class="media__title title-2 m-top--xxs">{{secao.nome}}</h4>
     </div>
-    <h2>3 marcações</h2>
     {{#if quiz}}
-            {{#each quiz.questoes as |questao|}}
-                <h2>Questão {{questao.idx}}</h2>
-                {{{questao.texto}}}
-                {{#each questao.alternativas as |alternativa|}}
-                    {{#if alternativa.correta}}
-                        <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
-                    {{else}}
-                        <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
-                    {{/if}}
-                {{/each}}
+        {{#each quiz.questoes as |questao|}}
+            <h2>Questão {{questao.idx}}</h2>
+            {{{questao.texto}}}
+            {{#each questao.alternativas as |alternativa|}}
+                {{#if alternativa.correta}}
+                    <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
+                {{else}}
+                    <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
+                {{/if}}
             {{/each}}
+        {{/each}}
     {{/if}}
-    {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
   </div>
 </div>
