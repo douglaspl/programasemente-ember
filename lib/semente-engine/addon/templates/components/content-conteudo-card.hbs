@@ -1,7 +1,7 @@
 <div class="media media--card">
   <picture class="media__thumb">
     {{#if (equalstr conteudo.tipo 'Video')}}
-      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
+      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" style="cursor: pointer;" src="" alt="{{conteudo.titulo}}" onclick={{action 'openModal' conteudo.Id}}/>
     {{/if}}
     {{#if (equalstr conteudo.tipo 'Imagem')}}
       <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}" width="160px">
@@ -19,8 +19,4 @@
     <h2>{{conteudo.id}}</h2>
     {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
   </div>
-
-  {{#if (equalstr conteudo.tipo 'Video')}}
-    <button onclick={{action 'openModal' conteudo.Id}}> Assistir ao vídeo</button>
-  {{/if}}
 </div>
