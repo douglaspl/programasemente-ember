@@ -17,8 +17,9 @@
 
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
-        <h1>Tarefas</h1>
-        <p>Illo unde assumenda blanditiis, veritatis beatae provident porro in. Necessitatibus optio iure minima officia laudantium.</p>
+        <h1>Tarefa</h1>
+        <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
+        <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
       </header>
 
       <section class="l-dots-between__content flow-lg">
