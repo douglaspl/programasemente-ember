@@ -91,6 +91,7 @@ export default DS.Model.extend({
   }),
   // matriculas: DS.hasMany('matricula', {async: true}),
   dataVisualizacaoBiblioteca: DS.attr(),
+  tarefas: DS.hasMany('tarefa', { async:true }),
 
   verifyEmail: memberAction({ path: 'verifyEmail', type: 'get' }),
   autoRegister: memberAction({ path: 'autoRegisterPlataforma', type: 'post' }),

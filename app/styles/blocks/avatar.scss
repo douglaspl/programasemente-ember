@@ -11,6 +11,8 @@
     overflow: hidden;
     width: $avatar-default-size;
 
+     
+
     &__img {
         left: 50%;
         height: 100%;
@@ -23,6 +25,27 @@
             @include bg-as-thumb;
         }
 
+        &:hover {
+            opacity: 0.5;
+            transition: 0.5s;
+        }
+                  
+    }
+
+    &__placeholder {
+        opacity: 0;
+        transform: translate(0, 0);
+        color: $white;
+       // outline: solid 2px red;
+        justify-content: center;
+        align-self: center;
+        pointer-events: none;
+               
+    }
+
+    &:hover .avatar__placeholder {
+        opacity: 1;
+        transition: 0.5s;
     }
 
     &--is-square {
