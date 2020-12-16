@@ -93,6 +93,7 @@ export default DS.Model.extend({
   dataVisualizacaoBiblioteca: DS.attr(),
   tarefas: DS.hasMany('tarefa', { async:true }),
   avaliacoes: DS.hasMany('avaliacao', { async:true }),
+  anotacoes: DS.hasMany('anotacao', { async: true }),
 
   verifyEmail: memberAction({ path: 'verifyEmail', type: 'get' }),
   autoRegister: memberAction({ path: 'autoRegisterPlataforma', type: 'post' }),

@@ -42,6 +42,23 @@
         onchange={{ action 'avaliar' 9 }}>
         <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 10) "checked"}}
         onchange={{ action 'avaliar' 10 }}>
+        <h1>Anotações</h1>
+        <ul>
+          {{#each anotacoes as |anotacao|}}
+            {{anotacao-card
+              anotacao=anotacao
+              deleteAnotacao=(action 'deleteAnotacao')}}
+          {{/each}}
+        </ul>
+        <div style={{unless newAnotacao "display: none;"}}>
+          <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
+          <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
+            <span class="btn__label">Adicionar anotação</span>
+          </button>
+        </div>
+        <button style={{if newAnotacao "display: none;"}} class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'toggleCreateAnotacao'}}>
+          <span class="btn__label">Nova anotação</span>
+        </button>
       </header>
 
       <section class="l-dots-between__content flow-lg">

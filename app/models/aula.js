@@ -30,4 +30,5 @@ export default DS.Model.extend({
     atividade: DS.belongsTo('atividade', { async: true }),
     tarefas: DS.hasMany('tarefa', { async: true }),
     avaliacoes: DS.hasMany('avaliacao', { async: true }),
+    anotacoes: DS.hasMany('anotacao', { async: true }),
 });
