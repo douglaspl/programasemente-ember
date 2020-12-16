@@ -64,23 +64,40 @@
       <h3 class="modal__title">Solicitar nova senha</h3>
     </header>
     <div class="modal__body">
-      <p>Preencha seu e-mail abaixo para receber uma nova senha em e-mail.</p>
+      <p>Preencha seu nome de usuário</p>
 
       <div class="login__form-group form-group form-group--full-width">
-        <input class="form-group__input" type="textbox" id="user_email"
+        <input class="form-group__input" type="textbox" id="user_name"
           value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
       </div>
 
-      {{#if error_forgot}}
-        <div class="alert alert--error alert--has-icon alert--xxs">
-          <span class="alert__icon icon-alert-triangle"></span>
+    <div class="form-group" id="group-email" style="display: none;">
+      <span class="checkbox">
+        <input class="checkbox__input" id="forgot-email" checked="checked" name="forgot-email" type="checkbox">
+        <label class="checkbox__label" for="forgot-email">Enviar senha por email</label>
+      </span>
+    </div>
+
+    <div class="form-group" id="group-sms" style="display: none;">
+      <span class="checkbox">
+        <input class="checkbox__input" id="forgot-sms" name="forgot-sms" type="checkbox">
+        <label class="checkbox__label" for="forgot-sms">Enviar senha por SMS</label>
+      </span>
+    </div>
+
+        <div class="alert--error alert--has-icon alert--xxs" id="error-forgot">
           <p>{{{error_forgot}}}</p>
         </div>
-      {{/if}}
+
+      <div class="login__alert alert--has-icon alert--success alert--xxs" id="success-forgot">
+        <p>{{{success_forgot}}}</p>
+      </div>
+
 
     </div>
     <div class="modal__footer modal__footer--center">
-      <button class="btn" type="submit" {{action 'sendMail'}}>Solicitar nova senha</button>
+      <button id="btn-verify-user-name" class="btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
+      <button id="btn-send-password" class="btn" style="display:none;"  type="submit" {{action 'sendPassword'}}>Enviar senha</button>
     </div>
 
   </div>

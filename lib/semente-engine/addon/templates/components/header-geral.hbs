@@ -1,5 +1,5 @@
 <!-- Header geral -->
-<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role toggleRole}}">
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role parentController.toggleRole}}">
   <div class="flex itens-start gap-lg">
     <picture class="l-user-header__avatar avatar avatar--lg flex justify-center" {{action 'toggleAvatarModal'}}>
       {{#if pessoa.uriAvatar}}
@@ -12,7 +12,7 @@
     <div class="flex-auto flow-xs">
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
         <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
-        {{#if (equalstr toggleRole 'aluno')}}
+        {{#if (equalstr parentController.toggleRole 'aluno')}}
           <button class="btn btn--link m-bottom--xxs m-top--auto">
             <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
           </button>
@@ -23,28 +23,28 @@
           {{pessoa.plataformaAnos.firstObject.segmento.titulo}} - {{pessoa.plataformaAnos.firstObject.name}}
         {{else}}
 
-          {{#if (equalstr toggleRole 'instrutor')}}
+          {{#if (equalstr parentController.toggleRole 'instrutor')}}
             Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
-            {{#if (isbigger segmentos.length "1")}}
+            {{#if (isbigger parentController.segmentosObjects.length "1")}}
               dos segmentos
-               {{#each segmentos as |seg index|}}
-                  <span class="fs-i">{{seg}}</span>
-                   {{#if (equalstr index (sub segmentos.length 2))}} e
+               {{#each parentController.segmentosObjects as |seg index|}}
+                  <span class="fs-i">{{seg.titulo}}</span>
+                   {{#if (equalstr index (sub parentController.segmentosObjects.length 2))}} e
                    {{else}}
-                    {{#if (equalstr index (sub segmentos.length 1))}}
+                    {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
                     {{else}},
                    {{/if}}
                    {{/if}}
                {{/each}}
              {{else}}
               do
-              {{#each segmentos as |seg|}}
-                <span class="fs-i">{{seg}}</span>
+              {{#each parentController.segmentosObjects as |seg|}}
+                <span class="fs-i">{{seg.titulo}}</span>
                {{/each}}
             {{/if}}
 
           {{else}}
-            {{toggleRole}}
+            {{parentController.toggleRole}}  
           {{/if}}
 
         {{/if}}
@@ -52,19 +52,21 @@
 
       <!-- veta quem não é prof -->
       {{#if (equalstr pessoa.role 'instrutor')}}
-        <!-- veta quem não tem filho -->
-        {{#if pessoa.dependentes}}
-          <!-- alterna entre perfis -->
-          {{#if (equalstr toggleRole 'instrutor')}}
-            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
-              <span class="btn__label">Visualizar como responsável</span>
-            </button>
-          {{else}}
-            <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
-              <span class="btn__label">Visualizar como professor</span>
-            </button>
+       {{#unless (equalstr showToggle false)}}
+          <!-- veta quem não tem filho -->
+          {{#if pessoa.dependentes}}
+            <!-- alterna entre perfis -->
+            {{#if (equalstr parentController.toggleRole 'instrutor')}}
+              <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
+                <span class="btn__label">Visualizar como responsável</span>
+              </button>
+            {{else}}
+              <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'instrutor'}}>
+                <span class="btn__label">Visualizar como professor</span>
+              </button>
+            {{/if}}
           {{/if}}
-        {{/if}}
+        {{/unless}}
       {{/if}}
 
       <nav>
@@ -88,7 +90,7 @@
           {{#if Ano.urlLivro}}
             <li>
               <a class="tabs__tab" href="{{Ano.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
-                <span>Livro (PDF) {{selectedAno}}</span>
+                <span>Livro (PDF) {{Ano.name}}</span>
               </a>
             </li>
           {{/if}}

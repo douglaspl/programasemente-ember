@@ -1,13 +1,9 @@
 {{header-geral  
-      pessoa=model.pessoa
-      toggleRole=this.parentController.toggleRole
-      selectedSegmento=selectedSegmento
-      selectedAno=selectedAno
-      segmentos=this.parentController.segmentos
-      thisRoute=thisRoute
-      Ano=Ano
-      togglerole=(action 'toggleRole')
-      }}
+parentController = this.parentController
+pessoa=model.pessoa
+thisRoute=thisRoute
+togglerole=(action 'toggleRole')
+}}
 
 
 
@@ -20,24 +16,56 @@
 
 <nav>
       <ul class="tabs">
-            {{#each this.parentController.segmentos as |seg|}}
+            {{#each this.parentController.segmentosObjects as |seg|}}
                   <li>
-                  <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
-                  <span>{{seg}}</span>
+                  <button type="button" class="tabs__tab {{if (equalstr selectedSegmentoLocal.titulo seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
+                  <span>{{seg.titulo}}</span>
                   </button>
                   </li>
             {{/each}}
     </ul>
   </nav>
 
-<div class="form-group">
-      <label class="form-group__label">Busca</label>
-      <div class="form-group__wrapper form-group__wrapper--search">
-      {{!-- <input class="form-group__input" type="text" id="pesquisaperfil" placeholder="Pesquisar Perfil" value={{this.search}}
-            {{action 'filter' on="input"}}> --}}
-      {{input type="text" class="form-group__input" id="pesquisaperfil" placeholder="Pesquisar Perfil" value=this.search}}
+<div class="row">
+
+      <div class="form-group">
+            <label class="form-group__label">Busca</label>
+            <div class="form-group__wrapper form-group__wrapper--search">
+                  {{!-- <input class="form-group__input" type="text" id="pesquisaperfil" placeholder="Pesquisar Perfil"
+                        value={{this.search}} {{action 'filter' on="input" }}> --}}
+                  {{input type="text" class="form-group__input" id="pesquisaperfil" placeholder="Pesquisar Perfil"
+                  value=this.search}}
+            </div>
+            <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
       </div>
-      <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a>
+
+      <div class="form-group">
+            <label class="form-group__label">Serie</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+                  <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedAno'
+                        value='target.value' }}>
+                        <option selected="selected" value="">Todas</option>
+                        {{#each plataformaAnos as |pa|}}
+                              <option value={{pa.id}} selected={{if (equalstr pa.id selectedPlataformaAno.id) "selected"}}>{{pa.name}}</option>
+                        {{/each}}
+                  </select>
+            </div>
+      </div>
+
+      {{#if (equalstr selectedFilteredRole "alunos")}}
+            <div class="form-group">
+                  <label class="form-group__label">Turma</label>
+                  <div class="form-group__wrapper form-group__wrapper--select">
+                        <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedTurma'
+                              value='target.value' }}>
+                              <option selected="selected" value="">Todas</option>
+                              {{#each plataformaTurmas as |pt|}}
+                                    <option value={{pt.id}} selected={{if (equalstr pt.id selectedPlataformaTurma.id) "selected"}}>{{pt.name}}</option>
+                              {{/each}}
+                        </select>
+                  </div>
+            </div>
+      {{/if}}
 </div>
 
 {{#if (equalstr selectedFilteredRole 'professores')}} 
@@ -69,7 +97,7 @@
                                           {{p.name}}
                                     </td>
                                     <td>
-                                          {{arraysize p.conteudoPessoas}}
+                                          {{p.nrVideosPreparacao}}
                                     </td>
                                     <td>
                                           {{p.nrVideosAlunos}}
@@ -79,7 +107,7 @@
                                     </td>
                                     <td>
                                           {{p.lastAccess}}
-                                          {{p.nracessos}}
+                                          {{p.acessos}}
                                     </td>
                               </tr>
                         {{/if}}
@@ -116,7 +144,7 @@
                                           {{a.nrVideosAlunos}}
                                     </td>
                                     <td>
-                                          {{a.nracessos}}
+                                          {{a.acessos}}
                                     </td>
                                     
                                     <td>

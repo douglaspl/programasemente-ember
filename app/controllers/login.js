@@ -115,9 +115,12 @@ export default Ember.Controller.extend({
       this.transitionToRoute('autoregister');
     },
     cancelForgot() {
+      document.getElementById('error-forgot').style.display = 'none';
       document.getElementById('forgot_modal').classList.remove('modal--is-show');
-      document.getElementById('user_email').value = '';
-      this.set('user_email', '');
+      document.getElementById('user_name').value = '';
+      document.getElementById('group-email').style.display = 'none';
+      document.getElementById('group-sms').style.display = 'none';
+      this.set('user_name', '');
       this.set('success_mail', '');
       this.set('error_forgot', '');
     },
@@ -150,6 +153,113 @@ export default Ember.Controller.extend({
           this.set('errorMessage', '');
         });
       }
+    },
+    sendPassword(type){
+      let email = false;
+      let phone = false;
+      if (!type) {
+        if ( document.getElementById('forgot-sms').checked ) {
+          phone = true;
+        }
+        if ( document.getElementById('forgot-email').checked ) {
+          email = true;
+        }
+      }
+      else
+      {
+        if (type === "phone") {
+          phone = true;
+        }
+        if (type === "email") {
+          email = true;
+        }
+      }
+      let userName = document.getElementById('user_name').value;
+      let final_url = this.get('envnmt.host') + '/' + this.get('envnmt.namespace') + '/' + 'accounts/sendPassword';
+      let string = JSON.stringify({
+        'data': {
+          'id': '1',
+          'type': 'send-password',
+          'attributes': {
+            'user-name': userName,
+            "phone": phone,
+            "email": email
+          }
+        }
+      });
+
+      let that = this;
+      this.makeCustomCall('POST', final_url, string).then(() => {
+        document.getElementById('error-forgot').style.display = 'none';
+        document.getElementById('success-forgot').style.display = 'block';
+        that.set('success_forgot', 'Nova senha enviada com sucesso');
+        that.set('error_forgot', '');
+        document.getElementById('btn-send-password').style.display = 'none';
+      }).catch((error) => {
+        document.getElementById('error-forgot').style.display = 'block';
+        document.getElementById('success-forgot').style.display = 'none';
+        that.set('error_forgot', 'Erro do servidor: ' + error);
+        that.set('success_forgot', '');
+      });
+    },
+    verifyUserName() {
+      let userName = document.getElementById('user_name').value;
+      let final_url = this.get('envnmt.host') + '/' + this.get('envnmt.namespace') + '/' + 'accounts/verifyUserName';
+      let string = JSON.stringify({
+        'data': {
+          'id': '1',
+          'type': 'user-name',
+          'attributes': {
+            'user-name': userName
+          }
+        }
+      });
+
+      let that = this;
+      this.makeCustomCall('POST', final_url, string).then((data) => {
+        var result = data.data.attributes;
+        if (!result.exists)
+        {
+          document.getElementById('group-email').style.display = 'none';
+          document.getElementById('group-sms').style.display = 'none';
+          document.getElementById('error-forgot').style.display = 'block';
+          that.set('error_forgot', 'Usuário não cadastrado!');
+          return;
+        }
+        if (result.hasEmail && result.hasPhone)
+        {
+          document.getElementById('user_name').disabled = true;
+          document.getElementById('btn-verify-user-name').style.display = 'none';
+          document.getElementById('btn-send-password').style.display = 'block';
+          document.getElementById('group-email').style.display = 'block';
+          document.getElementById('group-sms').style.display = 'block';
+          document.getElementById('error-forgot').style.display = 'none';
+          that.set('error_forgot', 'Usuário não cadastrado!');
+          return;
+        }
+        if (result.hasEmail && !result.hasPhone)
+        {
+          sendPassword('email');
+          return;
+        }
+        if (!result.hasEmail && result.hasPhone)
+        {
+          sendPassword('phone');
+          return;
+        }
+        if (!result.hasEmail && !result.hasPhone)
+        {
+          document.getElementById('group-email').style.display = 'none';
+          document.getElementById('group-sms').style.display = 'none';
+          document.getElementById('error-forgot').style.display = 'block';
+          that.set('error_forgot', 'Não temos seu email nem seu telefone. Entre em contato com a escola para receber sua senha');
+          return;
+        }
+
+      }).catch((error) => {
+        that.set('error_forgot', 'Erro do servidor: ' + error);
+      });
     }
-  }
+  },
+
 });

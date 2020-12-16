@@ -1,9 +1,6 @@
 {{header-geral  
+  parentController = this.parentController
   pessoa=pessoa
-  toggleRole=this.parentController.toggleRole
-  selectedSegmento=selectedSegmento
-  selectedAno=selectedAno
-  segmentos=this.parentController.segmentos
   thisRoute=thisRoute
   Ano=Ano
   togglerole=(action 'toggleRole')
@@ -14,10 +11,10 @@
     <nav>
       <ul class="tabs">
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
-          {{#each this.parentController.segmentos as |seg|}}
+          {{#each this.parentController.segmentosObjects as |seg|}}
             <li>
-              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
-                <span>{{seg}}</span>
+              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
+                <span>{{seg.titulo}}</span>
               </button>
             </li>
           {{/each}}
