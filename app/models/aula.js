@@ -4,6 +4,10 @@ moment.updateLocale('en', {
     monthsShort : [
         "jan", "fev", "mar", "abr", "maio", "jun",
         "jul", "ago", "set", "out", "nov", "dez"
+    ],
+    months : [
+        "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
     ]
 });
 
@@ -19,6 +23,10 @@ export default DS.Model.extend({
     dataFimPrevista: DS.attr(),
     dataFimPrevistaFormat: Ember.computed('dataFimPrevista', function() {
         let dataformatada = moment(this.get('dataFimPrevista'), 'DD/MM/YYYY hh:mm:ss').format('DD MMM');
+        return dataformatada;
+    }),
+    mesFimPrevistoFormat: Ember.computed('dataFimPrevista', function() {
+        let dataformatada = moment(this.get('dataFimPrevista'), 'DD/MM/YYYY hh:mm:ss').format('MMMM');
         return dataformatada;
     }),
     thumbnail: DS.attr(),
