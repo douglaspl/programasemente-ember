@@ -1,13 +1,10 @@
 {{header-geral
-  pessoa=selectedDependente
-  toggleRole=this.parentController.toggleRole
-  selectedSegmento=selectedSegmento
-  selectedAno=selectedAno
-  segmentos=this.parentController.segmentos
+  parentController = this.parentController
+  pessoa=this.parentController.selectedDependente
   thisRoute=thisRoute
   Ano=Ano
   togglerole=(action 'toggleRole')
-  showToggle=this.showToggle
+  showToggle=showToggle
   }}
 
 <div class="flow-md">
@@ -89,7 +86,7 @@
           {{/if}}
 
           <li id="aplicacaoAula">
-            {{content-aplicacao pessoa=selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
+            {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
           </li>
         </ul>
 
@@ -158,7 +155,7 @@
 
     <div class="modal__body">
       {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=selectedDependente}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente}}
       {{/if}}
     </div>
 
@@ -189,7 +186,6 @@
     </div>
 
     <div class="modal__footer">
-      footer
       <button onclick={{action 'closeConteudoModalEad'}}>
         Fechar Conteúdo
       </button>
