@@ -278,10 +278,54 @@
   }
 
   &--link {
-    @include dotted-link;
+    background-color: transparent;
+    box-shadow: none;
+    padding: .25em 0;
+    position: relative;
+
+    [class*='__label'] {
+      position: relative;
+
+      &::after {
+        background-color: currentColor;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+        transition: 200ms var(--ease-in-out-quad);
+        width: 100%;
+      }
+
+    }
 
     &:hover {
       background-color: transparent;
+      color: $clickables-bg-color;
+
+      [class*='__label']::after {
+        opacity: .75;
+        transform: translateY(.25em);
+      }
+
+    }
+
+    // Sanitizer
+    &:not([class*='color-']) {
+      border: 4px solid crimson;
+      position: relative;
+
+      &::before {
+        background-color: crimson;
+        bottom: 100%;
+        content: 'btn--link need a "color-" class, like color-blue-navy-60!';
+        left: -4px;
+        padding: .5em;
+        position: absolute;
+        text-transform: none;
+      }
+
     }
 
   }
@@ -289,7 +333,7 @@
   &--text {
     background-color: transparent;
     box-shadow: none;
-    color: $gray-60;
+    color: $gray-80;
     opacity: .75;
     // padding-left: 0;
     // padding-right: 0;
@@ -297,7 +341,7 @@
 
     &:hover {
       background-color: $gray-10;
-      color: $gray-60;
+      color: $gray-80;
       opacity: 1;
     }
 
