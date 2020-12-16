@@ -20,6 +20,27 @@
         <h1>Tarefa</h1>
         <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
         <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
+        <h1>Avaliar</h1>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 1) "checked"}}
+        onchange={{ action 'avaliar' 1 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 2) "checked"}} 
+        onchange={{ action 'avaliar' 2 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 3) "checked"}}
+        onchange={{ action 'avaliar' 3 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 4) "checked"}}
+        onchange={{ action 'avaliar' 4 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 5) "checked"}}
+        onchange={{ action 'avaliar' 5 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 6) "checked"}}
+        onchange={{ action 'avaliar' 6 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 7) "checked"}}
+        onchange={{ action 'avaliar' 7 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 8) "checked"}}
+        onchange={{ action 'avaliar' 8 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 9) "checked"}}
+        onchange={{ action 'avaliar' 9 }}>
+        <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 10) "checked"}}
+        onchange={{ action 'avaliar' 10 }}>
       </header>
 
       <section class="l-dots-between__content flow-lg">
