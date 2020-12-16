@@ -7,6 +7,7 @@
   thisRoute=thisRoute
   Ano=Ano
   togglerole=(action 'toggleRole')
+  showToggle=this.showToggle
   }}
 
 <div class="flow-md">
@@ -157,7 +158,7 @@
 
     <div class="modal__body">
       {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=pessoa}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=selectedDependente}}
       {{/if}}
     </div>
 
