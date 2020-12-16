@@ -1,18 +1,15 @@
 {{header-geral
-  pessoa=selectedDependente
-  toggleRole=this.parentController.toggleRole
-  selectedSegmento=selectedSegmento
-  selectedAno=selectedAno
-  segmentos=this.parentController.segmentos
+  parentController = this.parentController
+  pessoa=this.parentController.selectedDependente
   thisRoute=thisRoute
   Ano=Ano
   togglerole=(action 'toggleRole')
-  showToggle=this.showToggle
+  showToggle=showToggle
   }}
 
 <div class="flow-md">
-    <button class="btn btn--text" {{action 'voltar'}}>
-      <span class="btn__icon icon-arrow-left"></span>
+    <button class="btn btn--link color-blue-navy-60" {{action 'voltar'}}>
+      <span class="btn__icon icon-chevron-left"></span>
       <span class="btn__label">Voltar</span>
     </button>
 
@@ -77,19 +74,21 @@
           --}}
         </header>
         <ul class="flow-sm">
-          <li>
-            <div class="flex flex-row items-center">
-              <span class="flex flex-row items-center">
-                {{icon-competencias}}
-                <span class="m-left--xs">Competências:</span>
-              </span>
-              <span class="m-left--xs">
-                {{#each aula.competencias as |comp|}}
-                  <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
-                {{/each}}
-              </span>
-            </div>
-          </li>
+          {{#if aula.competencias}}
+            <li>
+              <div class="flex flex-row items-center">
+                <span class="flex flex-row items-center">
+                  {{icon-competencias}}
+                  <span class="m-left--xs">Competências:</span>
+                </span>
+                <span class="m-left--xs">
+                  {{#each aula.competencias as |comp|}}
+                    <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
+                  {{/each}}
+                </span>
+              </div>
+            </li>
+          {{/if}}
 
           {{#if (equalstr toggleRole 'instrutor')}}
             <li>
@@ -106,7 +105,7 @@
           {{/if}}
 
           <li id="aplicacaoAula">
-            {{content-aplicacao pessoa=selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
+            {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
           </li>
         </ul>
 
@@ -175,7 +174,7 @@
 
     <div class="modal__body">
       {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=selectedDependente}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente}}
       {{/if}}
     </div>
 
@@ -206,7 +205,6 @@
     </div>
 
     <div class="modal__footer">
-      footer
       <button onclick={{action 'closeConteudoModalEad'}}>
         Fechar Conteúdo
       </button>
