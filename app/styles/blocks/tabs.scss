@@ -21,7 +21,7 @@
         > * { opacity: .5; }
 
         &--is-active {
-            border-bottom: 4px solid $global-nav-active-bg-color;
+            border-bottom: 3px solid $global-nav-active-bg-color;
             cursor: unset;
 
             > * { opacity: 1; }

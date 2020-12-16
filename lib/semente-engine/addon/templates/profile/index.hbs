@@ -1,6 +1,6 @@
 <div class="main__back-container">
-  <button class="btn btn--text" {{action 'goToAulas' on="click"}} type="button">
-    <span class="btn__icon icon-arrow-left"></span>
+  <button class="btn btn--link" {{action 'goToAulas' on="click"}} type="button">
+    <span class="btn__icon icon-chevron-left"></span>
     <span class="btn__voltar">Ir para aulas</span>
   </button>
 </div>
@@ -28,7 +28,7 @@
                     <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar"
                         style="display: none;" name="file">
                 </label>
-                
+
             </div>
           </div>
           {{!-- <picture class="avatar avatar--xl avatar--is-square">
