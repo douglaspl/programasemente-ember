@@ -8,8 +8,8 @@
   }}
 
 <div class="flow-md">
-    <button class="btn btn--text" {{action 'voltar'}}>
-      <span class="btn__icon icon-arrow-left"></span>
+    <button class="btn btn--link color-blue-navy-60" {{action 'voltar'}}>
+      <span class="btn__icon icon-chevron-left"></span>
       <span class="btn__label">Voltar</span>
     </button>
 
@@ -39,6 +39,23 @@
         onchange={{ action 'avaliar' 9 }}>
         <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 10) "checked"}}
         onchange={{ action 'avaliar' 10 }}>
+        <h1>Anotações</h1>
+        <ul>
+          {{#each anotacoes as |anotacao|}}
+            {{anotacao-card
+              anotacao=anotacao
+              deleteAnotacao=(action 'deleteAnotacao')}}
+          {{/each}}
+        </ul>
+        <div style={{unless newAnotacao "display: none;"}}>
+          <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
+          <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
+            <span class="btn__label">Adicionar anotação</span>
+          </button>
+        </div>
+        <button style={{if newAnotacao "display: none;"}} class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'toggleCreateAnotacao'}}>
+          <span class="btn__label">Nova anotação</span>
+        </button>
       </header>
 
       <section class="l-dots-between__content flow-lg">
@@ -57,19 +74,21 @@
           --}}
         </header>
         <ul class="flow-sm">
-          <li>
-            <div class="flex flex-row items-center">
-              <span class="flex flex-row items-center">
-                {{icon-competencias}}
-                <span class="m-left--xs">Competências:</span>
-              </span>
-              <span class="m-left--xs">
-                {{#each aula.competencias as |comp|}}
-                  <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
-                {{/each}}
-              </span>
-            </div>
-          </li>
+          {{#if aula.competencias}}
+            <li>
+              <div class="flex flex-row items-center">
+                <span class="flex flex-row items-center">
+                  {{icon-competencias}}
+                  <span class="m-left--xs">Competências:</span>
+                </span>
+                <span class="m-left--xs">
+                  {{#each aula.competencias as |comp|}}
+                    <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
+                  {{/each}}
+                </span>
+              </div>
+            </li>
+          {{/if}}
 
           {{#if (equalstr toggleRole 'instrutor')}}
             <li>

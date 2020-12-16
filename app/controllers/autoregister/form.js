@@ -17,6 +17,24 @@ export default Ember.Controller.extend({
     }
   }),
 
+  verifyPasswordLength() {
+    
+    let p1 = document.getElementById('senha').value;
+    let p2 = document.getElementById('senha2').value;
+    const passAlert = document.getElementById('pass-error');
+    const msg = passAlert.querySelector('[class*="__msg"]');
+    
+    if (p1.length < 6 || p2.length < 6) {
+     let errorMsg = 'A senha precisa ter pelo menos 6 caracteres.';
+      passAlert.classList.add('alert--is-show', 'fadeIn');
+      msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+      return false
+    } else {
+      passAlert.classList.remove('alert--is-show', 'fadeIn');
+      return true;
+    }
+    
+  },
 
   actions: {
 
@@ -139,23 +157,24 @@ export default Ember.Controller.extend({
   },
 
   verifyPassword: function () {
+    debugger;
     let p1 = document.getElementById('senha').value;
     let p2 = document.getElementById('senha2').value;
 
     const passAlert = document.getElementById('pass-error');
     const alertAnimation = passAlert.dataset.animation;
     const msg = passAlert.querySelector('[class*="__msg"]');
-    const errorMsg = 'As senhas digitadas ainda não são iguais.';
+    const errorMsg =  'As senhas digitadas ainda não são iguais.';
     const inputsPass = document.querySelectorAll(".j-password");
 
+   
     if ((p1.length > 0 && p2.length > 0) && (p1 === p2)) {
       document.getElementById('submit').setAttribute('dataDisabled', 'false');
       passAlert.classList.remove('alert--is-show');
       inputsPass.forEach(input => {
         input.classList.add('form-group__input-container--is-validated');
       });
-      
-
+     
     } else if (p1.length > 0 || p2.length > 0) {
       document.getElementById('submit').setAttribute('dataDisabled', 'true');
       //document.getElementById('submit').classList.add("btn--disabled");
@@ -167,59 +186,65 @@ export default Ember.Controller.extend({
     }
   },
 
+ 
+
   createUser: function () {
-    let button = document.getElementById('submit');
-    button.innerHTML = "Aguarde..."
-    let password = document.getElementById('senha').value;
-    let login = document.getElementById('login').value;
-    let sistemas = this.get('store').peekAll('sistema');
-    let sistema;
-    sistemas.forEach(function (s) {
-      if (s.get('idx') == 1) {
-        sistema = s;
-      }
-    });
-    let pessoa = this.get('store').createRecord('pessoa');
-    let that = this;
-    pessoa.autoRegister({
-      login: login,
-      password: password,
-      instituicaoId: this.get('escola').get('id'),
-      sistemaId: sistema.get('id'),
-      role: this.get('model').get('typeCadastro'),
-      shouldReviewProfile: true,
-      name: login
-    }).catch(function (error) {
-       // Se existe um erro qualificado
-       if (error.errors) {
-           
-        button.innerHTML = 'Avançar';
-        // Pega alerta
-        const errorCompartiment = document.getElementById('codigo-error');
-        // Pega animação do alerta
-        const alertAnimation = errorCompartiment.dataset.animation;
-        // Pega container da mensagem a ser escrita
-        const msg = errorCompartiment.querySelector('[class*="__msg"]');
-        // Pega a identificação do erro
-        const errorStatus =  error.errors[0].status;
-       
-        // Define mensagem de erro, caso seja o erro XYZ
-        let errorMsg = "Ops! Tivemos um problema para registrar seu usuário. Tente novamente em instantes."
-       
-        // Injeta mensagem de erro.
-        msg.innerHTML = '<strong>' + errorMsg + '</strong>';
-
-        // Confere se o elemento já está aparecendo
-        if(!errorCompartiment.classList.contains('alert--is-show')) {
-          // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
-          errorCompartiment.classList.add('alert--is-show', alertAnimation);
+    this.verifyPasswordLength();
+    if (this.verifyPasswordLength()) {
+      let button = document.getElementById('submit');
+      button.innerHTML = "Aguarde..."
+      let password = document.getElementById('senha').value;
+      let login = document.getElementById('login').value;
+      let sistemas = this.get('store').peekAll('sistema');
+      let sistema;
+      sistemas.forEach(function (s) {
+        if (s.get('idx') == 1) {
+          sistema = s;
         }
+      });
+      let pessoa = this.get('store').createRecord('pessoa');
+      let that = this;
+      pessoa.autoRegister({
+        login: login,
+        password: password,
+        instituicaoId: this.get('escola').get('id'),
+        sistemaId: sistema.get('id'),
+        role: this.get('model').get('typeCadastro'),
+        shouldReviewProfile: true,
+        name: login
+      }).catch(function (error) {
+         // Se existe um erro qualificado
+         if (error.errors) {
+             
+          button.innerHTML = 'Avançar';
+          // Pega alerta
+          const errorCompartiment = document.getElementById('codigo-error');
+          // Pega animação do alerta
+          const alertAnimation = errorCompartiment.dataset.animation;
+          // Pega container da mensagem a ser escrita
+          const msg = errorCompartiment.querySelector('[class*="__msg"]');
+          // Pega a identificação do erro
+          const errorStatus =  error.errors[0].status;
+         
+          // Define mensagem de erro, caso seja o erro XYZ
+          let errorMsg = "Ops! Tivemos um problema para registrar seu usuário. Tente novamente em instantes."
+         
+          // Injeta mensagem de erro.
+          msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+  
+          // Confere se o elemento já está aparecendo
+          if(!errorCompartiment.classList.contains('alert--is-show')) {
+            // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+            errorCompartiment.classList.add('alert--is-show', alertAnimation);
+          }
+  
+  
+          } else {
+          that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
+        }
+      })
 
-
-        } else {
-        that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
-      }
-    })
+    };
   }
 },
 });

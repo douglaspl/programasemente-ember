@@ -1,6 +1,6 @@
 <div class="main__back-container">
-  <button class="btn btn--text" {{action 'goToAulas' on="click"}} type="button">
-    <span class="btn__icon icon-arrow-left"></span>
+  <button class="btn btn--link" {{action 'goToAulas' on="click"}} type="button">
+    <span class="btn__icon icon-chevron-left"></span>
     <span class="btn__voltar">Ir para aulas</span>
   </button>
 </div>
@@ -28,7 +28,7 @@
                     <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar"
                         style="display: none;" name="file">
                 </label>
-                
+
             </div>
           </div>
           {{!-- <picture class="avatar avatar--xl avatar--is-square">
@@ -51,26 +51,17 @@
         <form class="flex flex-col flow-md" autocomplete="off">
           <div class="form-group">
             <label class="form-group__label" for="pass">Senha antiga</label>
-            <input class="form-group__input" type="password" id="pass" value="" onchange={{action 'updatePasswordChanged'}} >
+            <input class="form-group__input" type="password" id="pass" value="" onkeyup={{action 'updatePasswordChanged'}} >
           </div>
 
           <div class="form-group">
-            <label class="form-group__label" for="pass_new">Confirme a nova senha</label>
-            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new" value="" onchange="{{action 'updatePasswordChanged'}}">
+            <label class="form-group__label" for="pass_new">Nova senha</label>
+            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new" value="">
           </div>
 
           <div class="form-group">
             <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
-            <!-- melhorar classes do form... -->
-            <div class="form-group__container form-group">
-              <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
-                  class="form__msg-icon icon-check"></span>Par
-                de senhas perfeito!</span>
-              <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
-                  class="form__msg-icon icon-alert-triangle"></span>Senhas
-                não batem...</span>
-              <input class="form-group__input" type="password" id="pass_new_copy" value="">
-            </div>
+            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_copy" value="">
           </div>
 
           {{#if success_pwd}}
