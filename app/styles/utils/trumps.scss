@@ -89,6 +89,10 @@
     letter-spacing: 0.0225em;
 }
 
+.divider {
+    @include divider($pos: "bottom");
+}
+
 .overflow-hidden { overflow: hidden; }
 .pos-rel { position: relative; }
 .small { font-size: .75em; }

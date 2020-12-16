@@ -109,8 +109,8 @@
   }
 
   &--error {
-    background-color: transparentize(lighten($error-30, 50%), .05);
-    color: transparentize($error-30, .15);
+    background-color: $error-0;
+    color: $error-30;
 
     // &::before {
     //   font-family: '#{$icomoon-font-family}';

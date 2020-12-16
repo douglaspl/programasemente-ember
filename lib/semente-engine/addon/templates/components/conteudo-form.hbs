@@ -4,7 +4,7 @@
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
     <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo'
-        onchange={{ action 'urlvideoChanged' value='target.value' }}>
+        onchange={{ action 'urlvideoChanged' value='target.value' }} disabled={{not conteudo.path}}>
     <div class="row"> OU </div>
 
     <label for="">Arquivo em PDF, PNG ou JPEG</label>
@@ -17,7 +17,7 @@
         {{#if (base64 conteudo.path)}}
             <object id="showfiles" data={{conteudo.path}} type='application/pdf'></object>
         {{else}}
-            <object id="showfiles" data={{fileurl}} type='application/pdf'></object>
+            <object id="showfiles" data="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/{{conteudo.path}}" type='application/pdf'></object>
         {{/if}}
         <button type="button" class="btn" {{action "removePath"}}>Remover</button>
     {{/if}}
@@ -76,7 +76,7 @@
             checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
             value={{pub.id}}
             onchange={{action 'publicoChanged' value='target.value'}} />
-            <label>{{pub.name}}</label>
+            <label>{{pub.nameFormat}}</label>
         {{/each}}
     </div>
     <div class="row">
