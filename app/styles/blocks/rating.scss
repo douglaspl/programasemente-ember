@@ -1,0 +1,99 @@
+.rating {
+  $this: &;
+  $rating-gap: $distance--xxs;
+  $rating-size: $distance--md;
+
+  align-items: center;
+  background-image: url('/assets/svg/star-full-gray.svg');
+  background-position: -2px center;
+  background-size: ($rating-size + $rating-gap) 100%;
+  background-repeat: repeat-x;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: $rating-gap;
+
+  // Remove all opacity by default on hover
+  &:hover {
+    // background-image: url('/assets/svg/star-outline-green.svg');
+
+    [class*='__label'] {
+
+      &::before {
+        opacity: 0;
+      }
+
+    }
+
+  }
+
+  @at-root {
+    // tag + class for specifity
+    .rating__input {
+      display: none;
+
+      &:checked ~ [class*='__label'] {
+
+        &::before {
+          opacity: 1;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__label {
+    cursor: pointer;
+    height: $rating-size;
+    position: relative;
+    width: $rating-size / 2;
+
+    &::before {
+      background-image: url('/assets/svg/star-full.svg');
+
+      content: '';
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
+      transition: 200ms var(--ease-in-out-quad);
+      width: 100%;
+    }
+
+    // first half star
+    &:nth-of-type(even) {
+      &::before {
+        background-position: left center;
+        left: 0;
+        right: auto;
+      }
+    }
+
+    // second half star
+    &:nth-of-type(odd) {
+      margin-left: -$rating-gap;
+      // margin-left: calc((-#{$rating-gap}) + (-#{$rating-size}));
+      z-index: 2;
+
+      &::before {
+        background-position: right center;
+        left: auto;
+        right: 0;
+      }
+    }
+
+    &[class*='__label']:hover,
+    &:hover ~ [class*='__label'] {
+      &::before {
+        background-image: url('/assets/svg/star-full-green.svg');
+        opacity: 1;
+      }
+
+    }
+
+  }
+
+}
+
