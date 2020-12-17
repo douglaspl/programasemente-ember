@@ -1,0 +1,156 @@
+{{#if isAdmin }}
+      <label for="professores">Professores</label>
+      <input type="radio" name="selectedFilteredRole" onchange={{action 'refreshSelectedFilteredRole' "professores"}} id="professores" checked={{if (equalstr selectedFilteredRole "professores") "checked"}}/>
+      <label for="alunos">Alunos</label>
+      <input type="radio" name="selectedFilteredRole" onchange={{action 'refreshSelectedFilteredRole' "alunos"}} id="alunos" checked={{if (equalstr selectedFilteredRole "alunos") "checked"}}/>
+{{/if}}
+
+<nav>
+      <ul class="tabs">
+            {{#each this.aulasController.segmentosObjects as |seg|}}
+                {{#unless (equalstr seg.titulo 'Ensino Medio')}}
+                  <li>
+                  <button type="button" class="tabs__tab {{if (equalstr parentController.selectedSegmentoLocal.titulo seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg}}>
+                  <span>{{seg.titulo}}</span>
+                  </button>
+                  </li>
+                  {{/unless}}
+            {{/each}}
+            <li>
+                <button type="button" class="tabs__tab" {{action 'goToEad'}}>
+                <span>Ensino Medio</span>
+                </button>
+            </li>
+    </ul>
+  </nav>
+
+<div class="row">
+
+      <div class="form-group">
+            <label class="form-group__label">Busca</label>
+            <div class="form-group__wrapper form-group__wrapper--search">
+                  {{!-- <input class="form-group__input" type="text" id="pesquisaperfil" placeholder="Pesquisar Perfil"
+                        value={{this.search}} {{action 'filter' on="input" }}> --}}
+                  {{input type="text" class="form-group__input" id="pesquisaperfil" placeholder="Pesquisar Perfil"
+                  value=this.search}}
+            </div>
+            <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
+      </div>
+
+      <div class="form-group">
+            <label class="form-group__label">Serie</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+                  <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedAno'
+                        value='target.value' }}>
+                        <option selected="selected" value="">Todas</option>
+                        {{#each plataformaAnos as |pa|}}
+                              <option value={{pa.id}} selected={{if (equalstr pa.id selectedPlataformaAno.id) "selected"}}>{{pa.name}}</option>
+                        {{/each}}
+                  </select>
+            </div>
+      </div>
+
+      {{#if (equalstr selectedFilteredRole "alunos")}}
+            <div class="form-group">
+                  <label class="form-group__label">Turma</label>
+                  <div class="form-group__wrapper form-group__wrapper--select">
+                        <select class="form-group__input" id="situation" onchange={{action 'refreshSelectedTurma'
+                              value='target.value' }}>
+                              <option selected="selected" value="">Todas</option>
+                              {{#each plataformaTurmas as |pt|}}
+                                    <option value={{pt.id}} selected={{if (equalstr pt.id selectedPlataformaTurma.id) "selected"}}>{{pt.name}}</option>
+                              {{/each}}
+                        </select>
+                  </div>
+            </div>
+      {{/if}}
+</div>
+
+{{#if (equalstr selectedFilteredRole 'professores')}} 
+      <table>
+            <thead>
+                  <tr>
+                        <th>
+                              Nome
+                        </th>
+                        <th>
+                              Videos Vistos de preparação de aula
+                        </th>
+                        <th>
+                              Videos de alunos reproduzidos
+                        </th>
+                        <th>
+                              Aulas marcadas como aplicadas
+                        </th>
+                        <th>
+                              acessos
+                        </th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {{#each professores as |p|}}
+                        {{#if (containStr subStr = this.search mainStr = p.name)}}
+                              <tr>
+                                    <td>
+                                          {{p.name}}
+                                    </td>
+                                    <td>
+                                          {{p.nrVideosPreparacao}}
+                                    </td>
+                                    <td>
+                                          {{p.nrVideosAlunos}}
+                                    </td>
+                                    <td>
+                                          {{p.nrAplicacaoPlataformaAulas}}
+                                    </td>
+                                    <td>
+                                          {{p.lastAccess}}
+                                          {{p.acessos}}
+                                    </td>
+                              </tr>
+                        {{/if}}
+                  {{/each}}
+            </tbody>
+      </table>
+            
+{{else}}
+      <table>
+            <thead>
+                  <tr>
+                        <th>
+                              Nome
+                        </th>
+                        <th>
+                              Videos assistidos
+                        </th>
+                        <th>
+                              acessos
+                        </th>
+                        <th>
+                              último acesso
+                        </th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {{#each alunos as |a|}}
+                        {{#if (containStr subStr = this.search mainStr = a.name)}}
+                              <tr>
+                                    <td>
+                                          {{a.name}}
+                                    </td>
+                                    <td>
+                                          {{a.nrVideosAlunos}}
+                                    </td>
+                                    <td>
+                                          {{a.acessos}}
+                                    </td>
+                                    
+                                    <td>
+                                          {{a.lastAccess}}
+                                    </td>
+                              </tr>
+                        {{/if}}
+                  {{/each}}
+            </tbody>
+      </table>
+{{/if}}

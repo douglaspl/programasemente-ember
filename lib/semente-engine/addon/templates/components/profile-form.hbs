@@ -1,5 +1,14 @@
 <div class="row">
     <div class="col-xs-12 flow-lg">
+        {{#if pessoa.loggedWithDependenteUsername}}
+            <div class="flow-xxs" style="max-width: fit-content;">
+                <h4 class="title-4">
+                    Identificamos que você deu entrada no sistema utilizando o nome de usuário de um de seus filhos. 
+                    Estamos usando o e-mail de responsável {{pessoa.email}} para você e deixamos o login dos seus filhos para eles!
+                    Todos estão com a mesma senha que você utilizou para fazer a entrada no sistema agora a pouco.
+                </h4>
+            </div>
+        {{/if}}
         <div class="flow-xxs" style="max-width: fit-content;">
             <h4 class="title-4">Informações de contato</h4>
             <div id="p-info" class="blink--warning">

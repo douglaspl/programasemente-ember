@@ -1,16 +1,24 @@
-<li>
-  <h2>{{anotacao.date}}</h2>
-  <div style={{if this.displayEdition "display: none;"}}>
-    <p onclick={{action 'toggleEdition'}}>{{anotacao.texto}}</p>
-    <div class="icon icon-trash-2" onclick={{action 'deleteAnotacao'}}></div>
-  </div>
-  <div style={{unless this.displayEdition "display: none;"}}>
-    {{input type="textarea" focus-out=(action 'toggleEdition') value=anotacao.texto id=(concatenate "textarea-edit-" anotacao.id)}}
-    <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'saveAnotacao'}}>
-      <span class="btn__label">Salvar</span>
-    </button>
-  </div>
+{{#if anotacao.date}}
+  <h3 class="title-aux color-green-40">{{anotacao.date}}</h3>
+{{/if}}
+
+<div class="flow-xxs">
+  <p onclick={{action 'toggleEditionTrue'}}
+     onblur={{action 'toggleEdition'}}
+     contenteditable={{if displayEdition "true" "false"}}
+     id={{concatenate "p-edit-" anotacao.id}}>
+
+    {{anotacao.texto}}
+  </p>
+
   {{#if displayEdition}}
-    {{focusInput}}
+    <button class="btn btn--link color-leaf-50" id="header-indicadores" {{action 'saveAnotacao'}}><span class="btn__label">Salvar</span></button>
+  {{else}}
+    <button class="btn btn--link color-error-30" onclick={{action 'deleteAnotacao'}}><span class="btn__label">Remover anotação</span></button>
   {{/if}}
-</li>
+
+</div>
+
+{{#if displayEdition}}
+  {{focusInput}}
+{{/if}}
