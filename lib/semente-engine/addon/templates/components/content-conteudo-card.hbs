@@ -1,11 +1,16 @@
-<div class="media media--card">
+<div class="media media--card" id="conteudo-{{conteudo.id}}" style="cursor: pointer;" onclick={{action 'openModal' conteudo}}>
   <picture class="media__thumb">
-    <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} onclick={{action 'openModal' conteudo.id}} alt="{{conteudo.titulo}}" style="cursor: pointer;" width="160px">
+    <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} alt="{{conteudo.titulo}}" width="160px">
   </picture>
 
   <div class="media__body flow-md">
     <div>
       <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
+    {{#unless (equalstr conteudo.tipo 'Video')}}
+      <a class="btn btn--ghost btn--xxs" id="header-indicadores" href={{file}} target="_blank">
+        <span class="btn__label">Ver conteúdo</span>
+      </a>
+    {{/unless}}
   </div>
 </div>
