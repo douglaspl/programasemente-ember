@@ -1,26 +1,17 @@
-<div class="media media--card">
+<div class="media media--card" id="conteudo-{{conteudo.id}}" style="cursor: pointer;" onclick={{action 'openModal' conteudo}}>
   <picture>
-    {{#if (equalstr conteudo.tipo 'Video')}}
-      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" src="" alt="{{conteudo.titulo}}"/>
-    {{/if}}
-    {{#if (equalstr conteudo.tipo 'Imagem')}}
-      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}" width="160px">
-    {{/if}}
-    {{#if (equalstr conteudo.tipo 'Documento')}}
-      {{!-- <img src="{{if thumb thumb '/assets/img/dark__thumb.png'}}" alt="{{conteudo.titulo}}"> --}}
-      {{!-- <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}"> --}}
-      {{!-- <object id="showfiles" data="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{filejpg}}" type='application/pdf' width="160px"></object> --}}
-      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{filejpg}}" alt="{{conteudo.titulo}}" width="160px">
-    {{/if}}
+    <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} alt="{{conteudo.titulo}}" width="160px">
   </picture>
   <div class="media__body flow-md">
     <div>
       <span class="title-aux">{{conteudo.tema.name}}</span>
       <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
-     <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'transitToAula' aula.id}}>
+    {{#unless (equalstr conteudo.tipo 'Video')}}
+      <a class="btn btn--ghost btn--xxs" id="header-indicadores" href={{file}} target="_blank">
         <span class="btn__label">Ver conteúdo</span>
-      </button>
+      </a>
+    {{/unless}}
   </div>
 </div>
   
