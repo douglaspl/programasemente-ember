@@ -51,17 +51,17 @@ $popover-distance: $popover-tip-size * 2;
         background-color: $popover-bg-color;
         border-radius: $radius;
         box-shadow: $shadow-1, $shadow-3, $shadow-h-l-3, $shadow-h-r-3;
+        left: 50%;
+        max-height: calc(100vh - #{$header-height} - (2 * #{$margin}));
         opacity: 0;
         padding: $distance--md;
         position: fixed;
-        left: 50%;
-        max-height: calc(100vh - #{$header-height} - (2 * #{$margin}));
-        width: calc(100vw - (2 * #{$margin}));
         top: calc(#{$header-height} + #{$margin});
         transform: translate(-50%, $popover-distance);
         transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
         transition: 200ms var(--ease-in-out-quad);
         visibility: hidden;
+        width: calc(100vw - (2 * #{$margin}));
         z-index: 2;
 
         [class*='is-show'] & {
