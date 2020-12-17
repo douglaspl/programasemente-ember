@@ -1,3 +1,4 @@
+$popover-bg-color: $gray-0;
 $popover-tip-size: 10px;
 $popover-distance: $popover-tip-size * 2;
 
@@ -47,9 +48,9 @@ $popover-distance: $popover-tip-size * 2;
     &__balloon {
         $margin: $distance--md;
 
-        background-color: $white;
+        background-color: $popover-bg-color;
         border-radius: $radius;
-        box-shadow: $shadow-4;
+        box-shadow: $shadow-1, $shadow-3, $shadow-h-l-3, $shadow-h-r-3;
         opacity: 0;
         padding: $distance--md;
         position: fixed;
@@ -85,7 +86,7 @@ $popover-distance: $popover-tip-size * 2;
                 border-width: $popover-tip-size;
                 color: $white;
                 content: '';
-                filter: drop-shadow(4px 0px 4px rgba(26, 26, 26, .2));
+                filter: drop-shadow(4px 0px 2px rgba(26, 26, 26, .1));
                 position: absolute;
             }
 
@@ -101,7 +102,7 @@ $popover-distance: $popover-tip-size * 2;
                 transform: translate($popover-distance, -50%);
 
                 &::before {
-                    border-color: transparent transparent transparent currentColor;
+                    border-color: transparent transparent transparent $popover-bg-color;
                     left: 100%;
                     top: 50%;
                     transform: translateY(-50%);
@@ -119,7 +120,7 @@ $popover-distance: $popover-tip-size * 2;
                 transform: translate($popover-distance, -20%);
 
                 &::before {
-                    border-color: transparent transparent transparent currentColor;
+                    border-color: transparent transparent transparent $popover-bg-color;
                     left: 100%;
                     top: 20%;
                     transform: translateY(-50%);
@@ -136,7 +137,7 @@ $popover-distance: $popover-tip-size * 2;
                 transform: translate($popover-distance, -20%);
 
                 &::before {
-                    border-color: transparent transparent transparent currentColor;
+                    border-color: transparent transparent transparent $popover-bg-color;
                     right: 100%;
                     top: 20%;
                     transform: translateY(-50%);
@@ -153,7 +154,7 @@ $popover-distance: $popover-tip-size * 2;
                 transform: translate($popover-distance, 15%);
 
                 &::before {
-                    border-color: transparent transparent transparent currentColor;
+                    border-color: transparent transparent transparent $popover-bg-color;
                     bottom: 13%;
                     right: 100%;
                     transform: translateX(0%) rotate(180deg);
