@@ -53,17 +53,15 @@
       <h3 class="sr-only">Lista de conteúdos</h3>
       <h4 class="title-4">Tema: {{selectedTema}}</h4>
       
-      
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{plataforma-biblioteca-card conteudo=conteudo }}
+            {{plataforma-biblioteca-card conteudo=conteudo toggleModal=(action 'toggleModal')}}
           {{/if}}
         {{/each}}
       </ul>
 
       {{#if noCards}}
-      
         <div class="empty animated fadeIn">
          <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
           <span class="empty__icon icon-frown-o icon--xl"></span>
@@ -75,6 +73,31 @@
   </div>
 </div>
 
+<!-- Modal de visualizar o conteudo -->
+<aside id="content-modal" class="modal">
+
+  <div class="modal__content modal__content--sm">
+
+    <header class="modal__header">
+      header
+    </header>
+
+    <div class="modal__body" id="vimeoVideo">
+      {{#if selectedConteudo}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente}}
+      {{/if}}
+    </div>
+
+    <div class="modal__footer">
+      <button onclick={{action 'closeConteudoModal'}}>
+        Fechar Conteúdo
+      </button>
+    </div>
+
+  </div>
+  <div class="modal__overlayer"></div>
+
+</aside>
 
 
 
