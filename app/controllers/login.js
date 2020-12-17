@@ -218,6 +218,7 @@ export default Ember.Controller.extend({
       let that = this;
       this.makeCustomCall('POST', final_url, string).then((data) => {
         var result = data.data.attributes;
+        debugger;
         if (!result.exists)
         {
           document.getElementById('group-email').style.display = 'none';
@@ -239,12 +240,14 @@ export default Ember.Controller.extend({
         }
         if (result.hasEmail && !result.hasPhone)
         {
-          sendPassword('email');
+          document.getElementById('btn-verify-user-name').style.display = 'none';
+          this.send('sendPassword','email');
           return;
         }
         if (!result.hasEmail && result.hasPhone)
         {
-          sendPassword('phone');
+          document.getElementById('btn-verify-user-name').style.display = 'none';
+          this.send('sendPassword','phone');
           return;
         }
         if (!result.hasEmail && !result.hasPhone)
