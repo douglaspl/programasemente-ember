@@ -240,11 +240,13 @@ export default Ember.Controller.extend({
         }
         if (result.hasEmail && !result.hasPhone)
         {
+          document.getElementById('btn-verify-user-name').style.display = 'none';
           this.send('sendPassword','email');
           return;
         }
         if (!result.hasEmail && result.hasPhone)
         {
+          document.getElementById('btn-verify-user-name').style.display = 'none';
           this.send('sendPassword','phone');
           return;
         }
