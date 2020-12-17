@@ -15,23 +15,105 @@
 
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
-        <div class="flow-sm">
-          <h2 class="title-4">Tarefa</h2>
-          <div class="checkbox">
-            <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
-            <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
+        <div class="flow-xl">
+          <div class="flow-xs">
+            <h2 class="title-4">Tarefa</h2>
+            <div class="checkbox">
+              <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
+              <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
+            </div>
           </div>
-          <h2 class='title-4'></h2>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 1) "checked"}} onchange={{ action 'avaliar' 1 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 2) "checked"}} onchange={{ action 'avaliar' 2 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 3) "checked"}} onchange={{ action 'avaliar' 3 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 4) "checked"}} onchange={{ action 'avaliar' 4 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 5) "checked"}} onchange={{ action 'avaliar' 5 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 6) "checked"}} onchange={{ action 'avaliar' 6 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 7) "checked"}} onchange={{ action 'avaliar' 7 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 8) "checked"}} onchange={{ action 'avaliar' 8 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 9) "checked"}} onchange={{ action 'avaliar' 9 }}>
-          <input type="radio" name="radio-avaliacao" checked={{if (equalstr avaliacao.nota 10) "checked"}} onchange={{ action 'avaliar' 10 }}>
+
+          <div class="flow-xs">
+            <h2 class='title-4'>Avaliação da Aula</h2>
+            <div class="rating" id="rating">
+              <input  class="rating__input"
+                      id="rating-10"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 10) "checked"}}
+                      onchange={{ action 'avaliar' 10 }}>
+              <label  class="rating__label"
+                      for="rating-10"></label>
+              <input  class="rating__input"
+                      id="rating-9"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 9) "checked"}}
+                      onchange={{ action 'avaliar' 9 }}>
+              <label  class="rating__label"
+                      for="rating-9"></label>
+              <input  class="rating__input"
+                      id="rating-8"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 8) "checked"}}
+                      onchange={{ action 'avaliar' 8 }}>
+              <label  class="rating__label"
+                      for="rating-8"></label>
+              <input  class="rating__input"
+                      id="rating-7"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 7) "checked"}}
+                      onchange={{ action 'avaliar' 7 }}>
+              <label  class="rating__label"
+                      for="rating-7"></label>
+              <input  class="rating__input"
+                      id="rating-6"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 6) "checked"}}
+                      onchange={{ action 'avaliar' 6 }}>
+              <label  class="rating__label"
+                      for="rating-6"></label>
+              <input  class="rating__input"
+                      id="rating-5"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 5) "checked"}}
+                      onchange={{ action 'avaliar' 5 }}>
+              <label  class="rating__label"
+                      for="rating-5"></label>
+              <input  class="rating__input"
+                      id="rating-4"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 4) "checked"}}
+                      onchange={{ action 'avaliar' 4 }}>
+              <label  class="rating__label"
+                      for="rating-4"></label>
+              <input  class="rating__input"
+                      id="rating-3"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 3) "checked"}}
+                      onchange={{ action 'avaliar' 3 }}>
+              <label  class="rating__label"
+                      for="rating-3"></label>
+              <input  class="rating__input"
+                      id="rating-2"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 2) "checked"}}
+                      onchange={{ action 'avaliar' 2 }}>
+              <label  class="rating__label"
+                      for="rating-2"></label>
+              <input  class="rating__input"
+                      id="rating-1"
+                      type="radio"
+                      name="radio-avaliacao"
+                      checked={{if (equalstr avaliacao.nota 1) "checked"}}
+                      onchange={{ action 'avaliar' 1 }}>
+              <label  class="rating__label"
+                      for="rating-1"></label>
+            </div>
+          </div>
+
+          <div class="flow-xs">
+            <h2 class='title-4'>Anotações</h2>
+
+          </div>
         </div>
       </header>
 
