@@ -4,7 +4,7 @@
   $rating-size: $distance--md;
 
   align-items: center;
-  background-image: url('/assets/svg/star-outline.svg');
+  background-image: url('/assets/svg/star-full-gray.svg');
   background-position: -2px center;
   background-size: ($rating-size + $rating-gap) 100%;
   background-repeat: repeat-x;
@@ -14,7 +14,7 @@
 
   // Remove all opacity by default on hover
   &:hover {
-    background-image: url('/assets/svg/star-outline-green.svg');
+    // background-image: url('/assets/svg/star-outline-green.svg');
 
     [class*='__label'] {
 
