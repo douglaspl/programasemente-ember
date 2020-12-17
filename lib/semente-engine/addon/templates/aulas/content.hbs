@@ -25,7 +25,7 @@
           </div>
 
           <div class="flow-xs">
-            <h2 class='title-4'>Avaliação da Aula</h2>
+            <h2 class='title-4'>Sua avaliação da Aula</h2>
             <div class="rating" id="rating">
               <input  class="rating__input"
                       id="rating-10"
@@ -180,9 +180,9 @@
               <div class="flex flex-row items-center">
                 <span class="flex flex-row items-center">
                   {{icon-prevista-para}}
-                  <span class="m-left--xs">Periodo previsto da aplicação:</span>
+                  <span class="m-left--xs">Mês limite sugerido para aplicação:</span>
                   <span class="m-left--xs fw--5">
-                    {{aula.dataInicioPrevistaFormat}} | {{aula.dataFimPrevistaFormat}}
+                    {{aula.mesFimPrevistoFormat}}
                   </span>
                 </span>
               </div>
@@ -248,7 +248,7 @@
 </div>
 
 
-<!-- Modal de mudar a senha do usuário -->
+<!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal">
 
   <div class="modal__content modal__content--sm">
@@ -264,7 +264,6 @@
     </div>
 
     <div class="modal__footer">
-      footer
       <button onclick={{action 'closeConteudoModal'}}>
         Fechar Conteúdo
       </button>
@@ -274,7 +273,6 @@
   <div class="modal__overlayer"></div>
 
 </aside>
-
 <aside id="content-modal-ead" class="modal">
 
   <div class="modal__content modal__content--sm">
@@ -296,6 +294,6 @@
     </div>
 
   </div>
-  <div class="modal__overlayer"></div>
 
+  <div class="modal__overlayer"></div>
 </aside>

@@ -1,22 +1,11 @@
 <div class="media media--card">
   <picture class="media__thumb">
-    {{#if (equalstr conteudo.tipo 'Video')}}
-      <img class="media__thumb" id="vimeo-{{vimeoCode}}{{conteudo.id}}" style="cursor: pointer;" src="" alt="{{conteudo.titulo}}" onclick={{action 'openModal' conteudo.Id}}/>
-    {{/if}}
-    {{#if (equalstr conteudo.tipo 'Imagem')}}
-      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{conteudo.path}}" alt="{{conteudo.titulo}}" width="160px">
-    {{/if}}
-    {{#if (equalstr conteudo.tipo 'Documento')}}
-      <img class="media__thumb" id="file-{{conteudo.id}}" src="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/conteudos/{{filejpg}}" alt="{{conteudo.titulo}}" width="160px">
-    {{/if}}
+    <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} onclick={{action 'openModal' conteudo.id}} alt="{{conteudo.titulo}}" style="cursor: pointer;" width="160px">
   </picture>
 
   <div class="media__body flow-md">
     <div>
       <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
     </div>
-    <h2>3 marcações</h2>
-    <h2>{{conteudo.id}}</h2>
-    {{!-- <p>{{conteudo.marcacoes / anotacoes}}</p> --}}
   </div>
 </div>
