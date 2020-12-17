@@ -110,17 +110,26 @@
             </div>
           </div>
 
-          <div class="flow-xs">
+          <div class="flow-md">
             <h2 class='title-4'>Anotações</h2>
-            <ul>
-              {{#each anotacoes as |anotacao|}}
-                {{anotacao-card
-                  anotacao=anotacao
-                  deleteAnotacao=(action 'deleteAnotacao')}}
-              {{/each}}
-            </ul>
 
-            <div style={{unless newAnotacao "display: none;"}}>
+            {{#if (equalstr anotacoes.length "0")}}
+              {{#unless newAnotacao}}
+                <p>Zero anotações</p>
+              {{/unless}}
+            {{else}}
+              <ul class="flow-lg">
+                {{#each anotacoes as |anotacao|}}
+                  <li>
+                    {{anotacao-card
+                      anotacao=anotacao
+                      deleteAnotacao=(action 'deleteAnotacao')}}
+                  </li>
+                {{/each}}
+              </ul>
+            {{/if}}
+
+            <div class="flow-xs" style={{unless newAnotacao "display: none;"}}>
               <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
               <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
                 <span class="btn__label">Adicionar anotação</span>
@@ -241,16 +250,15 @@
 
 <!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal">
-
   <div class="modal__content modal__content--sm">
 
     <header class="modal__header">
-      header
+      {{selectedConteudo.titulo}}
     </header>
 
-    <div class="modal__body">
+    <div class="modal__body" id="vimeoVideo">
       {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente}}
+        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
       {{/if}}
     </div>
 
@@ -262,19 +270,18 @@
 
   </div>
   <div class="modal__overlayer"></div>
-
 </aside>
 <aside id="content-modal-ead" class="modal">
 
   <div class="modal__content modal__content--sm">
 
     <header class="modal__header">
-      header
+      {{selectedConteudo.titulo}}
     </header>
 
     <div class="modal__body">
       {{#if videoId}}
-        {{ead-video-player videoId=videoId}}
+        {{ead-video-player videoId=videoId stopVideo=stopVideo}}
       {{/if}}
     </div>
 
