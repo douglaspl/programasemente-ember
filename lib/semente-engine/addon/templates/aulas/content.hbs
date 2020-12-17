@@ -110,17 +110,26 @@
             </div>
           </div>
 
-          <div class="flow-xs">
+          <div class="flow-md">
             <h2 class='title-4'>Anotações</h2>
-            <ul>
-              {{#each anotacoes as |anotacao|}}
-                {{anotacao-card
-                  anotacao=anotacao
-                  deleteAnotacao=(action 'deleteAnotacao')}}
-              {{/each}}
-            </ul>
 
-            <div style={{unless newAnotacao "display: none;"}}>
+            {{#if (equalstr anotacoes.length "0")}}
+              {{#unless newAnotacao}}
+                <p>Zero anotações</p>
+              {{/unless}}
+            {{else}}
+              <ul class="flow-lg">
+                {{#each anotacoes as |anotacao|}}
+                  <li>
+                    {{anotacao-card
+                      anotacao=anotacao
+                      deleteAnotacao=(action 'deleteAnotacao')}}
+                  </li>
+                {{/each}}
+              </ul>
+            {{/if}}
+
+            <div class="flow-xs" style={{unless newAnotacao "display: none;"}}>
               <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
               <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
                 <span class="btn__label">Adicionar anotação</span>
