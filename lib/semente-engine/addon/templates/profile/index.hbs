@@ -86,7 +86,7 @@
 
           <div class="form-group">
             <label class="form-group__label" for="nascimento">Data de nascimento</label>
-            {{input class="form-group__input" type="date" id="nascimento" value=pessoa.dataNascimento}}
+            {{input class="form-group__input" type="date" id="nascimento" value=pessoa.nascimento}}
           </div>
 
           <div class="form-group">
@@ -117,6 +117,10 @@
           <li>Cidade: <span class="fw--4">{{pessoa.instituicao.cidade}} / {{pessoa.instituicao.uf}}</span></li>
         </ul>
       </section>
+
+      {{#if pessoa.hasDirtyAttributes}}
+        <button class="btn btn--ghost btn--xxs self-start" type="button" {{action 'saveChanges'}}>Salvar alterações</button>
+      {{/if}}
     </div>
 
 
