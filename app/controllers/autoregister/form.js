@@ -9,6 +9,10 @@ export default Ember.Controller.extend({
     return escola;
   }),
 
+  pessoa: Ember.computed('model', function() {
+    return this.get('store').createRecord('pessoa');
+  }),
+
 
   emailFocus: Ember.computed(function () {
     let input = document.getElementById("login");
@@ -87,9 +91,8 @@ export default Ember.Controller.extend({
     $('form').removeData('validator');
     $('form').removeData('unobtrusiveValidation');
     let email = document.getElementById('login').value;
-    let pessoa = this.get('store').createRecord('pessoa', {
-      email: email
-    });
+    let pessoa = this.get('pessoa');
+    pessoa.set('email', email);
     let inputContainer = document.getElementById('login').closest('.form-group__input-container');
     let input = document.getElementById('login');
     // Pega alerta
@@ -157,7 +160,6 @@ export default Ember.Controller.extend({
   },
 
   verifyPassword: function () {
-    debugger;
     let p1 = document.getElementById('senha').value;
     let p2 = document.getElementById('senha2').value;
 
@@ -202,7 +204,7 @@ export default Ember.Controller.extend({
           sistema = s;
         }
       });
-      let pessoa = this.get('store').createRecord('pessoa');
+      let pessoa = this.get('pessoa');
       let that = this;
       pessoa.autoRegister({
         login: login,

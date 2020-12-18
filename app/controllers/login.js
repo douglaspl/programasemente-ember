@@ -218,7 +218,6 @@ export default Ember.Controller.extend({
       let that = this;
       this.makeCustomCall('POST', final_url, string).then((data) => {
         var result = data.data.attributes;
-        debugger;
         if (!result.exists)
         {
           document.getElementById('group-email').style.display = 'none';
