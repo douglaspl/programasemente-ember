@@ -12,7 +12,6 @@
   flex-direction: row;
   font-size: $font-size--xs;
   line-height: 1;
-  margin-bottom: $distance--xs;
   padding: .5em 1em;
   transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
   transition: 200ms var(--ease-in-out-quad);
@@ -120,8 +119,8 @@
   }
 
   &--success {
-    background-color: transparentize($success-30, .25);
-    color: $white;
+    background-color: $success-0;
+    color: $success-40;
   }
 
   &--warning {
