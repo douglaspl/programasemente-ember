@@ -6,10 +6,6 @@
   align-items: flex-start;
   gap: $distance--md;
 
-  // Elements
-  // &__title {
-  // }
-
   &__picture {
     flex: 0 0 auto;
   }
@@ -30,6 +26,19 @@
       width: $size;
     }
 
+    &--16-9 {
+      $size: $avatar--md;
+
+      height: (($size * 9) / 16);
+
+      @include media('>lg') {
+        $size: $avatar--xl;
+
+        height: (($size * 9) / 16);
+      }
+
+    }
+
   }
 
   &__body {
@@ -40,6 +49,10 @@
   }
 
   // Modifiers
+  &--middle {
+    align-items: center;
+  }
+
   &--card {
     border-radius: $radius--md;
     box-shadow: $shadow-1, $shadow-3;

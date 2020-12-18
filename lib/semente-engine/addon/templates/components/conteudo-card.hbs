@@ -1,9 +1,9 @@
 {{#each conteudoAnos as |ano|}}
   <div class="media media--card">
     <div id="Publicos">
-      <li class="title-3 list__name">Público(s):</li> 
+      <li class="title-3 list__name">Público(s):</li>
       {{#if (sizeequals conteudo.publicos 3)}}
-          <li class="title-3 list__name">Todos</li>     
+          <li class="title-3 list__name">Todos</li>
       {{else}}
         {{#each conteudo.publicos as |publico|}}
           <span class="title-aux">{{publico.nameFormat}}</span>
@@ -13,11 +13,11 @@
     <div class="media__body flow-md">
       <div>
         <span class="title-aux">{{conteudo.tema.name}}</span>
-        <h4 class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</h4>
+        <span class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</span>
       </div>
       <span class="title-aux">Tipo de Arquivo: {{conteudo.tipo}}</span>
       <input type="checkbox" id={{conteudo.id}} name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}> <span class="title-aux">{{if conteudo.situacao "Ativo" "Inativo"}}</span>
-      
+
       {{conteudo-aula-card conteudo=conteudo ano=ano}}
 
       <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'goToEditConteudo' conteudo.id}}>

@@ -116,7 +116,7 @@ textarea {
     @include inputs;
 
     min-height: 5rem;
-    padding: $distance--sm;
+    padding: $textarea-padding;
     resize: vertical;
 }
 

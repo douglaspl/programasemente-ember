@@ -182,3 +182,42 @@
     }
 
 }
+
+.grow-wrap {
+    // Easy way to plop the elements on top of each other and have them both sized based on the tallest one's height
+    display: grid;
+
+    &::after {
+        // Note the weird space! Needed to preventy jumpy behavior
+        content: attr(data-replicated-value) " ";
+
+        // This is how textarea text behaves
+        white-space: pre-wrap;
+
+        // Hidden from view, clicks, and screen readers
+        visibility: hidden;
+    }
+
+    & > textarea {
+        // Prevent textarea from having a fixed height defined elsewhere
+        height: auto;
+
+        // You could leave this, but after a user resizes, then it ruins the auto sizing
+        resize: none;
+
+        // Firefox shows scrollbar on growth, you can hide like this.
+        overflow: hidden;
+    }
+
+    & > textarea,
+    &::after {
+        // Identical styling required!!
+        border: $focus-indicator;
+        padding: $form-h-padding;
+        font: inherit;
+
+        // Place on top of each other
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+}
