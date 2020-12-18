@@ -104,7 +104,7 @@ export default Ember.Controller.extend({
       if (email) {
         if (email.length > 4 && email.search('@') > 3) {
           this.set('user_email', email);
-          document.getElementById('user_email').value = email;
+          
         }
       }
       this.set('error_forgot', '');
@@ -112,6 +112,7 @@ export default Ember.Controller.extend({
       this.set('errorMessage', '');
       document.getElementById('forgot_modal').classList.add('modal--is-show');
       let usernameInput = document.getElementById('user_name');
+      usernameInput.value = email;
       usernameInput.focus();
     },
     autoRegister(){
@@ -169,6 +170,7 @@ export default Ember.Controller.extend({
       let checkSms = document.getElementById('forgot-sms');
       let btnSend = document.getElementById('btn-send-password');
       let checkboxesContainer = document.getElementById('checkboxes_container');
+      let feedbackMsg;
 
       let email = false;
       let phone = false;
@@ -213,12 +215,21 @@ export default Ember.Controller.extend({
         }
       });
 
+      if (email && phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso'
+      } else if (email && !phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso para o seu e-mail'
+      } else if (!email && phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso para o seu celular'
+      }
+
+
       let that = this;
       btnSend.innerHTML = 'Enviando...';
       this.makeCustomCall('POST', final_url, string).then(() => {
         document.getElementById('error-forgot').style.display = 'none';
         document.getElementById('success-forgot').style.display = 'block';
-        that.set('success_forgot', 'Nova senha enviada com sucesso');
+        that.set('success_forgot', feedbackMsg);
         that.set('error_forgot', '');
         document.getElementById('btn-send-password').style.display = 'none';
         btnSend.innerHTML = 'Enviar senha';
@@ -237,7 +248,9 @@ export default Ember.Controller.extend({
       let groupEmail = document.getElementById('group-email');
       let groupSMS = document.getElementById('group-sms');
       let errorContainer = document.getElementById('error-forgot');
-            
+      
+      checkboxesContainer.style.display = 'block';
+      
       let final_url = this.get('envnmt.host') + '/' + this.get('envnmt.namespace') + '/' + 'accounts/verifyUserName';
       let string = JSON.stringify({
         'data': {
