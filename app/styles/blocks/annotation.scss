@@ -1,0 +1,12 @@
+.annotation {
+    $this: &;
+
+    background-color: $annotation-bg-color;
+
+    @if annotation-border {
+        border-#{$annotation-border-side}: $annotation-border-style;
+    }
+
+    font-size: $annotation-font-size;
+    font-style: $annotation-font-style;
+}

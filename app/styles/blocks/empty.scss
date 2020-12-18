@@ -9,6 +9,10 @@
     justify-content: center;
     padding: $distance--xxl;
 
+    &__msg {
+        line-height: 1.25;
+    }
+
     &__icon {
         margin-bottom: $distance--md;
         opacity: .5;

@@ -16,15 +16,15 @@
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
-          <div class="flow-xs">
+          <section class="flow-xs">
             <h2 class="title-4">Tarefa</h2>
             <div class="checkbox">
               <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
               <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
             </div>
-          </div>
+          </section>
 
-          <div class="flow-xs">
+          <section class="flow-xs">
             <h2 class='title-4'>Sua avaliação da Aula</h2>
             <div class="rating" id="rating">
               <input  class="rating__input"
@@ -108,39 +108,48 @@
               <label  class="rating__label"
                       for="rating-1"></label>
             </div>
-          </div>
+          </section>
 
-          <div class="flow-md">
+          <section class="flow-xs">
             <h2 class='title-4'>Anotações</h2>
+            <div class="flow-lg">
+              {{#if (equalstr anotacoes.length "0")}}
+                {{#unless newAnotacao}}
+                  <div class="empty p--md">
+                    <p class="empty__msg fs--xs">Você ainda não criou anotações.</p>
+                  </div>
+                {{/unless}}
+              {{else}}
+                <ul class="flow-lg">
+                  {{#each anotacoes as |anotacao|}}
+                    <li>
+                      {{anotacao-card
+                        anotacao=anotacao
+                        deleteAnotacao=(action 'deleteAnotacao')}}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
 
-            {{#if (equalstr anotacoes.length "0")}}
               {{#unless newAnotacao}}
-                <p>Zero anotações</p>
+                <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'toggleCreateAnotacao'}}>
+                  <span class="btn__label">Nova anotação</span>
+                </button>
+              {{else}}
+                <div class="flow-lg">
+                  <textarea class="w100"
+                            autofocus
+                            id="nova-anotacao"
+                            required
+                            rows="5"
+                            wrap></textarea>
+                  <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
+                    <span class="btn__label">Adicionar anotação</span>
+                  </button>
+                </div>
               {{/unless}}
-            {{else}}
-              <ul class="flow-lg">
-                {{#each anotacoes as |anotacao|}}
-                  <li>
-                    {{anotacao-card
-                      anotacao=anotacao
-                      deleteAnotacao=(action 'deleteAnotacao')}}
-                  </li>
-                {{/each}}
-              </ul>
-            {{/if}}
-
-            <div class="flow-xs" style={{unless newAnotacao "display: none;"}}>
-              <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
-
-              <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
-                <span class="btn__label">Adicionar anotação</span>
-              </button>
             </div>
-
-            <button style={{if newAnotacao "display: none;"}} class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'toggleCreateAnotacao'}}>
-              <span class="btn__label">Nova anotação</span>
-            </button>
-          </div>
+          </section>
         </div>
       </header>
 

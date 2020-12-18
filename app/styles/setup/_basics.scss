@@ -12,9 +12,9 @@
 * {
     box-sizing: border-box;
 
-    // &:focus {
-    //     outline: $focus-indicator;
-    // }
+    &:focus {
+        outline: $focus-indicator;
+    }
 
 }
 
@@ -112,12 +112,16 @@ select {
 
 }
 
-strong {
-    font-weight: bolder;
+textarea {
+    @include inputs;
+
+    min-height: 5rem;
+    padding: $distance--sm;
+    resize: vertical;
 }
 
-textarea {
-    padding: $distance--xs;
+strong {
+    font-weight: bolder;
 }
 
 table {
