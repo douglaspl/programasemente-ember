@@ -103,15 +103,12 @@
 
     &__footer {
         display: flex;
-        flex: 0 0 auto;
         flex-direction: row;
+        flex: 0 0 auto;
+        gap: $distance--sm;
         justify-content: flex-end;
         padding-top: $distance--md;
-
-        > *:not(:only-child) {
-            margin-left: $distance--sm;
-        }
-
+      
         &--center {
             justify-content: center;
         }
