@@ -63,10 +63,6 @@
     &__form {
         position: relative;
 
-        > *:not(:last-child) {
-            margin-bottom: $distance--md;
-        }
-
         [class*='step-two']  & {
             opacity: 0;
             transform: translateX(-4px);

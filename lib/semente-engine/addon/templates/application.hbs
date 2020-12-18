@@ -8,11 +8,11 @@
     {{action "toggleHelp"}}></button>
   <div id="help__container" class="help__container">
     <button id="help__close" class="help__close btn-close icon-x" {{action "toggleHelp"}}></button>
-    <div id="formHelp" class="help__form">
+    <div id="formHelp" class="help__form flow-md">
       <div class="help__basic-info">
-        <span class="help__user-avatar avatar"><img src={{uri_avatar}}></span>
+        <span class="help__user-avatar avatar avatar--sm"><img src={{uri_avatar}}></span>
         <div class="overflow-hidden">
-          <h2 class="title-2 truncate">{{username}}</h2>
+          <h2 class="title-aux truncate">{{username}}</h2>
           {{#each model as |pessoa idx|}}
             {{#if (equalstr id_instituicao pessoa.instituicao_id)}}
               <span id="instName" class="help__user-institution title-aux">
@@ -22,13 +22,15 @@
           {{/each}}
         </div>
       </div>
-      <p class="title-3">Fale conosco o que quiser!</p>
-      <p>Pode ser <strong>sugestão</strong>, <strong>reportar um erro</strong> ou <strong>um elogio</strong>.</p>
+      <div class="flow-xs">
+        <p class="title-3">Gostamos de mensagens, sabia?</p>
+        <p>Pode ser <strong>sugestão</strong>, <strong>reportar um erro</strong> ou <strong>um elogio</strong>.</p>
+      </div>
       <div class="form-group">
         <label class="form-group__label" for="helpMsg">Mensagem</label>
         <textarea class="form-group__input" id="helpMsg" rows="6" form="formHelp" wrap required autofocus></textarea>
       </div>
-      <button class="help__cta btn" id="help__cta" {{action 'supportMailer'}}>Enviar</button>
+      <button class="help__cta btn self-start" id="help__cta" {{action 'supportMailer'}}>Enviar</button>
     </div>
     <div class="help__success">
       <span class="icon-check icon--success icon--xxl"></span>
@@ -75,10 +77,10 @@
             class="counter__bubble">0</span></a>
       </li>
 
-  
+
 
       <!--  administration header -->
-     
+
       {{#if (equalstr role 'admin')}}
         <li class="global-nav__item" id="header-conteudos" {{action 'goToConteudos' on="click"}}>
           <a class="global-nav__link"><span>Conteúdos</span></a>

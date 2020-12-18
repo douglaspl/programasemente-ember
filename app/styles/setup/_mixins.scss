@@ -708,7 +708,7 @@
                     $size: $font-size--xxl,
                     $size--sm: $font-size--super,
                     $size--lg: $font-size--max,
-                    $weight: 800,
+                    $weight: $font-weight-5,
                     $letter: $letter-spacing--sm) {
 
     color: $color;
@@ -767,7 +767,7 @@
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
-                    $weight: 800,
+                    $weight: $font-weight-5,
                     $letter: $letter-spacing--md) {
 
     color: $color;
@@ -792,7 +792,7 @@
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
-                    $weight: 700,
+                    $weight: $font-weight-4,
                     $letter: $letter-spacing--xs) {
 
     color: $color;
@@ -814,7 +814,7 @@
 @mixin title-4(     $color: inherit,
                     $size: $font-size--sm,
                     $size--lg: $font-size--md,
-                    $weight: 800,
+                    $weight: $font-weight-4,
                     $letter: $letter-spacing--md) {
 
     color: $color;
@@ -834,7 +834,7 @@
                     $display: inline-block,
                     $family: $font-base,
                     $size: $font-size--xxs,
-                    $weight: 400,
+                    $weight: $font-weight-3,
                     $letter: $letter-spacing--xl) {
 
     color: $color;
