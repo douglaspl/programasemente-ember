@@ -1,8 +1,8 @@
-<div class="media media--card">
+<div class="media">
   <picture class="media__picture">
     {{#each secao.conteudos as |conteudo|}}
         {{#if videoId}}
-            <img class="media__thumb" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' videoId}} style="cursor: pointer"/>
+            <img class="media__thumb media__thumb--16-9" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' videoId}} style="cursor: pointer"/>
         {{else}}
             <img class="media__thumb" id="file-{{conteudo.id}}" src="/assets/img/dark__thumb.png"/>
         {{/if}}
@@ -13,18 +13,30 @@
     <div>
       <span class="media__title title-2 m-top--xxs">{{secao.nome}}</span>
     </div>
+
     {{#if quiz}}
-        {{#each quiz.questoes as |questao|}}
-            <h2>Questão {{questao.idx}}</h2>
-            {{{questao.texto}}}
-            {{#each questao.alternativas as |alternativa|}}
-                {{#if alternativa.correta}}
-                    <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
-                {{else}}
-                    <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
-                {{/if}}
-            {{/each}}
-        {{/each}}
+      <ul class="flow-xl">
+          {{#each quiz.questoes as |questao|}}
+            <li class="flow-sm">
+                <h2>Questão {{questao.idx}}</h2>
+                {{{questao.texto}}}
+
+                <ol>
+                  {{#each questao.alternativas as |alternativa|}}
+                    <li>
+                        {{#if alternativa.correta}}
+                            <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
+                        {{else}}
+                            <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
+                        {{/if}}
+                    </li>
+                  {{/each}}
+                </ol>
+
+            </li>
+          {{/each}}
+      </ul>
     {{/if}}
+
   </div>
 </div>

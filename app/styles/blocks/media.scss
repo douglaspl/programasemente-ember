@@ -48,6 +48,10 @@
     flex: 1;
   }
 
+  &__title {
+    display: block;
+  }
+
   // Modifiers
   &--middle {
     align-items: center;
