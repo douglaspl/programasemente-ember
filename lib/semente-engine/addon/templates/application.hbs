@@ -75,29 +75,16 @@
             class="counter__bubble">0</span></a>
       </li>
 
-
-      <!-- follow up header -->
-      {{#if hasReport}}
-        <li class="global-nav__item" id="header-indicadores" {{action 'goToAcompanhamento' on="click"}}>
-          <a class="global-nav__link">
-            {{!-- <span class="icon-activity"></span> --}}
-            <span>Acompanhamento</span></a>
-        </li>
-      {{else}}
-      {{/if}}
-
+  
 
       <!--  administration header -->
-      {{#if hasManagement}}
-        <li class="global-nav__item" id="header-gersistema" {{action 'goToAdministracao' on="click"}}>
-          <a class="global-nav__link"><span>Administração</span></a>
-        </li>
-      {{else}}
-      {{/if}}
-
+     
       {{#if (equalstr role 'admin')}}
         <li class="global-nav__item" id="header-conteudos" {{action 'goToConteudos' on="click"}}>
           <a class="global-nav__link"><span>Conteúdos</span></a>
+        </li>
+        <li class="global-nav__item" id="header-gersistema" {{action 'goToAdministracao' on="click"}}>
+          <a class="global-nav__link"><span>Administração</span></a>
         </li>
       {{else}}
       {{/if}}
