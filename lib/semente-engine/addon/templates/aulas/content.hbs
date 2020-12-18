@@ -111,8 +111,34 @@
           </section>
 
           <section class="flow-xs">
-            <h4 class="title-4">Anotações</h4>
+            <header class="flex flex-row justify-between">
+                <h4 class="title-4">Anotações</h4>
+                {{#unless newAnotacao}}
+                    <button class="btn btn--link color-leaf-50" id="header-indicadores" {{action "toggleCreateAnotacao"}}>
+                        <span class="btn__label">Nova anotação</span>
+                    </button>
+                {{/unless}}
+            </header>
             <div class="flow-lg">
+                {{#if newAnotacao}}
+                    <div class="flow-xs animated fadeIn fast">
+                        <div class="grow-wrap">
+                            <textarea   class="w100"
+                                        placeholder="Comece a digitar"
+                                        autofocus
+                                        id="nova-anotacao"
+                                        required
+                                        rows="5"
+                                        wrap
+                                        oninput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+                        </div>
+
+                        <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action "createAnotacao"}}>
+                            <span class="btn__label">Adicionar</span>
+                        </button>
+                    </div>
+                {{/if}}
+
               {{#if (equalstr anotacoes.length "0")}}
                 {{#unless newAnotacao}}
                   <div class="empty p--md">
@@ -121,7 +147,7 @@
                 {{/unless}}
               {{else}}
                 <ul class="flow-lg">
-                  {{#each anotacoes as |anotacao|}}
+                  {{#each sortedAnnotations as |anotacao|}}
                     <li>
                       {{anotacao-card
                         anotacao=anotacao
@@ -131,7 +157,7 @@
                 </ul>
               {{/if}}
 
-              {{#unless newAnotacao}}
+              {{!-- {{#unless newAnotacao}}
                 <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action "toggleCreateAnotacao"}}>
                   <span class="btn__label">Nova anotação</span>
                 </button>
@@ -147,7 +173,7 @@
                     <span class="btn__label">Adicionar anotação</span>
                   </button>
                 </div>
-              {{/unless}}
+              {{/unless}} --}}
             </div>
           </section>
         </div>
