@@ -12,7 +12,7 @@
 * {
     box-sizing: border-box;
 
-    &:focus {
+    &:focus:not([class*='active']) {
         outline: $focus-indicator;
     }
 
