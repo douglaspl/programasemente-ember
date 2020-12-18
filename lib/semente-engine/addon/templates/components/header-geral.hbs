@@ -13,7 +13,7 @@
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
         <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
         {{#if (equalstr parentController.toggleRole 'aluno')}}
-          <button class="btn btn--link m-bottom--xxs m-top--auto">
+          <button class="btn btn--link m-bottom--xxs m-top--auto color-white">
             <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
           </button>
         {{/if}}
@@ -57,7 +57,7 @@
           {{#if pessoa.dependentes}}
             <!-- alterna entre perfis -->
             {{#if (equalstr parentController.toggleRole 'instrutor')}}
-              <button class="btn btn--link m-left--xs" type="button" {{action 'toggleRole' 'responsavel'}}>
+              <button class="btn btn--link m-left--xs color-white" type="button" {{action 'toggleRole' 'responsavel'}}>
                 <span class="btn__label">Visualizar como responsável</span>
               </button>
             {{else}}
@@ -82,9 +82,12 @@
             {{/link-to}}
           </li>
           <li>
+           
+           {{#unless (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel'))}} 
             {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
                 <span>Acompanhamento</span>
             {{/link-to}}
+          {{/unless}}
           </li>
 
           {{#if Ano.urlLivro}}
