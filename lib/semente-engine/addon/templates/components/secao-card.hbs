@@ -1,5 +1,5 @@
 <div class="media media--card">
-  <picture class="media__thumb">
+  <picture class="media__picture">
     {{#each secao.conteudos as |conteudo|}}
         {{#if videoId}}
             <img class="media__thumb" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' videoId}} style="cursor: pointer"/>
@@ -11,7 +11,7 @@
 
   <div class="media__body flow-md">
     <div>
-      <h4 class="media__title title-2 m-top--xxs">{{secao.nome}}</h4>
+      <span class="media__title title-2 m-top--xxs">{{secao.nome}}</span>
     </div>
     {{#if quiz}}
         {{#each quiz.questoes as |questao|}}

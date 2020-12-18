@@ -17,34 +17,41 @@
                 <button class="popover__close icon-x"></button>
 
                 <div class="flex flex-col flow-md">
-                    <h2 class="title-3">Situação da aula</h2>
-                    <div class="checkbox">
-                        <input class="checkbox__input" id="selectAllTurmas" type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} />
-                        <label class="checkbox__label" for="selectAllTurmas">Selecionar todas as turmas</label>
+                    <div>
+                        <h3 class="title-3">Lista de turmas</h3>
+                        <p>Marque em quais turmas essa aula foi aplicada.</p>
                     </div>
-                    <span class="divider"></span>
-                    <div class="flex flex-col flow-sm">
+                    <ul class="flex flex-col flow-sm">
+                        <li>
+                            <div class="checkbox">
+                                <input class="checkbox__input" id="selectAllTurmas" type="checkbox" checked={{checked}} onchange={{action 'selectAllTurmas' allChecked}} />
+                                <label class="checkbox__label" for="selectAllTurmas">Selecionar todas as turmas</label>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
                         {{#each pessoa.plataformaTurmas as |turma|}}
                             {{#if (equalstr turma.plataformaAno.id aula.plataformaAno.id)}}
-                                <div class="checkbox">
-                                    <input  class="checkbox__input"
-                                            id="{{turma.id}}"
-                                            type="checkbox"
-                                            checked={{if (containInListID turma.id TurmasAplicadas) "checked" ""}}
-                                            value={{turma.id}}
-                                            onchange={{action 'turmasChanged' value='target.value'}} />
-                                    <label class="checkbox__label" for="{{turma.id}}">{{turma.name}}</label>
-                                </div>
+                                <li>
+                                    <div class="checkbox">
+                                        <input  class="checkbox__input"
+                                                id="{{turma.id}}"
+                                                type="checkbox"
+                                                checked={{if (containInListID turma.id TurmasAplicadas) "checked" ""}}
+                                                value={{turma.id}}
+                                                onchange={{action 'turmasChanged' value='target.value'}} />
+                                        <label class="checkbox__label" for="{{turma.id}}">{{turma.name}}</label>
+                                    </div>
+                                </li>
                             {{/if}}
                         {{/each}}
-                    </div>
+                    </ul>
 
                     <button class="btn btn--xxs btn--ghost self-start"
                             id="Botaoturmas"
                             type="button"
                             disabled
                             {{action "saveAplicacaoTurmas" aula.aplicacoes}}>
-                        <span class="btn__label">Salvar Aplicações</span>
+                        <span class="btn__label">Salvar</span>
                     </button>
                 </div>
 

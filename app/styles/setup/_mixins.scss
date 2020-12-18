@@ -753,7 +753,7 @@
     }
 
     // @include media('>md') {
-    //     font-size: $size--sm;
+    //     font-size: $size--md;
     // }
 
     @include media('>lg') {
@@ -768,7 +768,7 @@
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
                     $weight: $font-weight-5,
-                    $letter: $letter-spacing--md) {
+                    $letter: $letter-spacing--sm) {
 
     color: $color;
     font-family: $font-title;
@@ -814,15 +814,15 @@
 @mixin title-4(     $color: inherit,
                     $size: $font-size--sm,
                     $size--lg: $font-size--md,
-                    $weight: $font-weight-4,
+                    $weight: $font-weight-5,
                     $letter: $letter-spacing--md) {
 
     color: $color;
     font-size: $size;
     font-weight: $weight;
-    letter-spacing: $letter;
+    // letter-spacing: $letter;
     line-height: 1.125;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 
     @include media('>lg') {
         font-size: $size--lg;

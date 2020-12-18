@@ -1,14 +1,15 @@
-{{header-geral  
-  parentController = this.parentController
-  pessoa=pessoa
-  thisRoute=thisRoute
-  Ano=Ano
-  togglerole=(action 'toggleRole')
-  }}
+{{header-geral  parentController = this.parentController
+                pessoa=pessoa
+                thisRoute=thisRoute
+                Ano=Ano
+                togglerole=(action 'toggleRole') }}
 
-<div class="flow-xl">
+<section class="flow-xl">
+  <h1 class="sr-only">Conteúdo de {{thisRoute}}</h1>
+
   {{#unless (equalstr pessoa.role 'aluno')}}
     <nav>
+      <h1 class="sr-only">Subnaveção de {{thisRoute}}</h1>
       <ul class="tabs">
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
           {{#each this.parentController.segmentosObjects as |seg|}}
@@ -40,7 +41,9 @@
   {{/unless}}
 
   <div class="l-dots-between">
-    <header class="l-dots-between__side">
+
+    <aside class="l-dots-between__side">
+      <h1 class="sr-only">Filtros de contedúdos</h1>
       <form autocomplete="off" class="flex flex-col flow-md">
         <!--
           ==============
@@ -97,36 +100,36 @@
           </div>
         </div>
       </form>
-    </header>
+    </aside>
 
     <section class="l-dots-between__content flow-md">
-      <h3 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}} aulas)</span></h3>
-     
-        <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
-          {{#each aulasFiltradas as |aulaFiltrada|}}
-            {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
-              {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
-                {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
-                {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
-                {{/if}}
+      <hgroup>
+        <h1 class="sr-only">Lista de conteúdos do {{selectedAno}}</h1>
+        <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}} aulas)</span></h2>
+      </hgroup>
+
+      <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
+        {{#each aulasFiltradas as |aulaFiltrada|}}
+          {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
+            {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
+              {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
+              {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
               {{/if}}
             {{/if}}
-          {{/each}}
-        </ul>
-     
-
+          {{/if}}
+        {{/each}}
+      </ul>
 
       {{#if noCards}}
-      
         <div class="empty animated fadeIn">
-         <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
-          <span class="empty__icon icon-frown-o icon--xl"></span>
-          <p class="m-top--xs">Não encontramos nenhuma aula com os filtros selecionados</p>
-         </div>
+          <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
+            <span class="empty__icon icon-frown-o icon--xl"></span>
+            <p class="m-top--xs">Não encontramos nenhuma aula com os filtros selecionados</p>
+          </div>
         </div>
       {{/if}}
     </section>
 
   </div>
 
-</div>
+</section>
