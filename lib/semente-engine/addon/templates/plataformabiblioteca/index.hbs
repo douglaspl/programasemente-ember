@@ -12,8 +12,8 @@
       <div class="flex flex-row flex-wrap items-baseline gap-xs">
         <h2 class="title-1">{{firstnameoremailpart pessoa.name}}</h2>
         {{#if (equalstr pessoa.role 'aluno')}}
-          <button class="btn btn--link m-bottom--xxs m-top--auto">
-            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+          <button class="btn btn--link m-bottom--xxs m-top--auto color-white">
+            <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout!</span>
           </button>
         {{/if}}
       </div>
