@@ -11,27 +11,28 @@
 
   <div class="media__body flow-md">
     <div>
-      <span class="media__title title-2 m-top--xxs">{{secao.nome}}</span>
+      <span class="media__title title-4 m-top--xxs">{{secao.nome}}</span>
     </div>
 
     {{#if quiz}}
-      <ul class="flow-xl">
+      <ul class="flow-xl not-in-quiz">
           {{#each quiz.questoes as |questao|}}
             <li class="flow-sm">
-                <h2>Questão {{questao.idx}}</h2>
-                {{{questao.texto}}}
 
-                <ol>
-                  {{#each questao.alternativas as |alternativa|}}
-                    <li>
-                        {{#if alternativa.correta}}
-                            <p><strong>{{alternativa.idx}}) {{alternativa.texto}}</strong></p>
-                        {{else}}
-                            <p>{{alternativa.idx}}) {{alternativa.texto}}</p>
-                        {{/if}}
-                    </li>
-                  {{/each}}
-                </ol>
+              <div class="flow-xs">
+                <span class="title-aux">Questão {{questao.idx}}</span>
+                <div class="not-in-quiz__question">
+                  {{{questao.texto}}}
+                </div>
+              </div>
+
+              <ol class="not-in-quiz__alternatives flow-xs">
+                {{#each questao.alternativas as |alternativa|}}
+                  <li class="{{if alternativa.correta 'strong'}}">
+                      {{alternativa.texto}}
+                  </li>
+                {{/each}}
+              </ol>
 
             </li>
           {{/each}}
