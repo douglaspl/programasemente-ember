@@ -12,11 +12,11 @@
   flex-direction: row;
   font-size: $font-size--xs;
   line-height: 1;
-  padding: .5em 1em;
+  padding: $distance--sm;
   transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
   transition: 200ms var(--ease-in-out-quad);
 
-  @include media('>sm') { padding: 1em; }
+ 
 
   &-container {
     @include z-index('alert');

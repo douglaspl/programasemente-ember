@@ -83,16 +83,17 @@ export default Ember.Controller.extend({
 
 
       this.get('session').authenticate('authenticator:authold', username, password, life).then(() => {}).catch((reason) => {
+        let that = this;
         if (reason.error_description) {
-          this.set('errorMessage', reason.error_description);
-          this.set('success_mail', '');
+          that.set('errorMessage', reason.error_description);
+          that.set('success_mail', '');
           document.getElementById('login_button').innerHTML =  'Entrar'
         } else if (reason) {
-          this.set('errorMessage', reason.error || reason);
-          this.set('success_mail', '');
+          that.set('errorMessage', reason.error || reason);
+          that.set('success_mail', '');
         } else {
-          this.set('errorMessage', 'Erro desconhecido');
-          this.set('success_mail', '');
+          that.set('errorMessage', 'Erro desconhecido');
+          that.set('success_mail', '');
         }
         document.getElementById('login_button').disabled = false;
       });
