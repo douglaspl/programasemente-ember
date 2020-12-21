@@ -23,21 +23,23 @@
         <span class="l-user-header__role title-aux">
           {{#if (equalstr pessoa.role 'aluno')}}
             {{pessoa.plataformaAnos.firstObject.segmento.titulo}} - {{pessoa.plataformaAnos.firstObject.name}}
-          {{else}}
-
-            {{#if (equalstr parentController.toggleRole 'instrutor')}}
+          {{else if (equalstr pessoa.role 'coordenador')}}
+            Coordenador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
+          {{else if (equalstr pessoa.role 'gestor')}}
+            Gestor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
+          {{else if (equalstr pessoa.role 'admin')}}
+            Administrador
+          {{else if (equalstr parentController.toggleRole 'instrutor')}}
               Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}
-              {{#if (isbigger parentController.segmentosObjects.length "1")}}
-                dos segmentos
+              {{#if (isbigger parentController.segmentosObjects.length "1")}} dos segmentos 
                 {{#each parentController.segmentosObjects as |seg index|}}
                     <span class="fs-i">{{seg.titulo}}</span>
                     {{#if (equalstr index (sub parentController.segmentosObjects.length 2))}} e
-                    {{else}}
-                      {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
-                      {{else}},
-                    {{/if}}
+                    {{else if (equalstr index (sub parentController.segmentosObjects.length 1))}}
+                    {{else}},
                     {{/if}}
                 {{/each}}
+              
               {{else}}
                 do
                 {{#each parentController.segmentosObjects as |seg|}}
@@ -45,11 +47,11 @@
                 {{/each}}
               {{/if}}
 
-            {{else}}
+          {{else}}
               {{parentController.toggleRole}}
-            {{/if}}
-
           {{/if}}
+
+          
         </span>
 
         <!-- veta quem não é prof -->
