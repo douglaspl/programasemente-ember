@@ -4,16 +4,18 @@
       <img class="media__thumb" src="{{aulaThumb}}" alt="{{aula.titulo}}"/>
     </picture>
 
-    <div class="media__body flow-md">
-      <div>
+    <div class="media__body flow-md self-stretch">
+      <div class="flow-xxs">
         {{#if aula.unidade}}
           <span class="title-aux">
             {{aula.unidade.titulo}}
           </span>
         {{/if}}
-        <span class="media__title title-2 m-top--xxs">{{aula.titulo}}</span>
+        <span class="media__title title-2">{{aula.titulo}}</span>
       </div>
-      <span>{{aula.descricao}}</span>
+      {{#if aula.descricao}}
+        <span>{{aula.descricao}}</span>
+      {{/if}}
 
       <span class="flex flex-row items-center m-bottom--md">
         <svg xmlns="http://www.w3.org/2000/svg"

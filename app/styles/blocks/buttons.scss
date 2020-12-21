@@ -280,7 +280,7 @@
   &--link {
     background-color: transparent;
     box-shadow: none;
-    padding: .25em 0;
+    padding: 0;
     position: relative;
 
     [class*='__label'] {
@@ -292,7 +292,7 @@
         height: 1px;
         left: 0;
         position: absolute;
-        top: 100%;
+        top: calc(100% + 1px);
         transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
         transition: 200ms var(--ease-in-out-quad);
         width: 100%;
