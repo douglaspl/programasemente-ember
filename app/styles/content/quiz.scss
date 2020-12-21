@@ -372,6 +372,7 @@
   &__alternatives {
     font-size: $font-size--xs;
     list-style-type: lower-alpha;
+    margin-left: $distance--sm;
 
     li {
       display: list-item;
@@ -401,4 +402,5 @@
     margin: $distance--xs 0;
     padding: $distance--xs $distance--sm;
   }
+
 }
