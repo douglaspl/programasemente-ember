@@ -85,6 +85,9 @@
         <li class="global-nav__item" id="header-gersistema" {{action 'goToAdministracao' on="click"}}>
           <a class="global-nav__link"><span>Administração</span></a>
         </li>
+        <li class="global-nav__item" id="header-administracao" {{action 'goToAcompanhamento' on="click"}}>
+          <a class="global-nav__link"><span>Acompanhamento</span></a>
+        </li>
       {{else}}
       {{/if}}
 
@@ -108,6 +111,44 @@
         <a href="#" class="global-nav__link header-indicadores" {{action 'invalidateSession'}}>
           <span>Fazer Logout</span></a></li>
       <!-- /MOBILE -->
+  
+  
+  
+  
+  <li class="global-nav__item global-nav__submenu-holder">
+
+        <a class="global-nav__thumb j-apps" href="#">
+          <span class="global-nav__avatar avatar m-right--xs">
+            <img src='/assets/img/dark__thumb.png'>
+          </span>
+          <span class="m-right--xs">
+            <span>Meus Apps</span>
+           </span>
+          <span class="icon-chevron-down hide-on--xs m-right--md"></span>
+        </a>
+
+        <div class="global-nav__submenu submenu submenu--header submenu--user" id="appsSubmenu">
+           <ul class="submenu__body">
+            <li class="submenu__item">
+              <a href="https://fp.programasemente.com.br" class="submenu__link">
+                <span>Programa Semente FP</span>
+              </a>
+            </li>
+            <li class="submenu__item">
+              <a href="https://fp.programasemente.com.br" class="submenu__link">
+                <span>Plataforma S</span>
+              </a>
+            </li>
+         
+           </ul>
+
+        </div>
+
+      </li>
+
+
+
+
 
       <li class="global-nav__item global-nav__submenu-holder">
 
