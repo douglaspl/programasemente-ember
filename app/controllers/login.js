@@ -83,43 +83,55 @@ export default Ember.Controller.extend({
 
 
       this.get('session').authenticate('authenticator:authold', username, password, life).then(() => {}).catch((reason) => {
+        let that = this;
         if (reason.error_description) {
-          this.set('errorMessage', reason.error_description);
-          this.set('success_mail', '');
+          that.set('errorMessage', reason.error_description);
+          that.set('success_mail', '');
           document.getElementById('login_button').innerHTML =  'Entrar'
         } else if (reason) {
-          this.set('errorMessage', reason.error || reason);
-          this.set('success_mail', '');
+          that.set('errorMessage', reason.error || reason);
+          that.set('success_mail', '');
         } else {
-          this.set('errorMessage', 'Erro desconhecido');
-          this.set('success_mail', '');
+          that.set('errorMessage', 'Erro desconhecido');
+          that.set('success_mail', '');
         }
         document.getElementById('login_button').disabled = false;
       });
     },
     forgotPass() {
+      document.getElementById('forgot_modal').classList.remove('fadeOutDown');
       let email = document.getElementById('identification').value;
       this.set('user_email', '');
       if (email) {
         if (email.length > 4 && email.search('@') > 3) {
           this.set('user_email', email);
-          document.getElementById('user_email').value = email;
+          
         }
       }
       this.set('error_forgot', '');
       this.set('success_mail', '');
       this.set('errorMessage', '');
       document.getElementById('forgot_modal').classList.add('modal--is-show');
+      let usernameInput = document.getElementById('user_name');
+      usernameInput.value = email;
+      usernameInput.focus();
     },
     autoRegister(){
       this.transitionToRoute('autoregister');
     },
     cancelForgot() {
+      
+      document.getElementById('checkboxes_container').classList.remove('fadeInLeftShort');   
+      document.getElementById('success-forgot').style.display = 'none';
       document.getElementById('error-forgot').style.display = 'none';
+      document.getElementById('forgot_modal').classList.add('fadeOutDown');
       document.getElementById('forgot_modal').classList.remove('modal--is-show');
       document.getElementById('user_name').value = '';
+      document.getElementById('user_name').disabled = false;
       document.getElementById('group-email').style.display = 'none';
       document.getElementById('group-sms').style.display = 'none';
+      document.getElementById('btn-verify-user-name').style.display = 'block';
+      document.getElementById('btn-send-password').style.display = 'none';
       this.set('user_name', '');
       this.set('success_mail', '');
       this.set('error_forgot', '');
@@ -155,13 +167,29 @@ export default Ember.Controller.extend({
       }
     },
     sendPassword(type){
+      let checkEmail = document.getElementById('forgot-email');
+      let checkSms = document.getElementById('forgot-sms');
+      let btnSend = document.getElementById('btn-send-password');
+      let checkboxesContainer = document.getElementById('checkboxes_container');
+      let feedbackMsg;
+
       let email = false;
       let phone = false;
+      
+           
+      
       if (!type) {
-        if ( document.getElementById('forgot-sms').checked ) {
+        if (!checkEmail.checked && !checkSms.checked) {
+          this.set('error_forgot', 'Por favor, escolha pelo menos uma das opções acima');
+          document.getElementById('error-forgot').style.display = 'block';
+          document.getElementById('success-forgot').style.display = 'none';
+          return false
+        }
+      
+        if ( checkSms.checked ) {
           phone = true;
         }
-        if ( document.getElementById('forgot-email').checked ) {
+        if ( checkEmail.checked ) {
           email = true;
         }
       }
@@ -188,22 +216,42 @@ export default Ember.Controller.extend({
         }
       });
 
+      if (email && phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso'
+      } else if (email && !phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso para o seu e-mail'
+      } else if (!email && phone) {
+        feedbackMsg = 'Nova senha enviada com sucesso para o seu celular'
+      }
+
+
       let that = this;
+      btnSend.innerHTML = 'Enviando...';
       this.makeCustomCall('POST', final_url, string).then(() => {
         document.getElementById('error-forgot').style.display = 'none';
         document.getElementById('success-forgot').style.display = 'block';
-        that.set('success_forgot', 'Nova senha enviada com sucesso');
+        that.set('success_forgot', feedbackMsg);
         that.set('error_forgot', '');
         document.getElementById('btn-send-password').style.display = 'none';
-      }).catch((error) => {
+        btnSend.innerHTML = 'Enviar senha';
+        checkboxesContainer.style.display = 'none';
+       }).catch((error) => {
         document.getElementById('error-forgot').style.display = 'block';
         document.getElementById('success-forgot').style.display = 'none';
         that.set('error_forgot', 'Erro do servidor: ' + error);
         that.set('success_forgot', '');
+        btnSend.innerHTML = 'Enviar Senha';
       });
     },
     verifyUserName() {
       let userName = document.getElementById('user_name').value;
+      let checkboxesContainer = document.getElementById('checkboxes_container');
+      let groupEmail = document.getElementById('group-email');
+      let groupSMS = document.getElementById('group-sms');
+      let errorContainer = document.getElementById('error-forgot');
+      
+      checkboxesContainer.style.display = 'block';
+      
       let final_url = this.get('envnmt.host') + '/' + this.get('envnmt.namespace') + '/' + 'accounts/verifyUserName';
       let string = JSON.stringify({
         'data': {
@@ -218,25 +266,26 @@ export default Ember.Controller.extend({
       let that = this;
       this.makeCustomCall('POST', final_url, string).then((data) => {
         var result = data.data.attributes;
-        debugger;
         if (!result.exists)
         {
-          document.getElementById('group-email').style.display = 'none';
-          document.getElementById('group-sms').style.display = 'none';
-          document.getElementById('error-forgot').style.display = 'block';
+          groupEmail.style.display = 'none';
+          groupSMS.style.display = 'none';
+          errorContainer.style.display = 'block';
           that.set('error_forgot', 'Usuário não cadastrado!');
           return;
         }
         if (result.hasEmail && result.hasPhone)
         {
-          document.getElementById('user_name').disabled = true;
-          document.getElementById('btn-verify-user-name').style.display = 'none';
-          document.getElementById('btn-send-password').style.display = 'block';
-          document.getElementById('group-email').style.display = 'block';
-          document.getElementById('group-sms').style.display = 'block';
-          document.getElementById('error-forgot').style.display = 'none';
-          that.set('error_forgot', 'Usuário não cadastrado!');
-          return;
+            checkboxesContainer.classList.add('fadeInLeftShort');       
+            document.getElementById('user_name').disabled = true;
+            document.getElementById('btn-verify-user-name').style.display = 'none';
+            document.getElementById('btn-send-password').style.display = 'block';
+            groupEmail.style.display = 'block';
+            groupSMS.style.display = 'block';
+            errorContainer.style.display = 'none';
+            that.set('error_forgot', 'Usuário não cadastrado!');
+            return;
+          
         }
         if (result.hasEmail && !result.hasPhone)
         {
@@ -252,10 +301,10 @@ export default Ember.Controller.extend({
         }
         if (!result.hasEmail && !result.hasPhone)
         {
-          document.getElementById('group-email').style.display = 'none';
-          document.getElementById('group-sms').style.display = 'none';
-          document.getElementById('error-forgot').style.display = 'block';
-          that.set('error_forgot', 'Não temos seu email nem seu telefone. Entre em contato com a escola para receber sua senha');
+          groupEmail.style.display = 'none';
+          groupSMS.style.display = 'none';
+          errorContainer.style.display = 'block';
+          that.set('error_forgot', 'Não temos seu email e seu telefone. Por favor, entre em contato com a escola para receber sua senha');
           return;
         }
 

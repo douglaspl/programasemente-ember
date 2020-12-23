@@ -3,12 +3,12 @@
   pessoa=this.parentController.selectedDependente
   thisRoute=thisRoute
   Ano=Ano
-  togglerole=(action 'toggleRole')
+  togglerole=(action "toggleRole")
   showToggle=showToggle
   }}
 
 <div class="flow-md">
-    <button class="btn btn--link color-blue-navy-60" {{action 'voltar'}}>
+    <button class="btn btn--link color-blue-navy-60" {{action "voltar"}}>
       <span class="btn__icon icon-chevron-left"></span>
       <span class="btn__label">Voltar</span>
     </button>
@@ -16,23 +16,23 @@
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
-          <div class="flow-xs">
-            <h2 class="title-4">Tarefa</h2>
+          <section class="flow-xs">
+            <h4 class="title-4">Tarefa</h4>
             <div class="checkbox">
-              <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action 'refreshTarefa'}}>
+              <input class="checkbox__input" id="checkbox-tarefa" type="checkbox" checked={{if tarefa.realizado "checked"}} onchange={{action "refreshTarefa"}}>
               <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
             </div>
-          </div>
+          </section>
 
-          <div class="flow-xs">
-            <h2 class='title-4'>Sua avaliação da Aula</h2>
+          <section class="flow-xs">
+            <h4 class="title-4">Sua avaliação da Aula</h4>
             <div class="rating" id="rating">
               <input  class="rating__input"
                       id="rating-10"
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 10) "checked"}}
-                      onchange={{ action 'avaliar' 10 }}>
+                      onchange={{ action "avaliar" 10 }}>
               <label  class="rating__label"
                       for="rating-10"></label>
               <input  class="rating__input"
@@ -40,7 +40,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 9) "checked"}}
-                      onchange={{ action 'avaliar' 9 }}>
+                      onchange={{ action "avaliar" 9 }}>
               <label  class="rating__label"
                       for="rating-9"></label>
               <input  class="rating__input"
@@ -48,7 +48,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 8) "checked"}}
-                      onchange={{ action 'avaliar' 8 }}>
+                      onchange={{ action "avaliar" 8 }}>
               <label  class="rating__label"
                       for="rating-8"></label>
               <input  class="rating__input"
@@ -56,7 +56,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 7) "checked"}}
-                      onchange={{ action 'avaliar' 7 }}>
+                      onchange={{ action "avaliar" 7 }}>
               <label  class="rating__label"
                       for="rating-7"></label>
               <input  class="rating__input"
@@ -64,7 +64,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 6) "checked"}}
-                      onchange={{ action 'avaliar' 6 }}>
+                      onchange={{ action "avaliar" 6 }}>
               <label  class="rating__label"
                       for="rating-6"></label>
               <input  class="rating__input"
@@ -72,7 +72,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 5) "checked"}}
-                      onchange={{ action 'avaliar' 5 }}>
+                      onchange={{ action "avaliar" 5 }}>
               <label  class="rating__label"
                       for="rating-5"></label>
               <input  class="rating__input"
@@ -80,7 +80,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 4) "checked"}}
-                      onchange={{ action 'avaliar' 4 }}>
+                      onchange={{ action "avaliar" 4 }}>
               <label  class="rating__label"
                       for="rating-4"></label>
               <input  class="rating__input"
@@ -88,7 +88,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 3) "checked"}}
-                      onchange={{ action 'avaliar' 3 }}>
+                      onchange={{ action "avaliar" 3 }}>
               <label  class="rating__label"
                       for="rating-3"></label>
               <input  class="rating__input"
@@ -96,7 +96,7 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 2) "checked"}}
-                      onchange={{ action 'avaliar' 2 }}>
+                      onchange={{ action "avaliar" 2 }}>
               <label  class="rating__label"
                       for="rating-2"></label>
               <input  class="rating__input"
@@ -104,42 +104,78 @@
                       type="radio"
                       name="radio-avaliacao"
                       checked={{if (equalstr avaliacao.nota 1) "checked"}}
-                      onchange={{ action 'avaliar' 1 }}>
+                      onchange={{ action "avaliar" 1 }}>
               <label  class="rating__label"
                       for="rating-1"></label>
             </div>
-          </div>
+          </section>
 
-          <div class="flow-md">
-            <h2 class='title-4'>Anotações</h2>
+          <section class="flow-xs">
+            <header class="flex flex-row justify-between">
+                <h4 class="title-4">Anotações</h4>
+                {{#unless newAnotacao}}
+                    <button class="btn btn--link color-leaf-50" id="header-indicadores" {{action "toggleCreateAnotacao"}}>
+                        <span class="btn__label">Nova anotação</span>
+                    </button>
+                {{/unless}}
+            </header>
+            <div class="flow-lg">
+                {{#if newAnotacao}}
+                    <div class="flow-xs animated fadeIn fast">
+                        <div class="grow-wrap">
+                            <textarea   class="w100"
+                                        placeholder="Comece a digitar"
+                                        autofocus
+                                        id="nova-anotacao"
+                                        required
+                                        rows="5"
+                                        wrap
+                                        oninput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
+                        </div>
 
-            {{#if (equalstr anotacoes.length "0")}}
-              {{#unless newAnotacao}}
-                <p>Zero anotações</p>
-              {{/unless}}
-            {{else}}
-              <ul class="flow-lg">
-                {{#each anotacoes as |anotacao|}}
-                  <li>
-                    {{anotacao-card
-                      anotacao=anotacao
-                      deleteAnotacao=(action 'deleteAnotacao')}}
-                  </li>
-                {{/each}}
-              </ul>
-            {{/if}}
+                        <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action "createAnotacao"}}>
+                            <span class="btn__label">Adicionar</span>
+                        </button>
+                    </div>
+                {{/if}}
 
-            <div class="flow-xs" style={{unless newAnotacao "display: none;"}}>
-              <textarea class="form-group__input" id="nova-anotacao" rows="4" wrap required autofocus></textarea>
-              <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'createAnotacao'}}>
-                <span class="btn__label">Adicionar anotação</span>
-              </button>
+              {{#if (equalstr anotacoes.length "0")}}
+                {{#unless newAnotacao}}
+                  <div class="empty p--md">
+                    <p class="empty__msg fs--xs">Você ainda não criou anotações.</p>
+                  </div>
+                {{/unless}}
+              {{else}}
+                <ul class="flow-lg">
+                  {{#each sortedAnnotations as |anotacao|}}
+                    <li>
+                      {{anotacao-card
+                        anotacao=anotacao
+                        deleteAnotacao=(action "deleteAnotacao")}}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+
+              {{!-- {{#unless newAnotacao}}
+                <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action "toggleCreateAnotacao"}}>
+                  <span class="btn__label">Nova anotação</span>
+                </button>
+              {{else}}
+                <div class="flow-lg">
+                  <textarea class="w100"
+                            autofocus
+                            id="nova-anotacao"
+                            required
+                            rows="5"
+                            wrap></textarea>
+                  <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action "createAnotacao"}}>
+                    <span class="btn__label">Adicionar anotação</span>
+                  </button>
+                </div>
+              {{/unless}} --}}
             </div>
-
-            <button style={{if newAnotacao "display: none;"}} class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'toggleCreateAnotacao'}}>
-              <span class="btn__label">Nova anotação</span>
-            </button>
-          </div>
+          </section>
         </div>
       </header>
 
@@ -149,7 +185,7 @@
           <span class="fs--md fs-i color-gray-50 m-left--sm">{{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}</span>
           {{!--
           <button class="btn btn--text">Escolher outra aula</button>
-          <select name="aulas" id="aulas" onchange={{action 'refreshSelectedAula' value='target.value'}}>
+          <select name="aulas" id="aulas" onchange={{action "refreshSelectedAula" value="target.value"}}>
             {{#each selectedDependente.plataformaAnos as |ano|}}
               {{#each ano.aulas as |a|}}
                 <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{ano.name}} | {{a.titulo}}</option>
@@ -158,88 +194,95 @@
           </select>
           --}}
         </header>
-        <ul class="flow-sm">
-          {{#if aula.competencias}}
-            <li>
-              <div class="flex flex-row items-center">
-                <span class="flex flex-row items-center">
-                  {{icon-competencias}}
-                  <span class="m-left--xs">Competências:</span>
-                </span>
-                <span class="m-left--xs">
-                  {{#each aula.competencias as |comp|}}
-                    <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
-                  {{/each}}
-                </span>
-              </div>
+        <section>
+            <h2 class="sr-only">Informações da aula</h2>
+            <ul class="flow-sm">
+            {{#if aula.competencias}}
+                <li>
+                <div class="flex flex-row items-center">
+                    <span class="flex flex-row items-center">
+                    {{icon-competencias}}
+                    <span class="m-left--xs">Competências:</span>
+                    </span>
+                    <span class="m-left--xs">
+                    {{#each aula.competencias as |comp|}}
+                        <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
+                    {{/each}}
+                    </span>
+                </div>
+                </li>
+            {{/if}}
+
+            {{#if (equalstr toggleRole "instrutor")}}
+                <li>
+                <div class="flex flex-row items-center">
+                    <span class="flex flex-row items-center">
+                    {{icon-prevista-para}}
+                    <span class="m-left--xs">Mês limite sugerido para aplicação:</span>
+                    <span class="m-left--xs fw--5">
+                        {{aula.mesFimPrevistoFormat}}
+                    </span>
+                    </span>
+                </div>
+                </li>
+            {{/if}}
+
+            <li id="aplicacaoAula">
+                {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
             </li>
-          {{/if}}
-
-          {{#if (equalstr toggleRole 'instrutor')}}
+            </ul>
+        </section>
+        <section>
+            <h2 class="title-2 m-bottom--xxs hide-on--sm">Contéudos</h2>
+            <ul class="tabs">
             <li>
-              <div class="flex flex-row items-center">
-                <span class="flex flex-row items-center">
-                  {{icon-prevista-para}}
-                  <span class="m-left--xs">Mês limite sugerido para aplicação:</span>
-                  <span class="m-left--xs fw--5">
-                    {{aula.mesFimPrevistoFormat}}
-                  </span>
-                </span>
-              </div>
-            </li>
-          {{/if}}
-
-          <li id="aplicacaoAula">
-            {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
-          </li>
-        </ul>
-
-        <div>
-          <h2 class="title-2 m-bottom--xxs hide-on--sm">Contéudos</h2>
-          <ul class="tabs">
-            <li>
-              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Básico') 'tabs__tab--is-active'}}"
-                      type="button"
-                      {{action 'refreshSelectedAgrupamento' 'Básico'}}>
+                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Básico") "tabs__tab--is-active"}}"
+                        type="button"
+                        {{action "refreshSelectedAgrupamento" "Básico"}}>
                 <span class="hide-on--sm">Básicos</span>
                 <span class="hide-on--xs">Conteúdos básicos</span>
-              </button>
+                </button>
             </li>
             <li>
-              <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Complementar') 'tabs__tab--is-active'}}"
-                      type="button"
-                      {{action 'refreshSelectedAgrupamento' 'Complementar'}}>
+                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Complementar") "tabs__tab--is-active"}}"
+                        type="button"
+                        {{action "refreshSelectedAgrupamento" "Complementar"}}>
                 <span class="hide-on--sm">Complementares</span>
                 <span class="hide-on--xs">Conteúdos complementares</span>
-              </button>
+                </button>
             </li>
             {{#if aula.atividade}}
-              <li>
-                <button class="tabs__tab {{if (equalstr selectedAgrupamento 'Ead') 'tabs__tab--is-active'}}"
+                <li>
+                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Ead") "tabs__tab--is-active"}}"
                         type="button"
-                        {{action 'refreshSelectedAgrupamento' 'Ead'}}>
-                  <span>EAD</span>
+                        {{action "refreshSelectedAgrupamento" "Ead"}}>
+                    <span>EAD</span>
                 </button>
-              </li>
+                </li>
             {{/if}}
-          </ul>
-        </div>
+            </ul>
+        </section>
 
-        <div>
-          {{#each conteudos as |conteudo|}}
-            {{content-conteudo-card
-                conteudo=conteudo
-                selectedAgrupamento=selectedAgrupamento
-                toggleModal=(action 'toggleModal')}}
-          {{/each}}
-          {{#if (equalstr selectedAgrupamento 'Ead')}}
-            {{#each aula.atividade.secoes as |secao|}}
-              {{secao-card
-                secao=secao
-                toggleModalEad=(action 'toggleModalEad')}}
+        <ul class="list list--striped">
+
+            {{#each conteudos as |conteudo|}}
+                <li>
+                    {{content-conteudo-card     conteudo=conteudo
+                                                selectedAgrupamento=selectedAgrupamento
+                                                toggleModal=(action "toggleModal")}}
+                </li>
             {{/each}}
-          {{/if}}
-        </div>
+
+            {{#if (equalstr selectedAgrupamento "Ead")}}
+                {{#each aula.atividade.secoes as |secao|}}
+                    <li>
+                        {{secao-card    secao=secao
+                                        toggleModalEad=(action "toggleModalEad")}}
+                    </li>
+                {{/each}}
+            {{/if}}
+
+        </ul>
 
       </section>
 
@@ -263,7 +306,7 @@
     </div>
 
     <div class="modal__footer">
-      <button onclick={{action 'closeConteudoModal'}}>
+      <button onclick={{action "closeConteudoModal"}}>
         Fechar Conteúdo
       </button>
     </div>
@@ -286,7 +329,7 @@
     </div>
 
     <div class="modal__footer">
-      <button onclick={{action 'closeConteudoModalEad'}}>
+      <button onclick={{action "closeConteudoModalEad"}}>
         Fechar Conteúdo
       </button>
     </div>

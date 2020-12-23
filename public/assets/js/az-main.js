@@ -37,6 +37,7 @@ function toogleSub(target) {
 }
 
 $(document).on('click', '.j-thumb', function () { toogleSub('#thumbSubmenu'); });
+$(document).on('click', '.j-apps', function () { toogleSub('#appsSubmenu'); });
 $(document).on('click', '.j-timeline', function () { toogleSub('#timelineSubmenu'); });
 
 function toogleAccordion() {

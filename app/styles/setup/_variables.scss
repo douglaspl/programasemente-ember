@@ -164,7 +164,8 @@ $font-size--sm:   1rem; // 16
 $font-size--md:   1.125rem; // 18
 $font-size--lg:   1.5rem; // 24
 $font-size--xl:   1.75rem; // 28
-$font-size--xxl:  2.375rem; // 38
+$font-size--xxl:  2.125rem; // 34
+// $font-size--xxl:  2.375rem; // 38
 
 // Very few uses.
 $font-size--super: 3rem;
@@ -186,6 +187,8 @@ $font-weight-6: 900;
 $form-shadow: 0 0 0 rgba($gray-60, 1);
 $form-bg-color: $gray-10;
 $form-color: $gray-70;
+$form-h-padding: $distance--xs;
+$textarea-padding: $distance--xs;
 
 
 
@@ -450,7 +453,7 @@ $timeline-status-size: 3rem;
 //------------------------------------
 //    #GENERAL DEF
 //------------------------------------
-$focus-indicator: 4px solid $lemon-50;
+$focus-indicator: 2px solid $lemon-50;
 $header-bg-color: $white;
 $body-bg-color: $gray-0;
 
@@ -466,6 +469,14 @@ $main-border-color: transparentize($gray-10, .5);
 
 $default-hover-bg-color: $green-10;
 $overlayer-color: $blue-navy-60;
+
+// ANNOTATION
+$annotation-bg-color: $gray-0 !default;
+$annotation-border: true !default;
+$annotation-border-side: 'left' !default;
+$annotation-border-style: 1px solid $gray-20 !default;
+$annotation-font-size: $font-size--xs !default;
+$annotation-font-style: italic !default;
 
 // ALERT
 $alert-radius: $radius--md;
@@ -493,7 +504,7 @@ $check-radio-checked-color: $green-40;
 $check-radio-checked-bg-color: $blue-navy-70;
 
 // STRIPE
-$stripe-bg-color: $gray-0;
+$stripe-bg-color: $gray-10;
 
 // COURSE NAV
 $course-nav-bg-color: $blue-navy-70;

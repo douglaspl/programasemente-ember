@@ -436,8 +436,8 @@
     font-size: $font-size--sm;
     font-weight: 400;
     height: $input-height;
-    padding-left: $distance--sm;
-    padding-right: $distance--sm;
+    padding-left: $form-h-padding;
+    padding-right: $form-h-padding;
 }
 
 
@@ -708,7 +708,7 @@
                     $size: $font-size--xxl,
                     $size--sm: $font-size--super,
                     $size--lg: $font-size--max,
-                    $weight: 800,
+                    $weight: $font-weight-5,
                     $letter: $letter-spacing--sm) {
 
     color: $color;
@@ -753,7 +753,7 @@
     }
 
     // @include media('>md') {
-    //     font-size: $size--sm;
+    //     font-size: $size--md;
     // }
 
     @include media('>lg') {
@@ -767,8 +767,8 @@
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
-                    $weight: 800,
-                    $letter: $letter-spacing--md) {
+                    $weight: $font-weight-5,
+                    $letter: $letter-spacing--sm) {
 
     color: $color;
     font-family: $font-title;
@@ -792,7 +792,7 @@
                     $size: $font-size--md,
                     $size--sm: $font-size--lg,
                     $size--lg: $font-size--xl,
-                    $weight: 700,
+                    $weight: $font-weight-4,
                     $letter: $letter-spacing--xs) {
 
     color: $color;
@@ -814,15 +814,15 @@
 @mixin title-4(     $color: inherit,
                     $size: $font-size--sm,
                     $size--lg: $font-size--md,
-                    $weight: 800,
+                    $weight: $font-weight-5,
                     $letter: $letter-spacing--md) {
 
     color: $color;
     font-size: $size;
     font-weight: $weight;
-    letter-spacing: $letter;
+    // letter-spacing: $letter;
     line-height: 1.125;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 
     @include media('>lg') {
         font-size: $size--lg;
@@ -834,7 +834,7 @@
                     $display: inline-block,
                     $family: $font-base,
                     $size: $font-size--xxs,
-                    $weight: 400,
+                    $weight: $font-weight-3,
                     $letter: $letter-spacing--xl) {
 
     color: $color;

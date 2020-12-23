@@ -90,11 +90,17 @@
 
   // Elements
   &__role {
-    display: block;
+    display: flex;
+    font-size: $font-size--xxs;
     letter-spacing: $letter-spacing--md;
-    margin-bottom: $distance--sm;
+    margin-right: $distance--sm;
     opacity: 0.85;
     text-transform: uppercase;
+
+    > * + * {
+      margin-left: $distance--xxs;
+    }
+
   }
 
 }

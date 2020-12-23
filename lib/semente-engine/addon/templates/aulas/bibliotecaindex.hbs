@@ -1,4 +1,4 @@
-{{header-geral  
+{{header-geral
   parentController = this.parentController
   pessoa=pessoa
   thisRoute=thisRoute
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-       
+
         {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
           <div class="flex flex-col flow-xs">
             <h3 class="title-aux">Público</h3>
@@ -50,9 +50,11 @@
     </header>
 
     <section class="l-dots-between__content flow-md">
-      <h3 class="sr-only">Lista de conteúdos</h3>
-      <h4 class="title-4">Tema: {{selectedTema}}</h4>
-      
+      <hgroup>
+        <h3 class="sr-only">Lista de conteúdos</h3>
+        <h4 class="title-4"><span class="fw--3">Tema:</span> {{selectedTema}}</h4>
+      </hgroup>
+
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}

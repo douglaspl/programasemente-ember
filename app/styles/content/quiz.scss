@@ -108,8 +108,8 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-
     }
+
 
   }
 
@@ -364,6 +364,43 @@
 
     }
 
+  }
+
+}
+
+.not-in-quiz {
+  &__alternatives {
+    font-size: $font-size--xs;
+    list-style-type: lower-alpha;
+    margin-left: $distance--sm;
+
+    li {
+      display: list-item;
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+  }
+
+  &__question {
+    font-weight: $font-weight-4;
+    line-height: 1.35;
+
+    [class*='__pre-statement'],
+    [class*='__pos-statement'] {
+      font-weight: inherit;
+    }
+
+  }
+
+  [class*='--poetry'] {
+    background-color: $gray-0;
+    border-left: 3px solid $gray-20;
+    display: inline-flex;
+    font-size: 1rem;
+    justify-content: flex-start;
+    margin: $distance--xs 0;
+    padding: $distance--xs $distance--sm;
   }
 
 }

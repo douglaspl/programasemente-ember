@@ -2,19 +2,20 @@
   <div class="media media--card">
     <picture class="media__picture">
       <img class="media__thumb" src="{{aulaThumb}}" alt="{{aula.titulo}}"/>
-     
     </picture>
 
-    <div class="media__body flow-md">
-      <div>
+    <div class="media__body flow-md self-stretch">
+      <div class="flow-xxs">
         {{#if aula.unidade}}
           <span class="title-aux">
             {{aula.unidade.titulo}}
           </span>
         {{/if}}
-        <h4 class="media__title title-2 m-top--xxs">{{aula.titulo}}</h4>
+        <span class="media__title title-2">{{aula.titulo}}</span>
       </div>
-      <span>{{aula.descricao}}</span>
+      {{#if aula.descricao}}
+        <span>{{aula.descricao}}</span>
+      {{/if}}
 
       <span class="flex flex-row items-center m-bottom--md">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +32,7 @@
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
         {{#if (equalstr situacao "Aplicada")}}
-          <span>Aplicada em: <span class="fw--4">{{UltimaAplicacao.dataAplicacaoFormat}}</span></span>
+          <span>Aplicada em: <span class="fw--4">{{UltimaAplicacao.dataAplicacaoFormatShort}}</span></span>
         {{else}}
           <span>{{situacao}}</span>
         {{/if}}

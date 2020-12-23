@@ -1,5 +1,5 @@
 <div class="main__back-container">
-  <button class="btn btn--link" {{action 'goToAulas' on="click"}} type="button">
+  <button class="btn btn--link color-blue-navy-60" {{action 'goToAulas' on="click"}} type="button">
     <span class="btn__icon icon-chevron-left"></span>
     <span class="btn__voltar">Ir para aulas</span>
   </button>
@@ -86,22 +86,22 @@
 
           <div class="form-group">
             <label class="form-group__label" for="nascimento">Data de nascimento</label>
-            {{input class="form-group__input" type="date" id="nascimento" value=pessoa.dataNascimento}}
+            {{input class="form-group__input" type="date" id="nascimento" value=pessoa.nascimentoPlataforma}}
           </div>
 
           <div class="form-group">
             <span class="form-group__label">Gênero</span>
             <div class="flex flex-row items-center flow-h-md">
               <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "feminino") "checked"}} id="gen_feminino" name="genero" type="radio">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "feminino") "checked"}} id="gen_feminino" value="feminino" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
                 <label class="radio__label" for="gen_feminino">feminino</label>
               </div>
               <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "masculino") "checked"}} id="gen_masculino" name="genero" type="radio">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "masculino") "checked"}} id="gen_masculino" value="masculino" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
                 <label class="radio__label" for="gen_masculino">Masculino</label>
               </div>
               <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "outro") "checked"}} id="gen_outro" name="genero" type="radio">
+                <input class="radio__input" checked={{if (equalstr pessoa.genero "outro") "checked"}} id="gen_outro" value="" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
                 <label class="radio__label" for="gen_outro">Prefiro não informar</label>
               </div>
             </div>
@@ -117,6 +117,10 @@
           <li>Cidade: <span class="fw--4">{{pessoa.instituicao.cidade}} / {{pessoa.instituicao.uf}}</span></li>
         </ul>
       </section>
+
+      {{#if pessoa.hasDirtyAttributes}}
+        <button class="btn btn--ghost btn--xxs self-start" type="button" {{action 'saveChanges'}}>Salvar alterações</button>
+      {{/if}}
     </div>
 
 

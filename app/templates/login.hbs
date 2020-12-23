@@ -25,7 +25,12 @@
           <span class="icon-eye"></span>
         </button>
       </div>
-
+   {{#if errorMessage}}
+      <div class="alert alert--has-icon alert--error self-auto alert--is-show animated fadeIn">
+        <span class="alert__icon icon-x"></span>
+        <p>{{{errorMessage}}}</p>
+      </div>
+    {{/if}}
       <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button>
       <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button>
 
@@ -36,12 +41,7 @@
         <label class="checkbox__label" for="remember">Salvar informações</label>
       </span>
     </div>
-    {{#if errorMessage}}
-      <div class="login__alert alert alert--has-icon alert--error alert--xxs">
-        <span class="alert__icon icon-x"></span>
-        <p>{{{errorMessage}}}</p>
-      </div>
-    {{/if}}
+ 
 
     {{#if success_mail}}
       <div class="login__alert alert alert--has-icon alert--success alert--xxs">
@@ -54,46 +54,44 @@
   </div>
 </form>
 
-<aside id="forgot_modal" class="modal">
+<aside id="forgot_modal" class="modal animated fast fadeIn">
 
-  <div class="modal__content modal__content--sm">
+  <div class="modal__content modal__content--md">
 
     <header class="modal__header">
       <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelForgot'}}></button>
 
       <h3 class="modal__title">Solicitar nova senha</h3>
     </header>
-    <div class="modal__body">
-      <p>Preencha seu nome de usuário</p>
-
-      <div class="login__form-group form-group form-group--full-width">
-        <input class="form-group__input" type="textbox" id="user_name"
-          value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
-      </div>
-
-    <div class="form-group" id="group-email" style="display: none;">
-      <span class="checkbox">
-        <input class="checkbox__input" id="forgot-email" checked="checked" name="forgot-email" type="checkbox">
-        <label class="checkbox__label" for="forgot-email">Enviar senha por email</label>
-      </span>
-    </div>
-
-    <div class="form-group" id="group-sms" style="display: none;">
-      <span class="checkbox">
-        <input class="checkbox__input" id="forgot-sms" name="forgot-sms" type="checkbox">
-        <label class="checkbox__label" for="forgot-sms">Enviar senha por SMS</label>
-      </span>
-    </div>
-
-        <div class="alert--error alert--has-icon alert--xxs" id="error-forgot">
-          <p>{{{error_forgot}}}</p>
+    <div class="flow-lg">
+      <div class="flow-md">
+        <div class="form-group form-group--full-width flow-xs">
+          <p>Por favor, preencha seu nome de usuário (login)</p>
+          <input class="form-group__input" type="textbox" id="user_name"
+            value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
         </div>
-
-      <div class="login__alert alert--has-icon alert--success alert--xxs" id="success-forgot">
-        <p>{{{success_forgot}}}</p>
+        <div class="alert alert--has-icon alert--success alert--xxs animated fadeIn" id="success-forgot">
+          <p>{{{success_forgot}}}</p>
+        </div>
       </div>
 
+      <div class="flow-sm animated" id="checkboxes_container" >
+        <div class="checkbox" id="group-email" style="display: none;">
+          <input class="checkbox__input" id="forgot-email" checked="checked" name="forgot-email" type="checkbox">
+          <label class="checkbox__label" for="forgot-email">Enviar senha por email</label>
+        </div>
+        <div class="checkbox" id="group-sms" style="display: none;">
+          <input class="checkbox__input" id="forgot-sms" checked="checked" name="forgot-sms" type="checkbox">
+          <label class="checkbox__label" for="forgot-sms">Enviar senha por SMS</label>
+        </div>
+      </div> 
+      
 
+      <div class="alert alert--error alert--has-icon alert--xxs animated fadeIn" id="error-forgot">
+        <p>{{{error_forgot}}}</p>
+      </div>
+
+      
     </div>
     <div class="modal__footer modal__footer--center">
       <button id="btn-verify-user-name" class="btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
