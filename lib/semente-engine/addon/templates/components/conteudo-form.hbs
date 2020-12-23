@@ -17,7 +17,8 @@
         {{#if (base64 conteudo.path)}}
             <object id="showfiles" data={{conteudo.path}} type='application/pdf'></object>
         {{else}}
-            <object id="showfiles" data="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/{{conteudo.path}}" type='application/pdf'></object>
+            <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} alt="{{conteudo.titulo}}">
+            {{!-- <object id="showfiles" data="https://res.cloudinary.com/douglaslinhares/image/upload/v1605111732/{{conteudo.path}}" type='application/pdf'></object> --}}
         {{/if}}
         <button type="button" class="btn" {{action "removePath"}}>Remover</button>
     {{/if}}
