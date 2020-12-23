@@ -6,6 +6,7 @@ export default DS.Model.extend({
     idx: DS.attr(),
     tipo: DS.attr(),
     videoUrl: DS.attr(),
+    arquivoUrl: DS.attr(),
     path: DS.attr(),
     coverImage: DS.attr(),
     aulas: DS.hasMany('aula', { async: true }),

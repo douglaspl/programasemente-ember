@@ -1,0 +1,15 @@
+<ul>
+  <h1>Marketing</h1>
+  <li>
+    <button type="button" class="login__cta btn" {{action "goToCreateItem"}}>Cadastrar item</button>
+  </li>
+
+  {{#each model as |area|}}
+    <li>
+      <button type="button" {{action "goToMarketings" area.id}}>
+        <img class="media__thumb" src={{area.image}} alt="{{area.name}}"/>
+        {{area.name}}
+      </button>
+    </li>
+  {{/each}}
+</ul>

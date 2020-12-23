@@ -1,0 +1,44 @@
+<div class="row">
+    <h1>Informações</h1>
+    <label>NOME DO ITEM</label>
+    {{input name='' value=model.titulo placeholder='Nome do item'}}
+
+    <label>DESCRIÇÃO</label>
+    <div class="flow-xs">
+        {{textarea class="form-group__input" value=model.descricao placeholder='Descrição do item' rows="5"}}
+    </div>
+    <label>ÁREAS</label>
+    <select name="area" id="area{{model.id}}" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+        {{#each areas as |area|}}
+            <option value="{{area.id}}" selected={{if (equalstr area.id model.area.id) "selected"}}>{{area.name}}</option>
+        {{/each}}
+    </select>
+</div>
+
+<div class="row">
+    <label for="">ARQUIVOS</label>
+
+    {{#if model.arquivos}}
+        <h1>Arquivo adicionado:</h1>
+        {{#each model.arquivos as |arquivoItem|}}
+            {{arquivoItem.tipo}}{{arquivoItem.name}} 
+            <picture class="media__thumb">
+                {{#if (base64 arquivoItem.arquivo)}}
+                    <object class="media__thumb" id="showfiles" data={{arquivoItem.thumb}}></object>
+                {{else}}
+                    <a class="btn btn--ghost btn--xxs" href={{arquivoItem.url}}>
+                        <img class="media__thumb" src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
+                    </a>
+                {{/if}}
+            </picture>
+            <button type="button" class="btn" {{action "removeArquivo" arquivoItem}}>Remover</button>
+        {{/each}}
+    {{/if}}
+
+    <label class="btn btn--ghost btn--xs m-left--sm" style="cursor: pointer;">
+        <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
+        <span class="btn__icon icon-plus"></span> Adicionar Arquivo
+    </label>
+</div>
+
+<button type="button" class="login__cta btn" {{action "saveItem" model}}>Cadastrar</button>

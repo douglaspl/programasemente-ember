@@ -1,0 +1,17 @@
+<div class="media media--card" id="item-{{item.id}}" style="cursor: pointer;" {{action goToEditItem item.id}}>
+  <picture class="media__thumb">
+    <img class="media__thumb" id="item-{{item.id}}" src={{if thumbnail thumbnail "/assets/img/dark__thumb.png"}} alt="{{item.titulo}}">
+  </picture>
+  <div class="media__body flow-md">
+    <div>
+      <span class="title-aux">ATUALIZADO EM {{item.dataAtualizacaoFormat}}</span>
+      <h4 class="media__title title-2 m-top--xxs">{{item.titulo}}</h4>
+    </div>
+    <span class="title-aux">{{item.descricao}}</span> 
+    <div class="row">
+      {{#each item.arquivos as |arquivo|}}
+        <h1>{{arquivo.tipo}} </h1>
+      {{/each}}
+    </div>
+  </div>
+</div>
