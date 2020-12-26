@@ -214,22 +214,21 @@
             {{/if}}
 
             {{#if (equalstr toggleRole "instrutor")}}
-                <li>
-                <div class="flex flex-row items-center">
-                    <span class="flex flex-row items-center">
-                    {{icon-prevista-para}}
-                    <span class="m-left--xs">Mês limite sugerido para aplicação:</span>
-                    <span class="m-left--xs fw--5">
-                        {{aula.mesFimPrevistoFormat}}
-                    </span>
-                    </span>
-                </div>
-                </li>
+              <li>
+              <div class="flex flex-row items-center">
+                  <span class="flex flex-row items-center">
+                  {{icon-prevista-para}}
+                  <span class="m-left--xs">Mês limite sugerido para aplicação:</span>
+                  <span class="m-left--xs fw--5">
+                      {{aula.mesFimPrevistoFormat}}
+                  </span>
+                  </span>
+              </div>
+              </li>
+              <li id="aplicacaoAula">
+                  {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
+              </li>
             {{/if}}
-
-            <li id="aplicacaoAula">
-                {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
-            </li>
             </ul>
         </section>
         <section>

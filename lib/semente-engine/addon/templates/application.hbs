@@ -91,6 +91,13 @@
       {{else}}
       {{/if}}
 
+      {{#if (equalstr role 'admin')}}
+        <li class="global-nav__item" id="header-marketing" {{action 'goToMarketing' on="click"}}>
+          <a class="global-nav__link"><span>Marketing</span></a>
+        </li>
+      {{else}}
+      {{/if}}
+
 
       <!-- MOBILE -->
       <!-- Em mobile, esses links não ficam dentro de um submenu e por isso tiveram que ser duplicados. -->

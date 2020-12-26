@@ -1,0 +1,35 @@
+<ul>
+    <h1>Marketing</h1>
+    <li>
+        <button type="button" class="login__cta btn" {{action "goToCreateItem"}}>Cadastrar item</button>
+    </li>
+
+    <div class="search">
+        <div>
+            <h2>BUSCAR ITENS</h2>
+            {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }}
+        </div>
+
+        <label>ÁREAS</label>
+        <select name="area" id="area" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+            <option value="" selected="">Todos</option>
+            {{#each areas as |area|}}
+                <option value="{{area.id}}" selected={{if (equalstr area.id selectedArea) "selected"}}>{{area.name}}</option>
+            {{/each}}
+        </select>
+
+        {{!-- 
+        <label>Tipo do Arquivo</label>
+        <select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
+        <option value="Todos" selected="selected">Todos</option>
+        {{#each tipos as |tipo|}}
+            <option value="{{tipo}}">{{tipo}}</option>
+        {{/each}}
+        </select> --}}
+    </div>
+    {{#each itens as |item|}}
+        {{#if (containStr subStr = search mainStr = item.titulo)}}
+            {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
+        {{/if}}
+    {{/each}}
+</ul>
