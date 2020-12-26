@@ -56,6 +56,7 @@
 
     &__item {
         flex: 0 0 auto;
+        margin-right: $distance--xs;
         margin-bottom: $distance--xs;
         order: 2;
 
@@ -67,13 +68,13 @@
             order: 3;
 
             @include media('>sm') {
-                margin-right: $distance--xs;
+                // margin-right: $distance--xs;
                 order: 1;
             }
 
-            @include media('>md') { margin-right: $distance--md; }
-            @include media('>lg') { margin-right: $distance--lg; }
-            @include media('>xl') { margin-right: $distance--xl; }
+            // @include media('>md') { margin-right: $distance--sm; }
+            // @include media('>lg') { margin-right: $distance--lg; }
+            // @include media('>xl') { margin-right: $distance--xl; }
         }
 
 
@@ -95,7 +96,7 @@
         font-weight: 700;
         letter-spacing: $letter-spacing--xl;
         // opacity: .65;
-        padding: $distance--md $distance--lg;
+        padding: $distance--md clamp($distance--xs, $distance--sm, $distance--lg);
         position: relative;
         transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
         transition: 300ms var(--ease-out-quad);
@@ -139,7 +140,7 @@
 
 
         @include media('>sm') {
-            margin-right: -14px; // deslocamento do chevron
+            // margin-right: -14px; // deslocamento do chevron
 
             // [class*='is-show'] ~ & #{$this}__avatar {
             //     transform: scale(2);
@@ -151,30 +152,28 @@
 
     &__avatar {
         background-color: $white;
+        display: none;
         height: $avatar--md;
         margin-bottom: $distance--sm;
         width: $avatar--md;
 
         @include media('>sm') {
+            $distance: $distance--xs;
+
+            border-right: 1px solid $main-border-color;
             height: $avatar--sm;
             margin-bottom: 0;
-            width: $avatar--sm;
+            margin-right: $distance;
+            padding-right: $distance;
             transform-origin: top right;
-
             transition: 300ms cubic-bezier(.25, .46, .45, .94); // IE fallback
             transition: 300ms var(--ease-out-quad);
+            width: $avatar--sm;
         }
 
     }
 
-    &__user-info {
-        $distance: $distance--sm;
-
-        border-left: 1px solid $main-border-color;
-        margin-left: $distance;
-        margin-right: $distance;
-        padding-left: $distance;
-    }
+    // &__user-info {}
 
     &__trigger {
         padding: $distance--xxs;
