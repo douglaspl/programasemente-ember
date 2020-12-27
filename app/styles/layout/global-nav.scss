@@ -21,6 +21,9 @@
 .global-nav {
     $this: &;
 
+    align-self: stretch;
+    display: flex;
+
     &__list {
         @include z-index('offcanvas');
 
@@ -55,6 +58,8 @@
     }
 
     &__item {
+        align-self: stretch;
+        display: inline-flex;
         flex: 0 0 auto;
         margin-right: $distance--xs;
         margin-bottom: $distance--xs;
@@ -68,13 +73,9 @@
             order: 3;
 
             @include media('>sm') {
-                // margin-right: $distance--xs;
                 order: 1;
             }
 
-            // @include media('>md') { margin-right: $distance--sm; }
-            // @include media('>lg') { margin-right: $distance--lg; }
-            // @include media('>xl') { margin-right: $distance--xl; }
         }
 
 
@@ -91,32 +92,24 @@
     &__link {
         @include title-aux($size: .85rem);
 
+        align-items: center;
         border-radius: $radius;
         display: flex;
         font-weight: 700;
         letter-spacing: $letter-spacing--xl;
-        // opacity: .65;
-        padding: $distance--md clamp($distance--xs, $distance--sm, $distance--lg);
+        padding: $distance--xs clamp($distance--xs, $distance--sm, $distance--lg);
         position: relative;
-        transition: 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
-        transition: 300ms var(--ease-out-quad);
-
-        @include media('>sm', '<md') {
-            font-size: 0.75rem;
-            padding: 1em;
-        }
+        transition: background-color 300ms cubic-bezier(.25, .46, .45, .94)t; // IE fallback
+        transition: background-color 300ms var(--ease-out-quad);
 
         &:hover {
-            @include text-contrast($global-nav-gradient-hover);
-
-            background-color: $global-nav-gradient-hover;
-            // opacity: .6;
+            background-color: $global-nav-bg-color-hover;
+            color: $global-nav-color-hover;
         }
 
         &--is-active {
             background-color: $global-nav-active-bg-color;
             color: $global-nav-active-color;
-            // opacity: 1;
 
             &:hover {
                 background-color: $global-nav-active-bg-color-hover;
@@ -127,48 +120,37 @@
         }
 
         [class*='icon-'] {
-            margin-left: $distance--sm;
+            margin-left: $distance--xs;
         }
 
 
     }
 
-    &__thumb {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-
-
-        @include media('>sm') {
-            // margin-right: -14px; // deslocamento do chevron
-
-            // [class*='is-show'] ~ & #{$this}__avatar {
-            //     transform: scale(2);
-            // }
-
-        }
-
-    }
-
-    &__avatar {
+    &__avatar-holder {
         background-color: $white;
+        border-radius: 50%;
         display: none;
         height: $avatar--md;
         margin-bottom: $distance--sm;
+        overflow: hidden;
+        padding: 0;
         width: $avatar--md;
 
         @include media('>sm') {
-            $distance: $distance--xs;
-
-            border-right: 1px solid $main-border-color;
-            height: $avatar--sm;
+            align-items: center;
+            display: flex;
+            height: $avatar--xs;
+            justify-content: center;
             margin-bottom: 0;
-            margin-right: $distance;
-            padding-right: $distance;
             transform-origin: top right;
             transition: 300ms cubic-bezier(.25, .46, .45, .94); // IE fallback
             transition: 300ms var(--ease-out-quad);
-            width: $avatar--sm;
+            width: $avatar--xs;
+        }
+
+        > * {
+            display: block;
+            width: 100%;
         }
 
     }
@@ -176,6 +158,7 @@
     // &__user-info {}
 
     &__trigger {
+        margin: auto;
         padding: $distance--xxs;
 
         @include media('>sm') {
@@ -199,9 +182,6 @@
     &__submenu-holder {
         @include z-index('menu');
 
-        align-items: center;
-        align-self: stretch;
-        display: flex;
         position: relative;
     }
 

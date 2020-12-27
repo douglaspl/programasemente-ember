@@ -11,7 +11,7 @@
     overflow: hidden;
     width: $avatar-default-size;
 
-     
+
 
     &__img {
         left: 50%;
@@ -29,7 +29,7 @@
             opacity: 0.5;
             transition: 0.5s;
         }
-                  
+
     }
 
     &__placeholder {
@@ -40,7 +40,7 @@
         justify-content: center;
         align-self: center;
         pointer-events: none;
-               
+
     }
 
     &:hover .avatar__placeholder {
@@ -58,6 +58,11 @@
 
     &--float {
         box-shadow: $shadow-3;
+    }
+
+    &--xs {
+        height: $avatar--xs;
+        width: $avatar--xs;
     }
 
     &--sm {

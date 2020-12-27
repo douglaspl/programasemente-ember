@@ -35,8 +35,8 @@
     color: var(--text-color);
     position: relative;
 
-    --dark: #{$gray-60};
-    --light: #{$gray-10};
+    --dark: #{$gray-80};
+    --light: #{$gray-20};
 
     background-image: linear-gradient(30deg, var(--dark), var(--light)) ;
     background-blend-mode: normal;
@@ -73,8 +73,8 @@
   }
 
   &--responsavel {
-    --dark:   #{$gray-50};
-    --light:  #{$gray-10};
+    --dark: #{$gray-80};
+    --light: #{$gray-20};
   }
 
   &--aluno {

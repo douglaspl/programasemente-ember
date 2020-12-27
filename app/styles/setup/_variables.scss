@@ -354,6 +354,7 @@ $shadow-long: 0 2.8px 2.2px   rgba($black, .034), 0 6.7px 5.3px   rgba($black, .
 //------------------------------------
 //    #AVATAR
 //------------------------------------
+$avatar--xs: 1.5rem;
 $avatar--sm: 2rem;
 $avatar--md: 3.5rem;
 $avatar--lg: 6.25rem;
@@ -467,7 +468,8 @@ $container-fluid-pad: $distance--md;
 
 $main-border-color: transparentize($gray-10, .5);
 
-$default-hover-bg-color: $green-10;
+$default-color-hover: $white;
+$default-bg-color-hover: $green-40;
 $overlayer-color: $blue-navy-60;
 
 // ANNOTATION
@@ -519,7 +521,8 @@ $course-nav-lateral-pad: $distance--sm;
 
 // GLOBAL NAV
 $global-nav-gradient-light: $green-10 !default;
-$global-nav-gradient-hover: $default-hover-bg-color !default;
+$global-nav-color-hover: $default-color-hover !default;
+$global-nav-bg-color-hover: $default-bg-color-hover !default;
 $global-nav-active-bg-color: $green-40 !default;
 $global-nav-active-bg-color-hover: $green-60 !default;
 $global-nav-active-color: color-contrast($global-nav-active-bg-color, $white, $blue-navy-70) !default;
