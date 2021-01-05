@@ -91,11 +91,10 @@
       {{else}}
       {{/if}}
 
-      {{#if (equalstr role 'admin')}}
+      {{#if (or (equalstr role 'marketing') (equalstr role 'admin'))}}
         <li class="global-nav__item" id="header-marketing" {{action 'goToMarketing' on="click"}}>
           <a class="global-nav__link"><span>Marketing</span></a>
         </li>
-      {{else}}
       {{/if}}
 
 
