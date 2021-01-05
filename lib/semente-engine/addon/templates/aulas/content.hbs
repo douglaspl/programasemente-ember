@@ -184,16 +184,15 @@
         <header class="flex flex-row items-baseline">
           <h1 class="title-1">{{aula.titulo}}</h1>
           <span class="fs--md fs-i color-gray-50 m-left--sm">{{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}</span>
-          {{!--
+          {{!-- 
           <button class="btn btn--text">Escolher outra aula</button>
           <select name="aulas" id="aulas" onchange={{action "refreshSelectedAula" value="target.value"}}>
-            {{#each selectedDependente.plataformaAnos as |ano|}}
-              {{#each ano.aulas as |a|}}
-                <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{ano.name}} | {{a.titulo}}</option>
-              {{/each}}
+            {{#each todasAulas as |a|}}
+              <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{a.plataformaAno.name}} | {{a.titulo}}</option>
             {{/each}}
-          </select>
+          </select> 
           --}}
+          
         </header>
         <section>
             <h2 class="sr-only">Informações da aula</h2>
