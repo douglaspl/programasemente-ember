@@ -42,13 +42,14 @@
         transition: 500ms;
         width: 95%;
 
-        @include media('>sm') {
+        @include media('>md') {
             background-color: transparent;
             box-shadow: none;
             flex-direction: row;
             padding-top: 0;
             position: relative;
             transform: translate(0);
+            transition: 0ms;
         }
 
         &--is-show {
@@ -65,14 +66,14 @@
         margin-bottom: $distance--xs;
         order: 2;
 
-        @include media('>sm') {
+        @include media('>md') {
             margin-bottom: 0;
         }
 
         &:not(:last-child) {
             order: 3;
 
-            @include media('>sm') {
+            @include media('>md') {
                 order: 1;
             }
 
@@ -81,7 +82,7 @@
 
         &[class*='mob-only'] {
 
-            @include media('>sm') {
+            @include media('>md') {
                 display: none;
             }
 
@@ -136,7 +137,7 @@
         padding: 0;
         width: $avatar--md;
 
-        @include media('>sm') {
+        @include media('>md') {
             align-items: center;
             display: flex;
             height: $avatar--xs;
@@ -161,7 +162,7 @@
         margin: auto;
         padding: $distance--xxs;
 
-        @include media('>sm') {
+        @include media('>md') {
             display: none;
         }
 
@@ -173,7 +174,7 @@
         right: $distance--sm;
         top: $distance--sm;
 
-        @include media('>sm') {
+        @include media('>md') {
             display: none;
         }
 
