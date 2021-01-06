@@ -1,5 +1,6 @@
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
-  <div class="media media--card">
+  
+  <div class="media {{if (isbigger hasContents "0") 'media--card' 'media--card media--card--is-disabled' }}">
     <picture class="media__picture">
       <img class="media__thumb" src="{{aulaThumb}}" alt="{{aula.titulo}}"/>
     </picture>
@@ -37,10 +38,19 @@
           <span>{{situacao}}</span>
         {{/if}}
       </span>
-
+   
+      {{#if (isbigger hasContents "0")}}
       <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'transitToAula' aula.id}}>
         <span class="btn__label">Ver materiais</span>
       </button>
+      {{else}}
+      <div class="btn btn--disabled btn--ghost btn--xxs">
+        <span class="icon-lock m-right--xs"></span>  
+        <span>Ainda não há conteúdos</span>
+      </div>
+      
+      {{/if}}
+    
     </div>
 
   </div>

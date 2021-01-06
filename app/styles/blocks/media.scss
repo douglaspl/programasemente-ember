@@ -67,6 +67,9 @@
       outline: 2px solid $leaf-20;
     }
 
+      &--is-disabled {
+        opacity: 0.75;
+      }
   }
 
   &--as-button {
