@@ -1,6 +1,6 @@
 <section class="flow-xl">
   <h1 class="sr-only">Conteúdo de {{thisRoute}}</h1>
-  <button class="btn" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+  <button class="btn btn--xxs" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
 
   <div class="l-dots-between">
 
@@ -33,18 +33,19 @@
 
     <section class="l-dots-between__content flow-md">
       <hgroup>
-        <h1 class="sr-only">Lista de conteúdos de {{selectedArea}}</h1>
-        <h2 class="title-4">{{selectedArea}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{itens.length}} aulas)</span></h2>
+        <h1 class="sr-only">Lista de conteúdos de {{selectedAreaName}}</h1>
+        <h2 class="title-4">{{selectedAreaName}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{itens.length}} aulas)</span></h2>
       </hgroup>
 
-      <div>
-        <h1>ÁREA SELECIONADA: {{selectedAreaName}}</h1>
+      <ul class="list list--striped">
         {{#each itens as |item|}}
             {{#if (containStr subStr = search mainStr = item.titulo)}}
-                {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
+                <li>
+                    {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
+                </li>
             {{/if}}
         {{/each}}
-      </div>
+      </ul>
     </section>
 
   </div>
