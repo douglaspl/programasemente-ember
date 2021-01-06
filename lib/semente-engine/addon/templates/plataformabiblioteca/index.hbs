@@ -142,7 +142,9 @@
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{plataforma-biblioteca-card conteudo=conteudo selectedTipo=selectedTipo selectedTema=selectedTema}}
+            <li>
+              {{plataforma-biblioteca-card conteudo=conteudo selectedTipo=selectedTipo selectedTema=selectedTema}}
+            </li>
           {{/if}}
         {{/each}}
       </ul>

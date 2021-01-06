@@ -1,7 +1,3 @@
-<!-- user help -->
-<div style="display: none;">{{InstituicaoId}}</div>
-<div style="display: none;">{{InstituicaoName}}</div>
-
 <aside class="help" id="help">
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
   <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle"
@@ -320,7 +316,7 @@
 
 <div id="content-main" class="content-main">
   {{#if role}}
-    <main class="main">
+    <main class="main flow-lg">
     <!-- if an institution is selected, then the output is released. otherwise the intitution select is created -->
       {{outlet}}
     </main>
@@ -370,8 +366,6 @@
   {{/if}}
 </div>
 
-<div style="display: none;">{{oneInst}}</div>
-
 <!-- internet connection -->
 <div id="snackbarConnection" class="alert alert--xs alert--has-icon alert--no-interaction alert--warning">
   <span class="alert__icon icon-alert-triangle icon--lg"></span>
@@ -381,3 +375,9 @@
     <p class="m-top--sm">Assim que esta mensagem desaparecer, significará que sua conexão com a Internet voltou.</p>
   </div> --}}
 </div>
+
+<div style="display: none;">{{oneInst}}</div>
+
+<!-- user help -->
+<div style="display: none;">{{InstituicaoId}}</div>
+<div style="display: none;">{{InstituicaoName}}</div>

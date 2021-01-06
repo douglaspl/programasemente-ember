@@ -113,7 +113,9 @@
           {{#if (equalstr aulaFiltrada.plataformaAno.segmento.titulo selectedSegmento)}}
             {{#if (equalstr aulaFiltrada.plataformaAno.name selectedAno)}}
               {{#if (containStr subStr = search mainStr = aulaFiltrada.titulo)}}
-              {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
+                <li>
+                  {{aula-card transit=(action 'goToAula') aula=aulaFiltrada pessoa=selectedDependente selectedSituacao=selectedSituacao}}
+                </li>
               {{/if}}
             {{/if}}
           {{/if}}

@@ -58,7 +58,9 @@
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
-            {{plataforma-biblioteca-card conteudo=conteudo toggleModal=(action 'toggleModal')}}
+            <li>
+              {{plataforma-biblioteca-card conteudo=conteudo toggleModal=(action 'toggleModal')}}
+            </li>
           {{/if}}
         {{/each}}
       </ul>

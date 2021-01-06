@@ -1,5 +1,4 @@
-<div style="display: none;">{{rePlot}}{{oneInst}}</div>
-<main class="main report">
+<section class="report">
 
   <!-- ###################### -->
   <!-- escolha da instituição -->
@@ -346,8 +345,9 @@
 
     <!-- INÍCIO DA SESSÃO DE PESSOAS (visão geral) -->
     {{#if (equalstr sectionToDisplay 'pessoas')}}
-    <div style="display: none;">{{setPosition}}</div>
-    {{outlet}}
+      {{outlet}}
+
+      <div style="display: none;">{{setPosition}}</div>
     {{/if}}
     <!-- FIM DA SESSÃO DE PESSOAS -->
 
@@ -1516,10 +1516,12 @@
   </section>
 
 
-</main>
+</section>
 
 <!-- snackbak -->
 <div id="downloading" class="alert  alert--has-icon alert--no-interaction">
   <p>O relatório está sendo gerado e seu download iniciará em breve.</p>
 
 </div>
+
+<div style="display: none;">{{rePlot}}{{oneInst}}</div>

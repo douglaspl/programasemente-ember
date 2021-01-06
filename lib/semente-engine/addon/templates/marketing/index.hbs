@@ -1,15 +1,23 @@
-<ul>
-  <h1>Marketing</h1>
-  <li>
-    <button type="button" class="login__cta btn" {{action "goToCreateItem"}}>Cadastrar item</button>
-  </li>
+<section class="flow-lg">
+  <header class="flex flex-row items-baseline">
+    <h1 class="title-1">Marketing</h1>
+    <button class="btn btn--ghost btn--xxs m-left--sm" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+  </header>
 
-  {{#each model as |area|}}
-    <li>
-      <button type="button" {{action "goToMarketings" area.id}}>
-        <img class="media__thumb" src={{area.image}} alt="{{area.name}}"/>
-        {{area.name}}
-      </button>
-    </li>
-  {{/each}}
-</ul>
+  <ul class="l-card-list">
+    {{#each model as |area|}}
+      <li>
+        <button class="media media--card media--as-button flow-xxs" {{action "goToMarketings" area.id}}>
+          <picture class="media__picture">
+            {{area.image}}
+            {{!-- {{component (strconcat "icon-" area.image)}} --}}
+          </picture>
+          <span class="media__body flow-md">
+            {{area.name}}
+          </span>
+        </button>
+      </li>
+    {{/each}}
+  </ul>
+
+</section>
