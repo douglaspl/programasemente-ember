@@ -1,35 +1,51 @@
-<ul>
-    <h1>Marketing</h1>
-    <li>
-        <button type="button" class="login__cta btn" {{action "goToCreateItem"}}>Cadastrar item</button>
-    </li>
+<section class="flow-xl">
+  <h1 class="sr-only">Conteúdo de {{thisRoute}}</h1>
+  <button class="btn" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
 
-    <div class="search">
-        <div>
-            <h2>BUSCAR ITENS</h2>
-            {{input type="text" class="search" placeholder="Pesquisar Conteúdo" value=search }}
+  <div class="l-dots-between">
+
+    <aside class="l-dots-between__side">
+      <h1 class="sr-only">Filtros de contedúdos</h1>
+      <form autocomplete="off" class="flex flex-col flow-md">
+
+        <div class="form-group">
+            <label class="form-group__label">Busca</label>
+            <div class="form-group__wrapper form-group__wrapper--search">
+                {{input class="form-group__input" type="text" placeholder="Pesquisar Conteúdo" value=search}}
+            </div>
+            {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
         </div>
 
-        <label>ÁREAS</label>
-        <select name="area" id="area" onchange={{action 'refreshSelectedArea' value='target.value'}}>
-            <option value="" selected="">Todos</option>
-            {{#each areas as |area|}}
-                <option value="{{area.id}}" selected={{if (equalstr area.id selectedArea) "selected"}}>{{area.name}}</option>
-            {{/each}}
-        </select>
+        <div class="form-group">
+            <label class="form-group__label">Áreas</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+                <select class="form-group__input" name="area" id="area" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+                    <option value="" selected="selected">Todos</option>
+                    {{#each areas as |area|}}
+                        <option value="{{area.id}}" selected={{if (equalstr area.id selectedArea) "selected"}}>{{area.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
 
-        {{!-- 
-        <label>Tipo do Arquivo</label>
-        <select name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo' value='target.value'}}>
-        <option value="Todos" selected="selected">Todos</option>
-        {{#each tipos as |tipo|}}
-            <option value="{{tipo}}">{{tipo}}</option>
+      </form>
+    </aside>
+
+    <section class="l-dots-between__content flow-md">
+      <hgroup>
+        <h1 class="sr-only">Lista de conteúdos de {{selectedArea}}</h1>
+        <h2 class="title-4">{{selectedArea}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{itens.length}} aulas)</span></h2>
+      </hgroup>
+
+      <div>
+        {{#each itens as |item|}}
+            {{#if (containStr subStr = search mainStr = item.titulo)}}
+                {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
+            {{/if}}
         {{/each}}
-        </select> --}}
-    </div>
-    {{#each itens as |item|}}
-        {{#if (containStr subStr = search mainStr = item.titulo)}}
-            {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
-        {{/if}}
-    {{/each}}
-</ul>
+      </div>
+    </section>
+
+  </div>
+
+</section>
