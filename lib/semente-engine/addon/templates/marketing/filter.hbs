@@ -27,6 +27,7 @@
         {{/each}}
         </select> --}}
     </div>
+    <h1>ÁREA SELECIONADA: {{selectedAreaName}}</h1>
     {{#each itens as |item|}}
         {{#if (containStr subStr = search mainStr = item.titulo)}}
             {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
