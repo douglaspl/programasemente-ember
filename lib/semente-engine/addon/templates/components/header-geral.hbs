@@ -116,6 +116,25 @@
             </li>
           {{/if}}
 
+          {{#unless (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel') (equalstr pessoa.role 'instrutor'))}}
+            {{#link-to 'marketing.index' class="tabs__tab"}}
+                <span>Marketing</span>
+            {{/link-to}}
+          {{/unless}}
+
+          {{#if (equalstr pessoa.role 'admin')}}
+            {{#link-to 'conteudos.index' class="tabs__tab"}}
+                <span>Conteúdos</span>
+            {{/link-to}}
+
+             {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
+                <span>Administração</span>
+            {{/link-to}}
+          {{/if}}
+
+          
+
+
         </ul>
 
       </nav>
