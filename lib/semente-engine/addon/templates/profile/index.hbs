@@ -45,29 +45,33 @@
 
       <section class="flow-sm">
         <header class="flex flex-row items-baseline">
-          <h3 class="title-3">Senha</h3><span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span>
+          <h3 class="title-3">Senha</h3>
+          {{!-- <span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span> --}}
         </header>
 
-        <form class="flex flex-col flow-md" autocomplete="off">
-          <div class="form-group">
-            <label class="form-group__label" for="pass">Senha antiga</label>
-            <input class="form-group__input" type="password" id="pass" value="" onkeyup={{action 'updatePasswordChanged'}} >
+        <form class="flex flex-col" autocomplete="off">
+          <div class="form-group__container flow-md">
+            <div class="form-group w100">
+              <label class="form-group__label" for="pass">Senha antiga</label>
+              <input class="form-group__input" type="password" id="pass_profile" value="" onkeyup={{action 'updatePasswordChanged'}} >
+            </div>
+
+            <div class="form-group w100">
+              <label class="form-group__label" for="pass_new">Nova senha</label>
+              <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_profile" value="">
+            </div>
+            
+
+            <div class="form-group w100">
+              <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
+              <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_profile_copy" value="">
+            </div>
+          
+          <span class="alert alert--error animated {{if (isbigger error_pwd.length '0') 'alert--is-show' ''}}" aria-live="polite" id="error_pass">{{error_pwd}}</span>
+          <span class="alert alert--success animated {{if (isbigger success_pwd.length '0') 'alert--is-show' ''}}" aria-live="polite" id="error_pass">{{success_pwd}}</span>
+          
           </div>
-
-          <div class="form-group">
-            <label class="form-group__label" for="pass_new">Nova senha</label>
-            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new" value="">
-          </div>
-
-          <div class="form-group">
-            <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
-            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_copy" value="">
-          </div>
-
-          {{#if success_pwd}}
-            {{success_pwd}}
-          {{/if}}
-
+        
           <button class="btn btn--ghost btn--xxs self-start" type="button" disabled="{{if passwordChanged '' 'disabled'}}" {{action 'changePw'}}>Definir nova senha</button>
         </form>
 
