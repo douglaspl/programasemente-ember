@@ -96,7 +96,7 @@
         <h1 class="scr-only">Menu de navegação</h1>
         <ul class="tabs tabs--full-background">
           <li>
-           {{#unless (equalstr pessoa.isAplicador '0')}}
+           {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
               {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
                   <span>Aulas</span>
               {{/link-to}}
