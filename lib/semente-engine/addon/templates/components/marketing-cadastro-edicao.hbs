@@ -36,21 +36,31 @@
 
                     <h1>Arquivo adicionado:</h1>
 
+                    <ul>
+
                     {{#each model.arquivos as |arquivoItem|}}
+                        <li>
+                            <p>{{arquivoItem.tipo}}</p>
 
-                        {{arquivoItem.tipo}}{{arquivoItem.name}}
+                            <p>{{arquivoItem.name}}</p>
 
 
-                        {{#if (base64 arquivoItem.arquivo)}}
-                            <object id="showfiles" data={{arquivoItem.thumb}}></object>
-                        {{else}}
-                            <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
-                            <a class="btn btn--ghost btn--xxs" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">Abrir arquivo</a>
-                        {{/if}}
+                            {{#if (base64 arquivoItem.arquivo)}}
+                                <object id="showfiles" data={{arquivoItem.thumb}}></object>
+                            {{else}}
+                                <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
+                                <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">
+                                    <span class="btn__label">Abrir arquivo</span>
+                                </a>
+                            {{/if}}
 
-                        <button type="button" class="btn" {{action "removeArquivo" arquivoItem}}>Remover</button>
-
+                            <button class="btn btn--link color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
+                                <span class="btn__label">Remover</span>
+                            </button>
+                        </li>
                     {{/each}}
+
+                    </ul>
 
                 {{/if}}
 
