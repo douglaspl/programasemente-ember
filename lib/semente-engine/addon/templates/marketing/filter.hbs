@@ -1,34 +1,35 @@
 <section class="flow-xl">
   <h1 class="sr-only">Conteúdo de {{thisRoute}}</h1>
-  <button class="btn btn--xxs" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
 
   <div class="l-dots-between">
 
     <aside class="l-dots-between__side">
       <h1 class="sr-only">Filtros de contedúdos</h1>
-      <form autocomplete="off" class="flex flex-col flow-md">
 
-        <div class="form-group">
-            <label class="form-group__label">Busca</label>
-            <div class="form-group__wrapper form-group__wrapper--search">
-                {{input class="form-group__input" type="text" placeholder="Pesquisar Conteúdo" value=search}}
+        <form autocomplete="off" class="flex flex-col flow-md">
+            <button class="btn btn--xxs" type="button" {{action "goToCreateItem"}}>Cadastrar novo item</button>
+
+            <div class="form-group">
+                <label class="form-group__label">Busca</label>
+                <div class="form-group__wrapper form-group__wrapper--search">
+                    {{input class="form-group__input" type="text" placeholder="Pesquisar Conteúdo" value=search}}
+                </div>
+                {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
             </div>
-            {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
-        </div>
 
-        <div class="form-group">
-            <label class="form-group__label">Áreas</label>
-            <div class="form-group__wrapper form-group__wrapper--select">
-                <select class="form-group__input" name="area" id="area" onchange={{action 'refreshSelectedArea' value='target.value'}}>
-                    <option value="" selected="selected">Todos</option>
-                    {{#each areas as |area|}}
-                        <option value="{{area.id}}" selected={{if (equalstr area.id selectedArea) "selected"}}>{{area.name}}</option>
-                    {{/each}}
-                </select>
+            <div class="form-group">
+                <label class="form-group__label">Áreas</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="form-group__input" name="area" id="area" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+                        <option value="" selected="selected">Todos</option>
+                        {{#each areas as |area|}}
+                            <option value="{{area.id}}" selected={{if (equalstr area.id selectedArea) "selected"}}>{{area.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
             </div>
-        </div>
+        </form>
 
-      </form>
     </aside>
 
     <section class="l-dots-between__content flow-md">

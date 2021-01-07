@@ -1,6 +1,6 @@
 <div class="media" id="item-{{item.id}}" {{action goToEditItem item.id}}>
 
-  <picture class="media__picture bg-white p--lg">
+  <picture class="media__picture bg-white shadow-3 p--lg">
     <img class="media__thumb" id="item-{{item.id}}" src={{if thumbnail thumbnail "/assets/img/dark__thumb.png"}} alt="{{item.titulo}}">
   </picture>
 
@@ -22,14 +22,12 @@
     <div class="flex flex-row">
 
       {{#each item.arquivos as |arquivo|}}
-        <button class="btn btn--xxs m-right--xxs">
+        <button class="btn btn--xxs btn--ghost m-right--xxs">
           <span class="btn__label">{{arquivo.tipo}}</span>
         </button>
       {{/each}}
 
     </div>
-
-
 
   </div>
 
