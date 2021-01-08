@@ -32,7 +32,10 @@
             {{else if (equalstr pessoa.role 'admin')}}
               <span>Administrador</span>
             {{else if (equalstr parentController.toggleRole 'instrutor')}}
-                <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}</span>
+
+              {{#if isAplicador}}
+               
+                <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} </span>
 
                 {{#if (isbigger parentController.segmentosObjects.length "1")}}
                   <span>dos segmentos</span>
@@ -58,6 +61,9 @@
                     <span class="fs-i">{{seg.titulo}}</span>
                   {{/each}}
                 {{/if}}
+              {{else}}
+              <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} não aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} </span>
+              {{/if}}
 
             {{else}}
                 {{parentController.toggleRole}}
@@ -90,9 +96,11 @@
         <h1 class="scr-only">Menu de navegação</h1>
         <ul class="tabs tabs--full-background">
           <li>
-            {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
-                <span>Aulas</span>
-            {{/link-to}}
+           {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
+              {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
+                  <span>Aulas</span>
+              {{/link-to}}
+            {{/unless}}
           </li>
           <li>
             {{#link-to 'aulas.bibliotecaindex' class="tabs__tab"}}
@@ -101,7 +109,7 @@
           </li>
           <li>
 
-          {{#unless (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel'))}}
+          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
             {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
                 <span>Acompanhamento</span>
             {{/link-to}}
@@ -115,6 +123,25 @@
               </a>
             </li>
           {{/if}}
+
+          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'instrutor'))}}
+            {{#link-to 'marketing.index' class="tabs__tab"}}
+                <span>Marketing</span>
+            {{/link-to}}
+          {{/unless}}
+
+          {{#if (equalstr pessoa.role 'admin')}}
+            {{#link-to 'conteudos.index' class="tabs__tab"}}
+                <span>Conteúdos</span>
+            {{/link-to}}
+
+             {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
+                <span>Administração</span>
+            {{/link-to}}
+          {{/if}}
+
+          
+
 
         </ul>
 

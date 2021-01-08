@@ -34,7 +34,8 @@
         </div>
 
 
-        {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
+        {{#if (or (equalstr this.parentController.toggleRole 'aluno') (equalstr this.parentController.toggleRole 'responsavel'))}}
+        {{else}}
           <div class="flex flex-col flow-xs">
             <h3 class="title-aux">Público</h3>
               {{#each publicos as |pub|}}

@@ -1,17 +1,40 @@
-<div class="media media--card" id="item-{{item.id}}" style="cursor: pointer;" {{action goToEditItem item.id}}>
-  <picture class="media__thumb">
+<div class="media" id="item-{{item.id}}">
+
+  {{#if (equalstr pessoaRole 'admin')}}
+    <a href="#" {{action goToEditItem item.id}}>
+      Edit este item
+    </a>
+  {{/if}}
+
+  <picture class="media__picture bg-white shadow-3 p--lg">
     <img class="media__thumb" id="item-{{item.id}}" src={{if thumbnail thumbnail "/assets/img/dark__thumb.png"}} alt="{{item.titulo}}">
   </picture>
-  <div class="media__body flow-md">
-    <div>
-      <span class="title-aux">ATUALIZADO EM {{item.dataAtualizacaoFormat}}</span>
-      <h4 class="media__title title-2 m-top--xxs">{{item.titulo}}</h4>
+
+  <div class="media__body flow-xl">
+
+    <div class="flow-sm">
+
+      <div class="flow-xs">
+
+        <span class="title-aux">Atualizado em {{item.dataAtualizacaoFormat}}</span>
+        <h4 class="media__title title-2 m-top--xxs">{{item.titulo}}</h4>
+
+      </div>
+
+      <p>{{item.descricao}}</p>
+
     </div>
-    <span class="title-aux">{{item.descricao}}</span> 
-    <div class="row">
+
+    <div class="flex flex-row">
+
       {{#each item.arquivos as |arquivo|}}
-        <h1>{{arquivo.tipo}} </h1>
+        <button class="btn btn--xxs btn--ghost m-right--xxs">
+          <span class="btn__label">{{arquivo.tipo}}</span>
+        </button>
       {{/each}}
+
     </div>
+
   </div>
+
 </div>
