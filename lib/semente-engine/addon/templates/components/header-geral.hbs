@@ -116,13 +116,13 @@
           {{/unless}}
           </li>
 
-          {{#if Ano.urlLivro}}
+          {{#unless (equalstr livro '#')}}
             <li>
-              <a class="tabs__tab" href="{{Ano.urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
-                <span>Livro (PDF) {{Ano.name}}</span>
+              <a class="tabs__tab" href="{{livro.url}}" target="_blank" rel="nofollow noopener noreferrer">
+                <span>Livro (PDF) {{livro.plataformaAno.name}}</span>
               </a>
             </li>
-          {{/if}}
+          {{/unless}}
 
           {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'instrutor'))}}
             {{#link-to 'marketing.index' class="tabs__tab"}}
