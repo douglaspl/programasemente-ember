@@ -7,9 +7,10 @@ export default Ember.Controller.extend({
   transitionToForm: function(e) { this.transitionToRoute('autoregister.form', e.get('id')); },
 
   preventDefault: Ember.run.later(function(){
-    document.getElementById("inicia-cadastro").addEventListener("click", function(event){
-      event.preventDefault()
-    });
+    // debugger;
+    // document.getElementById("inicia-cadastro").addEventListener("click", function(event){
+    //   event.preventDefault()
+    // });
   }),
 
   actions: {
