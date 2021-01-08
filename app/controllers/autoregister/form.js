@@ -216,7 +216,7 @@ export default Ember.Controller.extend({
         name: login
       }).catch(function (error) {
          // Se existe um erro qualificado
-         if (error.errors) {
+        if (error.errors) {
              
           button.innerHTML = 'Avançar';
           // Pega alerta
@@ -241,7 +241,8 @@ export default Ember.Controller.extend({
           }
   
   
-          } else {
+          } 
+        else {
           that.get('session').authenticate('authenticator:authold', login, password, 1).then(() => {}).catch((reason) => {});
         }
       })
