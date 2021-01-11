@@ -227,7 +227,9 @@
       box-shadow: 0 0 24px transparentize($color: $blue-navy-70, $amount: .4);
       padding: 1rem;
       position: fixed;
-      right: $distance--xl;
+      right: 0;
+      top: calc(#{$header-height} + (2 * #{$header-v-padding}));
+      z-index: 2;
 
       li + li {
         border-top: 1px solid transparentize($color: $white, $amount: .85);
