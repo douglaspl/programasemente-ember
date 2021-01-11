@@ -88,6 +88,11 @@
     --light: #{$leaf-30};
   }
 
+  &--admin {
+    --dark: #{$blue-navy-70};
+    --light: #{$blue-navy-30};
+  }
+
   // Elements
   &__role {
     display: flex;
