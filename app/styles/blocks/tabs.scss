@@ -18,7 +18,7 @@
         transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
         transition: 200ms var(--ease-in-out-quad);
 
-        > * { opacity: .5; }
+        > * { opacity: .75; }
 
         &--is-active {
             border-bottom: 3px solid $global-nav-active-bg-color;

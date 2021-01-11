@@ -9,9 +9,9 @@
 
   {{#unless (equalstr pessoa.role 'aluno')}}
     <nav>
-      <h1 class="sr-only">Subnaveção de {{thisRoute}}</h1>
+      <h1 class="sr-only">Subnavegação de {{thisRoute}}</h1>
       <ul class="tabs">
-        {{#if (equalstr this.parentController.toggleRole 'instrutor')}}
+        {{#if (or (equalstr this.parentController.toggleRole 'instrutor') (equalstr pessoa.role 'admin'))}}
           {{#each this.parentController.segmentosObjects as |seg|}}
             <li>
               <button type="button" class="tabs__tab {{if (equalstr selectedSegmento seg.titulo) 'tabs__tab--is-active'}}" {{action 'refreshSelectedSegmento' seg.titulo}}>
