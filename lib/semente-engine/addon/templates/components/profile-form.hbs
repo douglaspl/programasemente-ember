@@ -3,9 +3,12 @@
         {{#if pessoa.loggedWithDependenteUsername}}
             <div class="flow-xxs" style="max-width: fit-content;">
                 <h4 class="title-4">
-                    Identificamos que você deu entrada no sistema utilizando o nome de usuário de um de seus filhos. 
-                    Estamos usando o e-mail de responsável {{pessoa.email}} para você e deixamos o login dos seus filhos para eles!
-                    Todos estão com a mesma senha que você utilizou para fazer a entrada no sistema agora a pouco.
+                    <p>Identificamos que você deu entrada no sistema utilizando o nome de usuário de um de seus filhos. 
+                    Estamos usando seu e-mail de responsável {{pessoa.email}} para você, a partir de agora ele é seu nome de usuário (login). 
+                    
+                    <p>Sua senha agora é <u>>esta que você acabou de utilizar para chegar aqui</u>.</p>
+
+                    <p>A partir de agora, você deve utilizar estas credenciais para acessar a plataforma e ver os materiais de seus dependentes.</p>
                 </h4>
             </div>
         {{/if}}
