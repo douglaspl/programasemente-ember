@@ -4,7 +4,7 @@
             <div class="flow-xxs" style="max-width: fit-content;">
                 <h4 class="title-4">
                     <p>Identificamos que você deu entrada no sistema utilizando o nome de usuário de um de seus filhos. 
-                    Estamos usando seu e-mail de responsável {{pessoa.email}} para você, a partir de agora ele é seu nome de usuário (login). 
+                    Estamos usando seu e-mail de responsável {{pessoa.email}} para você, a partir de agora ele é seu nome de usuário (login).</p>
                     
                     <p>Sua senha agora é <u>>esta que você acabou de utilizar para chegar aqui</u>.</p>
 
@@ -229,7 +229,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <button class="j-submit btn btn--md" type="button" {{action "saveProfile" pessoa}}>
+                <button class="j-submit btn btn--md" id="next-step1" type="button" {{action "saveProfile" pessoa}}>
                     <span>Avançar</span>
                     <span class="btn__icon icon-arrow-right"></span>
                 </button>
