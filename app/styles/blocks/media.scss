@@ -16,7 +16,7 @@
     border-radius: $radius--md;
     height: $size;
     max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     width: $size;
 
     @include media('>lg') {
@@ -24,6 +24,12 @@
 
       height: $size;
       width: $size;
+    }
+
+    svg {
+      color: $green-40;
+      height: $avatar--sm;
+      width: $avatar--sm;
     }
 
     &--16-9 {
@@ -67,15 +73,25 @@
       outline: 2px solid $leaf-20;
     }
 
+      &--is-disabled {
+        opacity: 0.75;
+      }
   }
 
-  &--as-button {
-    align-items: center;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: center;
-    padding: $distance--md;
-    width: 100%;
-  }
+//   &--as-button {
+//     align-items: center;
+//     cursor: pointer;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: $distance--md;
+//     width: 100%;
+
+//     &:hover {
+//       @include text-contrast($clickables-bg-color-hover);
+
+//       background-color: $clickables-bg-color-hover;
+//     }
+
+//   }
 
 }

@@ -6,7 +6,7 @@
     border-bottom: 1px solid $main-border-color;
     display: flex;
     flex-direction: row;
-    min-height: $header-height;
+    height: calc(#{$header-height} + (2 * #{$header-v-padding}));
     justify-content: space-between;
     padding: 0 $h-padding--xs;
     position: relative;
