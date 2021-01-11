@@ -17,9 +17,235 @@
       </ul>
 </nav>
 
-<section class="report__section report-people report__section--is-active" id="report-people">
+<label for="professores">Geral</label>
+<input type="radio" name="selectedFilteredRole" onchange={{action 'refreshContent' 'g'}} id="geral" checked={{if (equalstr selectedContent 'g') "checked"}}/>
+<label for="alunos">Detalhado</label>
+<input type="radio" name="selectedFilteredRole" onchange={{action 'refreshContent' 'd'}} id="detalhado" checked={{if (equalstr selectedContent 'd') "checked"}}/>
+
+<section class="report__section report__section--is-active" id="report-courses" style={{if (equalstr selectedContent 'g') "display: block;" "display: none;"}}>
+  <div class="sections__subsection">
+    <div class="form-group">
+      <label class="form-group__label" for="select_course">Ano</label>
+
+      <div class="form-group__wrapper form-group__wrapper--select">
+        <select class="form-group__input form-group__input--select"
+                id="select_course"
+                value="select_inst"
+                {{action 'selectCursoAno' on="change"}}>
+          {{#each inst_selected.modulos as |modulo|}}
+          {{#if (equalstr curso_selected.id modulo.id)}}
+          <option value={{modulo.id}} selected>{{modulo.name}}</option>
+          {{else}}
+          <option value={{modulo.id}}>{{modulo.name}}</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    {{#if curso_selected}}
+    <div class="flex flex-row m-top--lg animated fadeIn d250">
+        <div class="form-group m-right--md">
+          <label class="form-group__label" for="turma_selector">Turma</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select id="turma_selector" class="form-group__input form-group__input--select"
+              {{action 'filterTurmaAno' on='change'}}>
+
+              <option value="0" selected>Escolha uma turma</option>
+                {{#each inst_selected.turmas as |turma|}}
+                  {{#if (equalstr turma.modulo.id curso_selected.id)}}
+                    <option id="opt_{{turma.id}}" value={{turma.id}}>{{turma.name}}</option>
+                  {{/if}}
+                {{/each}}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group flex-1">
+          <label class="form-group__label" for="matchClass">Busca</label>
+          <form class="flex flex-col" id="searchAllEnrolled" autocomplete="off" aria-autocomplete="none">
+
+            <div class="form-group__wrapper form-group__wrapper--search m-right--none" flex="100">
+              {{input class="form-group__input" aria-describedby="basic-addon1" id="matchClass"
+              key-up="filterClasses" type="text" autocomplete="off" aria-autocomplete="none"}}
+            </div>
+
+            <button class="btn btn--text btn--xs self-start" {{action 'exitpagedsearch'}}>
+              <span class="btn__icon icon-x"></span><span class="btn__label">Limpar</span>
+            </button>
+
+          </form>
+        </div>
+    </div>
+
+    <div class="flex flex-col animated fadeIn d750">
 
 
+
+      <!-- ========================
+            ########### LIST ############
+            ========================= -->
+      <div class="flex-1">
+
+        {{#if filtered_turma}}
+        <div class="report-course">
+          <div class="report-course__header">
+            <div class="report-course__title-block">
+              <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
+              <h2 class="title-2">{{curso_selected.name}}</h2>
+              {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
+                                                <span>Ver todos os matriculados</span>
+                                            </button> --}}
+            </div>
+
+            <div class="report-course__data data data--shadowed">
+              <span class="data__value">{{alunos_turma}}</span>
+              <span class="data__label">matrículas</span>
+            </div>
+          </div>
+          <ul class="report-course__body report-class" id="acomp_classes">
+            {{#each turma_selected.acompanhamentosatividades as |acomp|}}
+            <li class="report-class__two-col">
+              <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
+                <span class="title-aux">Aula {{acomp.atividade.idx}}</span>
+                <h3>
+                  <a class="title-3 m-top--xs"><span>{{acomp.atividade.name}}</span></a>
+                </h3>
+              </div>
+              <div class="report-class__stacked-bar stacked-bar">
+                <div class="stacked-bar__values">
+                  {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                  {{/if}}
+
+                  {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                  {{/if}}
+
+                  {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                  {{/if}}
+                </div>
+
+                <div class="stacked-bar__legend">
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                    <span>Não iniciado:
+                      <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                    </span>
+
+                  </span>
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                    <span>Em andamento:
+                      <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                    </span>
+
+                  </span>
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                    <span>Completo:
+                      <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        {{else}}
+        <div class="report-course">
+          <div class="report-course__header">
+            <div class="report-course__title-block">
+              <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
+              <h2 class="title-2">{{curso_selected.name}}</h2>
+              {{!-- <button id="cta-all-enrolled" class="btn btn--link btn--xxs" {{action 'goToMatriculados' curso_selected.id}}>
+                                                <span>Ver todos os matriculados</span>
+                                            </button> --}}
+            </div>
+            {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
+            {{#if (equalstr acomp.modulo.id curso_selected.id)}}
+            <div class="report-course__data data data--shadowed">
+              <span class="data__value">{{if acomp.matriculas acomp.matriculas '0'}}</span>
+              <span class="data__label">matrículas</span>
+            </div>
+            {{/if}}
+            {{/each}}
+          </div>
+          <ul class="report-course__body report-class" id="acomp_classes">
+            {{#each curso_selected.atividades as |atividade|}}
+            <li class="report-class__two-col">
+              <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
+                <span class="title-aux">Aula {{atividade.idx}}</span>
+                <h3 class="title-3 m-top--xs"><a class="link--dotted"
+                    {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>
+                </h3>
+              </div>
+              {{#each inst_selected.acompanhamentosatividades as |acomp|}}
+              {{#if (equalstr acomp.atividade.id atividade.id)}}
+              <div class="report-class__stacked-bar stacked-bar">
+                <div class="stacked-bar__values">
+                  {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                  {{/if}}
+
+                  {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                  {{/if}}
+
+                  {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                  {{else}}
+                  <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                  {{/if}}
+                </div>
+
+                <div class="stacked-bar__legend">
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                    <span>Não iniciado:
+                      <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                    </span>
+
+                  </span>
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                    <span>Em andamento:
+                      <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                    </span>
+
+                  </span>
+                  <span>
+                    <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                    <span>Completo:
+                      <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                    </span>
+                  </span>
+                </div>
+              </div>
+              {{/if}}
+              {{/each}}
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        {{/if}}
+
+
+      </div>
+
+    </div>
+    {{/if}}
+
+  </div>
+
+</section>
+<section class="report__section report-people report__section--is-active" id="report-people" style={{if (equalstr selectedContent 'd') "display: block;" "display: none;"}}>
   <div class="flex flex-col">
 
     <div class="filters">
