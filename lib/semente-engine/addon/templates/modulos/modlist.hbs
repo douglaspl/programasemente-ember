@@ -54,12 +54,12 @@
 
       <ol class="timeline__line">
         {{#each sortedAtividades as |atividade idx|}}
-          <li>
+          <li class="timeline__mark{{if (equalstr (get listaStartUnit idx) 1) ' timeline__mark--start-unit'}}">
             {{#if (equalstr (get listaStartUnit idx) 1)}}
               <!-- o lição que terá o elemento visual  "fim de unidade" acima receberá a classe extra de timeline__mark--start-unit. -->
-              {{ativ-card-comp atividade=atividade class='timeline__mark timeline__mark--start-unit' transit=(action 'goAtividadeC') data=atividade.id }}
+              {{ativ-card-comp atividade=atividade transit=(action 'goAtividadeC') data=atividade.id }}
             {{else}}
-              {{ativ-card-comp atividade=atividade class='timeline__mark' transit=(action 'goAtividadeC') data=atividade.id }}
+              {{ativ-card-comp atividade=atividade transit=(action 'goAtividadeC') data=atividade.id }}
             {{/if}}
           </li>
         {{/each}}
