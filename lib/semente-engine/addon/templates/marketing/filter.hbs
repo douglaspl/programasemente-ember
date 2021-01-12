@@ -7,15 +7,9 @@
       <h1 class="sr-only">Filtros de contedúdos</h1>
 
         <form autocomplete="off" class="flex flex-col flow-md">
-            <button class="btn btn--xxs" type="button" {{action "goToCreateItem"}}>Cadastrar novo item</button>
-
-            <div class="form-group">
-                <label class="form-group__label">Busca</label>
-                <div class="form-group__wrapper form-group__wrapper--search">
-                    {{input class="form-group__input" type="text" placeholder="Pesquisar Conteúdo" value=search}}
-                </div>
-                {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
-            </div>
+            {{#if (equalstr pessoaRole 'admin')}}
+              <button class="btn btn--xxs" type="button" {{action "goToCreateItem"}}>Cadastrar novo item</button>
+            {{/if}}
 
             <div class="form-group">
                 <label class="form-group__label">Áreas</label>
@@ -28,6 +22,14 @@
                     </select>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="form-group__label">Busca</label>
+                <div class="form-group__wrapper form-group__wrapper--search">
+                    {{input class="form-group__input" type="text" placeholder="Pesquisar Conteúdo" value=search}}
+                </div>
+                {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
+            </div>
         </form>
 
     </aside>
@@ -35,7 +37,7 @@
     <section class="l-dots-between__content flow-md">
       <hgroup>
         <h1 class="sr-only">Lista de conteúdos de {{selectedAreaName}}</h1>
-        <h2 class="title-4">{{selectedAreaName}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{itens.length}} aulas)</span></h2>
+        <h2 class="title-4">{{selectedAreaName}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{itens.length}} {{if (equalstr itens.length '1') 'item' 'itens'}})</span></h2>
       </hgroup>
 
       <ul class="list list--striped">

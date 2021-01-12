@@ -184,15 +184,15 @@
         <header class="flex flex-row items-baseline">
           <h1 class="title-1">{{aula.titulo}}</h1>
           <span class="fs--md fs-i color-gray-50 m-left--sm">{{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}</span>
-          {{!-- 
+          {{!--
           <button class="btn btn--text">Escolher outra aula</button>
           <select name="aulas" id="aulas" onchange={{action "refreshSelectedAula" value="target.value"}}>
             {{#each todasAulas as |a|}}
               <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{a.plataformaAno.name}} | {{a.titulo}}</option>
             {{/each}}
-          </select> 
+          </select>
           --}}
-          
+
         </header>
         <section>
             <h2 class="sr-only">Informações da aula</h2>
@@ -292,7 +292,7 @@
 
 <!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal">
-  <div class="modal__content modal__content--sm">
+  <div class="modal__content">
 
     <header class="modal__header">
       {{selectedConteudo.titulo}}
@@ -305,7 +305,7 @@
     </div>
 
     <div class="modal__footer">
-      <button onclick={{action "closeConteudoModal"}}>
+      <button class="btn btn--xxs" onclick={{action "closeConteudoModal"}}>
         Fechar Conteúdo
       </button>
     </div>
@@ -313,9 +313,10 @@
   </div>
   <div class="modal__overlayer"></div>
 </aside>
+
 <aside id="content-modal-ead" class="modal">
 
-  <div class="modal__content modal__content--sm">
+  <div class="modal__content">
 
     <header class="modal__header">
       {{selectedConteudo.titulo}}
@@ -328,7 +329,7 @@
     </div>
 
     <div class="modal__footer">
-      <button onclick={{action "closeConteudoModalEad"}}>
+      <button class="btn btn--xxs" onclick={{action "closeConteudoModalEad"}}>
         Fechar Conteúdo
       </button>
     </div>

@@ -1,9 +1,6 @@
+<h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
+
 <div class="row">
-    {{#if editando}}
-        <h1 class="title-1">Edição de item de Marketing</h1>
-    {{else}}
-        <h1 class="title-1">Cadastro de item de Marketing</h1>
-    {{/if}}
     <div class="col-xs-12 col-md-6">
 
         <div class="flow-xxl">
@@ -46,8 +43,8 @@
                     {{#each model.arquivos as |arquivoItem|}}
                         <li>
                             <h2 class="sr-only">{{arquivoItem.tipo}}</h2>
-                            <div class="flex flex-row items-center gap-sm">
-                                {{#if (base64 arquivoItem.arquivo)}}
+                            <div class="flex flex-row items-center justify-between gap-sm">
+                                {{!-- {{#if (base64 arquivoItem.arquivo)}}
                                     <span class="avatar avatar--lg avatar--is-square">
                                         <object id="showfiles"
                                                 data={{arquivoItem.thumb}}></object>
@@ -59,7 +56,7 @@
                                             <span class="btn__label">Abrir arquivo</span>
                                         </a>
                                     </span>
-                                {{/if}}
+                                {{/if}} --}}
 
                                 <div class="flow-xxs flex flex-col">
                                     <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
@@ -86,13 +83,14 @@
 
             </div>
 
-            <button type="button" class="btn" {{action "saveItem" model}}>Cadastrar</button>
+            <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button>
 
         </div>
 
 
     </div>
 </div>
+
 
 {{!-- <div class="row">
     <label for="">ARQUIVOS</label>
@@ -128,4 +126,6 @@
 
 </div>
 
-<button type="button" class="btn" {{action "saveItem" model}}>Cadastrar</button> --}}
+<button type="button" class="btn" {{action "saveItem" model}}>Cadastrar</button>
+
+--}}

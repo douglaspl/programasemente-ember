@@ -95,7 +95,7 @@
             overflow: visible;
         }
 
-        > * {
+        > *:not(:only-child) {
             margin-bottom: $distance--lg;
         }
 
@@ -108,7 +108,7 @@
         gap: $distance--sm;
         justify-content: flex-end;
         padding-top: $distance--md;
-      
+
         &--center {
             justify-content: center;
         }
