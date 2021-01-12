@@ -294,13 +294,13 @@
 <aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
 
   <div class="modal__content">
-    <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
 
     <div class="modal__body">
+      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
-        <div class="flow-xxs" id="vimeoVideo">
+        <div class="flow-sm" id="vimeoVideo">
           {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
-          <p class="ta-c text-aux color-gray-20">{{selectedConteudo.titulo}}</p>
+          <p class="ta-c title-4 color-gray-20">{{selectedConteudo.titulo}}</p>
         </div>
       {{/if}}
     </div>
@@ -315,24 +315,27 @@
 
   <div class="modal__content">
 
-    <header class="modal__header">
-      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
-      <h1 class="modal__title">{{selectedConteudo.titulo}}</h1>
-    </header>
-
     <div class="modal__body">
+      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
       {{#if videoId}}
-        {{ead-video-player videoId=videoId stopVideo=stopVideo}}
+        <div class="flow-sm">
+
+          <div class="video">
+            {{ead-video-player videoId=videoId stopVideo=stopVideo}}
+          </div>
+
+          <p class="ta-c title-4 color-gray-20">{{videoName}}</p>
+
+          <!-- # BUG -->
+          {{!-- {{#if selectedConteudo.titulo}} --}}
+            {{!-- <p class="ta-c text-aux color-gray-20">{{aula.atividade.secoes[videoId].name}}</p> --}}
+          {{!-- {{/if}} --}}
+        </div>
       {{/if}}
     </div>
-
-    {{!-- <div class="modal__footer">
-      <button class="btn btn--xxs" onclick={{action "closeConteudoModalEad"}}>
-        Fechar Conteúdo
-      </button>
-    </div> --}}
 
   </div>
 
   <div class="modal__overlayer"></div>
+
 </aside>

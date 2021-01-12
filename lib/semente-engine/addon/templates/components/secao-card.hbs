@@ -2,7 +2,7 @@
   <picture class="media__picture">
     {{#each secao.conteudos as |conteudo|}}
         {{#if videoId}}
-            <img class="media__thumb media__thumb--16-9" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' videoId}} style="cursor: pointer"/>
+            <img class="media__thumb media__thumb--16-9" id="vimeo-{{videoId}}{{conteudo.id}}" src="" onclick={{action 'openModal' modalParams}} style="cursor: pointer"/>
         {{else}}
             <img class="media__thumb" id="file-{{conteudo.id}}" src="/assets/img/dark__thumb.png"/>
         {{/if}}
