@@ -140,6 +140,7 @@
                                     change=(action 'checkDate')
                                     key-down=(action 'checkDate')
                                     type="date"
+                                    max='2020-01-01'
                                     value=pessoa.nascimentoPlataforma
                                     data-type="datetime-local"
                                     data-required="true"}}
@@ -230,7 +231,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <button class="j-submit btn btn--md" id="next-step1" type="button" {{action "saveProfile" pessoa}}>
-                    <span>Avançar</span>
+                    <span>{{avancarLabel}}</span>
                     <span class="btn__icon icon-arrow-right"></span>
                 </button>
             </div>

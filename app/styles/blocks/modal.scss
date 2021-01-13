@@ -7,6 +7,7 @@
     display: none;
     left: 0;
     height: 100%; // iPad precisa da altura definida. Testado em 04/10/2018 em iPad 2, Safari.
+    margin-top: 0 !important; // DIRTY Retirar quando o modal for centralizado no application.hbs
     outline: 0;
     overflow: hidden;
     position: fixed;
@@ -20,6 +21,10 @@
 
         display: block;
         visibility: visible;
+    }
+
+    &--is-content {
+
     }
 
     &__content {
@@ -46,6 +51,12 @@
             transition-delay: 100ms;
             opacity: 1;
             transform: translateY(-50%);
+        }
+
+        [class*='is-content'] & {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
         }
 
         &--sm {
@@ -83,6 +94,11 @@
         max-height: 60vh;
         padding-right: $distance--md;
 
+        [class*='is-content'] & {
+            max-height: 90vh;
+            padding-right: 0;
+        }
+
         @include target-ipad {
             flex-basis: auto; // iPad precisa do flex-shrink 0, caso contrário conteúdo some. Testado em 04/10/2018 em iPad 2, Safari.
         }
@@ -95,7 +111,7 @@
             overflow: visible;
         }
 
-        > * {
+        > *:not(:only-child) {
             margin-bottom: $distance--lg;
         }
 
@@ -108,7 +124,7 @@
         gap: $distance--sm;
         justify-content: flex-end;
         padding-top: $distance--md;
-      
+
         &--center {
             justify-content: center;
         }

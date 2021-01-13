@@ -184,15 +184,15 @@
         <header class="flex flex-row items-baseline">
           <h1 class="title-1">{{aula.titulo}}</h1>
           <span class="fs--md fs-i color-gray-50 m-left--sm">{{aula.plataformaAno.segmento.titulo}} | {{aula.plataformaAno.name}}</span>
-          {{!-- 
+          {{!--
           <button class="btn btn--text">Escolher outra aula</button>
           <select name="aulas" id="aulas" onchange={{action "refreshSelectedAula" value="target.value"}}>
             {{#each todasAulas as |a|}}
               <option value="{{a.id}}" selected={{if (equalstr aula.id a.id) "selected"}}>{{a.plataformaAno.name}} | {{a.titulo}}</option>
             {{/each}}
-          </select> 
+          </select>
           --}}
-          
+
         </header>
         <section>
             <h2 class="sr-only">Informações da aula</h2>
@@ -291,49 +291,51 @@
 
 
 <!-- Modal de visualizar o conteudo -->
-<aside id="content-modal" class="modal">
-  <div class="modal__content modal__content--sm">
+<aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
 
-    <header class="modal__header">
-      {{selectedConteudo.titulo}}
-    </header>
-
-    <div class="modal__body" id="vimeoVideo">
-      {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
-      {{/if}}
-    </div>
-
-    <div class="modal__footer">
-      <button onclick={{action "closeConteudoModal"}}>
-        Fechar Conteúdo
-      </button>
-    </div>
-
-  </div>
-  <div class="modal__overlayer"></div>
-</aside>
-<aside id="content-modal-ead" class="modal">
-
-  <div class="modal__content modal__content--sm">
-
-    <header class="modal__header">
-      {{selectedConteudo.titulo}}
-    </header>
+  <div class="modal__content">
 
     <div class="modal__body">
-      {{#if videoId}}
-        {{ead-video-player videoId=videoId stopVideo=stopVideo}}
+      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
+      {{#if selectedConteudo}}
+        <div class="flow-sm" id="vimeoVideo">
+          {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
+          <p class="ta-c title-4 color-gray-20">{{selectedConteudo.titulo}}</p>
+        </div>
       {{/if}}
-    </div>
-
-    <div class="modal__footer">
-      <button onclick={{action "closeConteudoModalEad"}}>
-        Fechar Conteúdo
-      </button>
     </div>
 
   </div>
 
   <div class="modal__overlayer"></div>
+
+</aside>
+
+<aside id="content-modal-ead" class="modal modal--is-content animated fadeIn faster">
+
+  <div class="modal__content">
+
+    <div class="modal__body">
+      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
+      {{#if videoId}}
+        <div class="flow-sm">
+
+          <div class="video">
+            {{ead-video-player videoId=videoId stopVideoEad=stopVideoEad}}
+          </div>
+
+          <p class="ta-c title-4 color-gray-20">{{videoName}}</p>
+
+          <!-- # BUG -->
+          {{!-- {{#if selectedConteudo.titulo}} --}}
+            {{!-- <p class="ta-c text-aux color-gray-20">{{aula.atividade.secoes[videoId].name}}</p> --}}
+          {{!-- {{/if}} --}}
+        </div>
+      {{/if}}
+    </div>
+
+  </div>
+
+  <div class="modal__overlayer"></div>
+
 </aside>

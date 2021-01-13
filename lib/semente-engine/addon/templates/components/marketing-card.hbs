@@ -1,12 +1,15 @@
 <div class="media" id="item-{{item.id}}">
 
   {{#if (equalstr pessoaRole 'admin')}}
-    <a href="#" {{action goToEditItem item.id}}>
-      Edit este item
-    </a>
+    <div class="w100">
+      <a class="btn btn--xxs" href="#" {{action goToEditItem item.id}}>
+        <span class="btn__icon icon-edit"></span>
+        <span class="btn__label">Editar este item</span>
+      </a>
+    </div>
   {{/if}}
 
-  <picture class="media__picture bg-white shadow-3 p--lg">
+  <picture class="media__picture bg-white shadow-3 p--sm">
     <img class="media__thumb" id="item-{{item.id}}" src={{item.capa}} alt="{{item.titulo}}">
   </picture>
 
