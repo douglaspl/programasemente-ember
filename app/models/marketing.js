@@ -3,6 +3,8 @@ import DS from 'ember-data';
 export default DS.Model.extend({
     titulo: DS.attr(),
     descricao: DS.attr(),
+    capa: DS.attr(),
+    capaName: DS.attr(),
     area: DS.belongsTo('area-marketing', { async: true }),
     arquivos: DS.hasMany('arquivo', { async: true }),
     dataAtualizacao: DS.attr("date"),

@@ -25,6 +25,7 @@
                     <label class="form-group__label">Áreas</label>
                     <div class="form-group__wrapper form-group__wrapper--select">
                         <select class="form-group__input form-group__input--select" name="area" id="area{{model.id}}" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+                            <option value="" selected="selected">---</option>
                             {{#each areas as |area|}}
                                 <option value="{{area.id}}" selected={{if (equalstr area.id model.area.id) "selected"}}>{{area.name}}</option>
                             {{/each}}
@@ -38,22 +39,22 @@
                 <h2 class="title-3">Arquivos</h2>
 
                 {{#if model.arquivos}}
-
-                    <h1>Arquivo adicionado:</h1>
-
-                    <ul>
-
+                    {{#if capa}}
+                        <h1>Capa:</h1>
+                        <ul>
+                            <img src="{{capa.url}}" alt="{{capa.name}}">
+                        </ul>
+                    {{/if}}
+                    <h1>Arquivos adicionados:</h1>
                     {{#each model.arquivos as |arquivoItem|}}
                         <li>
                             <p>{{arquivoItem.tipo}}</p>
-
                             <p>{{arquivoItem.name}}</p>
 
-
-                            {{#if (base64 arquivoItem.arquivo)}}
-                                <object id="showfiles" data={{arquivoItem.thumb}}></object>
+                            {{#if (base64 arquivoItem.url)}}
+                                {{!-- <object id="showfiles" data={{arquivoItem.url}}></object> --}}
                             {{else}}
-                                <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
+                                {{!-- <img src="{{arquivoItem.url}}" alt="{{arquivoItem.name}}"> --}}
                                 <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">
                                     <span class="btn__label">Abrir arquivo</span>
                                 </a>
@@ -64,9 +65,6 @@
                             </button>
                         </li>
                     {{/each}}
-
-                    </ul>
-
                 {{/if}}
 
                 <label class="btn btn--add-list-item">
