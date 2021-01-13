@@ -47,36 +47,37 @@
 
                     <ul class="list list--striped">
 
-                    {{#each model.arquivos as |arquivoItem|}}
-                        <li>
-                            <h2 class="sr-only">{{arquivoItem.tipo}}</h2>
-                            <div class="flex flex-row items-center justify-between gap-sm">
-                                {{!-- {{#if (base64 arquivoItem.arquivo)}}
-                                    <span class="avatar avatar--lg avatar--is-square">
-                                        <object id="showfiles"
-                                                data={{arquivoItem.thumb}}></object>
-                                    </span>
-                                {{else}}
-                                    <span class="avatar avatar--lg avatar--bordered avatar--is-square">
-                                        <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
-                                        <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">
-                                            <span class="btn__label">Abrir arquivo</span>
-                                        </a>
-                                    </span>
-                                {{/if}} --}}
+                        {{#each model.arquivos as |arquivoItem|}}
+                            <li>
+                                <h2 class="sr-only">{{arquivoItem.tipo}}</h2>
+                                <div class="flex flex-row items-center justify-between gap-sm">
+                                    {{!-- {{#if (base64 arquivoItem.arquivo)}}
+                                        <span class="avatar avatar--lg avatar--is-square">
+                                            <object id="showfiles"
+                                                    data={{arquivoItem.thumb}}></object>
+                                        </span>
+                                    {{else}}
+                                        <span class="avatar avatar--lg avatar--bordered avatar--is-square">
+                                            <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
+                                            <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">
+                                                <span class="btn__label">Abrir arquivo</span>
+                                            </a>
+                                        </span>
+                                    {{/if}} --}}
 
-                                <div class="flow-xxs flex flex-col">
-                                    <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
-                                    <span class="color-leaf-50">{{arquivoItem.name}}</span>
+                                    <div class="flow-xxs flex flex-col">
+                                        <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
+                                        <span class="color-leaf-50">{{arquivoItem.name}}</span>
+                                    </div>
+
+                                    <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
+                                        <span class="btn__label">Remover</span>
+                                    </button>
+
                                 </div>
-
-                                <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
-                                    <span class="btn__label">Remover</span>
-                                </button>
-
-                            </div>
-                        </li>
-                    {{/each}}
+                            </li>
+                        {{/each}}
+                    </ul>
                 {{/if}}
 
                 <label class="btn btn--add-list-item">
