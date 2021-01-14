@@ -115,12 +115,17 @@
           </li>
           <li>
           
-          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
-          {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-              <span>Acompanhamento</span>
-          {{/link-to}}
+          {{!-- {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
+            {{/link-to}}
+          {{/unless}} --}}
 
-          {{/unless}}
+            {{#if (equalstr parentController.toggleRole 'instrutor')}} 
+              {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
+              {{/link-to}}
+            {{/if}}
           </li>
 
           {{#unless (equalstr livro '#')}}
