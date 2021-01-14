@@ -8,14 +8,17 @@
   gap: $distance--md;
 
   &__picture {
-    flex: 0 0 auto;
+    display: flex;
+    flex: 0 0 8rem;
+    flex-direction: row;
   }
 
   &__thumb {
     $size: $avatar--md;
 
     border-radius: $radius--md;
-    height: $size;
+    flex: 1;
+    // height: $size;
     max-width: 100%;
     object-fit: contain;
     width: $size;
@@ -23,7 +26,7 @@
     @include media('>lg') {
       $size: $avatar--xl;
 
-      height: $size;
+      // height: $size;
       width: $size;
     }
 
