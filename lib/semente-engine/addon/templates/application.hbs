@@ -55,6 +55,14 @@
           <li class="global-nav__item" id="header-modulos">
             {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}}<span>Aulas</span>{{/link-to}}
           </li>
+          <li class="global-nav__item" id="header-modulos">
+            {{#link-to 'aulas.bibliotecaindex' class="global-nav__link"}}<span>Biblioteca</span>{{/link-to}}
+          </li>
+          {{!-- <li>
+            <a class="tabs__tab" href="{{livro.url}}" target="_blank" rel="nofollow noopener noreferrer">
+              <span>Livro (PDF) {{livro.plataformaAno.name}}</span>
+            </a>
+          </li> --}}
         {{/if}}
       {{/if}}
 
