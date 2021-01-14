@@ -41,11 +41,9 @@
                   <span>dos segmentos</span>
 
                   {{#each parentController.segmentosObjects as |seg index|}}
-                      {{#if (equalstr index (sub parentController.segmentosObjects.length 2))}}
+                      {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
                       <span>e</span>
-                      <!-- penúltimo -->
-                      {{else if (equalstr index (sub parentController.segmentosObjects.length 1))}}
-                      <!-- último -->
+                     <!-- último -->
                       {{else if (isbigger index 0)}}
                       <span class="m-left--none">,</span>
                       {{/if}}
