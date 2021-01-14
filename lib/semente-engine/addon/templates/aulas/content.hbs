@@ -14,9 +14,11 @@
       <span class="btn__label">Voltar</span>
     </button>
 
+    
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
+    {{#if (equalstr pessoa.role 'aluno')}}
           <section class="flow-xs">
             <h4 class="title-4">Tarefa</h4>
             <div class="checkbox">
@@ -24,6 +26,7 @@
               <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
             </div>
           </section>
+    {{/if}}
 
           <section class="flow-xs">
             <h4 class="title-4">Sua avaliação da Aula</h4>
