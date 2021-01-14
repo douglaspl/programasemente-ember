@@ -97,9 +97,15 @@
         <ul class="tabs tabs--full-background">
           <li>
            {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
-              {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
-                  <span>Aulas</span>
-              {{/link-to}}
+              {{#if alunoMedio}}
+                <button class="tabs__tab" id="aulas-header-medio" type="button" {{action 'goToModulos' pessoa.modulos.firstObject}}>
+                  <span class="btn__label">Aulas</span>
+                </button>
+              {{else}}
+                {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header-semente"}}
+                    <span>Aulas</span>
+                {{/link-to}}
+              {{/if}}
             {{/unless}}
           </li>
           <li>
@@ -110,10 +116,9 @@
           <li>
           
           {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
-          {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-              <span>Acompanhamento</span>
-          {{/link-to}}
-
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
+            {{/link-to}}
           {{/unless}}
           </li>
 
