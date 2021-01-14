@@ -94,6 +94,7 @@
         @include title-aux($size: .85rem);
 
         align-items: center;
+        border-bottom: .25rem solid transparent;
         border-radius: $radius;
         display: flex;
         font-weight: 700;
@@ -104,8 +105,8 @@
         transition: background-color 300ms var(--ease-out-quad);
 
         &:hover {
-            background-color: $global-nav-bg-color-hover;
-            color: $global-nav-color-hover;
+            border-bottom-color: $global-nav-bg-color-hover;
+            // color: $global-nav-color-hover;
         }
 
         &--is-active {
