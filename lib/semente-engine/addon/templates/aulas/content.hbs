@@ -299,7 +299,7 @@
       <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
         <div class="flow-sm" id="vimeoVideo">
-          {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
+          {{plataforma-conteudo-video-player conteudo=selectedConteudo controller=this pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
           <p class="ta-c title-4 color-gray-20">{{selectedConteudo.titulo}}</p>
         </div>
       {{/if}}

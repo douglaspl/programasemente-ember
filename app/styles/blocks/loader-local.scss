@@ -23,8 +23,8 @@
 
 
   &__loader {
-    $bg-light: $lemon-10;
-    $bg-dark: $lemon-50;
+    $bg-light: $lemon-20;
+    $bg-dark: $lemon-60;
 
     @include text-contrast($bg-light);
 

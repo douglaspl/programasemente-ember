@@ -55,6 +55,16 @@
           <li class="global-nav__item" id="header-modulos">
             {{#link-to 'modulos.modlist' ModuloIdx class="global-nav__link"}}<span>Aulas</span>{{/link-to}}
           </li>
+          <li class="global-nav__item" id="header-modulos">
+            {{#link-to 'aulas.bibliotecaindex' class="global-nav__link"}}<span>Biblioteca</span>{{/link-to}}
+          </li>
+          {{#if urlLivro}}
+            <li class="global-nav__item">
+              <a class="global-nav__link" href="{{urlLivro}}" target="_blank" rel="nofollow noopener noreferrer">
+                <span>Livro</span>
+              </a>
+            </li>
+          {{/if}}
         {{/if}}
       {{/if}}
 
@@ -117,11 +127,11 @@
 
 
 
-  <li class="global-nav__item global-nav__submenu-holder">
+    <li class="global-nav__item global-nav__submenu-holder">
 
         <a class="global-nav__link j-apps" href="#">
           <span class="global-nav__avatar-holder"><img src='/assets/img/dark__thumb.png'></span>
-          {{!-- <span>Apps</span> --}}
+          <span class="m-left--sm title-aux">Meus aplicativos</span>
           <span class="icon-chevron-down hide-on--xs"></span>
         </a>
 
@@ -142,7 +152,7 @@
 
         </div>
 
-      </li>
+    </li>
 
 
 
@@ -154,22 +164,7 @@
           <span class="global-nav__avatar-holder">
             <img class="j-application-avatar" src={{uri_avatar}}>
           </span>
-          {{!-- <span class="global-nav__user-info">
-            <span>{{firstnameoremailpart username}}</span>
-            {{#if (equalstr role 'aluno')}}
-              <span class="text-aux block m-top--xxs">
-                {{#if primeiroAno}}
-                  1º ano do ensino médio
-                {{/if}}
-                {{#if segundoAno}}
-                  2º ano do ensino médio
-                {{/if}}
-                {{#if terceiroAno}}
-                  3º ano do ensino médio
-                {{/if}}
-              </span>
-            {{/if}}
-          </span> --}}
+          <span class="m-left--sm title-aux">{{firstnameoremailpart username}}</span>
           <span class="icon-chevron-down hide-on--xs"></span>
         </a>
 

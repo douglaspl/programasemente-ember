@@ -83,7 +83,7 @@ $tooltip-vertical-padding: $distance--xs;
 
     &--lemon {
         [class*='__bubble'] {
-            $bg-color: $lemon-50;
+            $bg-color: $lemon-60;
 
             @include text-contrast($bg-color);
 
