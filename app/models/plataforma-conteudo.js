@@ -2,13 +2,13 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
     titulo: DS.attr(),
-    descricao: DS.attr(),
+    filename: DS.attr(),
     idx: DS.attr(),
     tipo: DS.attr(),
     videoUrl: DS.attr(),
     arquivoUrl: DS.attr(),
     path: DS.attr(),
-    coverImage: DS.attr(),
+    thumbnail: DS.attr(),
     aulas: DS.hasMany('aula', { async: true }),
     agrupamento: DS.belongsTo('agrupamento', { async: true }),
     tema: DS.belongsTo('tema', { async: true }),
