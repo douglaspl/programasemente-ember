@@ -28,7 +28,7 @@
 						<button class="transition__cta btn btn--md btn--ghost animated fadeIn d1750" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
 
 						{{#link-to 'modulos.modlist' ModuloIdx  class="transition__cta btn btn--md animated fadeIn d2250"}}Voltar à página de aulas{{/link-to}}
-						<p class="transition__countdown animated fadeIn d2250">Voltará automaticamente em {{countdown}} segundos.</p>
+						{{!-- <p class="transition__countdown animated fadeIn d2250">Voltará automaticamente em {{countdown}} segundos.</p> --}}
 					</div>
 				</div>
 			{{/if}}
@@ -131,14 +131,14 @@
 			{{/if}}
 		{{else}}
 			<div class="transition__header">
-				<h1 class="transition__title animated fadeIn d500"><span>Parabéns!</span> Você finalizou esta percurso.</h1>
+				<h1 class="transition__title animated fadeIn d500"><span>Parabéns!</span> Você finalizou este percurso.</h1>
 			</div>
 			<div class="transition__whatnext animated fadeIn d1500">
 				<h2 class="transition__subtitle">O que deseja fazer agora?</h2>
 				<div class="transition__cta-group">
 					<button class="transition__cta btn btn--md btn--ghost animated fadeIn d2500" {{action 'reverVideo'}}>{{if rever_quiz 'Rever o quiz' 'Rever o video'}}</button>
 					<button class="transition__cta btn btn--md animated fadeIn d2750" {{action 'goBack' next_atividade_id next_ativsec_id 'atividade'}}>Voltar para o percurso</button>
-					<p class="transition__countdown animated fadeIn d2750">Voltará automaticamente em {{countdown}} segundos.</p>
+					{{!-- <p class="transition__countdown animated fadeIn d2750">Voltará automaticamente em {{countdown}} segundos.</p> --}}
 				</div>
 			</div>
 		{{/if}}
