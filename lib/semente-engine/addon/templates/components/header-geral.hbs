@@ -41,11 +41,9 @@
                   <span>dos segmentos</span>
 
                   {{#each parentController.segmentosObjects as |seg index|}}
-                      {{#if (equalstr index (sub parentController.segmentosObjects.length 2))}}
+                      {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
                       <span>e</span>
-                      <!-- penúltimo -->
-                      {{else if (equalstr index (sub parentController.segmentosObjects.length 1))}}
-                      <!-- último -->
+                     <!-- último -->
                       {{else if (isbigger index 0)}}
                       <span class="m-left--none">,</span>
                       {{/if}}
@@ -97,9 +95,15 @@
         <ul class="tabs tabs--full-background">
           <li>
            {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
-              {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
-                  <span>Aulas</span>
-              {{/link-to}}
+              {{#if isAlunoMedio}}
+                {{#link-to 'modulos.modlist' pessoa.modulos.firstObject.id class="tabs__tab" id="aulas-header"}}
+                    <span>Aulas</span>
+                {{/link-to}}
+              {{else}}
+                {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
+                    <span>Aulas</span>
+                {{/link-to}}
+              {{/if}}
             {{/unless}}
           </li>
           <li>
@@ -109,12 +113,17 @@
           </li>
           <li>
           
-          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
-          {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-              <span>Acompanhamento</span>
-          {{/link-to}}
+          {{!-- {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
+            {{/link-to}}
+          {{/unless}} --}}
 
-          {{/unless}}
+            {{#if (equalstr parentController.toggleRole 'instrutor')}} 
+              {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+                <span>Acompanhamento</span>
+              {{/link-to}}
+            {{/if}}
           </li>
 
           {{#unless (equalstr livro '#')}}
