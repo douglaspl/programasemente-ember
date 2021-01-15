@@ -6,7 +6,6 @@
     </li>
     <div></div>
     {{conteudo-form publicos=publicos agrupamentos=agrupamentos 
-    segmentos=segmentos conteudo=conteudo }}
-    
-    <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>Salvar</button>
+    segmentos=segmentos conteudo=conteudo inputCapa=inputCapa editando=editando}}
+    <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>{{salvarbutton}}</button>
 </ul>

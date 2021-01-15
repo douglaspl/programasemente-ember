@@ -1,3 +1,5 @@
+<label>Atrelar a que ano/aula?</label>
+
 <div class="row">
     {{!-- aulas já atreladas a este conteúdo --}}
     {{#if conteudo.aulas.length}}
@@ -52,7 +54,6 @@
 {{!-- adicionar aulas atreladas a este conteúdo --}}
 {{#if (equalstr this.adicionarAula "true")}}
     <div class="row" id="newconteudo">
-        <label>Atrelar a que ano/aula?</label>
         <label>Segmento</label>
         <select name="segmento" id="segmento" onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
             <option value="">---</option>
@@ -96,7 +97,5 @@
                 {{/if}}
             {{/each}}
         </select>
-
-        <button type="button" class="btn" {{action "salvarAula" selectedAula}}>Atrelar a este Ano/Aula</button>
     </div>  
 {{/if}}
