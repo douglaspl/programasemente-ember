@@ -98,7 +98,14 @@
       @include title-aux;
 
       margin-bottom: $distance--xs;
-      min-width: 5rem;
+
+      @at-root {
+        [class*='flex-row'] & {
+          margin-bottom: 0;
+          margin-right: $distance--xs;
+        }
+      }
+
     }
 
     &__input {

@@ -14,9 +14,11 @@
       <span class="btn__label">Voltar</span>
     </button>
 
+    
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
+    {{#if (equalstr pessoa.role 'aluno')}}
           <section class="flow-xs">
             <h4 class="title-4">Tarefa</h4>
             <div class="checkbox">
@@ -24,6 +26,7 @@
               <label class="checkbox__label" for="checkbox-tarefa">Realizei a tarefa</label>
             </div>
           </section>
+    {{/if}}
 
           <section class="flow-xs">
             <h4 class="title-4">Sua avaliação da Aula</h4>
@@ -299,7 +302,7 @@
       <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
         <div class="flow-sm" id="vimeoVideo">
-          {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
+          {{plataforma-conteudo-video-player conteudo=selectedConteudo controller=this pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
           <p class="ta-c title-4 color-gray-20">{{selectedConteudo.titulo}}</p>
         </div>
       {{/if}}
