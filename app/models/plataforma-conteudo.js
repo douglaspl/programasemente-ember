@@ -9,7 +9,7 @@ export default DS.Model.extend({
     arquivoUrl: DS.attr(),
     path: DS.attr(),
     thumbnail: DS.attr(),
-    thumbnailName: DS.attr(),
+    thumbnailname: DS.attr(),
     aulas: DS.hasMany('aula', { async: true }),
     agrupamento: DS.belongsTo('agrupamento', { async: true }),
     tema: DS.belongsTo('tema', { async: true }),
