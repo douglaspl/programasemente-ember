@@ -88,12 +88,4 @@
 
   }
 
-  &__stacked-bar {
-
-    @include media('>sm', '<md') {
-      margin-top: 3rem;
-    }
-
-  }
-
 }

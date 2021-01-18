@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: $l-dots-between-gap;
 
-  @include media('>md') {
+  @include media('>sm') {
     flex-direction: row;
     gap: $l-dots-between-gap--lg;
   }

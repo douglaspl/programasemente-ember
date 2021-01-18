@@ -8,7 +8,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
 
-    @include media('>sm') {
+    @include media('>md') {
         flex-wrap: wrap;
         overflow: unset;
     }
