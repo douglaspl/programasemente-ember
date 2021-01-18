@@ -293,11 +293,11 @@
 </div>
 
 
+
+
 <!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
-
   <div class="modal__content">
-
     <div class="modal__body">
       <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
@@ -307,38 +307,28 @@
         </div>
       {{/if}}
     </div>
-
   </div>
-
   <div class="modal__overlayer"></div>
-
 </aside>
 
+
+
+
+
+
 <aside id="content-modal-ead" class="modal modal--is-content animated fadeIn faster">
-
   <div class="modal__content">
-
     <div class="modal__body">
       <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
       {{#if videoId}}
         <div class="flow-sm">
-
           <div class="video">
             {{ead-video-player videoId=videoId stopVideoEad=stopVideoEad}}
           </div>
-
           <p class="ta-c title-4 color-gray-20">{{videoName}}</p>
-
-          <!-- # BUG -->
-          {{!-- {{#if selectedConteudo.titulo}} --}}
-            {{!-- <p class="ta-c text-aux color-gray-20">{{aula.atividade.secoes[videoId].name}}</p> --}}
-          {{!-- {{/if}} --}}
         </div>
       {{/if}}
     </div>
-
   </div>
-
   <div class="modal__overlayer"></div>
-
 </aside>
