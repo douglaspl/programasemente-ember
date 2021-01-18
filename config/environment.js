@@ -20,7 +20,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      host: 'http://localhost:64568',
+      host: 'https://sementeapidev.minimo.com.br',
       // host:  'http://sementeapidev.minimo.com.br',
       // host:  'https://sementeapi.minimo.com.br',
       // host:  'https://p21.minimo.com.br',
@@ -32,9 +32,9 @@ module.exports = function(environment) {
   if (environment === 'development') {
     ENV.rootURL = '/';
     ENV.APP.DOMAIN = "porto.com";
-    // ENV.APP.host = 'http://localhost:64568';
+    ENV.APP.host = 'http://localhost:64568';
     // ENV.APP.host = 'https://p21.minimo.com.br';
-    ENV.APP.host = 'http://sementeapidev.minimo.com.br';
+    // ENV.APP.host = 'http://sementeapidev.minimo.com.br';
   }
 
   if (environment === 'test') {
@@ -46,7 +46,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.DOMAIN = "programasemente.com.br";
-    ENV.APP.host = 'https://p21.minimo.com.br';
+    ENV.APP.host = 'https://sementeapidev.minimo.com.br';
   }
 
   ENV['ember-simple-auth'] = {
@@ -55,8 +55,8 @@ module.exports = function(environment) {
   }
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://sementeapi.minimo.com.br/api/v0/auth/login',
-    serverTokenRefreshEndpoint: 'https://sementeapi.minimo.com.br/api/v0/RefreshTokens',
+    serverTokenEndpoint: 'https://sementeapidev.minimo.com.br/api/v0/auth/login',
+    serverTokenRefreshEndpoint: 'https://sementeapidev.minimo.com.br/api/v0/RefreshTokens',
     identificationField: 'username',
     passwordField: 'password',
     tokenPropertyName: 'token',

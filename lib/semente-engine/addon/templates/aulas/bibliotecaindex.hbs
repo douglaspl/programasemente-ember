@@ -79,29 +79,21 @@
   </div>
 </div>
 
+
 <!-- Modal de visualizar o conteudo -->
-<aside id="content-modal" class="modal">
-  <div class="modal__content modal__content--sm">
-
-    <header class="modal__header">
-      {{selectedConteudo.titulo}}
-    </header>
-
-    <div class="modal__body" id="vimeoVideo">
+<aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
+  <div class="modal__content">
+    <div class="modal__body">
+      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
-        {{plataforma-conteudo-video-player conteudo=selectedConteudo pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
+        <div class="flow-sm" id="vimeoVideo">
+          {{plataforma-conteudo-video-player conteudo=selectedConteudo controller=this pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
+          <p class="ta-c title-4 color-gray-20">{{selectedConteudo.titulo}}</p>
+        </div>
       {{/if}}
     </div>
-
-    <div class="modal__footer">
-      <button onclick={{action 'closeConteudoModal'}}>
-        Fechar Conteúdo
-      </button>
-    </div>
-
   </div>
   <div class="modal__overlayer"></div>
-
 </aside>
 
 
