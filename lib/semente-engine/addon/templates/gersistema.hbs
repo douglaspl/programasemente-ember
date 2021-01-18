@@ -1,4 +1,4 @@
-{{header-geral  
+{{header-geral
 parentController = this.aulasController
 pessoa=pessoaLogged
 thisRoute=thisRoute
@@ -11,8 +11,7 @@ thisRoute=thisRoute
     <header class="main__header institutions__header">
       <h1 class="main__title">Administração</h1>
       {{#if (equalstr role 'admin')}}
-      <button class="btn btn--xs" {{action 'newInst' on="click"}}><span
-          class="btn__icon icon-plus"></span>Nova
+      <button class="btn btn--xs" {{action 'newInst' on="click" }}><span class="btn__icon icon-plus"></span>Nova
         Instituição</button>
       {{/if}}
     </header>
@@ -23,12 +22,12 @@ thisRoute=thisRoute
           <label class="form-group__label" for="search">Busca</label>
           <div class="form-group__wrapper form-group__wrapper--search">
             {{input class="form-group__input"
-                    aria-describedby="basic-addon1"
-                    autocomplete="off"
-                    aria-autocomplete="none"
-                    id="matchValue"
-                    key-up="filterInst"
-                    type="text"}}
+            aria-describedby="basic-addon1"
+            autocomplete="off"
+            aria-autocomplete="none"
+            id="matchValue"
+            key-up="filterInst"
+            type="text"}}
           </div>
         </div>
       </form>
@@ -42,11 +41,11 @@ thisRoute=thisRoute
       {{#each matchInsts as |inst|}}
       <li>
         {{!-- <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span> --}}
-        <a class="title-3 btn btn--link list__name"
-          {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
+        <a class="title-3 btn btn--link list__name color-blue-navy-60" {{action 'selectInst' inst.id on="click" }}><span
+            class="btn__label">{{inst.name}}</span></a>
         <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox"
-            {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
+          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox" {{action 'enableInst' inst.id
+            on='change' }} checked={{inst.enabled}}>
           <label class="switch__label" for="activeInstId{{inst.id}}">
             <span class="switch__inner"></span>
             <span class="switch__head"></span>
@@ -61,11 +60,11 @@ thisRoute=thisRoute
       {{#each model.instituicoes as |inst|}}
       <li>
         {{!-- <span class="list__img" style="background-image: url('/assets/img/institution.png')"></span> --}}
-        <a class="title-3 btn btn--link list__name"
-          {{action 'selectInst' inst.id on="click"}}><span>{{inst.name}}</span></a>
+        <a class="title-3 btn btn--link list__name color-blue-navy-60" {{action 'selectInst' inst.id on="click" }}>
+          <span class="btn__label">{{inst.name}}</span></a>
         <span class="switch switch--institutions">
-          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox"
-            {{action 'enableInst' inst.id on='change'}} checked={{inst.enabled}}>
+          <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox" {{action 'enableInst' inst.id
+            on='change' }} checked={{inst.enabled}}>
           <label class="switch__label" for="activeInstId{{inst.id}}">
             <span class="switch__inner"></span>
             <span class="switch__head"></span>
@@ -80,21 +79,21 @@ thisRoute=thisRoute
     <div class="modal__overlayer"></div>
     <div class="modal__content">
       <header class="modal__header">
-        <button class="modal__close btn-close icon-x" type="submit" {{action 'newInstCancel' on="click"}}></button>
+        <button class="modal__close btn-close icon-x" type="submit" {{action 'newInstCancel' on="click" }}></button>
         <h3 class="modal__title">Nova Instituição</h3>
         <!-- new institution stepper -->
         <div class="institutions__steps steps">
           <div class="steps__step">
             <div class="steps__label">Informações Básicas</div>
-            <div class="steps__number {{if goToStepTwo '' 'steps__number--is-active'}}" {{action 'goTo' '1'}}>1</div>
+            <div class="steps__number {{if goToStepTwo '' 'steps__number--is-active'}}" {{action 'goTo' '1' }}>1</div>
           </div>
           <div class="steps__step">
             <div class="steps__label">Anos Habilitados</div>
-            <div class="steps__number {{if goToStepTwo 'steps__number--is-active' ''}}" {{action 'goTo' '2'}}>2</div>
+            <div class="steps__number {{if goToStepTwo 'steps__number--is-active' ''}}" {{action 'goTo' '2' }}>2</div>
           </div>
           <div class="steps__step">
             <div class="steps__label">Finalizar</div>
-            <div class="steps__number" {{action 'newInstSave' on="click"}}>3</div>
+            <div class="steps__number" {{action 'newInstSave' on="click" }}>3</div>
           </div>
         </div>
       </header>
@@ -189,7 +188,7 @@ thisRoute=thisRoute
               <input class="checkbox__input" id="new_sis_2" type="checkbox">
               <label class="checkbox__label" for="new_sis_2">Plataforma S</label>
             </div>
-             <div class="checkbox m-bottom--md">
+            <div class="checkbox m-bottom--md">
               <input class="checkbox__input" id="new_sis_3" type="checkbox">
               <label class="checkbox__label" for="new_sis_3">CoreSkills</label>
             </div>
@@ -201,7 +200,8 @@ thisRoute=thisRoute
             {{#each modulos_list as |mod|}}
             <li>
               {{!-- <span class="list__img"
-                style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span> --}}
+                style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span>
+              --}}
               <h3 class="list__name title-3">{{mod.name}}</h3>
               <span class="switch switch--institutions">
                 <!-- temporary save controll -->
@@ -223,444 +223,447 @@ thisRoute=thisRoute
   </aside>
   <!-- --------------------------------------------- institution selected -->
   {{#if instView}}
-    <!-- back to institutions list -->
-    {{#if (equalstr role 'admin')}}
-      <div class="main__back-container">
-        <button class="btn btn--text" id="back-person-specific_old" {{action 'backToInstList' on="click"}} type="button">
-          <span class="icon-arrow-left"></span>
-          <span class="btn__label">voltar</span>
-        </button>
-      </div>
-    {{/if}}
-    <!-- / back to institutions list -->
-    <header class="main__header">
-      <div class="flex flex-row m-top--md">
-        <!-- institutions selected name -->
-        <h1 class="main__title">{{inst_selected.name}}</h1>
-      </div>
-    </header>
-    <section class="sections__section">
-      <!-- institutions navigation -->
-      <div class="tabs">
-        <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
-          {{action 'tabNavigation' 'informations' on="click"}}><span>Informações</span></button>
-        <button class="report__tab tabs__tab {{if selectedInstTabs.courses 'tabs__tab--is-active'}}"
-          {{action 'tabNavigation' 'courses' on="click"}}><span>Anos</span></button>
-        <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}"
-          {{action 'tabNavigation' 'areas' on="click"}}><span>Turmas</span></button>
-        <button class="report__tab tabs__tab {{if selectedInstTabs.users 'tabs__tab--is-active'}}"
-          {{action 'tabNavigation' 'users' on="click"}}><span>Usuários</span></button>
+  <!-- back to institutions list -->
+  {{#if (equalstr role 'admin')}}
+  <div class="main__back-container">
+    <button class="btn btn--text" id="back-person-specific_old" {{action 'backToInstList' on="click" }} type="button">
+      <span class="icon-arrow-left"></span>
+      <span class="btn__label">voltar</span>
+    </button>
+  </div>
+  {{/if}}
+  <!-- / back to institutions list -->
+  <header class="main__header">
+    <div class="flex flex-row m-top--md">
+      <!-- institutions selected name -->
+      <h1 class="main__title">{{inst_selected.name}}</h1>
+    </div>
+  </header>
+  <section class="sections__section">
+    <!-- institutions navigation -->
+    <div class="tabs">
+      <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
+        {{action 'tabNavigation' 'informations' on="click" }}><span>Informações</span></button>
+      <button class="report__tab tabs__tab {{if selectedInstTabs.courses 'tabs__tab--is-active'}}"
+        {{action 'tabNavigation' 'courses' on="click" }}><span>Anos</span></button>
+      <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}"
+        {{action 'tabNavigation' 'areas' on="click" }}><span>Turmas</span></button>
+      <button class="report__tab tabs__tab {{if selectedInstTabs.users 'tabs__tab--is-active'}}"
+        {{action 'tabNavigation' 'users' on="click" }}><span>Usuários</span></button>
 
-        {{#if selectedInstTabs.areas}}
-          <button class="j-areaFocus tabs__not-tab btn btn--xxs m-left--auto m-right--md" {{action 'newArea'}}>
-            <span class="btn__icon icon-plus"></span>Nova Turma</button>
-        {{/if}}
+      {{#if selectedInstTabs.areas}}
+      <button class="j-areaFocus tabs__not-tab btn btn--xxs m-left--auto m-right--md" {{action 'newArea' }}>
+        <span class="btn__icon icon-plus"></span>Nova Turma</button>
+      {{/if}}
 
-        {{#if selectedInstTabs.users}}
-          <button class="tabs__not-tab btn btn--xxs m-left--auto" {{action 'userModal'}}>
-            <span class="btn__icon icon-plus"></span>Novo Usuário</button>
-          <button class="tabs__not-tab btn btn--xxs m-left--md m-right--md" {{action 'cadastroLote'}}>
-            <span class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
-        {{/if}}
-      </div>
+      {{#if selectedInstTabs.users}}
+      <button class="tabs__not-tab btn btn--xxs m-left--auto" {{action 'userModal' }}>
+        <span class="btn__icon icon-plus"></span>Novo Usuário</button>
+      <button class="tabs__not-tab btn btn--xxs m-left--md m-right--md" {{action 'cadastroLote' }}>
+        <span class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
+      {{/if}}
+    </div>
     <!-- selected institution tab information -->
     {{#if selectedInstTabs.informations}}
-      {{#if (equalstr role 'admin')}}
-        <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_inst">
-          <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveInformations' inst_selected.id}}>
-            <span class="btn__icon icon-save"></span> Salvar alterações
+    {{#if (equalstr role 'admin')}}
+    <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_inst">
+      <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveInformations' inst_selected.id}}>
+        <span class="btn__icon icon-save"></span> Salvar alterações
+      </button>
+    </div>
+    {{/if}}
+    <section class="sections__subsection">
+      <h3 class="main__subsubtitle">Básicas</h3>
+      <div class="form-group form-group--horizontal form-group--full-width">
+        <div class="form-group form-group--aired-h" flex="40--lg">
+          <label class="form-group__label">Nome</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} disabled="true">
+          {{!-- {{inst_selected.name}} --}}
+          {{/if}}
+        </div>
+        <div class="form-group form-group--aired-h" flex="40--lg">
+          <label class="form-group__label">UF</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{!-- {{input value=inst_selected.uf}} --}}
+          {{else}}
+          <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}} disabled="true">
+          {{/if}}
+        </div>
+
+        <div class="form-group form-group--aired-h" flex="40--lg">
+          <label class="form-group__label">Cidade</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}}
+            disabled="true">
+          {{/if}}
+        </div>
+
+        <div class="form-group">
+          <label class="form-group__label">Status</label>
+          <span class="switch switch--institutions">
+            <input class="switch__checkbox" id="inst_hab" type="checkbox" checked={{inst_selected.enabled}}
+              disabled={{if (equalstr role 'admin' ) false true}} onchange={{action 'dataChange' 'btn_save_inst' }}>
+            <label class="switch__label" for="inst_hab">
+              <span class="switch__inner"></span>
+              <span class="switch__head"></span>
+            </label>
+          </span>
+        </div>
+      </div>
+      {{!--
+      <div class="form-group form-group--full-width m-top--md">
+        <label class="form-group__label">Marca</label>
+        <div class="image-change">
+          <span class="image-change__image image-change__image--empty"><img id="uploadPreview"></span>
+          <label class="image-change__cta btn btn--ghost btn--xxs" for="uploadImage">Buscar imagem
+            <input id="uploadImage" type="file" name="myPhoto" {{action 'previewImage' on="change" }}
+              style="display: none;">
+          </label>
+          <button class="btn btn--text m-left--md">Redefinir</button>
+        </div>
+      </div>
+      --}}
+    </section>
+    <section class="sections__subsection">
+      <h3 class="main__subsubtitle">Número de usuários</h3>
+      <div class="institutions__config">
+
+        <div class="form-group" flex="20">
+          <label class="form-group__label">Gestores</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
+            disabled="true">
+          {{/if}}
+        </div>
+
+        <div class="form-group" flex="20">
+          <label class="form-group__label">Coordenadores</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="nr_coordenadores" value={{inst_selected.nrcoordenadores}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          {{inst_selected.nrcoordenadores}}
+          {{/if}}
+        </div>
+        <div class="form-group" flex="20">
+          <label class="form-group__label">Professores</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.nrinstrutores}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          {{inst_selected.nrinstrutores}}
+          {{/if}}
+        </div>
+
+        <div class="form-group" flex="20">
+          <label class="form-group__label">Alunos</label>
+          {{#if (equalstr role 'admin')}}
+          <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
+            onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+          {{else}}
+          <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
+            disabled="true">
+          {{/if}}
+        </div>
+
+
+
+        <!-- /selected institution tab information -->
+
+        <!-- selected institutiton tab courses -->
+        {{#if selectedInstTabs.courses}}
+        <div class="flex flex-row  items-center justify-start">
+          <h2 class="main__subtitle">Anos</h2>
+          <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses" {{action 'saveCourses'
+            inst_selected.id}}>
+            <span class="btn__icon icon-save"></span>
+            Salvar alterações
           </button>
         </div>
-      {{/if}}
-      <section class="sections__subsection">
-        <h3 class="main__subsubtitle">Básicas</h3>
-        <div class="form-group form-group--horizontal form-group--full-width">
-          <div class="form-group form-group--aired-h" flex="40--lg">
-            <label class="form-group__label">Nome</label>
-            {{#if (equalstr role 'admin')}}
-              <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-              <input class="form-group__input" type="textbox" id="inst_name" value={{inst_selected.name}} disabled="true">
-            {{!-- {{inst_selected.name}} --}}
-            {{/if}}
-          </div>
-          <div class="form-group form-group--aired-h" flex="40--lg">
-            <label class="form-group__label">UF</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-              {{!-- {{input value=inst_selected.uf}}  --}}
-            {{else}}
-            <input class="form-group__input" type="textbox" id="inst_uf" value={{inst_selected.uf}} disabled="true">
-            {{/if}}
-          </div>
-
-          <div class="form-group form-group--aired-h" flex="40--lg">
-            <label class="form-group__label">Cidade</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-            <input class="form-group__input" type="textbox" id="inst_cidade" value={{inst_selected.cidade}} disabled="true">
-            {{/if}}
-          </div>
-
-          <div class="form-group">
-            <label class="form-group__label">Status</label>
-            <span class="switch switch--institutions">
-              <input  class="switch__checkbox"
-                      id="inst_hab"
-                      type="checkbox"
-                      checked={{inst_selected.enabled}}
-                      disabled={{if (equalstr role 'admin') false true}}
-                      onchange={{action 'dataChange' 'btn_save_inst'}}>
-              <label class="switch__label" for="inst_hab">
-                <span class="switch__inner"></span>
-                <span class="switch__head"></span>
-              </label>
-            </span>
-          </div>
+        <section class="sections__subsection">
+          <ul class="list list--img-name-action list--striped">
+            {{#each modulos_list as |mod|}}
+            <li>
+              {{!-- <span class="list__img"
+                style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span>
+              --}}
+              <h3 class="list__name title-3">{{mod.name}}</h3>
+              <span class="switch switch--institutions">
+                <!-- temporary save controll -->
+                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+                  style="display:none">
+                <!-- -->
+                <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox" checked={{isinarray mod
+                  inst_selected.modulos}} disabled={{if (equalstr role 'admin' ) false true}}
+                  onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
+                <label class="switch__label" for="ckb_{{mod.id}}">
+                  <span class="switch__inner"></span>
+                  <span class="switch__head"></span>
+                </label>
+              </span>
+            </li>
+            {{/each}}
+          </ul>
+        </section>
+        {{/if}}
+        <!-- /selected institutiton tab courses -->
+        <!-- selected institutions tab areas -->
+        {{#if selectedInstTabs.areas}}
+        <div class="flex flex-row  items-center justify-start">
+          <h2 class="main__subtitle">Turmas</h2>
+          <button class="btn btn--ghost btn--xs m-left--md" {{action 'newArea' }}>
+            <span class="btn__icon icon-plus"></span>Nova Turma</button>
         </div>
-        {{!--
-        <div class="form-group form-group--full-width m-top--md">
-          <label class="form-group__label">Marca</label>
-          <div class="image-change">
-            <span class="image-change__image image-change__image--empty"><img id="uploadPreview"></span>
-            <label class="image-change__cta btn btn--ghost btn--xxs" for="uploadImage">Buscar imagem
-              <input id="uploadImage" type="file" name="myPhoto" {{action 'previewImage' on="change"}} style="display: none;">
-            </label>
-            <button class="btn btn--text m-left--md">Redefinir</button>
-          </div>
-        </div>
-        --}}
-      </section>
-      <section class="sections__subsection">
-        <h3 class="main__subsubtitle">Número de usuários</h3>
-        <div class="institutions__config">
+        <section class="sections__subsection">
+          <ul class="institutions__areas list list--striped">
 
-          <div class="form-group" flex="20">
-            <label class="form-group__label">Gestores</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-            <input class="form-group__input" type="textbox" id="nr_gestores" value={{inst_selected.nrgestores}}
-              disabled="true">
-            {{/if}}
-          </div>
 
-          <div class="form-group" flex="20">
-            <label class="form-group__label">Coordenadores</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="nr_coordenadores" value={{inst_selected.nrcoordenadores}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-            {{inst_selected.nrcoordenadores}}
-            {{/if}}
-          </div>
-          <div class="form-group" flex="20">
-            <label class="form-group__label">Professores</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="nr_instrutores" value={{inst_selected.nrinstrutores}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-            {{inst_selected.nrinstrutores}}
-            {{/if}}
-          </div>
-
-          <div class="form-group" flex="20">
-            <label class="form-group__label">Alunos</label>
-            {{#if (equalstr role 'admin')}}
-            <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}}
-              onkeyup={{action 'dataChange' 'btn_save_inst'}}>
-            {{else}}
-            <input class="form-group__input" type="textbox" id="nr_alunos" value={{inst_selected.nralunos}} disabled="true">
-            {{/if}}
-          </div>
+            <li id="newArea" style="display:none">
+              <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
+              <div class="edit-text">
+                <input class="edit-text__input form-group__input content-editable" type="textbox" id="newAreaName">
+                <span class="edit-text__indicator"></span>
+              </div>
+              <div class="btn-group m-left--lg">
+                <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' 'new' }}>
+                  <span class="btn__icon icon-x"></span>Cancelar
+                </button>
+                <button class="btn btn--xs" type="submit" {{action 'addArea' }} style="width: 120px;">
+                  <span class="btn__icon icon-check"></span>Salvar
+                </button>
+              </div>
+            </li>
 
 
 
-          <!-- /selected institution tab information -->
-
-          <!-- selected institutiton tab courses -->
-          {{#if selectedInstTabs.courses}}
-          <div class="flex flex-row  items-center justify-start">
-            <h2 class="main__subtitle">Anos</h2>
-            <button class="btn btn--ghost m-left--md" style="display:none" id="btn_save_courses"
-              {{action 'saveCourses' inst_selected.id}}>
-              <span class="btn__icon icon-save"></span>
-              Salvar alterações
-            </button>
-          </div>
-          <section class="sections__subsection">
-            <ul class="list list--img-name-action list--striped">
-              {{#each modulos_list as |mod|}}
-              <li>
-                {{!-- <span class="list__img"
-                  style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span> --}}
-                <h3 class="list__name title-3">{{mod.name}}</h3>
-                <span class="switch switch--institutions">
-                  <!-- temporary save controll -->
-                  <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
-                    style="display:none">
-                  <!-- -->
-                  <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-                    checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
-                    onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
-                  <label class="switch__label" for="ckb_{{mod.id}}">
-                    <span class="switch__inner"></span>
-                    <span class="switch__head"></span>
-                  </label>
-                </span>
-              </li>
-              {{/each}}
-            </ul>
-          </section>
-          {{/if}}
-          <!-- /selected institutiton tab courses -->
-          <!-- selected institutions tab areas -->
-          {{#if selectedInstTabs.areas}}
-          <div class="flex flex-row  items-center justify-start">
-            <h2 class="main__subtitle">Turmas</h2>
-            <button class="btn btn--ghost btn--xs m-left--md" {{action 'newArea'}}>
-              <span class="btn__icon icon-plus"></span>Nova Turma</button>
-          </div>
-          <section class="sections__subsection">
-            <ul class="institutions__areas list list--striped">
-
-
-              <li id="newArea" style="display:none">
-                <label class="form-group__label sr-only" for="newAreaName">Nome da nova área</label>
+            {{#each inst_selected.turmas as |turma idx|}}
+            <li class="accordion">
+              <div class="institutions__area">
                 <div class="edit-text">
-                  <input class="edit-text__input form-group__input content-editable" type="textbox" id="newAreaName">
+                  <input class="edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}" disabled>
                   <span class="edit-text__indicator"></span>
                 </div>
-                <div class="btn-group m-left--lg">
-                  <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
-                    <span class="btn__icon icon-x"></span>Cancelar
-                  </button>
-                  <button class="btn btn--xs" type="submit" {{action 'addArea'}} style="width: 120px;">
-                    <span class="btn__icon icon-check"></span>Salvar
-                  </button>
-                </div>
-              </li>
+              </div>
+              <div id="areaItemOptions{{turma.id}}" class="btn-group">
+                <button class="btn btn--text color-error" {{action 'deleteArea' turma.id}}>
+                  <span class="btn__icon icon-trash-2"></span> Remover
+                </button>
+                <button class="btn btn--ghost btn--xs" style="width: 120px;" {{action 'editArea' turma.id}}>
+                  <span class="btn__icon icon-edit"></span> Editar
+                </button>
+              </div>
+              <div class="btn-group" id="areaItemActions{{turma.id}}" style="display:none">
+                <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' turma.id}}>
+                  <span class="btn__icon icon-x"></span>Cancelar
+                </button>
+                <button class="btn btn--xs" style="width: 120px;" type="submit" {{action 'saveArea' turma.id}}>
+                  <span class="btn__icon icon-check"></span>Salvar
+                </button>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </section>
+        {{/if}}
 
 
-
-              {{#each inst_selected.turmas as |turma idx|}}
-              <li class="accordion">
-                <div class="institutions__area">
-                  <div class="edit-text">
-                    <input class="edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}" disabled>
-                    <span class="edit-text__indicator"></span>
-                  </div>
-                </div>
-                <div id="areaItemOptions{{turma.id}}" class="btn-group">
-                  <button class="btn btn--text color-error" {{action 'deleteArea' turma.id}}>
-                    <span class="btn__icon icon-trash-2"></span> Remover
-                  </button>
-                  <button class="btn btn--ghost btn--xs" style="width: 120px;" {{action 'editArea' turma.id}}>
-                    <span class="btn__icon icon-edit"></span> Editar
-                  </button>
-                </div>
-                <div class="btn-group" id="areaItemActions{{turma.id}}" style="display:none">
-                  <button class="btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction' turma.id}}>
-                    <span class="btn__icon icon-x"></span>Cancelar
-                  </button>
-                  <button class="btn btn--xs" style="width: 120px;" type="submit"
-                    {{action 'saveArea' turma.id}}>
-                    <span class="btn__icon icon-check"></span>Salvar
-                  </button>
-                </div>
-              </li>
-              {{/each}}
-            </ul>
-          </section>
-          {{/if}}
-
-
-        </div>
-      </section>
-      <section class="sections__subsection">
-        <h3 class="main__subsubtitle">Recursos extras</h3>
-        <div class="checkbox m-bottom--md">
-          <input class="checkbox__input" id="inst_changePassword" type="checkbox"
-            checked={{inst_selected.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin') false true}}
-            onchange={{action 'dataChange' 'btn_save_inst'}}>
-          <label class="checkbox__label" for="inst_changePassword">Alterar senha no primeiro acesso</label>
-        </div>
-        <div class="checkbox m-bottom--md">
-          <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.temBiblioteca}}
-            disabled={{if (equalstr role 'admin') false true}} onchange={{action 'dataChange' 'btn_save_inst'}}>
-          <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
-        </div>
-      </section>
-      <section class="sections__subsection">
-            <h3 class="main__subsubtitle">Sistemas</h3>
-            <div class="checkbox m-bottom--md">
-              <input class="checkbox__input" id="sis_1" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temMedio}}
-                disabled={{if (equalstr role 'admin') false true}}>
-              <label class="checkbox__label" for="sis_1">Programa.Semente</label>
-            </div>
-            <div class="checkbox m-bottom--md">
-              <input class="checkbox__input" id="sis_2" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temS}}
-                disabled={{if (equalstr role 'admin') false true}}>
-              <label class="checkbox__label" for="sis_2">Plataforma S</label>
-            </div>
-              <div class="checkbox m-bottom--md">
-              <input class="checkbox__input" id="sis_3" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst'}} checked={{temCoreSkills}}
-                disabled={{if (equalstr role 'admin') false true}}>
-              <label class="checkbox__label" for="sis_3">CoreSkills</label>
-            </div>
-      </section>
+      </div>
+    </section>
+    <section class="sections__subsection">
+      <h3 class="main__subsubtitle">Recursos extras</h3>
+      <div class="checkbox m-bottom--md">
+        <input class="checkbox__input" id="inst_changePassword" type="checkbox"
+          checked={{inst_selected.trocasenhaobrigatoria}} disabled={{if (equalstr role 'admin' ) false true}}
+          onchange={{action 'dataChange' 'btn_save_inst' }}>
+        <label class="checkbox__label" for="inst_changePassword">Alterar senha no primeiro acesso</label>
+      </div>
+      <div class="checkbox m-bottom--md">
+        <input class="checkbox__input" id="inst_library" type="checkbox" checked={{inst_selected.temBiblioteca}}
+          disabled={{if (equalstr role 'admin' ) false true}} onchange={{action 'dataChange' 'btn_save_inst' }}>
+        <label class="checkbox__label" for="inst_library">Biblioteca de materiais</label>
+      </div>
+    </section>
+    <section class="sections__subsection">
+      <h3 class="main__subsubtitle">Sistemas</h3>
+      <div class="checkbox m-bottom--md">
+        <input class="checkbox__input" id="sis_1" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst' }}
+          checked={{temMedio}} disabled={{if (equalstr role 'admin' ) false true}}>
+        <label class="checkbox__label" for="sis_1">Programa.Semente</label>
+      </div>
+      <div class="checkbox m-bottom--md">
+        <input class="checkbox__input" id="sis_2" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst' }}
+          checked={{temS}} disabled={{if (equalstr role 'admin' ) false true}}>
+        <label class="checkbox__label" for="sis_2">Plataforma S</label>
+      </div>
+      <div class="checkbox m-bottom--md">
+        <input class="checkbox__input" id="sis_3" type="checkbox" onchange={{action 'dataChange' 'btn_save_inst' }}
+          checked={{temCoreSkills}} disabled={{if (equalstr role 'admin' ) false true}}>
+        <label class="checkbox__label" for="sis_3">CoreSkills</label>
+      </div>
+    </section>
     {{/if}}
     <!-- /selected institution tab information -->
     <!-- selected institutiton tab courses -->
     {{#if selectedInstTabs.courses}}
-      <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_courses">
-        <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveCourses' inst_selected.id}}>
-          <span class="btn__icon icon-save"></span>
-          Salvar alterações
-        </button>
-      </div>
-      <section class="sections__subsection">
-        <ul class="list list--img-name-action list--striped">
-          {{#each modulos_list as |mod|}}
-          <li>
-            {{!-- <span class="list__img" style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span> --}}
-            <div class="flex-1">
-              <div class="flex flex-row items-center">
-                {{!-- <img class="list__img list__img--auto-height"
-                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}"> --}}
-                <h3 class="list__name title-4">{{mod.name}}</h3>
-                <button id="cta{{mod.id}}" class="btn btn--ghost btn--xs btn--is-toggle m-left--xl"
-                  {{action displayAccordion mod.id}} style="width: 9rem;">
-                  <span class="btn__label label__default"><span>Exibir calendário</span></span>
-                  <span class="btn__label label__active"><span>Fechar calendário</span></span>
-                </button>
-              </div>
+    <div class="flex flex-row  items-center justify-start" style="display:none" id="btn_save_courses">
+      <button class="btn btn--ghost btn--xxs m-left--md" {{action 'saveCourses' inst_selected.id}}>
+        <span class="btn__icon icon-save"></span>
+        Salvar alterações
+      </button>
+    </div>
+    <section class="sections__subsection">
+      <ul class="list list--img-name-action list--striped">
+        {{#each modulos_list as |mod|}}
+        <li>
+          {{!-- <span class="list__img"
+            style="background-image: url('{{if mod.coverImg mod.coverImg '/assets/img/online-course.png'}}')"></span>
+          --}}
+          <div class="flex-1">
+            <div class="flex flex-row items-center">
+              {{!-- <img class="list__img list__img--auto-height"
+                src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}"> --}}
+              <h3 class="list__name title-4">{{mod.name}}</h3>
+              <button id="cta{{mod.id}}" class="btn btn--ghost btn--xs btn--is-toggle m-left--xl" {{action
+                displayAccordion mod.id}} style="width: 9rem;">
+                <span class="btn__label label__default"><span>Exibir calendário</span></span>
+                <span class="btn__label label__active"><span>Fechar calendário</span></span>
+              </button>
             </div>
-            <span class="switch switch--institutions">
-              <!-- temporary save controll -->
-              <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
-                style="display:none">
-              <!-- -->
-              <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox"
-                checked={{isinarray mod inst_selected.modulos}} disabled={{if (equalstr role 'admin') false true}}
-                onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
-              <label class="switch__label" for="ckb_{{mod.id}}">
-                <span class="switch__inner"></span>
-                <span class="switch__head"></span>
-              </label>
-            </span>
+          </div>
+          <span class="switch switch--institutions">
+            <!-- temporary save controll -->
+            <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+              style="display:none">
+            <!-- -->
+            <input class="switch__checkbox" id="ckb_{{mod.id}}" type="checkbox" checked={{isinarray mod
+              inst_selected.modulos}} disabled={{if (equalstr role 'admin' ) false true}}
+              onchange={{action 'dataChange' 'btn_save_courses' mod.id}}>
+            <label class="switch__label" for="ckb_{{mod.id}}">
+              <span class="switch__inner"></span>
+              <span class="switch__head"></span>
+            </label>
+          </span>
 
-            <!-- ACCORDION -->
-            <ul id="j-accordionContent{{mod.id}}"
-              class="list list--striped calendar calendar--list j-accordionNode animated fadeIn w100" style="display:none;">
-              {{#each atividadeList as |atv|}}
-                <li>
-                  <time class="calendar__date date" datetime="2019-02-15">
-                    <span class="date__day">{{atv.dia}}</span><span class="date__month">{{atv.mes}}</span>
-                  </time>
-                  <div class="flex flex-col justify-center">
-                    <span class="title-aux m-bottom--xxs">{{atv.id}}</span>
-                    <h3 class="title-4">{{atv.name}}</h3>
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-            <!-- /ACORDION -->
-          </li>
-          {{/each}}
-        </ul>
-      </section>
+          <!-- ACCORDION -->
+          <ul id="j-accordionContent{{mod.id}}"
+            class="list list--striped calendar calendar--list j-accordionNode animated fadeIn w100"
+            style="display:none;">
+            {{#each atividadeList as |atv|}}
+            <li>
+              <time class="calendar__date date" datetime="2019-02-15">
+                <span class="date__day">{{atv.dia}}</span><span class="date__month">{{atv.mes}}</span>
+              </time>
+              <div class="flex flex-col justify-center">
+                <span class="title-aux m-bottom--xxs">{{atv.id}}</span>
+                <h3 class="title-4">{{atv.name}}</h3>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+          <!-- /ACORDION -->
+        </li>
+        {{/each}}
+      </ul>
+    </section>
     {{/if}}
     <!-- /selected institutiton tab courses -->
     <!-- selected institutions tab areas -->
     {{#if selectedInstTabs.areas}}
-      <div class="flex flex-row  items-center justify-start">
-        <button class="j-areaFocus btn btn--xs" {{action 'newArea'}}>
-          <span class="btn__icon icon-plus"></span>Nova Turma</button>
-      </div>
-      <section class="sections__subsection">
-        <div class="form-group m-left--auto">
-          <label class="form-group__label" for="select_course">Ano</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--select" id="select_year" value="select_inst">
-              <option value="1" selected>1º ano</option>
-              <option value="2">2º ano</option>
-              <option value="3">3º ano</option>
-            </select>
-          </div>
+    <div class="flex flex-row  items-center justify-start">
+      <button class="j-areaFocus btn btn--xs" {{action 'newArea' }}>
+        <span class="btn__icon icon-plus"></span>Nova Turma</button>
+    </div>
+    <section class="sections__subsection">
+      <div class="form-group m-left--auto">
+        <label class="form-group__label" for="select_course">Ano</label>
+        <div class="form-group__wrapper form-group__wrapper--select">
+          <select class="form-group__input form-group__input--select" id="select_year" value="select_inst">
+            <option value="1" selected>1º ano</option>
+            <option value="2">2º ano</option>
+            <option value="3">3º ano</option>
+          </select>
         </div>
-        <ul class="institutions__areas list list--striped">
-          <li id="newArea" style="display:none;">
-            <div class="form-group m-right--md">
-              <div class="form-group__wrapper form-group__wrapper--select">
-                <select class="form-group__input form-group__input--select j-areaFocus" id="define_year" value="select_inst">
-                  <option value="0" selected>Selecionar percurso</option>
-                  {{#each modulos_list as |mod|}}
-                  <option value={{mod.id}}>{{mod.name}}</option>
-                  {{/each}}
-                </select>
-              </div>
+      </div>
+      <ul class="institutions__areas list list--striped">
+        <li id="newArea" style="display:none;">
+          <div class="form-group m-right--md">
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--select j-areaFocus" id="define_year"
+                value="select_inst">
+                <option value="0" selected>Selecionar percurso</option>
+                {{#each modulos_list as |mod|}}
+                <option value={{mod.id}}>{{mod.name}}</option>
+                {{/each}}
+              </select>
             </div>
-            <div class="flex-1 m-right--lg">
-              <div class="edit-text">
-                <input class="j-areaFocus edit-text__input form-group__input title-3" type="textbox" id="newAreaName"
-                  value="{{turma.name}}">
-                <span class="edit-text__indicator"></span>
-              </div>
+          </div>
+          <div class="flex-1 m-right--lg">
+            <div class="edit-text">
+              <input class="j-areaFocus edit-text__input form-group__input title-3" type="textbox" id="newAreaName"
+                value="{{turma.name}}">
+              <span class="edit-text__indicator"></span>
             </div>
-            <div class="btn-group m-left--lg">
-              <button class="j-areaFocus btn btn--xxs btn--text" type="submit" {{action 'cancelAreaAction' 'new'}}>
-                <span class="btn__icon icon-x"></span>Cancelar
-              </button>
-              <button class="j-areaFocus btn btn--xxs" type="submit" {{action 'addArea'}} style="width: 120px;">
-                <span class="btn__icon icon-check"></span>Salvar
-              </button>
+          </div>
+          <div class="btn-group m-left--lg">
+            <button class="j-areaFocus btn btn--xxs btn--text" type="submit" {{action 'cancelAreaAction' 'new' }}>
+              <span class="btn__icon icon-x"></span>Cancelar
+            </button>
+            <button class="j-areaFocus btn btn--xxs" type="submit" {{action 'addArea' }} style="width: 120px;">
+              <span class="btn__icon icon-check"></span>Salvar
+            </button>
+          </div>
+        </li>
+        {{#each inst_selected.turmas as |turma idx|}}
+        <li>
+          <div class="flex-1 m-right--lg">
+            <div class="edit-text">
+              <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}">
+              <span class="edit-text__indicator"></span>
             </div>
-          </li>
-          {{#each inst_selected.turmas as |turma idx|}}
-          <li>
-            <div class="flex-1 m-right--lg">
-              <div class="edit-text">
-                <input class="j-areaFocus edit-text__input title-3" id="areaItemName{{turma.id}}" value="{{turma.name}}">
-                <span class="edit-text__indicator"></span>
-              </div>
-              <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>{{turma.numalunos}} alunos</em></div>
+            <div><span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>{{turma.numalunos}} alunos</em>
             </div>
-            <div class="btn-group m-left--auto" id="areaItemOptions{{turma.id}}">
-              <button class="j-areaFocus btn btn--text color-error" {{action 'deleteArea' turma.id}}>
-                <span class="btn__icon icon-trash-2"></span> Remover
-              </button>
-              <button class="j-areaFocus btn btn--leaf btn--sm" style="width: 120px;" {{action 'editArea' turma.id}}>
-                <span class="btn__icon icon-edit"></span> Editar
-              </button>
-            </div>
-            <div class="btn-group m-left--auto" id="areaItemActions{{turma.id}}" style="display:none">
-              <button class="j-areaFocus j-cancelArea btn btn--xs btn--text" type="submit"
-                {{action 'cancelAreaAction' turma.id}}>
-                <span class="btn__icon icon-x"></span>Cancelar
-              </button>
-              <button class="j-areaFocus btn btn--xs" style="width: 120px;" type="submit"
-                {{action 'saveArea' turma.id}}>
-                <span class="btn__icon icon-check"></span>Salvar
-              </button>
-            </div>
-          </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/if}}
-  <!-- /selected institutions tab areas -->
-  <!-- selected institutions tab users -->
-    {{#if selectedInstTabs.users}}
-      {{outlet}}
-    {{/if}}
-  <!-- /selected institutions tab users -->
+          </div>
+          <div class="btn-group m-left--auto" id="areaItemOptions{{turma.id}}">
+            <button class="j-areaFocus btn btn--text color-error" {{action 'deleteArea' turma.id}}>
+              <span class="btn__icon icon-trash-2"></span> Remover
+            </button>
+            <button class="j-areaFocus btn btn--leaf btn--sm" style="width: 120px;" {{action 'editArea' turma.id}}>
+              <span class="btn__icon icon-edit"></span> Editar
+            </button>
+          </div>
+          <div class="btn-group m-left--auto" id="areaItemActions{{turma.id}}" style="display:none">
+            <button class="j-areaFocus j-cancelArea btn btn--xs btn--text" type="submit" {{action 'cancelAreaAction'
+              turma.id}}>
+              <span class="btn__icon icon-x"></span>Cancelar
+            </button>
+            <button class="j-areaFocus btn btn--xs" style="width: 120px;" type="submit" {{action 'saveArea' turma.id}}>
+              <span class="btn__icon icon-check"></span>Salvar
+            </button>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
     </section>
+    {{/if}}
+    <!-- /selected institutions tab areas -->
+    <!-- selected institutions tab users -->
+    {{#if selectedInstTabs.users}}
+    {{outlet}}
+    {{/if}}
+    <!-- /selected institutions tab users -->
+  </section>
   {{/if}}
 </main>
 
@@ -679,7 +682,7 @@ thisRoute=thisRoute
     <div class="alert__footer">
       <!-- area to delete -->
       {{#if (equalstr staticType 'area')}}
-      <button class="btn btn--xs btn--text-inverted" {{action staticAlert 'close'}}>Cancelar</button>
+      <button class="btn btn--xs btn--text-inverted" {{action staticAlert 'close' }}>Cancelar</button>
       <button class="btn btn--xs" {{action 'actionConfirmation' areaToDelete}}><span
           class="btn__icon icon-trash-2"></span>Remover área</button>
       {{/if}}
