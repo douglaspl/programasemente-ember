@@ -5,11 +5,13 @@
   &__two-col {
     display: flex;
     flex-direction: column;
+    gap: $distance--md;
     padding: $distance--sm;
 
     @include media('>md') {
       flex-direction: row;
-      padding: $distance--lg $distance--md;
+      flex-wrap: wrap;
+      padding: $distance--md;
     }
 
     &:nth-child(odd) {
@@ -82,15 +84,6 @@
       #{$this}__feedback { display: none; }
       #{$this}__time-spent {}
 
-    }
-
-  }
-
-  &__stacked-bar {
-    margin-top: 2rem;
-
-    @include media('>sm', '<md') {
-      margin-top: 3rem;
     }
 
   }

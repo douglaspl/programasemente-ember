@@ -5,7 +5,17 @@
     border-bottom: 1px solid $gray-10;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    @include media('>md') {
+        flex-wrap: wrap;
+        overflow: unset;
+    }
+
+    > * {
+        flex-shrink: 0;
+    }
 
     &__tab {
         border-bottom: 3px solid transparent;
