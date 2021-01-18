@@ -13,6 +13,7 @@
     onchange={{action 'Upload'}} /> <label id="message-processing"></label>
 
     {{#if conteudo.path}}
+        {{conteudo.filename}}
         {{#if (equalstr conteudo.tipo 'Imagem')}}
             <img src="{{conteudo.path}}" id="output" alt="{{conteudo.filename}}">
         {{/if}}
@@ -102,6 +103,7 @@
     placeholder='Capa' accept="image/png,image/jpeg"
     onchange={{action 'UploadCapa'}} /> <label id="message-processing-capa"></label>
     {{#if conteudo.thumbnail}}
+        {{if (base64 conteudo.path) conteudo.thumbnailName tnName}}
         <img src="{{conteudo.thumbnail}}" alt="{{conteudo.thumbnailName}}">
         <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
     {{/if}}

@@ -1,2 +1,9 @@
-{{!-- <iframe src="https://player.vimeo.com/video/{{conteudo.videoUrl}}" id="video_conteudo" frameborder="0"></iframe> --}}
-<div class="video" id="video_conteudo"></div>
+{{#if (equalstr conteudo.tipo "Video")}}
+    <div class="video" id="video_conteudo"></div>
+{{/if}}
+{{#if (equalstr conteudo.tipo "Documento")}}
+    <object id="doc" data={{conteudo.arquivoUrl}} type='application/pdf' width="1000px" height="500px"></object>
+{{/if}}
+{{#if (equalstr conteudo.tipo "Imagem")}}
+    <img class="media__thumb" id="file-{{conteudo.id}}" src={{conteudo.arquivoUrl}} alt="{{conteudo.titulo}}" style="width:800px;height:500px">
+{{/if}}
