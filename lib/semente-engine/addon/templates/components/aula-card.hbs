@@ -1,6 +1,6 @@
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
-  
-  <div class="media {{if (isbigger hasContents "0") 'media--card' 'media--card media--card--is-disabled' }}">
+  {{aula.hasContent}}
+  <div class="media {{if (not aula.hasContent) 'media--card media--card--is-disabled' 'media--card'}}">
     <picture class="media__picture">
       <img class="media__thumb" src="{{aulaThumb}}" alt="{{aula.titulo}}"/>
     </picture>
@@ -39,16 +39,15 @@
         {{/if}}
       </span>
    
-      {{#if (isbigger hasContents "0")}}
-      <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'transitToAula' aula.id}}>
-        <span class="btn__label">Ver materiais</span>
-      </button>
+      {{#if (not aula.hasContent)}}
+        <div class="btn btn--disabled btn--ghost btn--xxs">
+          <span class="icon-lock m-right--xs"></span>  
+          <span>Ainda não há materiais</span>
+        </div>
       {{else}}
-      <div class="btn btn--disabled btn--ghost btn--xxs">
-        <span class="icon-lock m-right--xs"></span>  
-        <span>Ainda não há materiais</span>
-      </div>
-      
+        <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'transitToAula' aula.id}}>
+          <span class="btn__label">Ver materiais</span>
+        </button>
       {{/if}}
     
     </div>

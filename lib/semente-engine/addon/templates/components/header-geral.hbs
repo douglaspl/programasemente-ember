@@ -111,27 +111,23 @@
                 <span>Biblioteca</span>
             {{/link-to}}
           </li>
-          <li>
-          
-          {{!-- {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.isAplicador '0'))}}
-            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-                <span>Acompanhamento</span>
-            {{/link-to}}
-          {{/unless}} --}}
 
-            {{#if (equalstr parentController.toggleRole 'instrutor')}} 
-              {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+          {{#if (equalstr parentController.toggleRole 'instrutor')}} 
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+              <li>
                 <span>Acompanhamento</span>
-              {{/link-to}}
-            {{/if}}
-          </li>
+              </li>
+            {{/link-to}}
+          {{/if}}
 
           {{#unless (equalstr livro '#')}}
-            <li>
-              <a class="tabs__tab" href="{{livro.url}}" target="_blank" rel="nofollow noopener noreferrer">
-                <span>Livro (PDF) {{livro.plataformaAno.name}}</span>
-              </a>
-            </li>
+            {{#each livro as |l|}}
+              <li>
+                <a class="tabs__tab" href="{{l.url}}" target="_blank" rel="nofollow noopener noreferrer">
+                  <span>Livro {{l.plataformaAno.name}} | {{l.perfil}}</span>
+                </a>
+              </li>
+            {{/each}}
           {{/unless}}
 
           {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'instrutor'))}}

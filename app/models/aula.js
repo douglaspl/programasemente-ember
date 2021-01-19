@@ -14,6 +14,7 @@ moment.updateLocale('en', {
 export default DS.Model.extend({
     titulo: DS.attr(),
     descricao: DS.attr(),
+    hasContent: DS.attr(),
     idx: DS.attr(),
     dataInicioPrevista: DS.attr(),
     dataInicioPrevistaFormat: Ember.computed('dataInicioPrevista', function() {
