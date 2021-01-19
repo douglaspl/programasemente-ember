@@ -294,6 +294,7 @@
               <h1 class="sr-only">Lista de aulas do {{curso_selected.name}}</h1>
               <h2 class="title-4">{{curso_selected.name}}</h2>
             </hgroup>
+
             <div class="report-course">
               <div class="report-course__header">
                 <div class="report-course__title-block">
@@ -302,6 +303,8 @@
                 </div>
 
                 <div class="report-course__data data data--shadowed">
+                  lllllllkghksdjhg
+                  <span class="data__value">{{if acomp.matriculas acomp.matriculas '0'}}</span>
                   <span class="data__value">{{alunos_turma}}</span>
                   <span class="data__label">matrículas</span>
                 </div>
@@ -309,28 +312,28 @@
               <ul class="report-course__body report-class" id="acomp_classes">
                 {{#each turma_selected.acompanhamentosatividades as |acomp|}}
                 <li class="report-class__two-col">
-                  <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
+                  <div class="flow-xxs flex flex-col justify-center items-start">
                     <span class="title-aux">Aula {{acomp.atividade.idx}}</span>
                     <h3>
-                      <a class="title-3 m-top--xs"><span>{{acomp.atividade.name}}</span></a>
+                      <a class="title-3"><span>{{acomp.atividade.name}}</span></a>
                     </h3>
                   </div>
                   <div class="report-class__stacked-bar stacked-bar">
                     <div class="stacked-bar__values">
-                      {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
-                      {{else}}
+                      {{!-- {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                      {{else}} --}}
                       <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
-                      {{/if}}
+                      {{!-- {{/if}} --}}
 
-                      {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
-                      {{else}}
+                      {{!-- {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                      {{else}} --}}
                       <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
-                      {{/if}}
+                      {{!-- {{/if}} --}}
 
-                      {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
-                      {{else}}
+                      {{!-- {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                      {{else}} --}}
                       <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
-                      {{/if}}
+                      {{!-- {{/if}} --}}
                     </div>
 
                     <div class="stacked-bar__legend">
@@ -363,76 +366,78 @@
           {{else}}
             <hgroup>
               <h1 class="sr-only">Lista de aulas do {{curso_selected.name}}</h1>
-              <h2 class="title-4">{{curso_selected.name}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{if inst_selected.acompanhamentosCursoInstituicao.matriculas inst_selected.acompanhamentosCursoInstituicao.matriculas '0'}} matrículas)</span></h2>
+
+              <h2 class="title-4">
+                {{curso_selected.name}}
+                <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(
+
+                  <span class="inline-flex m-right--xxs">{{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
+                    {{#if (equalstr acomp.modulo.id curso_selected.id)}}
+                      {{if acomp.matriculas acomp.matriculas '0'}}
+                    {{/if}}
+                  {{/each}}</span>
+
+                  matrículas
+                )</span>
+              </h2>
             </hgroup>
             <div class="report-course">
-              <div class="report-course__header">
-                <div class="report-course__title-block">
-                  <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
-                  <h2 class="title-2">{{curso_selected.name}}</h2>
-                </div>
-                {{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
-                  {{#if (equalstr acomp.modulo.id curso_selected.id)}}
-                    <div class="report-course__data data data--shadowed">
-                      <span class="data__value">{{if acomp.matriculas acomp.matriculas '0'}}</span>
-                      <span class="data__label">matrículas</span>
-                    </div>
-                  {{/if}}
-                {{/each}}
-              </div>
-              <ul class="report-course__body report-class" id="acomp_classes">
+              <ul class="report-class flow-md" id="acomp_classes">
                 {{#each curso_selected.atividades as |atividade|}}
                 <li class="report-class__two-col">
-                  <div class="flex flex-col justify-center items-start m-bottom--sm m-top--sm">
+                  <div class="flow-xxs flex flex-col justify-center items-start">
                     <span class="title-aux">Aula {{atividade.idx}}</span>
-                    <h3 class="title-3 m-top--xs"><a class="link--dotted"
+                    <h3 class="title-3"><a class="link--dotted"
                         {{action 'goToAtividade' curso_selected.id atividade.id on="click"}}><span>{{atividade.name}}</span></a>
                     </h3>
                   </div>
                   {{#each inst_selected.acompanhamentosatividades as |acomp|}}
-                  {{#if (equalstr acomp.atividade.id atividade.id)}}
-                  <div class="report-class__stacked-bar stacked-bar">
-                    <div class="stacked-bar__values">
-                      {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
-                      {{else}}
-                      <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
-                      {{/if}}
+                    {{#if (equalstr acomp.atividade.id atividade.id)}}
+                      <div class="report-class__stacked-bar stacked-bar">
+                        <div class="stacked-bar__values">
+                          {{!-- {{#if (equalstr acomp.styleNaoiniciado "width: 0%;")}}
+                          {{else}} --}}
+                          <span class="stacked-bar__value--1" style={{acomp.styleNaoiniciado}}></span>
+                          {{!-- {{/if}} --}}
 
-                      {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
-                      {{else}}
-                      <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
-                      {{/if}}
+                          {{!-- {{#if (equalstr acomp.styleAndamento "width: 0%;")}}
+                          {{else}} --}}
+                          <span class="stacked-bar__value--2" style={{acomp.styleAndamento}}></span>
+                          {{!-- {{/if}} --}}
 
-                      {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
-                      {{else}}
-                      <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
-                      {{/if}}
-                    </div>
+                          {{!-- {{#if (equalstr acomp.styleCompletaram "width: 0%;")}}
+                          {{else}} --}}
+                          <span class="stacked-bar__value--3" style={{acomp.styleCompletaram}}></span>
+                          {{!-- {{/if}} --}}
+                        </div>
 
-                    <div class="stacked-bar__legend">
-                      <span>
-                        <span class="stacked-bar__color-element stacked-bar__value--1"></span>
-                        <span>Não iniciado:
-                          <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
-                        </span>
+                        <div class="stacked-bar__legend">
+                          <span>
+                            <span class="stacked-bar__color-element stacked-bar__value--1"></span>
+                            <span>Não iniciado:
+                              <strong>{{acomp.naoiniciados}}</strong> ({{acomp.naoiniciadosPerc}}%)
+                            </span>
 
-                      </span>
-                      <span>
-                        <span class="stacked-bar__color-element stacked-bar__value--2"></span>
-                        <span>Em andamento:
-                          <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
-                        </span>
+                          </span>
+                          <span>
+                            <span class="stacked-bar__color-element stacked-bar__value--2"></span>
+                            <span>Em andamento:
+                              <strong>{{acomp.andamento}}</strong> ({{acomp.andamentoPerc}}%)
+                            </span>
 
-                      </span>
-                      <span>
-                        <span class="stacked-bar__color-element stacked-bar__value--3"></span>
-                        <span>Completo:
-                          <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                  {{/if}}
+                          </span>
+                          <span>
+                            <span class="stacked-bar__color-element stacked-bar__value--3"></span>
+                            <span>Completo:
+                              <strong>{{acomp.completaram}}</strong> ({{acomp.completaramPerc}}%)
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+
+                    {{else}}
+
+                    {{/if}}
                   {{/each}}
                 </li>
                 {{/each}}
@@ -538,7 +543,9 @@
           </div>
 
           <div class="container-scroll container-scroll--v">
-            <div class="container-scroll__scroll">
+            <!-- VAZ -->
+            {{!-- <div class="container-scroll__scroll" style="max-height: {{(48 * perPage) + 'px'}};"> --}}
+            <div class="container-scroll__scroll" style="max-height: {{stylePerPageText}};">
               <table class="report-people__table table table--striped table--short table--fix-col">
                 <thead>
                   <tr>
@@ -574,30 +581,30 @@
                         </span>
                       </td>
                       {{#if (equalstr pessoa.progressoAtividades.length '0')}}
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
                       {{else}}
-                      {{#each pessoa.progressoAtividades as |prog|}}
-                      {{#if (equalstr prog.percentFixed '100')}}
-                      <td class="color-success--dark bg-success--light"><span
-                          class="report-people__status">{{prog.percentFixed}}%</span></td>
-                      {{else if (equalstr prog.percentFixed '0')}}
-                      <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                      {{else}}
-                      <td class="color-warning--dark bg-warning--light"><span
-                          class="report-people__status">{{prog.percentFixed}}%</span></td>
-                      {{/if}}
-                      {{/each}}
+                        {{#each pessoa.progressoAtividades as |prog|}}
+                          {{#if (equalstr prog.percentFixed '100')}}
+                            <td class="color-success--dark bg-success--light"><span
+                                class="report-people__status">{{prog.percentFixed}}%</span></td>
+                          {{else if (equalstr prog.percentFixed '0')}}
+                            <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                          {{else}}
+                            <td class="color-warning--dark bg-warning--light"><span
+                                class="report-people__status">{{prog.percentFixed}}%</span></td>
+                          {{/if}}
+                        {{/each}}
                       {{/if}}
                     </tr>
                     {{!-- {{/if}} --}}

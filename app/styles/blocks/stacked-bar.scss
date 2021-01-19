@@ -1,4 +1,6 @@
 .stacked-bar {
+    $stacked-bar-height: .5rem;
+
     $this: &;
 
     display: flex;
@@ -11,14 +13,19 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        gap: $distance--xxs;
         height: .5rem;
         overflow: hidden;
         width: 100%;
 
-        > *:not(:first-child) {
-            flex: 1 0 auto;
-            margin-left: 3px;
+        > * {
+            min-width: $stacked-bar-height;
         }
+
+        // > *:not(:first-child) {
+        //     flex: 1 0 auto;
+        //     margin-left: 3px;
+        // }
 
     }
 
