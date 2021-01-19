@@ -330,7 +330,7 @@
                   checked=model.isAlsoResponsible
                   name="isAlsoResponsible"
                   type="checkbox"
-                  click=(action 'removeDependentes')
+                  click=(action 'removeDependentes' value='target')
                  }}
           <label class="checkbox__label" for="isAlsoResponsible">Sim, sou professor e responsável por aluno(s).</label>
         </div>
@@ -338,7 +338,7 @@
 
       {{#if model.isAlsoResponsible }}
 
-       {{addFirstDependent}}
+       {{!-- {{addFirstDependent}} --}}
         {{#each model.dependentes as |dep index| }}
           <section class="j-student-form-{{index}} flow-md">
               {{student-form
