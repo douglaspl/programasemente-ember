@@ -1,5 +1,4 @@
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
-  {{aula.hasContent}}
   <div class="media {{if (not aula.hasContent) 'media--card media--card--is-disabled' 'media--card'}}">
     <picture class="media__picture">
       <img class="media__thumb" src="{{aulaThumb}}" alt="{{aula.titulo}}"/>
