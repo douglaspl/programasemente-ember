@@ -11,15 +11,10 @@
 
         th,
         td {
-            flex-basis: 2rem;
 
-            &[class*="bg-"] {
-                color: $white;
-            }
-
-            &:not(:last-child) {
-                border-right: 4px solid transparentize($color: $white, $amount: .85);
-            }
+            // &:not(:last-child) {
+            //     border-right: 4px solid transparentize($color: $white, $amount: .85);
+            // }
 
         }
 
