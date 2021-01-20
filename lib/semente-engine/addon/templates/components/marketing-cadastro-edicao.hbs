@@ -1,3 +1,8 @@
+<button class="btn btn--link color-blue-navy-60" {{action "voltar"}}>
+    <span class="btn__icon icon-chevron-left"></span>
+    <span class="btn__label">Voltar</span>
+</button>
+
 <h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
 
 <div class="row">
@@ -32,44 +37,40 @@
 
             </div>
 
+            {{#if capa}}
+                <div class="flex flex-col flow-md">
+                    <h2 class="title-3">Capa</h2>
+                    {{if (base64 model.capa) model.capaName capa.name}}
+                    {{#if model.capa}}
+                        <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
+                        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+                    {{/if}}
+                </div>
+            {{/if}}
+
             <div class="flex flex-col flow-md">
                 <h2 class="title-3">Arquivos</h2>
-
-                {{#if model.arquivos}}
-                    {{#if capa}}
-                        <h1>Capa:</h1>
-                        <ul>
-                            <img src="{{capa.url}}" alt="{{capa.name}}">
-                        </ul>
-                    {{/if}}
                     
+                {{#if model.arquivos}}
                     <h1>Arquivo adicionado:</h1>
 
                     <ul class="list list--striped">
 
                         {{#each model.arquivos as |arquivoItem|}}
                             <li>
-                                <h2 class="sr-only">{{arquivoItem.tipo}}</h2>
                                 <div class="flex flex-row items-center justify-between gap-sm">
-                                    {{!-- {{#if (base64 arquivoItem.arquivo)}}
-                                        <span class="avatar avatar--lg avatar--is-square">
-                                            <object id="showfiles"
-                                                    data={{arquivoItem.thumb}}></object>
-                                        </span>
-                                    {{else}}
-                                        <span class="avatar avatar--lg avatar--bordered avatar--is-square">
-                                            <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
-                                            <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank" rel="nofollow noopener noreferrer">
-                                                <span class="btn__label">Abrir arquivo</span>
-                                            </a>
-                                        </span>
-                                    {{/if}} --}}
 
                                     <div class="flow-xxs flex flex-col">
                                         <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
                                         <span class="color-leaf-50">{{arquivoItem.name}}</span>
                                     </div>
-
+                                    {{#unless (base64 arquivoItem.url)}}
+                                        {{!-- <span class="avatar avatar--lg avatar--bordered avatar--is-square"> --}}
+                                        <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
+                                            <span class="btn__label">Abrir arquivo</span>
+                                        </a>
+                                        {{!-- </span> --}}
+                                    {{/unless}}
                                     <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
                                         <span class="btn__label">Remover</span>
                                     </button>
@@ -80,13 +81,26 @@
                     </ul>
                 {{/if}}
 
+                <label id="message-processing" class="form-group__label"></label>
                 <label class="btn btn--add-list-item">
                     <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
                     <span class="btn__icon icon-plus"></span>
                     <span class="btn__label">Adicionar Arquivo</span>
                 </label>
-
             </div>
+
+            {{#if (not model.capa)}}
+                <div class="flex flex-col flow-md">
+                    <h2 class="title-3">Capa</h2>
+                    <label class="form-group__label">Adicione uma capa para identificação do item de marketing.</label>
+                    <label id="message-processing-capa" class="form-group__label"></label>
+                    <label class="btn btn--add-list-item">
+                        <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                        <span class="btn__icon icon-plus"></span>
+                        <span class="btn__label">Adicionar Capa</span>
+                    </label> 
+                </div>
+            {{/if}}
 
             <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button>
 
@@ -96,41 +110,3 @@
     </div>
 </div>
 
-
-{{!-- <div class="row">
-    <label for="">ARQUIVOS</label>
-
-    {{#if model.arquivos}}
-
-        <h1>Arquivo adicionado:</h1>
-
-        {{#each model.arquivos as |arquivoItem|}}
-
-            {{arquivoItem.tipo}}{{arquivoItem.name}}
-
-
-            {{#if (base64 arquivoItem.arquivo)}}
-                <object id="showfiles" data={{arquivoItem.thumb}}></object>
-            {{else}}
-                <a class="btn btn--ghost btn--xxs" href={{arquivoItem.url}}>
-                    <img src="{{arquivoItem.thumb}}" alt="{{arquivoItem.name}}">
-                </a>
-            {{/if}}
-
-            <button type="button" class="btn" {{action "removeArquivo" arquivoItem}}>Remover</button>
-
-        {{/each}}
-
-    {{/if}}
-
-    <label class="btn btn--add-list-item">
-        <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
-        <span class="btn__icon icon-plus"></span>
-        <span class="btn__label">Adicionar Arquivo</span>
-    </label>
-
-</div>
-
-<button type="button" class="btn" {{action "saveItem" model}}>Cadastrar</button>
-
---}}
