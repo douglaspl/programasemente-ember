@@ -58,10 +58,9 @@
                 <div class="form-group">
                   <label class="form-group__label" for="turma_selector">Turma</label>
                   <div class="form-group__wrapper form-group__wrapper--select">
-                    <select id="turma_selector" class="form-group__input form-group__input--select"
-                      {{action 'filterTurmaAno' on='change'}}>
+                    <select id="turma_selector" class="form-group__input form-group__input--select" {{action 'filterTurmaAno' on='change'}}>
 
-                      <option value="0" selected>Escolha uma turma</option>
+                      <option value="0" selected>Todas as turmas</option>
                         {{#each inst_selected.turmas as |turma|}}
                           {{#if (equalstr turma.modulo.id curso_selected.id)}}
                             <option id="opt_{{turma.id}}" value={{turma.id}}>{{turma.name}}</option>
@@ -175,9 +174,10 @@
         {{#if inst_filtered}}
           <div class="form-group">
             <label class="form-group__label">Turma</label>
+
             <div class="form-group__wrapper form-group__wrapper--select">
               <select id="turma_selector_det" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
-                <option value="0" selected>Escolha uma turma</option>
+                <option value="0" selected>Todas as turmas</option>
                 {{#each inst_filtered.turmas as |turma|}}
                   <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
                 {{/each}}
@@ -191,17 +191,17 @@
 
               <div class="form-group__wrapper form-group__wrapper--select">
                 <select id="turma_selector_det" class="form-group__input form-group__input--select" disabled>
-                  <option value="0" selected>Escolha uma turma</option>
+                  <option value="0" selected>Todas as turmas</option>
                 </select>
               </div>
             </div>
           {{else}}
             <div class="form-group">
               <label class="form-group__label">Turma</label>
+
               <div class="form-group__wrapper form-group__wrapper--select">
-                <select id="turma_selector_det" class="form-group__input form-group__input--select"
-                  {{action 'filterTurma' on='change'}}>
-                  <option value="0" selected>Escolha uma turma</option>
+                <select id="turma_selector_det" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
+                  <option value="0" selected>Todas as turmas</option>
                   {{#each inst_selected.turmas as |turma|}}
                     <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
                   {{/each}}
