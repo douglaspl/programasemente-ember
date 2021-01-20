@@ -31,9 +31,11 @@
     <div class="flex flex-row">
 
       {{#each item.arquivos as |arquivo|}}
-        <button class="btn btn--xxs btn--ghost m-right--xxs">
-          <span class="btn__label">{{arquivo.tipo}}</span>
-        </button>
+        <a href={{arquivo.url}} download={{arquivo.name}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
+          <button class="btn btn--xxs btn--ghost m-right--xxs">
+            <span class="btn__label">{{arquivo.tipo}}</span>
+          </button>
+        </a>
       {{/each}}
 
     </div>
