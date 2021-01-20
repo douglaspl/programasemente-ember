@@ -274,11 +274,6 @@
 
       }
 
-      td {
-
-
-      }
-
     }
 
     td {
@@ -290,7 +285,7 @@
       }
 
       &:first-child {
-        border-right: 1px solid $gray-10;
+        border-right: 2px solid $white;
         box-shadow: 4px 0 16px transparentize($black, .9);
       }
 

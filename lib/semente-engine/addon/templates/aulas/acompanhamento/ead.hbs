@@ -129,6 +129,16 @@
           {{/each}}
         </div> --}}
 
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!-- checkbox para select -->
         <div class="form-group">
           <span class="form-group__label">Ano</span>
           <div class="flex flex-col">
@@ -142,7 +152,15 @@
             {{/each}}
           </div>
         </div>
-
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
+        <!--- VAZ -->
 
 
 
@@ -292,24 +310,24 @@
           {{#if filtered_turma}}
             <hgroup>
               <h1 class="sr-only">Lista de aulas do {{curso_selected.name}}</h1>
-              <h2 class="title-4">{{curso_selected.name}}</h2>
+
+              <h2 class="title-4">
+                {{curso_selected.name}}
+                <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(
+
+                  <span class="inline-flex m-right--xxs">{{#each inst_selected.acompanhamentosCursoInstituicao as |acomp|}}
+                    {{#if (equalstr acomp.modulo.id curso_selected.id)}}
+                      {{if acomp.matriculas acomp.matriculas '0'}}
+                    {{/if}}
+                  {{/each}}</span>
+
+                  matrículas
+                )</span>
+              </h2>
             </hgroup>
 
             <div class="report-course">
-              <div class="report-course__header">
-                <div class="report-course__title-block">
-                  <img class="report-course__img border-1--gray-5" src="{{curso_selected.coverImage}}">
-                  <h2 class="title-2">{{curso_selected.name}}</h2>
-                </div>
-
-                <div class="report-course__data data data--shadowed">
-                  lllllllkghksdjhg
-                  <span class="data__value">{{if acomp.matriculas acomp.matriculas '0'}}</span>
-                  <span class="data__value">{{alunos_turma}}</span>
-                  <span class="data__label">matrículas</span>
-                </div>
-              </div>
-              <ul class="report-course__body report-class" id="acomp_classes">
+              <ul class="report-class flow-md" id="acomp_classes">
                 {{#each turma_selected.acompanhamentosatividades as |acomp|}}
                 <li class="report-class__two-col">
                   <div class="flow-xxs flex flex-col justify-center items-start">
@@ -381,6 +399,7 @@
                 )</span>
               </h2>
             </hgroup>
+
             <div class="report-course">
               <ul class="report-class flow-md" id="acomp_classes">
                 {{#each curso_selected.atividades as |atividade|}}
@@ -451,6 +470,29 @@
       {{#if (equalstr selectedContent 'd')}}
 
         {{#unless hasChildren}}
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <hgroup>
+            <h1 class="sr-only">Lista de aulas de ##### AQUI ENTRE ANO ESCOLHIDO e TURMA ESCOLHIDA/TODAS AS TURMAS #####
+            </h1>
+
+            <h2 class="title-4">
+              <span>##### AQUI ENTRE ANO ESCOLHIDO e TURMA ESCOLHIDA/TODAS AS TURMAS #####</span>
+              <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>matrículas)</span>
+            </h2>
+          </hgroup>
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
+          <!--- VAZ -->
 
           <div class="flex flex-row items-end justify-between">
 
