@@ -89,19 +89,6 @@
 
           {{/if}}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       {{#if (equalstr selectedContent 'd')}}
         {{#if hasChildren}}
           <div class="form-group">
@@ -140,16 +127,13 @@
         <!-- checkbox para select -->
         <div class="form-group">
           <span class="form-group__label">Ano</span>
-          <div class="flex flex-col">
-            {{#each inst_selected.modulos as |mod index|}}
-              <span class="checkbox">
-                <input class="checkbox__input" id="ano_{{mod.id}}" name="year" type="checkbox" value="year{{mod.id}}"
-                  {{action 'filterano' mod.id on='change'}}>
-                <label class="checkbox__label" for="ano_{{mod.id}}">{{mod.name}}</label>
-                {{!-- <label class="checkbox__label" for="ano_{{mod.id}}">{{visible-index index}}º ano</label><!-- {{mod.name}}--> --}}
-              </span>
-            {{/each}}
-          </div>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select id="mod_selector_det" class="form-group__input form-group__input--select" {{action 'filterano' on='change'}}>
+                {{#each inst_selected.modulos as |mod|}}
+                  <option id="ano_{{mod.id}}" value={{mod.id}}>{{mod.name}}</option>
+                {{/each}}
+              </select>
+            </div>
         </div>
         <!--- VAZ -->
         <!--- VAZ -->
@@ -160,17 +144,6 @@
         <!--- VAZ -->
         <!--- VAZ -->
         <!--- VAZ -->
-
-
-
-
-
-
-
-
-
-
-
         {{#if inst_filtered}}
           <div class="form-group">
             <label class="form-group__label">Turma</label>
@@ -179,7 +152,11 @@
               <select id="turma_selector_det" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
                 <option value="0" selected>Todas as turmas</option>
                 {{#each inst_filtered.turmas as |turma|}}
-                  <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
+                  {{#if (equalstr turma.modulo.id anos)}}
+                    <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: block;">{{turma.name}}</option>
+                  {{else}}
+                    <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
+                  {{/if}}
                 {{/each}}
               </select>
             </div>
@@ -203,7 +180,11 @@
                 <select id="turma_selector_det" class="form-group__input form-group__input--select" {{action 'filterTurma' on='change'}}>
                   <option value="0" selected>Todas as turmas</option>
                   {{#each inst_selected.turmas as |turma|}}
-                    <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
+                    {{#if (equalstr turma.modulo.id anos)}}
+                      <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: block;">{{turma.name}}</option>
+                    {{else}}
+                      <option id="opt_tur_{{turma.id}}" value={{turma.id}} style="display: none;">{{turma.name}}</option>
+                    {{/if}}
                   {{/each}}
                 </select>
               </div>
@@ -479,11 +460,10 @@
           <!--- VAZ -->
           <!--- VAZ -->
           <hgroup>
-            <h1 class="sr-only">Lista de aulas de ##### AQUI ENTRE ANO ESCOLHIDO e TURMA ESCOLHIDA/TODAS AS TURMAS #####
+            <h1 class="sr-only">Lista de aulas do {{selectedModuloName}} - {{selectedTurmaName}}
             </h1>
-
             <h2 class="title-4">
-              <span>##### AQUI ENTRE ANO ESCOLHIDO e TURMA ESCOLHIDA/TODAS AS TURMAS #####</span>
+              <span>{{selectedModuloName}} - {{selectedTurmaName}}</span>
               <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>matrículas)</span>
             </h2>
           </hgroup>

@@ -124,7 +124,7 @@
             {{#each livro as |l|}}
               <li>
                 <a class="tabs__tab" href="{{l.url}}" target="_blank" rel="nofollow noopener noreferrer">
-                  <span>Livro {{l.plataformaAno.name}} | {{l.perfil}}</span>
+                  <span>Livro {{l.plataformaAno.name}} | {{#if (equalstr l.perfil 'instrutor')}}Professor{{else}}{{l.perfil}}{{/if}}</span>
                 </a>
               </li>
             {{/each}}
