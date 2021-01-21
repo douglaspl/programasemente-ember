@@ -14,9 +14,6 @@
     
     {{#if conteudo.path}}
         {{conteudo.filename}}
-        {{#if (equalstr conteudo.tipo 'Imagem')}}
-            <img src="{{conteudo.arquivoUrl}}" id="output" alt="{{conteudo.filename}}">
-        {{/if}}
         <button type="button" class="btn" {{action "removePath"}}>Remover</button>
     {{/if}}
 
@@ -89,16 +86,21 @@
         {{/if}}
     </div>
 </div>
-
-{{#if (equalstr inputCapa "true")}}
+{{!-- 
+{{#if tnName}}
     <h1>Capa</h1>
-    <label for="">Adicione uma capa para que os alunos identifiquem o arquivo</label>
+    {{if (equalstr conteudo.tipo "Imagem") conteudo.path tnName}}
+    <img src={{if (equalstr conteudo.tipo "Imagem") conteudo.path conteudo.thumbnail}} alt="{{conteudo.thumbnailname}}">
+    <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+{{/if}} --}}
+
+<h1>Capa</h1>
+<label for="">Adicione uma capa para que os alunos identifiquem o arquivo.</label>
+{{if (equalstr conteudo.tipo "Imagem") conteudo.filename tnName}}
+<img src={{if (equalstr conteudo.tipo "Imagem") conteudo.path conteudo.thumbnail}} alt="{{conteudo.thumbnailname}}">
+{{#if (equalstr inputCapa "true")}}
     <input multiple="false" id="file-selector-capa" name='file' type="file" value=''
     placeholder='Capa' accept="image/png,image/jpeg"
     onchange={{action 'UploadCapa'}} /> <label id="message-processing-capa"></label>
-    {{#if conteudo.thumbnail}}
-        {{if (base64 conteudo.path) conteudo.thumbnailname tnName}}
-        <img src="{{conteudo.thumbnail}}" alt="{{conteudo.thumbnailname}}">
-        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
-    {{/if}}
+    <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
 {{/if}}
