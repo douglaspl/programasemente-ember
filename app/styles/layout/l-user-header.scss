@@ -12,20 +12,27 @@
     margin-bottom: $distance--lg;
     margin-top: -$main-top-padding--sm;
     padding: $distance--md $distance--lg;
+    padding: clamp(#{$distance--md}, 4vh, #{$distance--xl}) $distance--lg;
   }
 
   @include media('>md') {
     margin-top: -$main-top-padding--md;
-    padding: $distance--lg $distance--xl;
+    // padding: $distance--lg $distance--xl;
+    padding-left: $distance--xl;
+    padding-right: $distance--xl;
   }
 
   @include media('>lg') {
     margin-top: -$main-top-padding--lg;
-    padding: $distance--xl $distance--xxl;
+    // padding: $distance--xl $distance--xxl;
+    padding-left: $distance--xxl;
+    padding-right: $distance--xxl;
   }
 
   @include media('>xl') {
-    padding: $distance--xl $distance--xxxl;
+    // padding: $distance--xl $distance--xxxl;
+    padding-left: $distance--xxxl;
+    padding-right: $distance--xxxl;
   }
 
   // Themmes

@@ -1,18 +1,17 @@
 .l-dots-between {
   $this: &;
 
-  $l-dots-between-gap: $distance--sm;
+  $l-dots-between-gap: $distance--xs;
   $l-dots-between-gap--lg: $distance--lg;
   $l-dots-between-dot-color: $green-30;
   $l-dots-between-dot-size: .14rem;
 
   display: flex;
   flex-direction: column;
-  gap: $l-dots-between-gap;
+  gap: clamp(#{$l-dots-between-gap}, 2vw, #{$l-dots-between-gap--lg});
 
   @include media('>sm') {
     flex-direction: row;
-    gap: $l-dots-between-gap--lg;
   }
 
   &::before {

@@ -73,6 +73,14 @@
     &--lg {
         height: $avatar--lg;
         width: $avatar--lg;
+
+        @supports (width: min(1px, 1vw)) {
+            $size: clamp(#{$avatar--md}, 4vw, #{$avatar--lg});
+
+            height: $size;
+            width: $size;
+        }
+
     }
 
     &--xl {

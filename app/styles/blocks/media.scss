@@ -5,30 +5,31 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: $distance--md;
+  gap: min(#{$distance--sm}, 1.5vw);
 
   &__picture {
     display: flex;
-    flex: 0 0 8rem;
+    flex: 0 0 auto;
     flex-direction: row;
+    width: max(5vw, 3rem);
   }
 
   &__thumb {
-    $size: $avatar--md;
+    // $size: $avatar--md;
 
     border-radius: $radius--md;
     flex: 1;
     // height: $size;
     max-width: 100%;
     object-fit: contain;
-    width: $size;
+    // width: $size;
 
-    @include media('>lg') {
-      $size: $avatar--xl;
+    // @include media('>lg') {
+    //   $size: $avatar--xl;
 
-      // height: $size;
-      width: $size;
-    }
+    //   // height: $size;
+    //   width: $size;
+    // }
 
     svg {
       color: $green-40;
@@ -36,18 +37,18 @@
       width: $avatar--sm;
     }
 
-    &--16-9 {
-      $size: $avatar--md;
+    // &--16-9 {
+    //   $size: $avatar--md;
 
-      height: (($size * 9) / 16);
+    //   height: (($size * 9) / 16);
 
-      @include media('>lg') {
-        $size: $avatar--xl;
+    //   @include media('>lg') {
+    //     $size: $avatar--xl;
 
-        height: (($size * 9) / 16);
-      }
+    //     height: (($size * 9) / 16);
+    //   }
 
-    }
+    // }
 
   }
 
@@ -56,6 +57,11 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    [class*='--card'] & {
+      flex: 1 0 15rem;
+    }
+
   }
 
   &__title {

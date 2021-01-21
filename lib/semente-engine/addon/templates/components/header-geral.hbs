@@ -13,7 +13,7 @@
       <section>
         <h1 class="scr-only">Informações do usuário</h1>
 
-        <div class="flow-xs">
+        <div class="flow-xxs">
           <div class="flex flex-row flex-wrap items-baseline gap-xs">
             <span class="title-1">{{firstnameoremailpart pessoa.name}}</span>
             {{#if (equalstr parentController.toggleRole 'aluno')}}
@@ -22,7 +22,7 @@
               </button>
             {{/if}}
           </div>
-          <span class="l-user-header__role">
+          <div class="l-user-header__role">
             {{#if (equalstr pessoa.role 'aluno')}}
               <span>{{pessoa.plataformaAnos.firstObject.segmento.titulo}} - {{pessoa.plataformaAnos.firstObject.name}}</span>
             {{else if (equalstr pessoa.role 'coordenador')}}
@@ -34,7 +34,7 @@
             {{else if (equalstr parentController.toggleRole 'instrutor')}}
 
               {{#if isAplicador}}
-               
+
                 <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} </span>
 
                 {{#if (isbigger parentController.segmentosObjects.length "1")}}
@@ -68,7 +68,7 @@
             {{/if}}
 
 
-          </span>
+          </div>
 
           <!-- veta quem não é prof -->
           {{#if (equalstr pessoa.role 'instrutor')}}
@@ -112,7 +112,7 @@
             {{/link-to}}
           </li>
 
-          {{#if (equalstr parentController.toggleRole 'instrutor')}} 
+          {{#if (equalstr parentController.toggleRole 'instrutor')}}
             {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
               <li>
                 <span>Acompanhamento</span>
@@ -146,7 +146,7 @@
             {{/link-to}}
           {{/if}}
 
-          
+
 
 
         </ul>
