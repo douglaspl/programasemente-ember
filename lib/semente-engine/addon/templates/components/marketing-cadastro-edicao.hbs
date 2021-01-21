@@ -4,109 +4,125 @@
 </button>
 
 <h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
+<div class="flow-xxl">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
 
-<div class="row">
-    <div class="col-xs-12 col-md-6">
+            <div class="flow-xxl">
 
-        <div class="flow-xxl">
+                <div class="flex flex-col flow-md form-group__container">
+                    <h2 class="title-3">Informações</h2>
+                    <div class="form-group__container">
+                        <div class="form-group w100">
+                            <label class="form-group__label">Áreas</label>
+                            <div class="form-group__wrapper form-group__wrapper--select">
+                                <select class="form-group__input form-group__input--select j-validate" name="area" id="area{{model.id}}" onchange={{action 'refreshSelectedArea' value='target.value'}}>
+                                    <option value="" selected="selected">---</option>
+                                    {{#each areas as |area|}}
+                                        <option value="{{area.id}}" selected={{if (equalstr area.id model.area.id) "selected"}}>{{area.name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite">Este campo é obrigatório</span>
+                    </div>
+                    <div class="form-group__container">
+                        <div class="form-group w100">
+                            <label class="form-group__label">Nome do item</label>
+                            {{input class="form-group__input j-validate" name='' value=model.titulo placeholder='Nome do item' key-down=(action 'removeErrorTag')}}
+                        </div>
+                        <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite">Este campo é obrigatório</span>
+                    </div>
+                
 
-            <div class="flex flex-col flow-md">
-                <h2 class="title-3">Informações</h2>
-
-                <div class="form-group">
-                    <label class="form-group__label">Nome do item</label>
-                    {{input class="form-group__input" name='' value=model.titulo placeholder='Nome do item'}}
-                </div>
-
-                <div class="form-group">
-                    <label class="form-group__label">Descrição</label>
-                    {{textarea class="form-group__input" value=model.descricao placeholder='Descrição do item' rows="5"}}
-                </div>
-
-                <div class="form-group">
-                    <label class="form-group__label">Áreas</label>
-                    <div class="form-group__wrapper form-group__wrapper--select">
-                        <select class="form-group__input form-group__input--select" name="area" id="area{{model.id}}" onchange={{action 'refreshSelectedArea' value='target.value'}}>
-                            <option value="" selected="selected">---</option>
-                            {{#each areas as |area|}}
-                                <option value="{{area.id}}" selected={{if (equalstr area.id model.area.id) "selected"}}>{{area.name}}</option>
-                            {{/each}}
-                        </select>
+                    <div class="form-group">
+                        <label class="form-group__label">Descrição</label>
+                        {{textarea class="form-group__input" value=model.descricao placeholder='Descrição do item' rows="5"}}
                     </div>
                 </div>
+                <div class="flex flex-col flow-md {{if missingFile 'blink blink--fast'}} ">
+                    <div>
+                        <h2 class="title-3">Arquivos</h2>
+                        <p>Adicione os diferentes formatos de arquivo para este item.</p>
+                    </div>
+                        
+                    {{#if model.arquivos}}
+                        <ul class="list list--striped">
+                            {{#each model.arquivos as |arquivoItem|}}
+                                <li>
+                                    <div class="flex flex-row items-center justify-between gap-sm">
 
-            </div>
+                                        <div class="flow-xxs flex flex-col">
+                                            <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
+                                            <span class="color-leaf-50">{{arquivoItem.name}}</span>
+                                        </div>
+                                        {{#unless (base64 arquivoItem.url)}}
+                                            {{!-- <span class="avatar avatar--lg avatar--bordered avatar--is-square"> --}}
+                                            <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
+                                                <span class="btn__label">Abrir arquivo</span>
+                                            </a>
+                                            {{!-- </span> --}}
+                                        {{/unless}}
+                                        <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
+                                            <span class="btn__label">Remover</span>
+                                        </button>
 
-            {{#if capa}}
-                <div class="flex flex-col flow-md">
-                    <h2 class="title-3">Capa</h2>
-                    {{if (base64 model.capa) model.capaName capa.name}}
-                    {{#if model.capa}}
-                        <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
-                        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
                     {{/if}}
+
+                    <p id="message-processing"></p>
+                    <label class="btn btn--add-list-item">
+                        <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
+                        <span class="btn__icon icon-plus"></span>
+                        <span class="btn__label">Adicionar Arquivo</span>
+                    </label>
                 </div>
-            {{/if}}
 
-            <div class="flex flex-col flow-md">
-                <h2 class="title-3">Arquivos</h2>
-                    
-                {{#if model.arquivos}}
-                    <h1>Arquivo adicionado:</h1>
-
-                    <ul class="list list--striped">
-
-                        {{#each model.arquivos as |arquivoItem|}}
+               
+                <div class="flex flex-col flow-md {{if missingCover 'blink blink--fast'}}">
+                    <div>
+                        <h2 class="title-3">Capa</h2>
+                        <p>Adicione uma capa para identificação do item de marketing.</p>
+                    </div>
+                    {{#if capa}}
+                        <ul class="list list--striped">
                             <li>
                                 <div class="flex flex-row items-center justify-between gap-sm">
-
                                     <div class="flow-xxs flex flex-col">
-                                        <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
-                                        <span class="color-leaf-50">{{arquivoItem.name}}</span>
+                                        <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
+                                        <span class="color-leaf-50">{{if (base64 model.capa) model.capaName capa.name}}</span>
                                     </div>
-                                    {{#unless (base64 arquivoItem.url)}}
-                                        {{!-- <span class="avatar avatar--lg avatar--bordered avatar--is-square"> --}}
-                                        <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
-                                            <span class="btn__label">Abrir arquivo</span>
-                                        </a>
-                                        {{!-- </span> --}}
-                                    {{/unless}}
-                                    <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
-                                        <span class="btn__label">Remover</span>
+                                    <button class="btn btn--text color-error-40" type="button" {{action "removePathCapa"}}>
+                                    <span class="btn__label">Remover</span>
                                     </button>
-
                                 </div>
                             </li>
-                        {{/each}}
-                    </ul>
-                {{/if}}
-
-                <label id="message-processing" class="form-group__label"></label>
-                <label class="btn btn--add-list-item">
-                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
-                    <span class="btn__icon icon-plus"></span>
-                    <span class="btn__label">Adicionar Arquivo</span>
-                </label>
-            </div>
-
-            {{#if (not model.capa)}}
-                <div class="flex flex-col flow-md">
-                    <h2 class="title-3">Capa</h2>
-                    <label class="form-group__label">Adicione uma capa para identificação do item de marketing.</label>
-                    <label id="message-processing-capa" class="form-group__label"></label>
-                    <label class="btn btn--add-list-item">
-                        <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
-                        <span class="btn__icon icon-plus"></span>
-                        <span class="btn__label">Adicionar Capa</span>
-                    </label> 
+                        </ul>
+                    {{/if}}
+                    {{#if (not model.capa)}}
+                            <p id="message-processing-capa"></p>
+                            <label class="btn btn--add-list-item">
+                                <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                                <span class="btn__icon icon-plus"></span>
+                                <span class="btn__label">Adicionar Capa</span>
+                            </label> 
+                    {{/if}}
                 </div>
-            {{/if}}
-
-            <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button>
-
+            </div>
         </div>
-
-
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="flex flex-row">
+                    <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button>
+                   <div class="child-v--center flex-1">
+                        <p  class="alert alert--form alert--sm alert--error alert--has-icon animated d250 fadeIn {{if errorMsg 'alert--is-show'}} m-left--sm"
+                        id="error_form">{{errorMsg}}</p>
+                   </div>
+            </div>
+        </div>
     </div>
 </div>
-
