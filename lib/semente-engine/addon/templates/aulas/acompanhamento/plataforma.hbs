@@ -97,7 +97,7 @@
                     {{!-- <th>Videos Vistos de preparação de aula</th>
                     <th>Videos de alunos reproduzidos</th> --}}
                     <th class="ta-c">Aulas aplicadas</th>
-                    <th>Acessos</th>
+                    <th class="p-h--xs">Acessos</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -118,8 +118,20 @@
                         {{!-- <td>{{p.nrVideosPreparacao}}</td>
                         <td>{{p.nrVideosAlunos}}</td> --}}
                         <td class="ta-c">{{p.nrAplicacaoPlataformaAulas}}</td>
-                        <td>{{p.lastAccess}}
-                            {{p.acessos}}</td>
+                        <td class="p-h--xs">
+                            {{#if p.lastAccess}}
+                                <span class="flex flex-row items-center justify-between">
+                                    <span class="title-aux">Último acesso</span>
+                                    <span class="m-left--xxs">{{p.lastAccess}}</span>
+                                </span>
+                            {{/if}}
+                            {{#if p.acessos}}
+                                <span class="flex flex-row items-center justify-between">
+                                    <span class="title-aux">Total acessos</span>
+                                    <span class="m-left--xxs">{{p.acessos}}</span>
+                                </span>
+                            {{/if}}
+                        </td>
                     </tr>
                     {{/if}}
                 {{/each}}
