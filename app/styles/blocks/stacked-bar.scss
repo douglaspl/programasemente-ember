@@ -1,5 +1,6 @@
 .stacked-bar {
     $stacked-bar-height: .5rem;
+    $stacked-bar-legend-square: .5rem;
 
     $this: &;
 
@@ -14,18 +15,13 @@
         flex-direction: row;
         flex-wrap: nowrap;
         gap: $distance--xxs;
-        height: .5rem;
+        height: $stacked-bar-height;
         overflow: hidden;
         width: 100%;
 
         > * {
             min-width: $stacked-bar-height;
         }
-
-        // > *:not(:first-child) {
-        //     flex: 1 0 auto;
-        //     margin-left: 3px;
-        // }
 
     }
 
@@ -60,7 +56,7 @@
     }
 
     &__color-element {
-        $size: .5em;
+        $size: $stacked-bar-legend-square;
 
         border-radius: $radius;
         box-shadow: $shadow-1;
@@ -72,9 +68,9 @@
     }
 
     &__value {
-        &--1 { background-color: $green-70; }
-        &--2 { background-color: $green-50; }
-        &--3 { background-color: $green-10; }
+        &--1 { background-color: $info-60; }
+        &--2 { background-color: $info-40; }
+        &--3 { background-color: $info-20; }
     }
 
 }

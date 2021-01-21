@@ -89,86 +89,60 @@
             <h2 class="title-4">{{if selectedPlataformaAno.name selectedPlataformaAno.name 'Todas as séries'}}</h2>
         </hgroup>
         {{#if (equalstr selectedFilteredRole 'professores')}}
-            <table>
+            <table class="table table--striped">
                 <thead>
                 <tr>
-                    <th>
-                    Nome
-                    </th>
-                    <th>
-                    Videos Vistos de preparação de aula
-                    </th>
-                    <th>
-                    Videos de alunos reproduzidos
-                    </th>
-                    <th>
-                    Aulas marcadas como aplicadas
-                    </th>
-                    <th>
-                    acessos
-                    </th>
+                    <th>Nome</th>
+                    <th>Videos</th>
+                    {{!-- <th>Videos Vistos de preparação de aula</th>
+                    <th>Videos de alunos reproduzidos</th> --}}
+                    <th class="ta-c">Aulas aplicadas</th>
+                    <th>Acessos</th>
                 </tr>
                 </thead>
                 <tbody>
                 {{#each professores as |p|}}
                     {{#if (containStr subStr = this.search mainStr = p.name)}}
                     <tr>
-                        <td>
-                        {{p.name}}
+                        <td>{{p.name}}</td>
+                        <td class="flow-xs">
+                            <span class="flex flex-row items-center justify-between">
+                                <span class="title-aux">Preparação de aula</span>
+                                <span class="m-left--xxs">{{p.nrVideosPreparacao}}</span>
+                            </span>
+                            <span class="flex flex-row items-center justify-between">
+                                <span class="title-aux">De alunos</span>
+                                <span class="m-left--xxs">{{p.nrVideosAlunos}}</span>
+                            </span>
                         </td>
-                        <td>
-                        {{p.nrVideosPreparacao}}
-                        </td>
-                        <td>
-                        {{p.nrVideosAlunos}}
-                        </td>
-                        <td>
-                        {{p.nrAplicacaoPlataformaAulas}}
-                        </td>
-                        <td>
-                        {{p.lastAccess}}
-                        {{p.acessos}}
-                        </td>
+                        {{!-- <td>{{p.nrVideosPreparacao}}</td>
+                        <td>{{p.nrVideosAlunos}}</td> --}}
+                        <td class="ta-c">{{p.nrAplicacaoPlataformaAulas}}</td>
+                        <td>{{p.lastAccess}}
+                            {{p.acessos}}</td>
                     </tr>
                     {{/if}}
                 {{/each}}
                 </tbody>
             </table>
         {{else}}
-            <table>
+            <table class="table table--striped">
                 <thead>
                 <tr>
-                    <th>
-                    Nome
-                    </th>
-                    <th>
-                    Videos assistidos
-                    </th>
-                    <th>
-                    acessos
-                    </th>
-                    <th>
-                    último acesso
-                    </th>
+                    <th>Nome</th>
+                    <th>Videos assistidos</th>
+                    <th>acessos</th>
+                    <th>último acesso</th>
                 </tr>
                 </thead>
                 <tbody>
                 {{#each alunos as |a|}}
                     {{#if (containStr subStr = this.search mainStr = a.name)}}
                     <tr>
-                        <td>
-                        {{a.name}}
-                        </td>
-                        <td>
-                        {{a.nrVideosAlunos}}
-                        </td>
-                        <td>
-                        {{a.acessos}}
-                        </td>
-
-                        <td>
-                        {{a.lastAccess}}
-                        </td>
+                        <td>{{a.name}}</td>
+                        <td>{{a.nrVideosAlunos}}</td>
+                        <td>{{a.acessos}}</td>
+                        <td>{{a.lastAccess}}</td>
                     </tr>
                     {{/if}}
                 {{/each}}
