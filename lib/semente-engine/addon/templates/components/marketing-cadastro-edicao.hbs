@@ -1,7 +1,9 @@
-<button class="btn btn--link color-blue-navy-60" {{action "voltar"}}>
+{{#link-to 'marketing.index'}}
+<button class="btn btn--link color-blue-navy-60">
     <span class="btn__icon icon-chevron-left"></span>
     <span class="btn__label">Voltar</span>
 </button>
+{{/link-to}}
 
 <h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
 <div class="flow-xxl">
@@ -73,7 +75,15 @@
                         </ul>
                     {{/if}}
 
-                    <p id="message-processing"></p>
+                    {{#if uploadingFile}}
+                            <div class="flex justify-center" id="message-processing-capa">
+                                <img style="width: 10%;" src="/assets/img/carregando.gif">
+                            </div>
+                    {{/if}}
+                    {{#if errorFile}}
+                        <p>O arquivo precisa ter no máximo 6Mb</p>
+                    {{/if}}
+
                     <label class="btn btn--add-list-item">
                         <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
                         <span class="btn__icon icon-plus"></span>
@@ -103,12 +113,17 @@
                         </ul>
                     {{/if}}
                     {{#if (not model.capa)}}
-                            <p id="message-processing-capa"></p>
-                            <label class="btn btn--add-list-item">
-                                <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
-                                <span class="btn__icon icon-plus"></span>
-                                <span class="btn__label">Adicionar Capa</span>
-                            </label> 
+                        {{#if showProcessing}}
+                            <div class="flex justify-center" id="message-processing-capa">
+                                <img style="width: 10%;" src="/assets/img/carregando.gif">
+                            </div>
+                        {{else}}
+                        <label class="btn btn--add-list-item">
+                            <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                            <span class="btn__icon icon-plus"></span>
+                            <span class="btn__label">Adicionar Capa</span>
+                        </label> 
+                        {{/if}}
                     {{/if}}
                 </div>
             </div>
