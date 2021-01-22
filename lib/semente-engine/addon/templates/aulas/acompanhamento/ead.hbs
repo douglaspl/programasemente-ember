@@ -302,7 +302,7 @@
                     {{/if}}
                   {{/each}}</span>
 
-                  matrículas
+                  pessoas
                 )</span>
               </h2>
             </hgroup>
@@ -376,7 +376,7 @@
                     {{/if}}
                   {{/each}}</span>
 
-                  matrículas
+                  pessoas
                 )</span>
               </h2>
             </hgroup>
@@ -464,7 +464,7 @@
             </h1>
             <h2 class="title-4">
               <span>{{selectedModuloName}} - {{selectedTurmaName}}</span>
-              <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>matrículas)</span>
+              <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>pessoas)</span>
             </h2>
           </hgroup>
           <!--- VAZ -->
@@ -603,27 +603,27 @@
                         </span>
                       </td>
                       {{#if (equalstr pessoa.progressoAtividades.length '0')}}
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
-                        <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
+                        <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
                       {{else}}
                         {{#each pessoa.progressoAtividades as |prog|}}
                           {{#if (equalstr prog.percentFixed '100')}}
-                            <td class="color-success--dark bg-success--light"><span
+                            <td class="color-success--dark bg-success-0"><span
                                 class="report-people__status">{{prog.percentFixed}}%</span></td>
                           {{else if (equalstr prog.percentFixed '0')}}
-                            <td class="color-error--dark bg-error--light"><span class="report-people__status">-</span></td>
+                            <td class="color-error--dark bg-error-0"><span class="report-people__status">-</span></td>
                           {{else}}
-                            <td class="color-warning--dark bg-warning--light"><span
+                            <td class="color-warning--dark bg-warning-0"><span
                                 class="report-people__status">{{prog.percentFixed}}%</span></td>
                           {{/if}}
                         {{/each}}
