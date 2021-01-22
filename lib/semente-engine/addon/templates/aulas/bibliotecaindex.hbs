@@ -56,7 +56,7 @@
         <h4 class="title-4"><span class="fw--3">Tema:</span> {{selectedTema}}</h4>
       </hgroup>
 
-      <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
+      <ul id="card-list-{{selectedDependente.id}}" class="list list--striped flow-md animated slow {{if noCards 'd--none'}}">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr subStr = search mainStr = conteudo.titulo)}}
             <li>
