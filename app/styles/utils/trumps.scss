@@ -60,8 +60,14 @@
         z-index: 1;
     }
 
+    // Theme
     &--warning::before {
         animation-name: blink--warning;
+    }
+
+    // Speed
+    &--fast::before {
+        animation-duration: 1s;
     }
 }
 
@@ -95,6 +101,14 @@
 .tt-u { text-transform: uppercase; }
 .ws-i { white-space: initial; }
 .w100 { width: 100%; }
+.child-v--center { 
+    position: relative;
+    > * {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+} 
 
 .scr-only {
     height: 1px;
