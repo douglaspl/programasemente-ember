@@ -23,7 +23,7 @@
   <div class="l-dots-between">
     <header class="l-dots-between__side">
         <form autocomplete="off" class="flex flex-col flow-md">
-            {{#if isAdmin }}
+            {{#if isAdmin}}
                 <div class="two-col-wrap">
                     <button class="btn btn--as-filter {{if (equalstr selectedFilteredRole "professores") 'btn--is-active'}}" {{action 'refreshSelectedFilteredRole' "professores"}} id="professores" type="button">
                     <span class="btn__label">Professores</span>
