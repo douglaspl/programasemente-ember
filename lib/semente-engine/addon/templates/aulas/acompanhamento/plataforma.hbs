@@ -23,7 +23,7 @@
   <div class="l-dots-between">
     <header class="l-dots-between__side">
         <form autocomplete="off" class="flex flex-col flow-md">
-            {{#if isAdmin }}
+            {{#if isAdmin}}
                 <div class="two-col-wrap">
                     <button class="btn btn--as-filter {{if (equalstr selectedFilteredRole "professores") 'btn--is-active'}}" {{action 'refreshSelectedFilteredRole' "professores"}} id="professores" type="button">
                     <span class="btn__label">Professores</span>
@@ -91,46 +91,49 @@
         {{#if (equalstr selectedFilteredRole 'professores')}}
             <table class="table table--striped">
                 <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Videos</th>
-                    {{!-- <th>Videos Vistos de preparação de aula</th>
-                    <th>Videos de alunos reproduzidos</th> --}}
-                    <th class="ta-c">Aulas aplicadas</th>
-                    <th class="p-h--xs">Acessos</th>
-                </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Videos</th>
+                        <th class="ta-c">Aulas aplicadas</th>
+                        <th class="p-h--xs">Acessos</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {{#each professores as |p|}}
                     {{#if (containStr subStr = this.search mainStr = p.name)}}
                     <tr>
-                        <td>{{p.name}}</td>
-                        <td class="flow-xs">
-                            <span class="flex flex-row items-center justify-between">
-                                <span class="title-aux">Preparação de aula</span>
-                                <span class="m-left--xxs">{{p.nrVideosPreparacao}}</span>
-                            </span>
-                            <span class="flex flex-row items-center justify-between">
-                                <span class="title-aux">De alunos</span>
-                                <span class="m-left--xxs">{{p.nrVideosAlunos}}</span>
-                            </span>
+                        <td>
+                            <div class="flex flex-col flow-sm">
+                                <span class="title-4">{{p.name}}</span>
+                            </div>
                         </td>
-                        {{!-- <td>{{p.nrVideosPreparacao}}</td>
-                        <td>{{p.nrVideosAlunos}}</td> --}}
-                        <td class="ta-c">{{p.nrAplicacaoPlataformaAulas}}</td>
+                        <td>
+                            <div class="flex flex-col flow-sm">
+                                <span class="flex flex-row flow-h-xxs items-center justify-between fs--xxs tt-u">
+                                    <span class="ws-i">Preparação de aula</span>
+                                    <span class="strong">{{p.nrVideosPreparacao}}</span>
+                                </span>
+                                <span class="flex flex-row flow-h-xxs items-center justify-between fs--xxs tt-u">
+                                    <span class="ws-i">De alunos</span>
+                                    <span class="strong">{{p.nrVideosAlunos}}</span>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="ta-c">
+                            <span class="fs--xxs tt-u">{{p.nrAplicacaoPlataformaAulas}}</span>
+                        </td>
                         <td class="p-h--xs">
-                            {{#if p.lastAccess}}
-                                <span class="flex flex-row items-center justify-between">
-                                    <span class="title-aux">Último acesso</span>
-                                    <span class="m-left--xxs">{{p.lastAccess}}</span>
+                            <div class="flex flex-col flow-sm">
+                                <span class="flex flex-row flow-h-xxs items-center justify-between fs--xxs tt-u">
+                                    <span class="ws-i">Último</span>
+                                    <span class="strong">{{p.lastAccess}}</span>
                                 </span>
-                            {{/if}}
-                            {{#if p.acessos}}
-                                <span class="flex flex-row items-center justify-between">
-                                    <span class="title-aux">Total acessos</span>
-                                    <span class="m-left--xxs">{{p.acessos}}</span>
+
+                                <span class="flex flex-row flow-h-xxs items-center justify-between fs--xxs tt-u">
+                                    <span class="ws-i">Total</span>
+                                    <span class="strong">{{p.acessos}}</span>
                                 </span>
-                            {{/if}}
+                            </div>
                         </td>
                     </tr>
                     {{/if}}
@@ -142,19 +145,27 @@
                 <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Videos assistidos</th>
-                    <th>acessos</th>
-                    <th>último acesso</th>
+                    <th class="ta-c">Videos assistidos</th>
+                    <th class="ta-c">Acessos</th>
+                    <th class="ta-c p-h--xs">Último acesso</th>
                 </tr>
                 </thead>
                 <tbody>
                 {{#each alunos as |a|}}
                     {{#if (containStr subStr = this.search mainStr = a.name)}}
                     <tr>
-                        <td>{{a.name}}</td>
-                        <td>{{a.nrVideosAlunos}}</td>
-                        <td>{{a.acessos}}</td>
-                        <td>{{a.lastAccess}}</td>
+                        <td>
+                            <span class="title-4">{{a.name}}</span>
+                        </td>
+                        <td class="ta-c">
+                            <span class="fs--xxs tt-u">{{a.nrVideosAlunos}}</span>
+                        </td>
+                        <td class="ta-c">
+                            <span class="fs--xxs tt-u">{{a.acessos}}</span>
+                        </td>
+                        <td class="ta-c p-h--xs">
+                            <span class="fs--xxs tt-u">{{a.lastAccess}}</span>
+                        </td>
                     </tr>
                     {{/if}}
                 {{/each}}

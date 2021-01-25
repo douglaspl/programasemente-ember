@@ -18,7 +18,7 @@
   z-index: 999999;
 
   &__circle {
-    $multiplier: 3;
+    $multiplier: 2;
 
     align-items: center;
     background-color: $white;
@@ -34,6 +34,7 @@
 
   img {
     transform: translateX(-2px);
+    width: 50%;
   }
 
 }

@@ -1,11 +1,11 @@
-<div class="media media--card" id="conteudo-{{conteudo.id}}" style="cursor: pointer;" onclick={{action 'openModal' conteudo}}>
+<div class="media" id="conteudo-{{conteudo.id}}" style="cursor: pointer;" onclick={{action 'openModal' conteudo}}>
   <picture class="media__picture">
     <img class="media__thumb" id="file-{{conteudo.id}}" src={{thumbnail}} alt="{{conteudo.titulo}}">
   </picture>
   <div class="media__body flow-md">
-    <div>
+    <div class="flex flex-col flow-xxs">
       <span class="title-aux">{{conteudo.tema.name}}</span>
-      <span class="media__title title-2 m-top--xxs">{{conteudo.titulo}}</span>
+      <span class="media__title title-3">{{conteudo.titulo}}</span>
     </div>
   </div>
 </div>
