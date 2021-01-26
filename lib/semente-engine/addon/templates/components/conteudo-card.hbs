@@ -12,7 +12,7 @@
       <ul>
         <li class="flex flex-row items-center gap-xs" id="Publicos">
           <span class="title-aux">
-            {{!-- {{component (strconcat "icon-" conteudo.publicos.nameFormat)}} --}}
+            {{component (strconcat "icon-" NOME-DO-PERFIL-ATIVO)}}
 
             Público
 
@@ -41,10 +41,12 @@
         <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
       </div>
 
-      <div class="checkbox">
-        <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-        <label class="checkbox__label">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
-      </div>
+      {{#if (equalstr pessoaRole 'admin')}}
+        <div class="checkbox">
+          <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+          <label class="checkbox__label">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
+        </div>
+      {{/if}}
 
       <div>
         {{component (strconcat "icon-" conteudo.tipo)}}

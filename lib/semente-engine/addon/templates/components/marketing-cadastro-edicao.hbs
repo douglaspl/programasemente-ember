@@ -141,14 +141,15 @@
                 </div>
             </div>  
             
-            <button type="button" class="btn" {{action "saveItem" model}}>{{salvarbutton}}{{percentage}}</button>
+         
 
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="flex flex-row">
-                    <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button>
+                    {{!-- <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button> --}}
+                    <button type="button" class="btn" {{action "saveItem" model}}>{{salvarbutton}}{{percentage}}</button>
                    <div class="child-v--center flex-1">
                         <p  class="alert alert--form alert--sm alert--error alert--has-icon animated d250 fadeIn {{if errorMsg 'alert--is-show'}} m-left--sm"
                         id="error_form">{{errorMsg}}</p>
