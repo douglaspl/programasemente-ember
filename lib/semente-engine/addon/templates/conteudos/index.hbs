@@ -12,30 +12,17 @@
         {{/if}}
 
           <div class="two-col-wrap">
-            <!--
-              # VAZ REBECA PORTO MÍNIMO #
-              mudar para que só possa ser visto um tipo de público por vez
-            -->
             {{#each publicos as |pub|}}
-              <button class="btn btn--as-filter {{if checked 'btn--is-active'}}" {{action 'refreshSelectedPublicos' value='target.value'}} type="button">
+              <button class="btn btn--as-filter {{if checked 'btn--is-active'}}" {{action 'refreshSelectedPublicos' pub.id}} type="button">
                 <span class="btn__label">{{pub.nameFormat}}</span>
               </button>
             {{/each}}
           </div>
 
-          {{!-- <label>Perfil</label>
-          <div class="row">
-            {{#each publicos as |pub|}}
-              <input type="checkbox" checked={{checked}} value={{pub.id}}
-                onchange={{action 'refreshSelectedPublicos' value='target.value'}} />
-              <label>{{pub.nameFormat}}</label>
-            {{/each}}
-          </div> --}}
-
           <div class="form-group">
             <label class="form-group__label" for="search">Busca</label>
             {{input class="form-group__input" id="search" type="text" value=search }}
-            <a class="form__aux-link">Limpar busca</a> <!-- limpar busca ainda não implementado -->
+            <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> 
           </div>
 
           <div class="form-group">
