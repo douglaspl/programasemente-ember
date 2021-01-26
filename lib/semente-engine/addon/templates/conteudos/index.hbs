@@ -9,8 +9,21 @@
       <form autocomplete="off" class="flex flex-col flow-md">
         {{#if (equalstr pessoaRole 'admin')}}
           <button type="button" class="login__cta btn" {{action "goToCreateConteudo"}}>Cadastrar conteúdo</button>
-          
-          <div class="form-group">
+        {{/if}}
+
+        <div class="two-col-wrap">
+          <button class="btn btn--as-filter {{if (equalstr "Todos" selectedPublico) 'btn--is-active' ''}}" {{action 'refreshSelectedPublicos' "Todos"}} type="button">
+            <span class="btn__label">Todos</span>
+          </button>
+          {{#each publicos as |pub|}}
+            <button class="btn btn--as-filter {{if (equalstr pub.name selectedPublico) 'btn--is-active' ''}}" {{action 'refreshSelectedPublicos' pub.id}} type="button">
+              <span class="btn__label">{{pub.nameFormat}}</span>
+            </button>
+          {{/each}}
+        </div>
+
+          {{#if (equalstr pessoaRole 'admin')}}
+            <div class="form-group">
               <label class="form-group__label" for="segmento">Situação</label>
               <div class="form-group__wrapper form-group__wrapper--select">
                 <select class="form-group__input" name="segmento" id="segmento" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
@@ -20,15 +33,7 @@
                 </select>
               </div>
             </div>
-        {{/if}}
-
-          <div class="two-col-wrap">
-            {{#each publicos as |pub|}}
-              <button class="btn btn--as-filter {{if checked 'btn--is-active'}}" {{action 'refreshSelectedPublicos' pub.id}} type="button">
-                <span class="btn__label">{{pub.nameFormat}}</span>
-              </button>
-            {{/each}}
-          </div>
+          {{/if}}
 
           <div class="form-group">
             <label class="form-group__label" for="search">Busca</label>
@@ -132,6 +137,7 @@
     <section class="l-dots-between__content flow-md">
       <hgroup>
         <h1 class="sr-only">Lista de conteúdos de {{selectedAgrupamento}}</h1>
+        <h1 class="sr-only">{{selectedPublico}}</h1>
         <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})</span></h2>
       </hgroup>
 
