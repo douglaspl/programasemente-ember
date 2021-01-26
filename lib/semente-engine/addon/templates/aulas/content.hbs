@@ -217,7 +217,8 @@
             {{/if}}
 
             {{#if (equalstr toggleRole "instrutor")}}
-              <li>
+            {{!-- Comentado enquanto não recebemos as informações do Bucci --}}
+              {{!-- <li>
               <div class="flex flex-row items-center">
                   <span class="flex flex-row items-center">
                   {{icon-prevista-para}}
@@ -227,7 +228,7 @@
                   </span>
                   </span>
               </div>
-              </li>
+              </li> --}}
               <li id="aplicacaoAula">
                   {{content-aplicacao pessoa=this.parentController.selectedDependente aula=aula TurmasAplicadas=TurmasAplicadas UltimaAplicacao=UltimaAplicacao}}
               </li>

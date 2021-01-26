@@ -67,12 +67,18 @@
               <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_profile_copy" value="">
             </div>
           
-          <span class="alert alert--error animated {{if (isbigger error_pwd.length '0') 'alert--is-show' ''}}" aria-live="polite" id="error_pass">{{error_pwd}}</span>
-          <span class="alert alert--success animated {{if (isbigger success_pwd.length '0') 'alert--is-show' ''}}" aria-live="polite" id="error_pass">{{success_pwd}}</span>
-          
+         
           </div>
         
+        
           <button class="btn btn--ghost btn--xxs self-start" type="button" disabled="{{if passwordChanged '' 'disabled'}}" {{action 'changePw'}}>Definir nova senha</button>
+           {{#if error_pwd}}
+            <span class="alert alert--error animated fadeIn {{if (isbigger error_pwd.length '0') 'alert--is-show' ''}} m-top--md" aria-live="polite" id="error_pass">{{error_pwd}}</span>
+          {{/if}}
+          {{#if success_pwd}}
+            <span class="alert alert--success animated fadeIn {{if (isbigger success_pwd.length '0') 'alert--is-show' ''}} m-top--md" aria-live="polite" id="error_pass">{{success_pwd}}</span>
+          {{/if}}
+        
         </form>
 
       </section>
