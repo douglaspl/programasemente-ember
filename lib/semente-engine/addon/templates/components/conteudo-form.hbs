@@ -12,7 +12,7 @@
     placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf"
     onchange={{action 'Upload'}} /> <label id="message-processing"></label>
     
-    {{#if conteudo.path}}
+    {{#if conteudo.filename}}
         {{conteudo.filename}}
         <button type="button" class="btn" {{action "removePath"}}>Remover</button>
     {{/if}}
@@ -23,7 +23,7 @@
     <h1>Configuração</h1>
     <label for="">Titulo do Conteúdo</label>
     {{input name='' value=conteudo.titulo placeholder='Titulo do Conteúdo' maxlength=100}}
-    <label>Máximo de 100 caracteres permitidos</label>
+    <label>Máximo de 100 caracteres permitidos.</label>
 
     <div></div>
     <div>Faz parte de qual agrupamento?</div>
@@ -48,8 +48,6 @@
         {{/if}}
     {{/each}}
 
-    <div> </div>
-    <div> </div>
     <div>Qual a situação após o cadastro?</div>
     <div class="row">
         <input type="radio" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao"
@@ -62,7 +60,6 @@
     </div>
 </div>
 
-<div></div>
 <div class="row">
     <h1>Público</h1>
     <label>A quem se destina?</label>
@@ -86,21 +83,25 @@
         {{/if}}
     </div>
 </div>
-{{!-- 
-{{#if tnName}}
-    <h1>Capa</h1>
-    {{if (equalstr conteudo.tipo "Imagem") conteudo.path tnName}}
-    <img src={{if (equalstr conteudo.tipo "Imagem") conteudo.path conteudo.thumbnail}} alt="{{conteudo.thumbnailname}}">
-    <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
-{{/if}} --}}
 
-<h1>Capa</h1>
-<label for="">Adicione uma capa para que os alunos identifiquem o arquivo.</label>
-{{if (equalstr conteudo.tipo "Imagem") conteudo.filename tnName}}
-<img src={{if (equalstr conteudo.tipo "Imagem") conteudo.path conteudo.thumbnail}} alt="{{conteudo.thumbnailname}}">
-{{#if (equalstr inputCapa "true")}}
-    <input multiple="false" id="file-selector-capa" name='file' type="file" value=''
-    placeholder='Capa' accept="image/png,image/jpeg"
-    onchange={{action 'UploadCapa'}} /> <label id="message-processing-capa"></label>
-    <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+{{#if capa}}
+    <div class="flex flex-col flow-md">
+        <h2 class="title-3">Capa</h2>
+        {{conteudo.thumbnailname}}
+        <img src="{{conteudo.thumbnail}}" alt="{{conteudo.thumbnailname}}" width="50%">
+        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+    </div>
+{{else}}
+    {{#unless (equalstr conteudo.tipo 'Video')}}
+        <div class="flex flex-col flow-md">
+            <h2 class="title-3">Capa</h2>
+            <label class="form-group__label">Adicione uma capa para identificação do conteúdo.</label>
+            <label id="message-processing-capa" class="form-group__label"></label>
+            <label class="btn btn--add-list-item">
+                <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                <span class="btn__icon icon-plus"></span>
+                <span class="btn__label">Adicionar Capa</span>
+            </label> 
+        </div>
+    {{/unless}}
 {{/if}}

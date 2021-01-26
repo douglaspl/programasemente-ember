@@ -1,8 +1,8 @@
 {{#link-to 'marketing.index'}}
-<button class="btn btn--link color-blue-navy-60">
-    <span class="btn__icon icon-chevron-left"></span>
-    <span class="btn__label">Voltar</span>
-</button>
+    <button class="btn btn--link color-blue-navy-60">
+        <span class="btn__icon icon-chevron-left"></span>
+        <span class="btn__label">Voltar</span>
+    </button>
 {{/link-to}}
 
 <h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
@@ -74,22 +74,28 @@
                             {{/each}}
                         </ul>
                     {{/if}}
-
-                    {{#if uploadingFile}}
-                            <div class="flex justify-center" id="message-processing-capa">
-                                <img style="width: 10%;" src="/assets/img/carregando.gif">
-                            </div>
-                    {{/if}}
-                    {{#if errorFile}}
-                        <p>O arquivo precisa ter no máximo 6Mb</p>
-                    {{/if}}
-
-                    <label class="btn btn--add-list-item">
-                        <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
-                        <span class="btn__icon icon-plus"></span>
-                        <span class="btn__label">Adicionar Arquivo</span>
-                    </label>
                 </div>
+
+                {{#if capa}}
+                    <div class="flex flex-col flow-md">
+                        <h2 class="title-3">Capa</h2>
+                        {{model.capaName}}
+                        <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
+                        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+                    </div>
+                {{/if}}
+
+                {{#if uploadingFile}}
+                        <div class="flex justify-center" id="message-processing-capa">
+                            <img style="width: 10%;" src="/assets/img/carregando.gif">
+                        </div>
+                {{/if}}
+
+                <label class="btn btn--add-list-item">
+                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
+                    <span class="btn__icon icon-plus"></span>
+                    <span class="btn__label">Adicionar Arquivo</span>
+                </label>
 
                
                 <div class="flex flex-col flow-md {{if missingCover 'blink blink--fast'}}">
@@ -105,8 +111,15 @@
                                         <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
                                         <span class="color-leaf-50">{{if (base64 model.capa) model.capaName capa.name}}</span>
                                     </div>
-                                    <button class="btn btn--text color-error-40" type="button" {{action "removePathCapa"}}>
-                                    <span class="btn__label">Remover</span>
+                                    {{#if (containerUrl arquivoItem.url)}}
+                                        {{!-- <span class="avatar avatar--lg avatar--bordered avatar--is-square"> --}}
+                                        <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
+                                            <span class="btn__label">Abrir arquivo</span>
+                                        </a>
+                                        {{!-- </span> --}}
+                                    {{/if}}
+                                    <button class="btn btn--text color-error-40" type="button" {{action "removeArquivo" arquivoItem}}>
+                                        <span class="btn__label">Remover</span>
                                     </button>
                                 </div>
                             </li>
@@ -126,7 +139,10 @@
                         {{/if}}
                     {{/if}}
                 </div>
-            </div>
+            </div>  
+            
+            <button type="button" class="btn" {{action "saveItem" model}}>{{salvarbutton}}{{percentage}}</button>
+
         </div>
     </div>
     <div class="row">
