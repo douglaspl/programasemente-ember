@@ -336,13 +336,15 @@
     box-shadow: none;
     color: $gray-80;
     opacity: .75;
-    // padding-left: 0;
-    // padding-right: 0;
     text-shadow: none;
 
     &:hover {
       background-color: $gray-10;
       color: $gray-80;
+      opacity: 1;
+    }
+
+    &[class*='is-toggle'] {
       opacity: 1;
     }
 
@@ -354,8 +356,6 @@
     box-shadow: none;
     color: $error-30;
     opacity: 0.75;
-    // padding-left: 0;
-    // padding-right: 0;
     text-shadow: none;
 
     &:hover {

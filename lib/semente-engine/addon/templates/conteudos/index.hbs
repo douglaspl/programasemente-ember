@@ -24,9 +24,9 @@
 
           {{#if (equalstr pessoaRole 'admin')}}
             <div class="form-group">
-              <label class="form-group__label" for="segmento">Situação</label>
+              <label class="form-group__label" for="situacao">Situação</label>
               <div class="form-group__wrapper form-group__wrapper--select">
-                <select class="form-group__input" name="segmento" id="segmento" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
+                <select class="form-group__input" name="situacao" id="situacao" onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
                   <option value="">Todos</option>
                   <option value="true" selected="selected">Ativos</option>
                   <option value="false">Inativos</option>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label class="form-group__label" for="search">Busca</label>
             {{input class="form-group__input" id="search" type="text" value=search }}
-            <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> 
+            <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a>
           </div>
 
           <div class="form-group">
@@ -148,6 +148,7 @@
               {{conteudo-card conteudo=conteudo
                               thisIndex=this
                               show=show
+                              selectedPublico=selectedPublico
                               selectedSegmento=selectedSegmento
                               selectedAno=selectedAno}}
             </li>
