@@ -76,19 +76,19 @@
                     {{/if}}
                 </div>
 
-                {{#if capa}}
+                {{!-- {{#if capa}}
                     <div class="flex flex-col flow-md">
                         <h2 class="title-3">Capa</h2>
                         {{model.capaName}}
                         <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
                         <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
                     </div>
-                {{/if}}
+                {{/if}} --}}
 
                 {{#if uploadingFile}}
-                        <div class="flex justify-center" id="message-processing-capa">
-                            <img style="width: 10%;" src="/assets/img/carregando.gif">
-                        </div>
+                    <div class="flex justify-center" id="message-processing-capa">
+                        <img style="width: 10%;" src="/assets/img/carregando.gif">
+                    </div>
                 {{/if}}
 
                 <label class="btn btn--add-list-item">
@@ -111,7 +111,7 @@
                                         <img src="{{model.capa}}" alt="{{model.capaName}}" width="50%">
                                         <span class="color-leaf-50">{{if (base64 model.capa) model.capaName capa.name}}</span>
                                     </div>
-                                    {{#if (containerUrl arquivoItem.url)}}
+                                    {{#if (containerUrl param = arquivoItem.url)}}
                                         {{!-- <span class="avatar avatar--lg avatar--bordered avatar--is-square"> --}}
                                         <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> {{!-- rel="nofollow noopener noreferrer"> --}}
                                             <span class="btn__label">Abrir arquivo</span>
@@ -131,11 +131,11 @@
                                 <img style="width: 10%;" src="/assets/img/carregando.gif">
                             </div>
                         {{else}}
-                        <label class="btn btn--add-list-item">
-                            <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
-                            <span class="btn__icon icon-plus"></span>
-                            <span class="btn__label">Adicionar Capa</span>
-                        </label> 
+                            <label class="btn btn--add-list-item">
+                                <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                                <span class="btn__icon icon-plus"></span>
+                                <span class="btn__label">Adicionar Capa</span>
+                            </label> 
                         {{/if}}
                     {{/if}}
                 </div>
@@ -148,7 +148,6 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="flex flex-row">
-                    {{!-- <button type="button" class="btn" {{action "saveItem" model}}>{{if editando 'Salvar edição' 'Cadastrar item'}}</button> --}}
                     <button type="button" class="btn" {{action "saveItem" model}}>{{salvarbutton}}{{percentage}}</button>
                    <div class="child-v--center flex-1">
                         <p  class="alert alert--form alert--sm alert--error alert--has-icon animated d250 fadeIn {{if errorMsg 'alert--is-show'}} m-left--sm"
