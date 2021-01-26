@@ -420,6 +420,11 @@
                     <span>Avançar</span>
                     <span class="btn__icon icon-arrow-right"></span>
                 </button>
+                {{#if errorSaveResponsible}}
+                 <p  class="m-left--sm alert alert--form alert--sm alert--error alert--has-icon animated d250 alert--is-show"
+                id="error-saveprofile"
+                data-animation="fadeIn">{{errorSaveResponsible}}</p>
+                {{/if}}
            </div>
         </div>
 
