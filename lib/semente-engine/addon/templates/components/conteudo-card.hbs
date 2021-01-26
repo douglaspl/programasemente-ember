@@ -22,7 +22,10 @@
       </div>
 
       <span class="title-aux">Tipo de Arquivo: {{conteudo.tipo}}</span>
-      <input type="checkbox" id={{conteudo.id}} name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}> <span class="title-aux">{{if conteudo.situacao "Ativo" "Inativo"}}</span>
+      
+      {{#if (equalstr pessoaRole 'admin')}}
+        <input type="checkbox" id={{conteudo.id}} name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}> <span class="title-aux">{{if conteudo.situacao "Ativo" "Inativo"}}</span>
+      {{/if}}
 
       {{conteudo-aula-card conteudo=conteudo ano=ano}}
 
