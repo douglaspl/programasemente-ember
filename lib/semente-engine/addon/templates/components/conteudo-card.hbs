@@ -9,45 +9,49 @@
 
     <div class="media__body flow-md">
 
-      <div class="flex flex-row items-center gap-xs" id="Publicos">
-        <span class="title-aux">
-          Público{{#if (sizeequals conteudo.publicos 3)}}{{else}}{{#if (isbigger conteudo.publicos.length 1)}}(s){{/if}}{{/if}}:
-        </span>
-        {{#if (sizeequals conteudo.publicos 3)}}
-            <span class="capsule capsule--info">Todos</span>
-        {{else}}
-          {{#each conteudo.publicos as |publico|}}
-            <span class="capsule capsule--info">{{publico.nameFormat}}</span>
-          {{/each}}
-        {{/if}}
-      </div>
+      <ul>
+        <li class="flex flex-row items-center gap-xs" id="Publicos">
+          <span class="title-aux">
+            {{component (strconcat "icon-" NOME-DO-PERFIL-ATIVO)}}
+
+            Público
+
+            {{#if (sizeequals conteudo.publicos 3)}}{{else}}{{#if (isbigger conteudo.publicos.length 1)}}(s){{/if}}{{/if}}:
+          </span>
+          {{#if (sizeequals conteudo.publicos 3)}}
+              <span class="capsule capsule--info">Todos</span>
+          {{else}}
+            {{#each conteudo.publicos as |publico|}}
+              <span class="capsule capsule--info">{{publico.nameFormat}}</span>
+            {{/each}}
+          {{/if}}
+        </li>
+
+        <li class="flex flex-row items-center gap-xs" id="Publicos">
+          <span class="title-aux">
+            Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
+          </span>
+        </li>
+
+        {{conteudo-aula-card conteudo=conteudo ano=ano}}
+      </ul>
 
       <div>
         <span class="title-aux">{{conteudo.tema.name}}</span>
         <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
       </div>
 
-      <div>
-        <span class="title-aux">Tipo de Arquivo:</span>
-        <span>{{conteudo.tipo}}</span>
-      </div>
-
-      <div class="checkbox">
-        <label class="checkbox__label">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
-        <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-      </div>
-
-      <span class="title-aux">Tipo de Arquivo: {{conteudo.tipo}}</span>
-      
       {{#if (equalstr pessoaRole 'admin')}}
-        <input type="checkbox" id={{conteudo.id}} name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}> <span class="title-aux">{{if conteudo.situacao "Ativo" "Inativo"}}</span>
+        <div class="checkbox">
+          <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+          <label class="checkbox__label">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
+        </div>
       {{/if}}
 
-      {{conteudo-aula-card conteudo=conteudo ano=ano}}
-
-      {{!-- <button class="btn btn--ghost btn--xxs" id="header-indicadores" {{action 'goToEditConteudo' conteudo.id}}>
-        <span class="btn__label">Editar</span>
-      </button> --}}
+      <div>
+        {{component (strconcat "icon-" conteudo.tipo)}}
+        <span>{{conteudo.tipo}}</span>
+      </div>
 
     </div>
 
