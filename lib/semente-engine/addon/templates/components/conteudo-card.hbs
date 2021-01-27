@@ -1,52 +1,54 @@
 {{#each conteudoAnos as |ano|}}
   <div class="media">
-    <div class="w100">
+
+    <div class="flex flex-row gap-sm w100">
       <a href="#" class="btn btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
-        <span class="btn__icon icon-edit"></span>
+        {{!-- <span class="btn__icon icon-edit"></span> --}}
         <span class="btn__label">Editar este item</span>
       </a>
+
+      <button class="btn btn--text btn--xxs btn--is-toggle color-white {{if conteudo.situacao 'btn--is-toggle--on bg-info-60' 'bg-gray-60'}}" style="width: 80px" {{action 'postSelectedSituacao' conteudo}}>
+        <span class="btn__label label__default">Inativo</span>
+        <span class="btn__label label__active">Ativo</span>
+        {{!-- <span class="btn__label label__active">{{if conteudo.situacao "Ativo" "Inativo"}}</span> --}}
+      </button>
+
+      {{!-- {{#if (equalstr pessoaRole 'admin')}}
+        <div class="checkbox">
+          <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
+          <label class="checkbox__label" for="{{conteudo.id}}">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
+        </div>
+      {{/if}} --}}
     </div>
 
     <div class="media__body flow-md">
 
-      <ul>
-        <li class="flex flex-row items-center gap-xs" id="Publicos">
-          <span class="title-aux">
-            {{component (strconcat "icon-" NOME-DO-PERFIL-ATIVO)}}
+      <span class="flex flex-col items-center">
+        {{component (strconcat "icon-" selectedPublico)}}
 
-            Público
+        {{#if (sizeequals conteudo.publicos 3)}}
+            <span class="title-aux">Todos</span>
+        {{else}}
+          {{#each conteudo.publicos as |publico|}}
+            <span class="title-aux">{{publico.nameFormat}}</span>
+          {{/each}}
+        {{/if}}
+      </span>
 
-            {{#if (sizeequals conteudo.publicos 3)}}{{else}}{{#if (isbigger conteudo.publicos.length 1)}}(s){{/if}}{{/if}}:
-          </span>
-          {{#if (sizeequals conteudo.publicos 3)}}
-              <span class="capsule capsule--info">Todos</span>
-          {{else}}
-            {{#each conteudo.publicos as |publico|}}
-              <span class="capsule capsule--info">{{publico.nameFormat}}</span>
-            {{/each}}
-          {{/if}}
-        </li>
+      {{conteudo-aula-card conteudo=conteudo ano=ano}}
 
+      {{!-- <ul>
         <li class="flex flex-row items-center gap-xs" id="Publicos">
           <span class="title-aux">
             Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
           </span>
         </li>
-
-        {{conteudo-aula-card conteudo=conteudo ano=ano}}
-      </ul>
+      </ul> --}}
 
       <div>
         <span class="title-aux">{{conteudo.tema.name}}</span>
         <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
       </div>
-
-      {{#if (equalstr pessoaRole 'admin')}}
-        <div class="checkbox">
-          <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-          <label class="checkbox__label">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
-        </div>
-      {{/if}}
 
       <div>
         {{component (strconcat "icon-" conteudo.tipo)}}

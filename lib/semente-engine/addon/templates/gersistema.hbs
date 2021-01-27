@@ -461,7 +461,8 @@ thisRoute=thisRoute
                   <span class="btn__icon icon-trash-2"></span> Remover
                 </button>
                 <button class="btn btn--ghost btn--xs" style="width: 120px;" {{action 'editArea' turma.id}}>
-                  <span class="btn__icon icon-edit"></span> Editar
+                  {{!-- <span class="btn__icon icon-edit"></span> --}}
+                  <span class="btn__label">Editar</span>
                 </button>
               </div>
               <div class="btn-group" id="areaItemActions{{turma.id}}" style="display:none">
@@ -640,7 +641,8 @@ thisRoute=thisRoute
               <span class="btn__icon icon-trash-2"></span> Remover
             </button>
             <button class="j-areaFocus btn btn--leaf btn--sm" style="width: 120px;" {{action 'editArea' turma.id}}>
-              <span class="btn__icon icon-edit"></span> Editar
+              {{!-- <span class="btn__icon icon-edit"></span> --}}
+              <span class="btn__label">Editar</span>
             </button>
           </div>
           <div class="btn-group m-left--auto" id="areaItemActions{{turma.id}}" style="display:none">

@@ -3,12 +3,12 @@
   {{#if (equalstr pessoaRole 'admin')}}
     <div class="w100">
       <a class="btn btn--xxs" href="#" {{action goToEditItem item.id}}>
-        <span class="btn__icon icon-edit"></span>
+        {{!-- <span class="btn__icon icon-edit"></span> --}}
         <span class="btn__label">Editar este item</span>
       </a>
     </div>
   {{/if}}
-  
+
   <picture class="media__picture bg-white shadow-3 p--sm">
     <img class="media__thumb" id="item-{{item.id}}" src={{if (containerUrl item.capa) item.capa '/assets/img/dark__thumb.png'}} alt="{{item.titulo}}">
   </picture>

@@ -131,13 +131,13 @@
           {{/unless}}
 
           {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'instrutor'))}}
-            {{#link-to 'marketing.index' class="tabs__tab"}}
+            {{#link-to 'marketing.index' class="tabs__tab" id="tabMkt"}}
                 <span>Marketing</span>
             {{/link-to}}
           {{/unless}}
 
           {{#if (equalstr pessoa.role 'admin')}}
-            {{#link-to 'conteudos.index' class="tabs__tab"}}
+            {{#link-to 'conteudos.index' class="tabs__tab" id="tabContents"}}
                 <span>Conteúdos</span>
             {{/link-to}}
 
