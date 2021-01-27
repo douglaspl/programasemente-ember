@@ -1,13 +1,13 @@
 {{#each conteudoAnos as |ano|}}
   <div class="media">
 
-    <div class="flex flex-row gap-sm w100">
+    <div class="flex flex-row gap-xs w100">
       <a href="#" class="btn btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
         {{!-- <span class="btn__icon icon-edit"></span> --}}
         <span class="btn__label">Editar este item</span>
       </a>
 
-      <button class="btn btn--text btn--xxs btn--is-toggle color-white {{if conteudo.situacao 'btn--is-toggle--on bg-info-60' 'bg-gray-60'}}" style="width: 80px" {{action 'postSelectedSituacao' conteudo}}>
+      <button class="btn btn--text btn--xxs btn--is-toggle color-white {{if conteudo.situacao 'btn--is-toggle--on bg-info-60' 'bg-gray-60'}}" style="width: 4rem" {{action 'postSelectedSituacao' conteudo}}>
         <span class="btn__label label__default">Inativo</span>
         <span class="btn__label label__active">Ativo</span>
         {{!-- <span class="btn__label label__active">{{if conteudo.situacao "Ativo" "Inativo"}}</span> --}}
@@ -21,38 +21,41 @@
       {{/if}} --}}
     </div>
 
-    <div class="media__body flow-md">
+    <div class="media__body">
 
-      <span class="flex flex-col items-center">
-        {{component (strconcat "icon-" selectedPublico)}}
+      <div class="flex flex-row items-center justify-between self-stretch gap-xl">
 
-        {{#if (sizeequals conteudo.publicos 3)}}
-            <span class="title-aux">Todos</span>
-        {{else}}
+        <span class="flex flex-col items-center">
           {{#each conteudo.publicos as |publico|}}
-            <span class="title-aux">{{publico.nameFormat}}</span>
+            <span class="flex flex-row items-center">
+              {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--sm"}}
+              <span class="title-aux">{{publico.nameFormat}}</span>
+            </span>
           {{/each}}
-        {{/if}}
-      </span>
+        </span>
 
-      {{conteudo-aula-card conteudo=conteudo ano=ano}}
+        {{conteudo-aula-card conteudo=conteudo ano=ano}}
 
-      {{!-- <ul>
-        <li class="flex flex-row items-center gap-xs" id="Publicos">
-          <span class="title-aux">
-            Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
-          </span>
-        </li>
-      </ul> --}}
+        {{!--
+        <ul>
+          <li class="flex flex-row items-center gap-xs" id="Publicos">
+            <span class="title-aux">
+              Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
+            </span>
+          </li>
+        </ul>
 
-      <div>
-        <span class="title-aux">{{conteudo.tema.name}}</span>
-        <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
-      </div>
+        <div>
+          <span class="title-aux">{{conteudo.tema.name}}</span>
+          <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
+        </div>
+        --}}
 
-      <div>
-        {{component (strconcat "icon-" conteudo.tipo)}}
-        <span>{{conteudo.tipo}}</span>
+        <span class="flex flex-col items-center m-left--auto">
+          {{component (strconcat "icon-" conteudo.tipo)}}
+          <span class="title-aux">{{conteudo.tipo}}</span>
+        </span>
+
       </div>
 
     </div>
