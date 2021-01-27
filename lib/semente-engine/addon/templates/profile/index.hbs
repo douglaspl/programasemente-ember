@@ -1,5 +1,5 @@
 <div class="main__back-container">
-  <button class="btn btn--link color-blue-navy-60" {{action 'goToAulas' on="click"}} type="button">
+  <button class="btn btn--link color-blue-navy-60" {{action 'goToAulas' on="click" }} type="button">
     <span class="btn__icon icon-chevron-left"></span>
     <span class="btn__voltar">Voltar</span>
   </button>
@@ -9,273 +9,131 @@
 
   <h2 class="col-xs-12 title-2">Meu Perfil</h2>
 
-    <div class="col-xs-12 col-sm-7 col-md-5 flow-xl">
-      <section class="flow-sm">
-        <h3 class="title-3">Avatar</h3>
+  <div class="col-xs-12 col-sm-7 col-md-5 flow-xl">
+    <section class="flow-sm">
+      <h3 class="title-3">Avatar</h3>
 
-        <div class="flex flex-row items-start">
-          <div class="form-group">
-            {{!-- <label class="form-group__label" for="foto">Sua foto</label> --}}
+      <div class="flex flex-row items-start">
+        <div class="form-group">
 
-            <div id="foto" class="image-change">
-                <div class="avatar avatar--lg">
-                    <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
-                        style="background-image: url('{{uri_avatar}}');">
-                    </div>
-                </div>
-
-                <label class="image-change__cta btn">Alterar imagem
-                    <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar"
-                        style="display: none;" name="file">
-                </label>
-
+          <div id="foto" class="image-change">
+            <div class="avatar avatar--lg">
+              <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
+                style="background-image: url('{{uri_avatar}}');">
+              </div>
             </div>
+
+            <label class="image-change__cta btn">Alterar imagem
+              <input onchange={{action "buscarArquivoAvatar" }} type="file" id="arquivoAvatar" style="display: none;"
+                name="file" accept="image/png,image/jpeg, image/jpg" multiple="false" value=''>
+            </label>
+
           </div>
-          {{!-- <picture class="avatar avatar--xl avatar--is-square">
-            {{#if pessoa.uriAvatar}}
-              <img class="avatar__img" src={{uri_avatar}} alt="{{pessoa.name}}">
-            {{else}}
-              <img class="avatar__img" src="/assets/img/avatar-default.svg" alt="{{pessoa.name}}">
-            {{/if}}
-          </picture>
-          <button class="btn btn--ghost btn--xxs m-left--sm" onclick={{action 'toggleAvatarModal'}}>Alterar imagem de perfil</button> --}}
         </div>
-
-      </section>
-
-      <section class="flow-sm">
-        <header class="flex flex-row items-baseline">
-          <h3 class="title-3">Senha</h3>
-          {{!-- <span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span> --}}
-        </header>
-
-        <form class="flex flex-col" autocomplete="off">
-          <div class="form-group__container flow-md">
-            <div class="form-group w100">
-              <label class="form-group__label" for="pass">Senha antiga</label>
-              <input class="form-group__input" type="password" id="pass_profile" value="" onkeyup={{action 'updatePasswordChanged'}} >
-            </div>
-
-            <div class="form-group w100">
-              <label class="form-group__label" for="pass_new">Nova senha</label>
-              <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_profile" value="">
-            </div>
-            
-
-            <div class="form-group w100">
-              <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
-              <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}" id="pass_new_profile_copy" value="">
-            </div>
-          
-         
-          </div>
-        
-        
-          <button class="btn btn--ghost btn--xxs self-start" type="button" disabled="{{if passwordChanged '' 'disabled'}}" {{action 'changePw'}}>Definir nova senha</button>
-           {{#if error_pwd}}
-            <span class="alert alert--error animated fadeIn {{if (isbigger error_pwd.length '0') 'alert--is-show' ''}} m-top--md" aria-live="polite" id="error_pass">{{error_pwd}}</span>
-          {{/if}}
-          {{#if success_pwd}}
-            <span class="alert alert--success animated fadeIn {{if (isbigger success_pwd.length '0') 'alert--is-show' ''}} m-top--md" aria-live="polite" id="error_pass">{{success_pwd}}</span>
-          {{/if}}
-        
-        </form>
-
-      </section>
-    </div>
-
-    <div class="col-xs-12 col-sm-7 col-md-5 col-md-offset-1 flow-xl">
-      <section class="flow-sm">
-        <h3 class="title-3">Informações pessoais</h3>
-
-        <form class="flex flex-col flow-md" autocomplete="off">
-          <div class="form-group">
-            <label class="form-group__label" for="email">E-mail</label>
-            {{input class="form-group__input" type="email" id="email" value=pessoa.email}}
-          </div>
-
-          <div class="form-group">
-            <label class="form-group__label" for="nascimento">Data de nascimento</label>
-            {{input class="form-group__input" type="date" id="nascimento" max='2020-01-01' value=pessoa.nascimentoPlataforma}}
-          </div>
-
-          <div class="form-group">
-            <span class="form-group__label">Gênero</span>
-            <div class="flex flex-row items-center flow-h-md">
-              <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "feminino") "checked"}} id="gen_feminino" value="feminino" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
-                <label class="radio__label" for="gen_feminino">feminino</label>
-              </div>
-              <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "masculino") "checked"}} id="gen_masculino" value="masculino" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
-                <label class="radio__label" for="gen_masculino">Masculino</label>
-              </div>
-              <div class="radio radio--sm">
-                <input class="radio__input" checked={{if (equalstr pessoa.genero "outro") "checked"}} id="gen_outro" value="" name="genero" type="radio" onchange={{ action 'refreshGenero'}}>
-                <label class="radio__label" for="gen_outro">Prefiro não informar</label>
-              </div>
-            </div>
-          </div>
-        </form>
-
-      </section>
-
-      <section class="flow-sm">
-        <h3 class="title-3">Informações profissionais</h3>
-        <ul class="flow-sm">
-          <li>Escola: <span class="fw--4">{{pessoa.instituicao.name}}</span></li>
-          <li>Cidade: <span class="fw--4">{{pessoa.instituicao.cidade}} / {{pessoa.instituicao.uf}}</span></li>
-        </ul>
-      </section>
-
-      {{#if pessoa.hasDirtyAttributes}}
-        <button class="btn btn--ghost btn--xxs self-start" type="button" {{action 'saveChanges'}}>Salvar alterações</button>
-      {{/if}}
-    </div>
-
-
-</div>
-
-{{!-- <h2>Nome:</h2>
-{{pessoa.name}} --}}
-
-{{!-- <button class="btn" onclick={{action 'togglePassModal'}}>Alterar senha</button> --}}
-
-{{!-- <h2>Email:</h2>
-{{pessoa.email}} --}}
-
-{{!-- <h2>Gênero:</h2>
-{{pessoa.genero}} --}}
-
-{{!-- <h2>Data de nascimento:</h2>
-{{dataNascimento}} --}}
-
-{{!-- <h2>Escola:</h2>
-{{pessoa.instituicao.name}} --}}
-
-{{!-- <h2>UF:</h2>
-{{pessoa.instituicao.uf}} --}}
-
-{{!-- <h2>Cidade:</h2>
-{{pessoa.instituicao.cidade}} --}}
-
-
-<!-- Modais -->
-<!-- Modal de mudar a imagem do usuário -->
-{{!-- <aside id="change_image_modal" class="modal">
-
-  <div class="modal__content modal__content--md">
-
-    <header class="modal__header">
-      <button class="modal__close btn-close icon-x" type="submit" {{action 'toggleAvatarModal'}}></button>
-
-      <h3 class="modal__title">Alterar imagem do perfil</h3>
-    </header>
-
-    <div class="modal__body">
-
-      <div class="m-bottom--none">
-
-        <p>Para facilitar, nós recortaremos a imagem para você. Sugerimos que escolha uma foto onde só haja você.</p>
-
-        <div class="image-change">
-          <div class="avatar avatar--lg">
-            <div class="avatar__img avatar__img--as-bg" id="avatar-modale"
-              style="background-image: url('{{uri_avatar}}');"></div>
-          </div>
-
-          <label class="image-change__cta btn">Buscar imagem
-            <input onchange={{action "buscarArquivoAvatar"}} type="file" id="arquivoAvatar" style="display: none;"
-              name="file">
-          </label>
-        </div>
-
       </div>
+    </section>
 
-    </div>
+    <section class="flow-sm">
+      <header class="flex flex-row items-baseline">
+        <h3 class="title-3">Senha</h3>
+        {{!-- <span class="font-size--xs fs-i m-left--sm">Última alteração há 8 meses</span> --}}
+      </header>
 
-    {{#if selected_file_avatar}}
-      <span style="margin-top: 20px" id="nomeArquivo" type="text" class="form-control"
-        readonly><strong>{{selected_file_avatar}}</strong></span>
+      <form class="flex flex-col" autocomplete="off">
+        <div class="form-group__container flow-md">
+          <div class="form-group w100">
+            <label class="form-group__label" for="pass">Senha antiga</label>
+            <input class="form-group__input" type="password" id="pass_profile" value=""
+              onkeyup={{action 'updatePasswordChanged' }}>
+          </div>
+
+          <div class="form-group w100">
+            <label class="form-group__label" for="pass_new">Nova senha</label>
+            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}"
+              id="pass_new_profile" value="">
+          </div>
+
+
+          <div class="form-group w100">
+            <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
+            <input class="form-group__input" type="password" disabled="{{if passwordChanged '' 'disabled'}}"
+              id="pass_new_profile_copy" value="">
+          </div>
+
+
+        </div>
+
+
+        <button class="btn btn--ghost btn--xxs self-start" type="button" disabled="{{if passwordChanged '' 'disabled'}}"
+          {{action 'changePw' }}>Definir nova senha</button>
+        {{#if error_pwd}}
+        <span
+          class="alert alert--error animated fadeIn {{if (isbigger error_pwd.length '0') 'alert--is-show' ''}} m-top--md"
+          aria-live="polite" id="error_pass">{{error_pwd}}</span>
+        {{/if}}
+        {{#if success_pwd}}
+        <span
+          class="alert alert--success animated fadeIn {{if (isbigger success_pwd.length '0') 'alert--is-show' ''}} m-top--md"
+          aria-live="polite" id="error_pass">{{success_pwd}}</span>
+        {{/if}}
+
+      </form>
+
+    </section>
+  </div>
+
+  <div class="col-xs-12 col-sm-7 col-md-5 col-md-offset-1 flow-xl">
+    <section class="flow-sm">
+      <h3 class="title-3">Informações pessoais</h3>
+
+      <form class="flex flex-col flow-md" autocomplete="off">
+        <div class="form-group">
+          <label class="form-group__label" for="email">E-mail</label>
+          {{input class="form-group__input" type="email" id="email" value=pessoa.email}}
+        </div>
+
+        <div class="form-group">
+          <label class="form-group__label" for="nascimento">Data de nascimento</label>
+          {{input class="form-group__input" type="date" id="nascimento" max='2020-01-01'
+          value=pessoa.nascimentoPlataforma}}
+        </div>
+
+        <div class="form-group">
+          <span class="form-group__label">Gênero</span>
+          <div class="flex flex-row items-center flow-h-md">
+            <div class="radio radio--sm">
+              <input class="radio__input" checked={{if (equalstr pessoa.genero "feminino" ) "checked" }}
+                id="gen_feminino" value="feminino" name="genero" type="radio" onchange={{ action 'refreshGenero' }}>
+              <label class="radio__label" for="gen_feminino">feminino</label>
+            </div>
+            <div class="radio radio--sm">
+              <input class="radio__input" checked={{if (equalstr pessoa.genero "masculino" ) "checked" }}
+                id="gen_masculino" value="masculino" name="genero" type="radio" onchange={{ action 'refreshGenero' }}>
+              <label class="radio__label" for="gen_masculino">Masculino</label>
+            </div>
+            <div class="radio radio--sm">
+              <input class="radio__input" checked={{if (equalstr pessoa.genero "outro" ) "checked" }} id="gen_outro"
+                value="" name="genero" type="radio" onchange={{ action 'refreshGenero' }}>
+              <label class="radio__label" for="gen_outro">Prefiro não informar</label>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </section>
+
+    <section class="flow-sm">
+      <h3 class="title-3">Informações profissionais</h3>
+      <ul class="flow-sm">
+        <li>Escola: <span class="fw--4">{{pessoa.instituicao.name}}</span></li>
+        <li>Cidade: <span class="fw--4">{{pessoa.instituicao.cidade}} / {{pessoa.instituicao.uf}}</span></li>
+      </ul>
+    </section>
+
+    {{#if pessoa.hasDirtyAttributes}}
+    <button class="btn btn--ghost btn--xxs self-start" type="button" {{action 'saveChanges' }}>Salvar
+      alterações</button>
     {{/if}}
-
-    <div class="modal__footer">
-      {{#if avatar_loading}}
-        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled"><i
-            class="fa fa-spinner fa-pulse fa-2x"></i></button>
-      {{else if selected_file_avatar}}
-        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar"
-          {{action 'sendAvatar'}}>Salvar</button>
-      {{else}}
-        <button class="btn btn--ghost btn--xxs" type="submit" id="botaEnviarAvatar" disabled="disabled">Salvar</button>
-      {{/if}}
-    </div>
   </div>
-
-  <div class="modal__overlayer"></div>
-  <div style="display: none;">{{avatar}}</div>
-
-</aside> --}}
-
-<!-- Modal de mudar a senha do usuário -->
-{{!-- <aside id="change_pass_modal" class="modal">
-
-  <div class="modal__content modal__content--sm">
-
-    <header class="modal__header">
-      <button id="change_pass_close" class="modal__close btn-close icon-x" type="submit"></button>
-
-      <h3 class="modal__title">Alterar senha</h3>
-    </header>
-
-    <div class="modal__body">
-
-      <div class="flex flex-col flow-sm">
-        <div class="form-group">
-          <label class="form-group__label" for="pass">Senha atual</label>
-          <input class="form-group__input" type="password" id="pass" value="">
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label" for="pass_new">Nova senha</label>
-          <input class="form-group__input" type="password" id="pass_new" value="">
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label" for="pass_new_copy">Confirme a nova senha</label>
-          <!-- melhorar classes do form... -->
-          <div class="form-group__container form-group">
-            <span id="msg-new-pass-success" class="form__msg form__msg--bellow form__msg--success"><span
-                class="form__msg-icon icon-check"></span>Par
-              de senhas perfeito!</span>
-            <span id="msg-new-pass-warning" class="form__msg form__msg--bellow form__msg--warning"><span
-                class="form__msg-icon icon-alert-triangle"></span>Senhas
-              não batem...</span>
-            <input class="form-group__input" type="password" id="pass_new_copy" value="">
-          </div>
-        </div>
-
-      </div>
-
-      {{#if error_forgot}}
-        <div class="alert alert--warning alert--has-icon">
-          <span class="alert__icon icon-alert-triangle"></span>
-          <p>
-            {{{error_forgot}}}
-          </p>
-        </div>
-      {{/if}}
-
-    </div>
-
-    <div class="modal__footer">
-      <button class="btn" type="submit" {{action 'changePw'}}>Atualizar senha</button>
-    </div>
-
-  </div>
-
-  <div class="modal__overlayer"></div>
-
-</aside> --}}
-
+</div>
 <div style="display: none;">{{shouldReview}}</div>
