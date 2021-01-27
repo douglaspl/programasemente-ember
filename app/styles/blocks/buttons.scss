@@ -252,6 +252,10 @@
       transform: translate(-50%, -50%);
     }
 
+    .flex-row & {
+      height: auto;
+    }
+
   }
 
   &--near-form {
@@ -453,7 +457,7 @@
   // Sizes
   @if $btn--xxs {
     &--xxs {
-      font-size: $font-size--xxs;
+      font-size: $font-size--xxs * .9;
       letter-spacing: $letter-spacing--xl;
       padding: $button-padding--xxs;
     }

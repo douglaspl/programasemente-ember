@@ -96,13 +96,13 @@
             {{/link-to}}
           </li>
 
-          {{#if (equalstr parentController.toggleRole 'instrutor')}}
-          {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-          <li>
-            <span>Acompanhamento</span>
-          </li>
-          {{/link-to}}
-          {{/if}}
+           {{#unless (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'aluno')) }}
+            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+              <li>
+                <span>Acompanhamento</span>
+              </li>
+            {{/link-to}}
+          {{/unless}}
 
           {{#unless (equalstr livro '#')}}
           {{#each livro as |l|}}
