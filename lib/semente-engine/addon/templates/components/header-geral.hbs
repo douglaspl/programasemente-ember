@@ -1,7 +1,8 @@
 <!-- Header geral -->
-<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role parentController.toggleRole}}">
+<header
+  class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role parentController.toggleRole}}">
   <div class="flex itens-start gap-lg">
-    <picture class="l-user-header__avatar avatar avatar--lg flex justify-center" {{action 'toggleAvatarModal'}}>
+    <picture class="l-user-header__avatar avatar avatar--lg flex justify-center" {{action 'toggleAvatarModal' }}>
       {{#if pessoa.uriAvatar}}
         <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
       {{else}}
@@ -18,13 +19,14 @@
             <span class="title-1">{{firstnameoremailpart pessoa.name}}</span>
             {{#if (equalstr parentController.toggleRole 'aluno')}}
               <button class="btn btn--link m-top--auto color-white">
-                <span class="btn__label" {{action 'invalidateSession'}}>Não é você? Faça logout</span>
+                <span class="btn__label" {{action 'invalidateSession' }}>Não é você? Faça logout</span>
               </button>
             {{/if}}
           </div>
           <div class="l-user-header__role">
             {{#if (equalstr pessoa.role 'aluno')}}
-              <span>{{pessoa.plataformaAnos.firstObject.segmento.titulo}} - {{pessoa.plataformaAnos.firstObject.name}}</span>
+              <span>{{pessoa.plataformaAnos.firstObject.segmento.titulo}} -
+              {{pessoa.plataformaAnos.firstObject.name}}</span>
             {{else if (equalstr pessoa.role 'coordenador')}}
               <span>Coordenador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}</span>
             {{else if (equalstr pessoa.role 'gestor')}}
@@ -33,59 +35,41 @@
               <span>Administrador</span>
             {{else if (equalstr parentController.toggleRole 'instrutor')}}
 
-              {{#if isAplicador}}
-
-                <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} </span>
-
-                {{#if (isbigger parentController.segmentosObjects.length "1")}}
-                  <span>dos segmentos</span>
-
-                  {{#each parentController.segmentosObjects as |seg index|}}
-                      {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
-                      <span>e</span>
-                     <!-- último -->
-                      {{else if (isbigger index 0)}}
-                      <span class="m-left--none">,</span>
-                      {{/if}}
-
-                      {{#if seg.titulo}}
-                        <span class="fs-i">{{seg.titulo}}</span>
-                      {{/if}}
-                  {{/each}}
-
-                {{else}}
-                  do
-                  {{#each parentController.segmentosObjects as |seg|}}
+            {{#if isAplicador}}
+              <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} aplicador{{#if (equalstr pessoa.genero
+              'feminino')}}a{{/if}} </span> {{#if (isbigger parentController.segmentosObjects.length "1")}} <span>dos segmentos</span>
+              {{#each parentController.segmentosObjects as |seg index|}} {{#if (equalstr index (sub parentController.segmentosObjects.length 1))}}
+                  <span>e</span> <!-- último --> {{else if (isbigger index 0)}}
+                    <span class="m-left--none">,</span> {{/if}}
+                  {{#if seg.titulo}}
                     <span class="fs-i">{{seg.titulo}}</span>
-                  {{/each}}
-                {{/if}}
+                  {{/if}}
+              {{/each}} {{else}} do {{#each parentController.segmentosObjects as |seg|}} <span class="fs-i">{{seg.titulo}}</span> {{/each}} {{/if}}
               {{else}}
-              <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} não aplicador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} </span>
+                <span>Professor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}} não aplicador{{#if (equalstr
+                pessoa.genero 'feminino')}}a{{/if}} </span>
               {{/if}}
 
             {{else}}
-                {{parentController.toggleRole}}
+              {{parentController.toggleRole}}
             {{/if}}
-
-
           </div>
-
           <!-- veta quem não é prof -->
           {{#if (equalstr pessoa.role 'instrutor')}}
             {{#unless (equalstr showToggle false)}}
-                <!-- veta quem não tem filho -->
-                {{#if pessoa.dependentes}}
-                  <!-- alterna entre perfis -->
-                  {{#if (equalstr parentController.toggleRole 'instrutor')}}
-                    <button class="btn btn--link color-white" type="button" {{action 'toggleRole' 'responsavel'}}>
-                      <span class="btn__label">Visualizar como responsável</span>
-                    </button>
-                  {{else}}
-                    <button class="btn btn--link color-white" type="button" {{action 'toggleRole' 'instrutor'}}>
-                      <span class="btn__label">Visualizar como professor</span>
-                    </button>
-                  {{/if}}
+              <!-- veta quem não tem filho -->
+              {{#if pessoa.dependentes}}
+                <!-- alterna entre perfis -->
+                {{#if (equalstr parentController.toggleRole 'instrutor')}}
+                  <button class="btn btn--link color-white" type="button" {{action 'toggleRole' 'responsavel' }}>
+                    <span class="btn__label">Visualizar como responsável</span>
+                  </button>
+                {{else}}
+                  <button class="btn btn--link color-white" type="button" {{action 'toggleRole' 'instrutor' }}>
+                    <span class="btn__label">Visualizar como professor</span>
+                  </button>
                 {{/if}}
+              {{/if}}
             {{/unless}}
           {{/if}}
         </div>
@@ -94,63 +78,60 @@
         <h1 class="scr-only">Menu de navegação</h1>
         <ul class="tabs tabs--full-background">
           <li>
-           {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
-              {{#if isAlunoMedio}}
-                {{#link-to 'modulos.modlist' pessoa.modulos.firstObject.id class="tabs__tab" id="aulas-header"}}
-                    <span>Aulas</span>
-                {{/link-to}}
-              {{else}}
-                {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
-                    <span>Aulas</span>
-                {{/link-to}}
-              {{/if}}
+            {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
+            {{#if isAlunoMedio}}
+            {{#link-to 'modulos.modlist' pessoa.modulos.firstObject.id class="tabs__tab" id="aulas-header"}}
+            <span>Aulas</span>
+            {{/link-to}}
+            {{else}}
+            {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
+            <span>Aulas</span>
+            {{/link-to}}
+            {{/if}}
             {{/unless}}
           </li>
           <li>
             {{#link-to 'aulas.bibliotecaindex' class="tabs__tab"}}
-                <span>Biblioteca</span>
+            <span>Biblioteca</span>
             {{/link-to}}
           </li>
 
           {{#if (equalstr parentController.toggleRole 'instrutor')}}
-            {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
-              <li>
-                <span>Acompanhamento</span>
-              </li>
-            {{/link-to}}
+          {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
+          <li>
+            <span>Acompanhamento</span>
+          </li>
+          {{/link-to}}
           {{/if}}
 
           {{#unless (equalstr livro '#')}}
-            {{#each livro as |l|}}
-              <li>
-                <a class="tabs__tab" href="{{l.url}}" target="_blank" rel="nofollow noopener noreferrer">
-                  <span>Livro {{l.plataformaAno.name}} | {{#if (equalstr l.perfil 'instrutor')}}Professor{{else}}{{l.perfil}}{{/if}}</span>
-                </a>
-              </li>
-            {{/each}}
+          {{#each livro as |l|}}
+          <li>
+            <a class="tabs__tab" href="{{l.url}}" target="_blank" rel="nofollow noopener noreferrer">
+              <span>Livro {{l.plataformaAno.name}} | {{#if (equalstr l.perfil
+                'instrutor')}}Professor{{else}}{{l.perfil}}{{/if}}</span>
+            </a>
+          </li>
+          {{/each}}
           {{/unless}}
 
-          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'instrutor'))}}
-            {{#link-to 'marketing.index' class="tabs__tab" id="tabMkt"}}
-                <span>Marketing</span>
-            {{/link-to}}
+          {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role
+          'instrutor'))}}
+          {{#link-to 'marketing.index' class="tabs__tab" id="tabMkt"}}
+          <span>Marketing</span>
+          {{/link-to}}
           {{/unless}}
 
           {{#if (equalstr pessoa.role 'admin')}}
-            {{#link-to 'conteudos.index' class="tabs__tab" id="tabContents"}}
-                <span>Conteúdos</span>
-            {{/link-to}}
+          {{#link-to 'conteudos.index' class="tabs__tab" id="tabContents"}}
+          <span>Conteúdos</span>
+          {{/link-to}}
 
-             {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
-                <span>Administração</span>
-            {{/link-to}}
+          {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
+          <span>Administração</span>
+          {{/link-to}}
           {{/if}}
-
-
-
-
         </ul>
-
       </nav>
     </div>
   </div>
