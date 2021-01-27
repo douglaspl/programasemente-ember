@@ -92,7 +92,8 @@
                 {{/if}}
 
                 <label class="btn btn--add-list-item">
-                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} />
+                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} 
+                    accept=".png, .jpeg, .jpg, .pdf, .ai, .mp4, .mov, .avi, .pptx, .ppsx, .cdr, application/vnd.ms-powerpoint" />
                     <span class="btn__icon icon-plus"></span>
                     <span class="btn__label">Adicionar Arquivo</span>
                 </label>
