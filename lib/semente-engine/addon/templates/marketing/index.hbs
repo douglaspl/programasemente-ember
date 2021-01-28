@@ -8,16 +8,16 @@
   <ul class="l-card-list">
     {{#each model as |area|}}
       <li>
-        <div class="media media--card">
-          <picture class="media__picture">
+        <div class="media media--card" {{action "goToMarketings" area.id}}>
+          <picture class="media__picture w-auto">
             <span class="media__thumb" title="{{area.name}}">{{component (strconcat "icon-" area.image) class="p--sm"}}</span>
           </picture>
 
           <span class="media__body flow-md self-stretch">
             <span class="media__title title-3">{{area.name}}</span>
-            <button class="btn btn--ghost btn--xxs" {{action "goToMarketings" area.id}}>
+            {{!-- <button class="btn btn--ghost btn--xxs" {{action "goToMarketings" area.id}}>
               <span class="btn__label">Ver arquivos</span>
-            </button>
+            </button> --}}
           </span>
 
         </div>
