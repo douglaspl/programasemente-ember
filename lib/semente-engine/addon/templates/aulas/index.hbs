@@ -105,7 +105,7 @@
     <section class="l-dots-between__content flow-md">
       <hgroup>
         <h1 class="sr-only">Lista de conteúdos do {{selectedAno}}</h1>
-        <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}} aulas)</span></h2>
+        <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
       </hgroup>
 
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
