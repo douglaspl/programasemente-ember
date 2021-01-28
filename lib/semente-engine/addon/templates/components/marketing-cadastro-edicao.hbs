@@ -148,8 +148,15 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="flex flex-row">
-                    <button type="button" class="btn" {{action "saveItem" model}}>{{salvarbutton}}</button>
+            <div class="flex flex-row items-center">
+                    {{#if generalSaveLoader}}
+                        <img style="width: 5%;" class="m-right--xs" src="/assets/img/carregando.gif">
+                        <p>
+                            Carregando arquivo(s)... (Não feche esta janela)
+                        </p>
+                    {{else}}
+                        <button type="button" class="btn" {{action "saveItem" model}} >{{salvarbutton}}</button>
+                    {{/if}}
                    <div class="child-v--center flex-1">
                         <p  class="alert alert--form alert--sm alert--error alert--has-icon animated d250 fadeIn {{if errorMsg 'alert--is-show'}} m-left--sm"
                         id="error_form">{{errorMsg}}</p>
