@@ -2,7 +2,9 @@
 
   <header class="flex flex-row items-baseline">
     <h1 class="title-1">Marketing</h1>
-    <button class="btn btn--ghost btn--xxs m-left--sm" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+    {{#if (equalstr pessoaRole 'admin')}}
+      <button class="btn btn--ghost btn--xxs m-left--sm" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+    {{/if}}
   </header>
 
   <ul class="l-card-list">
