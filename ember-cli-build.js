@@ -2,7 +2,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-// const isProduction = EmberApp.env() === 'production';
+const isProduction = EmberApp.env() === 'production';
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
@@ -25,7 +25,13 @@ module.exports = function (defaults) {
       versionStrategy: 'every-build'
     },
 
+    minifyCSS: {
+      enabled: true,
+      options: { advanced: false }
+      },
+      
     sassOptions: {
+      extension: 'scss',
       onlyIncluded: false,
       includePaths: ['../common-files/']
     },
