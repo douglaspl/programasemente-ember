@@ -1,8 +1,6 @@
-{{#link-to 'marketing.index'}}
-    <button class="btn btn--link color-blue-navy-60">
-        <span class="btn__icon icon-chevron-left"></span>
-        <span class="btn__label">Voltar</span>
-    </button>
+{{#link-to 'marketing.index' class="btn btn--link color-blue-navy-60"}}
+    <span class="btn__icon icon-chevron-left"></span>
+    <span class="btn__label">Voltar</span>
 {{/link-to}}
 
 <h1 class="title-1">{{if editando 'Edição de item de Marketing' 'Cadastro de item de Marketing'}}</h1>
@@ -35,7 +33,7 @@
                         </div>
                         <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite">Este campo é obrigatório</span>
                     </div>
-                
+
 
                     <div class="form-group">
                         <label class="form-group__label">Descrição</label>
@@ -47,7 +45,7 @@
                         <h2 class="title-3">Arquivos</h2>
                         <p>Adicione os diferentes formatos de arquivo para este item.</p>
                     </div>
-                        
+
                     {{#if model.arquivos}}
                         <ul class="list list--striped">
                             {{#each model.arquivos as |arquivoItem|}}
@@ -92,13 +90,13 @@
                 {{/if}}
 
                 <label class="btn btn--add-list-item">
-                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}} 
+                    <input style="display: none;" multiple="true" id="file-selector" name='file' type="file" value='' placeholder='Adicionar Arquivo' onchange={{action 'Upload'}}
                     accept=".png, .jpeg, .jpg, .pdf, .ai, .mp4, .mov, .avi, .pptx, .ppsx, .cdr, application/vnd.ms-powerpoint" />
                     <span class="btn__icon icon-plus"></span>
                     <span class="btn__label">Adicionar Arquivo</span>
                 </label>
 
-               
+
                 <div class="flex flex-col flow-md {{if missingCover 'blink blink--fast'}}">
                     <div>
                         <h2 class="title-3">Capa</h2>
@@ -136,13 +134,12 @@
                                 <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
                                 <span class="btn__icon icon-plus"></span>
                                 <span class="btn__label">Adicionar Capa</span>
-                            </label> 
+                            </label>
                         {{/if}}
                     {{/if}}
                 </div>
-            </div>  
-            
-         
+
+            </div>
 
         </div>
     </div>
