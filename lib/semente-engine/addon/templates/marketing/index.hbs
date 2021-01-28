@@ -6,7 +6,7 @@
   </header>
 
   <ul class="l-card-list">
-    {{#each model as |area|}}
+    {{#each model as |area idx|}}
       <li>
         <button class="media media--card p--lg" {{action "goToMarketings" area.id}}>
           <picture class="media__picture w-auto">
