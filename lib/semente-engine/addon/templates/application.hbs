@@ -73,12 +73,12 @@
 
 
 
-      <!-- lib header -->
+      {{!-- <!-- lib header -->
       <li class="global-nav__item counter" id="header-biblioteca" style="display:none;"
         {{action 'goToBiblioteca' on="click"}}>
         <a class="global-nav__link"><span>Biblioteca</span><span id="j-libraryNotificationNumber"
             class="counter__bubble">0</span></a>
-      </li>
+      </li> --}}
 
 
 
@@ -107,6 +107,11 @@
       <!-- MOBILE -->
       <!-- Em mobile, esses links não ficam dentro de um submenu e por isso tiveram que ser duplicados. -->
       <!-- Eles aparecem como irmãos a "Meus cursos", "Administração" etc. -->
+      
+      {{!-- <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
+        <a href="#" class="global-nav__link header-indicadores" id="change_image_trigger">
+          <span>Alterar imagem do perfil</span></a></li> --}}
+
       <li class="global-nav__item global-nav--mob-only" {{action 'testHide'}}>
         <a href="#" class="global-nav__link header-indicadores" id="change_image_trigger">
           <span>Alterar imagem do perfil</span></a></li>
@@ -138,12 +143,12 @@
         <div class="global-nav__submenu submenu submenu--header submenu--user" id="appsSubmenu">
            <ul class="submenu__body">
             <li class="submenu__item">
-              <a href="https://fpdev.programasemente.com.br" class="submenu__link" target="_blank">
+              <a href="https://fp.programasemente.com.br" class="submenu__link" target="_blank">
                 <span>Programa Semente FP</span>
               </a>
             </li>
             <li class="submenu__item">
-              <a href="https://sdev.programasemente.com.br" class="submenu__link" target="_blank">
+              <a href="https://s.programasemente.com.br" class="submenu__link" target="_blank">
                 <span>Plataforma S</span>
               </a>
             </li>

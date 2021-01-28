@@ -1,18 +1,28 @@
 {{#each conteudoAnos as |ano|}}
   <div class="media">
 
-    <div class="flex flex-row gap-sm w100">
-      <a href="#" class="btn btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
-        {{!-- <span class="btn__icon icon-edit"></span> --}}
-        <span class="btn__label">Editar este item</span>
-      </a>
+    <div class="flex flex-row gap-xs divider p-bottom--sm w100">
 
-      <button class="btn btn--text btn--xxs btn--is-toggle color-white {{if conteudo.situacao 'btn--is-toggle--on bg-info-60' 'bg-gray-60'}}" style="width: 80px" {{action 'postSelectedSituacao' conteudo}}>
-        <span class="btn__label label__default">Inativo</span>
-        <span class="btn__label label__active">Ativo</span>
+      <button class="btn btn--ghost btn--xxs btn--is-toggle {{if conteudo.situacao 'btn--is-toggle--on'}}" style="width: 6rem" {{action 'postSelectedSituacao' conteudo}}>
+        <span class="btn__label label__default">
+          <span>
+            <span class="icon-x color-error-50 m-right--xxs"></span>
+            <span>Inativo</span>
+          </span>
+        </span>
+        <span class="btn__label label__active">
+          <span>
+            <span class="icon-check color-success-50 m-right--xxs"></span>
+            <span>Ativo</span>
+          </span>
+        </span>
         {{!-- <span class="btn__label label__active">{{if conteudo.situacao "Ativo" "Inativo"}}</span> --}}
       </button>
 
+      <a href="#" class="btn btn--text btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
+        {{!-- <span class="btn__icon icon-edit"></span> --}}
+        <span class="btn__label">Editar este item</span>
+      </a>
       {{!-- {{#if (equalstr pessoaRole 'admin')}}
         <div class="checkbox">
           <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
@@ -21,38 +31,41 @@
       {{/if}} --}}
     </div>
 
-    <div class="media__body flow-md">
+    <div class="media__body">
 
-      <span class="flex flex-col items-center">
-        {{component (strconcat "icon-" selectedPublico)}}
+      <div class="flex flex-row items-center justify-between self-stretch gap-xxl">
 
-        {{#if (sizeequals conteudo.publicos 3)}}
-            <span class="title-aux">Todos</span>
-        {{else}}
+        <span class="flex flex-col items-start flow-sm">
           {{#each conteudo.publicos as |publico|}}
-            <span class="title-aux">{{publico.nameFormat}}</span>
+            <span class="flex flex-row items-center gap-xs">
+              {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--xs color-gray-40"}}
+              <span class="title-aux">{{publico.nameFormat}}</span>
+            </span>
           {{/each}}
-        {{/if}}
-      </span>
+        </span>
 
-      {{conteudo-aula-card conteudo=conteudo ano=ano}}
+        {{conteudo-aula-card conteudo=conteudo ano=ano}}
 
-      {{!-- <ul>
-        <li class="flex flex-row items-center gap-xs" id="Publicos">
-          <span class="title-aux">
-            Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
-          </span>
-        </li>
-      </ul> --}}
+        {{!--
+        <ul>
+          <li class="flex flex-row items-center gap-xs" id="Publicos">
+            <span class="title-aux">
+              Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
+            </span>
+          </li>
+        </ul>
 
-      <div>
-        <span class="title-aux">{{conteudo.tema.name}}</span>
-        <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
-      </div>
+        <div>
+          <span class="title-aux">{{conteudo.tema.name}}</span>
+          <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
+        </div>
+        --}}
 
-      <div>
-        {{component (strconcat "icon-" conteudo.tipo)}}
-        <span>{{conteudo.tipo}}</span>
+        <span class="flex flex-col items-center m-left--auto">
+          {{component (strconcat "icon-" conteudo.tipo)}}
+          <span class="title-aux">{{conteudo.tipo}}</span>
+        </span>
+
       </div>
 
     </div>

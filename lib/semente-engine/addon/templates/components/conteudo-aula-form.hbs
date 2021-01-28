@@ -1,51 +1,77 @@
-<label>Atrelar a que ano/aula?</label>
+<h2 class="title-3">Atrelar a que ano/aula?</h2>
 
-<div class="row">
+<div class="flex flex-col flow-sm">
     {{!-- aulas já atreladas a este conteúdo --}}
     {{#if conteudo.aulas.length}}
         {{#each conteudo.aulas as |aulacadastrada index|}}
             <div class="row">
-                <label>Segmento</label>
-                <select name="segmento{{aulacadastrada.id}}" id="segmento{{aulacadastrada.id}}" onchange={{action (action 'refreshSelectedSegmentoAulaCadastrada' aulacadastrada.id) value='target.value' }}>
-                    <option value="">---</option>
-                    {{#each segmentos as |seg|}}
-                        <option value="{{seg.id}}" selected={{if (equalstr seg.id aulacadastrada.plataformaAno.segmento.id) "selected"}}>{{seg.titulo}}</option>
-                    {{/each}}
-                </select>
+                <div class="col-xs-12 col-lg-3">
+                    <div class="form-group">
+                        <label class="form-group__label"
+                               for="segmento{{aulacadastrada.id}}">Segmento</label>
+                        <div class="form-group__wrapper form-group__wrapper--select">
+                            <select class="form-group__input form-group__input--select"
+                                    name="segmento{{aulacadastrada.id}}"
+                                    id="segmento{{aulacadastrada.id}}"
+                                    onchange={{action (action 'refreshSelectedSegmentoAulaCadastrada' aulacadastrada.id) value='target.value' }}>
+                                <option value="">---</option>
+                                {{#each segmentos as |seg|}}
+                                    <option value="{{seg.id}}" selected={{if (equalstr seg.id aulacadastrada.plataformaAno.segmento.id) "selected"}}>{{seg.titulo}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-3">
+                    <div class="form-group">
+                        <label class="form-group__label"
+                               for="ano{{aulacadastrada.id}}">Ano</label>
+                        <div class="form-group__wrapper form-group__wrapper--select">
+                            <select class="form-group__input form-group__input--select"
+                                    name="ano{{aulacadastrada.id}}"
+                                    id="ano{{aulacadastrada.id}}"
+                                    onchange={{action (action 'refreshSelectedAnoAulaCadastrada' aulacadastrada.id) value='target.value'}}>
+                                <option value="">---</option>
+                                {{#each segmentos as |seg|}}
+                                    {{#if (equalstr aulacadastrada.plataformaAno.segmento.id seg.id)}}
+                                        {{#each seg.plataformaAnos as |ano|}}
+                                            <option value="{{ano.id}}" selected={{if (equalstr ano.id aulacadastrada.plataformaAno.id) "selected"}}>{{ano.name}}</option>
+                                        {{/each}}
+                                    {{/if}}
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-3">
+                    <div class="form-group">
+                        <label class="form-group__label"
+                               for="aula{{aulacadastrada.id}}">Aula</label>
+                        <div class="form-group__wrapper form-group__wrapper--select">
+                            <select class="form-group__input form-group__input--select"
+                                    name="aula{{aulacadastrada.id}}"
+                                    id="aula{{aulacadastrada.id}}"
+                                    onchange={{action (action 'refreshSelectedAulaAulaCadastrada' aulacadastrada.id) value='target.value'}}>
+                                <option value="">---</option>
+                                {{#each segmentos as |seg|}}
+                                    {{#if (equalstr aulacadastrada.plataformaAno.segmento.id seg.id)}}
+                                        {{#each seg.plataformaAnos as |ano|}}
+                                            {{#if (equalstr aulacadastrada.plataformaAno.id ano.id)}}
+                                                {{#each ano.aulas as |aula|}}
+                                                    <option value="{{aula.id}}" selected={{if (equalstr aula.id aulacadastrada.id) "selected"}}>{{aula.titulo}}</option>
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/each}}
+                                    {{/if}}
 
-                <div class="row"></div>
-                <label>Ano</label>
-                <select name="ano{{aulacadastrada.id}}" id="ano{{aulacadastrada.id}}" onchange={{action (action 'refreshSelectedAnoAulaCadastrada' aulacadastrada.id) value='target.value'}}>
-                    <option value="">---</option>
-                    {{#each segmentos as |seg|}}
-                        {{#if (equalstr aulacadastrada.plataformaAno.segmento.id seg.id)}}
-                            {{#each seg.plataformaAnos as |ano|}}
-                                <option value="{{ano.id}}" selected={{if (equalstr ano.id aulacadastrada.plataformaAno.id) "selected"}}>{{ano.name}}</option>
-                            {{/each}}
-                        {{/if}}
-                    {{/each}}
-                </select>
-
-                <div class="row"></div>
-                <label>Aula</label>
-                <select name="aula{{aulacadastrada.id}}" id="aula{{aulacadastrada.id}}" onchange={{action (action 'refreshSelectedAulaAulaCadastrada' aulacadastrada.id) value='target.value'}}>
-                    <option value="">---</option>
-                    {{#each segmentos as |seg|}}
-                        {{#if (equalstr aulacadastrada.plataformaAno.segmento.id seg.id)}}
-                            {{#each seg.plataformaAnos as |ano|}}
-                                {{#if (equalstr aulacadastrada.plataformaAno.id ano.id)}}
-                                    {{#each ano.aulas as |aula|}}
-                                        <option value="{{aula.id}}" selected={{if (equalstr aula.id aulacadastrada.id) "selected"}}>{{aula.titulo}}</option>
-                                    {{/each}}
-                                {{/if}}
-                            {{/each}}
-                        {{/if}}
-                        
-                    {{/each}}
-                </select>
-            </div>
-            <div>
-                <button type="button" class="btn btn-default" {{action "removeAula" aulacadastrada}}>Remover</button>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-3">
+                    <button type="button" class="btn btn-default" {{action "removeAula" aulacadastrada}}>Remover</button>
+                </div>
             </div>
         {{/each}}
     {{/if}}
@@ -97,5 +123,5 @@
                 {{/if}}
             {{/each}}
         </select>
-    </div>  
+    </div>
 {{/if}}

@@ -2,25 +2,27 @@
 
   <header class="flex flex-row items-baseline">
     <h1 class="title-1">Marketing</h1>
-    <button class="btn btn--ghost btn--xxs m-left--sm" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+    {{#if (equalstr pessoaRole 'admin')}}
+      <button class="btn btn--ghost btn--xxs m-left--sm" type="button" {{action "goToCreateItem"}}>Cadastrar item</button>
+    {{/if}}
   </header>
 
   <ul class="l-card-list">
-    {{#each model as |area|}}
+    {{#each model as |area idx|}}
       <li>
-        <div class="media media--card">
-          <picture class="media__picture">
+        <button class="media media--card p--lg" {{action "goToMarketings" area.id}}>
+          <picture class="media__picture w-auto">
             <span class="media__thumb" title="{{area.name}}">{{component (strconcat "icon-" area.image) class="p--sm"}}</span>
           </picture>
 
           <span class="media__body flow-md self-stretch">
             <span class="media__title title-3">{{area.name}}</span>
-            <button class="btn btn--ghost btn--xxs" {{action "goToMarketings" area.id}}>
+            {{!-- <button class="btn btn--ghost btn--xxs" {{action "goToMarketings" area.id}}>
               <span class="btn__label">Ver arquivos</span>
-            </button>
+            </button> --}}
           </span>
 
-        </div>
+        </button>
       </li>
     {{/each}}
   </ul>

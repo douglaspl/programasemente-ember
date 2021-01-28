@@ -22,6 +22,10 @@
 
     }
 
+    &__aux {
+        padding-left: $input-check-radio-label-margin;
+    }
+
     &--sm {
         #{$this}__label {
             padding-left: calc(#{$input-check-radio-size--sm} + #{$distance--xs});
