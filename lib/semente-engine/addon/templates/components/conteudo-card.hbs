@@ -25,10 +25,10 @@
 
       <div class="flex flex-row items-center justify-between self-stretch gap-xl">
 
-        <span class="flex flex-col items-center">
+        <span class="flex flex-col items-start">
           {{#each conteudo.publicos as |publico|}}
             <span class="flex flex-row items-center">
-              {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--sm"}}
+              {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--xs color-green-40"}}
               <span class="title-aux">{{publico.nameFormat}}</span>
             </span>
           {{/each}}
