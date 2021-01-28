@@ -49,6 +49,7 @@
     box-shadow: $shadow-1, $shadow-3;
     min-height: 100%;
     padding: $distance--sm;
+    width: 100%;
 
     &:focus-within {
       outline: 2px solid $leaf-20;

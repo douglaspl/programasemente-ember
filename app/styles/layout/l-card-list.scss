@@ -4,5 +4,5 @@
   display: grid;
   gap: $distance--lg;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(8rem, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(4rem, 1fr));
 }

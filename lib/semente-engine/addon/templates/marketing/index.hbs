@@ -8,7 +8,7 @@
   <ul class="l-card-list">
     {{#each model as |area|}}
       <li>
-        <div class="media media--card" {{action "goToMarketings" area.id}}>
+        <button class="media media--card p--lg" {{action "goToMarketings" area.id}}>
           <picture class="media__picture w-auto">
             <span class="media__thumb" title="{{area.name}}">{{component (strconcat "icon-" area.image) class="p--sm"}}</span>
           </picture>
@@ -20,7 +20,7 @@
             </button> --}}
           </span>
 
-        </div>
+        </button>
       </li>
     {{/each}}
   </ul>
