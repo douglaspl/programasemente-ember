@@ -3,13 +3,19 @@
     <span class="btn__label">Voltar</span>
 {{/link-to}}
 
-<h1>Edição do conteúdo!</h1>
-<ul>
-    <li>
-        <h1>Editar conteúdo</h1>
-    </li>
-    <div></div>
-    {{conteudo-form publicos=publicos agrupamentos=agrupamentos 
-    segmentos=segmentos conteudo=conteudo inputCapa=inputCapa editando=editando}}
-    <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>{{salvarbutton}}</button>
-</ul>
+<h1 class="title-1">Edição de conteúdo</h1>
+<div class="flow-xxl">
+
+    {{conteudo-form publicos=publicos
+                    agrupamentos=agrupamentos
+                    segmentos=segmentos
+                    conteudo=conteudo
+                    inputCapa=inputCapa
+                    editando=editando}}
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <button type="button" class="btn" {{action "saveConteudo" conteudo}}>{{salvarbutton}}</button>
+        </div>
+    </div>
+</div>

@@ -1,103 +1,189 @@
-<div class="">
-    <h1>Origem</h1>
-    <label for="">Endereço de Vídeo</label>
-    <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo'
-        onchange={{ action 'urlvideoChanged' value='target.value' }} disabled={{if (containStr mainStr = conteudo.path subStr = "conteudos/") "" "disabled"}}>
-    <div class="row"> OU </div>
-
-    <label for="">Arquivo em PDF, PNG ou JPEG</label>
-    <input multiple="false" id="file-selector" name='file' type="file" value=''
-    placeholder='Arquivo PDF' accept="image/png,image/jpeg,application/pdf"
-    onchange={{action 'Upload'}} /> <label id="message-processing"></label>
-    
-    {{#if conteudo.filename}}
-        {{conteudo.filename}}
-        <button type="button" class="btn" {{action "removePath"}}>Remover</button>
-    {{/if}}
-
-</div>
-
 <div class="row">
-    <h1>Configuração</h1>
-    <label for="">Titulo do Conteúdo</label>
-    {{input name='' value=conteudo.titulo placeholder='Titulo do Conteúdo' maxlength=100}}
-    <label>Máximo de 100 caracteres permitidos.</label>
+    <div class="col-xs-12 col-md-6">
+        <div class="flow-xxl">
 
-    <div></div>
-    <div>Faz parte de qual agrupamento?</div>
-    {{#each agrupamentos as |a|}}
-        <input type="radio" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}} name="nomeagrupamento"
-        onchange={{ action 'agrupamentoChanged' a.id }}>
-        <label for="{{a.id}}">{{a.name}}</label>
-        <div>{{a.descricao}}</div>
-        <div> </div>
+            <div class="flex flex-col flow-md">
+                <h2 class="title-3">Origem</h2>
 
-        {{#if (equalstr a.id conteudo.agrupamento.id)}}
-            {{#if a.temas.length}}
-                <label>TEMA</label>
-                <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-                    <option value="">---</option>
-                    {{#each a.temas as |t|}}
-                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
+                <div class="flex flex-col flow-xs">
+                    <div class="form-group">
+                        <label  class="form-group__label"
+                                for="videoUrlId">Endereço de Vídeo</label>
+                        <input  class="form-group__input"
+                                disabled={{if conteudo.path "disabled" ""}}
+                                id="videoUrlId"
+                                name="video"
+                                onchange={{ action 'urlvideoChanged' value='target.value' }}
+                                placeholder='Endereço de Vídeo'
+                                type="text"
+                                value={{conteudo.videoUrl}}>
+                    </div>
+
+                    <p>ou</p>
+
+                    <div class="form-group">
+                        <label  class="form-group__label"
+                                for="">Arquivo em PDF, PNG ou JPEG</label>
+                        <input  class="form-group__input"
+                                accept="image/png,image/jpeg,application/pdf"
+                                id="file-selector"
+                                multiple="false"
+                                name="file"
+                                onchange={{action 'Upload'}}
+                                placeholder="Arquivo PDF"
+                                type="file"
+                                value="" />
+                        <span id="message-processing"></span>
+                    </div>
+
+                    {{#if conteudo.filename}}
+                        {{conteudo.filename}}
+                        <button type="button" class="btn" {{action "removePath"}}>Remover</button>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="flex flex-col flow-md">
+                <h2 class="title-3">Configuração</h2>
+
+                <div class="flex flex-col flow-xs">
+                    <div class="form-group">
+                        <label class="form-group__label"
+                                for="">Titulo do Conteúdo</label>
+                        {{input class="form-group__input"
+                                name=''
+                                value=conteudo.titulo
+                                placeholder='Titulo do Conteúdo'
+                                maxlength=100}}
+                    </div>
+                    <p class="text-aux">Máximo de 100 caracteres permitidos.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col flow-md">
+                <h2 class="title-3">Faz parte de qual agrupamento?</h2>
+
+                <div class="flex flex-col flow-sm">
+                    {{#each agrupamentos as |a|}}
+                        <div class="radio flex flex-col items-start">
+                            <input  class="radio__input"
+                                    checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}}
+                                    id={{a.id}}
+                                    name="nomeagrupamento"
+                                    onchange={{ action 'agrupamentoChanged' a.id }}
+                                    type="radio">
+                            <label  class="radio__label"
+                                    for="{{a.id}}">{{a.name}}</label>
+                            <div class="radio__aux text-aux">{{a.descricao}}</div>
+                        </div>
+
+                        {{#if (equalstr a.id conteudo.agrupamento.id)}}
+                            {{#if a.temas.length}}
+                                <label>TEMA</label>
+                                <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
+                                    <option value="">---</option>
+                                    {{#each a.temas as |t|}}
+                                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
+                                    {{/each}}
+                                </select>
+                            {{/if}}
+                        {{/if}}
                     {{/each}}
-                </select>
-            {{/if}}
-        {{/if}}
-    {{/each}}
+                </div>
+            </div>
 
-    <div>Qual a situação após o cadastro?</div>
-    <div class="row">
-        <input type="radio" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao"
-        onchange={{ action 'refreshSelectedSituacao' "true" }}>
-        <label>Ativo</label>
-        <input type="radio" checked={{not conteudo.situacao}} id={{conteudo.id}} name="situacao"
-        onchange={{ action 'refreshSelectedSituacao' "false" }}>
-        <label>Inativo</label>
+            <div class="flex flex-col flow-md">
+                <h2 class="title-3">Qual a situação após o cadastro?</h2>
+                <div class="flex flex-col flow-sm">
+                    <div class="radio">
+                        <input  class="radio__input"
+                                checked={{conteudo.situacao}}
+                                id={{conteudo.id}}
+                                name="situacao"
+                                onchange={{ action 'refreshSelectedSituacao' "true" }}
+                                type="radio">
+                        <label  class="radio__label"
+                                for="{{conteudo.id}}">Ativo</label>
+                    </div>
+                    <div class="radio">
+                        <input  class="radio__input"
+                                checked={{not conteudo.situacao}}
+                                id={{conteudo.id}}
+                                name="situacao"
+                                onchange={{ action 'refreshSelectedSituacao' "false" }}
+                                type="radio">
+                        <label  class="radio__label"
+                                for="{{conteudo.id}}">Inativo</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex flex-col flow-md">
+                <h2 class="title-3">Qual o público desse conteúdo?</h2>
+                <div class="flex flex-col flow-sm">
+                    {{#each publicos as |pub|}}
+                        <div class="checkbox">
+                            <input  class="checkbox__input"
+                                    checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
+                                    onchange={{action 'publicoChanged' value='target.value'}}
+                                    type="checkbox"
+                                    value={{pub.id}} />
+                            <label class="checkbox__label">{{pub.nameFormat}}</label>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
 <div class="row">
-    <h1>Público</h1>
-    <label>A quem se destina?</label>
-    <div class="row">
-        {{#each publicos as |pub|}}
-            <input
-            type="checkbox"
-            checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
-            value={{pub.id}}
-            onchange={{action 'publicoChanged' value='target.value'}} />
-            <label>{{pub.nameFormat}}</label>
-        {{/each}}
-    </div>
-    <div class="row">
-        {{#if (equalstr agrupamentoAula "true")}}
-            {{conteudo-aula-form conteudo=conteudo 
-            adicionarAula=adicionarAula segmentos=segmentos}}
-            {{#if (equalstr adicionarAula "false")}}
-                <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
-            {{/if}}
-        {{/if}}
+    <div class="col-xs-12">
+        <div class="flow-xxl">
+
+            <div class="flex flex-col flow-md">
+                {{#if (equalstr agrupamentoAula "true")}}
+                    {{conteudo-aula-form conteudo=conteudo
+                                        adicionarAula=adicionarAula
+                                        segmentos=segmentos}}
+                    {{#if (equalstr adicionarAula "false")}}
+                        <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
+                    {{/if}}
+                {{/if}}
+            </div>
+
+        </div>
     </div>
 </div>
 
-{{#if capa}}
-    <div class="flex flex-col flow-md">
-        <h2 class="title-3">Capa</h2>
-        {{conteudo.thumbnailname}}
-        <img src="{{conteudo.thumbnail}}" alt="{{conteudo.thumbnailname}}" width="50%">
-        <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
-    </div>
-{{else}}
-    {{#unless (equalstr conteudo.tipo 'Video')}}
-        <div class="flex flex-col flow-md">
-            <h2 class="title-3">Capa</h2>
-            <label class="form-group__label">Adicione uma capa para identificação do conteúdo.</label>
-            <label id="message-processing-capa" class="form-group__label"></label>
-            <label class="btn btn--add-list-item">
-                <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
-                <span class="btn__icon icon-plus"></span>
-                <span class="btn__label">Adicionar Capa</span>
-            </label> 
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <div class="flow-xxl">
+
+            {{#if capa}}
+                <div class="flex flex-col flow-md">
+                    <h2 class="title-3">Capa</h2>
+                    {{conteudo.thumbnailname}}
+                    <img src="{{conteudo.thumbnail}}" alt="{{conteudo.thumbnailname}}" width="50%">
+                    <button type="button" class="btn" {{action "removePathCapa"}}>Remover</button>
+                </div>
+            {{else}}
+                {{#unless (equalstr conteudo.tipo 'Video')}}
+                    <div class="flex flex-col flow-md">
+                        <h2 class="title-3">Capa</h2>
+                        <label class="form-group__label">Adicione uma capa para identificação do conteúdo.</label>
+                        <label id="message-processing-capa" class="form-group__label"></label>
+                        <label class="btn btn--add-list-item">
+                            <input style="display: none;" multiple="false" id="file-selector-capa" name='file' type="file" value='' placeholder='Adicionar Capa' onchange={{action 'UploadCapa'}} accept="image/png,image/jpeg" />
+                            <span class="btn__icon icon-plus"></span>
+                            <span class="btn__label">Adicionar Capa</span>
+                        </label>
+                    </div>
+                {{/unless}}
+            {{/if}}
+
         </div>
-    {{/unless}}
-{{/if}}
+    </div>
+</div>

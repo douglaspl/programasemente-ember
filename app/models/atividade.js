@@ -22,4 +22,5 @@ export default DS.Model.extend({
     backgroundImage: Ember.computed('coverImage', function() {
         return new Ember.String.htmlSafe("background-image: url('" + this.get('coverImage') + "');");
     }),
+    aula: DS.belongsTo('aula', {async:true})
 });
