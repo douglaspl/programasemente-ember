@@ -74,20 +74,34 @@
                                     type="radio">
                             <label  class="radio__label"
                                     for="{{a.id}}">{{a.name}}</label>
-                            <div class="radio__aux text-aux">{{a.descricao}}</div>
-                        </div>
+                            <div class="radio__aux flow-sm">
+                                <p class="text-aux">{{a.descricao}}</p>
 
-                        {{#if (equalstr a.id conteudo.agrupamento.id)}}
-                            {{#if a.temas.length}}
-                                <label>TEMA</label>
-                                <select name="tema" id="tema{{conteudo.id}}" onchange={{action 'refreshSelectedTema' value='target.value'}}>
-                                    <option value="">---</option>
-                                    {{#each a.temas as |t|}}
-                                        <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
-                                    {{/each}}
-                                </select>
-                            {{/if}}
-                        {{/if}}
+                                {{#if (equalstr a.id conteudo.agrupamento.id)}}
+                                    {{#if a.temas.length}}
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="form-group__label">Tema</label>
+                                                    <div class="form-group__wrapper form-group__wrapper--select">
+                                                        <select class="form-group__input"
+                                                                name="tema"
+                                                                id="tema{{conteudo.id}}"
+                                                                onchange={{action 'refreshSelectedTema' value='target.value'}}>
+                                                            <option value="">---</option>
+                                                            {{#each a.temas as |t|}}
+                                                                <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                {{/if}}
+
+                            </div>
+                        </div>
                     {{/each}}
                 </div>
             </div>
