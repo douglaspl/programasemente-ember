@@ -75,6 +75,10 @@
 
     }
 
+    &__close {
+        background-color: $white;
+    }
+
     &__header {
         flex: 0 0 auto;
         padding-bottom: $distance--lg;

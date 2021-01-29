@@ -14,7 +14,7 @@
       <span class="btn__label">Voltar</span>
     </button>
 
-    
+
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
@@ -298,9 +298,9 @@
 
 <!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
+  <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
   <div class="modal__content">
     <div class="modal__body">
-      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
         <div class="flow-sm" id="vimeoVideo">
           {{plataforma-conteudo-video-player conteudo=selectedConteudo controller=this pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
@@ -318,9 +318,9 @@
 
 
 <aside id="content-modal-ead" class="modal modal--is-content animated fadeIn faster">
+  <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
   <div class="modal__content">
     <div class="modal__body">
-      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModalEad"}}></button>
       {{#if videoId}}
         <div class="flow-sm">
           <div class="video">
