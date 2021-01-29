@@ -2,7 +2,7 @@
     <h1>Origem</h1>
     <label for="">Endereço de Vídeo</label>
     <input type="text" id="videoUrlId" name="video" value={{conteudo.videoUrl}} placeholder='Endereço de Vídeo'
-        onchange={{ action 'urlvideoChanged' value='target.value' }} disabled={{if conteudo.path "disabled" ""}}>
+        onchange={{ action 'urlvideoChanged' value='target.value' }} disabled={{if (containStr mainStr = conteudo.path subStr = "conteudos/") "" "disabled"}}>
     <div class="row"> OU </div>
 
     <label for="">Arquivo em PDF, PNG ou JPEG</label>
