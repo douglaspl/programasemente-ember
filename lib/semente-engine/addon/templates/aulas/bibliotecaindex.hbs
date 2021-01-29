@@ -81,9 +81,9 @@
 
 <!-- Modal de visualizar o conteudo -->
 <aside id="content-modal" class="modal modal--is-content animated fadeIn faster">
+  <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
   <div class="modal__content">
     <div class="modal__body">
-      <button class="modal__close btn-close icon-x" type="button" {{action "closeConteudoModal"}}></button>
       {{#if selectedConteudo}}
         <div class="flow-sm" id="vimeoVideo">
           {{plataforma-conteudo-video-player conteudo=selectedConteudo controller=this pessoa=this.parentController.selectedDependente stopVideo=stopVideo}}
