@@ -59,9 +59,9 @@
           <div class="flex flex-col flow-xs">
             {{#each agrupamentos as |a|}}
               <div class="radio flex flex-col items-start">
-                <input class="radio__input" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id={{a.id}}
+                <input class="radio__input" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id="agrupamento-{{a.id}}"
                   name="nomeagrupamento" onchange={{ action 'agrupamentoChanged' a.id }} type="radio">
-                <label class="radio__label" for="{{a.id}}">{{a.name}}</label>
+                <label class="radio__label" for="agrupamento-{{a.id}}">{{a.name}}</label>
                 <div class="radio__aux flow-sm">
                   <p class="text-aux">{{a.descricao}}</p>
 
@@ -70,9 +70,9 @@
                       <div class="row">
                         <div class="col-xs-12 col-sm-6">
                           <div class="form-group">
-                            <label class="form-group__label">Tema</label>
+                            <label class="form-group__label" for="tema-{{conteudo.id}}">Tema</label>
                             <div class="form-group__wrapper form-group__wrapper--select">
-                              <select class="form-group__input" name="tema" id="tema{{conteudo.id}}"
+                              <select class="form-group__input" name="tema" id="tema-{{conteudo.id}}"
                                 onchange={{action 'refreshSelectedTema' value='target.value'}}>
                                 <option value="">---</option>
                                 {{#each a.temas as |t|}}
@@ -97,17 +97,17 @@
           <h2 class="title-4">Qual a situação após o cadastro?</h2>
           <div class="flex flex-col flow-xs">
             <div class="radio flex flex-col items-start">
-              <input class="radio__input" checked={{conteudo.situacao}} id={{conteudo.id}} name="situacao"
+              <input class="radio__input" checked={{conteudo.situacao}} id="conteudoAtivo" name="situacao"
                 onchange={{ action 'refreshSelectedSituacao' "true" }} type="radio">
-              <label class="radio__label" for="{{conteudo.id}}">Ativo</label>
+              <label class="radio__label" for="conteudoAtivo">Ativo</label>
               <div class="radio__aux">
                 <p class="text-aux">Quem puder, poderá acessá-lo imediatamente após o cadastro.</p>
               </div>
             </div>
             <div class="radio flex flex-col items-start">
-              <input class="radio__input" checked={{not conteudo.situacao}} id={{conteudo.id}} name="situacao"
+              <input class="radio__input" checked={{not conteudo.situacao}} id="conteudoInativo" name="situacao"
                 onchange={{ action 'refreshSelectedSituacao' "false" }} type="radio">
-              <label class="radio__label" for="{{conteudo.id}}">Inativo</label>
+              <label class="radio__label" for="conteudoInativo">Inativo</label>
               <div class="radio__aux">
                 <p class="text-aux">Alguém terá que alterar a situação desse conteúdo depois para que ele fique
                   disponível.</p>
@@ -127,9 +127,13 @@
           <div class="flex flex-col flow-xs">
             {{#each publicos as |pub|}}
               <div class="checkbox">
-                <input class="checkbox__input" checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
-                  onchange={{action 'publicoChanged' value='target.value'}} type="checkbox" value={{pub.id}} />
-                <label class="checkbox__label">{{pub.nameFormat}}</label>
+                <input  class="checkbox__input"
+                        id="pub-{{pub.id}}"
+                        checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
+                        onchange={{action 'publicoChanged' value='target.value'}}
+                        type="checkbox"
+                        value={{pub.id}} />
+                <label class="checkbox__label" for="pub-{{pub.id}}">{{pub.nameFormat}}</label>
               </div>
             {{/each}}
           </div>
