@@ -18,8 +18,7 @@ module.exports = function (defaults) {
 
     'ember-font-awesome': {
       removeUnusedIcons: false
-    } // The addon will not remove unused icons, not even in production. }
-    ,
+    }, // The addon will not remove unused icons, not even in production. }
 
     'ember-service-worker': {
       versionStrategy: 'every-build'
@@ -28,8 +27,8 @@ module.exports = function (defaults) {
     minifyCSS: {
       enabled: true,
       options: { advanced: false }
-      },
-      
+    },
+
     sassOptions: {
       extension: 'scss',
       onlyIncluded: false,
