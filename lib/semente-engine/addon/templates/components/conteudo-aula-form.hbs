@@ -1,10 +1,10 @@
 <h3 class="title-4">Atrelar a que ano/aula?</h3>
 
-<div class="flex flex-col flow-sm">
+<ul class="flex flex-col flow-md">
     {{!-- aulas já atreladas a este conteúdo --}}
     {{#if conteudo.aulas.length}}
         {{#each conteudo.aulas as |aulacadastrada index|}}
-            <div class="row">
+            <li class="row">
                 <div class="col-xs-12 col-lg-3">
                     <div class="form-group">
                         <label class="form-group__label"
@@ -69,59 +69,85 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-3">
-                    <button type="button" class="btn btn-default" {{action "removeAula" aulacadastrada}}>Remover</button>
+                <div class="col-xs-12 col-lg-3 flex flex-row">
+                    <button type="button" class="btn btn--link color-error-40 m-top--md" {{action "removeAula" aulacadastrada}}>
+                        <span class="btn__label">Remover</span>
+                    </button>
                 </div>
-            </div>
+            </li>
         {{/each}}
     {{/if}}
-</div>
+</ul>
 
 {{!-- adicionar aulas atreladas a este conteúdo --}}
 {{#if (equalstr this.adicionarAula "true")}}
     <div class="row" id="newconteudo">
-        <label>Segmento</label>
-        <select name="segmento" id="segmento" onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
-            <option value="">---</option>
-            {{#each segmentos as |seg|}}
-                <option value="{{seg.id}}" selected={{if (equalstr seg.id conteudo.aula.plataformaAno.segmento.firstObject.id) "selected"}}>{{seg.titulo}}</option>
-            {{/each}}
-        </select>
-
-        <div class="row"></div>
-        <label>Ano</label>
-        <select name="ano" id="ano" onchange={{action 'refreshSelectedAno' value='target.value'}}>
-            <option value="">---</option>
-            {{#each segmentos as |seg|}}
-                {{#if selectedSegmento}}
-                    {{#if (equalstr seg.id selectedSegmento.id)}}
-                        {{#each seg.plataformaAnos as |ano|}}
-                            <option value="{{ano.id}}" selected={{if (equalstr ano.id selectedAno.id) "selected"}}>{{ano.name}}</option>
+        <div class="col-xs-12 col-lg-3">
+            <div class="form-group">
+                <label class="form-group__label" for="segmento">Segmento</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="form-group__input form-group__input--select"
+                            name="segmento"
+                            id="segmento"
+                            onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
+                        <option value="">---</option>
+                        {{#each segmentos as |seg|}}
+                            <option value="{{seg.id}}" selected={{if (equalstr seg.id conteudo.aula.plataformaAno.segmento.firstObject.id) "selected"}}>{{seg.titulo}}</option>
                         {{/each}}
-                    {{/if}}
-                {{/if}}
-            {{/each}}
-        </select>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <div class="row"></div>
-        <label>Aula</label>
-        <select name="aula" id="aula" onchange={{action 'refreshSelectedAula' value='target.value'}}>
-            <option value="">---</option>
-            {{#each segmentos as |seg|}}
-                {{#if selectedSegmento}}
-                    {{#if (equalstr seg.id selectedSegmento.id)}}
-                        {{#each seg.plataformaAnos as |ano|}}
-                            {{#if selectedAno}}
-                                {{#if (equalstr ano.id selectedAno.id)}}
-                                    {{#each ano.aulas as |aula|}}
-                                        <option value="{{aula.id}}" selected={{if (equalstr aula.id selectedAula.id) "selected"}}>{{aula.titulo}}</option>
+        <div class="col-xs-12 col-lg-3">
+            <div class="form-group">
+                <label class="form-group__label" for="ano">Ano</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="form-group__input form-group__input--select"
+                            name="ano"
+                            id="ano"
+                            onchange={{action 'refreshSelectedAno' value='target.value'}}>
+                        <option value="">---</option>
+                        {{#each segmentos as |seg|}}
+                            {{#if selectedSegmento}}
+                                {{#if (equalstr seg.id selectedSegmento.id)}}
+                                    {{#each seg.plataformaAnos as |ano|}}
+                                        <option value="{{ano.id}}" selected={{if (equalstr ano.id selectedAno.id) "selected"}}>{{ano.name}}</option>
                                     {{/each}}
                                 {{/if}}
                             {{/if}}
                         {{/each}}
-                    {{/if}}
-                {{/if}}
-            {{/each}}
-        </select>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-3">
+            <div class="form-group">
+                <label class="form-group__label" for="aula">Aula</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                    <select class="form-group__input form-group__input--select"
+                            name="aula" id="aula" onchange={{action 'refreshSelectedAula' value='target.value'}}>
+                        <option value="">---</option>
+                        {{#each segmentos as |seg|}}
+                            {{#if selectedSegmento}}
+                                {{#if (equalstr seg.id selectedSegmento.id)}}
+                                    {{#each seg.plataformaAnos as |ano|}}
+                                        {{#if selectedAno}}
+                                            {{#if (equalstr ano.id selectedAno.id)}}
+                                                {{#each ano.aulas as |aula|}}
+                                                    <option value="{{aula.id}}" selected={{if (equalstr aula.id selectedAula.id) "selected"}}>{{aula.titulo}}</option>
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+        </div>
+
     </div>
 {{/if}}

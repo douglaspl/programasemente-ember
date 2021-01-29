@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-md-6">
     <div class="flow-xxl">
 
-      <div class="flex flex-col flow-lg">
+      <div class="flex flex-col flow-md">
         <h2 class="title-3">Origem</h2>
 
         <div class="row items-center gap-xs">
@@ -22,10 +22,19 @@
 
           <div class="col-xs-12 col-sm-5">
             <div class="form-group">
-              <label class="form-group__label" for="">Arquivo em PDF, PNG ou JPEG</label>
-              <input class="form-group__input" accept="image/png,image/jpeg,application/pdf" id="file-selector"
-                multiple="false" name="file" onchange={{action 'Upload'}} placeholder="Arquivo PDF" type="file"
-                value="" />
+              <span class="form-group__span">Arquivo em PDF, PNG ou JPEG</span>
+              <label class="btn" for="file-selector">
+                  <span class="btn__label">Escolha o arquivo</span>
+              </label>
+              <input class="sr-only"
+                     accept="image/png,image/jpeg,application/pdf"
+                     id="file-selector"
+                     multiple="false"
+                     name="file"
+                     onchange={{action 'Upload'}}
+                     placeholder=""
+                     type="file"
+                     value="" />
               <span id="message-processing"></span>
             </div>
           </div>
@@ -38,7 +47,7 @@
         {{/if}}
       </div>
 
-      <div class="flex flex-col flow-lg">
+      <div class="flex flex-col flow-md">
         <h2 class="title-3">Configuração</h2>
 
         <div class="flex flex-col flow-xs">
@@ -119,7 +128,7 @@
 
 
 
-      <div class="flex flex-col flow-lg">
+      <div class="flex flex-col flow-md">
         <h2 class="title-3">Público</h2>
 
         <div class="flex flex-col flow-sm">
@@ -145,24 +154,26 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="flow-xxl">
+{{#if (equalstr agrupamentoAula "true")}}
+    <div class="row flow-sm">
+        <div class="col-xs-12">
+            <div class="flex flex-col flow-md">
+                {{conteudo-aula-form conteudo=conteudo
+                                            adicionarAula=adicionarAula
+                                            segmentos=segmentos}}
+            </div>
+        </div>
 
-      <div class="flex flex-col flow-sm">
-        {{#if (equalstr agrupamentoAula "true")}}
-          {{conteudo-aula-form conteudo=conteudo
-                                        adicionarAula=adicionarAula
-                                        segmentos=segmentos}}
-          {{#if (equalstr adicionarAula "false")}}
-            <button type="button" class="btn" {{action "addAulas"}}>Adicionar Ano/Aula</button>
-          {{/if}}
+        {{#if (equalstr adicionarAula "false")}}
+            <div class="col-xs-9">
+                <button type="button" class="btn btn--add-list-item" {{action "addAulas"}}>
+                    <span class="btn__icon icon-plus"></span>
+                    <span class="btn__label">Adicionar Ano/Aula</span>
+                </button>
+            </div>
         {{/if}}
-      </div>
-
     </div>
-  </div>
-</div>
+{{/if}}
 
 {{#if capa}}
   <div class="row">
