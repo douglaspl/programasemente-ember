@@ -64,43 +64,17 @@
                 <h2 class="title-3">Faz parte de qual agrupamento?</h2>
 
                 <div class="flex flex-col flow-sm">
-                    {{#each agrupamentos as |a|}}
+                    {{#each agrupamentos as |a idx|}}
                         <div class="radio flex flex-col items-start">
                             <input  class="radio__input"
                                     checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}}
-                                    id={{a.id}}
+                                    id="agrupamento-{{a.id}}"
                                     name="nomeagrupamento"
                                     onchange={{ action 'agrupamentoChanged' a.id }}
                                     type="radio">
                             <label  class="radio__label"
-                                    for="{{a.id}}">{{a.name}}</label>
-                            <div class="radio__aux flow-sm">
-                                <p class="text-aux">{{a.descricao}}</p>
-
-                                {{#if (equalstr a.id conteudo.agrupamento.id)}}
-                                    {{#if a.temas.length}}
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="form-group__label">Tema</label>
-                                                    <div class="form-group__wrapper form-group__wrapper--select">
-                                                        <select class="form-group__input"
-                                                                name="tema"
-                                                                id="tema{{conteudo.id}}"
-                                                                onchange={{action 'refreshSelectedTema' value='target.value'}}>
-                                                            <option value="">---</option>
-                                                            {{#each a.temas as |t|}}
-                                                                <option value="{{t.id}}" selected={{if (equalstr t.id conteudo.tema.id) "selected"}}>{{t.name}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {{/if}}
-                                {{/if}}
-
-                            </div>
+                                    for="agrupamento-{{a.id}}">{{a.name}}</label>
+                            <div class="radio__aux text-aux">{{a.descricao}}</div>
                         </div>
                     {{/each}}
                 </div>
@@ -112,22 +86,22 @@
                     <div class="radio">
                         <input  class="radio__input"
                                 checked={{conteudo.situacao}}
-                                id={{conteudo.id}}
+                                id="situacaoAtivo"
                                 name="situacao"
                                 onchange={{ action 'refreshSelectedSituacao' "true" }}
                                 type="radio">
                         <label  class="radio__label"
-                                for="{{conteudo.id}}">Ativo</label>
+                                for="situacaoAtivo">Ativo</label>
                     </div>
                     <div class="radio">
                         <input  class="radio__input"
                                 checked={{not conteudo.situacao}}
-                                id={{conteudo.id}}
+                                id="situacaoInativo"
                                 name="situacao"
                                 onchange={{ action 'refreshSelectedSituacao' "false" }}
                                 type="radio">
                         <label  class="radio__label"
-                                for="{{conteudo.id}}">Inativo</label>
+                                for="situacaoInativo">Inativo</label>
                     </div>
                 </div>
             </div>
@@ -142,8 +116,9 @@
                                     checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
                                     onchange={{action 'publicoChanged' value='target.value'}}
                                     type="checkbox"
-                                    value={{pub.id}} />
-                            <label class="checkbox__label">{{pub.nameFormat}}</label>
+                                    value={{pub.id}}
+                                    id="content-pub-{{pub.id}}" />
+                            <label class="checkbox__label" for="content-pub-{{pub.id}}">{{pub.nameFormat}}</label>
                         </div>
                     {{/each}}
                 </div>

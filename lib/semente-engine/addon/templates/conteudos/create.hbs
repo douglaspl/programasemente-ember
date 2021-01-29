@@ -9,7 +9,7 @@
         <h1>Criar conteúdo</h1>
     </li>
     <div></div>
-    {{conteudo-form publicos=publicos agrupamentos=agrupamentos 
+    {{conteudo-form publicos=publicos agrupamentos=sortedAgrupamentos 
     segmentos=segmentos conteudo=conteudo}}
     <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>{{salvarbutton}}{{percentage}}</button>
 </ul>
