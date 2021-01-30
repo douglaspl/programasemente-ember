@@ -3,16 +3,16 @@
 
     <div class="flex flex-row gap-xs divider p-bottom--sm w100">
 
-      <button class="btn btn--ghost btn--xxs btn--is-toggle {{if conteudo.situacao 'btn--is-toggle--on'}}" style="width: 6rem" {{action 'postSelectedSituacao' conteudo}}>
+      <button class="btn btn--xxs btn--is-toggle {{if conteudo.situacao 'bg-success-60 btn--is-toggle--on' 'bg-error-60'}}" style="width: 5rem" {{action 'postSelectedSituacao' conteudo}}>
         <span class="btn__label label__default">
           <span>
-            <span class="icon-x color-error-50 m-right--xxs"></span>
+            <span class="icon-x icon--lg color-error-20 m-right--xxs"></span>
             <span>Inativo</span>
           </span>
         </span>
         <span class="btn__label label__active">
           <span>
-            <span class="icon-check color-success-50 m-right--xxs"></span>
+            <span class="icon-check icon--lg color-success-20 m-right--xxs"></span>
             <span>Ativo</span>
           </span>
         </span>
@@ -35,7 +35,7 @@
 
       <div class="flex flex-row items-center justify-between self-stretch gap-xxl">
 
-        <span class="flex flex-col items-start flow-sm">
+        <span class="flex flex-col items-start flow-xs">
           {{#each conteudo.publicos as |publico|}}
             <span class="flex flex-row items-center gap-xs">
               {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--xs color-gray-40"}}
