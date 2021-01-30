@@ -24,6 +24,9 @@
 
     &__aux {
         padding-left: $input-check-radio-label-margin;
+
+        > * { line-height: 1.25; }
+
     }
 
     &--sm {

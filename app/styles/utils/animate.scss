@@ -1911,6 +1911,35 @@
   animation-name: fadeOutRight;
 }
 
+@-webkit-keyframes fadeOutRightShort {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(5%, 0, 0);
+    transform: translate3d(5%, 0, 0);
+  }
+}
+
+@keyframes fadeOutRightShort {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(5%, 0, 0);
+    transform: translate3d(5%, 0, 0);
+  }
+}
+
+.fadeOutRightShort {
+  -webkit-animation-name: fadeOutRightShort;
+  animation-name: fadeOutRightShort;
+}
+
 @-webkit-keyframes fadeOutRightBig {
   from {
     opacity: 1;
