@@ -37,6 +37,9 @@ export default DS.Model.extend({
   isAlsoResponsible: DS.attr(),
   telefone: DS.attr(),
   loggedWithDependenteUsername: DS.attr(),
+  acessoS: DS.attr(),
+  acessoMedio: DS.attr(),
+  acessoFp: DS.attr(),
   area: DS.belongsTo('area', {
     async: true
   }),
