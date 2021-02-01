@@ -100,7 +100,7 @@
       margin-bottom: $distance--xs;
 
       @at-root {
-        [class*='flex-row'] & {
+        [class*='flex-row'] > & {
           margin-bottom: 0;
           margin-right: $distance--xs;
         }

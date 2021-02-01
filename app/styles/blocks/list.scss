@@ -84,7 +84,11 @@
 
     > li {
       align-items: center;
-      padding: $distance--md;
+      padding: $distance--md $distance--xs;
+
+      @include media('>sm') {
+        padding: $distance--md;
+      }
 
       &:nth-child(odd) {
         background-color: $stripe-bg-color;

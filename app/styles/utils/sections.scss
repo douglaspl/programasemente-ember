@@ -1,8 +1,8 @@
-.sections {
-    &__section {
+// .sections {
+//     &__section {
         // margin-bottom: $distance--lg;
-        position: relative;
-        z-index: 1;
+        // position: relative;
+        // z-index: 1;
 
         // &:last-child { margin-bottom: 0; }
 
@@ -21,19 +21,19 @@
         //     }
 
         // }
-    }
+    // }
 
-    &__subsection {
+    // &__subsection {
 
-        > * {
-           margin-bottom: $distance--md;
+    //     > * {
+    //        margin-bottom: $distance--md;
 
-            &:last-child {
-                margin-bottom: 0;
-            }
+    //         &:last-child {
+    //             margin-bottom: 0;
+    //         }
 
-        }
+    //     }
 
-    }
+    // }
 
-}
+// }

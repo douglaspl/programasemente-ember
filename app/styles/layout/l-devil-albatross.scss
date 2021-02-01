@@ -1,0 +1,25 @@
+//https://9elements.com/blog/the-devils-albatros-an-algorithmic-layout-technique/?utm_source=CSS-Weekly&utm_campaign=Issue-443&utm_medium=email
+.l-devil-albatross {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        flex-grow: 1;
+
+        &:first-child { order: 1; }
+        &:last-child { order: 3; }
+    }
+
+    &::before {
+        $bp: map-get($breakpoints, sm);
+        $devils-number: 666;
+
+        content: '';
+        flex-basis: calc((#{$bp} - 100%) * #{$devils-number});
+        flex-grow: $devils-number;
+        height: $distance--lg; // used to apply vertical margin between elements
+        order: 2;
+    }
+
+}

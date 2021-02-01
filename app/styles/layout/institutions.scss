@@ -36,24 +36,6 @@
     margin-bottom: $distance--lg;
   }
 
-
-  &__config {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-bottom: $distance--md;
-
-    >* {
-
-      &:not(:first-of-type) {
-        margin-left: $distance--lg;
-      }
-
-    }
-
-  }
-
   &__areas {
 
     >* {

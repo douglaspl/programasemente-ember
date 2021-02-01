@@ -43,9 +43,9 @@
   }
 
   &__header {
-    margin-left: -$h-padding--xs;
-    margin-right: -$h-padding--xs;
-    padding: $distance--sm $distance--xs 0;
+    // margin-left: -$h-padding--xs;
+    // margin-right: -$h-padding--xs;
+    // padding: $distance--sm $distance--xs 0;
 
     @include media('>sm') {
       $size: $h-padding--sm;
@@ -80,9 +80,11 @@
   // }
 
     &--has-side-info {
+      align-items: flex-start;
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
+      gap: $distance--sm;
       justify-content: space-between;
 
       @include media('>sm') {
