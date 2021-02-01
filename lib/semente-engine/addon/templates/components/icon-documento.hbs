@@ -3,19 +3,28 @@
      class={{class}}>
     <defs>
         <style>
+            .a {
+                fill: transparent;
+            }
             .b {
-                fill: currentColor;
+                stroke: currentColor;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2px;
             }
         </style>
     </defs>
 
-    <rect height="100%"
+  <rect height="100%"
         fill="none"
         width="100%" />
 
-    <g transform="translate(4 3)">
-        <path class="b" d="M23,7l-7,5,7,5Z" />
-        <rect class="b" width="15" height="14" rx="2" transform="translate(1 5)" />
+    <g transform="translate(4 4)">
+        <path class="a b" d="M14,2H6A2,2,0,0,0,4,4V20a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V8Z" />
+        <path class="b" d="M14,2V8h6" />
+        <line class="b" x1="8" transform="translate(8 13)" />
+        <line class="b" x1="8" transform="translate(8 17)" />
+        <path class="b" d="M10,9H8" />
     </g>
 
 </svg>

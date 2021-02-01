@@ -1,23 +1,9 @@
 <section class="l-timeline">
-  <!-- Decorativos -->
-  <!--<span class="icon-bar-chart main__icon-1"></span>-->
-  <!--<span class="icon-at-sign main__icon-2"></span>-->
-  <!-- / Decorativos -->
 
   {{scrollToNext}}
 
-
   <section class="main__section">
 
-
-    <!-- Bem-vindo de volta
-    {{!-- <div class="alert alert--blue-navy alert--xs alert--no-interaction alert--is-show">
-      <h1 class="alert__title">Olá, {{username}}</h1>
-      <div class="alert__body">
-        <p>É ótimo que esteja aqui novamente! Bons estudos.</p>
-        <p class="m-top--md small">Caso você não seja a pessoa acima, faça <a class="alert__link" href="#">logout</a>.</p>
-      </div>
-    </div> --}}-->
     <h2 class="main__subtitle main__subtitle--timeline">Aulas</h2>
 
     <div class="timeline">
@@ -38,17 +24,9 @@
 
       <div class="timeline__begin">
         Início do
-        {{#if (equalstr model.idx 1)}}
-        primeiro
-        {{/if}}
-
-        {{#if (equalstr model.idx 2)}}
-        segundo
-        {{/if}}
-
-        {{#if (equalstr model.idx 3)}}
-        terceiro
-        {{/if}}
+        {{#if (equalstr model.idx 1)}}primeiro{{/if}}
+        {{#if (equalstr model.idx 2)}}segundo{{/if}}
+        {{#if (equalstr model.idx 3)}}terceiro{{/if}}
         ano
       </div>
 

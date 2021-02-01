@@ -38,46 +38,46 @@
     padding-top: 0;
   }
 
-  &__back-container {
+  &__back {
     margin-left: -$distance--sm;
-    padding-bottom: $distance--md;
-    width: 100%;
-
-    + #{$this}__title {
-      padding-top: 0;
-    }
-
   }
 
   &__header {
-    margin: 0 (-$h-padding--xs) $distance--lg;
+    margin-left: -$h-padding--xs;
+    margin-right: -$h-padding--xs;
     padding: $distance--sm $distance--xs 0;
 
     @include media('>sm') {
-      margin-left: (-$h-padding--sm);
-      margin-right: (-$h-padding--sm);
-      padding-left: $h-padding--sm;
-      padding-right: $h-padding--sm;
+      $size: $h-padding--sm;
+
+      margin-left: (-$size);
+      margin-right: (-$size);
+      padding-left: $size;
+      padding-right: $size;
       padding-top: 0;
   }
 
   @include media('>md') {
-      margin-left: (-$h-padding--md);
-      margin-right: (-$h-padding--md);
-      padding-left: $h-padding--md;
-      padding-right: $h-padding--md;
+    $size: $h-padding--md;
+
+    margin-left: (-$size);
+    margin-right: (-$size);
+    padding-left: $size;
+    padding-right: $size;
   }
 
   @include media('>lg') {
-      margin-left: (-$h-padding--lg);
-      margin-right: (-$h-padding--lg);
-      padding-left: $h-padding--lg;
-      padding-right: $h-padding--lg;
+    $size: $h-padding--lg;
+
+    margin-left: (-$size);
+    margin-right: (-$size);
+    padding-left: $size;
+    padding-right: $size;
   }
 
-  @include media('>xl') {
-      margin-bottom: $distance--xxl;
-  }
+  // @include media('>xl') {
+  //     margin-bottom: $distance--xxl;
+  // }
 
     &--has-side-info {
       display: flex;
@@ -132,8 +132,8 @@
     @include title-2;
 
     line-height: 1.3;
-    margin-bottom: $distance--xl;
-    margin-top: $distance--xl;
+    // margin-bottom: $distance--xl;
+    // margin-top: $distance--xl;
 
     &--timeline {
       background-color: $gray-0;

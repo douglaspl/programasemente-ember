@@ -3,8 +3,7 @@
   <!-- ###################### -->
   <!-- escolha da instituição -->
   <!-- ###################### -->
-  <section class="sections" style="display:{{if instView 'none' 'inherit'}}">
-
+  <section class="sections flow-xl" style="display:{{if instView 'none' 'inherit'}}">
     <header class="main__header institutions__header">
       <h1 class="main__title">Acompanhamento</h1>
     </header>
@@ -65,25 +64,24 @@
 
   <!-- --------------------------------------------- institution selected -->
   {{#if instView}}
-  <header id="report-header" class="main__header main__header--has-side-info">
-    <!-- back to institutions list -->
-    {{#if (equalstr role 'admin')}}
-    <div class="main__back-container">
-      <button class="btn btn--text" id="backToInstList" {{action 'backToInstList' on="click"}} type="button">
-        <span class="icon-arrow-left"></span>
-        <span class="btn__voltar">voltar</span>
-      </button>
-    </div>
-    {{/if}}
-
-<div class="flex flex-row m-top--md">
-      <h1 class="main__title">{{inst_selected.name}}</h1>
-      {{#if inst_selected}}
-        <button class="btn btn--ghost btn--xs m-left--sm" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
+    <header id="report-header" class="main__header main__header--has-side-info">
+      <!-- back to institutions list -->
+      {{#if (equalstr role 'admin')}}
+      <div class="main__back-container">
+        <button class="btn btn--text" id="backToInstList" {{action 'backToInstList' on="click"}} type="button">
+          <span class="icon-arrow-left"></span>
+          <span class="btn__voltar">voltar</span>
+        </button>
+      </div>
       {{/if}}
-    </div>
-</header>
 
+  <div class="flex flex-row m-top--md">
+        <h1 class="main__title">{{inst_selected.name}}</h1>
+        {{#if inst_selected}}
+          <button class="btn btn--ghost btn--xs m-left--sm" {{action 'downloadFile'}}>Baixar relatório em Excel</button>
+        {{/if}}
+      </div>
+    </header>
   {{/if}}
 
   <section class="sections__section">

@@ -745,7 +745,7 @@
     font-size: $size;
     font-weight: $weight;
     letter-spacing: $letter;
-    line-height: 1.05;
+    line-height: 1;
     vertical-align: middle;
 
     @include media('>sm') {
