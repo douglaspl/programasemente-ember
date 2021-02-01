@@ -1,3 +1,4 @@
+<div style="display: none;">{{oneInst}}</div>
 <aside class="help" id="help">
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
   <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle"
@@ -142,17 +143,20 @@
 
         <div class="global-nav__submenu submenu submenu--header submenu--user" id="appsSubmenu">
            <ul class="submenu__body">
-            <li class="submenu__item">
-              <a href="https://fp.programasemente.com.br" class="submenu__link" target="_blank">
-                <span>Programa Semente FP</span>
-              </a>
-            </li>
-            {{!-- <li class="submenu__item">
-              <a href="https://s.programasemente.com.br" class="submenu__link" target="_blank">
-                <span>Plataforma S</span>
-              </a>
-            </li> --}}
-
+            {{#if acessoFp}}
+              <li class="submenu__item">
+                <a href="https://fp.programasemente.com.br" class="submenu__link" target="_blank">
+                  <span>Programa Semente FP</span>
+                </a>
+              </li>
+            {{/if}}
+            {{#if acessoS}}
+              <li class="submenu__item">
+                <a href="https://s.programasemente.com.br" class="submenu__link" target="_blank">
+                  <span>Plataforma S</span>
+                </a>
+              </li>
+            {{/if}}
            </ul>
 
         </div>
@@ -375,7 +379,6 @@
   </div> --}}
 </div>
 
-<div style="display: none;">{{oneInst}}</div>
 
 <!-- user help -->
 <div style="display: none;">{{InstituicaoId}}</div>
