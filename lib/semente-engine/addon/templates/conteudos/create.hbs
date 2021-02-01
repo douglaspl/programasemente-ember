@@ -3,13 +3,21 @@
     <span class="btn__label">Voltar</span>
 {{/link-to}}
 
-<h1>Cadastro de novo conteúdo!</h1>
-<ul>
-    <li>
-        <h1>Criar conteúdo</h1>
-    </li>
-    <div></div>
-    {{conteudo-form publicos=publicos agrupamentos=sortedAgrupamentos 
-    segmentos=segmentos conteudo=conteudo}}
-    <button type="button" class="login__cta btn" {{action "saveConteudo" conteudo}}>{{salvarbutton}}{{percentage}}</button>
-</ul>
+<h1 class="title-1">Cadastro de conteúdo</h1>
+
+<div class="flow-xxl">
+    {{conteudo-form publicos=publicos
+                    agrupamentos=sortedAgrupamentos
+                    segmentos=segmentos
+                    conteudo=conteudo}}
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <button class="btn"
+                    type="button"
+                    {{action "saveConteudo" conteudo}}>
+                <span class="btn__label">{{salvarbutton}}{{percentage}}</span>
+            </button>
+        </div>
+    </div>
+</div>
