@@ -9,6 +9,30 @@ export default Ember.Controller.extend({
     return escola;
   }),
 
+preventLoginPaste: Ember.run.later('afterRender', function() {
+  setTimeout(() => {
+    document.getElementById('login').onpaste = function(){
+    // Pega alerta
+    const errorCompartiment = document.getElementById('login-error');
+    // Pega animação do alerta
+    const alertAnimation = errorCompartiment.dataset.animation;
+    // Pega container da mensagem a ser escrita
+    const msg = errorCompartiment.querySelector('[class*="__msg"]');
+    // Mensagem
+    let errorMsg = 'Por favor, digite'
+    // Injeta mensagem de erro.
+    msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+    // Confere se o elemento já está aparecendo
+    if (!errorCompartiment.classList.contains('alert--is-show')) {
+    // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+      errorCompartiment.classList.add('alert--is-show', alertAnimation);
+    }
+      return false;
+  }
+  }, 600);
+}),
+
+
   pessoa: Ember.computed('model', function() {
     return this.get('store').createRecord('pessoa');
   }),
