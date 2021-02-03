@@ -135,7 +135,7 @@
                         <h3 class="title-4">Qual a situação após o cadastro?</h3>
                         <div class="flex flex-col flow-xs">
                         <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{conteudo.situacao}} id="conteudoAtivo" name="situacao"
+                            <input class="radio__input" checked={{if situacaoAtual true false}} id="conteudoAtivo" name="situacao"
                             onchange={{ action 'refreshSelectedSituacao' "true" }} type="radio">
                             <label class="radio__label strong" for="conteudoAtivo">Ativo</label>
                             <div class="radio__aux">
@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{not conteudo.situacao}} id="conteudoInativo" name="situacao"
+                            <input class="radio__input" checked={{if (equalstr situacaoAtual "0") true false}} id="conteudoInativo" name="situacao"
                             onchange={{ action 'refreshSelectedSituacao' "false" }} type="radio">
                             <label class="radio__label strong" for="conteudoInativo">Inativo</label>
                             <div class="radio__aux">
