@@ -103,9 +103,44 @@
     </aside>
 
     <section class="l-dots-between__content flow-md">
-      <hgroup>
+      <hgroup class="divider p-bottom--lg">
         <h1 class="sr-only">Lista de conteúdos do {{selectedAno}}</h1>
-        <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
+
+        <div class="flex flex-row items-center gap-lg">
+          <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
+
+
+          <span class="flex flex-row gap-lg items-baseline m-left--auto">
+            {{! each perfil de material que tem acesso --}}
+              <span class="flex flex-row gap-xxs">
+                <span class="title-aux">Livro {{! if pode ver material além do aluno. se só puder ver de aluno, não precisa escrever "aluno" --}}do Aluno{{! /if --}}:</span>
+
+                {{!-- for each idioma --}}
+                <button class="btn btn--link color-green-40">
+                  <span class="btn__label">Português</span>
+                </button>
+                <button class="btn btn--link color-green-40">
+                  <span class="btn__label">Inglês</span>
+                </button>
+                {{! /each --}}
+              </span>
+
+              <span class="flex flex-row gap-xxs">
+                <span class="title-aux">Livro do Professor:</span>
+
+                {{!-- for each idioma --}}
+                <button class="btn btn--link color-green-40">
+                  <span class="btn__label">Português</span>
+                </button>
+                <button class="btn btn--link color-green-40">
+                  <span class="btn__label">Inglês</span>
+                </button>
+                {{! /each --}}
+              </span>
+            {{! /each--}}
+          </span>
+
+        </div>
       </hgroup>
 
       <ul id="card-list-{{selectedDependente.id}}" class="l-card-list animated slow {{if noCards 'd--none'}}">
