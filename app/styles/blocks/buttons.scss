@@ -508,24 +508,27 @@
   }
 
   &-group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 
-    >*:not(:last-child) {
-      margin-right: $distance--sm;
+    // Sanitize
+    > :not([class*='btn']) {
+      outline: 4px solid crimson;
+      &::before { content: "Filho direto deve ser um btn!!!" }
     }
 
-    &--xxs {
-      >*:not(:last-child) {
-        margin-right: $distance--xxs;
+    > [class*='btn'] {
+      border-radius: 0;
+
+      & + [class*='btn'] {
+        border-left: 0 solid transparent;
       }
 
+      &:first-child { border-radius: $button-radius 0 0 $button-radius; }
+      &:last-child { border-radius: 0 $button-radius $button-radius 0; }
     }
 
-    &--xs {
-      >*:not(:last-child) {
-        margin-right: $distance--xs;
-      }
-
-    }
 
   }
 

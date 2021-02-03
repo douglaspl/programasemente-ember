@@ -110,32 +110,48 @@
           <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
 
 
-          <span class="flex flex-row gap-lg items-baseline m-left--auto">
-            {{! each perfil de material que tem acesso --}}
-              <span class="flex flex-row gap-xxs">
-                <span class="title-aux">Livro {{! if pode ver material além do aluno. se só puder ver de aluno, não precisa escrever "aluno" --}}do Aluno{{! /if --}}:</span>
+          <!-- CASO ONDE PROFESSOR TEM ACESSO A MATERIAIS EM UM IDIOMA -->
+          {{!-- <span class="flex flex-row gap-sm items-baseline m-left--auto">
+            <button class="btn btn--ghost btn--xxs">
+              <span class="btn__label">Livro do Aluno</span>
+            </button>
+            <button class="btn btn--ghost btn--xxs">
+              <span class="btn__label">Livro do Professor</span>
+            </button>
+          </span> --}}
 
-                {{!-- for each idioma --}}
-                <button class="btn btn--link color-green-40">
-                  <span class="btn__label">Português</span>
-                </button>
-                <button class="btn btn--link color-green-40">
-                  <span class="btn__label">Inglês</span>
-                </button>
-                {{! /each --}}
+          <!-- CASO ONDE PROFESSOR TEM ACESSO A MATERIAIS EM DOIS IDIOMAS -->
+          <span class="flex flex-row gap-md items-baseline m-left--auto">
+            {{! each perfil de material que tem acesso --}}
+              <span class="flex flex-row gap-xxs items-center">
+                <span class="title-aux">Livro do Aluno
+                  {{! if pode ver material além do aluno. se só puder ver de aluno, não precisa escrever ":" --}}:{{! /if --}}</span>
+
+                <span class="btn-group">
+                  {{!-- for each idioma --}}
+                    <button class="btn btn--ghost btn--xxs">
+                      <span class="btn__label">pt-br</span>
+                    </button>
+                  {{! /each --}}
+                  <button class="btn btn--ghost btn--xxs">
+                    <span class="btn__label">en-us</span>
+                  </button>
+                </span>
               </span>
 
-              <span class="flex flex-row gap-xxs">
+              <span class="flex flex-row gap-xxs items-center">
                 <span class="title-aux">Livro do Professor:</span>
 
-                {{!-- for each idioma --}}
-                <button class="btn btn--link color-green-40">
-                  <span class="btn__label">Português</span>
-                </button>
-                <button class="btn btn--link color-green-40">
-                  <span class="btn__label">Inglês</span>
-                </button>
-                {{! /each --}}
+                <span class="btn-group">
+                  {{!-- for each idioma --}}
+                    <button class="btn btn--ghost btn--xxs">
+                      <span class="btn__label">pt-br</span>
+                    </button>
+                  {{! /each --}}
+                  <button class="btn btn--ghost btn--xxs">
+                    <span class="btn__label">en-us</span>
+                  </button>
+                </span>
               </span>
             {{! /each--}}
           </span>

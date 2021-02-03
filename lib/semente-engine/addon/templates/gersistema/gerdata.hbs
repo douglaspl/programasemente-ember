@@ -683,17 +683,22 @@
         <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos usuários
           a serem
           criados ou atualizados no sistema</p>
-        <div class="institutions__mass-enroll institutions__btn-group btn-group">
+        <div class="institutions__mass-enroll institutions__btn-group flow-h-sm">
           <button class="btn btn-primary" type="submit" {{action 'baixarTemplate'}}>Baixar template</button>
+
           <label class="btn label_get_lote" for="get_lote">Buscar arquivo</label>
           <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file"
             style="display: none;" />
+
           {{#if selected_file}}
             <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
           {{else}}
             <button class="btn btn-primary btn--disabled" type="submit" disabled>Importar</button>
           {{/if}}
-          <div><i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="display: none" id="spinner-importar-lote"></i></div>
+
+          <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="display: none" id="spinner-importar-lote"></i>
+          </div>
         </div>
       </div>
 
