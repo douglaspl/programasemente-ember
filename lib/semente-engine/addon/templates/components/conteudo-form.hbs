@@ -6,10 +6,10 @@
         <div class="col-xs-12 col-sm-6 flow-md">
 
             <div class="row items-end gap-xs">
-                <div class="col-xs-12 col-sm-5">
-                    <div class="form-group">
+                <div class="col-xs-12 col-sm-5 flow-xs form-group__container">
+                    <div class="form-group w100">
                         <label class="form-group__label" for="videoUrlId">Endereço de Vídeo</label>
-                        <input class="form-group__input" disabled={{if conteudo.path "disabled" ""}} id="videoUrlId" name="video"
+                        <input class="form-group__input j-validate" disabled={{if conteudo.path "disabled" ""}} id="videoUrlId" name="video"
                         onchange={{ action 'urlvideoChanged' value='target.value' }} placeholder='Endereço de Vídeo' type="text"
                         value={{conteudo.videoUrl}}>
                     </div>
@@ -19,8 +19,8 @@
                     <p class="ta-c">ou</p>
                 </div>
 
-                <div class="col-xs-12 col-sm-5">
-                    <div class="form-group">
+                <div class="col-xs-12 col-sm-5 form-group__container">
+                    <div class="form-group w100">
                         <span class="form-group__label">Arquivo em PDF, PNG ou JPEG</span>
                         <label class="btn" for="file-selector">
                         <input style="display: none;"
@@ -36,7 +36,11 @@
                         </label>
                         <span id="message-processing"></span>
                     </div>
+                    
                 </div>
+               
+                <span class="form__msg form__msg--bellow form__msg--error" id="error_origem" aria-live="polite"></span>
+                
             </div>
 
             {{#if conteudo.filename}}
@@ -70,10 +74,10 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
 
-                    <div class="flex flex-col flow-xs">
-                        <div class="form-group">
+                    <div class="flex flex-col flow-xs form-group__container">
+                        <div class="form-group w100">
                         <label class="form-group__label" for="">Titulo do Conteúdo</label>
-                        {{input class="form-group__input"
+                        {{input class="form-group__input" id="tituloConteudo"
                                             name=''
                                             value=conteudo.titulo
                                             placeholder='Titulo do Conteúdo'
@@ -81,6 +85,7 @@
                         </div>
                         <p class="text-aux {{if (isbigger conteudo.titulo.length '60') 'color-warning-60 bg-warning-10'}}">
                         {{if (isbigger conteudo.titulo.length 0) conteudo.titulo.length "0"}}/80 caracteres permitidos.</p>
+                        <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
                     </div>
 
                 </div>
@@ -93,7 +98,12 @@
                         <div class="flex flex-col flow-xs">
                         {{#each agrupamentos as |a|}}
                             <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id="agrupamento-{{a.id}}"
+                            <input class="radio__input" 
+                            checked=
+                            {{if (or (equalstr a.id conteudo.agrupamento.id) (and (notequalstr a.id conteudo.agrupamento.id) (equalstr a.idx "1") )) "checked" }}
+                            id="agrupamento-{{a.id}}"
+                                
+                                
                                 name="nomeagrupamento" onchange={{ action 'agrupamentoChanged' a.id }} type="radio">
                             <label class="radio__label strong" for="agrupamento-{{a.id}}">{{a.name}}</label>
                             <div class="radio__aux flow-sm">
