@@ -1,7 +1,10 @@
 <div class="flow-xxl">
 
     <section class="flex flex-col flow-md">
-    <h2 class="title-3">Origem</h2>
+    <div class="flex-row gap-sm inline-flex justify-start">
+        <h2 class="title-3">Origem</h2>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm" id="error_origem" aria-live="polite"></span>
+    </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6 flow-md">
 
@@ -38,9 +41,6 @@
                     </div>
                     
                 </div>
-               
-                <span class="form__msg form__msg--bellow form__msg--error" id="error_origem" aria-live="polite"></span>
-                
             </div>
 
             {{#if conteudo.filename}}
@@ -68,8 +68,10 @@
     </section>
 
     <section class="flex flex-col flow-md">
-        <h2 class="title-3">Configuração</h2>
-
+        <div class="flex-row gap-sm inline-flex justify-start">
+            <h2 class="title-3">Configuração</h2>
+            <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm"  id="error_title" aria-live="polite"></span>
+        </div>
         <div class="flow-xl">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
@@ -85,7 +87,6 @@
                         </div>
                         <p class="text-aux {{if (isbigger conteudo.titulo.length '60') 'color-warning-60 bg-warning-10'}}">
                         {{if (isbigger conteudo.titulo.length 0) conteudo.titulo.length "0"}}/80 caracteres permitidos.</p>
-                        <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
                     </div>
 
                 </div>
@@ -172,14 +173,16 @@
 
 
     <section class="flex flex-col flow-md">
-    <h2 class="title-3">Público</h2>
-
+    <div class="flex-row gap-sm inline-flex justify-start">
+        <h2 class="title-3">Público</h2>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm" id="error_publico" aria-live="polite">Selecione pelo menos um público</span>
+    </div>
     <div class="flex flex-col flow-xs">
         <h3 class="title-4">Qual o público desse conteúdo?</h3>
         <div class="flex flex-col flow-xs">
         {{#each publicos as |pub|}}
             <div class="checkbox">
-            <input  class="checkbox__input"
+            <input  class="checkbox__input j-publico"
                     id="pub-{{pub.id}}"
                     checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
                     onchange={{action 'publicoChanged' value='target.value'}}
@@ -190,6 +193,7 @@
         {{/each}}
         </div>
     </div>
+    
 
     {{#if (equalstr agrupamentoAula "true")}}
         <div class="flex flex-col flow-xs">
