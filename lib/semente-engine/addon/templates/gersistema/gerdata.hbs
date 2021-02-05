@@ -256,7 +256,7 @@
   <div id="staticAlertUser" class="alert alert--x  alert--blue-navy-50 alert--has-interaction">
 
     <p class="alert__msg">
-      {{#if staticTxt1}}<strong class="m-right--xs">{{staticTxt1}}</strong>{{/if}}
+      {{#if alertTitle}}<strong class="m-right--xs">{{alertTitle}}</strong>{{/if}}
       {{#if staticTxt2}}<span>{{staticTxt2}}</span>{{/if}}
     </p>
 
@@ -270,7 +270,7 @@
 
       <!-- delete user -->
       {{#if selectedToDelete}}
-        <strong>{{confirm_entity.name}}</strong>
+        <p>Você tem certeza que deseja apagar <span class="strong">{{confirm_entity.name}}</span>?</p>
       {{/if}}
 
       <!-- reset user progress -->
@@ -288,14 +288,14 @@
     <div class="alert__footer">
       <!-- check users list -->
       {{#if (equalstr staticType 'checklist')}}
-        <button class="btn btn--xs btn--text-inverted" {{action staticAlert 'close'}}>Desmarcar todos</button>
+        <button class="btn btn--xs btn--text" {{action staticAlert 'close'}}>Desmarcar todos</button>
         <button class="btn btn--xs" {{action 'emailAction'}}><span class="btn__icon icon-at-sign"></span>Enviar
           emails</button>
       {{/if}}
       <!-- -->
       <!-- send email(s) -->
       {{#if (equalstr staticType 'mail')}}
-        <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
+        <button class="btn btn--xs btn--text" {{action 'cancelarMail'}}>Cancelar</button>
         <button class="btn" type="submit" {{action 'sendMail'}}>Enviar email{{#if
         mail_single_pessoa}}
           {{else}}s{{/if}}</button>
@@ -303,13 +303,13 @@
       <!-- -->
       <!-- retry failed email -->
       {{#if (equalstr staticType 'failed')}}
-        <button class="btn btn--text-inverted" {{action 'cancelarMail'}}>Cancelar</button>
+        <button class="btn btn--xs btn--text" {{action 'cancelarMail'}}>Cancelar</button>
         <button class="btn" {{action 'sendMail'}}>Tentar Novamente</button>
       {{/if}}
       <!-- -->
       <!-- delete user -->
       {{#if (equalstr staticType 'delete')}}
-        <button class="btn btn--text-inverted" type="submit" {{action 'cancelDel'}}>Cancelar</button>
+        <button class="btn btn--xs btn--text" type="submit" {{action 'cancelDel'}}>Cancelar</button>
         <button class="btn" type="submit" {{action 'confirmDel' confirm_entity}}>Apagar</button>
       {{/if}}
       <!-- -->
@@ -324,7 +324,7 @@
   </div>
 
   <!-- LOADING || SUCCESS || ERROR -->
-  <div id="timeoutAlertUser" class="alert alert--x  alert--blue-navy-50 alert--has-icon alert--no-interaction">
+  <div id="timeoutAlertUser" class="alert alert--x alert--blue-navy-50 alert--has-icon alert--no-interaction">
     {{#if (equalstr timeoutIcon 'load')}}<span class="alert__icon icon-reload icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'error')}}<span class="alert__icon icon-x icon--lg"></span>{{/if}}
     {{#if (equalstr timeoutIcon 'success')}}<span class="alert__icon icon-check icon--lg"></span>{{/if}}
@@ -459,22 +459,6 @@
                       {{/each}}
                     </ul>
                   </div>
-
-                  {{!-- <div flex="20" class="form-group--aired-h">
-                    <div class="form-group form-group--select-wrapper w100">
-                      <label class="form-group__label">Turma</label>
-                      <select class="form-group__input" id="new_user_area">
-                        <option value="">Selecione...</option>
-                        {{#each inst_selected.areas as |area|}}
-                          {{#if (equalstr area.id new_user_area)}}
-                            <option value={{area.id}} selected>{{area.name}}</option>
-                          {{else}}
-                            <option value={{area.id}}>{{area.name}}</option>
-                          {{/if}}
-                        {{/each}}
-                      </select>
-                    </div>
-                  </div> --}}
                 </li>
               {{/each}}
             {{else}}
@@ -591,18 +575,7 @@
                         {{/if}}
                       {{/each}}
                     </ul>
-                    {{!-- <div class="form-group form-group--select-wrapper">
-                      <select class="form-group__input" id="new_user_area">
-                        <option value="">Selecione...</option>
-                        {{#each inst_selected.areas as |area|}}
-                          {{#if (equalstr area.id new_user_area)}}
-                            <option value={{area.id}} selected>{{area.name}}</option>
-                          {{else}}
-                            <option value={{area.id}}>{{area.name}}</option>
-                          {{/if}}
-                        {{/each}}
-                      </select>
-                    </div> --}}
+
                   </div>
                 </li>
               {{/each}}
@@ -634,31 +607,6 @@
         </section>
       {{/if}}
 
-      {{!--
-      <div class="m-top--lg">
-        <div class="form-group form-group--aired-v checkbox">
-          <input class="checkbox__input" type="checkbox" id="new_user_is_taste">
-          <label class="checkbox__label" for="new_user_is_taste">Degustação</label>
-        </div>
-
-        <!-- Somente aparecer se o input estiver marcado -->
-        <div>
-          <div class="form-group form-group--aired-h">
-            <label class="form-group__label" for="user_temp_date_begin">Início</label>
-            <input class="form-group__input" type="date" name="user_temp_date_begin" required>
-            <input class="form-group__input" type="time" name="user_temp__time_begin" min="00:00" max="23:59" required />
-          </div>
-
-          <div class="form-group">
-            <label class="form-group__label" for="user_temp_end">Fim</label>
-            <input class="form-group__input" type="date" name="user_temp_date_end" required>
-            <input class="form-group__input" type="time" name="user_temp__time_end" min="00:00" max="23:59" required />
-          </div>
-        </div>
-        <!-- / Somente aparecer se o input estiver marcado -->
-
-      </div>
-      --}}
     </div>
     <footer class="modal__footer">
       <button class="btn btn--text" type="submit" {{action 'closeUserModal'}}>Cancelar</button>
