@@ -7,11 +7,25 @@
   flex-wrap: wrap;
   gap: min(#{$distance--md}, 3vw);
 
+  .no-flexbox-gap & {
+    > *:first-child:not(:only-child) {
+      margin-right: 1rem;
+    }
+  }
+
   &__picture {
     display: flex;
     flex: 0 0 auto;
     flex-direction: row;
     width: max(8vw, 6rem);
+
+    .no-flexbox-gap & {
+      background-color: $gray-0;
+      height: 6rem;
+      overflow: hidden;
+      position: relative;
+      width: 6rem;
+    }
   }
 
   &__thumb {
@@ -19,11 +33,20 @@
     flex: 1;
     max-width: 100%;
     object-fit: contain;
+    object-position: 0 0;
 
     svg {
       color: $green-40;
       height: $avatar--sm;
       width: $avatar--sm;
+    }
+
+    .no-flexbox-gap & {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 120%;
     }
 
   }
@@ -33,6 +56,10 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    .no-flexbox-gap & {
+      align-self: flex-start;
+    }
   }
 
   &__title {
