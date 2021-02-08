@@ -8,7 +8,7 @@
 <div class="flow-xl">
   <div class="l-dots-between">
     <header class="l-dots-between__side">
-      <form autocomplete="off" class="flex flex-col flow-md" >
+      <form autocomplete="off" class="flex flex-col flow-md">
         <div class="two-col-wrap">
           {{#each tipos as |tipo|}}
             <button class="btn btn--as-filter {{if (equalstr selectedTipo tipo) 'btn--is-active'}}" {{action 'refreshSelectedTipo' tipo}} type="button">
