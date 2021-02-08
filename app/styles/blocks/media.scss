@@ -7,6 +7,12 @@
   flex-wrap: wrap;
   gap: min(#{$distance--md}, 3vw);
 
+  .no-flexbox-gap & {
+    > *:first-child:not(:only-child) {
+      margin-right: 1rem;
+    }
+  }
+
   &__picture {
     display: flex;
     flex: 0 0 auto;
@@ -19,6 +25,7 @@
     flex: 1;
     max-width: 100%;
     object-fit: contain;
+    object-position: 0 0;
 
     svg {
       color: $green-40;
