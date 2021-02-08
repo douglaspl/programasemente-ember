@@ -8,6 +8,7 @@
   border-radius: $alert-radius;
   box-shadow: none;
   color: $gray-60;
+  display: none;
   flex-direction: row;
   font-size: $font-size--xs;
   line-height: 1;
@@ -156,6 +157,7 @@
   }
 
   &--is-show {
+    display: inline-flex;
     opacity: 1;
     visibility: visible;
 
