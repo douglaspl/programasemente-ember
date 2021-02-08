@@ -9,7 +9,7 @@
 
   .no-flexbox-gap & {
     > *:first-child:not(:only-child) {
-      margin-right: 1rem;
+      margin-right: $distance--sm;
     }
   }
 

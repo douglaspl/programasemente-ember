@@ -23,6 +23,12 @@
             min-width: $stacked-bar-height;
         }
 
+        .no-flexbox-gap & {
+            > *:not(:last-child) {
+                margin-right: $distance--xxs;
+            }
+        }
+
     }
 
     &__legend {
@@ -69,8 +75,8 @@
 
     &__value {
         &--1 { background-color: $info-60; }
-        &--2 { background-color: $info-40; }
-        &--3 { background-color: $info-20; }
+        &--2 { background-color: $info-30; }
+        &--3 { background-color: $info-10; }
     }
 
 }

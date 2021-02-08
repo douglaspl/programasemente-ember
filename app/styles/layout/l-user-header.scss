@@ -9,6 +9,18 @@
   margin-top: 0;
   padding: $distance--sm;
 
+
+  .no-flexbox-gap & {
+    > *:first-child:not(:only-child) {
+      margin-bottom: $distance--md;
+
+      @include media('>md') {
+        margin-bottom: 0;
+        margin-right: $distance--md;
+      }
+    }
+  }
+
   @include full-width-on-main;
 
   @include media('>sm') {
@@ -102,17 +114,6 @@
     --dark: #{$blue-navy-70};
     --light: #{$blue-navy-30};
   }
-
-  .no-flexbox-gap & {
-    > *:first-child:not(:only-child) {
-      margin-bottom: $distance--md;
-
-      @include media('>md') {
-        margin-bottom: 0;
-        margin-right: $distance--md;
-      }
-    }
-}
 
   // Elements
   &__role {

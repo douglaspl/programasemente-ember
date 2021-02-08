@@ -24,9 +24,26 @@
     gap: $distance--sm;
 
     > * {
+        align-self: flex-start;
         flex: 0 0 auto;
         width: calc(50% - (#{$distance--sm} / 2));
     }
+
+    .no-flexbox-gap & {
+
+        > * {
+            margin-bottom: $distance--sm;
+
+            &:nth-child(odd) {
+                margin-right: $distance--sm;
+            }
+
+            &:nth-last-child(-n+2) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
 }
 
 @keyframes blink--green10 {
@@ -102,14 +119,14 @@
 .ws-i { white-space: initial; }
 .w100 { width: 100%; }
 .w-auto { width: auto; }
-.child-v--center { 
+.child-v--center {
     position: relative;
     > * {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
     }
-} 
+}
 
 .scr-only {
     height: 1px;
