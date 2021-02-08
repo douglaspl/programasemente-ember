@@ -145,6 +145,12 @@
             justify-content: center;
         }
 
+        .no-flexbox-gap & {
+            > *:first-child:not(:only-child) {
+                margin-right: 1rem;
+            }
+        }
+
     }
 
     &__overlayer {
