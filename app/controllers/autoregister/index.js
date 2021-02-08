@@ -57,7 +57,8 @@ export default Ember.Controller.extend({
                 errorMsg = 'Por favor, insira o código fornecido pela escola.';
                 break;
               case schoolCode.length > 0:
-                errorMsg = 'Parece que o código informado é inválido, verifique por favor.'
+                debugger;
+                errorMsg = error.errors[0].title
                 break;
                 
             }
