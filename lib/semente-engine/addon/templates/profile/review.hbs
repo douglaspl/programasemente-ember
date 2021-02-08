@@ -345,6 +345,7 @@
                       pessoa=dep
                       model=model
                       index=index
+                      refreshCanAddDependentes=(action 'refreshCanAddDependentes')
                       trimall=(action 'trimAll')
                       checkform=(action 'validateForm')
                       checkname=(action 'validateName')
@@ -596,6 +597,7 @@
                               index=index
                               model=model
                               gonext=(action 'carouselFoward')
+                              refreshCanAddDependentes=(action 'refreshCanAddDependentes')
                               goback=(action 'carouselBackward')
                               checkform=(action 'validateForm')
                               checkname=(action 'validateName')
@@ -606,7 +608,6 @@
         {{/each}}
 
       </div>
-
       {{#if canAddDependents }}
         <button class="btn btn--add-list-item" type="button" onclick={{action 'addDependent'}}>
           <span class="btn__icon icon-plus"></span>
