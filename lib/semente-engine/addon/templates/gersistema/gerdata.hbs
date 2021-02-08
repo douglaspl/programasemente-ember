@@ -1,16 +1,37 @@
+<div class="flex flex-row  items-center justify-start">
+  <div class="institutions__btn-group">
+    <button class="btn btn--xxs btn--ghost" {{action 'userModal'}}>
+        {{!-- <span class="btn__icon icon-plus"></span> --}}
+        <span class="btn__label">Novo Usuário</span>
+    </button>
+    <button class="btn btn--xxs btn--ghost" {{action 'cadastroLote'}}>
+      {{!-- <span class="btn__icon icon-users"></span> --}}
+      <span class="btn__label">Cadastro e matrícula em lote</span>
+    </button>
+  </div>
+</div>
+<div class="l-dots-between">
+  <header class="l-dots-between__side">
+    <form class="flex flex-col flow-md" autocomplete="off" aria-autocomplete="none">
+      <div class="form-group">
+          <label class="form-group__label" for="search">Busca</label>
+          {{input class="form-group__input"
+                  aria-autocomplete="none"
+                  aria-describedby="basic-addon1"
+                  autocomplete="off"
+                  id="search_input_pessoas_ger"
+                  key-up="livesearch" type="text"}}
+          <a class="form__aux-link" onclick={{action 'exitsearch'}}>Limpar busca</a>
+        </div>
+    </form>
+  </header>
+  <section class="l-dots-between__content flow-md"></section>
+</div>
+
 <section class="sections__section">
 
-  <!-- ---------------------------------------- administration users header -->
-  <div class="flex flex-row  items-center justify-start">
-    <div class="institutions__btn-group">
-      <button class="btn btn--xs btn--secondary" {{action 'userModal'}}><span
-          class="btn__icon icon-plus"></span>Novo Usuário</button>
-      <button class="btn btn--xs btn--secondary" {{action 'cadastroLote'}}><span
-          class="btn__icon icon-users"></span>Cadastro e matrícula em lote</button>
-    </div>
-  </div>
 
-  <!-- ------------------------------------------ administration users body -->
+
   <section class="sections__subsection report__section report-people" id="report-people-gersistema" style="display: block;">
 
     <div class="flex flex-col">
