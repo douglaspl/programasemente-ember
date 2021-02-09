@@ -7,6 +7,10 @@
             margin-top: $distance;
         }
     }
+
+    .flexbox-gap [class*='gap-'].flow-#{$measure} > * + *{
+        margin-top: 0;
+    }
 }
 
 @each $measure, $distance in $distances {
@@ -14,6 +18,10 @@
         > * + * {
             margin-left: $distance;
         }
+    }
+
+    .flexbox-gap [class*='gap-'].flow-h-#{$measure} > * + *{
+        margin-left: 0;
     }
 }
 

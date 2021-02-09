@@ -204,12 +204,12 @@
                 <li>
                 <div class="flex flex-row items-center">
                     <span class="flex flex-row items-center">
-                    {{icon-competencias}}
-                    <span class="m-left--xs">Competências:</span>
+                      {{icon-competencias}}
+                      <span class="m-left--xs">Competências:</span>
                     </span>
-                    <span class="flex flex-row gap-xs m-right--xs m-top--xs">
+                    <span class="flex flex-row gap-xs flow-h-xs m-left--xs m-top--xs">
                     {{#each aula.competencias as |comp|}}
-                        <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}} m-left--xxs">{{comp.name}}</span>
+                        <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
                     {{/each}}
                     </span>
                 </div>
