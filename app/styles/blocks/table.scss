@@ -102,7 +102,7 @@
     }
 
     #{$this}__name {
-      width: 18%;
+      width: 40%;
     }
 
     #{$this}__email {
@@ -153,8 +153,8 @@
     #{$this}__actions {
       overflow: visible;
       position: relative;
-      text-align: center;
-      width: 60px;
+      text-align: right;
+      // width: 60px;
 
     }
 
