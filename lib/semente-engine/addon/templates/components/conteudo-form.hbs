@@ -11,7 +11,7 @@
             <div class="row items-end gap-xs">
                 <div class="col-xs-12 col-sm-5 flow-xs form-group__container">
                     <div class="form-group w100">
-                        <label class="form-group__label" for="videoUrlId">Endereço de Vídeo</label>
+                        <label class="form-group__label" for="videoUrlId">Endereço de Vídeo do VIMEO</label>
                         <input class="form-group__input j-validate" {{!--disabled={{if conteudo.path "disabled" ""}}--}} id="videoUrlId" name="video"
                         onchange={{ action 'urlvideoChanged' value='target.value' }} placeholder='Endereço de Vídeo' type="text"
                         value={{conteudo.videoUrl}}>
@@ -49,7 +49,7 @@
                         <div class="flex flex-row items-center justify-between gap-sm">
                             {{!-- <img src="{{conteudo.thumbnail}}" alt="{{conteudo.filename}}"> --}}
                             <div class="flow-xxs flex flex-col">
-                                <span class="title-3 tt-u">{{conteudo.tipo}}</span>
+                                <span class="title-4">{{conteudo.tipo}}</span>
                                 <span class="color-leaf-50">{{conteudo.filename}}</span>
                             </div>
                             <button class="btn btn--text color-error-40"
@@ -82,6 +82,7 @@
                         {{input class="form-group__input" id="tituloConteudo"
                                             name=''
                                             value=conteudo.titulo
+                                            change=(action 'tituloChanged')
                                             placeholder='Titulo do Conteúdo'
                                             maxlength=80}}
                         </div>
@@ -221,15 +222,16 @@
 </div>
 
 
-{{#unless (equalstr conteudo.tipo 'Video')}}
+{{#if (equalstr conteudo.tipo 'Documento')}}
 <div class="row">
     <div class="col-xs-12 col-md-6">
         <div class="flow-xxl">
-            <div class="flex flex-col flow-md">
-                <div class="flow-xxs">
+            <div class="flex flex-col flow-xs">
+                <div class="flex-row gap-sm inline-flex justify-start">
                     <h2 class="title-3">Capa</h2>
-                    <p>Adicione uma capa para identificação do conteúdo.</p>
+                    <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_capa" aria-live="polite"></span>
                 </div>
+                    <p>Adicione uma capa para identificação do conteúdo.</p>
 
                 {{#if showProcessing}}
                     <div class="flex justify-center" id="message-processing-capa">
@@ -246,7 +248,7 @@
                                     <span class="color-leaf-50">{{conteudo.filename}}</span>
                                 </div>
                                 <div class="flow-xxs flex flex-col">
-                                    <span class="title-3 tt-u">{{conteudo.tipo}}</span>
+                                    <span class="title-4">{{conteudo.tipo}}</span>
                                     <span class="color-leaf-50">{{conteudo.filename}}</span>
                                 </div>
                                 <button class="btn btn--text color-error-40"
@@ -276,4 +278,4 @@
         </div>
     </div>
 </div>
-{{/unless}}
+{{/if}}
