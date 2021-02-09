@@ -42,11 +42,14 @@
     }
 
     .no-flexbox-gap & {
+      align-items: center;
+      display: flex;
+      justify-content: center;
       left: 50%;
+      min-width: 120%;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      min-width: 120%;
     }
 
   }

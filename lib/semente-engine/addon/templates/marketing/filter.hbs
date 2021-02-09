@@ -43,7 +43,7 @@
       <ul class="list list--striped">
         {{#each itens as |item|}}
             {{#if (containStr subStr = search mainStr = item.titulo)}}
-                <li>
+                <li class="flow-sm">
                     {{marketing-card item=item goToEditItem=(action 'goToEditItem')}}
                 </li>
             {{/if}}
