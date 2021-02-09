@@ -3,10 +3,10 @@
     <section class="flex flex-col flow-md">
     <div class="flex-row gap-sm inline-flex justify-start">
         <h2 class="title-3">Origem</h2>
-        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow" id="error_origem" aria-live="polite"></span>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_origem" aria-live="polite"></span>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 flow-md">
+        <div class="col-xs-12 col-sm-8 flow-md">
 
             <div class="row items-end gap-xs">
                 <div class="col-xs-12 col-sm-5 flow-xs form-group__container">
@@ -39,7 +39,7 @@
                         </label>
                         <span id="message-processing"></span>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
     <section class="flex flex-col flow-md">
         <div class="flex-row gap-sm inline-flex justify-start">
             <h2 class="title-3">Configuração</h2>
-            <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow"  id="error_title" aria-live="polite"></span>
+            <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm"  id="error_title" aria-live="polite"></span>
         </div>
         <div class="flow-xl">
             <div class="row">
@@ -99,12 +99,12 @@
                         <div class="flex flex-col flow-xs">
                         {{#each agrupamentos as |a|}}
                             <div class="radio flex flex-col items-start">
-                            <input class="radio__input" 
+                            <input class="radio__input"
                             checked=
                             {{if (or (equalstr a.id conteudo.agrupamento.id) (and (notequalstr a.id conteudo.agrupamento.id) (equalstr a.idx "1") )) "checked" }}
                             id="agrupamento-{{a.id}}"
-                                
-                                
+
+
                                 name="nomeagrupamento" onchange={{ action 'agrupamentoChanged' a.id }} type="radio">
                             <label class="radio__label strong" for="agrupamento-{{a.id}}">{{a.name}}</label>
                             <div class="radio__aux flow-sm">
@@ -175,7 +175,7 @@
     <section class="flex flex-col flow-md">
     <div class="flex-row gap-sm inline-flex justify-start">
         <h2 class="title-3">Público</h2>
-        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow" id="error_publico" aria-live="polite"></span>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_publico" aria-live="polite"></span>
     </div>
     <div class="flex flex-col flow-xs">
         <h3 class="title-4">Qual o público desse conteúdo?</h3>
@@ -193,7 +193,7 @@
         {{/each}}
         </div>
     </div>
-    
+
 
     {{#if (equalstr agrupamentoAula "true")}}
         <div class="flex flex-col flow-xs">

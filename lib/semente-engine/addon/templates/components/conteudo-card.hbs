@@ -1,5 +1,5 @@
 {{#each conteudoAnos as |ano|}}
-  <div class="media">
+  <div class="media flow-md">
 
     <div class="flex flex-row gap-xs divider p-bottom--sm w100">
 
@@ -33,11 +33,11 @@
 
     <div class="media__body">
 
-      <div class="flex flex-row items-center justify-between self-stretch gap-xxl">
+      <div class="flex flex-row items-center justify-between self-stretch gap-xxl flow-h-sm">
 
-        <span class="flex flex-col items-start flow-xs">
+        <span class="flex flex-col items-start flow-xs divider-right" flex="20">
           {{#each conteudo.publicos as |publico|}}
-            <span class="flex flex-row items-center gap-xs">
+            <span class="flex flex-row items-center gap-xs flow-h-xs">
               {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--xs color-gray-40"}}
               <span class="title-aux">{{publico.nameFormat}}</span>
             </span>
@@ -61,8 +61,8 @@
         </div>
         --}}
 
-        <span class="flex flex-col items-center m-left--auto">
-          {{component (strconcat "icon-" conteudo.tipo) class="color-blue-navy-40"}}
+        <span class="flex flex-col items-center m-left--auto" style="width: 5rem"> <!-- tamanho fixo para alinhar ícones em lista -->
+          {{component (strconcat "icon-" conteudo.tipo) class="icon icon--square color-blue-navy-40"}}
           <span class="title-aux">{{conteudo.tipo}}</span>
         </span>
 

@@ -107,6 +107,10 @@
     @include divider($pos: "bottom");
 }
 
+.divider-right {
+    @include divider($pos: "right", $direction: "vertical");
+}
+
 .overflow-hidden { overflow: hidden; }
 .pos-rel { position: relative; }
 .small { font-size: .75em; }
