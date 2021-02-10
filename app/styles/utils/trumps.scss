@@ -1,3 +1,11 @@
+// RADIUS
+
+@each $measure, $amount in $radii {
+    .radius--#{$measure} {
+        border-radius: $amount;
+    }
+}
+
 //------------------------------------
 //    #FLOW
 //------------------------------------

@@ -3,6 +3,10 @@
   <h1 class="sr-only">Pedir ajuda ou enviar dúvida, sugestão ou reportar problema</h1>
   <button id="help__trigger" class="help__trigger btn btn--icon btn--md icon-help-circle"
     {{action "toggleHelp"}}></button>
+  
+  
+  
+  
   <div id="help__container" class="help__container">
     <button id="help__close" class="help__close btn-close icon-x" {{action "toggleHelp"}}></button>
     <div id="formHelp" class="help__form flow-md">
@@ -26,12 +30,27 @@
         <textarea class="form-group__input" id="helpMsg" rows="6" form="formHelp" wrap required autofocus></textarea>
       </div>
       <button class="help__cta btn self-start" id="help__cta" {{action 'supportMailer'}}>Enviar</button>
+      <div class="help__guide">
+        <p class="bg-blue-navy-50 flow-h-xxs p-bottom--md p-top--sm radius--sm ta-c">
+          <span class="color-blue-navy-10 fs--xxs tt-u">Baixe nosso</span> 
+          <a class="btn btn--link color-lemon-10" href="https://spasementemedio.blob.core.windows.net/plataforma/Guia%20Plataforma%202021-v2.pdf" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="btn__label">guia da plataforma</span>
+          </a>
+        </p>
+      </div>
     </div>
     <div class="help__success">
       <span class="icon-check icon--success icon--xxl"></span>
       <p class="title-aux">Mensagem enviada com sucesso!</p>
     </div>
   </div>
+
+
+
+
+
+
+
 </aside>
 
 <header class="header" id="header_layout">

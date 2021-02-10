@@ -83,6 +83,11 @@
         padding-bottom: $distance--md;
     }
 
+    &__guide {
+        border-top: 2px solid $gray-10;
+        padding-top: $distance--md;
+    }
+
     &__user-avatar {
         margin-right: $distance--sm;
     }
