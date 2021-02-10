@@ -22,6 +22,9 @@
     $switch-head: 1.25rem;
     $switch-height: $input-height;
     $switch-width: 6rem;
+    $switch-head-bg-color-on: $info-40;
+    $switch-head-bg-color-off: $error-40;
+    $switch-color: $gray-60;
 
     display: inline-block;
     flex-shrink: 0;
@@ -69,7 +72,7 @@
     &__inner::before,
     &__inner::after {
         box-sizing: border-box;
-        color: $gray-50;
+        color: $switch-color;
         font-size: .85em;
         font-weight: bold;
         padding: 0;
@@ -92,7 +95,7 @@
     }
 
     &__head {
-        background-color: $error-30;
+        background-color: $switch-head-bg-color-off;
         border-radius: $radius;
         box-shadow: $shadow-2;
         height: $switch-head;
@@ -112,7 +115,7 @@
     &__checkbox:checked + &__label {
 
         #{$this}__head {
-            background-color: $success-30;
+            background-color: $switch-head-bg-color-on;
         }
 
         #{$this}__inner {
