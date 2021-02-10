@@ -103,13 +103,6 @@
         <!-- users list header -->
         <thead>
           <tr>
-            <th class="table__check" scope="col">
-              <span class="checkbox">
-                <input class="checkbox__input" id="usersListCheckAll" type="checkbox"
-                  {{action 'listItemCheck' 'all' on='change'}}>
-                <label class="checkbox__label" for="usersListCheckAll"></label>
-              </span>
-            </th>
             <th class="table__name" scope="col">
               <div {{action 'setSort' 'name'}}>
                 Nome
@@ -118,112 +111,31 @@
                 {{/if}}
               </div>
             </th>
-            <th class="" scope="col">
-              Perfil
-              {{!-- <div {{action 'setSort' 'email'}}>
-                E-mail
-                {{#if (equalstr sortCol 'email')}}
-                  <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div> --}}
-            </th>
-            {{!-- <th class="table__class" scope="col">
-              <div {{action 'setSort' 'area.name'}}>
-                Ano
-                {{#if (equalstr sortCol 'area.name')}}
-                  <i class="{{if sortAsc 'fa fa-caret-down' 'fa fa-caret-up'}}" aria-hidden="true"></i>
-                {{/if}}
-              </div>
-            </th> --}}
-            {{!-- <th class="table__total"><span class="hidden d-lg--inline">Total de </span>turmas</th> --}}
-            <th class="table__enabled" scope="col">Hab<span class="hide-on--xs">ilitado</span>
-            </th>
-            {{!-- <th class="table__sent" scope="col">
-              <span class="d-lg--none">@ BV</span>
-              <span class="hidden lg:inline">boas-vindas</span>
-            </th> --}}
+            <th class="table__role"    scope="col">Perfil</th>
+            <th class="table__enabled" scope="col">Hab<span class="hide-on--xs">ilitado</span></th>
             <th class="table__actions" scope="col">Ações</th>
           </tr>
         </thead>
-        <!-- users list content -->
         <tbody>
           {{#each pessoas_sorted as |pessoa|}}
             <tr>
-              <td class="table__check">
-                <span class="checkbox">
-                  <input class="checkbox__input userCheck" id="userCheck{{pessoa.id}}" type="checkbox"
-                    {{action 'listItemCheck' pessoa.id on='change'}} name="mail_send_list" value={{pessoa.id}}>
-                  <label class="checkbox__label" for="userCheck{{pessoa.id}}"></label>
-                </span>
-              </td>
               <td class="table__name">
                 <p><strong class="title-4">{{pessoa.name}}</strong></p>
                 <p class='color-green-40'>{{pessoa.email}}</p>
 
               </td>
-              <td class="">
+              <td class="table__role">
                 <p class="">{{pessoa.role}}</p>
               </td>
-              <!--- PRECISA DE VALORES DINÂMICOS -->
-              {{!-- <td class="table__class popover" id="epic{{pessoa.id}}">
-                <button data-target="#epic{{pessoa.id}}" class="btn btn--link popover__trigger">
-                  <span>
-                    {{#each pessoa.modulos as |anos index|}}
-                      {{#if (equalstr anos.idx '4')}}
-                        <span>{{if index ", "}}PV</span>
-                      {{else}}
-                        <span>{{if index ", "}}{{anos.idx}}</span>
-                      {{/if}}
-                    {{/each}}
-                  </span></button>
-
-                <div class="popover__balloon popover__balloon--right-bottom ta-l">
-                  <button class="popover__close icon-x" data-target="#epic{{pessoa.id}}"></button>
-                  <h3 class="title-aux m-top--xs">Total por ano</h3>
-                  <ul>
-                    {{#each pessoa.modulos as |mod|}}
-                      <li class="flex flex-row justify-between m-top--md">
-                        <strong>{{mod.name}}</strong>
-                        {{#each pessoa.turmas as |tur|}}
-                          {{#if (equalstr tur.modulo.id mod.id)}}
-                            <ul>
-                              <li>{{tur.name}}</li>
-                            </ul>
-                          {{/if}}
-                        {{/each}}
-                      </li>
-                    {{/each}}
-                  </ul>
-                </div>
-              </td> --}}
-              {{!-- <td class="table__total">
-                {{pessoa.turmas.length}}
-              </td> --}}
-              <!--- /PRECISA DE VALORES DINÂMICOS -->
               <td class="ta-c">
                 <span class="icon--lg {{if pessoa.enabled 'icon-check icon--success' 'icon-x icon--error'}}"></span>
               </td>
-              {{!-- <td class="table__icon">
-                <span class="{{if pessoa.emailsent 'icon-check icon--success' 'icon-x icon--error'}}"></span>
-              </td> --}}
-              <!-- user action -->
               <td class="table__actions">
+                {{#if (equalstr pessoa.role 'admin')}}
+                {{else}}
                 <button class="btn btn--text btn--xxs" {{action 'deletePessoa' pessoa.id}}>Remover</button>
+                {{/if}}
                 <button class="btn btn--ghost btn--xxs" {{action 'userModal' pessoa.id}}>Editar</button>
-
-
-                {{!-- <button id="userActionDisplay{{pessoa.id}}" class="btn btn--icon btn--lg btn--text icon-more__vert"
-                  {{action 'userActionDisplay' pessoa.id}}></button>
-                <!-- dropdown user actions list -->
-                <div id="userActionOptions{{pessoa.id}}" class="table__submenu submenu j-user-action">
-                  {{#if (equalstr pessoa.role 'admin')}}
-
-                  {{else}}
-                    <button class="btn btn--leaf btn--icon icon-trash-2" {{action 'deletePessoa' pessoa.id}}></button>
-                  {{/if}}
-                  <button class="btn btn--leaf btn--icon icon-at-sign" {{action 'emailAction' pessoa.id}}></button>
-                  <button class="btn btn--leaf btn--icon icon-edit" {{action 'userModal' pessoa.id}}></button>
-                </div> --}}
               </td>
             </tr>
           {{/each}}
