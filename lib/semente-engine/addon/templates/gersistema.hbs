@@ -188,7 +188,7 @@
 
           <section class="sections__subsection flow-md animated fadeInLeftShort faster d750">
             <h3 class="main__subsubtitle">Básicas</h3>
-            <div class="form-group form-group--full-width flex flex-row flex-wrap gap-sm">
+            <div class="form-group form-group--full-width flex flex-row flex-wrap gap-sm flow-h-sm">
               <div class="form-group">
                 <label class="form-group__label">Nome</label>
                 {{#if (equalstr role 'admin')}}
@@ -237,7 +237,7 @@
 
           <section class="sections__subsection flow-md animated fadeInLeftShort faster d1000">
             <h3 class="main__subsubtitle">Número de usuários</h3>
-            <div class="flex flex-row flex-wrap gap-sm">
+            <div class="flex flex-row flex-wrap gap-sm flow-h-sm">
               <div class="form-group">
                 <label class="form-group__label">Gestores</label>
                 {{#if (equalstr role 'admin')}}
@@ -535,7 +535,7 @@
               {{#each inst_selected.turmas as |turma idx|}}
                 <li>
 
-                  <div class="flex flex-row flex-1 gap-sm items-center">
+                  <div class="flex flex-row flex-1 gap-sm flow-h-sm items-center">
                     <div class="edit-text flex-1">
                       <input class="j-areaFocus edit-text__input title-3"
                              id="areaItemName{{turma.id}}"
@@ -683,7 +683,7 @@
           </section>
           <section class="sections__subsection">
             <h4 class="main__subsubtitle">Número de usuários</h4>
-            <div class="flex flex-row flex-wrap gap-sm">
+            <div class="flex flex-row flex-wrap gap-sm flow-h-sm">
               <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nrgest">Gestores</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nrgest" value={{new_inst_nrgest}}>

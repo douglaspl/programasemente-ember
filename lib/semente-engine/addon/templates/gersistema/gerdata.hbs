@@ -290,6 +290,7 @@
   <div class="modal__overlayer"></div>
   <div class="modal__content">
     <header class="modal__header">
+      <button class="modal__close btn-close icon-x" {{action 'closeUserModal'}} type="submit"></button>
       <h3 class="modal__title">
         {{#if new_user_name}}
           Edição do usuário <span class="m-left--xxs strong">{{new_user_name}}</span>
@@ -301,88 +302,119 @@
 
     <div class="modal__body">
 
-      <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
-        <div flex="20" class="form-group--aired-h">
-          <div class="form-group w100">
-            <label class="form-group__label" for="new_user_role">Perfil</label>
-            <div class="form-group__wrapper form-group__wrapper--select">
-              <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
-                <option value="">Selecione...</option>
-                <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
-                <option value="instrutor" selected={{thisUserRole.instrutor}}>Professor</option>
-                <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
-                <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
-                {{#if (equalstr new_user_role 'admin')}}
-                  <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
-                {{/if}}
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
+      <section class="flow-md">
+        <h4 class="modal__subtitle">Informações básicas</h4>
 
-      <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
-        <div class="form-group form-group--aired-h" flex="20">
-          <label class="form-group__label" for="new_user_name">Nome</label>
-          <input class="form-group__input" type="textbox" id="new_user_name" value={{new_user_name}}>
-        </div>
+        <div class="row">
 
-        <div class="form-group form-group--aired-h" flex="20">
-          <label class="form-group__label">E-mail</label>
-          <input class="form-group__input" type="textbox" id="new_user_email"
-            value={{if new_user_email new_user_email}}>
-        </div>
-        <div flex="20" class="form-group--aired-h self-end p-bottom--xxs">
-          <div class="form-group checkbox">
-            <input class="checkbox__input" type="checkbox" id="new_user_enabled">
-            <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
-          </div>
-        </div>
-      </div>
+          <div class="col-xs-12 col-sm-4">
 
-      <!-- INFORMAÇÕES EXTRAS SOMENTE PARA ALUNOS -->
-      {{!-- {{#if (equalstr perfil "aluno")}} --}}
-      {{#if (equalstr activeProfile "aluno")}}
-        <div class="form-group form-group--horizontal form-group--full-width items-start form-group--aired-v">
-          <div flex="20" class="m-right--lg">
             <div class="form-group w100">
-              <label class="form-group__label" for="new_user_gender">Sexo</label>
-              <div class="form-group__wrapper form-group__wrapper--search">
-                <select class="form-group__input" id="new_user_gender">
-                  <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
-                  <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
-                  <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
+              <label class="form-group__label" for="new_user_role">Perfil</label>
+              <div class="form-group__wrapper form-group__wrapper--select">
+                <select class="form-group__input" id="new_user_role" onchange={{action seAluno value="target.value"}}>
+                  <option value="">Selecione...</option>
+                  <option value="aluno" selected={{thisUserRole.aluno}}>Aluno</option>
+                  <option value="instrutor" selected={{thisUserRole.instrutor}}>Professor</option>
+                  <option value="coordenador" selected={{thisUserRole.coordenador}}>Coordenador</option>
+                  <option value="gestor" selected={{thisUserRole.gestor}}>Gestor</option>
+                  {{#if (equalstr new_user_role 'admin')}}
+                    <option value="admin" selected={{thisUserRole.admin}}>Admin</option>
+                  {{/if}}
                 </select>
               </div>
             </div>
+
           </div>
-          <div class="form-group form-group--aired-h" flex="20">
-            <label class="form-group__label" for="new_user_birth">Nascimento</label>
-            <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
-              maxlength="10" onkeyup="var v = this.value;
-                          if (v.match(/^\d{2}$/) !== null) {
-                              this.value = v + '/';
-                          } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
-                              this.value = v + '/';
-                          }">
-            <div class="m-top--xxs">(dd/mm/aaaa)</div>
-          </div>
-          <div class="form-group form-group--aired-h" flex="20">
-            <label class="form-group__label" for="new_user_subsc">Matrícula</label>
-            <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
-          </div>
+
         </div>
-      {{/if}}
+
+        <div class="row bottom-xs">
+
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group w100">
+              <label class="form-group__label" for="new_user_name">Nome</label>
+              <input class="form-group__input"
+                    id="new_user_name"
+                    type="textbox"
+                    value={{new_user_name}}>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group w100">
+              <label class="form-group__label" for="new_user_email">E-mail</label>
+              <input class="form-group__input"
+                    id="new_user_email"
+                    type="textbox"
+                    value={{if new_user_email new_user_email}}>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <div class="checkbox w100">
+              <input class="checkbox__input"
+                    id="new_user_enabled"
+                    type="checkbox">
+              <label class="checkbox__label" for="new_user_enabled">Habilitado</label>
+            </div>
+          </div>
+
+        </div>
+
+        {{#if (equalstr activeProfile "aluno")}}
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-4 {{if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d250'}}">
+              <div class="form-group w100">
+                <label class="form-group__label" for="new_user_gender">Sexo</label>
+                <div class="form-group__wrapper form-group__wrapper--select">
+                  <select class="form-group__input" id="new_user_gender">
+                    <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
+                    <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
+                    <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 {{if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d500'}}">
+              <div class="form-group w100">
+                <label class="form-group__label" for="new_user_birth">Nascimento</label>
+                <input class="form-group__input" type="textbox" id="new_user_birth" value={{new_user_birth}} name="date"
+                  maxlength="10" onkeyup="var v = this.value;
+                              if (v.match(/^\d{2}$/) !== null) {
+                                  this.value = v + '/';
+                              } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                                  this.value = v + '/';
+                              }">
+                <div class="text-aux m-top--xxs">(dd/mm/aaaa)</div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 {{if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d750'}}">
+              <div class="form-group w100">
+                <label class="form-group__label" for="new_user_subsc">Matrícula</label>
+                <input class="form-group__input" type="textbox" id="new_user_subsc" value={{new_user_subsc}}>
+              </div>
+            </div>
+
+          </div>
+        {{/if}}
+
+      </section>
+
+
 
       <!-- ANOS SÓ É EXIBIDO PARA ALUNOS E INSTRUTORES -->
       {{#if (equalstr activeProfile "instrutor")}}
-        <section>
+        <section class="flow-md {{if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d1000'}}">
           <h4 class="modal__subtitle">Anos</h4>
-          <ul class="list list--img-name-action list--striped">
+          <ul class="list list--striped">
             {{#if new_user_email}}
               <!-- edit user -->
               {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
+                <li class=""
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
@@ -418,7 +450,7 @@
             {{else}}
               <!-- new user -->
               {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
+                <li class=""
                   style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
                   <img class="list__img list__img--auto-height border-1--gray-5"
                     src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
@@ -455,82 +487,90 @@
           </ul>
         </section>
       {{/if}}
+
+
+
+
+
       {{#if (equalstr activeProfile "aluno")}}
-        <section>
+        <section class="flow-md {{if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d1000'}}">
           <h4 class="modal__subtitle">Anos</h4>
-          <ul class="list list--img-name-action list--striped">
+          <ul class="list list--striped">
             {{#if new_user_email}}
               <!-- edit user -->
               {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
-                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                  <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
-                  <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <div class="m-top--xl w100">
-                    <h4 class="title-4 m-bottom--sm">Turma</h4>
-                    <ul class="list list--3-col">
+                <li class=""
+                    style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+
+                  <div class="flex flex-col flow-md">
+                    <h5 class="title-4">Turmas do {{mod.name}}</h5>
+
+                    <ul class="flow-xs">
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
-                        <li class="m-bottom--lg">
-                          {{#if (isinarray turma pessoa_selected.turmas)}}
-                            <span class="radio m-right--lg">
-                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
 
-                              <label class="radio__label"
-                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
-                            </span>
-                          {{else}}
-                            <span class="radio m-right--lg">
-                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
-                              <label class="radio__label"
-                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
-                            </span>
-                          {{/if}}
-                        </li>
+                          <li class="flow-xs">
+                            {{#if (isinarray turma pessoa_selected.turmas)}}
+                              <span class="radio">
+                                <input class="radio__input" id="ckb_new_p_{{turma.id}}"
+                                  name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
+
+                                <label class="radio__label"
+                                  for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
+                              </span>
+                            {{else}}
+                              <span class="radio">
+                                <input class="radio__input" id="ckb_new_p_{{turma.id}}"
+                                  name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
+                                <label class="radio__label"
+                                  for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
+                              </span>
+                            {{/if}}
+                          </li>
+
                         {{/if}}
                       {{/each}}
                     </ul>
                   </div>
+
                 </li>
               {{/each}}
             {{else}}
               <!-- new user -->
               {{#each modulos_list as |mod|}}
-                <li class="institutions__course form-group"
-                  style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
-                  <img class="list__img list__img--auto-height border-1--gray-5"
-                    src="{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}">
-                  <h3 class="list__name title-3">{{mod.name}}</h3>
-                  <div class="m-top--xl w100">
-                    <h4 class="title-4 m-bottom--sm">Turma</h4>
-                    <ul class="list list--3-col">
+                <li class=""
+                    style="display:{{if (isinarray mod inst_selected.modulos) 'inherit' 'none'}}">
+
+                  <div class="flex flex-col flow-md">
+                    <h5 class="title-4">Turmas do {{mod.name}}</h5>
+
+                    <ul class="flow-xs">
                       {{#each mod.turmas as |turma|}}
                         {{#if (isinarray turma inst_selected.turmas)}}
-                        <li class="m-bottom--lg">
-                          {{#if (isinarray turma pessoa_selected.turmas)}}
-                            <span class="radio m-right--lg">
-                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
-                              <label class="radio__label"
-                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
-                            </span>
-                          {{else}}
-                            <span class="radio m-right--lg">
-                              <input class="radio__input" id="ckb_new_p_{{turma.id}}"
-                                name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
-                              <label class="radio__label"
-                                for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
-                            </span>
-                          {{/if}}
-                        </li>
+
+                          <li class="flow-xs">
+                            {{#if (isinarray turma pessoa_selected.turmas)}}
+                              <span class="radio">
+                                <input class="radio__input" id="ckb_new_p_{{turma.id}}"
+                                  name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}} checked>
+                                <label class="radio__label"
+                                  for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
+                              </span>
+                            {{else}}
+                              <span class="radio">
+                                <input class="radio__input" id="ckb_new_p_{{turma.id}}"
+                                  name="{{mod.name}}_radio" type="radio" value="{{turma.id}}" {{action 'uncheckOthers' turma.id on="change"}}>
+                                <label class="radio__label"
+                                  for="ckb_new_p_{{turma.id}}">{{turma.name}}</label>
+                              </span>
+                            {{/if}}
+                          </li>
+
                         {{/if}}
                       {{/each}}
                     </ul>
-
                   </div>
+
                 </li>
               {{/each}}
             {{/if}}

@@ -85,15 +85,19 @@
     }
 
     &__title {
-        @include title-3;
+        @include title-2;
     }
 
     // Acho que está descontinuado...
     &__subtitle {
-        font-size: $font-size--md;
-        font-weight: normal;
+        @include title-3;
+
         margin-bottom: $distance--sm;
-        margin-top: $distance--xxl;
+
+        &:not(:first-child) {
+            margin-top: $distance--xxl;
+        }
+
     }
 
     &__body {
