@@ -54,7 +54,7 @@
           </div>
 
 
-          {{#if (equalstr show 'Aulas')}}
+          
 
             <div class="form-group">
               <label class="form-group__label" for="agrupamento">Grupo dos Conteúdos</label>
@@ -63,10 +63,11 @@
                   <option value="Todos" selected="selected">Todos</option>
                   <option value="Básico">Básico</option>
                   <option value="Complementar">Complementar</option>
+                  <option value="Biblioteca">Biblioteca</option>
                 </select>
               </div>
             </div>
-
+          {{#if (equalstr show 'Aulas')}}
             <div class="form-group">
               <label class="form-group__label" for="segmento">Segmento</label>
               <div class="form-group__wrapper form-group__wrapper--select">
@@ -150,7 +151,8 @@
                               show=show
                               selectedPublico=selectedPublico
                               selectedSegmento=selectedSegmento
-                              selectedAno=selectedAno}}
+                              selectedAno=selectedAno
+                              }}
             </li>
           {{/if}}
         {{/each}}
