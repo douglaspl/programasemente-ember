@@ -83,7 +83,7 @@
     width: 100%;
 
     &:focus-within {
-      outline: 2px solid $leaf-20;
+      outline: $focus-line-width solid $focus-line-color;
     }
 
     &--is-disabled {

@@ -18,7 +18,7 @@
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
-    {{#if (equalstr pessoa.role 'aluno')}}
+    {{#if (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel'))}}
           <section class="flow-xs">
             <h4 class="title-4">Tarefa</h4>
             <div class="checkbox">

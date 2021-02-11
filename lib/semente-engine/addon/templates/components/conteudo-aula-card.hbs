@@ -3,16 +3,22 @@
         <span class="title-3 color-blue-navy-60">
             {{aulasAno.firstObject.plataformaAno.segmento.titulo}}
         </span>
-        <span class="flex flex-row flex-wrap gap-xs flow-h-xs">
-            {{#each aulasAno as |aulaA index|}}
-                {{#if (islower index 5)}}
-                    <span class="title-aux">{{aulaA.titulo}}</span>
-                {{/if}}
-                {{#if (equalstr index 6)}}
-                    <span class="title-aux">...</span>
-                {{/if}}
-            {{/each}}
-        </span>
+         {{#if (notequalstr show 'Biblioteca')}}
+            <span class="flex flex-row flex-wrap gap-xs flow-h-xs">
+                {{#each aulasAno as |aulaA index|}}
+                    {{#if (islower index 5)}}
+                        <span class="title-aux">{{aulaA.titulo}}</span>
+                    {{/if}}
+                    {{#if (equalstr index 6)}}
+                        <span class="title-aux">...</span>
+                    {{/if}}
+                {{/each}}
+            </span>
+        {{else}}
+            <span class="title-4 color-blue-navy-60">
+                {{conteudo.tema.name}}
+            </span>
+        {{/if}}
         <span>{{conteudo.titulo}}</span>
     </div>
 
