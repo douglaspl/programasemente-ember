@@ -24,6 +24,8 @@
           <a class="form__aux-link" onclick={{action 'exitsearch'}}>Limpar busca</a>
         </div>
 
+        {{!--
+        OLD
         <div class="form-group">
           <span class="form-group__label">Ano</span>
           <div class="flex flex-col flow-xs">
@@ -34,6 +36,36 @@
               <label class="checkbox__label" for="ano_{{mod.idx}}">{{mod.name}}</label>
             </span>
           {{/each}}
+          </div>
+        </div>
+        --}}
+
+        <!-- não funcional -->
+        <div class="form-group">
+          <label class="form-group__label">Segmentos (não funcional)</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input"
+                    name="year"
+                    id="ano_selector">
+              <option selected="selected" value="0">Todos</option>
+              <option id="id_do_segmento" value="id_do_segmento">Nome do segmento</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- não funcional -->
+        <div class="form-group">
+          <label class="form-group__label">Ano (não funcional)</label>
+          <div class="form-group__wrapper form-group__wrapper--select">
+            <select class="form-group__input"
+                    name="year"
+                    id="ano_selector"
+                    {{action 'filterano' mod.idx on='change'}}>
+              <option selected="selected" value="0">Todas</option>
+              {{#each inst_selected.modulos as |mod|}}
+                <option style="display: block" id="ano_{{mod.idx}}" value="year{{mod.idx}}">{{mod.name}}</option>
+              {{/each}}
+            </select>
           </div>
         </div>
 
