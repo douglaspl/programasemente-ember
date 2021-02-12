@@ -18,6 +18,12 @@
 
   }
 
+  &__title-info {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+
   &__graphism {
     display: none;
 
@@ -40,9 +46,26 @@
     @include media('>md') {
       bottom: 0;
       display: block;
-      max-width: 42vw;
+      filter: grayscale(0) brightness(1);
+      max-width: 50vw;
       position: absolute;
       right: -5%;
+      transform: scale(.9);
+      transform-origin: 50% 100%;
+      transition: 400ms ease-in-out;
+      will-change: filter, transform;
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000px;
+    }
+
+    &--is-fade {
+      filter: grayscale(.75) brightness(0.85);
+      transform: scale(.9);
+    }
+
+    &--is-highlight {
+      filter: grayscale(0) brightness(1) saturate(1.25);
+      transform: scale(.95);
     }
 
   }

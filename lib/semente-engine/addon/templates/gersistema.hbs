@@ -18,6 +18,17 @@
             <span class="btn__label">Nova Instituição</span>
           </button>
         {{/if}}
+
+        {{#if (equalstr role 'admin')}}
+          <label class="btn btn--xxs animated fadeInLeftShort faster d250" for="get_lote">Cadastro Código</label>
+          <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file"
+            style="display: none;" />
+
+          <div id="error_lote">
+            {{error_lote}}
+          </div>
+                      
+        {{/if}}
       </header>
 
       <section class="sections__section animated fadeInLeftShort faster d500">
