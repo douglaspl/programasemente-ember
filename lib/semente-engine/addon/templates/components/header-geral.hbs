@@ -14,7 +14,7 @@
       <h1 class="scr-only">Informações do usuário</h1>
 
       <div class="flow-xxs">
-        <div class="flex flex-row flex-wrap items-baseline gap-xs">
+        <div class="flex flex-row flex-wrap items-baseline gap-xs flow-xs">
           <span class="title-1">{{firstnameoremailpart pessoa.name}}</span>
           {{#if (equalstr parentController.toggleRole 'aluno')}}
             <button class="btn btn--link m-top--auto color-white">
@@ -127,8 +127,8 @@
           {{/each}}
         {{/unless}}
 
-        {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role
-        'instrutor'))}}
+        {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (and (equalstr pessoa.role
+        'instrutor') (equalstr pessoa.isAplicador "0") ))}}
           {{#link-to 'marketing.index' class="tabs__tab" id="tabMkt"}}
             <span>Marketing</span>
           {{/link-to}}

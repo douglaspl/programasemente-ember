@@ -14,11 +14,17 @@
       padding: $distance--md;
     }
 
+    .no-flexbox-gap & {
+      > *:first-child:not(:only-child) {
+        margin-bottom: $distance--sm;
+      }
+    }
+
     &:nth-child(odd) {
       background-color: $gray-0;
     }
 
-    >*:first-child {
+    > *:first-child {
       margin-right: $distance--lg;
 
       @include media('>md') {

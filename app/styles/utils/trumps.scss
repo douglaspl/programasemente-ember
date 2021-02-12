@@ -1,3 +1,11 @@
+// RADIUS
+
+@each $measure, $amount in $radii {
+    .radius--#{$measure} {
+        border-radius: $amount;
+    }
+}
+
 //------------------------------------
 //    #FLOW
 //------------------------------------
@@ -7,6 +15,10 @@
             margin-top: $distance;
         }
     }
+
+    .flexbox-gap [class*='gap-'].flow-#{$measure} > * + *{
+        margin-top: 0;
+    }
 }
 
 @each $measure, $distance in $distances {
@@ -14,6 +26,10 @@
         > * + * {
             margin-left: $distance;
         }
+    }
+
+    .flexbox-gap [class*='gap-'].flow-h-#{$measure} > * + *{
+        margin-left: 0;
     }
 }
 
@@ -24,9 +40,26 @@
     gap: $distance--sm;
 
     > * {
+        align-self: flex-start;
         flex: 0 0 auto;
         width: calc(50% - (#{$distance--sm} / 2));
     }
+
+    .no-flexbox-gap & {
+
+        > * {
+            margin-bottom: $distance--sm;
+
+            &:nth-child(odd) {
+                margin-right: $distance--sm;
+            }
+
+            &:nth-last-child(-n+2) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
 }
 
 @keyframes blink--green10 {
@@ -90,6 +123,10 @@
     @include divider($pos: "bottom");
 }
 
+.divider-right {
+    @include divider($pos: "right", $direction: "vertical");
+}
+
 .overflow-hidden { overflow: hidden; }
 .pos-rel { position: relative; }
 .small { font-size: .75em; }
@@ -102,14 +139,14 @@
 .ws-i { white-space: initial; }
 .w100 { width: 100%; }
 .w-auto { width: auto; }
-.child-v--center { 
+.child-v--center {
     position: relative;
     > * {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
     }
-} 
+}
 
 .scr-only {
     height: 1px;

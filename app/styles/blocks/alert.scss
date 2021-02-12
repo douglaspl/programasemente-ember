@@ -16,7 +16,7 @@
   transition: 200ms cubic-bezier(.455, .03, .515, .955); // IE fallback
   transition: 200ms var(--ease-in-out-quad);
 
- 
+
 
   &-container {
     @include z-index('alert');
@@ -76,7 +76,7 @@
     width: 100%;
 
     > * {
-      margin-left: $distance--sm;
+      margin-left: $distance--xs;
     }
 
   }
@@ -142,13 +142,14 @@
     left: 50%;
     min-width: 32rem;
     padding: $distance--lg;
-    top: $distance--xxl;
-    transform: translate(-50%, 5%);
+    top: 50%;
+    transform: translate(-50%, -40%);
     z-index: 2;
   }
 
   &--no-interaction {
     bottom: $distance--md;
+    display: inline-flex;
     flex-wrap: wrap;
     left: 50%;
     transform: translate(-50%, 5px);
@@ -157,13 +158,17 @@
 
   &--is-show {
     display: inline-flex;
+    opacity: 1;
+    visibility: visible;
 
-    &[class*='--has-interaction'],
     &[class*='--no-interaction'] {
-      opacity: 1;
       transform: translate(-50%, 0);
-      visibility: visible;
     }
+
+    &[class*='--has-interaction'] {
+      transform: translate(-50%, -50%);
+    }
+
   }
 
   &--sm {

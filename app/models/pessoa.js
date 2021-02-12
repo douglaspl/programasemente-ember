@@ -98,6 +98,9 @@ export default DS.Model.extend({
   tarefas: DS.hasMany('tarefa', { async:true }),
   avaliacoes: DS.hasMany('avaliacao', { async:true }),
   anotacoes: DS.hasMany('anotacao', { async: true }),
+  // codigoCadastro: DS.belongsTo('codigo-cadastro', { async: true }),
+  codigoCadastro: DS.attr(),
+  maxDependentes: DS.attr(),
 
   verifyEmail: memberAction({ path: 'verifyEmail', type: 'get' }),
   autoRegister: memberAction({ path: 'autoRegisterPlataforma', type: 'post' }),

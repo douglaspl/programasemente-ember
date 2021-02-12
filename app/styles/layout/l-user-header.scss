@@ -2,9 +2,24 @@
 .l-user-header {
   $this: &;
 
+  align-items: flex-start;
+  display: flex;
+  gap: $distance--lg;
   margin-bottom: $distance--md;
   margin-top: 0;
   padding: $distance--sm;
+
+
+  .no-flexbox-gap & {
+    > *:first-child:not(:only-child) {
+      margin-bottom: $distance--md;
+
+      @include media('>md') {
+        margin-bottom: 0;
+        margin-right: $distance--md;
+      }
+    }
+  }
 
   @include full-width-on-main;
 

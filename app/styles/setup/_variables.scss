@@ -308,6 +308,13 @@ $radius--md: $radius * 2;
 $radius--lg: $radius * 4;
 $radius--capsule: 99rem;
 
+$radii: (
+    (sm, $radius),
+    (md, $radius--md),
+    (lg, $radius--lg),
+    (cp, $radius--capsule)
+ );
+
 
 
 
@@ -460,6 +467,9 @@ $body-bg-color: $gray-0;
 
 $font-base:  'Source Sans Pro', sans-serif;
 $font-title: filson-pro, sans-serif;
+
+$focus-line-width: 2px;
+$focus-line-color: $leaf-20;
 
 $header-height: 3rem;
 $header-v-padding: .5rem;

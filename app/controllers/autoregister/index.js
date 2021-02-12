@@ -13,6 +13,8 @@ export default Ember.Controller.extend({
     // });
   }),
 
+  currentRole: '',
+
   actions: {
     checkForm: function() {
       $('form').removeData('validator');
@@ -57,7 +59,8 @@ export default Ember.Controller.extend({
                 errorMsg = 'Por favor, insira o código fornecido pela escola.';
                 break;
               case schoolCode.length > 0:
-                errorMsg = 'Parece que o código informado é inválido, verifique por favor.'
+                debugger;
+                errorMsg = error.errors[0].title
                 break;
                 
             }
@@ -116,6 +119,25 @@ export default Ember.Controller.extend({
         // Chama outro método dentro de "actions"
         this.send(e.target.dataset.function);
       }
+    },
+
+
+    identifyRole() {
+      let target = event.target;
+      let inputedCode = target.value;
+
+      if (inputedCode == '1234' || inputedCode == '1235' || inputedCode == '1236') {
+        this.set('currentRole', 'teste semente');
+      } else if (inputedCode.includes("-AL-")) {
+        this.set('currentRole', 'aluno');
+      } else if (inputedCode.includes("-PR-")) {
+        this.set('currentRole', 'professor');
+      } else if (inputedCode.includes("-RE-")) {
+        this.set('currentRole', 'responsável');
+      } else {
+        this.set('currentRole', '');
+      }
+
     }
 
   }

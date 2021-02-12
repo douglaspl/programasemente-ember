@@ -97,72 +97,23 @@
 
   // SPECIFIC TABLES COLUMNS WIDTHS
   &--users {
-    #{$this}__check {
-      width: 60px;
-    }
-
     #{$this}__name {
-      width: 18%;
-    }
-
-    #{$this}__email {
-      width: 20%;
-    }
-
-    #{$this}__class {
-      display: none;
-      text-align: center;
-      width: 5%;
-
-      @include media('>md') {
-        display: table-cell;
-      }
-
-    }
-
-    #{$this}__total {
-      text-align: center;
-      width: 8%;
+      width: 45%;
     }
 
     #{$this}__role {
-      display: none;
-      width: 8%;
-
-      @include media('>md') {
-        display: table-cell;
-      }
-
+      width: 15%;
     }
 
     #{$this}__enabled {
       text-align: center;
-      width: 10%;
-    }
-
-    #{$this}__sent {
-      text-align: center;
-      width: 10%;
-    }
-
-    #{$this}__courses {
-      text-align: center;
-      width: 10%;
+      width: 15%;
     }
 
     #{$this}__actions {
       overflow: visible;
       position: relative;
       text-align: center;
-      width: 60px;
-
-    }
-
-    #{$this}__submenu {
-      position: absolute;
-      right: 75%;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
   }

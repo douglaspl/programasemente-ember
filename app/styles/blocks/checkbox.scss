@@ -25,6 +25,15 @@
     &__label {
         user-select: none;
 
+        // * Para casos onde não teremos um label escrito,
+        // * como por exemplo uma listagem com possibilidade de
+        // * marcarmos muitos itens para uma ação em massa.
+        &:empty {
+            height: $input-check-radio-size;
+            min-height: 0;
+            padding-left: $input-check-radio-size;
+        }
+
         &::after {
             background-color: transparent;
             color: $check-radio-checked-color;

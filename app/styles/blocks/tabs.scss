@@ -45,7 +45,7 @@
     }
 
     &__not-tab {
-        margin-bottom: $distance--xxs;
+        margin-bottom: $distance--sm;
     }
 
     &--full-background {
@@ -54,8 +54,18 @@
         margin-bottom: clamp(-#{$distance--xxs}, 1vh, -#{$distance--sm});
         text-transform: uppercase;
 
+
+        .no-flexbox-gap & {
+            margin-bottom: -$distance--sm;
+        }
+
         > * {
             margin-bottom: clamp(#{$distance--xxs}, 1vh, #{$distance--sm});
+
+            .no-flexbox-gap & {
+                margin-bottom: $distance--sm;
+            }
+
         }
 
         #{$this}__tab {

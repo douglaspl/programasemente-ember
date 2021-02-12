@@ -88,7 +88,7 @@
                             onchange={{action 'refreshSelectedSegmento' value='target.value'}}>
                         <option value="">---</option>
                         {{#each segmentos as |seg|}}
-                            <option value="{{seg.id}}" selected={{if (equalstr seg.id conteudo.aula.plataformaAno.segmento.firstObject.id) "selected"}}>{{seg.titulo}}</option>
+                            <option value="{{seg.id}}">{{seg.titulo}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -108,7 +108,7 @@
                             {{#if selectedSegmento}}
                                 {{#if (equalstr seg.id selectedSegmento.id)}}
                                     {{#each seg.plataformaAnos as |ano|}}
-                                        <option value="{{ano.id}}" selected={{if (equalstr ano.id selectedAno.id) "selected"}}>{{ano.name}}</option>
+                                        <option value="{{ano.id}}">{{ano.name}}</option>
                                     {{/each}}
                                 {{/if}}
                             {{/if}}
@@ -132,7 +132,7 @@
                                         {{#if selectedAno}}
                                             {{#if (equalstr ano.id selectedAno.id)}}
                                                 {{#each ano.aulas as |aula|}}
-                                                    <option value="{{aula.id}}" selected={{if (equalstr aula.id selectedAula.id) "selected"}}>{{aula.titulo}}</option>
+                                                    <option value="{{aula.id}}">{{aula.titulo}}</option>
                                                 {{/each}}
                                             {{/if}}
                                         {{/if}}

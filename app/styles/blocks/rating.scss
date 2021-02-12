@@ -12,6 +12,12 @@
   flex-direction: row-reverse;
   gap: $rating-gap;
 
+  .no-flexbox-gap & {
+    > *:not(:last-child) {
+        margin-left: $rating-gap;
+    }
+  }
+
   // Remove all opacity by default on hover
   &:hover {
     // background-image: url('/assets/svg/star-outline-green.svg');
@@ -74,7 +80,6 @@
     // second half star
     &:nth-of-type(odd) {
       margin-left: -$rating-gap;
-      // margin-left: calc((-#{$rating-gap}) + (-#{$rating-size}));
       z-index: 2;
 
       &::before {
@@ -82,7 +87,13 @@
         left: auto;
         right: 0;
       }
+
+      .no-flexbox-gap & {
+            margin-left: 0;
+      }
+
     }
+
 
     &[class*='__label']:hover,
     &:hover ~ [class*='__label'] {

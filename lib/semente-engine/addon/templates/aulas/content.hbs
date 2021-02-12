@@ -18,7 +18,7 @@
     <section class="l-dots-between l-dots-between--is-flipped">
       <header class="l-dots-between__side">
         <div class="flow-xl">
-    {{#if (equalstr pessoa.role 'aluno')}}
+    {{#if (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel'))}}
           <section class="flow-xs">
             <h4 class="title-4">Tarefa</h4>
             <div class="checkbox">
@@ -204,10 +204,10 @@
                 <li>
                 <div class="flex flex-row items-center">
                     <span class="flex flex-row items-center">
-                    {{icon-competencias}}
-                    <span class="m-left--xs">Competências:</span>
+                      {{icon-competencias}}
+                      <span class="m-left--xs">Competências:</span>
                     </span>
-                    <span class="m-left--xs">
+                    <span class="flex flex-row gap-xs flow-h-xs m-left--xs m-top--xs">
                     {{#each aula.competencias as |comp|}}
                         <span class="capsule capsule--xxs capsule--{{comp.dominio.dominioFormatIdx}}">{{comp.name}}</span>
                     {{/each}}

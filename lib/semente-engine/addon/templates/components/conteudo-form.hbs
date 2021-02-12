@@ -1,26 +1,29 @@
 <div class="flow-xxl">
 
     <section class="flex flex-col flow-md">
-    <h2 class="title-3">Origem</h2>
+    <div class="flex-row gap-sm inline-flex justify-start">
+        <h2 class="title-3">Origem</h2>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_origem" aria-live="polite"></span>
+    </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 flow-md">
+        <div class="col-xs-12 col-sm-8 flow-md">
 
             <div class="row items-end gap-xs">
-                <div class="col-xs-12 col-sm-5">
-                    <div class="form-group">
-                        <label class="form-group__label" for="videoUrlId">Endereço de Vídeo</label>
-                        <input class="form-group__input" disabled={{if conteudo.path "disabled" ""}} id="videoUrlId" name="video"
+                <div class="col-xs-12 col-sm-5 flow-xs form-group__container">
+                    <div class="form-group w100">
+                        <label class="form-group__label" for="videoUrlId">Endereço de Vídeo do VIMEO</label>
+                        <input class="form-group__input j-validate" {{!--disabled={{if conteudo.path "disabled" ""}}--}} id="videoUrlId" name="video"
                         onchange={{ action 'urlvideoChanged' value='target.value' }} placeholder='Endereço de Vídeo' type="text"
                         value={{conteudo.videoUrl}}>
                     </div>
                 </div>
 
-                <div class="col-xs">
+                <div class="col-xs m-v--md m-h--xs">
                     <p class="ta-c">ou</p>
                 </div>
 
-                <div class="col-xs-12 col-sm-5">
-                    <div class="form-group">
+                <div class="col-xs-12 col-sm-5 form-group__container">
+                    <div class="form-group w100">
                         <span class="form-group__label">Arquivo em PDF, PNG ou JPEG</span>
                         <label class="btn" for="file-selector">
                         <input style="display: none;"
@@ -36,6 +39,7 @@
                         </label>
                         <span id="message-processing"></span>
                     </div>
+
                 </div>
             </div>
 
@@ -45,7 +49,7 @@
                         <div class="flex flex-row items-center justify-between gap-sm">
                             {{!-- <img src="{{conteudo.thumbnail}}" alt="{{conteudo.filename}}"> --}}
                             <div class="flow-xxs flex flex-col">
-                                <span class="title-3 tt-u">{{conteudo.tipo}}</span>
+                                <span class="title-4">{{conteudo.tipo}}</span>
                                 <span class="color-leaf-50">{{conteudo.filename}}</span>
                             </div>
                             <button class="btn btn--text color-error-40"
@@ -64,18 +68,21 @@
     </section>
 
     <section class="flex flex-col flow-md">
-        <h2 class="title-3">Configuração</h2>
-
+        <div class="flex-row gap-sm inline-flex justify-start">
+            <h2 class="title-3">Configuração</h2>
+            <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm"  id="error_title" aria-live="polite"></span>
+        </div>
         <div class="flow-xl">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
 
-                    <div class="flex flex-col flow-xs">
-                        <div class="form-group">
+                    <div class="flex flex-col flow-xs form-group__container">
+                        <div class="form-group w100">
                         <label class="form-group__label" for="">Titulo do Conteúdo</label>
-                        {{input class="form-group__input"
+                        {{input class="form-group__input" id="tituloConteudo"
                                             name=''
                                             value=conteudo.titulo
+                                            change=(action 'tituloChanged')
                                             placeholder='Titulo do Conteúdo'
                                             maxlength=80}}
                         </div>
@@ -85,7 +92,7 @@
 
                 </div>
             </div>
-
+            {{setPublicoOnCreate}}
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="flex flex-col flow-xs">
@@ -93,7 +100,12 @@
                         <div class="flex flex-col flow-xs">
                         {{#each agrupamentos as |a|}}
                             <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{if (equalstr a.id conteudo.agrupamento.id) "checked"}} id="agrupamento-{{a.id}}"
+                            <input class="radio__input"
+                            checked=
+                            {{if (or (equalstr a.id conteudo.agrupamento.id) (and (notequalstr a.id conteudo.agrupamento.id) (equalstr a.idx "1") )) "checked" }}
+                            id="agrupamento-{{a.id}}"
+
+
                                 name="nomeagrupamento" onchange={{ action 'agrupamentoChanged' a.id }} type="radio">
                             <label class="radio__label strong" for="agrupamento-{{a.id}}">{{a.name}}</label>
                             <div class="radio__aux flow-sm">
@@ -135,7 +147,7 @@
                         <h3 class="title-4">Qual a situação após o cadastro?</h3>
                         <div class="flex flex-col flow-xs">
                         <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{conteudo.situacao}} id="conteudoAtivo" name="situacao"
+                            <input class="radio__input" checked={{if situacaoAtual true false}} id="conteudoAtivo" name="situacao"
                             onchange={{ action 'refreshSelectedSituacao' "true" }} type="radio">
                             <label class="radio__label strong" for="conteudoAtivo">Ativo</label>
                             <div class="radio__aux">
@@ -143,7 +155,7 @@
                             </div>
                         </div>
                         <div class="radio flex flex-col items-start">
-                            <input class="radio__input" checked={{not conteudo.situacao}} id="conteudoInativo" name="situacao"
+                            <input class="radio__input" checked={{if (equalstr situacaoAtual "0") true false}} id="conteudoInativo" name="situacao"
                             onchange={{ action 'refreshSelectedSituacao' "false" }} type="radio">
                             <label class="radio__label strong" for="conteudoInativo">Inativo</label>
                             <div class="radio__aux">
@@ -162,14 +174,16 @@
 
 
     <section class="flex flex-col flow-md">
-    <h2 class="title-3">Público</h2>
-
+    <div class="flex-row gap-sm inline-flex justify-start">
+        <h2 class="title-3">Público</h2>
+        <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_publico" aria-live="polite"></span>
+    </div>
     <div class="flex flex-col flow-xs">
         <h3 class="title-4">Qual o público desse conteúdo?</h3>
         <div class="flex flex-col flow-xs">
         {{#each publicos as |pub|}}
             <div class="checkbox">
-            <input  class="checkbox__input"
+            <input  class="checkbox__input j-publico"
                     id="pub-{{pub.id}}"
                     checked={{if (containInListID pub.id conteudo.publicos) "checked"}}
                     onchange={{action 'publicoChanged' value='target.value'}}
@@ -180,6 +194,7 @@
         {{/each}}
         </div>
     </div>
+
 
     {{#if (equalstr agrupamentoAula "true")}}
         <div class="flex flex-col flow-xs">
@@ -207,15 +222,16 @@
 </div>
 
 
-{{#unless (equalstr conteudo.tipo 'Video')}}
+{{#if (equalstr conteudo.tipo 'Documento')}}
 <div class="row">
     <div class="col-xs-12 col-md-6">
         <div class="flow-xxl">
-            <div class="flex flex-col flow-md">
-                <div class="flow-xxs">
+            <div class="flex flex-col flow-xs">
+                <div class="flex-row gap-sm inline-flex justify-start">
                     <h2 class="title-3">Capa</h2>
-                    <p>Adicione uma capa para identificação do conteúdo.</p>
+                    <span class="form__msg form__msg--for-title form__msg--right form__msg--error fs--sm animated slow m-left--sm" id="error_capa" aria-live="polite"></span>
                 </div>
+                    <p>Adicione uma capa para identificação do conteúdo.</p>
 
                 {{#if showProcessing}}
                     <div class="flex justify-center" id="message-processing-capa">
@@ -232,7 +248,7 @@
                                     <span class="color-leaf-50">{{conteudo.filename}}</span>
                                 </div>
                                 <div class="flow-xxs flex flex-col">
-                                    <span class="title-3 tt-u">{{conteudo.tipo}}</span>
+                                    <span class="title-4">{{conteudo.tipo}}</span>
                                     <span class="color-leaf-50">{{conteudo.filename}}</span>
                                 </div>
                                 <button class="btn btn--text color-error-40"
@@ -262,4 +278,4 @@
         </div>
     </div>
 </div>
-{{/unless}}
+{{/if}}

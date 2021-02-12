@@ -42,6 +42,13 @@
     text-transform: uppercase;
 
 
+    .no-flexbox-gap & {
+      > *:not(:first-child) {
+        margin-top: $distance--md;
+      }
+    }
+
+
     @include media('>lg') {
       border-bottom: none;
       padding: $distance--md;

@@ -176,6 +176,11 @@
             top: 100%;
         }
 
+        @if ($pos == 'right') {
+            left: 100%;
+            top: 0;
+        }
+
         @if ($direction == 'horizontal') {
             height: $size;
             width: 100%;
@@ -186,7 +191,6 @@
             top: 0;
             width: $size;
         }
-
 
     }
 

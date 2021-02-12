@@ -9,15 +9,23 @@
     {{conteudo-form publicos=publicos
                     agrupamentos=sortedAgrupamentos
                     segmentos=segmentos
-                    conteudo=conteudo}}
+                    conteudo=conteudo
+                   }}
 
     <div class="row">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-6 flow-h-sm flex items-center">
             <button class="btn"
                     type="button"
                     {{action "saveConteudo" conteudo}}>
-                <span class="btn__label">{{salvarbutton}}{{percentage}}</span>
+                <span class="btn__label">{{salvarbutton}}</span>
             </button>
+            {{#if hasErrors}}
+            <span class="alert alert--error alert--is-show animated slow fadeInRightShort" id="content-error">Parece que alguns campos do formulário precisam ser revistos. Veja acima quais são.</span>
+            {{/if}}
         </div>
     </div>
 </div>
+<aside id="create-alert-sucess" class="alert alert--has-icon alert--no-interaction alert--sm alert--success">
+     <span class="alert__icon icon-check icon--lg"></span>
+        <p class="color-success-60 fs--md">Conteúdo criado com sucesso!</p>
+</aside>

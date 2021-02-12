@@ -237,7 +237,8 @@ preventLoginPaste: Ember.run.later('afterRender', function() {
         sistemaId: sistema.get('id'),
         role: this.get('model').get('typeCadastro'),
         shouldReviewProfile: true,
-        name: login
+        name: login,
+        codigoCadastro: this.get("model").get('codigo')
       }).catch(function (error) {
          // Se existe um erro qualificado
         if (error.errors) {
