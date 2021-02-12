@@ -46,7 +46,7 @@
     @include media('>md') {
       bottom: 0;
       display: block;
-      filter: none;
+      filter: grayscale(0) blur(0) brightness(1);
       max-width: 50vw;
       position: absolute;
       right: -5%;
@@ -54,15 +54,19 @@
       transform-origin: center bottom;
       transition: 400ms ease-in-out;
       will-change: filter, transform;
+      -webkit-backface-visibility: hidden;
+      -webkit-perspective: 1000;
     }
 
     &--is-fade {
-      filter: grayscale(.75) blur(1px);
+      filter: grayscale(.75) blur(2px) brightness(0.85);
+      transform-origin: center bottom;
     }
 
     &--is-highlight {
       filter: saturate(1.25);
       transform: scale(.95);
+      transform-origin: center bottom;
     }
 
   }
