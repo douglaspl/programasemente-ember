@@ -46,12 +46,14 @@
     @include media('>md') {
       bottom: 0;
       display: block;
+      filter: none;
       max-width: 50vw;
       position: absolute;
       right: -5%;
       transform: scale(.9);
       transform-origin: center bottom;
       transition: 400ms ease-in-out;
+      will-change: filter, transform;
     }
 
     &--is-fade {
