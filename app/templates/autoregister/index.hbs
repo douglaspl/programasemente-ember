@@ -3,7 +3,18 @@
 
 <main class="main self-registration">
   <span class="self-registration__graphism graphism-circle"></span>
-  <img class="self-registration__img" src="/assets/img/img-autocadastro.png" alt="Três pessoas sorrindo: uma professora negra, uma aluna pre-adolescente e um aluno do infantil.">
+  {{!-- <img class="self-registration__img" src="/assets/img/img-autocadastro.png" alt="Três pessoas sorrindo: uma professora negra, uma aluna pre-adolescente e um aluno do infantil."> --}}
+  <img class="self-registration__img {{if currentRole (if (equalstr currentRole 'professor') 'self-registration__img--is-highlight' 'self-registration__img--is-fade')}}"
+       src="/assets/img/img-autocadastro__prof.png"
+       alt="Uma professora negra de braços cruzados sorrindo com olhar de confiança.">
+
+  <img class="self-registration__img {{if currentRole (if (equalstr currentRole 'aluno') 'self-registration__img--is-highlight' 'self-registration__img--is-fade')}}"
+       src="/assets/img/img-autocadastro__em.png"
+       alt="Um aluno adolescente de óculos e com traços orientais, sorrindo.">
+
+  <img class="self-registration__img {{if currentRole (if (equalstr currentRole 'responsável') 'self-registration__img--is-highlight' 'self-registration__img--is-fade')}}"
+       src="/assets/img/img-autocadastro__resp.png"
+       alt="Um par de crianças sorrindo: uma menina e um menino.">
 
   <header class="row m-bottom--xl m-top--xxl middle-xs">
     <div class="col-xs-5 col-md-3">
@@ -25,7 +36,7 @@
             {{/if}}
           </span>
         </h1>
-        
+
       </div>
     </div>
   </header>
