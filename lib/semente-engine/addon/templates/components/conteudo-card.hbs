@@ -1,5 +1,5 @@
 {{#each conteudoAnos as |ano|}}
-  <div class="media flow-md">
+  <div class="media">
 
     <div class="flex flex-row gap-xs divider p-bottom--sm w100">
 
@@ -21,7 +21,7 @@
 
       <a href="#" class="btn btn--text btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
         {{!-- <span class="btn__icon icon-edit"></span> --}}
-        <span class="btn__label">Editar este item</span>
+        <span class="btn__label">Editar</span>
       </a>
       {{!-- {{#if (equalstr pessoaRole 'admin')}}
         <div class="checkbox">
@@ -33,18 +33,32 @@
 
     <div class="media__body">
 
-      <div class="flex flex-row items-center justify-between self-stretch gap-xxl flow-h-sm">
+      <div class="row middle-xs self-stretch">
 
-        <span class="flex flex-col items-start flow-xs divider-right" flex="20">
-          {{#each conteudo.publicos as |publico|}}
-            <span class="flex flex-row items-center gap-xs flow-h-xs">
-              {{component (strconcat "icon-" publico.nameIcon) class="avatar avatar--is-square avatar--xs color-gray-40"}}
-              <span class="title-aux">{{publico.nameFormat}}</span>
-            </span>
-          {{/each}}
-        </span>
+        <!-- "video de" + seg + ano + aula/bloco + tipo (video/pdf/etc) + publico que pode ver
+             "video de" = título do conteúdo
+        -->
+        <div class="col-xs-12 col-md-7">
+          {{conteudo-aula-card conteudo=conteudo ano=ano show=show}}
+        </div>
 
-        {{conteudo-aula-card conteudo=conteudo ano=ano show=show}}
+        <div class="col-xs-12 col-md-2 ta-c">
+          <span class="flex flex-col items-center m-left--auto m-right--auto" style="width: 5rem"> <!-- tamanho fixo para alinhar ícones em lista -->
+            {{component (strconcat "icon-" conteudo.tipo) class="icon icon--lg icon--square color-green-30"}}
+            <span class="title-aux">{{conteudo.tipo}}</span>
+          </span>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <span class="flex flex-col items-start flow-xs divider-right" flex="20">
+            {{#each conteudo.publicos as |publico|}}
+              <span class="flex flex-row items-center gap-xs flow-h-xs">
+                {{component (strconcat "icon-" publico.nameIcon) class="icon icon--square icon--xs color-green-30"}}
+                <span class="title-aux">{{publico.nameFormat}}</span>
+              </span>
+            {{/each}}
+          </span>
+        </div>
 
         {{!--
         <ul>
@@ -60,11 +74,6 @@
           <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
         </div>
         --}}
-
-        <span class="flex flex-col items-center m-left--auto" style="width: 5rem"> <!-- tamanho fixo para alinhar ícones em lista -->
-          {{component (strconcat "icon-" conteudo.tipo) class="icon icon--square color-blue-navy-40"}}
-          <span class="title-aux">{{conteudo.tipo}}</span>
-        </span>
 
       </div>
 
