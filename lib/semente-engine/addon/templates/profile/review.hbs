@@ -1,26 +1,3 @@
-{{!-- <div style="z-index:200;"
-  class="bg-info-50 color-white flex flow-h-xxs fs--md full-width full-width--fixed items-center justify-center m-bottom--xl p--sm ta-c">
-  <span>
-    Olá, você está no cadastro de
-  </span>
-  {{#if (equalstr model.role 'instrutor')}}
-    <span class="strong">Professor</span>
-  {{else if (equalstr model.role 'responsavel')}}
-    <span class="strong">Responsável</span>
-    <span class="fs--xs color-info-10">
-      (para responsáveis que possuem dependente(s) nos segmentos <span class="strong">Intantil</span> ou <span
-        class="strong">Fundamental 1</span>)
-    </span>
-  {{else if (equalstr model.role 'aluno')}}
-    <span class="strong">Aluno</span>
-    <span class="fs--xs color-info-10">
-      (para alunos dos segmentos <span class="strong">Fundamental 2</span> ou <span class="strong">Ensino Médio</span>)
-    </span>
-  {{else}}
-    <span class="strong">{{capitalize model.role}}</span>
-  {{/if}}
-</div> --}}
-
 <header class="row middle-xs">
 
   <div class="col-xs-5 col-md-2">
@@ -46,24 +23,12 @@
   </div>
 </header>
 
-{{!--
-  <div class="col-xs-5 col-md-5 flow-sm">
-    <span class="row justify-end hide-on--xs">Você está logado no momento como <span class="color-blue-navy-30 m-left--xxs strong">{{loginAtual}}</span>.</span>
-    <span class="row justify-end">Não é você?<a class="btn btn--link color-leaf-40 m-left--xs td-u" {{action 'logout'}}>Sair do cadastro</a></span>
-  </div>
-   --}}
-
-  {{!-- <div class="col-xs-12">
-    <p class="callout m-top--xl m-bottom--md p-left--sm p-v--sm">É necessário informar ou validar alguns
-      dados para a <strong>atualização de seu cadastro</strong>. É bem rápido e fácil.</p>
-  </div> --}}
-
 <div class="row">
   {{#if (equalstr model.role "aluno") }}
   <div class="col-xs-12">
     <ul class="steps j-steps m-v--sm">
       <li id="s1" class="steps__step steps__step--is-active">
-        <span class="steps__label">Você</span>
+        <span class="steps__label">Suas informações</span>
         <span class="steps__number">1</span>
       </li>
       <li id="s2" class="steps__step">
@@ -80,7 +45,7 @@
   <div class="col-xs-12">
     <ul class="steps j-steps m-v--sm">
       <li id="s1" class="steps__step steps__step--is-active">
-        <span class="steps__label">Você</span>
+        <span class="steps__label">Suas informações</span>
         <span class="steps__number">1</span>
       </li>
       <li id="s2" class="steps__step">
@@ -101,7 +66,7 @@
   <div class="col-xs-12">
     <ul class="steps j-steps m-v--sm">
       <li id="s1" class="steps__step steps__step--is-active">
-        <span class="steps__label">Você</span>
+        <span class="steps__label">Suas informações</span>
         <span class="steps__number">1</span>
       </li>
       <li id="s2" class="steps__step">
@@ -137,22 +102,20 @@
     <h3 class="title-3">Suas informações</h3>
 
     <div class="flow-xxl">
-      {{!-- <h4 class="title-4">Informações pessoais</h4> --}}
-      {{profile-form
-      pessoa=model
-      gonext=(action 'carouselFoward')
-      checkform=(action 'validateForm')
-      checkname=(action 'validateName')
-      checkmail=(action 'liveCheckEmail')
-      validateemail=(action 'validateEmail')
-      removeerrors=(action 'removeErrorTag')
-      addresponsible=(action 'addResponsible')
-      trimall=(action 'trimAll')
-      checkdate=(action 'validateDate')
-      checkcel=(action 'validateCel')
-      maskcel=(action 'phoneMask')
-      celmaxlength=(action 'celReachedMaxLength')
-      toggleinput=(action 'toggleInput')}}
+      {{profile-form  pessoa=model
+                      gonext=(action 'carouselFoward')
+                      checkform=(action 'validateForm')
+                      checkname=(action 'validateName')
+                      checkmail=(action 'liveCheckEmail')
+                      validateemail=(action 'validateEmail')
+                      removeerrors=(action 'removeErrorTag')
+                      addresponsible=(action 'addResponsible')
+                      trimall=(action 'trimAll')
+                      checkdate=(action 'validateDate')
+                      checkcel=(action 'validateCel')
+                      maskcel=(action 'phoneMask')
+                      celmaxlength=(action 'celReachedMaxLength')
+                      toggleinput=(action 'toggleInput')}}
     </div>
     {{checkNameEqualEmail}}
   </section>
@@ -164,27 +127,27 @@
     <div class="flow-xxl">
 
       {{#each model.responsaveis as |responsavel index| }}
-      {{responsible-form responsavel=responsavel
-      index=index model=model
-      gonext=(action 'carouselFoward')
-      goback=(action 'carouselBackward')
-      checkform=(action 'validateForm')
-      checkname=(action 'validateName')
-      checkemail=(action 'liveCheckEmail')
-      validateemail=(action 'validateEmail')
-      checkcel=(action 'validateCel')
-      maskcel=(action 'phoneMask')
-      celmaxlength=(action 'celReachedMaxLength')
-      toggleinput=(action 'toggleInput')
-      trimall=(action 'trimAll')
-      }}
+        {{responsible-form  responsavel=responsavel
+                            index=index
+                            model=model
+                            gonext=(action 'carouselFoward')
+                            goback=(action 'carouselBackward')
+                            checkform=(action 'validateForm')
+                            checkname=(action 'validateName')
+                            checkemail=(action 'liveCheckEmail')
+                            validateemail=(action 'validateEmail')
+                            checkcel=(action 'validateCel')
+                            maskcel=(action 'phoneMask')
+                            celmaxlength=(action 'celReachedMaxLength')
+                            toggleinput=(action 'toggleInput')
+                            trimall=(action 'trimAll')}}
       {{/each}}
 
       {{#if (islower model.responsaveis.length "2")}}
-      <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible' }}>
-        <span class="btn__icon icon-plus"></span>
-        <span class="btn__label">Adicionar Responsável</span>
-      </button>
+        <button class="btn btn--add-list-item" type="button" onclick={{action 'addResponsible' }}>
+          <span class="btn__icon icon-plus"></span>
+          <span class="btn__label">Adicionar Responsável</span>
+        </button>
       {{/if}}
 
       <div class="row">
