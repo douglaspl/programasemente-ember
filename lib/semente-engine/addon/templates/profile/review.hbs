@@ -25,7 +25,7 @@
 <p class="m-left--sm alert alert--form alert--sm alert--error alert--has-icon animated d250" id="error_form"
   data-animation="fadeIn"></p>
 
-<header class="row middle-xs">
+<header class="row middle-xs justify-between items-center">
 
   <div class="col-xs-5 col-md-2">
     <svg class="m-top--md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80">
@@ -45,6 +45,12 @@
       </g>
     </svg>
   </div>
+  
+  <div class="col-xs-5 col-md-5 flow-sm">
+    <span class="row justify-end hide-on--xs">Você está logado no momento como <span class="color-blue-navy-30 m-left--xxs strong">{{loginAtual}}</span>.</span>
+    <span class="row justify-end">Não é você?<a class="btn btn--link color-leaf-40 m-left--xs td-u" {{action 'logout'}}>Sair do cadastro</a></span>
+  </div>
+  
 
   <div class="col-xs-12">
     <p class="m-top--xl">Seja bem-vindo(a) ao Programa Semente!</p>
