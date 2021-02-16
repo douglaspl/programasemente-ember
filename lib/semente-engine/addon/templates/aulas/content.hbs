@@ -297,35 +297,37 @@
 
         </ul>
 
-        <aside class="suggestions">
+        {{#if (equalstr toggleRole "instrutor")}}
+          <aside class="suggestions">
 
-          <div class="suggestions__body flow-md">
-            <h3 class="suggestions__title">Quer sugerir um novo conteúdo ou mudança nos conteúdos atuais?</h3>
+            <div class="suggestions__body flow-md">
+              <h3 class="suggestions__title">Quer sugerir um novo conteúdo ou mudança nos conteúdos atuais?</h3>
 
-            <div class="form-group">
-              <label class="form-group__label">Sugestão</label>
-              <textarea class="form-group__input"></textarea>
+              <div class="form-group">
+                <label class="form-group__label">Sugestão</label>
+                <textarea class="form-group__input"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-group__label">Qual o benefício da sugestão dada acima? (mínimo de 80 caracteres)</label>
+                <textarea class="form-group__input"></textarea>
+              </div>
+
+              <button class="suggestions__btn btn">
+                <span class="btn__label">Enviar sugestão</span>
+              </button>
             </div>
 
-            <div class="form-group">
-              <label class="form-group__label">Qual o benefício da sugestão dada acima? (mínimo de 80 caracteres)</label>
-              <textarea class="form-group__input"></textarea>
+            <div class="suggestions__sent">
+              <button class="btn-close">
+                <span class="btn__label icon icon-x"></span>
+              </button>
+              <span class="icon icon-check icon--xxl color-success-40"></span>
+              <p class="fs--lg">Obrigado por sua sugestão!</p>
             </div>
 
-            <button class="suggestions__btn btn">
-              <span class="btn__label">Enviar sugestão</span>
-            </button>
-          </div>
-
-          <div class="suggestions__sent">
-            <button class="btn-close">
-              <span class="btn__label icon icon-x"></span>
-            </button>
-            <span class="icon icon-check icon--xxl color-success-40"></span>
-            <p class="fs--lg">Obrigado por sua sugestão!</p>
-          </div>
-
-        </aside>
+          </aside>
+          {{/if}}
 
       </section>
 
