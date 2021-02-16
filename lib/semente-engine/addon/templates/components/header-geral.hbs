@@ -1,6 +1,6 @@
 <!-- Header geral -->
-<header
-  class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role parentController.toggleRole}} flex items-start gap-lg">
+{{!-- <header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'aluno') pessoa.role parentController.toggleRole}} flex items-start gap-lg"> --}}
+<header class="l-user-header l-user-header--themed l-user-header--{{if (equalstr pessoa.role 'instrutor') parentController.toggleRole pessoa.role}} flex items-start gap-lg">
   <picture class="l-user-header__avatar avatar avatar--lg flex justify-center" {{action 'toggleAvatarModal' }}>
     {{#if pessoa.uriAvatar}}
       <img class="avatar__img" src={{pessoa.uriAvatar}} alt="{{pessoa.name}}">
