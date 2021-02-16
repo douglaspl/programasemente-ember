@@ -111,9 +111,25 @@
     }
 
     #{$this}__actions {
+      display: flex;
+      flex-direction: column-reverse;
       overflow: visible;
       position: relative;
       text-align: center;
+
+      > * + * {
+        margin-top: $distance--xs;
+      }
+
+      @include media('>md') {
+        display: table-cell;
+
+        > * + * {
+          margin-top: 0;
+        }
+
+      }
+
     }
 
   }
