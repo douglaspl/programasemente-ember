@@ -238,44 +238,44 @@
         <section>
             <h2 class="title-2 m-bottom--xxs hide-on--sm">Contéudos</h2>
             <ul class="tabs">
-            <li>
-                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Básico") "tabs__tab--is-active"}}"
-                        type="button"
-                        {{action "refreshSelectedAgrupamento" "Básico"}}>
-                <span class="hide-on--sm">Básicos</span>
-                <span class="hide-on--xs">Conteúdos básicos</span>
-                </button>
-            </li>
-            <li>
-                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Complementar") "tabs__tab--is-active"}}"
-                        type="button"
-                        {{action "refreshSelectedAgrupamento" "Complementar"}}>
-                <span class="hide-on--sm">Complementares</span>
-                <span class="hide-on--xs">Conteúdos complementares</span>
-                </button>
-            </li>
-            {{#if aula.atividade}}
-                <li>
-                <button class="tabs__tab {{if (equalstr selectedAgrupamento "Ead") "tabs__tab--is-active"}}"
-                        type="button"
-                        {{action "refreshSelectedAgrupamento" "Ead"}}>
-                    <span>EAD</span>
-                </button>
-                </li>
-            {{/if}}
+              <li>
+                  <button class="tabs__tab {{if (equalstr selectedAgrupamento "Básico") "tabs__tab--is-active"}}"
+                          type="button"
+                          {{action "refreshSelectedAgrupamento" "Básico"}}>
+                  <span class="hide-on--sm">Básicos</span>
+                  <span class="hide-on--xs">Conteúdos básicos</span>
+                  </button>
+              </li>
+              <li>
+                  <button class="tabs__tab {{if (equalstr selectedAgrupamento "Complementar") "tabs__tab--is-active"}}"
+                          type="button"
+                          {{action "refreshSelectedAgrupamento" "Complementar"}}>
+                  <span class="hide-on--sm">Complementares</span>
+                  <span class="hide-on--xs">Conteúdos complementares</span>
+                  </button>
+              </li>
+              {{#if aula.atividade}}
+                  <li>
+                  <button class="tabs__tab {{if (equalstr selectedAgrupamento "Ead") "tabs__tab--is-active"}}"
+                          type="button"
+                          {{action "refreshSelectedAgrupamento" "Ead"}}>
+                      <span>EAD</span>
+                  </button>
+                  </li>
+              {{/if}}
             </ul>
         </section>
 
-        
+
         {{#if (or (and (equalstr selectedAgrupamento "Básico") (equalstr conteudos.length '0')) (and (equalstr selectedAgrupamento "Complementar") (equalstr conteudos.length '0')))}}
           <div class="empty animated fadeIn">
-          <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
-            <span class="empty__icon icon-frown-o icon--xl"></span>
-            <p class="m-top--xs">Ainda não há conteúdos aqui</p>
+            <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
+              <span class="empty__icon icon-frown-o icon--xl"></span>
+              <p class="m-top--xs">Ainda não há conteúdos aqui</p>
+            </div>
           </div>
-        </div>
         {{/if}}
-        
+
         <ul class="list list--striped">
 
             {{#each conteudos as |conteudo|}}
@@ -296,6 +296,36 @@
             {{/if}}
 
         </ul>
+
+        <aside class="suggestions">
+
+          <div class="suggestions__body flow-md">
+            <h3 class="suggestions__title">Quer sugerir um novo conteúdo ou mudança nos conteúdos atuais?</h3>
+
+            <div class="form-group">
+              <label class="form-group__label">Sugestão</label>
+              <textarea class="form-group__input"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-group__label">Qual o benefício da sugestão dada acima? (mínimo de 80 caracteres)</label>
+              <textarea class="form-group__input"></textarea>
+            </div>
+
+            <button class="suggestions__btn btn">
+              <span class="btn__label">Enviar sugestão</span>
+            </button>
+          </div>
+
+          <div class="suggestions__sent">
+            <button class="btn-close">
+              <span class="btn__label icon icon-x"></span>
+            </button>
+            <span class="icon icon-check icon--xxl color-success-40"></span>
+            <p class="fs--lg">Obrigado por sua sugestão!</p>
+          </div>
+
+        </aside>
 
       </section>
 

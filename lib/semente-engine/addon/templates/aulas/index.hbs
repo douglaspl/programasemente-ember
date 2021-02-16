@@ -9,7 +9,6 @@
 
   {{#unless (equalstr pessoa.role 'aluno')}}
     <nav>
-      <h1 class="sr-only">Subnavegação de {{thisRoute}}</h1>
       <ul class="tabs">
         {{#if (or (equalstr this.parentController.toggleRole 'instrutor') (equalstr pessoa.role 'admin'))}}
           {{#each this.parentController.segmentosObjects as |seg|}}
@@ -110,8 +109,8 @@
           <h2 class="title-4">{{selectedAno}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
 
         <!-- AQUI É O BLOCO PARA LIVROS EM MULTI IDIOMA -->
-        
-        
+
+
           <!-- CASO ONDE PROFESSOR TEM ACESSO A MATERIAIS EM UM IDIOMA -->
           {{!-- <span class="flex flex-row gap-sm items-baseline m-left--auto">
             <button class="btn btn--ghost btn--xxs">
