@@ -110,7 +110,11 @@
     --light: #{$leaf-30};
   }
 
-  &--admin {
+  &--admin,
+  &--gestor,
+  &--coordenador,
+  &--secretaria,
+  &--marketing {
     --dark: #{$blue-navy-70};
     --light: #{$blue-navy-30};
   }

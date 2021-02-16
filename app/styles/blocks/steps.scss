@@ -3,7 +3,7 @@
     $font-size: $font-size--lg;
     $number-border: 4px;
     $size: 2em;
-    $padding: $distance--sm;
+    $padding: $distance--xxl $distance--xxl $distance--md;
 
     align-items: center;
     background-color: $gray-0;
@@ -21,19 +21,20 @@
     &::before {
         background-color: $gray-20;
         border-radius: $radius;
-        bottom: calc((#{$size} - #{$number-border}) / 2 + #{$padding});
+        bottom: calc((#{$size} - #{$number-border}) / 2 + #{$distance--md});
         content: '';
         height: $distance--xxs;
         left: 50%;
         position: absolute;
         transform: translateX(-50%);
-        width: calc(100% - #{$size} - (#{$padding} * 2));
+        width: calc(100% - #{$size} - (#{$distance--xxl} * 2));
     }
 
     &__step {
         align-items: center;
         display: flex;
         flex-direction: column;
+        position: relative;
 
         &:first-child { align-self: flex-start; }
         &:last-child { align-self: flex-end; }
@@ -42,15 +43,11 @@
             margin-right: $distance--md;
         }
 
-        > *:last-child {
-            margin-top: $distance--xs;
-        }
-
     }
 
     &__number {
         align-items: center;
-        background-color: $blue-navy-60;
+        background-color: $gray-40;
         border: $number-border solid $white;
         border-radius: 50%;
         box-shadow: $shadow-1, $shadow-2, $shadow-3;
@@ -59,6 +56,7 @@
         flex-direction: row;
         height: $size;
         justify-content: center;
+        padding-bottom: 2px; // correção por conta do line-height
         width: $size;
 
         &--is-active,
@@ -68,9 +66,12 @@
     &__label {
         @include title-aux;
 
+        color: $gray-60;
         display: block;
-        // min-width: 12rem;
+        position: absolute;
         text-align: center;
+        top: -$distance--md;
+        white-space: nowrap;
         word-wrap: wrap;
     }
 

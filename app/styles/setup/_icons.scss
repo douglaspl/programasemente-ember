@@ -62,12 +62,13 @@
 .icon--error { color: $error-30; }
 .icon--success { color: $success-30; }
 
+.icon--xs { font-size: .8em; }
 .icon--lg { font-size: 1.5em; }
 .icon--xl { font-size: 2em; }
 .icon--xxl { font-size: 4em; }
 .icon--ultra { font-size: calc(10em + 1vh); }
 
 .icon--square {
-  height: 2rem;
-  width: 2rem;
+  height: 2em;
+  width: 2em;
 }

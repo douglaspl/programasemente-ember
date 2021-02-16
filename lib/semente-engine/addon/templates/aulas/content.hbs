@@ -266,6 +266,16 @@
             </ul>
         </section>
 
+        
+        {{#if (or (and (equalstr selectedAgrupamento "Básico") (equalstr conteudos.length '0')) (and (equalstr selectedAgrupamento "Complementar") (equalstr conteudos.length '0')))}}
+          <div class="empty animated fadeIn">
+          <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
+            <span class="empty__icon icon-frown-o icon--xl"></span>
+            <p class="m-top--xs">Ainda não há conteúdos aqui</p>
+          </div>
+        </div>
+        {{/if}}
+        
         <ul class="list list--striped">
 
             {{#each conteudos as |conteudo|}}

@@ -109,22 +109,28 @@
     }
 
     &__show-pass {
-        $size: 20px;
+        $size: $input-height;
 
-        color: $green-10;
+        background-color: $leaf-0;
+        color: $leaf-50;
         font-size: $font-size--md;
         height: $size;
         overflow: hidden;
         position: absolute;
-        right: $distance--xs;
+        right: 0;
         text-align: center;
         top: 50%;
         transform: translateY(-50%);
         width: $size;
 
         > * {
+            align-items: center;
+            display: inline-flex;
+            bottom: 0;
             left: 0;
+            justify-content: center;
             position: absolute;
+            right: 0;
             top: 0;
             transition: 300ms;
 
