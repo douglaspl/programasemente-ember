@@ -297,7 +297,8 @@
 
         </ul>
 
-        {{#if (equalstr toggleRole "instrutor")}}
+<!-- INÍCIO SUGESTÕES PARA AULAS -- >
+        {{!-- {{#if (equalstr toggleRole "instrutor")}}
           <aside class="suggestions">
 
             <div class="suggestions__body flow-md">
@@ -305,21 +306,21 @@
 
               <div class="form-group">
                 <label class="form-group__label">Sugestão</label>
-                <textarea class="form-group__input"></textarea>
+                <textarea class="form-group__input" id="suggestion"></textarea>
               </div>
 
               <div class="form-group">
                 <label class="form-group__label">Qual o benefício da sugestão dada acima? (mínimo de 80 caracteres)</label>
-                <textarea class="form-group__input"></textarea>
+                <textarea class="form-group__input" id="benefit"></textarea>
               </div>
 
               <button class="suggestions__btn btn">
-                <span class="btn__label">Enviar sugestão</span>
+                <span class="btn__label" {{action 'sendSuggestion'}}>Enviar sugestão</span>
               </button>
             </div>
 
             <!-- aplicar classe suggestions__sent--is-show quando a sugestão for enviada -->
-            <div class="suggestions__sent">
+            <div class="suggestions__sent" id="suggestionSent">
               <button class="btn-close">
                 <span class="btn__label icon icon-x"></span>
               </button>
@@ -328,7 +329,8 @@
             </div>
 
           </aside>
-          {{/if}}
+          {{/if}} --}}
+<!-- FIM SUGESTÕES PARA AULAS -->
 
       </section>
 
@@ -376,3 +378,4 @@
   </div>
   <div class="modal__overlayer"></div>
 </aside>
+
