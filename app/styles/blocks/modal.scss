@@ -170,7 +170,7 @@
         transition: 200ms var(--ease-in-out-quad);
 
         [class*='is-show'] & {
-            opacity: .95;
+            opacity: $overlayer-opacity;
         }
 
     }
