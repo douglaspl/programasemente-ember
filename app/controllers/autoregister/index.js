@@ -123,16 +123,17 @@ export default Ember.Controller.extend({
 
 
     identifyRole() {
+      //debugger;
       let target = event.target;
       let inputedCode = target.value;
 
       if (inputedCode == '1234' || inputedCode == '1235' || inputedCode == '1236') {
         this.set('currentRole', 'teste semente');
-      } else if (inputedCode.includes("-AL-")) {
+      } else if (inputedCode.toLowerCase().includes("-al-")) {
         this.set('currentRole', 'aluno');
-      } else if (inputedCode.includes("-PR-")) {
+      } else if (inputedCode.toLowerCase().includes("-pr-")) {
         this.set('currentRole', 'professor');
-      } else if (inputedCode.includes("-RE-")) {
+      } else if (inputedCode.toLowerCase().includes("-re-")) {
         this.set('currentRole', 'responsável');
       } else {
         this.set('currentRole', '');
