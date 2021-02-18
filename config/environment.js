@@ -32,9 +32,9 @@ module.exports = function(environment) {
   if (environment === 'development') {
     ENV.rootURL = '/';
     ENV.APP.DOMAIN = "porto.com";
-    // ENV.APP.host = 'http://localhost:64568';
+    ENV.APP.host = 'http://localhost:64568';
     // ENV.APP.host = 'https://p21.minimo.com.br';
-    ENV.APP.host = 'http://sementeapidev.minimo.com.br';
+    // ENV.APP.host = 'http://sementeapidev.minimo.com.br';
   }
 
   if (environment === 'test') {
