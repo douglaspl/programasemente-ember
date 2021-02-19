@@ -8,6 +8,10 @@
       {{!-- <span class="btn__icon icon-users"></span> --}}
       <span class="btn__label">Cadastro e matrícula em lote</span>
     </button>
+    <button class="btn btn--xxs btn--ghost" {{action 'cadastroCodigo'}}>
+      {{!-- <span class="btn__icon icon-users"></span> --}}
+      <span class="btn__label">Cadastro codigo</span>
+    </button>
   </div>
 </div>
 <div class="l-dots-between">
@@ -816,5 +820,109 @@
   </div>
   <div class="modal__footer">
     <button class="btn btn-primary" type="submit" {{action 'cancelLote'}}>Fechar</button>
+  </div>
+</aside>
+
+
+
+
+
+<aside id="codigo_modal" class="modal">
+  <div class="modal__overlayer"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelCodigo'}}></button>
+      <h3 class="modal__title">Cadastro Código</h3>
+    </div>
+    <div class="modal__body modal__body--inside-scroll inside-scroll">
+      <div class="inside-scroll__fixed">
+        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos códigos
+          a serem criados no sistema</p>
+        <div class="institutions__mass-enroll institutions__btn-group flow-h-sm">
+          <button class="btn btn-primary" type="submit" {{action 'baixarTemplateCodigo'}}>Baixar template</button>
+
+          <label class="btn label_get_lote" for="get_lote">Buscar arquivo</label>
+          <input id="get_lote" multiple="false" onchange={{action "buscarArquivoCodigo"}} accept="text/csv" type="file"
+            style="display: none;" />
+
+          {{#if selected_file}}
+            <button class="btn btn-primary" type="submit" {{action 'importarCodigo'}}>Importar</button>
+          {{else}}
+            <button class="btn btn-primary btn--disabled" type="submit" disabled>Importar</button>
+          {{/if}}
+
+          <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="display: none" id="spinner-importar-lote"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="inside-scroll__scroll">
+        <!-- {{#if selected_file}}
+            <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
+            {{else}}
+            <button class="btn btn-primary btn--disabled" type="submit" disabled>
+                Importar
+            </button>
+            {{/if}} -->
+        {{#if selected_file}}
+          <div class="institutions__attached-file alert alert--sm alert--has-icon">
+            <span class="alert__icon icon-paperclip"></span>
+            <span class="institutions__attached-label">Arquivo selecionado: </span>
+            <strong>{{selected_file}}</strong>
+          </div>
+        {{/if}}
+        {{#if error_lote}}
+          <p>1- {{error_lote}}</p>
+        {{/if}}
+        {{#if wait_lote}}
+          <p>Um momento...</p>
+        {{else if erro_lista}}
+          <p>2- {{erro_lista}}</p>
+        {{else}}
+          <table class="table table--striped table--mass-enroll">
+            <thead class="thead-dark">
+              <tr>
+                <th class="table__enroller" scope="col">Cadastrador</th>
+                <th class="table__file" scope="col">Arquivo</th>
+                <th class="table__import" scope="col">Importação</th>
+                <th class="table__status" scope="col">Status</th>
+                <th class="table__users" scope="col">Códigos</th>
+                <th class="table__processed" scope="col">Processados</th>
+                <th class="table__not-processed" scope="col">Não Processados</th>
+                <th class="table__log" scope="col">Log</th>
+              </tr>
+            </thead>
+            <tbody class="gersistema-user-list-box">
+              {{#each lista_lote as |lista|}}
+                <tr>
+                  <td class="table__enroller">
+                    {{lista.pessoaNome}}
+                  </td>
+                  <td class="table__file">{{lista.nomeArquivo}}</td>
+                  <td class="table__import">{{lista.data}}</td>
+                  <td class="table__status">{{lista.status}}</td>
+                  <td class="table__users">{{lista.quantidadeDeCodigos}}</td>
+                  <td class="table__processed">{{lista.codigossProcessados}}</td>
+                  <td class="table__not-processed">{{lista.codigosNaoProcessados}}</td>
+                  <td class="table__log">
+                    {{#if lista.link}}
+                      <a href={{lista.link}}>
+                        <i class="icon-file-text"></i>
+                      </a>
+                    {{else}}
+                      <i class="fa fa-times-o"></i>
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="modal__footer">
+    <button class="btn btn-primary" type="submit" {{action 'cancelCodigo'}}>Fechar</button>
   </div>
 </aside>
