@@ -32,7 +32,7 @@
       </div>
     {{/if}}
       <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button>
-      <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button>
+      
 
     </div>
     <div class="form-group">
@@ -50,7 +50,27 @@
       </div>
     {{/if}}
 
-    <button class="login__cta btn" id="login_button" type="submit">Entrar</button>
+    <button class="btn btn--xs login__cta p-h--lg" id="login_button" type="submit">Entrar</button>
+
+
+    <!-- Privacy directive -->
+    <div class="divider m-top--lg p-bottom--md flow-h-xs flex flex-row items-center">
+      <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span>
+      <a class="btn btn--link color-blue-navy-40" href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
+        <span class="btn__label">Política de privacidade</span>
+      </a>
+    </div>
+
+    <!-- Cadastre-se -->
+  {{!-- <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button> --}}
+    <div class="m-top--lg flow-h-xs flex flex-row items-center">
+      {{!-- <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span> --}}
+      <span>Ainda não é cadastrado?</span>
+      <a class="btn btn--link color-blue-navy-40" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
+        <span class="btn__label">Cadastre-se</span>
+      </a>
+    </div>
+
   </div>
 </form>
 
@@ -103,79 +123,3 @@
   <div class="modal__overlayer"></div>
 </aside>
 
-
-{{!-- old abaixo --}}
-
-{{!-- <!-- Top content -->
-<div class="login_body text-center">
-    <!-- LOGO -->
-    <a href="#" class="logo text-center"></a> --}}
-<!-- LOGO SUB-TEXT -->
-{{!-- <p class="login_text">PARA TER ACESSO AO CONTEÚDO DAS AULAS  VOCÊ PRECISA ENTRAR COM SUAS INFORMAÇÕES DE ACESSO NOS CAMPOS ABAIXO.</p> --}}
-
-<!-- LOGIN FORM -->
-{{!-- <form class="login_form text-center">
-        <input id='identification' type ='email' class='form-control' value={{identification}} autocomplete="username" placeholder="e-mail">
-        <input id='password' class='form-control' placeholder='senha' type='password' value={{password}} autocomplete="password"> --}}
-{{!-- <label class="label_checkbox">SALVAR INFORMAÇÕES
-            <input id="remember" type="checkbox" checked={{remember}}  name="remember" value={{remember}} autocomplete="off">
-            <span class="checkmark"></span>
-        </label> --}}
-{{!-- <label class="container container-login">SALVAR INFORMAÇÕES
-            <input type="checkbox" id="remember" checked="checked" name="remember" value={{remember}}>
-            <span class="checkmark"></span>
-        </label>
-        <div class="form-group">
-            <button id="login_button" type="submit" class="btn" {{action 'authenticate'}}>ENTRAR NO SISTEMA</button>
-        </div>
-        <a href="#" class="login_text forget_login_text"  {{action 'forgotPass'}}>ESQUECI MEU LOGIN/SENHA</a>
-        {{#if errorMessage}}
-            <p class="error-message">
-                {{{errorMessage}}}
-            </p>
-        {{/if}}
-        {{#if success_mail}}
-            <p style="color:goldenrod">
-                {{{success_mail}}}
-            </p>
-        {{/if}}
-    </form>
-</div>
-<div id="forgot_modal" class="modal">
-    <div class="modal-content">
-        <div class="container-fluid">
-            <div class="modal-header">
-                <button class="close" type="submit" {{action 'cancelForgot'}}>&times;</button>
-
-                <h4 class="modal-title">Senha Esquecida</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row row-modal-spacer">
-                    <div class="col-xs-12">
-                        Uma nova senha será enviada para seu e-mail
-                    </div>
-                </div>
-                <div class="row row-modal-spacer"> --}}
-{{!-- <div class="col-xs-4">e-mail</div> --}}
-{{!-- <div class="col-xs-12 col-lg-offset-2 col-lg-8"><input placeholder="Insira seu endereço de e-mail" class="text-center form-control" type="textbox" id="user_email" value={{user_email}}></div>
-                </div>
-                {{#if error_forgot}}
-                    <div class="row row-modal-spacer">
-                        <div class="col-xs-1"></div>
-                        <div class="col-xs-10 error-message" style="text-align: center;">{{{error_forgot}}}</div>
-                    </div>
-                {{/if}}
-            </div>
-            <div class="modal-footer">
-                <div class="row"> --}}
-{{!-- <div class="col-xs-6" style="text-align: center;">
-                        <button class="button1" type="submit" {{action 'cancelForgot'}}>Cancelar</button>
-                    </div> --}}
-{{!-- <div class="col-xs-12" style="text-align: center;">
-                        <button class="btn btn-primary" type="submit" {{action 'sendMail'}}>Enviar nova senha</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}

@@ -127,6 +127,10 @@
     @include divider($pos: "right", $direction: "vertical");
 }
 
+.divider-top {
+    @include divider($pos: "top");
+}
+
 .overflow-hidden { overflow: hidden; }
 .pos-rel { position: relative; }
 .small { font-size: .75em; }
