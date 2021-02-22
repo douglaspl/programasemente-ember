@@ -836,8 +836,8 @@
     </div>
     <div class="modal__body modal__body--inside-scroll inside-scroll">
       <div class="inside-scroll__fixed">
-        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos códigos
-          a serem criados no sistema</p>
+        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos pedidos
+          a serem cadastrados no sistema</p>
         <div class="institutions__mass-enroll institutions__btn-group flow-h-sm">
           <button class="btn btn-primary" type="submit" {{action 'baixarTemplateCodigo'}}>Baixar template</button>
 
@@ -899,11 +899,19 @@
                   <td class="table__enroller">
                     {{lista.pessoaNome}}
                   </td>
+
+                  {{!-- <td class="table__file">{{lista.nomeArquivo}}</td>
+                  <td class="table__import">{{lista.data}}</td>
+                  <td class="table__status">{{lista.status}}</td>
+                  <td class="table__users">{{lista.quantidadeDeUsuarios}}</td>
+                  <td class="table__processed">{{lista.usuariosProcessados}}</td>
+                  <td class="table__not-processed">{{lista.usuariosNaoProcessados}}</td> --}}
+
                   <td class="table__file">{{lista.nomeArquivo}}</td>
                   <td class="table__import">{{lista.data}}</td>
                   <td class="table__status">{{lista.status}}</td>
                   <td class="table__users">{{lista.quantidadeDeCodigos}}</td>
-                  <td class="table__processed">{{lista.codigossProcessados}}</td>
+                  <td class="table__processed">{{lista.codigosProcessados}}</td>
                   <td class="table__not-processed">{{lista.codigosNaoProcessados}}</td>
                   <td class="table__log">
                     {{#if lista.link}}
