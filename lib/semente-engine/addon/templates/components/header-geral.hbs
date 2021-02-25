@@ -107,7 +107,7 @@
           {{/unless}}
         </li>
 
-        {{#unless (or (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'aluno')) (equalstr pessoa.role 'marketing')) }}
+        {{#unless (or (or (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'aluno')) (equalstr pessoa.role 'marketing')) (equalstr pessoa.role 'responsavel')) }}
           {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
             <li>
               <span>Acompanhamento</span>
