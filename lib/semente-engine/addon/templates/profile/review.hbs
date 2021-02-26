@@ -227,7 +227,7 @@
 
       <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward' }}
         type="button">Voltar</button>
-      <button class="btn btn--md" onclick={{action 'validateStudentProfile' }} type="button">Confirmar
+      <button class="btn btn--md" id="confirmar_cadastro" onclick={{action 'validateStudentProfile' }} type="button">Confirmar
         Cadastro</button>
 
     </div>
@@ -479,7 +479,7 @@
       <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward" }} type="button">
         <span class="btn__label">Voltar</span>
       </button>
-      <button class="btn btn--md" onclick={{action 'validateTeacherProfile' }} type="button">Confirmar Cadastro</button>
+      <button class="btn btn--md j-endForm" id="confirmar_cadastro" onclick={{action 'validateTeacherProfile' }} type="button">Confirmar Cadastro</button>
     </div>
 
   </section>
@@ -499,7 +499,7 @@
       <button class="btn btn--ghost btn--md m-right--sm" {{action "carouselBackward" }} type="button">
         <span class="btn__label">Voltar</span>
       </button>
-      <button class="btn btn--md" onclick={{action 'validateTeacherProfile' }} type="button">Confirmar Cadastro</button>
+      <button class="btn btn--md j-endForm" id="confirmar_cadastro" onclick={{action 'validateTeacherProfile' }} type="button">Confirmar Cadastro</button>
     </div>
 
   </section>
@@ -691,7 +691,7 @@
 
       <button class="btn btn--ghost btn--md m-right--sm" onclick={{action 'carouselBackward' }}
         type="button">Voltar</button>
-      <button class="btn btn--md" id="confirmar_cadastro" onclick={{action 'validateStudentProfile' }}
+      <button class="btn btn--md j-endForm" id="confirmar_cadastro" onclick={{action 'validateStudentProfile' }}
         type="button">Confirmar Cadastro</button>
 
     </div>
