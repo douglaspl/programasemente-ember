@@ -17,14 +17,16 @@
             <span class="btn__icon icon-plus"></span>
             <span class="btn__label">Nova Instituição</span>
           </button>
-        {{/if}}
-
-        {{#if (equalstr role 'admin')}}
-          <button class="btn btn--xxs animated fadeInLeftShort faster d250" {{action 'cadastroLote'}}>
+          <button class="btn btn--xxs animated fadeInLeftShort faster d250" {{action 'cadastroCodigo'}}>
             {{!-- <span class="btn__icon icon-users"></span> --}}
-            <span class="btn__label">Cadastro Código</span>
+            <span class="btn__label">Cadastro codigo</span>
           </button>
         {{/if}}
+
+
+        
+        
+
 
         {{!-- {{#if (equalstr role 'admin')}}
           <label class="btn btn--xxs animated fadeInLeftShort faster d250" for="get_lote">Cadastro Código</label>
@@ -824,36 +826,37 @@
 
 
 
-
-<aside id="lote_modal" class="modal">
+<aside id="codigo_modal" class="modal">
   <div class="modal__overlayer"></div>
   <div class="modal__content">
     <div class="modal__header">
-      <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelLote'}}></button>
+      <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelCodigo'}}></button>
       <h3 class="modal__title">Cadastro Código</h3>
     </div>
     <div class="modal__body modal__body--inside-scroll inside-scroll">
       <div class="inside-scroll__fixed">
-        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos códigoa
-          a serem criados no sistema</p>
+        <p>Através da opção abaixo, busque o arquivo de carga em seu computador que contém as informações dos pedidos
+          a serem cadastrados no sistema</p>
         <div class="institutions__mass-enroll institutions__btn-group flow-h-sm">
-          <button class="btn btn-primary" type="submit" {{action 'baixarTemplate'}}>Baixar template</button>
+          <button class="btn btn-primary" type="submit" {{action 'baixarTemplateCodigo'}}>Baixar template</button>
 
           <label class="btn label_get_lote" for="get_lote">Buscar arquivo</label>
-          <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} accept="text/csv" type="file"
+          <input id="get_lote" multiple="false" onchange={{action "buscarArquivoCodigo"}} accept="text/csv" type="file"
             style="display: none;" />
 
+          {{#if selected_file}}
+            <button class="btn btn-primary" type="submit" {{action 'importarCodigo'}}>Importar</button>
+          {{else}}
+            <button class="btn btn-primary btn--disabled" type="submit" disabled>Importar</button>
+          {{/if}}
+
+          <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="display: none" id="spinner-importar-lote"></i>
+          </div>
         </div>
       </div>
 
       <div class="inside-scroll__scroll">
-        <!-- {{#if selected_file}}
-            <button class="btn btn-primary" type="submit" {{action 'importarLote'}}>Importar</button>
-            {{else}}
-            <button class="btn btn-primary btn--disabled" type="submit" disabled>
-                Importar
-            </button>
-            {{/if}} -->
         {{#if selected_file}}
           <div class="institutions__attached-file alert alert--sm alert--has-icon">
             <span class="alert__icon icon-paperclip"></span>
@@ -892,7 +895,7 @@
                   <td class="table__import">{{lista.data}}</td>
                   <td class="table__status">{{lista.status}}</td>
                   <td class="table__users">{{lista.quantidadeDeCodigos}}</td>
-                  <td class="table__processed">{{lista.codigossProcessados}}</td>
+                  <td class="table__processed">{{lista.codigosProcessados}}</td>
                   <td class="table__not-processed">{{lista.codigosNaoProcessados}}</td>
                   <td class="table__log">
                     {{#if lista.link}}
@@ -912,6 +915,6 @@
     </div>
   </div>
   <div class="modal__footer">
-    <button class="btn btn-primary" type="submit" {{action 'cancelLote'}}>Fechar</button>
+    <button class="btn btn-primary" type="submit" {{action 'cancelCodigo'}}>Fechar</button>
   </div>
 </aside>

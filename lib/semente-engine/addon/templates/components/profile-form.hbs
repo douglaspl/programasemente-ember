@@ -191,11 +191,11 @@
                                     data-required="true">
                                     <option value="" disabled selected>---</option>
                                     {{#each pessoa.instituicao.plataformaAnos as |pa|}}
-                                    {{#if (isnotinarray pa plataformaAnosToHide)}}
-                                    <option value="{{pa.id}}"
-                                        selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
-                                        {{pa.name}}</option>
-                                    {{/if}}
+                                        {{#if (isnotinarray pa plataformaAnosToHide)}}
+                                            <option value="{{pa.id}}"
+                                                selected={{if (equalstr pa.id pessoa.plataformaAnos.firstObject.id) "selected"}}>
+                                                {{pa.name}}</option>
+                                        {{/if}}
                                     {{/each}}
                                 </select>
                             </div>
