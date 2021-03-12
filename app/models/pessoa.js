@@ -7,6 +7,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   role: DS.attr(),
   email: DS.attr(),
+  userName: DS.attr(),
   emailCadastrado: DS.attr(),
   matricula : DS.attr(),
   genero: DS.attr(),
