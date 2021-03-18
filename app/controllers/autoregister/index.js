@@ -125,7 +125,9 @@ export default Ember.Controller.extend({
     identifyRole() {
       //debugger;
       let target = event.target;
-      let inputedCode = target.value;
+      let inputedCode = target.value.trim();
+      target.value = inputedCode;
+
 
       if (inputedCode == '1234' || inputedCode == '1235' || inputedCode == '1236') {
         this.set('currentRole', 'teste semente');
