@@ -43,28 +43,40 @@
 
         <!-- não funcional -->
         <div class="form-group">
-          <label class="form-group__label">Segmentos (não funcional)</label>
+          <label class="form-group__label">Segmentos</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input"
                     name="year"
-                    id="ano_selector">
+                    id="segmento_selector"
+                    onchange={{action 'refreshSelectedSegmento' value='target.value'}} 
+                    data-type="select"
+                    data-required="true">
               <option selected="selected" value="0">Todos</option>
-              <option id="id_do_segmento" value="id_do_segmento">Nome do segmento</option>
+              {{#each segmentos as |seg|}}
+                  <option style="display: block" value="{{seg.id}}"
+                    selected={{if (equalstr seg selectedSegmento) "selected"}}>
+                  {{seg.titulo}}</option>
+              {{/each}}
+              {{!-- <option id="id_do_segmento" value="id_do_segmento">Nome do segmento</option> --}}
             </select>
           </div>
         </div>
 
         <!-- não funcional -->
         <div class="form-group">
-          <label class="form-group__label">Ano (não funcional)</label>
+          <label class="form-group__label">Ano</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input"
                     name="year"
                     id="ano_selector"
-                    {{action 'filterano' mod.idx on='change'}}>
+                    onchange={{action 'refreshFilterAno' value='target.value'}} 
+                    data-type="select"
+                    data-required="true">
               <option selected="selected" value="0">Todas</option>
-              {{#each inst_selected.modulos as |mod|}}
-                <option style="display: block" id="ano_{{mod.idx}}" value="year{{mod.idx}}">{{mod.name}}</option>
+              {{#each anos as |ano|}}
+                  <option style="display: block" value="{{ano.id}}"
+                        selected={{if (equalstr ano selectedAno) "selected"}}>
+                      {{ano.name}}</option>
               {{/each}}
             </select>
           </div>
@@ -74,11 +86,16 @@
           <label class="form-group__label">Turma</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input"
+                    name="year"
                     id="turma_selector"
-                    {{action 'filterTurma' on='change'}}>
+                    onchange={{action 'refreshFilterTurma' value='target.value'}} 
+                    data-type="select"
+                    data-required="true">
               <option selected="selected" value="0">Todas</option>
-              {{#each inst_selected.turmas as |turma|}}
-                <option style="display: block" id="opt_{{turma.id}}" value={{turma.id}}>{{turma.name}}</option>
+              {{#each turmas as |turma|}}
+                  <option style="display: block" value="{{turma.id}}"
+                        selected={{if (equalstr turma selectedTurma) "selected"}}>
+                      {{turma.name}}</option>
               {{/each}}
             </select>
           </div>
@@ -154,7 +171,7 @@
             <tr>
               <td class="table__name">
                 <p><strong class="title-4">{{pessoa.name}}</strong></p>
-                <p class='color-green-40 truncate'>{{pessoa.email}}</p>
+                <p class='color-green-40 truncate'>{{pessoa.userName}}</p>
 
               </td>
               <td class="table__role">
@@ -421,15 +438,17 @@
       <!-- ANOS SÓ É EXIBIDO PARA ALUNOS E INSTRUTORES -->
       {{#if (equalstr activeProfile "instrutor")}}
         <section class="flow-md {{unless editUser (if (equalstr activeProfile "instrutor") 'animated fadeInLeftShort faster d250')}}">
-          <h4 class="modal__subtitle">Em quais séries dará aula?</h4>
+          <h4 class="modal__subtitle">Você é professor aplicador?</h4>
           <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
           <div class="row">
+            {{!-- <div class="form-group__container"> --}}
+              {{!-- <div class="form-group w100"> --}}
 
-              {{!-- {{#each segmentos as |seg| }} --}}
+                {{!-- {{#each segmentos as |seg| }} --}}
 
-              <div class="col-xs-12 col-lg-3 flow-sm">
+                <div class="col-xs-12 col-lg-3 flow-sm">
                   {{!-- <h5 class="title-aux">{{seg.titulo}}</h5> --}}
-                  <h5 class="title-aux">Título do segmento</h5>
+                  {{!-- <h5 class="title-aux">Título do segmento</h5> --}}
                   {{!-- {{#each seg.plataformaAnos as |platAno|}}
                       {{#if (isinarray platAno pessoa.instituicao.plataformaAnos)}} --}}
                           <ul>
@@ -441,23 +460,76 @@
                                           onchange={{action (action "selectAno" platAno) value='target.checked'}}
                                           type="checkbox">
                                       <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label> --}}
-                                      <input class="j-validate-aplicador-child checkbox__input"
-                                          checked
+                                      {{input
+                                          class="j-validate-aplicador-child checkbox__input"
                                           id="plat_ano00000000"
-                                          onchange=""
-                                          type="checkbox">
-                                      <label class="checkbox__label" for="plat_ano00000000">Nome da série</label>
+                                          name="plat_ano00000000"
+                                          type="checkbox"
+                                          checked=pessoa.isAplicador
+                                          data-type="aplicador"
+                                          data-required="false"
+                                          change=(action 'checkaplicador')
+                                      }}
+                                      <label class="checkbox__label" for="plat_ano00000000">Sim, eu sou professor aplicador 
+                                        do 
+                                        Programa Semente.</label>
                                   </div>
                               </li>
                           </ul>
                       {{!-- {{/if}}
                   {{/each}} --}}
 
-              </div>
-
+                </div>
               {{!-- {{/each}} --}}
-
+            {{!-- </div> --}}
           </div>
+
+          {{#if pessoa_selected.isAplicador}}
+          <section class="blink animated fadeIn fast flow-md">
+              <h4 class="title-4">Você aplica em quais séries?</h4>
+              <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+              <div class="row">
+
+                  {{#each segmentos as |seg| }}
+
+                  <div class="col-xs-12 col-lg-3 flow-sm">
+                      <h5 class="title-aux">{{seg.titulo}}</h5>
+                      {{!-- <div class="row">
+                              <div class="checkbox">
+                                  <input  class="checkbox__input"
+                                          type="checkbox"
+                                          id="segmento{{seg.id}}"
+                                          onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                                  <label  class="checkbox__label"
+                                          for="segmento{{seg.id}}">{{seg.titulo}}</label>
+                              </div>
+                          </div> --}}
+
+                      {{#each seg.plataformaAnos as |platAno|}}
+                          {{#if (isinarray platAno pessoa_selected.instituicao.plataformaAnos)}}
+                              <ul>
+                                  <li>
+                                      <div class="checkbox">
+                                          <input class="j-validate-aplicador-child checkbox__input"
+                                              checked={{if (isinarray platAno pessoa_selected.plataformaAnos) "checked" ''}}
+                                              id="plat_ano{{platAno.id}}"
+                                              onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                              type="checkbox">
+                                          <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                                      </div>
+                                  </li>
+                              </ul>
+                          {{/if}}
+                      {{/each}}
+
+                  </div>
+
+                  {{/each}}
+
+              </div>
+          </section>
+          {{/if}}
+
 
           {{!-- <ul class="list list--striped">
             {{#if new_user_email}}
