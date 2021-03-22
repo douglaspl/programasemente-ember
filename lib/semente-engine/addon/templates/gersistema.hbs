@@ -456,43 +456,36 @@
           <section class="sections__subsection">
             <div class="row">
 
-              {{!--
-              {{#each segmentos as |seg| }}
-              --}}
+                  {{#each segmentos as |seg| }}
 
-                <div class="col-xs-12 col-lg-3 flow-sm">
-                    <h5 class="title-aux">Nome do segmento</h5>
-                    {{!-- <h5 class="title-aux">{{seg.titulo}}</h5> --}}
+                  <div class="col-xs-12 col-lg-3 flow-sm">
+                      <h5 class="title-aux">{{seg.titulo}}</h5>
 
-                    {{!-- {{#each seg.plataformaAnos as |platAno|}}
-                        {{#if (isinarray platAno pessoa.instituicao.plataformaAnos)}} --}}
-                            <ul>
-                                <li>
-                                    <div class="checkbox">
-                                              {{!-- checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}} --}}
-                                              {{!-- id="plat_ano{{platAno.id}}" --}}
-                                              {{!-- onchange={{action (action "selectAno" platAno) value='target.checked'}} --}}
-                                        <input  class="j-validate-aplicador-child checkbox__input"
-                                                checked
-                                                id="plat_ano"
-                                                type="checkbox">
-                                        <label class="checkbox__label" for="plat_ano">4 anos</label>
-                                        {{!-- <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label> --}}
-                                    </div>
-                                </li>
-                            </ul>
-                        {{!-- {{/if}} --}}
-
-                    {{!-- {{/each}} --}}
+                      {{#each seg.plataformaAnos as |platAno|}}
+                          <ul>
+                              <li>
+                                  <div class="checkbox">
+                                      <input class="j-validate-aplicador-child checkbox__input"
+                                        checked={{if (isinarray platAno inst_selected.plataformaAnos) "checked" ''}}
+                                        id="plat_ano{{platAno.id}}"
+                                        onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                        type="checkbox">
+                                    <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                                </div>
+                            </li>
+                        </ul>
+                    {{/each}}
 
                 </div>
 
-              {{!--
-              {{/each}}
-              --}}
+                {{/each}}
 
             </div>
           </section>
+
+          <footer class="modal__footer">
+            <button class="btn" type="submit" {{action 'saveCourses'}}>Editar</button>
+          </footer>
         {{/if}}
         <!-- ###########
         Fim de precisamos programar essa parte
@@ -523,11 +516,16 @@
                          {{if savingNewArea 'loader-local loader-local--is-show'}} " id="newArea">
                 <div class="form-group m-right--md">
                   <div class="form-group__wrapper form-group__wrapper--select">
-                    <select class="form-group__input form-group__input--select j-areaFocus" id="define_year"
-                      value="select_inst">
+                    <select class="form-group__input form-group__input--select j-areaFocus" 
+                      id="define_year"
+                      onchange={{action 'refreshAno' value='target.value'}} 
+                      data-type="select"
+                      data-required="true">
                       <option value="0" selected>Selecionar ano</option>
-                      {{#each modulos_list as |mod|}}
-                      <option value={{mod.id}}>{{mod.name}}</option>
+                      {{#each inst_selected.plataformaAnos as |ano|}}
+                        <option style="display: block" value="{{ano.id}}"
+                          selected={{if (equalstr ano selectedAno) "selected"}}>
+                        {{ano.name}}</option>
                       {{/each}}
                     </select>
                   </div>
@@ -552,7 +550,7 @@
                 </div>
               </li>
 
-              {{#each inst_selected.turmas as |turma idx|}}
+              {{#each inst_selected.plataformaTurmas as |turma|}}
                 <li>
 
                   <div class="flex flex-row flex-1 gap-sm flow-h-sm items-center">
@@ -590,7 +588,7 @@
                   </div>
 
                   <div class="w100">
-                    <span>{{turma.modulo.name}}</span><span class="m-h--sm">|</span><em>{{turma.numalunos}} alunos</em>
+                    <span>{{turma.plataformaAno.name}}</span><span class="m-h--sm">|</span><em>{{turma.numAlunos}} alunos</em>
                   </div>
 
                 </li>
