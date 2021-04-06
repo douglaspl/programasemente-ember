@@ -297,8 +297,8 @@
 
         </ul>
 
-<!-- INÍCIO SUGESTÕES PARA AULAS -- >
-        {{!-- {{#if (equalstr toggleRole "instrutor")}}
+{{!-- Sugestões para aulas --}}
+       {{#if (equalstr toggleRole 'instrutor')}}
           <aside class="suggestions">
 
             <div class="suggestions__body flow-md">
@@ -319,7 +319,7 @@
               </button>
             </div>
 
-            <!-- aplicar classe suggestions__sent--is-show quando a sugestão for enviada -->
+           
             <div class="suggestions__sent" id="suggestionSent">
               <button class="btn-close">
                 <span class="btn__label icon icon-x"></span>
@@ -329,8 +329,9 @@
             </div>
 
           </aside>
-          {{/if}} --}}
-<!-- FIM SUGESTÕES PARA AULAS -->
+          {{/if}}
+          
+
 
       </section>
 
