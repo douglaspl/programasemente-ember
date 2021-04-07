@@ -107,7 +107,7 @@ $i: 5;
 
 
 .d-lg--inline,
-.visible-on--lg { @include media('>lg') {display: inline-block; } }
+.visible-on--lg { @include media('>lg') {display:flex; } }
 
 .d-lg--block { @include media('>lg') {display: block; } }
 .d-lg--flex { @include media('>lg') {display: flex; } }
