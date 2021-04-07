@@ -28,7 +28,7 @@
         <ul class="quiz__answers">
           {{#each sortedAlternativas as |alternativa idx|}}
           <li class="quiz__answer tooltip tooltip--lemon" id="option_{{questao.id}}_{{alternativa.id}}">
-            <span class="tooltip__bubble">Sua resposta</span>
+            <span class="tooltip__bubble tooltip__bubble--above">Sua resposta</span>
             <input class="quiz__input" type="radio" name="options" value="a" id="option_icon_{{questao.id}}_{{alternativa.id}}" onclick={{if naoRespondida (action 'selectAnswer' alternativa.id alternativa.videoId alternativa.estadoVideoAlternativa)}}>
             <label class="quiz__answer-text quiz__answer-text--clickable" data-option={{alternativa.id}} for="option_icon_{{questao.id}}_{{alternativa.id}}">{{alternativa.texto}}</label>
             <button class="quiz__btn-confirm btn btn--xs" id="button_{{questao.id}}_{{alternativa.id}}" onclick={{action 'confirmAnswer' alternativa.id}}>Confirmar</button>
