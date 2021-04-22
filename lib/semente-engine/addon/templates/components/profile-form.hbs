@@ -71,7 +71,7 @@
 </div>
 
 
-
+   {{#if (equalstr pessoa.role "instrutor") }}
         <div class="flow-sm">
             <h3 class="title-4">Você é professor aplicador?</h3>
             <div class="form-group__container">
@@ -95,6 +95,7 @@
                 <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
             </div>
         </div>
+    {{/if}}
 
 
         {{#if pessoa.isAplicador}}
