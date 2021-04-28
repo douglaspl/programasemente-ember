@@ -3,6 +3,14 @@
 {{#if data_ok}}
 <div class="timeline__end-class">Fim do bloco</div>
 
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -10,7 +18,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-completed">
   <span class="timeline__status">
     <span class="icon-unlocked"></span>
@@ -40,7 +48,14 @@
 </div>
 {{else}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -48,7 +63,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
   <span class="timeline__status timeline__status--is-locked">
     <span class="icon-lock"></span>
@@ -81,7 +96,14 @@
 {{else if (equalstr value 100)}}
 {{#if data_ok}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -89,7 +111,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-completed">
   <span class="timeline__status">
     <span class="icon-check"></span>
@@ -120,7 +142,14 @@
 </div>
 {{else}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -128,7 +157,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
   <span class="timeline__status timeline__status--is-locked">
     <span class="icon-lock"></span>
@@ -159,7 +188,14 @@
 {{else}}
 {{#if data_ok}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -167,7 +203,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class">
 
   <span class="timeline__status">
@@ -199,7 +235,14 @@
 </div>
 {{else}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -207,7 +250,7 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}}
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
 
   <span class="timeline__status timeline__status--is-locked">
@@ -239,7 +282,14 @@
 
 {{else}}
 <div class="timeline__end-class">Fim do bloco</div>
-
+{{#if instIgnoraCalendario}}
+<div class="timeline__date-block class__date-block">
+  <span class="icon-calendar icon--xl"></span>
+  <span class="class__date">
+    <span class="class__day-aux">Liberada</span>
+  </span>
+</div>
+{{else}}
 <div class="timeline__date-block class__date-block">
   <span class="icon-calendar icon--xl"></span>
   <span class="class__date">
@@ -247,12 +297,12 @@
     <span class="class__day">{{dia}} {{mensagem_mes}}</span>
   </span>
 </div>
-
+{{/if}} 
 <div id="card_{{atividade.idx}}" class="timeline__class class class--is-disabled">
 
   <span class="timeline__status timeline__status--is-locked">
     <span class="icon-lock"></span>
-  </span>
+ </span>
 
   <div class="class__info flow-md">
 
