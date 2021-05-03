@@ -23,13 +23,17 @@
           {{/each}}
         </div>
       </div>
-      <p class="title-3">Gostamos de mensagens, sabia?</p>
-      <p>Pode ser <strong>sugestão</strong>, <strong>reportar um erro</strong> ou <strong>um elogio</strong>.</p>
+      <p class="title-3">Envie uma mensagem para nós</p>
+      <p>Pode ser <strong>sugestão</strong>, <strong>reportar um erro</strong> ou até<strong> um elogio</strong>.</p>
       <div class="form-group">
+        <label class="form-group__label" for="helpEmail">Por qual e-mail gostaria de ser contatado?</label>
+        <input type="text" maxlength="80" class="form-group__input" id="helpEmail" rows="6" form="formHelp" onfocus={{action 'supportMailFocus'}} onkeyup={{action 'checkEmailForm'}} wrap required>
+        <span class="m-top--xxs m-bottom--md fs--xxs color-error-20 animated {{if helpMail 'fadeOut' ''}} {{if SupportMailWarn ' fadeIn is-visible--v' 'is-hidden--v'}}">Informe um e-mail válido</span>
         <label class="form-group__label" for="helpMsg">Mensagem</label>
-        <textarea class="form-group__input" id="helpMsg" rows="6" form="formHelp" wrap required autofocus></textarea>
+        <textarea class="form-group__input animated {{if helpMail 'flipInX' 'form-group__input--is-disabled'}}" id="helpMsg" rows="6" form="formHelp" disabled={{if helpMail false true}} oninput={{action 'checkMsgForm'}} wrap required></textarea>
+        <span class="m-top--xxs fs--xxs animated {{if allowSendMessage 'fadeOut'}}">Mínimo de 5 caracteres</span>
       </div>
-      <button class="help__cta btn self-start" id="help__cta" {{action 'supportMailer'}}>Enviar</button>
+      <button class="help__cta btn self-start" id="help__cta" {{action 'supportMailer'}} disabled={{if allowSendMessage false true}}>Enviar</button>
 
     {{#unless (or (equalstr role 'aluno'))}}
       <div class="help__guide">
