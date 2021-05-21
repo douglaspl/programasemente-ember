@@ -12,14 +12,14 @@ Router.map(function() {
     this.route('form', { path: '/form/:codigo_id' });
     this.route('index', { path: '/'});
   });
-  this.route('firstaccess'),
+  //this.route('firstaccess'),
   this.route('webapp', function() {
     this.mount('semente-engine', {path: '/'});
   });
   // this.route('modulos', function() {
   //   this.route('modetails');
   // });
-  this.route('firstaccess');
+ // this.route('firstaccess');
 });
 
 export default Router;

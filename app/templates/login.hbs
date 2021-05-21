@@ -1,125 +1,133 @@
-<!-- Top content -->
-<form class="login bg--students" {{action 'authenticate' on='submit'}}>
-  <div class="login__box">
-    <h2 class="scr-only">Login</h2>
+{{#if mostraAviso}}
 
-    {{programa-semente-logo class="login__logo"}}
+ {{!-- Aqui vai o HTML+CSS da tela caso o usuário esteja acessando com IE --}}
+<div style="display: flex; width: 100%; height: 100vh; justify-content: center; align-items: center;">Tela de aviso IE</div>
 
-    <div class="login__form-group form-group">
-      <label class="form-group__label" for="identification">Usuário</label>
-      <input class="login__input form-group__input" id='identification' autocomplete="username"
-        value={{identification}} autofocus="autofocus"> <!-- placeholder="e-mail" -->
-    </div>
+{{else}}
 
-    <div class="login__form-group form-group">
-      <label class="form-group__label" for="password">Senha</label>
+  <!-- Top content -->
+  <form class="login bg--students" {{action 'authenticate' on='submit'}}>
+    <div class="login__box">
+      <h2 class="scr-only">Login</h2>
 
-      <div class="form-group__container">
-        <span id="msg-caps-on" class="form__msg form__msg--error">
-          <span class="form__msg-icon icon-alert-triangle"></span>Caps Lock is on
+      {{programa-semente-logo class="login__logo"}}
+
+      <div class="login__form-group form-group">
+        <label class="form-group__label" for="identification">Usuário</label>
+        <input class="login__input form-group__input" id='identification' autocomplete="username"
+          value={{identification}} autofocus="autofocus"> <!-- placeholder="e-mail" -->
+      </div>
+
+      <div class="login__form-group form-group">
+        <label class="form-group__label" for="password">Senha</label>
+
+        <div class="form-group__container">
+          <span id="msg-caps-on" class="form__msg form__msg--error">
+            <span class="form__msg-icon icon-alert-triangle"></span>Caps Lock is on
+          </span>
+          <input class="login__input login__input-pass form-group__input pwd" id="password" autocomplete="password"
+            type="password" value={{password}}>
+          <button class="login__show-pass" type="button" {{action "passwordVisibility"}}>
+            <span class="icon-eye-off"></span>
+            <span class="icon-eye"></span>
+          </button>
+        </div>
+    {{#if errorMessage}}
+        <div class="alert alert--has-icon alert--error self-auto alert--is-show animated fadeIn">
+          <span class="alert__icon icon-x"></span>
+          <p style="max-width: fit-content;">{{{errorMessage}}}</p>
+        </div>
+      {{/if}}
+        <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button>
+        
+
+      </div>
+      <div class="form-group">
+        <span class="checkbox">
+          <input class="checkbox__input" id="remember" checked="checked" name="remember" type="checkbox" value={{remember}}>
+          <label class="checkbox__label" for="remember">Salvar informações</label>
         </span>
-        <input class="login__input login__input-pass form-group__input pwd" id="password" autocomplete="password"
-          type="password" value={{password}}>
-        <button class="login__show-pass" type="button" {{action "passwordVisibility"}}>
-          <span class="icon-eye-off"></span>
-          <span class="icon-eye"></span>
-        </button>
       </div>
-   {{#if errorMessage}}
-      <div class="alert alert--has-icon alert--error self-auto alert--is-show animated fadeIn">
-        <span class="alert__icon icon-x"></span>
-        <p style="max-width: fit-content;">{{{errorMessage}}}</p>
-      </div>
-    {{/if}}
-      <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button>
-      
+  
 
-    </div>
-    <div class="form-group">
-      <span class="checkbox">
-        <input class="checkbox__input" id="remember" checked="checked" name="remember" type="checkbox" value={{remember}}>
-        <label class="checkbox__label" for="remember">Salvar informações</label>
-      </span>
-    </div>
- 
-
-    {{#if success_mail}}
-      <div class="login__alert alert alert--has-icon alert--success alert--xxs">
-        <span class="alert__icon icon-check"></span>
-        <p>{{{success_mail}}}</p>
-      </div>
-    {{/if}}
-
-    <button class="btn btn--xs login__cta p-h--lg" id="login_button" type="submit">Entrar</button>
-
-
-    <!-- Privacy directive -->
-    <div class="divider m-top--lg p-bottom--md flow-h-xs flex flex-row items-center">
-      <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span>
-      <a class="btn btn--link color-blue-navy-40" href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
-        <span class="btn__label">Política de privacidade</span>
-      </a>
-    </div>
-
-    <!-- Cadastre-se -->
-  {{!-- <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button> --}}
-    <div class="m-top--lg flow-h-xs flex flex-row items-center">
-      {{!-- <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span> --}}
-      <span>Ainda não é cadastrado?</span>
-      <a class="btn btn--link color-blue-navy-40" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
-        <span class="btn__label">Cadastre-se</span>
-      </a>
-    </div>
-
-  </div>
-</form>
-
-<aside id="forgot_modal" class="modal animated fast fadeIn">
-
-  <div class="modal__content modal__content--md">
-
-    <header class="modal__header">
-      <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelForgot'}}></button>
-
-      <h3 class="modal__title">Solicitar nova senha</h3>
-    </header>
-    <div class="flow-lg">
-      <div class="flow-md">
-        <div class="form-group form-group--full-width flow-xs">
-          <p>Por favor, preencha seu nome de usuário (login)</p>
-          <input class="form-group__input" type="textbox" id="user_name"
-            value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
+      {{#if success_mail}}
+        <div class="login__alert alert alert--has-icon alert--success alert--xxs">
+          <span class="alert__icon icon-check"></span>
+          <p>{{{success_mail}}}</p>
         </div>
-        <div class="alert alert--has-icon alert--success alert--xxs animated fadeIn" id="success-forgot">
-          <p>{{{success_forgot}}}</p>
-        </div>
+      {{/if}}
+
+      <button class="btn btn--xs login__cta p-h--lg" id="login_button" type="submit">Entrar</button>
+
+
+      <!-- Privacy directive -->
+      <div class="divider m-top--lg p-bottom--md flow-h-xs flex flex-row items-center">
+        <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span>
+        <a class="btn btn--link color-blue-navy-40" href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="btn__label">Política de privacidade</span>
+        </a>
       </div>
 
-      <div class="flow-sm animated" id="checkboxes_container" >
-        <div class="checkbox" id="group-email" style="display: none;">
-          <input class="checkbox__input" id="forgot-email" checked="checked" name="forgot-email" type="checkbox">
-          <label class="checkbox__label" for="forgot-email">Enviar senha por email</label>
-        </div>
-        <div class="checkbox" id="group-sms" style="display: none;">
-          <input class="checkbox__input" id="forgot-sms" checked="checked" name="forgot-sms" type="checkbox">
-          <label class="checkbox__label" for="forgot-sms">Enviar senha por SMS</label>
-        </div>
-      </div> 
-      
-
-      <div class="alert alert--error alert--has-icon alert--xxs animated fadeIn" id="error-forgot">
-        <p>{{{error_forgot}}}</p>
+      <!-- Cadastre-se -->
+    {{!-- <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button> --}}
+      <div class="m-top--lg flow-h-xs flex flex-row items-center">
+        {{!-- <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span> --}}
+        <span>Ainda não é cadastrado?</span>
+        <a class="btn btn--link color-blue-navy-40" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
+          <span class="btn__label">Cadastre-se</span>
+        </a>
       </div>
 
-      
     </div>
-    <div class="modal__footer modal__footer--center">
-      <button id="btn-verify-user-name" class="btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
-      <button id="btn-send-password" class="btn" style="display:none;"  type="submit" {{action 'sendPassword'}}>Enviar senha</button>
+  </form>
+
+  <aside id="forgot_modal" class="modal animated fast fadeIn">
+
+    <div class="modal__content modal__content--md">
+
+      <header class="modal__header">
+        <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelForgot'}}></button>
+
+        <h3 class="modal__title">Solicitar nova senha</h3>
+      </header>
+      <div class="flow-lg">
+        <div class="flow-md">
+          <div class="form-group form-group--full-width flow-xs">
+            <p>Por favor, preencha seu nome de usuário (login)</p>
+            <input class="form-group__input" type="textbox" id="user_name"
+              value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
+          </div>
+          <div class="alert alert--has-icon alert--success alert--xxs animated fadeIn" id="success-forgot">
+            <p>{{{success_forgot}}}</p>
+          </div>
+        </div>
+
+        <div class="flow-sm animated" id="checkboxes_container" >
+          <div class="checkbox" id="group-email" style="display: none;">
+            <input class="checkbox__input" id="forgot-email" checked="checked" name="forgot-email" type="checkbox">
+            <label class="checkbox__label" for="forgot-email">Enviar senha por email</label>
+          </div>
+          <div class="checkbox" id="group-sms" style="display: none;">
+            <input class="checkbox__input" id="forgot-sms" checked="checked" name="forgot-sms" type="checkbox">
+            <label class="checkbox__label" for="forgot-sms">Enviar senha por SMS</label>
+          </div>
+        </div> 
+        
+
+        <div class="alert alert--error alert--has-icon alert--xxs animated fadeIn" id="error-forgot">
+          <p>{{{error_forgot}}}</p>
+        </div>
+
+        
+      </div>
+      <div class="modal__footer modal__footer--center">
+        <button id="btn-verify-user-name" class="btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
+        <button id="btn-send-password" class="btn" style="display:none;"  type="submit" {{action 'sendPassword'}}>Enviar senha</button>
+      </div>
+
     </div>
 
-  </div>
+    <div class="modal__overlayer"></div>
+  </aside>
 
-  <div class="modal__overlayer"></div>
-</aside>
-
+{{/if}}
