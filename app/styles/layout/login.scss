@@ -71,8 +71,8 @@ $font-login: 'Signika', sans-serif;
         align-self: center;
         display: inline-block;
         height: auto;
-        max-height: 64px;
-        margin: $distance--md auto;
+        /* max-height: 64px; */
+        margin: 2.5rem auto;
         text-align: center;
     }
 
@@ -104,6 +104,17 @@ $font-login: 'Signika', sans-serif;
         }
     }
 
+    :focus:not([class*=active]) {
+        outline: 2px solid #ffffff;
+    }
+
+    &__input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-text-fill-color: #000;
+        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+    }
+
     &__forgot-pass {
         align-self: flex-start;
         color: $gray-50;
@@ -113,12 +124,33 @@ $font-login: 'Signika', sans-serif;
     }
 
     &__cta {
-        align-self: center;
-        margin-top: $distance--sm;
+        grid-auto-columns: 1rem;
+        padding: 1.3em 100%;
         background-color: #f2ffe1;
+        color: #8bc63f;
 
         @include media('>sm') {
-            margin-top: $distance--md;
+        //    margin-top: $distance--md;
+        }
+
+    }
+
+    &__privacidade {
+        grid-auto-columns: 1rem;
+        background-color: #ffffff;
+        color: #cbcbcb;
+
+        @include media('>sm') {
+        //    margin-top: $distance--md;
+        }
+
+    }
+
+    &__cadastre {
+        text-align: right;
+
+        @include media('>sm') {
+        //    margin-top: $distance--md;
         }
 
     }

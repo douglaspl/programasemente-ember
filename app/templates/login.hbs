@@ -44,16 +44,16 @@
           <p style="max-width: fit-content;">{{{errorMessage}}}</p>
         </div>
       {{/if}}
-        <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button>
+      <!--  <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button> -->
         
 
       </div>
-      <div class="form-group">
+  <!--    <div class="form-group">
         <span class="checkbox">
           <input class="checkbox__input" id="remember" checked="checked" name="remember" type="checkbox" value={{remember}}>
           <label class="checkbox__label" for="remember">Salvar informações</label>
         </span>
-      </div>
+      </div>-->
   
 
       {{#if success_mail}}
@@ -67,16 +67,16 @@
 
 
       <!-- Privacy directive -->
-      <div class="divider m-top--lg p-bottom--md flow-h-xs flex flex-row items-center">
+      <div class="btn divider login__privacidade m-top--lg flow-h-xs flex flex-row items-center">
         <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span>
-        <a class="btn btn--link color-blue-navy-40" href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
-          <span class="btn__label">Política de privacidade</span>
+        <a href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
+          <span class="btn__label">Conheça nossa política de privacidade</span>
         </a>
       </div>
 
       <!-- Cadastre-se -->
     {{!-- <button class="login__forgot-pass" type="button" {{action 'autoRegister'}}>Cadastre-se</button> --}}
-      <div class="m-top--lg flow-h-xs flex flex-row items-center">
+      <div class="m-top--lg login__cadastre">
         {{!-- <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span> --}}
         <span>Ainda não é cadastrado?</span>
         <a class="btn btn--link color-blue-navy-40" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
