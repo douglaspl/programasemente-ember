@@ -52,7 +52,7 @@
             width: 115%;
             max-width: 100vh;
             box-shadow: none;
-            background-image: url('/assets/img/bg--login2021Transp.png');
+            background-image: url("/dist/assets/img/bg--login2021T.png")
         }
 
         @include media('>md') {
