@@ -111,6 +111,17 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: 10%;
+    background-position-y: bottom;
+
+    @include media('>sm') {
+
+    background-size: 130%;
+    background-position-x: 50%;
+    }
+    @include media('>sm') {
+        background-image:none;
+        background-color: #fff;
+        }
 }
 
 .logo__subproduct {

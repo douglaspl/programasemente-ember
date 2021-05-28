@@ -11,13 +11,13 @@
 //  __alert
 //  __show-pass
 
-@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
-$font-login: 'Signika', sans-serif;
+@import url("https://use.typekit.net/kkh6bhp.css");
+
 
 
 .login {
     $this: &;
-    font-family: $font-login;
+    font-family:Filson Pro;
     align-items: center;
     cursor: initial;
     display: flex;
@@ -30,10 +30,11 @@ $font-login: 'Signika', sans-serif;
         height: 100%;
     }
 
-    // @include media('>sm') {
-    //     justify-content: center;
-    //     padding: 0 5%;
-    // }
+     @include media('>sm') {
+         justify-content: center;
+         padding: 0 5%;
+         justify-content: center;
+     }
 
     &__box {
         background-color: $white;
@@ -48,16 +49,25 @@ $font-login: 'Signika', sans-serif;
 
         @include media('>sm') {
             padding: $distance--md $distance--sm;
+            width: 115%;
+            max-width: 100vh;
+            box-shadow: none;
+            background-image: url('/assets/img/bg--login2021Transp.png');
         }
 
-        @include media('>sm') {
+        @include media('>md') {
             padding: $distance--md $distance--md $distance--md;
         }
 
         @include media('>lg') {
-            padding: 2rem 8rem;
+            width: 90%;
+            max-width: 75vw;
+            padding: 12rem 20rem;
         }
+        
     }
+
+  
 
  /*   &__logo {
         align-self: center;
@@ -78,6 +88,11 @@ $font-login: 'Signika', sans-serif;
 
     &__logo-centralizada{
         max-width: 8.5rem;
+
+        @include media('>lg') {
+
+        max-width: 25.5rem;
+        }
     }
 
     &__form-group {
@@ -87,7 +102,6 @@ $font-login: 'Signika', sans-serif;
         & + & {
             margin-top: $distance--sm;
         }
-
     }
 
     &__input {
@@ -97,10 +111,21 @@ $font-login: 'Signika', sans-serif;
         border: 0px;
         border-bottom: 1px solid;
         background-color: $white;
-
+        font-size: 0.85rem;
+        color: #707070;
 
         @include media('>sm') {
-            width: 24rem;
+            width: 45rem; 
+            padding: 1.5rem 1rem 1rem;
+            font-size: 2rem;
+            height: 5rem;
+        }
+    }
+
+    &__btn:hover{
+        background-color: #75db78;
+        span{
+            color: #fff;
         }
     }
 
@@ -113,6 +138,21 @@ $font-login: 'Signika', sans-serif;
     select:-webkit-autofill {
         -webkit-text-fill-color: #000;
         -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+
+    }
+
+    &__label{
+        color: #707070;
+        margin-bottom: 0;
+        font-size: 0.7em;
+        font-family: Filson Pro;;
+        color: #707070;
+        text-transform: capitalize;
+        margin-bottom: 1px;
+
+        @include media('>sm') {
+        font-size: 1.8em;
+        }
     }
 
     &__forgot-pass {
@@ -128,31 +168,59 @@ $font-login: 'Signika', sans-serif;
         padding: 1.3em 100%;
         background-color: #f2ffe1;
         color: #8bc63f;
+        font-family:Filson Pro;
+        font-weight: 500;
+        border: none;
+        box-shadow: 0 0.5rem 1rem 0 #eaedf0;
+       
 
         @include media('>sm') {
         //    margin-top: $distance--md;
+        font-size: 1.875rem;
         }
+    }
 
+    &__span{
+        color: #CBCBCB;
     }
 
     &__privacidade {
         grid-auto-columns: 1rem;
         background-color: #ffffff;
-        color: #cbcbcb;
+        color: #CBCBCB;
+        box-shadow: 0 0.5rem 1rem 0 #eaedf0;
+        border: none;
+        font-family:Filson Pro;
+        text-transform: capitalize;
+        padding: 0.8rem;
+        font-weight:normal;
 
         @include media('>sm') {
         //    margin-top: $distance--md;
+        padding: 1.1em 0;
+        font-size: 1.875rem;
         }
-
     }
 
     &__cadastre {
         text-align: right;
+        color: #707070;
+
+        a{
+            color: #707070;
+        }
+
+        span{
+            font-size: 0.85rem;
+            @include media('>sm') {
+                font-size: 1.85rem;
+                }
+            
+        }
 
         @include media('>sm') {
         //    margin-top: $distance--md;
         }
-
     }
 
     &__alert {
@@ -161,7 +229,6 @@ $font-login: 'Signika', sans-serif;
         @include media('>sm') {
             margin-top: $distance--md;
         }
-
     }
 
     &__show-pass {
@@ -190,6 +257,10 @@ $font-login: 'Signika', sans-serif;
 
             &:not([class*='off']) {
                 transform: translateY(-120%);
+            }
+
+            @include media('>sm') {
+            font-size: 2.125rem;
             }
 
         }

@@ -19,13 +19,13 @@
         <img class="login__logo-centralizada" src="/assets/img/logo-semente--login2021.png" alt="">
       </div>
       <div class="login__form-group form-group">
-        <label class="form-group__label" for="identification">Usuário</label>
+        <label class="form-group__label login__label" for="identification">Usuário</label>
         <input class="login__input form-group__input" id='identification' autocomplete="username"
           value={{identification}} autofocus="autofocus"> <!-- placeholder="e-mail" -->
       </div>
 
       <div class="login__form-group form-group">
-        <label class="form-group__label" for="password">Senha</label>
+        <label class="form-group__label login__label" for="password">Senha</label>
 
         <div class="form-group__container">
           <span id="msg-caps-on" class="form__msg form__msg--error">
@@ -63,12 +63,12 @@
         </div>
       {{/if}}
 
-      <button class="btn btn--xs login__cta p-h--lg" id="login_button" type="submit">Entrar</button>
+      <button class="btn login__btn btn--xs login__cta p-h--lg" id="login_button" type="submit">Entrar</button>
 
 
       <!-- Privacy directive -->
-      <div class="btn divider login__privacidade m-top--lg flow-h-xs flex flex-row items-center">
-        <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span>
+      <div class="btn login__btn divider login__privacidade m-top--lg flow-h-xs flex flex-row items-center">
+        <span class="login__span icon--lg icon-lock p--xxs"></span>
         <a href="https://spasementemedio.blob.core.windows.net/plataforma/Pol%C3%ADtica%20de%20privacidade%20v1.pdf" target="_blank" rel="nofollow noopener noreferrer">
           <span class="btn__label">Conheça nossa política de privacidade</span>
         </a>
@@ -79,8 +79,8 @@
       <div class="m-top--lg login__cadastre">
         {{!-- <span class="color-blue-navy-30 icon--lg icon-lock p--xxs"></span> --}}
         <span>Ainda não é cadastrado?</span>
-        <a class="btn btn--link color-blue-navy-40" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
-          <span class="btn__label">Cadastre-se</span>
+        <a class="" href="#" {{action 'autoRegister'}} target="_blank" rel="nofollow noopener noreferrer">
+          <span class="btn__label"><b>Cadastre-se</b></span>
         </a>
       </div>
 
