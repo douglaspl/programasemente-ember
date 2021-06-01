@@ -1,6 +1,6 @@
 .report-people {
     $this: &;
-
+    $size: 14rem;
     position: relative;
 
     &__table {
@@ -28,6 +28,7 @@
     }
 
     &__person {
+        max-width: $size;
     }
 
     &__data {

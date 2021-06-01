@@ -297,29 +297,35 @@
 
         </ul>
 
-<!-- INÍCIO SUGESTÕES PARA AULAS -- >
-        {{!-- {{#if (equalstr toggleRole "instrutor")}}
+{{!-- Sugestões para aulas --}}
+       {{#if (equalstr toggleRole 'instrutor')}}
           <aside class="suggestions">
 
             <div class="suggestions__body flow-md">
               <h3 class="suggestions__title">Quer sugerir um novo conteúdo ou mudança nos conteúdos atuais?</h3>
 
               <div class="form-group">
-                <label class="form-group__label">Sugestão</label>
-                <textarea class="form-group__input" id="suggestion"></textarea>
+                <label class="form-group__label">Sugestão (mínimo de 80 caracteres)</label>
+                <textarea class="form-group__input" id="suggestion" onkeyup={{action 'checkFill'}}></textarea>
+                
               </div>
 
               <div class="form-group">
-                <label class="form-group__label">Qual o benefício da sugestão dada acima? (mínimo de 80 caracteres)</label>
+                <label class="form-group__label">Qual o benefício da sugestão dada acima?</label>
                 <textarea class="form-group__input" id="benefit"></textarea>
               </div>
 
-              <button class="suggestions__btn btn">
-                <span class="btn__label" {{action 'sendSuggestion'}}>Enviar sugestão</span>
-              </button>
+              <div class="tooltip {{if showTooltip "tooltip--is-visible"}}">
+                <div id="tooltip_proxy" style="display: inline-flex" onmouseover={{action "showTooltip"}} onmouseout={{action "hideTooltip"}}>
+                  <button class="suggestions__btn btn animated {{if sendSuggestion "flipInX"}}" disabled="{{unless sendSuggestion true}}">
+                    <span class="btn__label" {{action 'sendSuggestion'}}>Enviar sugestão</span>
+                  </button>
+                </div>
+                <span class="tooltip__bubble tooltip__bubble--right animated {{if showTooltip "fadeInLeftShort"}}" id="tooltip-suggestion">Preencha a sugestão para poder enviar</span>
+              </div>
             </div>
 
-            <!-- aplicar classe suggestions__sent--is-show quando a sugestão for enviada -->
+           
             <div class="suggestions__sent" id="suggestionSent">
               <button class="btn-close">
                 <span class="btn__label icon icon-x"></span>
@@ -329,8 +335,9 @@
             </div>
 
           </aside>
-          {{/if}} --}}
-<!-- FIM SUGESTÕES PARA AULAS -->
+          {{/if}}
+          
+
 
       </section>
 

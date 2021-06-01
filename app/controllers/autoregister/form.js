@@ -9,28 +9,29 @@ export default Ember.Controller.extend({
     return escola;
   }),
 
-preventLoginPaste: Ember.run.later('afterRender', function() {
-  setTimeout(() => {
-    document.getElementById('login').onpaste = function(){
-    // Pega alerta
-    const errorCompartiment = document.getElementById('login-error');
-    // Pega animação do alerta
-    const alertAnimation = errorCompartiment.dataset.animation;
-    // Pega container da mensagem a ser escrita
-    const msg = errorCompartiment.querySelector('[class*="__msg"]');
-    // Mensagem
-    let errorMsg = 'Por favor, digite'
-    // Injeta mensagem de erro.
-    msg.innerHTML = '<strong>' + errorMsg + '</strong>';
-    // Confere se o elemento já está aparecendo
-    if (!errorCompartiment.classList.contains('alert--is-show')) {
-    // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
-      errorCompartiment.classList.add('alert--is-show', alertAnimation);
-    }
-      return false;
-  }
-  }, 600);
-}),
+// preventLoginPaste: Ember.run.later('afterRender', function() {
+//   setTimeout(() => {
+//     document.getElementById('login').onpaste = function(){
+    
+//       // Pega alerta
+//     const errorCompartiment = document.getElementById('login-error');
+//     // Pega animação do alerta
+//     const alertAnimation = errorCompartiment.dataset.animation;
+//     // Pega container da mensagem a ser escrita
+//     const msg = errorCompartiment.querySelector('[class*="__msg"]');
+//     // Mensagem
+//     let errorMsg = 'Por favor, digite'
+//     // Injeta mensagem de erro.
+//     msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+//     // Confere se o elemento já está aparecendo
+//     if (!errorCompartiment.classList.contains('alert--is-show')) {
+//     // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+//       errorCompartiment.classList.add('alert--is-show', alertAnimation);
+//     }
+//       return false;
+//   }
+//   }, 1000);
+// }),
 
 
   pessoa: Ember.computed('model', function() {
@@ -273,6 +274,37 @@ preventLoginPaste: Ember.run.later('afterRender', function() {
       })
 
     };
+  },
+
+  preventPaste() {
+    
+      var regex = new RegExp("^[a-zA-Z0-9@.-_]+$");
+      var input = document.getElementById('login')
+      let errorMsg = 'Espaço e caracteres especiais não são permitidos';
+      if (!regex.test(input.value) && input.value.length > 0) {
+        input.value = '';
+        let inputContainer = document.getElementById('login').closest('.form-group__input-container');
+        inputContainer.classList.remove('form-group__input-container--is-validated');
+        // Pega alerta
+        const errorCompartiment = document.getElementById('login-error');
+        // Pega animação do alerta
+        const alertAnimation = errorCompartiment.dataset.animation;
+        // Pega container da mensagem a ser escrita
+        const msg = errorCompartiment.querySelector('[class*="__msg"]');
+        // Injeta mensagem de erro.
+        msg.innerHTML = '<strong>' + errorMsg + '</strong>';
+        // Confere se o elemento já está aparecendo
+        if (!errorCompartiment.classList.contains('alert--is-show')) {
+        // Adiciona duas classes: uma para o alerta aparecer e outra com a animação definida no html, por meio de data-SBRUBLES
+          errorCompartiment.classList.add('alert--is-show', alertAnimation);
+        }
+
+    } else {
+      this.send('verifyEmail');
+    }
+      
   }
+
 },
+
 });

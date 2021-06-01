@@ -21,6 +21,7 @@
                             id="login"
                             onblur={{action 'verifyEmail'}}
                             onkeydown={{action 'liveCheckEmail'}}
+                            oninput={{action 'preventPaste'}}
                             type="text">
                 </div>
                 {{!-- <span id='login-error'></span> --}}

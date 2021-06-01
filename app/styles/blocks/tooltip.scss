@@ -13,7 +13,7 @@
 // --gray-darkest
 // --lemon
 
-$tooltip-tip-size: .75rem;
+$tooltip-tip-size: .7rem;
 $tooltip-vertical-padding: $distance--xs;
 
 .tooltip {
@@ -36,26 +36,70 @@ $tooltip-vertical-padding: $distance--xs;
         visibility: hidden;
         white-space: nowrap;
 
-        // Default position
-        bottom: calc(100% + #{$tooltip-tip-size});
-        left: $tooltip-tip-size;
-
-        // Tip
-        &::before {
-            border-color: transparent transparent transparent $white ;
-            border-style: solid;
-            border-width: ($tooltip-tip-size + ($tooltip-vertical-padding / 2));
-            content: '';
-            position: absolute;
-            z-index: 2;
-
+        &--above {
             // Default position
-            left: 0;
-            top: 50%;
+            bottom: calc(100% + #{$tooltip-tip-size});
+            left: $tooltip-tip-size;
+    
+            
+            // Tip
+            &::before {
+                border-color: transparent transparent transparent $white ;
+                border-style: solid;
+                border-width: ($tooltip-tip-size + ($tooltip-vertical-padding / 2));
+                content: '';
+                position: absolute;
+                z-index: 2;
+    
+                // Default position
+                left: 0;
+                top: 50%;
+            }
+        }
+
+        &--right {
+            
+                // Default position
+                bottom: auto;
+                margin-left: .6rem;
+                font-weight: 400;
+                font-size: .75rem;
+                height: 100%;
+                display: inline-flex;
+                align-items: center;
+
+                @include media('<sm') {
+                    bottom: auto;
+                    max-width: -webkit-fit-content;
+                    max-width: -moz-fit-content;
+                    max-width: fit-content;
+                    white-space: pre-wrap;
+                    height: fit-content;
+                }
+        
+                
+                // Tip
+                &::before {
+                    border-color: transparent transparent transparent #fff;
+                    border-style: solid;
+                    border-width: 0.8rem;
+                    content: "";
+                    position: absolute;
+                    z-index: 2;
+                    left: 0%;
+                    top: 0.15rem;
+                    transform: translate(-80%, 0px) rotate(180deg);
+
+                    @include media('<sm') {
+                        top: auto;
+                    }
+                }
+            
         }
 
     }
 
+   
     &--is-visible {
 
         #{$this}__bubble {
@@ -64,6 +108,8 @@ $tooltip-vertical-padding: $distance--xs;
         }
 
     }
+
+    
 
     // THEMES
     &--gray-darkest {

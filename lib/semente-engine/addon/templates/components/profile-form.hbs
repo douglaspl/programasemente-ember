@@ -70,6 +70,83 @@
     </div>
 </div>
 
+
+   {{#if (equalstr pessoa.role "instrutor") }}
+        <div class="flow-sm">
+            <h3 class="title-4">Você é professor aplicador?</h3>
+            <div class="form-group__container">
+                <div class="form-group w100">
+                    <div class="checkbox">
+                        {{input
+                            class="j-validate checkbox__input"
+                            id="instrutor_aplica-programa"
+                            name="instrutor_aplica-programa"
+                            type="checkbox"
+                            checked=pessoa.isAplicador
+                            data-type="aplicador"
+                            data-required="false"
+                            change=(action 'checkaplicador')
+                            }}
+                        <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador
+                            do
+                            Programa Semente.</label>
+                    </div>
+                </div>
+                <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+            </div>
+        </div>
+    {{/if}}
+
+
+        {{#if pessoa.isAplicador}}
+        <section class="blink animated fadeIn fast flow-md">
+            <h4 class="title-4">Você aplica em quais séries?</h4>
+            <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
+            <div class="row">
+
+                {{#each segmentos as |seg| }}
+
+                <div class="col-xs-12 col-lg-3 flow-sm">
+                    <h5 class="title-aux">{{seg.titulo}}</h5>
+                    {{!-- <div class="row">
+                            <div class="checkbox">
+                                <input  class="checkbox__input"
+                                        type="checkbox"
+                                        id="segmento{{seg.id}}"
+                                        onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
+                                <label  class="checkbox__label"
+                                        for="segmento{{seg.id}}">{{seg.titulo}}</label>
+                            </div>
+                        </div> --}}
+
+                    {{#each seg.plataformaAnos as |platAno|}}
+                        {{#if (isinarray platAno pessoa.instituicao.plataformaAnos)}}
+                            <ul>
+                                <li>
+                                    <div class="checkbox">
+                                        <input class="j-validate-aplicador-child checkbox__input"
+                                            checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
+                                            id="plat_ano{{platAno.id}}"
+                                            onchange={{action (action "selectAno" platAno) value='target.checked'}}
+                                            type="checkbox">
+                                        <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        {{/if}}
+                    {{/each}}
+
+                </div>
+
+                {{/each}}
+
+            </div>
+        </section>
+        {{/if}}
+
+
+
+
 <div class="row">
     <div class="col-xs-12 flow-md">
         <h4 class="title-4">Demais informações</h4>
@@ -299,78 +376,6 @@
             </div>
         </div>
 
-
-
-        <div class="flow-md">
-            <h3 class="title-3">Você é professor aplicador?</h3>
-            <div class="form-group__container">
-                <div class="form-group w100">
-                    <div class="checkbox">
-                        {{input
-                            class="j-validate checkbox__input"
-                            id="instrutor_aplica-programa"
-                            name="instrutor_aplica-programa"
-                            type="checkbox"
-                            checked=pessoa.isAplicador
-                            data-type="aplicador"
-                            data-required="false"
-                            change=(action 'checkaplicador')
-                            }}
-                        <label class="checkbox__label" for="instrutor_aplica-programa">Sim, eu sou professor aplicador
-                            do
-                            Programa Semente.</label>
-                    </div>
-                </div>
-                <span class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
-            </div>
-        </div>
-
-
-        {{#if pessoa.isAplicador}}
-        <section class="blink animated fadeIn fast flow-md">
-            <h4 class="title-4">Você aplica em quais séries?</h4>
-            <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
-            <div class="row">
-
-                {{#each segmentos as |seg| }}
-
-                <div class="col-xs-12 col-lg-3 flow-sm">
-                    <h5 class="title-aux">{{seg.titulo}}</h5>
-                    {{!-- <div class="row">
-                            <div class="checkbox">
-                                <input  class="checkbox__input"
-                                        type="checkbox"
-                                        id="segmento{{seg.id}}"
-                                        onchange={{action (action "selectSegmento" seg) value='target.checked'}}>
-                                <label  class="checkbox__label"
-                                        for="segmento{{seg.id}}">{{seg.titulo}}</label>
-                            </div>
-                        </div> --}}
-
-                    {{#each seg.plataformaAnos as |platAno|}}
-                        {{#if (isinarray platAno pessoa.instituicao.plataformaAnos)}}
-                            <ul>
-                                <li>
-                                    <div class="checkbox">
-                                        <input class="j-validate-aplicador-child checkbox__input"
-                                            checked={{if (isinarray platAno pessoa.plataformaAnos) "checked" ''}}
-                                            id="plat_ano{{platAno.id}}"
-                                            onchange={{action (action "selectAno" platAno) value='target.checked'}}
-                                            type="checkbox">
-                                        <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        {{/if}}
-                    {{/each}}
-
-                </div>
-
-                {{/each}}
-
-            </div>
-        </section>
-        {{/if}}
 
         <div class="row">
             <div class="col-xs-12">
