@@ -1,7 +1,19 @@
 {{#if mostraAviso}}
 
  {{!-- Aqui vai o HTML+CSS da tela caso o usuário esteja acessando com IE --}}
-<div style="display: flex; width: 100%; height: 100vh; justify-content: center; align-items: center;">Tela de aviso IE</div>
+<div  class="bg--students" style="display: flex; width: 100%; height: 100vh; justify-content: center; ">
+  <div class="aviso">
+     <div class="login__logo2021">
+        <img class="login__logo-centralizada" src="/assets/img/logo-semente--login2021.png" alt="">
+        <p>Infelizmente o nosso sistema não suporta o navegador que você está utilizando. Abaixo listamos algumas opções quesão suportadas.</p>
+        <div class="logos">
+          <img class="login__logo-centralizada" src="/assets/img/ic-chrome--login2021.png" alt="">
+            <img class="login__logo-centralizada" src="/assets/img/ic-firefox--login2021.png" alt="">
+              <img class="login__logo-centralizada" src="/assets/img/ic-microsoft--login2021.png" alt="">
+        </div>
+      </div>
+  </div>
+</div>
 
 {{else}}
 
@@ -44,7 +56,7 @@
           <p style="max-width: fit-content;">{{{errorMessage}}}</p>
         </div>
       {{/if}}
-      <!--  <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button> -->
+        <button class="login__forgot-pass" type="button" {{action 'forgotPass'}}>Esqueceu sua senha?</button> 
         
 
       </div>
@@ -100,7 +112,7 @@
         <div class="flow-md">
           <div class="form-group form-group--full-width flow-xs">
             <p>Por favor, preencha seu nome de usuário (login)</p>
-            <input class="form-group__input" type="textbox" id="user_name"
+            <input class="form-group__input login__input" type="textbox" id="user_name"
               value={{user_email}}><!-- placeholder="Insira seu endereço de e-mail" -->
           </div>
           <div class="alert alert--has-icon alert--success alert--xxs animated fadeIn" id="success-forgot">
@@ -127,7 +139,7 @@
         
       </div>
       <div class="modal__footer modal__footer--center">
-        <button id="btn-verify-user-name" class="btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
+        <button id="btn-verify-user-name" class="btn login__cta login__btn" type="submit" {{action 'verifyUserName'}}>Verificar usuário</button>
         <button id="btn-send-password" class="btn" style="display:none;"  type="submit" {{action 'sendPassword'}}>Enviar senha</button>
       </div>
 

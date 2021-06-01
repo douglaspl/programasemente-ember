@@ -16,7 +16,7 @@
         }
     }
 
-    .flexbox-gap [class*='gap-'].flow-#{$measure} > * + *{
+    .flexbox-gap [class*="gap-"].flow-#{$measure} > * + * {
         margin-top: 0;
     }
 }
@@ -28,7 +28,7 @@
         }
     }
 
-    .flexbox-gap [class*='gap-'].flow-h-#{$measure} > * + *{
+    .flexbox-gap [class*="gap-"].flow-h-#{$measure} > * + * {
         margin-left: 0;
     }
 }
@@ -46,7 +46,6 @@
     }
 
     .no-flexbox-gap & {
-
         > * {
             margin-bottom: $distance--sm;
 
@@ -54,22 +53,29 @@
                 margin-right: $distance--sm;
             }
 
-            &:nth-last-child(-n+2) {
+            &:nth-last-child(-n + 2) {
                 margin-bottom: 0;
             }
         }
     }
-
 }
 
 @keyframes blink--green10 {
-    from    { background-color: $green-10; }
-    to      { background-color: transparent; }
+    from {
+        background-color: $green-10;
+    }
+    to {
+        background-color: transparent;
+    }
 }
 
 @keyframes blink--warning {
-    from    { background-color: $warning-30; }
-    to      { background-color: transparent; }
+    from {
+        background-color: $warning-30;
+    }
+    to {
+        background-color: transparent;
+    }
 }
 
 .blink {
@@ -85,7 +91,7 @@
 
         animation: blink--green10 3s ease-in-out 0s 1 normal forwards;
         bottom: -$size;
-        content: '';
+        content: "";
         left: -$size;
         position: absolute;
         right: -$size;
@@ -106,43 +112,42 @@
 
 .bg--students {
     background-color: $blue-navy-60;
-    background-image: url('/assets/img/bg--login2021T.png');
+    background-image: url("/assets/img/bg--login2021T.png");
     background-color: white;
     background-repeat: no-repeat;
     background-size: 73%;
     background-position-x: 85%;
     background-position-y: bottom;
 
-    @include media('>sm') {
+    @include media(">sm") {
         background-color: #fff;
         background-image: url("/assets/img/bg--login2021T.png");
-        background-size: 65%;
+        background-size: 44%;
         background-position-x: right;
         background-position-y: bottom;
-        }
+    }
 
-        @include media('>md') {
-            background-color: $blue-navy-60;
-            background-color: #1f3033;
-            background-image: url(/assets/img/bg--login2021.png);
-            background-color: #75db78;
-            background-repeat: no-repeat;
-            background-position-y: 10%;
-            background-size: 127%;
-            background-position-x: 48%;
-        }
+    @include media(">md") {
+        background-color: $blue-navy-60;
+        background-color: #1f3033;
+        background-image: url(/assets/img/bg--login2021.png);
+        background-color: #75db78;
+        background-repeat: no-repeat;
+        background-position-y: 10%;
+        background-size: 127%;
+        background-position-x: 48%;
+    }
 
-        @include media('>lg') {
-            background-color: $blue-navy-60;
-            background-color: #1f3033;
-            background-image: url(/assets/img/bg--login2021.png);
-            background-color: #75db78;
-            background-repeat: no-repeat;
-            background-position-y: bottom;
-            background-size: 50%;
-            background-position-x: 10%;
-        }
-
+    @include media(">lg") {
+        background-color: $blue-navy-60;
+        background-color: #1f3033;
+        background-image: url(/assets/img/bg--login2021.png);
+        background-color: #75db78;
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: 50%;
+        background-position-x: 10%;
+    }
 }
 
 .logo__subproduct {
@@ -164,18 +169,42 @@
     @include divider($pos: "top");
 }
 
-.overflow-hidden { overflow: hidden; }
-.pos-rel { position: relative; }
-.small { font-size: .75em; }
-.fs-i { font-style: italic; }
-.strong { font-weight: bolder; }
-.ta-c { text-align: center; }
-.ta-l { text-align: left; }
-.td-u { text-decoration: underline; }
-.tt-u { text-transform: uppercase; }
-.ws-i { white-space: initial; }
-.w100 { width: 100%; }
-.w-auto { width: auto; }
+.overflow-hidden {
+    overflow: hidden;
+}
+.pos-rel {
+    position: relative;
+}
+.small {
+    font-size: 0.75em;
+}
+.fs-i {
+    font-style: italic;
+}
+.strong {
+    font-weight: bolder;
+}
+.ta-c {
+    text-align: center;
+}
+.ta-l {
+    text-align: left;
+}
+.td-u {
+    text-decoration: underline;
+}
+.tt-u {
+    text-transform: uppercase;
+}
+.ws-i {
+    white-space: initial;
+}
+.w100 {
+    width: 100%;
+}
+.w-auto {
+    width: auto;
+}
 .child-v--center {
     position: relative;
     > * {
@@ -194,11 +223,21 @@
     width: 1px;
 }
 
-.shadow-1 { box-shadow: $shadow-1; }
-.shadow-2 { box-shadow: $shadow-2; }
-.shadow-3 { box-shadow: $shadow-3; }
-.shadow-4 { box-shadow: $shadow-4; }
-.shadow-5 { box-shadow: $shadow-5; }
+.shadow-1 {
+    box-shadow: $shadow-1;
+}
+.shadow-2 {
+    box-shadow: $shadow-2;
+}
+.shadow-3 {
+    box-shadow: $shadow-3;
+}
+.shadow-4 {
+    box-shadow: $shadow-4;
+}
+.shadow-5 {
+    box-shadow: $shadow-5;
+}
 
 .truncate {
     @include truncate;
@@ -206,11 +245,11 @@
 }
 
 .numbers {
-    font-feature-settings: 'tnum';
+    font-feature-settings: "tnum";
     font-variant-numeric: tabular-nums;
 }
 
-[class*='stealth-info']{
+[class*="stealth-info"] {
     bottom: $distance--xs;
     left: 50%;
     pointer-events: none;
@@ -235,7 +274,7 @@
         flex: 0 0 100%;
         margin-bottom: $distance--sm;
 
-        @include media('>sm') {
+        @include media(">sm") {
             flex: 1 0 40%;
             margin-right: $distance--sm;
 
@@ -244,7 +283,7 @@
             }
         }
 
-        @include media('>md') {
+        @include media(">md") {
             flex: 0 0 30%;
 
             &:nth-child(even) {
@@ -254,10 +293,9 @@
             &:nth-child(n + 3) {
                 margin-right: 0;
             }
-
         }
 
-        @include media('>lg') {
+        @include media(">lg") {
             flex: 1 0 40%;
 
             &:nth-child(n + 3) {
@@ -267,10 +305,8 @@
             &:nth-child(even) {
                 margin-right: 0;
             }
-
         }
     }
-
 }
 
 .grow-wrap {
@@ -309,5 +345,4 @@
         // Place on top of each other
         grid-area: 1 / 1 / 2 / 2;
     }
-
 }
