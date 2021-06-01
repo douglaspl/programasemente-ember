@@ -112,7 +112,7 @@
 
 .bg--students {
     background-color: $blue-navy-60;
-    background-image: url("/assets/img/bg--login2021T.png");
+   background-image: none;
     background-color: white;
     background-repeat: no-repeat;
     background-size: 73%;
@@ -121,7 +121,7 @@
 
     @include media(">sm") {
         background-color: #fff;
-        background-image: url("/assets/img/bg--login2021T.png");
+       background-image:none;
         background-size: 44%;
         background-position-x: right;
         background-position-y: bottom;
