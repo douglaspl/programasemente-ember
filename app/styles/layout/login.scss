@@ -13,11 +13,118 @@
 
 @import url("https://use.typekit.net/kkh6bhp.css");
 
+body,
+html {
+    background-color: #fff;
+}
 
+.aviso {
+    background-color: #fff;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 0 1em #4646465e;
+    box-shadow: 0 0 1em #4646465e;
+    width: 100%;
+    height: auto;
+    padding: 3rem;
+    right: 0%;
+    position: absolute;
+    margin: 5% 0;
+    text-align: center;
+
+    @include media(">sm") {
+       width: 100%;
+       right: 0%;
+    }
+    @include media(">md") {
+        width: 100%;
+        right: 0%;
+     }
+     @include media(">md") {
+        width: 40%;
+        right: 10%;
+     }
+}
+
+
+.login-fundo {
+    background-image: url(/assets/img/bg--login2021T.png);
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 73%;
+    background-position-x: 85%;
+    background-position-y: bottom;
+    width: 100%;
+    height: 100vh;
+    opacity: 1;
+    position: absolute;
+
+    @include media(">sm") {
+        background-color: #fff;
+        background-image: url(/assets/img/bg--login2021T.png);
+        background-size: 44%;
+        background-position-x: right;
+        background-position-y: bottom;
+    }
+
+    @include media(">md") {
+        background-image: none;
+        width: 0%;
+    }
+
+    @include media(">lg") {
+        background-image: none;
+        width: 0%;
+    }
+}
+
+.texto-login-ie{
+    color: #707070;
+    font-family: Filson Pro;
+}
+
+.logos{
+    width: 25%;
+    display: inline-table;
+    text-align: center;
+    position: relative;
+    margin-top: 10%;
+
+    &__logo-navegador{
+        width: 60%;
+    }
+    &__btn-navegador{
+        grid-auto-columns: 1rem;
+        background-color: #f2ffe1;
+        color: #707070;
+        font-family: Filson Pro;
+        font-weight: 500;
+        border-radius: 50px;
+        padding: 0.5rem 0.75rem;
+        box-shadow: 0 0.5rem 1rem 0 #eaedf0;
+        font-size: 0.55rem;
+        @include media(">sm") {
+            font-size: 0.55rem;
+        }
+    
+        @include media(">md") {
+            font-size: 0.55rem;
+        }
+    
+        @include media(">lg") {
+            font-size: 0.75rem;
+        }
+
+    }
+    &__nome-navegador{
+        margin: 10% 0;
+        color: #707070;
+        opacity: 0.5;
+    }
+}
 
 .login {
     $this: &;
-    font-family:Filson Pro;
+    font-family: Filson Pro;
     align-items: center;
     cursor: initial;
     display: flex;
@@ -30,46 +137,62 @@
         height: 100%;
     }
 
-     @include media('>sm') {
-         justify-content: center;
-         padding: 0 5%;
-         justify-content: center;
-     }
-
-    &__box {
-        background-color: $white;
-        border-radius: $radius;
-        box-shadow: 0 0 1em #4646465e;
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-        height: 100vh;
-        max-width: 54vw;
-        padding: $distance--sm $distance--sm $distance--md;
-
-        @include media('>sm') {
-            padding: $distance--md $distance--sm;
-            width: 115%;
-            max-width: 100vh;
-            box-shadow: none;
-            background-image: url("/dist/assets/img/bg--login2021T.png")
-        }
-
-        @include media('>md') {
-            padding: $distance--md $distance--md $distance--md;
-        }
-
-        @include media('>lg') {
-            width: 90%;
-            max-width: 75vw;
-            padding: 12rem 20rem;
-        }
-        
+    @include media(">sm") {
+        justify-content: center;
+        padding: 0 5%;
+        justify-content: center;
+        min-height: 0vh; // não provoca scroll (opondo-se aa height: 100vh) e evita espaços em branco qdo scrollamos com o input em :focus (opondo-se a height: 100%).
     }
 
-  
+    @include media(">lg") {
+        justify-content: center;
+        padding: 0;
+        justify-content: flex-end;
+        min-height: 0vh; // não provoca scroll (opondo-se aa height: 100vh) e evita espaços em branco qdo scrollamos com o input em :focus (opondo-se a height: 100%).
+    }
+    //mobile first
+    &__box {
+        border-radius: $radius;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        padding: $distance--sm $distance--sm $distance--md;
+        right: 0px;
+        position: absolute;
 
- /*   &__logo {
+        //mobile 600
+        @include media(">sm") {
+            padding: 2.5rem 10rem;
+            background-color: transparent;
+            width: 100%;
+            box-shadow: none;
+            position: relative;
+            overflow: auto;
+        }
+
+        //mobile 900
+        @include media(">md") {
+            padding: 4.5rem 9.5rem;
+            width: 100%;
+            background-color: $white;
+            position: relative;
+        }
+
+        //mobile 1200
+        @include media(">lg") {
+            background-color: $white;
+            border-radius: $radius;
+            box-shadow: 0 0 1em #4646465e;
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            height: 100vh;
+            padding: 3rem 7rem 1.5rem;
+            right: 0;
+        }
+    }
+    /*   &__logo {
         align-self: center;
         display: inline-block;
         height: auto;
@@ -84,20 +207,22 @@
         /* max-height: 64px; */
         margin: 2.5rem auto;
         text-align: center;
-    }
+        width: 9rem;
 
-    &__logo-centralizada{
-        max-width: 8.5rem;
+        @include media(">md") {
+            img {
+                width: 12rem;
+            }
+        }
 
-        @include media('>lg') {
-
-        max-width: 25.5rem;
+        @include media(">lg") {
+            width: 11rem;
         }
     }
+    
 
     &__form-group {
         margin-bottom: $distance--sm;
-        margin-top: $distance--sm;
 
         & + & {
             margin-top: $distance--sm;
@@ -107,29 +232,42 @@
     &__input {
         max-width: 100%;
         padding: $distance--xs $distance--sm;
-        width: 18rem;
+        width: 24rem;
         border: 0px;
         border-bottom: 1px solid;
         background-color: $white;
         font-size: 0.85rem;
         color: #707070;
 
-        @include media('>sm') {
-            width: 45rem; 
-            padding: 1.5rem 1rem 1rem;
-            font-size: 2rem;
-            height: 5rem;
+        @include media(">sm") {
+            width: 45rem;
+            padding: 0.5rem 1rem 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        @include media(">md") {
+            width: 45rem;
+            padding: 0;
+            font-size: 1rem;
+            height: 1rem;
+        }
+
+        @include media(">lg") {
+            width: 45rem;
+            padding: 0.5rem 1rem 0.5rem;
+            font-size: 1rem;
+            height: 1rem;
         }
     }
 
-    &__btn:hover{
+    &__btn:hover {
         background-color: #75db78;
-        span{
+        span {
             color: #fff;
         }
     }
 
-    :focus:not([class*=active]) {
+    :focus:not([class*="active"]) {
         outline: 2px solid #ffffff;
     }
 
@@ -137,96 +275,131 @@
     textarea:-webkit-autofill,
     select:-webkit-autofill {
         -webkit-text-fill-color: #000;
-        -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
-
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     }
 
-    &__label{
+    &__label {
         color: #707070;
         margin-bottom: 0;
         font-size: 0.7em;
-        font-family: Filson Pro;;
+        font-family: Filson Pro;
         color: #707070;
         text-transform: capitalize;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
 
-        @include media('>sm') {
-        font-size: 1.8em;
+        @include media(">sm") {
+            font-size: 1em;
+        }
+
+        @include media(">md") {
+            font-size: 1em;
+            margin-bottom: 2px;
+        }
+        @include media(">lg") {
+            font-size: 0.85em;
+            margin-bottom: 2px;
         }
     }
 
     &__forgot-pass {
-        align-self: flex-start;
-        color: $gray-50;
+        align-self: flex-end;
+        color: #707070;
         display: inline-block;
-        margin-top: $distance--xs;
+        margin-bottom: $distance--xs;
         text-decoration: underline;
+        font-size: 14px;
     }
 
     &__cta {
         grid-auto-columns: 1rem;
-        padding: 1.3em 100%;
         background-color: #f2ffe1;
         color: #8bc63f;
-        font-family:Filson Pro;
+        font-family: Filson Pro;
         font-weight: 500;
         border: none;
+        padding: 1.2rem;
         box-shadow: 0 0.5rem 1rem 0 #eaedf0;
-       
 
-        @include media('>sm') {
-        //    margin-top: $distance--md;
-        font-size: 1.875rem;
+        @include media(">sm") {
+            //    margin-top: $distance--md;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+
+        @include media(">md") {
+            //    margin-top: $distance--md;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+        @include media(">lg") {
+            //    margin-top: $distance--md;
+            font-size: 0.875rem;
+            border-radius: 10px;
         }
     }
 
-    &__span{
-        color: #CBCBCB;
+    &__span {
+        color: #cbcbcb;
     }
 
     &__privacidade {
         grid-auto-columns: 1rem;
         background-color: #ffffff;
-        color: #CBCBCB;
+        color: #cbcbcb;
         box-shadow: 0 0.5rem 1rem 0 #eaedf0;
         border: none;
-        font-family:Filson Pro;
+        font-family: Filson Pro;
         text-transform: capitalize;
-        padding: 0.8rem;
-        font-weight:normal;
+        padding: 1rem;
+        font-weight: normal;
+        border-radius: 10px;
 
-        @include media('>sm') {
-        //    margin-top: $distance--md;
-        padding: 1.1em 0;
-        font-size: 1.875rem;
+        @include media(">sm") {
+            //    margin-top: $distance--md;
+            padding: 1.1em 0;
+            font-size: 0.8rem;
+        }
+        @include media(">lg") {
+            padding: 0.8em 0;
+            font-size: 0.8rem;
         }
     }
 
     &__cadastre {
-        text-align: right;
+        text-align: left;
         color: #707070;
-
-        a{
+        margin-top: 1rem !important;
+        a {
             color: #707070;
         }
 
-        span{
-            font-size: 0.85rem;
-            @include media('>sm') {
-                font-size: 1.85rem;
-                }
-            
+        span {
+            font-size: 0.75rem;
+            @include media(">sm") {
+                text-align: left;
+                font-size: 1rem;
+            }
+            @include media(">lg") {
+                text-align: right;
+                font-size: 0.8rem;
+            }
         }
 
-        @include media('>sm') {
-        //    margin-top: $distance--md;
+        @include media(">sm") {
+            //    margin-top: $distance--md;
+        }
+        @include media(">md") {
+            text-align: center;
+        }
+        @include media(">lg") {
+            text-align: right;
         }
     }
 
     &__alert {
         margin-top: $distance--xs;
 
-        @include media('>sm') {
+        @include media(">sm") {
             margin-top: $distance--md;
         }
     }
@@ -255,26 +428,23 @@
             top: 0;
             transition: 300ms;
 
-            &:not([class*='off']) {
+            &:not([class*="off"]) {
                 transform: translateY(-120%);
             }
 
-            @include media('>sm') {
-            font-size: 2.125rem;
+            @include media(">sm") {
+                font-size: 1.5rem;
             }
-
         }
 
         &--is-show > * {
-            &:not([class*='off']) {
+            &:not([class*="off"]) {
                 transform: translateY(0%);
             }
 
-            &[class*='off'] {
+            &[class*="off"] {
                 transform: translateY(120%);
             }
         }
-
     }
-
 }
