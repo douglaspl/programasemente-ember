@@ -142,14 +142,15 @@ export default Ember.Controller.extend({
       else password.type = 'password';
     },
     authenticate() {
+     
       document.getElementById('login_button').disabled = true;
       document.getElementById('login_button').innerHTML = 'Aguarde...'
 
       function trim(stringToTrim) {
         return stringToTrim.replace(/^\s+|\s+$/g, "");
       }
-      let life = 0;
-      if (document.getElementById('remember').checked) life = 1;
+      let life = 1;
+      //if (document.getElementById('remember').checked) life = 1;
       let username = document.getElementById('identification').value;
       let password = trim(document.getElementById('password').value);
       if (this.get('session.isAuthenticated')) {
