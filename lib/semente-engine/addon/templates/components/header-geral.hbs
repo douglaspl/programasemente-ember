@@ -28,6 +28,8 @@
               {{pessoa.plataformaAnos.firstObject.name}}</span>
           {{else if (equalstr pessoa.role 'coordenador')}}
             <span>Coordenador{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}</span>
+          {{else if (equalstr pessoa.role 'secretaria')}}
+            <span>Secretaria</span>
           {{else if (equalstr pessoa.role 'gestor')}}
             <span>Gestor{{#if (equalstr pessoa.genero 'feminino')}}a{{/if}}</span>
           {{else if (equalstr pessoa.role 'admin')}}
@@ -85,13 +87,13 @@
     <nav>
       <ul class="tabs tabs--full-background">
         <li>
-          {{#unless (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0'))}}
+          {{#unless (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'secretaria'))}}
             {{#if isAlunoMedio}}
               {{#link-to 'modulos.modlist' pessoa.modulos.firstObject.id class="tabs__tab" id="aulas-header"}}
                 <span>Aulas</span>
               {{/link-to}}
             {{else}}
-              {{#unless (equalstr pessoa.role "marketing")}}
+              {{#unless (or (equalstr pessoa.role "marketing") (equalstr pessoa.role "secretaria"))}}
                 {{#link-to 'aulas.index' class="tabs__tab" id="aulas-header"}}
                   <span>Aulas</span>
                 {{/link-to}}
@@ -100,14 +102,14 @@
           {{/unless}}
         </li>
         <li>
-          {{#unless (equalstr pessoa.role "marketing")}}
+          {{#unless (or (equalstr pessoa.role "marketing") (equalstr pessoa.role "secretaria"))}}
             {{#link-to 'aulas.bibliotecaindex' class="tabs__tab"}}
               <span>Biblioteca</span>
             {{/link-to}}
           {{/unless}}
         </li>
 
-        {{#unless (or (or (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'aluno')) (equalstr pessoa.role 'marketing')) (equalstr pessoa.role 'responsavel')) }}
+        {{#unless (or (or (or (or (and (equalstr pessoa.role 'instrutor') (equalstr pessoa.isAplicador '0')) (equalstr pessoa.role 'aluno')) (equalstr pessoa.role 'marketing')) (equalstr pessoa.role 'responsavel')) (equalstr pessoa.role 'secretaria')) }}
           {{#link-to 'aulas.acompanhamento' class="tabs__tab"}}
             <li>
               <span>Acompanhamento</span>
@@ -126,8 +128,8 @@
           {{/each}}
         {{/unless}}
 
-        {{#unless (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (and (equalstr pessoa.role
-        'instrutor') (equalstr pessoa.isAplicador "0") ))}}
+        {{#unless (or (or (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'responsavel')) (and (equalstr pessoa.role
+        'instrutor') (equalstr pessoa.isAplicador "0") )) (equalstr pessoa.role 'secretaria'))}}
           {{#link-to 'marketing.index' class="tabs__tab" id="tabMkt"}}
             <span>Marketing</span>
           {{/link-to}}
@@ -137,7 +139,9 @@
           {{#link-to 'conteudos.index' class="tabs__tab" id="tabContents"}}
             <span>Conteúdos</span>
           {{/link-to}}
+        {{/if}}
 
+        {{#if (or (equalstr pessoa.role 'admin') (equalstr pessoa.role 'secretaria'))}}
           {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
             <span>Administração</span>
           {{/link-to}}

@@ -143,6 +143,7 @@
         ######################################
         -->
         <div class="tabs animated fadeInLeftShort faster d500">
+          {{#if (equalstr pessoaLogged.role "admin")}}
           <button class="report__tab tabs__tab {{if selectedInstTabs.informations 'tabs__tab--is-active'}}"
                   {{action 'tabNavigation' 'informations' on="click" }}>
             <span>Informações</span>
@@ -151,6 +152,7 @@
                   {{action 'tabNavigation' 'courses' on="click" }}>
             <span>Anos</span>
           </button>
+          {{/if}}
           <button class="report__tab tabs__tab {{if selectedInstTabs.areas 'tabs__tab--is-active'}}"
                   {{action 'tabNavigation' 'areas' on="click" }}>
             <span>Turmas</span>
