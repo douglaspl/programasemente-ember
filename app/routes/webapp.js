@@ -11,12 +11,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
   envnmt: ENV.APP,
   goToStepTwo: false,
   userName: null,
-  // afterModel() {
-  //   if (this.get('session.isAuthenticated')) {
-  //     this.firstAccessVerify();
-  //     //this.transitionTo('/webapp');
-  //   }
-  // },
+  afterModel() {
+    if (this.get('session.isAuthenticated')) {
+ //     this.firstAccessVerify();
+      this.transitionTo('/webapp');
+    }
+  },
   // firstAccessVerify() {
   //   //always requesting without header 'pessoaid' will retrieve the data from the user which bears the stored token
   //   let sessionData = this.get('session.data');
