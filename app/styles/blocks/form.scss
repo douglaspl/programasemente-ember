@@ -130,7 +130,7 @@
       flex: 1;
       min-height: $input-height;
       -webkit-appearance: none;
-
+      color: #cacaca;
       @include target-ie {
         flex-basis: auto;
       }
@@ -285,7 +285,6 @@
 
       &::after {
         $size: $distance--md;
-
         align-items: center;
         color: $green-60;
         content: "";

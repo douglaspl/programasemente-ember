@@ -6,6 +6,91 @@ export default Ember.Controller.extend({
   rootURL: ENV.rootURL,
   envnmt: ENV.APP,
   session: Ember.inject.service('session'),
+  mostraAviso: false,
+
+  detectIE() {
+   
+    var ua = window.navigator.userAgent;
+
+    // Test values; Uncomment to check result …
+
+    // IE 10
+    // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
+
+    // IE 11
+    // ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
+
+    // Edge 12 (Spartan)
+    // ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+
+    // Edge 13
+    // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+      // IE 10 or older => return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+      // IE 11 => return version number
+      var rv = ua.indexOf('rv:');
+      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge');
+    if (edge > 0) {
+      // Edge (IE 12+) => return version number
+      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+  },
+
+
+  init: function () {
+    this._super();
+    var version = this.detectIE();
+      if (version === false) {
+     this.set('mostraAviso', false)
+    } else {
+      this.set('mostraAviso', true)
+    } 
+    
+    // Caps lock detection
+    let that = this;
+    window.addEventListener("keydown", function (e) {
+    
+      if (that.get('mostraAviso') == false) {
+       if (navigator.vendor != 'Apple Computer, Inc.') {
+         const caps = e.getModifierState && e.getModifierState('CapsLock');
+         const msg = document.getElementById('msg-caps-on');
+   
+         if (caps) msg.classList.add('form__msg--on');
+         else msg.classList.remove('form__msg--on');
+       }
+      }
+    })
+
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   makeCustomCall(verb, url, json) {
     let header = localStorage.getItem('person_logged');
     let header_person;
@@ -47,15 +132,7 @@ export default Ember.Controller.extend({
       }
     });
   },
-  capsLockDetection: window.addEventListener("keydown", function (e) {
-    if (navigator.vendor != 'Apple Computer, Inc.') {
-      const caps = e.getModifierState && e.getModifierState('CapsLock');
-      const msg = document.getElementById('msg-caps-on');
-
-      if (caps) msg.classList.add('form__msg--on');
-      else msg.classList.remove('form__msg--on');
-    }
-  }),
+ 
   actions: {
     passwordVisibility() {
       document.querySelector('.login__show-pass').classList.toggle('login__show-pass--is-show');
@@ -65,17 +142,18 @@ export default Ember.Controller.extend({
       else password.type = 'password';
     },
     authenticate() {
+     
       document.getElementById('login_button').disabled = true;
-      document.getElementById('login_button').innerHTML =  'Aguarde...'
+      document.getElementById('login_button').innerHTML = 'Aguarde...'
+
       function trim(stringToTrim) {
-        return stringToTrim.replace(/^\s+|\s+$/g,"");
+        return stringToTrim.replace(/^\s+|\s+$/g, "");
       }
-      let life = 0;
-      if (document.getElementById('remember').checked) life = 1;
+      let life = 1;
+      //if (document.getElementById('remember').checked) life = 1;
       let username = document.getElementById('identification').value;
       let password = trim(document.getElementById('password').value);
-      if (this.get('session.isAuthenticated'))
-      {
+      if (this.get('session.isAuthenticated')) {
         localStorage.clear();
         this.get('session').invalidate();
         return;
@@ -87,7 +165,7 @@ export default Ember.Controller.extend({
         if (reason.error_description) {
           that.set('errorMessage', reason.error_description);
           that.set('success_mail', '');
-          document.getElementById('login_button').innerHTML =  'Entrar'
+          document.getElementById('login_button').innerHTML = 'Entrar'
         } else if (reason) {
           that.set('errorMessage', reason.error || reason);
           that.set('success_mail', '');
@@ -105,7 +183,7 @@ export default Ember.Controller.extend({
       if (email) {
         if (email.length > 4 && email.search('@') > 3) {
           this.set('user_email', email);
-          
+
         }
       }
       this.set('error_forgot', '');
@@ -116,12 +194,12 @@ export default Ember.Controller.extend({
       usernameInput.value = email;
       usernameInput.focus();
     },
-    autoRegister(){
+    autoRegister() {
       this.transitionToRoute('autoregister');
     },
     cancelForgot() {
-      
-      document.getElementById('checkboxes_container').classList.remove('fadeInLeftShort');   
+
+      document.getElementById('checkboxes_container').classList.remove('fadeInLeftShort');
       document.getElementById('success-forgot').style.display = 'none';
       document.getElementById('error-forgot').style.display = 'none';
       document.getElementById('forgot_modal').classList.add('fadeOutDown');
@@ -166,7 +244,7 @@ export default Ember.Controller.extend({
         });
       }
     },
-    sendPassword(type){
+    sendPassword(type) {
       let checkEmail = document.getElementById('forgot-email');
       let checkSms = document.getElementById('forgot-sms');
       let btnSend = document.getElementById('btn-send-password');
@@ -175,9 +253,9 @@ export default Ember.Controller.extend({
 
       let email = false;
       let phone = false;
-      
-           
-      
+
+
+
       if (!type) {
         if (!checkEmail.checked && !checkSms.checked) {
           this.set('error_forgot', 'Por favor, escolha pelo menos uma das opções acima');
@@ -185,16 +263,14 @@ export default Ember.Controller.extend({
           document.getElementById('success-forgot').style.display = 'none';
           return false
         }
-      
-        if ( checkSms.checked ) {
+
+        if (checkSms.checked) {
           phone = true;
         }
-        if ( checkEmail.checked ) {
+        if (checkEmail.checked) {
           email = true;
         }
-      }
-      else
-      {
+      } else {
         if (type === "phone") {
           phone = true;
         }
@@ -235,7 +311,7 @@ export default Ember.Controller.extend({
         document.getElementById('btn-send-password').style.display = 'none';
         btnSend.innerHTML = 'Enviar senha';
         checkboxesContainer.style.display = 'none';
-       }).catch((error) => {
+      }).catch((error) => {
         document.getElementById('error-forgot').style.display = 'block';
         document.getElementById('success-forgot').style.display = 'none';
         that.set('error_forgot', 'Erro do servidor: ' + error);
@@ -249,9 +325,9 @@ export default Ember.Controller.extend({
       let groupEmail = document.getElementById('group-email');
       let groupSMS = document.getElementById('group-sms');
       let errorContainer = document.getElementById('error-forgot');
-      
+
       checkboxesContainer.style.display = 'block';
-      
+
       let final_url = this.get('envnmt.host') + '/' + this.get('envnmt.namespace') + '/' + 'accounts/verifyUserName';
       let string = JSON.stringify({
         'data': {
@@ -266,41 +342,36 @@ export default Ember.Controller.extend({
       let that = this;
       this.makeCustomCall('POST', final_url, string).then((data) => {
         var result = data.data.attributes;
-        if (!result.exists)
-        {
+        if (!result.exists) {
           groupEmail.style.display = 'none';
           groupSMS.style.display = 'none';
           errorContainer.style.display = 'block';
           that.set('error_forgot', 'Usuário não cadastrado!');
           return;
         }
-        if (result.hasEmail && result.hasPhone)
-        {
-            checkboxesContainer.classList.add('fadeInLeftShort');       
-            document.getElementById('user_name').disabled = true;
-            document.getElementById('btn-verify-user-name').style.display = 'none';
-            document.getElementById('btn-send-password').style.display = 'block';
-            groupEmail.style.display = 'block';
-            groupSMS.style.display = 'block';
-            errorContainer.style.display = 'none';
-            that.set('error_forgot', 'Usuário não cadastrado!');
-            return;
-          
-        }
-        if (result.hasEmail && !result.hasPhone)
-        {
+        if (result.hasEmail && result.hasPhone) {
+          checkboxesContainer.classList.add('fadeInLeftShort');
+          document.getElementById('user_name').disabled = true;
           document.getElementById('btn-verify-user-name').style.display = 'none';
-          this.send('sendPassword','email');
+          document.getElementById('btn-send-password').style.display = 'block';
+          groupEmail.style.display = 'block';
+          groupSMS.style.display = 'block';
+          errorContainer.style.display = 'none';
+          that.set('error_forgot', 'Usuário não cadastrado!');
+          return;
+
+        }
+        if (result.hasEmail && !result.hasPhone) {
+          document.getElementById('btn-verify-user-name').style.display = 'none';
+          this.send('sendPassword', 'email');
           return;
         }
-        if (!result.hasEmail && result.hasPhone)
-        {
+        if (!result.hasEmail && result.hasPhone) {
           document.getElementById('btn-verify-user-name').style.display = 'none';
-          this.send('sendPassword','phone');
+          this.send('sendPassword', 'phone');
           return;
         }
-        if (!result.hasEmail && !result.hasPhone)
-        {
+        if (!result.hasEmail && !result.hasPhone) {
           groupEmail.style.display = 'none';
           groupSMS.style.display = 'none';
           errorContainer.style.display = 'block';
