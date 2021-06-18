@@ -128,17 +128,29 @@
     }
 
     @include media(">md") {
-        background-color: $blue-navy-60;
-        background-color: #1f3033;
-        background-image: url(/assets/img/bg--login2021.png);
-        background-color: #75db78;
-        background-repeat: no-repeat;
-        background-position-y: 10%;
-        background-size: 127%;
-        background-position-x: 48%;
+       
+        &::after {
+            background-color: #75db78;
+            background-image: url(/assets/img/bg--login2021.png);
+            background-position-x: 48%;
+            background-position-y: 10%;
+            background-repeat: no-repeat;
+            background-size: 127%;
+            content: '';
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            opacity: 0.2;
+        }
+        
     }
 
     @include media(">lg") {
+        
+        &::after {
+            content: none;
+        }
+        
         background-color: $blue-navy-60;
         background-color: #1f3033;
         background-image: url(/assets/img/bg--login2021.png);
