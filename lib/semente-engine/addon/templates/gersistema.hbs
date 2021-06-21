@@ -380,10 +380,13 @@
                           </div>
                         </div>
                         <div class="flow-h-sm" id="areaItemOptions{{turma.id}}">
+                         
+                          {{#if (equalstr pessoaLogged.role "admin")}}
                           <button class="btn btn--text btn--xxs color-error" {{action 'deleteArea' turma.id}}>
                             {{!-- <span class="btn__icon icon-trash-2"></span> --}}
                             <span class="btn__label">Remover</span>
                           </button>
+                          {{/if}}
                           <button class="btn btn--ghost btn--xxs" style="width: 90px;" {{action 'editArea' turma.id}}>
                             {{!-- <span class="btn__icon icon-edit"></span> --}}
                             <span class="btn__label">Editar</span>
@@ -556,10 +559,12 @@
                     </div>
 
                     <div class="flow-h-sm m-left--auto" id="areaItemOptions{{turma.id}}">
+                     {{#if (equalstr pessoaLogged.role "admin")}}
                       <button class="j-areaFocus btn btn--xxs btn--text color-error" {{action 'deleteArea' turma.id}}>
                         {{!-- <span class="btn__icon icon-trash-2"></span> --}}
                         <span class="btn__label">Remover</span>
                       </button>
+                      {{/if}}
                       <button class="j-areaFocus btn btn--leaf btn--xxs" style="width: 90px;" {{action 'editArea' turma.id}}>
                         {{!-- <span class="btn__icon icon-edit"></span> --}}
                         <span class="btn__label">Editar</span>
@@ -805,6 +810,8 @@
       <!-- -->
     </div>
   </div>
+
+{{redirectToTurmas}}
 
   <!-- LOADING || SUCCESS || ERROR -->
   <div id="timeoutAlertAdm" class="alert alert--x bg-blue-navy-50 color-white alert--has-icon alert--no-interaction">
