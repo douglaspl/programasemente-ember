@@ -130,7 +130,7 @@
       flex: 1;
       min-height: $input-height;
       -webkit-appearance: none;
-      color: #cacaca;
+      //color: #cacaca;
       @include target-ie {
         flex-basis: auto;
       }
