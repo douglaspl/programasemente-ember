@@ -422,7 +422,7 @@
                 <div class="form-group w100">
                   <label class="form-group__label" for="new_user_gender">Sexo</label>
                   <div class="form-group__wrapper form-group__wrapper--select">
-                    <select class="form-group__input j-validate" id="new_user_gender" data-type="select">
+                    <select class="form-group__input j-validate-aluno" id="new_user_gender" data-type="select" data-context="sexo">
                       <option value="notSelected" selected={{thisUserRole.gender}}>Selecione...</option>
                       <option value="feminino" selected={{thisUserRole.gender}}>Feminino</option>
                       <option value="masculino" selected={{thisUserRole.gender}}>Masculino</option>
@@ -434,7 +434,7 @@
               <div class="col-xs-12 col-sm-6 col-md-2 {{unless editUser (if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d500')}}">
                 <div class="form-group w100">
                   <label class="form-group__label" for="new_user_birth">Nascimento</label>
-                  <input class="form-group__input j-validate"
+                  <input class="form-group__input j-validate-aluno"
                           id="new_user_birth"
                           maxlength="10"
                           name="date"
@@ -444,9 +444,10 @@
                                 } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
                                     this.value = v + '/';
                                 }"
-                          type="textbox"
+                          type="date"
                           value={{new_user_birth}}
-                          data-type="text">
+                          data-type="text"
+                          data-context="nascimento">
                   <div class="text-aux m-top--xxs">(dd/mm/aaaa)</div>
                 </div>
               </div>
@@ -464,7 +465,6 @@
       {{#if (equalstr activeProfile "instrutor")}}
         <section class="flow-md {{unless editUser (if (equalstr activeProfile "instrutor") 'animated fadeInLeftShort faster d250')}}">
           <h4 class="modal__subtitle">Você é professor aplicador?</h4>
-          <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
           <div class="row">
             {{!-- <div class="form-group__container"> --}}
               {{!-- <div class="form-group w100"> --}}
@@ -486,7 +486,7 @@
                                           type="checkbox">
                                       <label class="checkbox__label" for="plat_ano{{platAno.id}}">{{platAno.name}}</label> --}}
                                       {{input
-                                          class="j-validate-aplicador-child checkbox__input j-validate"
+                                          class="checkbox__input"
                                           id="plat_ano00000000"
                                           name="plat_ano00000000"
                                           type="checkbox"
@@ -678,7 +678,6 @@
       {{#if (equalstr activeProfile "aluno")}}
         <section class="flow-md {{unless editUser (if (equalstr activeProfile "aluno") 'animated fadeInLeftShort faster d1000')}}">
           <h4 class="modal__subtitle">Em qual ano e turma deve ser inscrito?</h4>
-          <span id="error_aplicador" class="form__msg form__msg--bellow form__msg--error" aria-live="polite"></span>
           <div class="row">
 
             {{!-- <h5 class="title-aux">Título do segmento</h5> --}}
@@ -686,11 +685,12 @@
                 <div class="form-group w100">
                   <label class="form-group__label" for="new_user_ano">Ano</label>
                   <div class="form-group__wrapper form-group__wrapper--select">
-                      <select class="j-validate form-group__input form-group__input--select"
+                      <select class="j-validate-aluno form-group__input form-group__input--select"
                           id="new_user_ano" name="ano"
                           onchange={{action 'refreshSelectedAno' value='target.value'}} data-type="select"
                           data-required="true"
-                          data-type="select">
+                          data-type="select"
+                          data-context="ano">
                           <option selected="selected" value="0">---</option>
                           {{#each inst_selected.plataformaAnos as |pa|}}
                                 <option value="{{pa.id}}"
@@ -708,10 +708,10 @@
                   <div class="form-group w100">
                       <label class="form-group__label" for="new_user_turma">Turma</label>
                       <div class="form-group__wrapper form-group__wrapper--select">
-                          <select class="j-validate form-group__input form-group__input--select"
+                          <select class="j-validate-aluno form-group__input form-group__input--select"
                               id="new_user_turma" name="turma"
                               onchange={{action 'refreshSelectedPlataformaTurma' value='target.value'}}
-                              data-type="select" data-required="true">
+                              data-type="select" data-required="true" data-context="turma">
                               <option selected="selected" value="0">---</option>
                               {{#each inst_selected.plataformaTurmas as |pt|}}
                                   {{#if (equalstr pt.plataformaAno.id pessoa_selected.plataformaAnos.firstObject.id)}}
