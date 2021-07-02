@@ -40,7 +40,7 @@
   {{/unless}}
 
   <div class="l-dots-between">
-
+    
     <aside class="l-dots-between__side">
       <h1 class="sr-only">Filtros de conteúdos</h1>
       <form autocomplete="off" class="flex flex-col flow-md">
@@ -187,3 +187,17 @@
   </div>
 
 </section>
+
+<aside id="termo_modal" class="modal">
+  <div class="modal__overlayer"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelTermo'}}></button>
+      <h3 class="modal__title">Termo de aceite</h3>
+    </div>
+    <div class="modal__footer">
+      <button class="btn btn-primary" type="submit" {{action 'aceitarTermo'}}>Aceitar</button>
+    </div>
+  </div>
+</aside>
+{{termoAceito}}
