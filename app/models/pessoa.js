@@ -105,4 +105,5 @@ export default DS.Model.extend({
 
   verifyEmail: memberAction({ path: 'verifyEmail', type: 'get' }),
   autoRegister: memberAction({ path: 'autoRegisterPlataforma', type: 'post' }),
+  termoAceite: DS.attr(),
 });
