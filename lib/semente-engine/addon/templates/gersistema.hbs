@@ -413,6 +413,39 @@
           </section>
 
           <section class="sections__subsection flow-md animated fadeInLeftShort faster d1250">
+            <h3 class="main__subsubtitle">Códigos</h3>
+            <div class="flex flex-row flex-wrap gap-sm flow-h-sm">
+              <div class="form-group">
+                <label class="form-group__label">Professores</label>
+                {{#if (equalstr role 'admin')}}
+                <input class="form-group__input" type="textbox" id="cd_professores" value={{inst_selected.codigoProfessores}}
+                  onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+                {{else}}
+                  {{inst_selected.codigoProfessores}}
+                {{/if}}
+              </div>
+              <div class="form-group">
+                <label class="form-group__label">Alunos</label>
+                {{#if (equalstr role 'admin')}}
+                <input class="form-group__input" type="textbox" id="cd_alunos" value={{inst_selected.codigoAlunos}}
+                  onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+                {{else}}
+                  {{inst_selected.codigoAlunos}}
+                {{/if}}
+              </div>
+              <div class="form-group">
+                <label class="form-group__label">Professores</label>
+                {{#if (equalstr role 'admin')}}
+                <input class="form-group__input" type="textbox" id="cd_responsaveis" value={{inst_selected.codigoAlunosInfantil}}
+                  onkeyup={{action 'dataChange' 'btn_save_inst' }}>
+                {{else}}
+                  {{inst_selected.codigoAlunosInfantil}}
+                {{/if}}
+              </div>
+            </div>
+          </section>
+
+          <section class="sections__subsection flow-md animated fadeInLeftShort faster d1250">
             <h3 class="main__subsubtitle">Sistemas</h3>
             <ul class="flex flex-col flow-sm">
               <li class="checkbox">
@@ -716,6 +749,23 @@
               <div class="form-group" flex="20">
                 <label class="form-group__label" for="new_inst_nralunos">Alunos</label>
                 <input class="form-group__input" type="textbox" id="new_inst_nralunos" value={{new_inst_nralunos}}>
+              </div>
+            </div>
+          </section>
+          <section class="sections__subsection">
+            <h4 class="main__subsubtitle">Código de cadastro</h4>
+            <div class="flex flex-row flex-wrap gap-sm flow-h-sm">
+              <div class="form-group" flex="20">
+                <label class="form-group__label" for="new_inst_cdprof">Código Professor</label>
+                <input class="form-group__input" type="textbox" id="new_inst_cdprof" value={{new_inst_cdprof}}>
+              </div>
+              <div class="form-group" flex="20">
+                <label class="form-group__label" for="new_inst_cdalun">Código Aluno</label>
+                <input class="form-group__input" type="textbox" id="new_inst_cdalun" value={{new_inst_cdalun}}>
+              </div>
+              <div class="form-group" flex="20">
+                <label class="form-group__label" for="new_inst_cdresp">Código Responsável</label>
+                <input class="form-group__input" type="textbox" id="new_inst_cdresp" value={{new_inst_cdresp}}>
               </div>
             </div>
           </section>

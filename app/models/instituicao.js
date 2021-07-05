@@ -30,4 +30,7 @@ export default DS.Model.extend({
     }),
     ignoraCalendarioMedio: DS.attr(),
     statusTermoAceite: DS.attr(),
+    codigoProfessores: DS.attr(),
+    codigoAlunos: DS.attr(),
+    codigoAlunosInfantil: DS.attr(),
 });
