@@ -26,7 +26,7 @@
             <button class="btn btn--as-filter {{if (equalstr selectedContent 'g') 'btn--is-active'}}" {{action 'refreshContent' 'g'}} type="button">
               <span class="btn__label">Geral</span>
             </button>
-            <button class="btn btn--as-filter {{if (equalstr selectedContent 'd') 'btn--is-active'}}" {{action 'refreshContent' 'd'}} type="button">
+            <button id="detalhado" class="btn btn--as-filter {{if (equalstr selectedContent 'd') 'btn--is-active'}}" {{action 'refreshContent' 'd'}} type="button">
               <span class="btn__label">Detalhado</span>
             </button>
           </div>
@@ -462,10 +462,13 @@
           <hgroup>
             <h1 class="sr-only">Lista de aulas do {{selectedModuloName}} - {{selectedTurmaName}}
             </h1>
-            <h2 class="title-4">
-              <span>{{selectedModuloName}} - {{selectedTurmaName}}</span>
-              <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>pessoas)</span>
-            </h2>
+            <div class="flex justify-between">
+              <h2 class="title-4">
+                <span>{{selectedModuloName}} - {{selectedTurmaName}}</span>
+                <span class="fs--xs fw--3 fs-i color-blue-navy-20 m-left--xxs">(<span class="inline-flex m-right--xxs">{{totalPessoas}}</span>pessoas)</span>
+              </h2>
+              {{!-- <button class="btn btn--ghost btn--xs m-left--sm" {{action 'downloadFile'}}>Baixar relatório em Excel</button> --}}
+            </div>
           </hgroup>
           <!--- VAZ -->
           <!--- VAZ -->
@@ -661,3 +664,9 @@
   </div>
 
 </section>
+
+<!-- snackbak -->
+<div id="downloading" class="alert  alert--has-icon alert--no-interaction">
+  <p>O relatório está sendo gerado e seu download iniciará em breve.</p>
+
+</div>
