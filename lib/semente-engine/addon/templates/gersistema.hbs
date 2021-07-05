@@ -800,19 +800,19 @@
         <!-- new institution step 2 -->
         <div class="institutions__step-content {{if goToStepTwo 'institutions__step-content--is-show' ''}}">
           <ul class="list list--img-name-action list--striped">
-            {{#each modulos_list as |mod|}}
+            {{#each plataformaAnos as |pa|}}
             <li>
               {{!-- <span class="list__img"
                 style="background-image: url('{{if mod.coverImage mod.coverImage '/assets/img/online-course.png'}}')"></span>
               --}}
-              <h3 class="list__name title-3">{{mod.name}}</h3>
+              <h3 class="list__name title-3">{{pa.name}}</h3>
               <span class="switch switch--institutions">
                 <!-- temporary save controll -->
-                <input id="isCkb{{mod.id}}" type="checkbox" checked={{isinarray mod inst_selected.modulos}}
+                <input id="isCkb{{pa.id}}" type="checkbox" checked={{isinarray pa inst_selected.plataformaAnos}}
                   style="display:none">
                 <!-- -->
-                <input class="switch__checkbox" id="ckb_new_{{mod.id}}" type="checkbox">
-                <label class="switch__label" for="ckb_new_{{mod.id}}">
+                <input class="switch__checkbox" id="ckb_new_{{pa.id}}" type="checkbox">
+                <label class="switch__label" for="ckb_new_{{pa.id}}">
                   <span class="switch__inner"></span>
                   <span class="switch__head"></span>
                 </label>
