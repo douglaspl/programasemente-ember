@@ -1,0 +1,162 @@
+.privacy {
+
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+  
+  &__wrapper {
+    background-color: $gray-20;
+    margin: 0.5rem;
+    overflow-y: hidden;
+    height: 100%;
+    padding: $distance--md;
+    font-size: $font-size--md;
+    > h1 {
+      @include title-2;
+      margin-bottom: 1rem;
+    }
+
+    > p {
+      margin-bottom: 2rem;
+      font-size: 20px;
+    }
+
+    @include media('<sm') {
+      max-width: 100%;
+      margin: 0;
+      
+    }
+
+  }
+  
+ ul.a {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-bottom: 2rem;
+  > li {
+    display: list-item; 
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+ }
+
+ .grid-wrapper {
+   overflow-y: scroll;
+   margin-bottom: 3rem;
+   width: 100%;
+   height: 50vh;
+   
+   &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $leaf-50;
+    border-radius: 10px;
+  }
+
+  @include media('<lg') {
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+  }
+  
+ }
+
+ .grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 9.85rem);
+  //grid-template-rows: repeat(11, 5rem);
+  height: 5rem;
+  grid-gap: 5px;
+  background-color: #fff;
+  color: #444;
+  align-items: start;
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  
+
+  @include media('<sm') {
+    grid-template-columns: repeat(6, 6rem);
+    grid-gap: 2px;
+  }
+  
+}
+
+.grid-column {
+  display: grid;
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 100%;
+  text-align: center;
+  height: 4rem;
+
+  > div {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+
+  @include media('<sm') {
+    font-size: $font-size--xs;
+    height: 2.5rem;
+    
+  }
+  
+}
+
+.line {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(6, 9.85rem);
+  grid-auto-rows: auto;
+
+  @include media('<sm') {
+    grid-template-columns: repeat(6, 6rem);
+    grid-gap: 2px;
+  }
+    
+  
+  > div {
+    padding: 1rem;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    //outline: solid 2px red;
+    border: solid 1px $leaf-30;
+    justify-items: center;
+    display: inline-flex;
+
+    @include media('<sm') {
+      font-size: $font-size--xxs;
+      padding: 0.5rem;
+      overflow-wrap: anywhere;
+    }
+  }
+
+}
+
+
+
+
+
+}

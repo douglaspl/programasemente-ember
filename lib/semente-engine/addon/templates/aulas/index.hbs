@@ -1,3 +1,4 @@
+
 {{header-geral  parentController = this.parentController
                 pessoa=pessoa
                 thisRoute=thisRoute
@@ -188,16 +189,19 @@
 
 </section>
 
+
 <aside id="termo_modal" class="modal">
   <div class="modal__overlayer"></div>
   <div class="modal__content">
     <div class="modal__header">
       <button class="modal__close btn-close icon-x" type="submit" {{action 'cancelTermo'}}></button>
-      <h3 class="modal__title">Termo de aceite</h3>
+      <h2 class="modal__title color-leaf-40">Política de privacidade</h2>
     </div>
+    {{politica-privacidade class="privacy"}}
     <div class="modal__footer">
       <button class="btn btn-primary" type="submit" {{action 'aceitarTermo'}}>Aceitar</button>
     </div>
   </div>
 </aside>
 {{termoAceito}}
+
