@@ -141,7 +141,7 @@
           {{/link-to}}
         {{/if}}
 
-        {{#if (or (equalstr pessoa.role 'admin') (equalstr pessoa.role 'secretaria'))}}
+        {{#if (or (or (equalstr pessoa.role 'admin') (equalstr pessoa.role 'secretaria')) (equalstr pessoa.role 'gestor') )}}
           {{#link-to 'gersistema.gerdata' class="tabs__tab"}}
             <span>Administração</span>
           {{/link-to}}
