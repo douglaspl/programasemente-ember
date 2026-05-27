@@ -59,6 +59,15 @@
 .icon-users:before { content: $icon-users; }
 .icon-x:before { content: $icon-x; }
 
+.icon-home-base:before { content: url(/assets/img/subida-base/home-page.png);}
+.icon-anexar-base:before { content: url(/assets/img/subida-base/attach.png);}
+.icon-check-base:before { content: url(/assets/img/subida-base/check.png);}
+.icon-check-g-base:before { content: url(/assets/img/subida-base/check-g.png);}
+.icon-cancel:before { content: url(/assets/img/subida-base/cancel.png);}
+.icon-cancel-g:before { content: url(/assets/img/subida-base/cancel-g.png);}
+.icon-timer-base:before { content: url(/assets/img/subida-base/timer-base.png);}
+.icon-loader:before { content: url(/assets/img/subida-base/lote-loader.gif);}
+
 .icon--error { color: $error-30; }
 .icon--success { color: $success-30; }
 

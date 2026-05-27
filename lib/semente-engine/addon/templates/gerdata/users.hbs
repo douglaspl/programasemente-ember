@@ -13,10 +13,10 @@
                 <span class="btn__label institutions__btn--label-usuarios">Cadastro em lote</span>
             </button>
             {{/link-to}}
-            <button class="btn  institutions__btn--label-usuarios btn--xxs" type="submit" {{action 'baixarTemplateAtivos' }}>
+            {{!-- <button class="btn  institutions__btn--label-usuarios btn--xxs" type="submit" {{action 'baixarTemplateAtivos' }}>
                 
                 Usuários cadastrados
-            </button>
+            </button> --}}
             {{#if (and (equalstr pessoaLogged.role 'admin') (equalstr pessoaLogged.id '4881'))}}
             <button class="btn btn--xxs" type="submit" {{action 'sendEmail' }}>
                 Enviar Email
@@ -31,13 +31,15 @@
     <div class="l-dots-between">
         <header class="l-dots-between__side">
             <form class="flex flex-col flow-md" autocomplete="off" aria-autocomplete="none">
-                {{!-- <label class="switch__usuarios">
+                {{#if (equalstr pessoaLogged.role 'admin')}}
+                <label class="switch__usuarios">
                     <input type="checkbox" id="only-enabled" {{action 'setEnableds' on='change'}} checked="checked">
                     <div class="slider">
                         <span class="text disabled-text"><span class="switch__usuarios--icone"><img src="/assets/img/cross.png" alt=""></span><p class="row">ver desabilitados</p></span>
                         <span class="text enabled-text"><span class="switch__usuarios--icone"><img src="/assets/img/check1.png" alt=""></span><p class="row">ver habilitados</p></span>
                     </div>
-                </label> --}}
+                </label>
+                {{/if}}
 
                 <div class="form-group form-group__usuarios">
                     <label class="form-group__label">Exibir</label>

@@ -1,106 +1,149 @@
-<aside id="lote_user_modal" class="modal modal--is-show">
+<aside id="lote_user_modal" class="modal modal-carga-3 active modal--is-show">
     <div class="modal__overlayer"></div>
-    <div class="modal__content modal__content--lg">
+    <div class="modal__content modal-carga-3__content-tela">
         <div class="institutions__mass-enroll-loader-container animated" id="spinner-importar-lote">
             <img src="/assets/img/lote-loader.gif" id="img-lote">
-            <span class="institutions__mass-enroll-loader-message">Processando...</span>
-        </div>
-        <div class="modal__header">
-            {{!-- {{#link-to 'gerdata.users' model.instituicao.id}} --}}
-            <button class="modal__close btn-close icon-x" onclick={{action 'verifyListPessoas'}}></button>
-            {{!-- {{/link-to}} --}}
-            <h3 class="modal__title">Cadastro de usuários em lote</h3>
+            <span class="institutions__mass-enroll-loader-message">{{loadMessage}}</span>
         </div>
 
-        <div class="modal__body modal__body--inside-scroll inside-scroll" style="max-height: 75vh;">
-            <div class="inside-scroll__fixed">
-                <p>Por meio dos botões abaixo, baixe o arquivo de carga, preencha-o, busque-o em seu computador e
-                    realize o pré-processamento.</p>
+        <div class="modal-carga-3__tit-modal">Subida de carga em lote</div>
+        <button class="modal__close btn-close icon-x" onclick={{action 'verifyListPessoas'}}></button>
+        <div class="modal-carga-3__content-tela--linhas">
+            <p>Para iniciar o processo de subida, siga o passo-a-passo descrito abaixo:</p>
 
-                <div class="institutions__mass-enroll institutions__btn-group flow-h-xs">
-                    <span class="institutions__mass-enroll-step"></span>
-                    <button class="btn btn-primary btn__claro" type="submit" {{action 'baixarTemplate' }}>
-                        Baixar template
-                    </button>
-                    <span>
-                        <img src="/assets/img/seta-lado.png" alt="">
-                    </span>
-                    <span class="institutions__mass-enroll-step"></span>
-                    <label class="btn label_get_lote" for="get_lote">Buscar arquivo</label>
-                    <input id="get_lote" multiple="false" onchange={{action "buscarArquivo"}} 
-                        accept="text/csv" type="file" style="display: none;" />
-                      <span>
-                        <img src="/assets/img/seta-lado.png" alt="">
-                    </span>
-                    
-                    <span class="institutions__mass-enroll-step"></span>
-                    {{#if (equalstr selected_file '')}}
-                        <button class="btn btn-primary btn--disabled" type="submit" disabled>
-                            Validar arquivo
-                        </button>
-                    {{else}}
-                        <button class="btn btn-primary" type="submit" {{action 'preImportarLote' }}>
-                            Validar arquivo
-                        </button>
-                    {{/if}}
-                    <span>
-                        <img src="/assets/img/seta-lado.png" alt="">
-                    </span>
-                    
-                    <span class="institutions__mass-enroll-step"></span>
-                    {{#if (and preProcessamento (equalstr errosPlanilha.length '0'))}}
-                    <div class="flex flex-col justify-content-end">
-                        <button class="btn" type="submit" {{action 'importarLote' }}>Processar</button>
+            <div class="modal-carga-3__content-tela--passos">
+                <div id="progress-bar" class="progress-steps">
+                    <div id="step-1" class="progress-step completed">
+                        <span class="icon icon--xl icon-check-g-base"></span>
+                        <div class="progress-step-label">Passo 1</div>
+                        <div class="progress-step-label-2" {{action 'baixarTemplate' }}>Baixar template</div>
                     </div>
-                    {{else}}
-                    <div class="flex flex-col justify-content-end">
-                        <button class="btn" type="submit" {{action 'importarLote' }} disabled>Processar</button>
+                    <div id="step-2" class="progress-step current">
+                        <span id="icon-step-2" class="icon icon--xl icon-timer-base"></span>
+                        <div class="progress-step-label">Passo 2</div>
+                        <label class="progress-step-label-2" for="get_lote">Buscar arquivo</label>
+                        <input id="get_lote" multiple="false" onchange={{action "buscarArquivo" }}
+                            accept=".xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            type="file" style="display: none;">
                     </div>
-                    {{/if}}
+                    <div id="step-3" class="progress-step incompleto">
+                        <span id="icon-step-3" class="icon icon--xl icon-timer-base"></span>
+                        <div class="progress-step-label">Passo 3</div>
+                        <div class="progress-step-label-2" {{action 'validarArquivo' }}>Validar arquivo</div>
+                    </div>
+                    <div id="step-4" class="progress-step incompleto">
+                        <span id="icon-step-4" class="icon icon--xl icon-timer-base"></span>
+                        <div class="progress-step-label">Passo 4</div>
+                        <div class="progress-step-label-2" {{action 'processarArquivo' }}>Processar arquivo</div>
+                    </div>
                 </div>
-            {{#if selected_file}}
-                <div class="institutions__attached-file alert alert--sm alert--has-icon alert--is-show">
-                    <span class="alert__icon icon-paperclip"></span>
-                    <span class="institutions__attached-label">Arquivo selecionado: </span>
-                    <strong>{{selected_file}}</strong>
-                </div>
-            {{/if}}
-
-                {{#if preProcessamento}}
-                    <div class="institutions__mass-enroll-instructions flow-xs">
-                        <h2>Atenção:</h2>
-                        <p>Abaixo está o diagóstico do arquivo.</p>
-                        <p>Verifique se há erros e corrija-os conforme as orientações dadas.</p>
-                        <p>Caso não tenham sido encontrados erros, clique em "Processar", no passo 4 acima.</p>
-                    </div>
-                {{/if}}
-
-                {{!-- <div class="t-center instrucoes">
-                    <p>Em caso de dúvidas, acesse o nosso passo a passo <span class="destaque"> clicando abaixo</span></p>
-                    <div class="passoapasso" id="passoapasso">
-                        <div class="passoapasso__imagem"></div>
-                    </div>
-                    <span {{action 'abrirPasso' }}>
-                        <img class="seta" {{action 'giro' }} src="/assets/img/seta-baixo.png" alt="" id="seta">
-                    </span>
-                </div> --}}
             </div>
 
-            <div class="inside-scroll__scroll">
+            <div class="modal-carga-3__content-tela--arquivos">
+                <h1><span class="icon icon--xl icon-anexar-base"></span>Arquivo selecionado: <b>{{selected_file}}</b>
+                </h1>
+                <p>Aqui embaixo aparecerá o diagnóstico do arquivo após a validação. Verifique se há erros e corrija-os conforme as orientações
+                    dadas.
+                    Caso não tenham sido encontrados erros, clique em Processar, no passo 4 acima.</p>
+            </div>
 
-            {{#if error_lote}}
-                <p>1- {{error_lote}}</p>
+            {{#if preProcessamento}}
+            <div class="modal-carga-3__content-tela--detalhes">
+                <table border="1">
+                    <tr>
+                        <th>Instituição</th>
+                        <th>Alunos contratados</th>
+                        <th>Alunos cadastrados</th>
+                        <th>Prof contratados</th>
+                        <th>Prof cadastrados</th>
+                    </tr>
+                    {{#each infosInstituicao as |inst|}}
+                    <tr>
+                        <td>{{inst.instituicao}}</td>
+                        <td>{{inst.maxAlunos}}</td>
+                        <td>{{inst.alunosCadastrados}}</td>
+                        <td>{{inst.maxInstrutores}}</td>
+                        <td>{{inst.instrutoresCadastrados}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+
+
+                {{!-- {{#if (isbigger '0' errosPlanilha.length)}} --}}
+                {{#if errorsExists}}
+                <p>Ajustes necessários</p>
+                <table border="1" class="mb-4">
+                    <tr>
+                        <th>Erro</th>
+                        <th>Linha</th>
+                    </tr>
+                    {{#each errosPlanilha as |erro|}}
+                    <tr>
+                        <td>{{erro.erro}}</td>
+                        <td>{{erro.linha}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+                <table border="1">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Perfil</th>
+                        <th>Erro</th>
+                        <th>Linha</th>
+                    </tr>
+                    {{#each infosInstituicao as |inst|}}
+                    {{#each inst.pessoas as |pessoa|}}
+                    <tr>
+                        <td>{{pessoa.nome}}</td>
+                        <td>{{pessoa.perfil}}</td>
+                        <td>{{pessoa.erro}}</td>
+                        <td>{{pessoa.linha}}</td>
+                    </tr>
+                    {{/each}}
+                    {{/each}}
+                </table>
+
+                {{else}}
+                {{#if avisoPlanilha}}
+                <span
+                    class="modal-carga-3__pre-validation modal-carga-3__pre-validation-warn mb-1 animated fadeInDown slow">Atenção:
+                    Nenhum aplicador foi informado!</span>
+                {{/if}}
+                {{#if validacaoOK}}
+                <span
+                    class="modal-carga-3__pre-validation modal-carga-3__pre-validation-sucess animated fadeInDown slow">Arquivo
+                    corretamente preenchido e pronto para ser processado!</span>
+                {{/if}}
+                {{/if}}
+
+
+            </div>
             {{/if}}
-            {{#if wait_lote}}
-                <p>Um momento...</p>
-            {{else if erro_lista}}
-                <p>2- {{erro_lista}}</p>
-            {{else}}
+            {{#if downloadStarted}}
+            <span
+                class="modal-carga-3__pre-validation modal-carga-3__pre-validation-sucess animated fadeInDown slow">Download
+                iniciado, aguarde...</span>
+            {{/if}}
 
+            {{#if isRunning}}
+            <span
+                class="modal-carga-3__pre-validation modal-carga-3__pre-validation-sucess animated fadeInDown slow">Carga em andamento ➡️ {{percentCarga}}%
+            </span>
+            {{/if}}
+
+            {{#if processamentoOk}}
+            <span
+                class="modal-carga-3__pre-validation modal-carga-3__pre-validation-sucess animated fadeInDown slow">Carga
+                concluída com sucesso!</span>
+            {{/if}}
+        </div>
+
+        <div class="modal-carga-3__content-tela-btns">
             {{#if historyLote}}
             <div class="institutions__mass-enroll__header">
                 <span>Histórico de cargas realizadas</span>
             </div>
+            <div class="institutions__mass-enroll__list">
                 <table class="table table--striped table--mass-enroll">
                     <thead class="thead-dark">
                         <tr>
@@ -115,7 +158,7 @@
                         </tr>
                     </thead>
                     <tbody class="gersistema-user-list-box">
-                    {{#each lista_lote as |lista|}}
+                        {{#each lista_lote as |lista|}}
                         <tr>
                             <td class="table__import">{{lista.pessoaNome}}</td>
                             <td class="table__file">{{lista.nomeArquivo}}</td>
@@ -125,133 +168,22 @@
                             <td class="table__users">{{lista.usuariosProcessados}}</td>
                             <td class="table__not-processed">{{lista.usuariosNaoProcessados}}</td>
                             <td class="table__log">
-                            {{#if lista.link}}
+                                {{#if lista.link}}
                                 <a href={{lista.link}}>
                                     <i class="icon-file-text"></i>
                                 </a>
-                            {{else}}
+                                {{else}}
                                 <i class="fa fa-times-o"></i>
-                            {{/if}}
+                                {{/if}}
                             </td>
                         </tr>
-                    {{/each}}
+                        {{/each}}
                     </tbody>
                 </table>
-                {{/if}}
-
-                {{#if preProcessamento}}
-                    {{#if (isbigger errosPlanilha.length '0')}}
-                        <div class="institutions__mass-enroll__header">
-                            <span>Diagnóstico do pré-processamento</span>
-                        </div>
-                        <table class="table table--striped table--mass-enroll table--mt">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th class="table__file" scope="col">Erro</th>
-                                    <th class="table__users" scope="col">Linha</th>
-                                </tr>
-                            </thead>
-                            <tbody class="gersistema-user-list-box">
-                            {{#each errosPlanilha as |erro|}}
-                                <tr>
-                                    <td class="table__file {{if (equalstr erro.erro 'Nenhum erro foi identificado') 'bg-success-10 color-success-50' 'bg-error-10 color-error-40'}}">{{erro.erro}}</td>
-                                    <td class="table__users {{if (equalstr erro.linha '0') 'bg-success-10 color-success-50' 'bg-error-10 color-error-40'}}">{{erro.linha}}</td>
-                                </tr>
-                            {{/each}}
-                            </tbody>
-                        </table>
-                    {{/if}}
-                    
-                    <div class="institutions__mass-enroll__header">
-                        <span>Prévia de alunos e turmas nesta carga</span>
-                    </div>
-
-                    <div class="pl-2">
-                        <div class="cadastro-lote--infos">
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--name ml-3">Instituição</div>
-                            {{#unless oneInst}}
-                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--action"></div>
-                            {{/unless}}
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Alun Contratados</div>
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Alun Cadastrados</div>
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Alun Planilha</div>
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Prof Contratados</div>
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Prof Cadastrados</div>
-                            <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number mr-3">Prof Planilha</div>
-                        </div>
-                        <div class="cadastro-lote--instituicao d-flex d-flex--c w100 mb-2 mt-2">
-                            {{#each infosInstituicao as |inst|}}
-                                <div class="cadastro-lote--inst-segment">
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--name cadastro-lote--infos--nametable">{{inst.instituicao}}</div>
-                                    {{#unless oneInst}}
-                                        <div class="cadastro-lote--infos cadastro-lote--infos--action">
-                                            <button class="btn" {{action 'showDetails' inst.instituicaoId}}>Detalhes</button>
-                                        </div>
-                                    {{/unless}}
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.maxAlunos}}</div>
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.alunosCadastrados}}</div>
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.alunosPlanilha}}</div>
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.maxInstrutores}}</div>
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.instrutoresCadastrados}}</div>
-                                    <div class="cadastro-lote--infos cadastro-lote--infos--number">{{inst.instrutoresPlanilha}}</div>
-                                </div>
-
-                                <div id="detalhes-{{inst.instituicaoId}}" style="display:{{if oneInst 'flex' 'none'}}" class="w100 d-flex--c animated fadeIn">
-                                    {{#if (isbigger inst.pessoas.length '0')}}
-                                        <p class="cadastro-lote--subtitle cadastro-lote--subtitle--error">Ajustes necessários</p>
-                                        <div class="cadastro-lote--card">
-                                            <div class="cadastro-lote--infos">
-                                                <div class="cadastro-lote--infos--title cadastro-lote--infos--name">Nome</div>
-                                                <div class="cadastro-lote--infos--title cadastro-lote--infos--number">Perfil</div>
-                                                <div class="cadastro-lote--infos--title cadastro-lote--infos--number">Erro</div>
-                                                <div class="cadastro-lote--infos--title cadastro-lote--infos--number">Linha</div>
-                                                <div class="cadastro-lote--infos--title cadastro-lote--infos--action"></div>
-                                            </div>
-                                            <div class="d-flex d-flex--c w100 mb-2 mt-3">
-                                                 {{#each inst.pessoas as |pessoa|}}
-                                                    <div class="cadastro-lote--infos">
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--name">{{pessoa.nome}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number">{{pessoa.perfil}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number">{{pessoa.erro}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number">{{pessoa.linha}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--action"></div>
-                                                    </div>
-                                                {{/each}}
-                                            </div>
-                                        </div>
-                                    {{/if}}
-
-                                    {{#if (isbigger inst.turmas.length '0')}}
-                                        <p class="cadastro-lote--subtitle">Prévia das turmas nesta instituição</p>
-                                        <div class="cadastro-lote--card">
-                                            <div class="cadastro-lote--infos">
-                                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--name">Nome</div>
-                                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Ano</div>
-                                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number">Alunos</div>
-                                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--number"></div>
-                                                <div class="cadastro-lote--infos cadastro-lote--infos--title cadastro-lote--infos--action"></div>
-                                            </div>
-                                            <div class="d-flex d-flex--c w100 mb-2 mt-3">
-                                                {{#each inst.turmas as |turma|}}
-                                                    <div class="cadastro-lote--infos">
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--name">{{turma.plataformaTurma}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number">{{turma.plataformaAno}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number">{{turma.alunos}}</div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--number"></div>
-                                                        <div class="cadastro-lote--infos cadastro-lote--infos--action"></div>
-                                                    </div>
-                                                {{/each}}
-                                            </div>
-                                        </div>
-                                    {{/if}}
-                                </div>
-                            {{/each}}
-                        </div>
-                    </div>
-                {{/if}}
-            {{/if}}
             </div>
+            {{/if}}
         </div>
     </div>
 </aside>
+
 {{loadInfo}}
