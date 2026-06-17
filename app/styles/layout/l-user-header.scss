@@ -16,7 +16,6 @@
   
 
   @include media('<xl') {
-    
     justify-content: space-around;
     padding: 1.8rem;
   }
@@ -26,22 +25,17 @@
     width: 80%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
 
-    @include media('<=lg') {
-      justify-content: space-between;
+    @include media('<lg') {
       width: 100%;
       padding: 0 4rem 0 4rem;
     }
 
-    @include media('<=sm') {
-      justify-content: space-between;
-      width: 100%;
+    @include media('<sm') {
       padding: 0 0.5rem 0 0.5rem;
     }
-
-
   }
 
 
@@ -388,14 +382,6 @@
         margin-right: $distance--md;
       }
     }
-  }
-
-
-
-  @include media('>md') {
-
-    padding-left: $distance--xl;
-    padding-right: $distance--xl;
   }
 
   @include media('>lg') {
