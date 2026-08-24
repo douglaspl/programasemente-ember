@@ -38,7 +38,7 @@
                                 <div class="flex flex-row items-center justify-between gap-sm">
                                     <div class="flow-xxs flex flex-col">
                                         <span class="title-3 tt-u">{{arquivoItem.tipo}}</span>
-                                        <span class="color-leaf-50">{{arquivoItem.name}}</span>
+                                        <span class="color-link--deepblue">{{arquivoItem.name}}</span>
                                     </div>
                                     {{#if (containerUrl arquivoItem.url)}}
                                         <a class="btn btn--link color-success-40" href={{arquivoItem.url}} target="_blank"> 
@@ -81,7 +81,7 @@
                             <div class="flex flex-row items-center justify-between gap-sm">
                                 <div class="flow-xxs flex flex-col">
                                     <img class="self-start" src="{{model.capa}}" alt="{{model.capaName}}">
-                                    <span class="color-leaf-50">{{model.capaName}}</span>
+                                    <span class="color-link--deepblue">{{model.capaName}}</span>
                                 </div>
                                 {{#if (containerUrl model.capa)}}
                                     <a class="btn btn--link color-success-40" href={{model.capa}} target="_blank">

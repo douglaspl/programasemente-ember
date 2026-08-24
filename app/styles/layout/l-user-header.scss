@@ -16,7 +16,7 @@
   margin-top: 1rem;
   border-radius: 0 2rem;
 
-  @include media("<xl") {
+  @include media('<xl') {
     justify-content: space-around;
     padding: 1.8rem;
    // width: 90%;
@@ -26,17 +26,15 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    
 
-    @include media("<=lg") {
-      justify-content: space-between;
-    //  width: 100%;
+    @include media('<lg') {
+      width: 100%;
       padding: 0 4rem 0 4rem;
     }
 
-    @include media("<=sm") {
-      justify-content: space-between;
-     // width: 100%;
+    @include media('<sm') {
       padding: 0 0.5rem 0 0.5rem;
     }
   }
@@ -339,14 +337,10 @@
     }
   }
 
-  @include media(">md") {
-    padding-left: $distance--xl;
-    padding-right: $distance--xl;
-  }
+  @include media('>lg') {
 
-  @include media(">lg") {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: $distance--xxl;
+    padding-right: $distance--xxl;
   }
 
   @include media(">xl") {

@@ -29,6 +29,10 @@ $deepblue: #083b5b;
 $deepgreen: hsl(88, 46%, 32%);
 $deepgreen-light: hsl(88, 46%, 55%);
 
+.color-link--deepblue {
+    color: $deepblue !important;
+}
+
 $colors: (
 ("blue-navy-0",  $blue-navy-0),
 ("blue-navy-10", $blue-navy-10),
