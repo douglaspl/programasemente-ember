@@ -54,18 +54,18 @@
             flex-direction: column;
             gap: 2px;
             width: 45%;
-            
-            
+
+
             >* {
                 color: #808080;
             }
-            
+
             >span {
                 font-weight: 700;
                 line-height: 18px;
-                
+
             }
-            
+
             >ul>li {
                 display: flex;
                 flex-direction: column;
@@ -74,21 +74,21 @@
                 font-size: 12px;
                 line-height: 18px;
                 margin-bottom: 0.8rem;
-                
+
             }
-            
-            
-            
+
+
+
         }
-        
-        
+
+
         &-tipo-publico {
-            
+
             display: flex;
             position: relative;
             flex-grow: 1;
             padding: 1rem;
-            
+
             &-box {
                 border: solid 1px #89BE44;
                 width: 100%;
@@ -100,29 +100,34 @@
                 max-height: 5.5rem;
                 height: 5.5rem;
                 flex-grow: 0;
-                
+
                 &--tipo {
                     display: flex;
                     flex-direction: column;
                     align-self: center;
                     margin-left: 1rem;
-                    
-                    > span {
+                    align-items: center;
+
+                    >span {
                         font-size: 12px;
                         font-weight: 400;
                     }
-                    
+
                 }
-                
+
                 &--seta {
-                    
+                    width: 40px;
                 }
-                
+
                 &--audiences {
                     // border: solid 2px red;
                     width: 100%;
                     height: 100%;
                     align-content: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 10px;
 
                     &--wrapper {
                         font-size: 12px;
@@ -131,13 +136,18 @@
                         gap: 4px;
                         padding-left: 0.5rem;
                     }
+
+                    &--icon {
+                        max-width: 18px;
+                        height: auto;
+                    }
                 }
-                
+
             }
-            
-            
+
+
         }
     }
-    
-    
+
+
 }

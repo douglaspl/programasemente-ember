@@ -59,9 +59,16 @@
   <div class="card-conteudo__cabecalho">
     <div class="card-conteudo__cabecalho-titulo">{{conteudo.titulo}}</div>
     <div class="card-conteudo__cabecalho-acoes">
-      <span><img src="/assets/img/accept.png"></span>
-      <span><img src="/assets/img/edit-button.png"></span>
-      <span><img src="/assets/img/delete.png"></span>
+      
+      {{#if conteudo.situacao}}
+        <span class="animated fadeIn"><img src="/assets/img/accept.png" alt="Ativo" {{action 'postSelectedSituacao' conteudo}}></span>
+      {{else}}
+        <span class="animated fadeIn"><img src="/assets/img/disabled.png" alt="Inativo" {{action 'postSelectedSituacao' conteudo}}></span>
+      {{/if}}
+      
+      
+      <span><img src="/assets/img/edit-button.png" {{action 'goToEditConteudo' conteudo.id}}></span>
+      {{!-- <span><img src="/assets/img/delete.png"></span> --}}
     </div>
   </div>
   <div class="card-conteudo__meio">
@@ -82,9 +89,9 @@
           {{#if (equalstr conteudo.tipo 'Video')}}
             <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
           {{else if (equalstr conteudo.tipo 'Documento')}}
-            <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
+            <img src="/assets/img/document.png" class="icon icon--md icon--square color-blue-navy-50">
           {{else if  (equalstr conteudo.tipo 'Imagem')}}
-            <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
+            <img src="/assets/img/image-content.png" class="icon icon--md icon--square color-blue-navy-50">
           {{/if}}
             <span>{{conteudo.tipo}}</span>
         </span>
@@ -92,7 +99,18 @@
         <span class="card-conteudo__meio-tipo-publico-box--audiences">
           {{#each conteudo.publicos as |publico|}}
             <div class="card-conteudo__meio-tipo-publico-box--audiences--wrapper">
-              <span>x</span>
+              <span>
+                {{#if (equalstr publico.nameFormat 'Alunos')}}
+                  <img src="/assets/img/publico-alunos.png" class="icon icon--xs card-conteudo__meio-tipo-publico-box--audiences--icon">
+                {{else if (equalstr publico.nameFormat 'Responsáveis')}}
+                  <img src="/assets/img/publico-responsaveis.png" class="icon icon--xs card-conteudo__meio-tipo-publico-box--audiences--icon">
+                {{else}}
+                  <img src="/assets/img/publico-professores.png" class="icon icon--xs card-conteudo__meio-tipo-publico-box--audiences--icon">
+                {{/if}}
+
+
+
+              </span>
               <span>{{publico.nameFormat}}</span>
             </div>
           {{/each}}
