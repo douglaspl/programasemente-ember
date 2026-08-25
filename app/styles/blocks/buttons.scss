@@ -448,7 +448,12 @@
     background-color: #fafafa;
     border: solid 1px #89BE44;
     box-shadow: none;
-    color: #808080
+    color: #808080;
+
+    &.btn--is-active {
+      background-color: #8AB925;
+      color: #fff;
+    }
   }
 
   &--as-filter {
