@@ -1,23 +1,39 @@
-<section class="flow-xl">
-  <h1 class="sr-only">Conteúdo de Conteúdos</h1>
-
+<section class="flow-md">
+  
+  <div class="l-dots-between__header">
+    <h1 class="l-dots-between__side__title-content">Conteúdos</h1>
+    <div class="l-dots-between__header--filter">
+      <label for="dataUpload">Classificar por:</label>
+      <select id="dataUpload" name="dataUpload">
+        <option>Ordem alfabética</option>
+        <option>Data de upload</option>
+      </select>
+    </div>
+  </div>
   <div class="l-dots-between">
-
-    <aside class="l-dots-between__side">
-      <h1 class="sr-only">Filtros de conteúdos</h1>
-
+    <aside class="l-dots-between__side l-dots-between__side--conteudos">
       <form autocomplete="off" class="flex flex-col flow-md">
         {{#if (equalstr pessoaRole 'admin')}}
-        <button type="button" class="btn" {{action "goToCreateConteudo" }}>Cadastrar conteúdo</button>
+        <button type="button" class="btn btn__ps" {{action "goToCreateConteudo" }}>Cadastrar conteúdo</button>
         {{/if}}
 
+        <div class="form-group">
+          {{!-- <label class="form-group__label-conteudos" for="search">Busca</label> --}}
+          <div class="form-group__search-content">
+            {{input class="form-group__input form-group__input--conteudos" placeholder="Busca" id="search" type="text"
+            value=search }}
+            <span>🔍</span>
+          </div>
+          <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
+        </div>
+
         <div class="two-col-wrap">
-          <button class="btn btn--as-filter {{if (equalstr " Todos" selectedPublico) 'btn--is-active' '' }}"
+          <button class="btn btn__filter-content {{if (equalstr " Todos" selectedPublico) 'btn--is-active' '' }}"
             {{action 'refreshSelectedPublicos' "Todos" }} type="button">
             <span class="btn__label">Todos</span>
           </button>
           {{#each publicos as |pub|}}
-          <button class="btn btn--as-filter {{if (equalstr pub.name selectedPublico) 'btn--is-active' ''}}"
+          <button class="btn btn__filter-content {{if (equalstr pub.name selectedPublico) 'btn--is-active' ''}}"
             {{action 'refreshSelectedPublicos' pub.id}} type="button">
             <span class="btn__label">{{pub.nameFormat}}</span>
           </button>
@@ -26,10 +42,10 @@
 
 
         <div class="form-group">
-          <label class="form-group__label" for="situacao">Situação</label>
+          <label class="form-group__label-conteudos" for="situacao">Situação</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="situacao" id="situacao" onchange={{action 'refreshSelectedSituacao'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="situacao" id="situacao"
+              onchange={{action 'refreshSelectedSituacao' value='target.value' }}>
               <option value="">Todos</option>
               <option value="true" selected="selected">Ativos</option>
               <option value="false">Inativos</option>
@@ -38,29 +54,24 @@
         </div>
 
         <div class="form-group">
-          <label class="form-group__label" for="calendario">Calendário</label>
+          <label class="form-group__label-conteudos" for="calendario">Calendário</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="calendario" id="calendario" onchange={{action 'refreshSelectedCal'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="calendario" id="calendario"
+              onchange={{action 'refreshSelectedCal' value='target.value' }}>
               <option value="Todos">Todos</option>
               {{#each calendarios as |cal|}}
-                <option value="{{cal.nome}}" selected={{if (equalstr calendarioAtual cal.nome) 'selected'}}>{{cal.nome}}</option>
+              <option value="{{cal.nome}}" selected={{if (equalstr calendarioAtual cal.nome) 'selected' }}>{{cal.nome}}
+              </option>
               {{/each}}
             </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-group__label" for="search">Busca</label>
-          {{input class="form-group__input" id="search" type="text" value=search }}
-          <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label" for="tipo">Tipo do Arquivo</label>
+          <label class="form-group__label-conteudos" for="tipo">Tipo do Arquivo</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="tipo" id="tipo" onchange={{action 'refreshSelectedTipo'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="tipo" id="tipo"
+              onchange={{action 'refreshSelectedTipo' value='target.value' }}>
               <option selected="selected" value="Todos">Todos</option>
               {{#each tipos as |tipo|}}
               <option value="{{tipo}}">{{tipo}}</option>
@@ -73,9 +84,9 @@
 
 
         <div class="form-group">
-          <label class="form-group__label" for="agrupamento">Grupo dos Conteúdos</label>
+          <label class="form-group__label-conteudos" for="agrupamento">Grupo dos Conteúdos</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="agrupamento" id="agrupamento"
+            <select class="form-group__input form-group__input--conteudos" name="agrupamento" id="agrupamento"
               onchange={{action 'refreshSelectedAgrupamento' value='target.value' }}>
               <option value="Todos" selected="selected">Todos</option>
               <option value="Básico">Básico</option>
@@ -86,10 +97,10 @@
         </div>
         {{#if (equalstr show 'Aulas')}}
         <div class="form-group">
-          <label class="form-group__label" for="segmento">Segmento</label>
+          <label class="form-group__label-conteudos" for="segmento">Segmento</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="segmento" id="segmento" onchange={{action 'refreshSelectedSegmento'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="segmento" id="segmento"
+              onchange={{action 'refreshSelectedSegmento' value='target.value' }}>
               <option value="" selected="selected">---</option>
               {{#each segmentos as |seg|}}
               <option value="{{seg.titulo}}">{{seg.titulo}}</option>
@@ -99,10 +110,10 @@
         </div>
 
         <div class="form-group">
-          <label class="form-group__label" for="ano">Ano</label>
+          <label class="form-group__label-conteudos" for="ano">Ano</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="ano" id="ano" onchange={{action 'refreshSelectedAno'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="ano" id="ano"
+              onchange={{action 'refreshSelectedAno' value='target.value' }}>
               <option value="" selected="selected">---</option>
               {{#each segmentos as |seg|}}
               {{#if (equalstr selectedSegmento seg.titulo)}}
@@ -116,7 +127,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-group__label" for="aula">Aula</label>
+          <label class="form-group__label-conteudos" for="aula">Aula</label>
           <div class="form-group__wrapper form-group__wrapper--select">
             <select class="form-group__input w100" name="aula" id="aula" onchange={{action 'refreshSelectedAula'
               value='target.value' }}>
@@ -139,10 +150,10 @@
         {{else}}
 
         <div class="form-group">
-          <label class="form-group__label" for="tema">Tema</label>
+          <label class="form-group__label-conteudos" for="tema">Tema</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input" name="tema" id="tema" onchange={{action 'refreshSelectedTema'
-              value='target.value' }}>
+            <select class="form-group__input form-group__input--conteudos" name="tema" id="tema"
+              onchange={{action 'refreshSelectedTema' value='target.value' }}>
               <option value="Todos" selected="selected">Todos</option>
               {{#each temas as |tema|}}
               <option value="{{tema.name}}" selected={{if (equalstr tema.name selectedTema) "selected" }}>{{tema.name}}
@@ -160,8 +171,9 @@
       <hgroup>
         <h1 class="sr-only">Lista de conteúdos de {{selectedAgrupamento}}</h1>
         <h1 class="sr-only">{{selectedPublico}}</h1>
-        <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20">
-            ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})</span></h2>
+        {{!-- <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> --}}
+            ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})
+            {{!--</span> </h2> --}}
       </hgroup>
 
       <ul class="list list--2-col">

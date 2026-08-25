@@ -88,6 +88,10 @@
     background-color: $clickables-bg-color;
   }
 
+  &__ps {
+    border-radius: 0 20px 0 20px;
+  }
+
   &__add {
     width: 10rem;
     
@@ -438,6 +442,13 @@
       opacity: 1;
     }
 
+  }
+
+  &__filter-content {
+    background-color: #fafafa;
+    border: solid 1px #89BE44;
+    box-shadow: none;
+    color: #808080
   }
 
   &--as-filter {

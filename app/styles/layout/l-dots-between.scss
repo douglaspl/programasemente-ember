@@ -37,6 +37,37 @@
    // width: $distance--md;
   //}
 
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-top: 1rem;
+
+    &--filter {
+
+      select {
+        border-radius: 10px;
+        background-color: #fff;
+        border: none;
+        width: 185px;
+        font-size: 14px;
+        color: #808080;
+        padding: 0 0.5rem 0 0.5rem;
+        height: 1.5rem;
+        
+      }
+
+      label {
+        font-size: 14px;
+        color: #808080;
+        padding-right: 0.5rem;
+      }
+
+    }
+  }
+
   &__side {
     flex: 0 0 25%;
     order: 0;
@@ -44,7 +75,23 @@
     @include media(">sm") {
       flex: 0 0 20%;
     }
+
+    &__title-content {
+      color: #808080;
+    }
+  
+    &--conteudos {
+      background-color: #fff;
+      padding: 1.5rem;
+      box-shadow: 15px 15px 30px 0px rgba(0, 0, 0, 0.039), -15px -15px 30px 0px rgba(0, 0, 0, 0.039);
+      border-radius: 0 40px 0 40px;
+      height: 100%;
+      flex: 0 0 25%;
+    }
+  
   }
+
+
 
   &__content {
     flex: 1;
