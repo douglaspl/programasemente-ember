@@ -4,9 +4,9 @@
     <h1 class="l-dots-between__side__title-content">Conteúdos</h1>
     <div class="l-dots-between__header--filter">
       <label for="dataUpload">Classificar por:</label>
-      <select id="dataUpload" name="dataUpload">
-        <option>Ordem alfabética</option>
-        <option>Data de upload</option>
+      <select id="dataUpload" name="dataUpload" onchange={{action 'refreshSelectedOrdenacao' value='target.value' }}>
+        <option value="alfabetica" selected={{if (equalstr selectedOrdenacao 'alfabetica') 'selected' }}>Ordem alfabética</option>
+        <option value="data" selected={{if (equalstr selectedOrdenacao 'data') 'selected' }}>Data de upload</option>
       </select>
     </div>
   </div>
