@@ -146,6 +146,17 @@
 
   }
 
+  &--2-col {
+    display: grid;
+    gap: $distance--md;
+    grid-template-columns: 1fr;
+
+    @include media('>sm') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  }
+
   &--3-col {
 
     @include media('>sm') {

@@ -1,5 +1,5 @@
-{{#each conteudoAnos as |ano|}}
-  <div class="media">
+{{!-- {{#each conteudoAnos as |ano|}} --}}
+  {{!-- <div class="media">
 
     <div class="flex flex-row gap-xs divider p-bottom--sm w100">
 
@@ -16,28 +16,18 @@
             <span>Ativo</span>
           </span>
         </span>
-        {{!-- <span class="btn__label label__active">{{if conteudo.situacao "Ativo" "Inativo"}}</span> --}}
+        
       </button>
 
       <a href="#" class="btn btn--text btn--xxs" {{action 'goToEditConteudo' conteudo.id}}>
-        {{!-- <span class="btn__icon icon-edit"></span> --}}
         <span class="btn__label">Editar</span>
       </a>
-      {{!-- {{#if (equalstr pessoaRole 'admin')}}
-        <div class="checkbox">
-          <input class="checkbox__input" id={{conteudo.id}} type="checkbox" name="situacao" onchange={{ action 'postSelectedSituacao' conteudo}} checked={{conteudo.situacao}}>
-          <label class="checkbox__label" for="{{conteudo.id}}">{{if conteudo.situacao "Ativo" "Inativo"}}</label>
-        </div>
-      {{/if}} --}}
+
     </div>
 
     <div class="media__body">
 
       <div class="row middle-xs self-stretch">
-
-        <!-- "video de" + seg + ano + aula/bloco + tipo (video/pdf/etc) + publico que pode ver
-             "video de" = título do conteúdo
-        -->
         <div class="col-xs-12 col-md-7">
           {{conteudo-aula-card conteudo=conteudo ano=ano show=show}}
         </div>
@@ -59,25 +49,57 @@
             {{/each}}
           </span>
         </div>
-
-        {{!--
-        <ul>
-          <li class="flex flex-row items-center gap-xs" id="Publicos">
-            <span class="title-aux">
-              Ativo: {{if conteudo.situacao "Ativo" "Inativo"}}
-            </span>
-          </li>
-        </ul>
-
-        <div>
-          <span class="title-aux">{{conteudo.tema.name}}</span>
-          <span class="media__title m-top--xxs">{{conteudo.titulo}}</span>
-        </div>
-        --}}
-
       </div>
 
     </div>
 
+  </div> --}}
+
+<div class="card-conteudo">
+  <div class="card-conteudo__cabecalho">
+    <div class="card-conteudo__cabecalho-titulo">{{conteudo.titulo}}</div>
+    <div class="card-conteudo__cabecalho-acoes">
+      <span><img src="/assets/img/accept.png"></span>
+      <span><img src="/assets/img/edit-button.png"></span>
+      <span><img src="/assets/img/delete.png"></span>
+    </div>
   </div>
-{{/each}}
+  <div class="card-conteudo__meio">
+    <div class="card-conteudo__meio-seg-ano-aula">
+      <span>Listado para:</span>
+      <ul>
+        {{#each conteudo.aulas as |infos|}}
+        <li>
+          <span>{{infos.plataformaAno.segmento.titulo}} - {{infos.plataformaAno.name}}</span>
+          <span>{{infos.titulo}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>  
+    <div class="card-conteudo__meio-tipo-publico">
+      <div class="card-conteudo__meio-tipo-publico-box">
+        <span class="card-conteudo__meio-tipo-publico-box--tipo">
+          {{#if (equalstr conteudo.tipo 'Video')}}
+            <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
+          {{else if (equalstr conteudo.tipo 'Documento')}}
+            <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
+          {{else if  (equalstr conteudo.tipo 'Imagem')}}
+            <img src="/assets/img/video-icon.png" class="icon icon--md icon--square color-blue-navy-50">
+          {{/if}}
+            <span>{{conteudo.tipo}}</span>
+        </span>
+        <span class="card-conteudo__meio-tipo-publico-box--seta"><img src="/assets/img/arrow-content.png"></span>
+        <span class="card-conteudo__meio-tipo-publico-box--audiences">
+          {{#each conteudo.publicos as |publico|}}
+            <div class="card-conteudo__meio-tipo-publico-box--audiences--wrapper">
+              <span>x</span>
+              <span>{{publico.nameFormat}}</span>
+            </div>
+          {{/each}}
+        </span>
+      </div>
+    </div>  
+  </div>
+</div>
+
+{{!-- {{/each}} --}}

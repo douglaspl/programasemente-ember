@@ -142,7 +142,7 @@
         <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})</span></h2>
       </hgroup>
 
-      <ul class="list list--striped flow-lg">
+      <ul class="list list--2-col">
         {{#each conteudos as |conteudo|}}
           {{#if (containStr search conteudo.titulo)}}
             <li>

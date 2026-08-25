@@ -1,0 +1,143 @@
+.card-conteudo {
+    $this: &;
+
+    display: block;
+    background-color: #fff;
+    box-shadow: 15px 15px 30px 0px rgba(0, 0, 0, 0.039), -15px -15px 30px 0px rgba(0, 0, 0, 0.039);
+
+    width: 100%;
+    height: 100%;
+    min-height: 15rem;
+    max-height: 15rem;
+    border-radius: 20px 0 20px 0;
+    overflow: auto !important;
+
+
+    &__cabecalho {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+
+        &-titulo {
+            color: #808080;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 24px;
+        }
+
+        &-acoes {
+            gap: 10px;
+            display: flex;
+            padding-right: 1rem;
+
+
+            img {
+                max-width: 24px;
+                height: auto;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    &__meio {
+
+        display: flex;
+        position: relative;
+
+        &-seg-ano-aula {
+            display: flex;
+            position: relative;
+            padding-left: 24px;
+            flex-direction: column;
+            gap: 2px;
+            width: 45%;
+            
+            
+            >* {
+                color: #808080;
+            }
+            
+            >span {
+                font-weight: 700;
+                line-height: 18px;
+                
+            }
+            
+            >ul>li {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 18px;
+                margin-bottom: 0.8rem;
+                
+            }
+            
+            
+            
+        }
+        
+        
+        &-tipo-publico {
+            
+            display: flex;
+            position: relative;
+            flex-grow: 1;
+            padding: 1rem;
+            
+            &-box {
+                border: solid 1px #89BE44;
+                width: 100%;
+                border-radius: 10px;
+                flex-direction: row;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                max-height: 5.5rem;
+                height: 5.5rem;
+                flex-grow: 0;
+                
+                &--tipo {
+                    display: flex;
+                    flex-direction: column;
+                    align-self: center;
+                    margin-left: 1rem;
+                    
+                    > span {
+                        font-size: 12px;
+                        font-weight: 400;
+                    }
+                    
+                }
+                
+                &--seta {
+                    
+                }
+                
+                &--audiences {
+                    // border: solid 2px red;
+                    width: 100%;
+                    height: 100%;
+                    align-content: center;
+
+                    &--wrapper {
+                        font-size: 12px;
+                        line-height: 16px;
+                        display: flex;
+                        gap: 4px;
+                        padding-left: 0.5rem;
+                    }
+                }
+                
+            }
+            
+            
+        }
+    }
+    
+    
+}
