@@ -129,7 +129,7 @@
         <div class="form-group">
           <label class="form-group__label-conteudos" for="aula">Aula</label>
           <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input w100" name="aula" id="aula" onchange={{action 'refreshSelectedAula'
+            <select class="form-group__input form-group__input--conteudos w100" name="aula" id="aula" onchange={{action 'refreshSelectedAula'
               value='target.value' }}>
               <option value="" selected="selected">---</option>
               {{#each segmentos as |seg|}}

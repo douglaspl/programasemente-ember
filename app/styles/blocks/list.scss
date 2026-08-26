@@ -150,11 +150,27 @@
     display: grid;
     gap: $distance--md;
     grid-template-columns: 1fr;
+    position: relative;
 
     @include media('>sm') {
       grid-template-columns: repeat(2, 1fr);
-    }
+     }
 
+     @include media('<md') {
+      display: block;
+      
+     }
+
+     > li {
+      display: flex;
+      align-items: stretch;
+
+      @include media('<md') {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+     }
   }
 
   &--3-col {
