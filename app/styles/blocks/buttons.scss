@@ -176,8 +176,8 @@
     color: $clickables-bg-color;
     display: flex;
     font-size: $font-size--md;
-    padding-bottom: $distance--lg;
-    padding-top: $distance--lg;
+    // padding-bottom: $distance--lg;
+    // padding-top: $distance--lg;
     width: 100%;
 
     &:hover:not([disabled]) ,

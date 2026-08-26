@@ -10,8 +10,10 @@
 .m-card-list {
   $this: &;
 
-  display: grid;
-  gap: $distance--lg;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 4fr));
-  grid-template-rows: repeat(auto-fill, minmax(20rem, 4fr));
+  display: flex;
+  gap: $distance--md;
+  flex-direction: column;
+  // grid-template-columns: repeat(1, minmax(14rem, 1fr));
+  // grid-template-rows: repeat(auto-fill, min(10rem));
+
 }

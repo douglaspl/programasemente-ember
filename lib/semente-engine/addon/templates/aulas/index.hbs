@@ -1,10 +1,9 @@
-
-{{header-geral  parentController = this.parentController
-                pessoa=pessoa
-                thisRoute=thisRoute
-                livros = livros
-                route='aulas'
-                }}
+{{header-geral parentController = this.parentController
+pessoa=pessoa
+thisRoute=thisRoute
+livros = livros
+route='aulas'
+}}
 
 <main class="main pt-1">
   <section class="flow-xl">
@@ -14,26 +13,28 @@
     <nav>
       <ul class="tabs">
         {{#each segmentos as |seg|}}
-          {{#if (equalstr seg.titulo 'Adultos')}}
-            {{#if (or (equalstr pessoa.role 'admin') (equalstr pessoa.role 'recursosHumanos'))}}
-              <li>
-                <button type="button" class="tabs__tab {{if (equalstr selectedSegmento.titulo seg.titulo) 'tabs__tab--is-active'}}"
-                  {{action 'refreshSelectedSegmento' seg}}>
-                  <span>{{seg.titulo}}</span>
-                </button>
-              </li>
-            {{/if}}  
-          {{else}}
-            <li>
-              <button type="button" class="tabs__tab {{if (equalstr selectedSegmento.titulo seg.titulo) 'tabs__tab--is-active'}}"
-                {{action 'refreshSelectedSegmento' seg}}>
-                <span>{{seg.titulo}}</span>
-              </button>
-            </li>
-            
-          {{/if}}
+        {{#if (equalstr seg.titulo 'Adultos')}}
+        {{#if (or (equalstr pessoa.role 'admin') (equalstr pessoa.role 'recursosHumanos'))}}
+        <li>
+          <button type="button"
+            class="tabs__tab {{if (equalstr selectedSegmento.titulo seg.titulo) 'tabs__tab--is-active'}}"
+            {{action 'refreshSelectedSegmento' seg}}>
+            <span>{{seg.titulo}}</span>
+          </button>
+        </li>
+        {{/if}}
+        {{else}}
+        <li>
+          <button type="button"
+            class="tabs__tab {{if (equalstr selectedSegmento.titulo seg.titulo) 'tabs__tab--is-active'}}"
+            {{action 'refreshSelectedSegmento' seg}}>
+            <span>{{seg.titulo}}</span>
+          </button>
+        </li>
+
+        {{/if}}
         {{/each}}
-        
+
       </ul>
     </nav>
     {{/unless}}
@@ -44,47 +45,34 @@
         <h1 class="sr-only">Filtros de conteúdos</h1>
         <form autocomplete="off" class="flex flex-col flow-md">
           {{#unless (equalstr pessoa.role 'aluno')}}
-            <div class="two-col-wrap">
-              {{#each plataformaAnos as |plat_ano|}}
-                  <button class="btn btn--as-filter {{if (equalstr selectedAno.name plat_ano.name) 'btn--is-active'}}" {{action 'refreshSelectedAno' plat_ano}} type="button">
-                    <span class="btn__label" style="font-size:.875em;">{{plat_ano.name}}</span>
-                  </button>
-              {{/each}}
-            </div>
+          <div class="two-col-wrap">
+            {{#each plataformaAnos as |plat_ano|}}
+            <button class="btn btn--as-filter {{if (equalstr selectedAno.name plat_ano.name) 'btn--is-active'}}"
+              {{action 'refreshSelectedAno' plat_ano}} type="button">
+              <span class="btn__label" style="font-size:.875em;">{{plat_ano.name}}</span>
+            </button>
+            {{/each}}
+          </div>
           {{/unless}}
 
           <div class="form-group">
             <label class="form-group__label">Competência</label>
             <div class="form-group__wrapper form-group__wrapper--select">
-              <select class="form-group__input" id="busca" onchange={{action 'refreshSelectedBusca' value='target.value'}}>
+              <select class="form-group__input" id="busca" onchange={{action 'refreshSelectedBusca' value='target.value'
+                }}>
                 <option selected="selected" value="0">Todas</option>
                 {{#each competencias as |competencia|}}
-                  <option value="{{competencia.id}}">{{competencia.name}}</option>
+                <option value="{{competencia.id}}">{{competencia.name}}</option>
                 {{/each}}
               </select>
             </div>
-            {{!-- <a class="form__aux-link" onclick={{action 'eraseText'}}>Limpar busca</a> --}}
           </div>
 
-          {{!-- {{#if (equalstr pessoa.role 'instrutor')}}
-            <div class="form-group">
-              <label class="form-group__label">Situação</label>
-              <div class="form-group__wrapper form-group__wrapper--select">
-                <select class="form-group__input" id="situation"
-                  onchange={{action 'refreshSelectedSituacao' value='target.value'}}>
-                  <option selected="selected" value="">Todas</option>
-                  <option value="Não aplicada">Não aplicada</option>
-                  <option value="Parcialmente aplicada">Parcialmente aplicada</option>
-                  <option value="Aplicada">Aplicada</option>
-                </select>
-              </div>
-            </div>
-          {{/if}} --}}
 
           <div class="form-group">
             <label class="form-group__label">Ordenação</label>
             <div class="form-group__wrapper form-group__wrapper--select">
-              <select class="form-group__input" id="order"  onchange={{action 'refreshOrdem' value='target.value'}}>
+              <select class="form-group__input" id="order" onchange={{action 'refreshOrdem' value='target.value' }}>
                 <option selected="selected" value="0">Ordem Crescente</option>
                 <option value="1">Ordem Decrescente</option>
               </select>
@@ -92,15 +80,16 @@
           </div>
 
           {{#if (equalstr pessoa.role 'admin')}}
-            <div class="form-group">
-              <label class="form-group__label">Calendário</label>
-              <div class="form-group__wrapper form-group__wrapper--select">
-                <select class="form-group__input" id="calendario" onchange={{action 'refreshSelectedCalendario' value='target.value'}}>
-                  {{#each calendarios as |calendario|}}
-                    <option value="{{calendario.id}}">{{calendario.nome}}</option>
-                  {{/each}}
-                </select>
-              </div>
+          <div class="form-group">
+            <label class="form-group__label">Calendário</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input" id="calendario" onchange={{action 'refreshSelectedCalendario'
+                value='target.value' }}>
+                {{#each calendarios as |calendario|}}
+                <option value="{{calendario.id}}">{{calendario.nome}}</option>
+                {{/each}}
+              </select>
+            </div>
           </div>
           {{/if}}
         </form>
@@ -109,62 +98,68 @@
       <section class="l-dots-between__content flow-md">
         <hgroup class="divider p-bottom--lg">
           <h1 class="sr-only">Lista de conteúdos do {{selectedAno.name}}</h1>
-        
+
           <div class="l-dots-between__livros">
             <div class="flex flex-row items-center gap-lg l-dots-between__ano">
-              <h2 class="title-4">{{selectedAno.name}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> ({{aulasFiltradas.length}}  {{if isBloco 'blocos' 'aulas'}})</span></h2>
+              <h2 class="title-4">{{selectedAno.name}}<span class="fs--xs fw--3 fs-i color-blue-navy-20">
+                  ({{aulasFiltradas.length}} {{if isBloco 'blocos' 'aulas'}})</span></h2>
             </div>
-            
+
             {{#unless (and pessoa.instituicao.vendaDireta (equalstr pessoa.role 'aluno'))}}
-              <a class="l-dots-between__livros--botao" href="https://sementeportal.blob.core.windows.net/plataforma/{{selectedAno.name}}/programacao.pdf" target="_blank">
-                <div>
-                  <span class="icon-paperclip m-right--xxs"></span>
-                  <span>Programação</span>
-                </div>
-              </a>
-              {{#each livros as |l|}}
-                <li class=" l-dots-between__livros--botao" {{action "openPdfViewer" l}}>
-                  <div>
-                    <span class="icon-paperclip m-right--xxs"></span>
-                    <span>Livro {{l.plataformaAno.name}} | {{#if (equalstr l.perfil 'instrutor')}}Professor{{else}}{{l.perfil}}{{/if}}</span>
-                  </div>
-                </li>
-              {{/each}}
+            <a class="l-dots-between__livros--botao"
+              href="https://sementeportal.blob.core.windows.net/plataforma/{{selectedAno.name}}/programacao.pdf"
+              target="_blank">
+              <div>
+                <span class="icon-paperclip m-right--xxs"></span>
+                <span>Programação</span>
+              </div>
+            </a>
+            {{#each livros as |l|}}
+            <li class=" l-dots-between__livros--botao" {{action "openPdfViewer" l}}>
+              <div>
+                <span class="icon-paperclip m-right--xxs"></span>
+                <span>Livro {{l.plataformaAno.name}} | {{#if (equalstr l.perfil
+                  'instrutor')}}Professor{{else}}{{l.perfil}}{{/if}}</span>
+              </div>
+            </li>
+            {{/each}}
             {{/unless}}
           </div>
+
+          {{#if (equalstr pessoa.role 'admin')}}
+          <div class="row mt-5">
+            <div class="col-md-12">
+              {{#link-to 'aulas.createaula' selectedAno.id }}
+              <button class="btn btn--add-list-item">
+                <span class="btn__icon icon-plus"></span>
+                <span class="btn__label">Adicionar Aula</span>
+              </button>
+              {{/link-to}}
+            </div>
+          </div>
+          {{/if}}
         </hgroup>
 
         <ul id="card-list-{{pessoaId}}" class="m-card-list animated slow {{if noCards 'd--none'}}">
           {{#each aulasFiltradas as |aulaFiltrada|}}
-            <li>
-              {{aula-card aula=aulaFiltrada selectedAno=selectedAno pessoa=pessoa selectedSituacao=selectedSituacao}}
-            </li>
+          <li>
+            {{aula-card aula=aulaFiltrada selectedAno=selectedAno pessoa=pessoa selectedSituacao=selectedSituacao}}
+          </li>
           {{/each}}
         </ul>
         {{#if certificado}}
-          <div class="certificado__eja">
-              {{#link-to 'aulas.certificado' platanoId class="class-list__class_cta btn trail__certificate-btn class__cta btn btn--sm btn-certificado"}}Ver seu certificado{{/link-to}}
-          </div>
+        <div class="certificado__eja">
+          {{#link-to 'aulas.certificado' platanoId class="class-list__class_cta btn trail__certificate-btn class__cta
+          btn btn--sm btn-certificado"}}Ver seu certificado{{/link-to}}
+        </div>
         {{/if}}
         {{#if noCards}}
-          <div class="empty animated fadeIn">
-            <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
-              <span class="empty__icon icon-frown-o icon--xl"></span>
-              <p class="m-top--xs">Não encontramos nenhuma aula com os filtros selecionados</p>
-            </div>
+        <div class="empty animated fadeIn">
+          <div class="animated d250 fadeInUpShort faster flex-1 ta-c">
+            <span class="empty__icon icon-frown-o icon--xl"></span>
+            <p class="m-top--xs">Não encontramos nenhuma aula com os filtros selecionados</p>
           </div>
-        {{/if}}
-        {{#if (equalstr pessoa.role 'admin')}}
-          <div class="row">
-            <div class="col-md-12">
-              {{#link-to 'aulas.createaula' selectedAno.id }}
-                <button class="btn btn--add-list-item">
-                  <span class="btn__icon icon-plus"></span>
-                    <span class="btn__label">Adicionar Aula</span>
-                </button>
-              {{/link-to}}
-            </div>
-          </div>
+        </div>
         {{/if}}
       </section>
     </div>
@@ -173,24 +168,24 @@
   {{outlet}}
 </main>
 
-  {{notifications}}
-  {{!-- {{#if hasNotification}}
-  <div class="base-notificacao">
-    <div class="notification notification-animation-enter" id="notificationCard">
-        <button class="btn-close icon-x" type="submit" {{action 'closeNotifications'}}></button>
-      <div class="flex flex-row justify-content-around">
-        <div class="notification-icon icon--xl icon-calendar"></div>
-        <div class="flex flex-col w90 notification-itens">
-          {{#each notifications as |notification|}}
-            <h1>{{dateFormat notification.start}} - {{notification.text}}</h1>
-          {{/each}}
-        </div>
+{{notifications}}
+{{!-- {{#if hasNotification}}
+<div class="base-notificacao">
+  <div class="notification notification-animation-enter" id="notificationCard">
+    <button class="btn-close icon-x" type="submit" {{action 'closeNotifications' }}></button>
+    <div class="flex flex-row justify-content-around">
+      <div class="notification-icon icon--xl icon-calendar"></div>
+      <div class="flex flex-col w90 notification-itens">
+        {{#each notifications as |notification|}}
+        <h1>{{dateFormat notification.start}} - {{notification.text}}</h1>
+        {{/each}}
       </div>
     </div>
   </div>
-  {{/if}} --}}
+</div>
+{{/if}} --}}
 
-  <!--<aside id="termo_modal" class="modal">
+<!--<aside id="termo_modal" class="modal">
     <div class="modal__overlayer"></div>
     <div class="modal__content">
       <div class="modal__header">
