@@ -241,7 +241,7 @@
     &__infos {
       display: grid;
       margin-top: 2rem;
-      width: 12.5rem;
+      width: 10rem;
     }
 
     &__usuarios {
@@ -277,6 +277,7 @@
         color: #808080;
         text-transform: capitalize;
       }
+          align-items: baseline;
     }
 
     &__cta {

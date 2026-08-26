@@ -82,13 +82,13 @@
       <nav class="l-user-header__nav">
         <ul>
           {{#if (equalstr pessoa.role 'admin')}}
-
-            {{#link-to 'aulas.index'  id="aulas-header" class=(concatenate "l-user-header__nav-item " (if (equalstr route 'aulas') "l-user-header__nav-item--is-active"))}}
-              <span>Aulas</span>
-            {{/link-to}}
             
             {{#link-to 'gersistema' class=(concatenate "l-user-header__nav-item " (if (equalstr route 'administracao') "l-user-header__nav-item--is-active"))}}
               <span>Administração</span>
+            {{/link-to}}
+
+            {{#link-to 'aulas.index'  id="aulas-header" class=(concatenate "l-user-header__nav-item " (if (equalstr route 'aulas') "l-user-header__nav-item--is-active"))}}
+              <span>Aulas</span>
             {{/link-to}}
 
             {{#link-to 'conteudos.index' class=(concatenate "l-user-header__nav-item " (if (equalstr route 'conteudos') "l-user-header__nav-item--is-active"))}}
@@ -100,11 +100,11 @@
             {{/link-to}}
           {{/if}}
 
-          {{#if (or (or (equalstr pessoa.role 'secretaria') (equalstr pessoa.role 'gestor')) (equalstr pessoa.role 'recursosHumanos'))}}
+          {{!-- {{#if (or (or (equalstr pessoa.role 'secretaria') (equalstr pessoa.role 'gestor')) (equalstr pessoa.role 'recursosHumanos'))}}
             {{#link-to 'gerdata.users' pessoa.instituicao.id class=(concatenate "l-user-header__nav-item " (if (equalstr route 'administracao') "l-user-header__nav-item--is-active"))}}
               <span>Administração</span>
             {{/link-to}}
-          {{/if}}
+          {{/if}} --}}
 
           {{#if (equalstr pessoa.role 'marketing')}}
              {{#link-to 'marketing.index' class=(concatenate "l-user-header__nav-item " (if (equalstr route 'marketing') "l-user-header__nav-item--is-active"))}}

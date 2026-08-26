@@ -50,6 +50,7 @@ export default DS.Model.extend({
     essencialEnabled: DS.attr(),
     csEnabled: DS.attr(),
     calendario: DS.belongsTo('calendario', {async: true}),
+    instituicaoPaiId: DS.attr(),
     vendaDireta: DS.attr(),
     instituicaoPlataformaAnoSistema: DS.hasMany('instituicao-plataforma-ano-sistema', {async: true}),
     status: DS.attr(),
