@@ -7,20 +7,23 @@
                 <h4 class="modal__subtitle mt-0">Informações gerais</h4>
                 <div class="flex-row justify-between" style="align-items: baseline;">
                     <div class="row form-group__usuarios mt-4">
-                        {{#unless isEdit}}
+                        {{!-- {{#unless isEdit}} --}}
                         <div class="col-md-4 mt-2">
                             <label class="form-group__label">Instituição "mãe" (para redes)</label>
                             <div class="form-group__wrapper form-group__wrapper--select">
                                 <select id="instituicaoMae" name="instituicaoMae" data-type="select"
                                     class="form-group__input w100">
-                                    <option selected="selected" value="">Nenhuma</option>
+                                    <option value="" selected={{unless instituicao.instituicaoPaiId "selected"}}>Nenhuma</option>
                                     {{#each instituicoes as |inst|}}
-                                    <option value="{{inst.id}}">{{inst.name}}</option>
+                                    {{#unless (equalstr inst.id instituicao.id)}}
+                                    <option value="{{inst.id}}" selected={{if (equalstr inst.id
+                                        instituicao.instituicaoPaiId) "selected" }}>{{inst.name}}</option>
+                                    {{/unless}}
                                     {{/each}}
                                 </select>
                             </div>
                         </div>
-                        {{/unless}}
+                        {{!-- {{/unless}} --}}
 
                         <div class="col-md-3">
                             <div class="w35 form-group form-group__usuarios">
