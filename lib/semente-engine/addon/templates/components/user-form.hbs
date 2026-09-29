@@ -63,21 +63,28 @@
             </div>
 
             <div class="flex flex-row form-group__usuarios-modal">
-                <div class="col-md-6">
+                <div class="col-md-6 js-login-vinculo">
                     {{validated-input label="Login" propertyName="email" changeset=changeset}}
+                    {{#if verificarVinculo}}
+                    <div role="status" aria-live="polite">
+                        {{#if vinculoAviso}}
+                        <p id="vinculo-aviso" class="form__msg form__msg--for-title form__msg--warning form__msg--is-show" style="display: block; line-height: 1.4; margin-top: 4px;">{{vinculoAviso}}</p>
+                        {{/if}}
+                    </div>
+                    {{/if}}
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 js-vinculo-emailCadastrado">
                     {{validated-input label="E-mail" propertyName="emailCadastrado" changeset=changeset}}
                     <div class="color-error-40" id="email-error"></div>
                 </div>
             </div>
 
             <div class="flex flex-row form-group__usuarios-modal">
-                <div class="col-md-4">
+                <div class="col-md-4 js-vinculo-telefone">
                     {{validated-input label="Telefone" propertyName="telefone" classe="phone" changeset=changeset }}
                     <div class="color-error-40" id="phone-error"></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 js-vinculo-cpf">
                     {{validated-input label="CPF" propertyName="cpf" classe="cpf" changeset=changeset}}
                     <div class="color-error-40" id="cpf-error"></div>
                 </div>
