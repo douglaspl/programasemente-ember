@@ -201,6 +201,44 @@
                 </div>
                 {{/unless}}
 
+                {{#if isAdminSemente}}
+                {{#if flagsVisivel}}
+                <h4 class="modal__subtitle mt-5" id="flags-sesi-titulo">Features opcionais</h4>
+                <div class="flex flex-row form-group form-group__usuarios" role="group" aria-labelledby="flags-sesi-titulo">
+                    <div class="row w100">
+                        <div class="col-md-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_offline_habilitado" type="checkbox"
+                                    checked={{flagOffline}} onchange={{action (mut flagOffline) value="target.checked"}}>
+                                <label class="checkbox__label" for="flag_offline_habilitado">Modo offline</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_multi_escola_habilitado" type="checkbox"
+                                    checked={{flagMultiEscola}} onchange={{action (mut flagMultiEscola) value="target.checked"}}
+                                    disabled={{flagMultiEscolaBloqueado}} aria-disabled={{if flagMultiEscolaBloqueado "true"}}
+                                    aria-describedby={{if flagMultiEscolaBloqueado "flag-multi-escola-bloqueio"}}>
+                                <label class="checkbox__label" for="flag_multi_escola_habilitado">Multi escolas</label>
+                            </div>
+                            {{#if flagMultiEscolaBloqueado}}
+                            <p id="flag-multi-escola-bloqueio" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Não pode ser desligado: {{flagsUsuariosMultiEscola}} usuário(s) com vínculo em mais de uma escola.</p>
+                            {{/if}}
+                        </div>
+                        {{#if flagsQtdDescendentes}}
+                        <div class="col-md-6">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_aplicar_descendentes" type="checkbox"
+                                    checked={{flagAplicarDescendentes}} onchange={{action (mut flagAplicarDescendentes) value="target.checked"}}>
+                                <label class="checkbox__label" for="flag_aplicar_descendentes">Aplicar também às {{flagsQtdDescendentes}} instituições abaixo desta (escolas/regionais)</label>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+                {{/if}}
+                {{/if}}
+
                 <div class="flex flex-row justify-content-between m-top--sm btn-right">
                     {{!-- {{#if isEdit}}
                     {{#link-to 'gerdata.informations.deleteinst' instituicao.id}}
