@@ -225,8 +225,17 @@
                             <p id="flag-multi-escola-bloqueio" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Não pode ser desligado: {{flagsUsuariosMultiEscola}} usuário(s) com vínculo em mais de uma escola.</p>
                             {{/if}}
                         </div>
-                        {{#if flagsQtdDescendentes}}
                         <div class="col-md-6">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_personificacao_habilitado" type="checkbox"
+                                    checked={{flagPersonificacao}} onchange={{action (mut flagPersonificacao) value="target.checked"}}
+                                    aria-describedby="flag-personificacao-descricao">
+                                <label class="checkbox__label" for="flag_personificacao_habilitado">Personificação de usuário (Ver como)</label>
+                            </div>
+                            <p id="flag-personificacao-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e professores vejam a plataforma como um usuário de perfil inferior, em modo somente leitura.</p>
+                        </div>
+                        {{#if flagsQtdDescendentes}}
+                        <div class="col-md-12">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_aplicar_descendentes" type="checkbox"
                                     checked={{flagAplicarDescendentes}} onchange={{action (mut flagAplicarDescendentes) value="target.checked"}}>
