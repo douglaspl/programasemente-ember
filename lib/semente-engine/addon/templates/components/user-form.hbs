@@ -161,6 +161,28 @@
                 </div>
             </div>
 
+            {{#if verificarEscolaPrincipal}}
+            {{#if escolaPrincipalInfo}}
+            <div class="flex flex-row mt2">
+                <div class="col-md-12">
+                    {{#if escolaPrincipalInfo.principal}}
+                    <p id="escola-principal-info" class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4;">Esta é a escola principal deste usuário.</p>
+                    {{else}}
+                    <p id="escola-principal-info" class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4;">Escola principal atual: {{escolaPrincipalInfo.principalInstituicaoNome}}.</p>
+                    <div class="checkbox w100 mt1">
+                        <input class="checkbox__input" id="new_user_tornar_principal" type="checkbox"
+                            aria-describedby="escola-principal-info escola-principal-ajuda">
+                        <label class="checkbox__label" for="new_user_tornar_principal">Tornar esta a escola principal</label>
+                    </div>
+                    <p id="escola-principal-ajuda" class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4; margin-top: 4px; font-size: 0.85em;">A navegação em Formação, cursos de desenvolvimento e autoavaliação continua associada à escola onde foi feita; a turma de adultos do usuário passa para esta escola. Só pode haver uma escola principal: a atual deixará de ser.</p>
+                    {{/if}}
+                    {{!-- preenchido pelo controller edituser com o `aviso` do POST --}}
+                    <p id="escola-principal-status" role="status" aria-live="polite" style="line-height: 1.4; margin-top: 4px;"></p>
+                </div>
+            </div>
+            {{/if}}
+            {{/if}}
+
             {{#if (equalstr activeProfile "aluno")}}
             <div class="flex flex-col animated fadeInLeftShort faster d100 mt2">
                 <h3 class="modal__subtitle">Em qual ano e turma deve ser inscrito?</h3>
