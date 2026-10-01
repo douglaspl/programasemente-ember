@@ -1,0 +1,134 @@
+<div class="modal__overlayer"></div>
+<div class="modal__content">
+  <header class="modal__header">
+    <button class="modal__close btn-close icon-x" type="button" {{action onClose}}></button>
+    <h3 class="modal__title">Conteúdo do módulo <span>{{modulo.name}}</span></h3>
+  </header>
+
+  <div class="modal__body">
+    <div class="flex flex-col flow-md">
+
+      <nav>
+        <ul class="tabs">
+          {{#each atividades as |atividade idx|}}
+          <li>
+            <button type="button" class="tabs__tab {{if (equalstr atividade atividadeAtiva) 'tabs__tab--is-active'}}" {{action 'selectAtividade' atividade}}>
+              <span>{{if atividade.titulo atividade.titulo (concat 'Atividade ' (addone idx))}}</span>
+            </button>
+          </li>
+          {{/each}}
+          <li>
+            <button type="button" class="tabs__tab" {{action 'addAtividade'}}>
+              <span>+ Nova atividade</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      {{#if atividadeAtiva}}
+      <div class="flex flex-col flow-md">
+        <div class="form-group w100">
+          <label class="form-group__label" for="moduloAtividadeTitulo">Título da atividade</label>
+          {{input class="form-group__input" id="moduloAtividadeTitulo" value=atividadeAtiva.titulo placeholder="Título da atividade" maxlength=80}}
+        </div>
+        <div class="form-group w100">
+          <label class="form-group__label" for="moduloAtividadeDescricao">Descrição da atividade</label>
+          {{textarea class="form-group-descricao" id="moduloAtividadeDescricao" rows="4" value=atividadeAtiva.descricao placeholder="Descrição da atividade" maxlength=500}}
+        </div>
+        <button class="btn btn--text btn--xxs color-error-40 self-start" type="button" {{action 'removeAtividade' atividadeAtiva}}>
+          <span class="btn__label">Remover atividade</span>
+        </button>
+
+        <h4 class="modal__subtitle">Seções</h4>
+        <div class="two-col-wrap">
+          {{#each atividadeAtiva.secoes as |secao idx|}}
+          <button type="button" class="btn btn__filter-content btn--xxs {{if (equalstr secao atividadeAtiva.secaoAtiva) 'btn--is-active'}}" {{action 'selectSecao' atividadeAtiva secao}}>
+            <span class="btn__label">{{if secao.titulo secao.titulo (concat 'Seção ' (addone idx))}}</span>
+          </button>
+          {{/each}}
+          <button type="button" class="btn btn--text btn--xxs" {{action 'addSecao' atividadeAtiva}}>
+            <span class="btn__label">+ Nova seção</span>
+          </button>
+        </div>
+
+        {{#if atividadeAtiva.secaoAtiva}}
+        <div class="flex flex-col flow-md">
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloSecaoTitulo">Título da seção</label>
+            {{input class="form-group__input" id="moduloSecaoTitulo" value=atividadeAtiva.secaoAtiva.titulo placeholder="Título da seção" maxlength=80}}
+          </div>
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloSecaoTipo">Tipo da seção</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input" id="moduloSecaoTipo"
+                onchange={{action 'selectTipoSecao' atividadeAtiva.secaoAtiva}}>
+                <option value="" disabled selected={{if atividadeAtiva.secaoAtiva.tipo false true}}>Selecione o tipo</option>
+                {{#each tiposSecao as |tipo|}}
+                <option value={{tipo.valor}} selected={{if (equalstr tipo.valor atividadeAtiva.secaoAtiva.tipo) true false}}>{{tipo.nome}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          {{#if (or (equalstr atividadeAtiva.secaoAtiva.tipo 'arquivo') (equalstr atividadeAtiva.secaoAtiva.tipo 'texto'))}}
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloSecaoDescricao">Descrição</label>
+            {{textarea class="form-group-descricao" id="moduloSecaoDescricao" rows="4" value=atividadeAtiva.secaoAtiva.descricao placeholder="Descrição da seção" maxlength=500}}
+          </div>
+          {{/if}}
+
+          {{#if (equalstr atividadeAtiva.secaoAtiva.tipo 'arquivo')}}
+          <div class="flex flex-col flow-xs">
+            {{#each atividadeAtiva.secaoAtiva.botoes as |botao idx|}}
+            <div class="row">
+              <div class="col-xs-12 col-sm-4">
+                <div class="form-group w100">
+                  <label class="form-group__label" for="moduloSecaoBotaoTitulo{{idx}}">Título do botão {{addone idx}}</label>
+                  {{input class="form-group__input" id=(concat 'moduloSecaoBotaoTitulo' idx) value=botao.titulo placeholder="Ex.: Baixar, Abrir" maxlength=40}}
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                <div class="form-group w100">
+                  <label class="form-group__label" for="moduloSecaoBotaoLink{{idx}}">Link do botão {{addone idx}}</label>
+                  {{input class="form-group__input" id=(concat 'moduloSecaoBotaoLink' idx) type="url" value=botao.link placeholder="https://"}}
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          {{/if}}
+
+          {{#if (equalstr atividadeAtiva.secaoAtiva.tipo 'video')}}
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloSecaoVideoId">VideoId</label>
+            {{input class="form-group__input" id="moduloSecaoVideoId" value=atividadeAtiva.secaoAtiva.videoId placeholder="ID do vídeo"}}
+          </div>
+          {{/if}}
+
+          {{#if (equalstr atividadeAtiva.secaoAtiva.tipo 'questoes')}}
+          <p>Os campos das questões ainda serão definidos.</p>
+          {{/if}}
+
+          <button class="btn btn--text btn--xxs color-error-40 self-start" type="button" {{action 'removeSecao' atividadeAtiva atividadeAtiva.secaoAtiva}}>
+            <span class="btn__label">Remover seção</span>
+          </button>
+        </div>
+        {{else}}
+        <p>Nenhuma seção. Clique em "+ Nova seção" para adicionar.</p>
+        {{/if}}
+      </div>
+      {{else}}
+      <p>Nenhuma atividade. Clique em "+ Nova atividade" para adicionar.</p>
+      {{/if}}
+
+    </div>
+  </div>
+
+  <footer class="modal__footer">
+    {{#if erro}}
+      <p class="color-error-40 self-center">{{erro}}</p>
+    {{/if}}
+    <button class="btn btn--text" type="button" {{action onClose}}>Cancelar</button>
+    <button class="btn" type="button" disabled={{salvando}} {{action 'save'}}>{{if salvando 'Salvando...' 'Salvar'}}</button>
+  </footer>
+</div>

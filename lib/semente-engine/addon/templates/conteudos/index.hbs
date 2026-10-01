@@ -1,197 +1,293 @@
 <section class="flow-md">
-  
-  <div class="l-dots-between__header">
-    <h1 class="l-dots-between__side__title-content">Conteúdos</h1>
-    <div class="l-dots-between__header--filter">
-      <label for="dataUpload">Classificar por:</label>
-      <select id="dataUpload" name="dataUpload" onchange={{action 'refreshSelectedOrdenacao' value='target.value' }}>
-        <option value="alfabetica" selected={{if (equalstr selectedOrdenacao 'alfabetica') 'selected' }}>Ordem alfabética</option>
-        <option value="data" selected={{if (equalstr selectedOrdenacao 'data') 'selected' }}>Data de upload</option>
-      </select>
+
+  <nav>
+    <ul class="tabs">
+      <li>
+        <button type="button" class="tabs__tab {{if (equalstr selectedTab 'geral') 'tabs__tab--is-active'}}" {{action 'refreshSelectedTab' 'geral'}}>
+          <span>Geral</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="tabs__tab {{if (equalstr selectedTab 'agrupar') 'tabs__tab--is-active'}}" {{action 'refreshSelectedTab' 'agrupar'}}>
+          <span>Agrupar</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  {{!-- Aba Geral: usa hidden em vez de #if para preservar o estado dos filtros ao trocar de aba --}}
+  <div class="flow-md" hidden={{not (equalstr selectedTab 'geral')}}>
+    <div class="l-dots-between__header">
+      <h1 class="l-dots-between__side__title-content">Conteúdos</h1>
+      <div class="l-dots-between__header--filter">
+        <label for="dataUpload">Classificar por:</label>
+        <select id="dataUpload" name="dataUpload" onchange={{action 'refreshSelectedOrdenacao' value='target.value' }}>
+          <option value="alfabetica" selected={{if (equalstr selectedOrdenacao 'alfabetica') 'selected' }}>Ordem alfabética</option>
+          <option value="data" selected={{if (equalstr selectedOrdenacao 'data') 'selected' }}>Data de upload</option>
+        </select>
+      </div>
+    </div>
+    <div class="l-dots-between">
+      <aside class="l-dots-between__side l-dots-between__side--conteudos">
+        <form autocomplete="off" class="flex flex-col flow-md">
+          {{#if (equalstr pessoaRole 'admin')}}
+          <button type="button" class="btn btn__ps" {{action "goToCreateConteudo" }}>Cadastrar conteúdo</button>
+          {{/if}}
+
+          <div class="form-group">
+            {{!-- <label class="form-group__label-conteudos" for="search">Busca</label> --}}
+            <div class="form-group__search-content">
+              {{input class="form-group__input form-group__input--conteudos" placeholder="Busca" id="search" type="text"
+              value=search }}
+              <span>🔍</span>
+            </div>
+            <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
+          </div>
+
+          <div class="two-col-wrap">
+            <button class="btn btn__filter-content {{if (equalstr " Todos" selectedPublico) 'btn--is-active' '' }}"
+              {{action 'refreshSelectedPublicos' "Todos" }} type="button">
+              <span class="btn__label">Todos</span>
+            </button>
+            {{#each publicos as |pub|}}
+            <button class="btn btn__filter-content {{if (equalstr pub.name selectedPublico) 'btn--is-active' ''}}"
+              {{action 'refreshSelectedPublicos' pub.id}} type="button">
+              <span class="btn__label">{{pub.nameFormat}}</span>
+            </button>
+            {{/each}}
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="situacao">Situação</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="situacao" id="situacao"
+                onchange={{action 'refreshSelectedSituacao' value='target.value' }}>
+                <option value="">Todos</option>
+                <option value="true" selected="selected">Ativos</option>
+                <option value="false">Inativos</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="calendario">Calendário</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="calendario" id="calendario"
+                onchange={{action 'refreshSelectedCal' value='target.value' }}>
+                <option value="Todos">Todos</option>
+                {{#each calendarios as |cal|}}
+                <option value="{{cal.nome}}" selected={{if (equalstr calendarioAtual cal.nome) 'selected' }}>{{cal.nome}}
+                </option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="tipo">Tipo do Arquivo</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="tipo" id="tipo"
+                onchange={{action 'refreshSelectedTipo' value='target.value' }}>
+                <option selected="selected" value="Todos">Todos</option>
+                {{#each tipos as |tipo|}}
+                <option value="{{tipo}}">{{tipo}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="agrupamento">Grupo dos Conteúdos</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="agrupamento" id="agrupamento"
+                onchange={{action 'refreshSelectedAgrupamento' value='target.value' }}>
+                <option value="Todos" selected="selected">Todos</option>
+                <option value="Básico">Básico</option>
+                <option value="Complementar">Complementar</option>
+                <option value="Biblioteca">Biblioteca</option>
+              </select>
+            </div>
+          </div>
+          {{#if (equalstr show 'Aulas')}}
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="segmento">Segmento</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="segmento" id="segmento"
+                onchange={{action 'refreshSelectedSegmento' value='target.value' }}>
+                <option value="" selected="selected">---</option>
+                {{#each segmentos as |seg|}}
+                <option value="{{seg.titulo}}">{{seg.titulo}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="ano">Ano</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="ano" id="ano"
+                onchange={{action 'refreshSelectedAno' value='target.value' }}>
+                <option value="" selected="selected">---</option>
+                {{#each segmentos as |seg|}}
+                {{#if (equalstr selectedSegmento seg.titulo)}}
+                {{#each seg.plataformaAnos as |ano|}}
+                <option value="{{ano.name}}">{{ano.name}}</option>
+                {{/each}}
+                {{/if}}
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="aula">Aula</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos w100" name="aula" id="aula" onchange={{action 'refreshSelectedAula'
+                value='target.value' }}>
+                <option value="" selected="selected">---</option>
+                {{#each segmentos as |seg|}}
+                {{#if (equalstr selectedSegmento seg.titulo)}}
+                {{#each seg.plataformaAnos as |ano|}}
+                {{#if (equalstr selectedAno ano.name)}}
+                {{#each ano.aulas as |aula|}}
+                <option value="{{aula.titulo}}">{{aula.titulo}}</option>
+                {{/each}}
+                {{/if}}
+                {{/each}}
+                {{/if}}
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          {{else}}
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="tema">Tema</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="tema" id="tema"
+                onchange={{action 'refreshSelectedTema' value='target.value' }}>
+                <option value="Todos" selected="selected">Todos</option>
+                {{#each temas as |tema|}}
+                <option value="{{tema.name}}" selected={{if (equalstr tema.name selectedTema) "selected" }}>{{tema.name}}
+                </option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          {{/if}}
+        </form>
+      </aside>
+
+      <section class="l-dots-between__content flow-md">
+        <hgroup>
+          <h1 class="sr-only">Lista de conteúdos de {{selectedAgrupamento}}</h1>
+          <h1 class="sr-only">{{selectedPublico}}</h1>
+          {{!-- <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> --}}
+              ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})
+              {{!--</span> </h2> --}}
+        </hgroup>
+
+        <ul class="list list--2-col">
+          {{#each conteudos as |conteudo|}}
+          {{#if (containStr search conteudo.titulo)}}
+          <li>
+            {{conteudo-card conteudo=conteudo
+            thisIndex=this
+            show=show
+            selectedPublico=selectedPublico
+            selectedSegmento=selectedSegmento
+            selectedAno=selectedAno
+            calendarios=calendarios
+            }}
+          </li>
+          {{/if}}
+          {{/each}}
+        </ul>
+      </section>
     </div>
   </div>
-  <div class="l-dots-between">
-    <aside class="l-dots-between__side l-dots-between__side--conteudos">
-      <form autocomplete="off" class="flex flex-col flow-md">
-        {{#if (equalstr pessoaRole 'admin')}}
-        <button type="button" class="btn btn__ps" {{action "goToCreateConteudo" }}>Cadastrar conteúdo</button>
-        {{/if}}
 
-        <div class="form-group">
-          {{!-- <label class="form-group__label-conteudos" for="search">Busca</label> --}}
-          <div class="form-group__search-content">
-            {{input class="form-group__input form-group__input--conteudos" placeholder="Busca" id="search" type="text"
-            value=search }}
-            <span>🔍</span>
+  {{!-- Aba Agrupar --}}
+  <div class="flow-md" hidden={{not (equalstr selectedTab 'agrupar')}}>
+    <div class="l-dots-between__header">
+      <h1 class="l-dots-between__side__title-content">Módulos</h1>
+    </div>
+    <div class="l-dots-between">
+      <aside class="l-dots-between__side l-dots-between__side--conteudos">
+        <div class="flex flex-col flow-md">
+          {{#if (equalstr pessoaRole 'admin')}}
+          <button type="button" class="btn btn__ps" {{action "openModuloModal" }}>Cadastrar módulo</button>
+          {{/if}}
+
+          <div class="form-group">
+            <div class="form-group__search-content">
+              {{input class="form-group__input form-group__input--conteudos" placeholder="Buscar por título ou código" id="moduloBusca" type="text"
+              value=moduloBusca }}
+              <span>🔍</span>
+            </div>
           </div>
-          <a class="form__aux-link" onclick={{action 'eraseText' }}>Limpar busca</a>
-        </div>
 
-        <div class="two-col-wrap">
-          <button class="btn btn__filter-content {{if (equalstr " Todos" selectedPublico) 'btn--is-active' '' }}"
-            {{action 'refreshSelectedPublicos' "Todos" }} type="button">
-            <span class="btn__label">Todos</span>
-          </button>
-          {{#each publicos as |pub|}}
-          <button class="btn btn__filter-content {{if (equalstr pub.name selectedPublico) 'btn--is-active' ''}}"
-            {{action 'refreshSelectedPublicos' pub.id}} type="button">
-            <span class="btn__label">{{pub.nameFormat}}</span>
-          </button>
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="moduloPeriodo">Período</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="moduloPeriodo" id="moduloPeriodo"
+                onchange={{action (mut moduloPeriodo) value='target.value' }}>
+                {{#each periodosModulo as |periodo|}}
+                <option value={{periodo.valor}} selected={{if (equalstr periodo.valor moduloPeriodo) true false}}>{{periodo.nome}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label-conteudos" for="moduloPerfil">Perfil</label>
+            <div class="form-group__wrapper form-group__wrapper--select">
+              <select class="form-group__input form-group__input--conteudos" name="moduloPerfil" id="moduloPerfil"
+                onchange={{action (mut moduloPerfil) value='target.value' }}>
+                {{#each perfisModulo as |perfil|}}
+                <option value={{perfil.valor}} selected={{if (equalstr perfil.valor moduloPerfil) true false}}>{{perfil.nome}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <a class="form__aux-link" onclick={{action 'clearModuloFiltros' }}>Limpar filtros</a>
+        </div>
+      </aside>
+
+      <section class="l-dots-between__content flow-md">
+        <hgroup>
+          <h1 class="sr-only">Lista de módulos</h1>
+          ({{modulosFiltrados.length}} {{if (equalstr modulosFiltrados.length '1') 'módulo' 'módulos'}})
+        </hgroup>
+
+        <ul class="list list--2-col">
+          {{#each modulosFiltrados as |modulo|}}
+          <li>
+            {{modulo-card modulo=modulo
+              onAddConteudo=(action 'openAtividadesModal' modulo)
+              onEdit=(action 'openModuloModal' modulo)}}
+          </li>
+          {{else}}
+          <li>{{if modulosOrdenados.length 'Nenhum módulo encontrado com esses filtros.' 'Nenhum módulo cadastrado.'}}</li>
           {{/each}}
-        </div>
-
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="situacao">Situação</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="situacao" id="situacao"
-              onchange={{action 'refreshSelectedSituacao' value='target.value' }}>
-              <option value="">Todos</option>
-              <option value="true" selected="selected">Ativos</option>
-              <option value="false">Inativos</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="calendario">Calendário</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="calendario" id="calendario"
-              onchange={{action 'refreshSelectedCal' value='target.value' }}>
-              <option value="Todos">Todos</option>
-              {{#each calendarios as |cal|}}
-              <option value="{{cal.nome}}" selected={{if (equalstr calendarioAtual cal.nome) 'selected' }}>{{cal.nome}}
-              </option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="tipo">Tipo do Arquivo</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="tipo" id="tipo"
-              onchange={{action 'refreshSelectedTipo' value='target.value' }}>
-              <option selected="selected" value="Todos">Todos</option>
-              {{#each tipos as |tipo|}}
-              <option value="{{tipo}}">{{tipo}}</option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-
-
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="agrupamento">Grupo dos Conteúdos</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="agrupamento" id="agrupamento"
-              onchange={{action 'refreshSelectedAgrupamento' value='target.value' }}>
-              <option value="Todos" selected="selected">Todos</option>
-              <option value="Básico">Básico</option>
-              <option value="Complementar">Complementar</option>
-              <option value="Biblioteca">Biblioteca</option>
-            </select>
-          </div>
-        </div>
-        {{#if (equalstr show 'Aulas')}}
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="segmento">Segmento</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="segmento" id="segmento"
-              onchange={{action 'refreshSelectedSegmento' value='target.value' }}>
-              <option value="" selected="selected">---</option>
-              {{#each segmentos as |seg|}}
-              <option value="{{seg.titulo}}">{{seg.titulo}}</option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="ano">Ano</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="ano" id="ano"
-              onchange={{action 'refreshSelectedAno' value='target.value' }}>
-              <option value="" selected="selected">---</option>
-              {{#each segmentos as |seg|}}
-              {{#if (equalstr selectedSegmento seg.titulo)}}
-              {{#each seg.plataformaAnos as |ano|}}
-              <option value="{{ano.name}}">{{ano.name}}</option>
-              {{/each}}
-              {{/if}}
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="aula">Aula</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos w100" name="aula" id="aula" onchange={{action 'refreshSelectedAula'
-              value='target.value' }}>
-              <option value="" selected="selected">---</option>
-              {{#each segmentos as |seg|}}
-              {{#if (equalstr selectedSegmento seg.titulo)}}
-              {{#each seg.plataformaAnos as |ano|}}
-              {{#if (equalstr selectedAno ano.name)}}
-              {{#each ano.aulas as |aula|}}
-              <option value="{{aula.titulo}}">{{aula.titulo}}</option>
-              {{/each}}
-              {{/if}}
-              {{/each}}
-              {{/if}}
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        {{else}}
-
-        <div class="form-group">
-          <label class="form-group__label-conteudos" for="tema">Tema</label>
-          <div class="form-group__wrapper form-group__wrapper--select">
-            <select class="form-group__input form-group__input--conteudos" name="tema" id="tema"
-              onchange={{action 'refreshSelectedTema' value='target.value' }}>
-              <option value="Todos" selected="selected">Todos</option>
-              {{#each temas as |tema|}}
-              <option value="{{tema.name}}" selected={{if (equalstr tema.name selectedTema) "selected" }}>{{tema.name}}
-              </option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        {{/if}}
-      </form>
-    </aside>
-
-    <section class="l-dots-between__content flow-md">
-      <hgroup>
-        <h1 class="sr-only">Lista de conteúdos de {{selectedAgrupamento}}</h1>
-        <h1 class="sr-only">{{selectedPublico}}</h1>
-        {{!-- <h2 class="title-4">{{selectedAgrupamento}}<span class="fs--xs fw--3 fs-i color-blue-navy-20"> --}}
-            ({{conteudos.length}} {{if (equalstr conteudos.length '1') 'conteúdo' 'conteúdos'}})
-            {{!--</span> </h2> --}}
-      </hgroup>
-
-      <ul class="list list--2-col">
-        {{#each conteudos as |conteudo|}}
-        {{#if (containStr search conteudo.titulo)}}
-        <li>
-          {{conteudo-card conteudo=conteudo
-          thisIndex=this
-          show=show
-          selectedPublico=selectedPublico
-          selectedSegmento=selectedSegmento
-          selectedAno=selectedAno
-          calendarios=calendarios
-          }}
-        </li>
-        {{/if}}
-        {{/each}}
-      </ul>
-    </section>
+        </ul>
+      </section>
+    </div>
   </div>
+
+  {{#if showModuloModal}}
+    {{modulo-modal modulo=moduloEditando onClose=(action 'closeModuloModal') onSave=(action 'saveModulo')}}
+  {{/if}}
+
+  {{#if moduloEmEdicao}}
+    {{modulo-atividades-modal modulo=moduloEmEdicao onClose=(action 'closeAtividadesModal')}}
+  {{/if}}
+
 </section>

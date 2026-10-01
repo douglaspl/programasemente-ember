@@ -1,0 +1,178 @@
+<div class="modal__overlayer"></div>
+<div class="modal__content">
+  <header class="modal__header">
+    <button class="modal__close btn-close icon-x" type="button" {{action onClose}}></button>
+    <h3 class="modal__title">{{if modulo 'Editar módulo' 'Novo módulo'}}</h3>
+  </header>
+
+  <div class="modal__body">
+    <div class="flex flex-col flow-lg">
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloTitulo">Título</label>
+            {{input class="form-group__input" id="moduloTitulo" value=titulo placeholder="Título do módulo" maxlength=80}}
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloCodigo">Código</label>
+            {{input class="form-group__input" id="moduloCodigo" value=codigo placeholder="Código do módulo" maxlength=40}}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group w100">
+        <label class="form-group__label" for="moduloDescricao">Descrição</label>
+        {{textarea class="form-group-descricao" id="moduloDescricao" rows="4" value=descricao placeholder="Descrição do módulo" maxlength=500}}
+      </div>
+
+      <div class="form-group w100">
+        <label class="form-group__label" for="moduloAutores">Autores</label>
+        {{input class="form-group__input" id="moduloAutores" value=autores placeholder="Ex.: Maria Silva, João Souza"}}
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloInicio">Início</label>
+            <input class="form-group__input" id="moduloInicio" type="date" value={{inicio}}
+              onchange={{action (mut inicio) value="target.value"}}>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="form-group w100">
+            <label class="form-group__label" for="moduloFim">Fim</label>
+            <input class="form-group__input" id="moduloFim" type="date" value={{fim}} min={{inicio}}
+              onchange={{action (mut fim) value="target.value"}}>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col flow-xs">
+        <h4 class="modal__subtitle">
+          Instituições <span>({{totalInstituicoesSelecionadas}} {{if (equalstr totalInstituicoesSelecionadas '1') 'selecionada' 'selecionadas'}})</span>
+        </h4>
+        <div class="form-group__search-content">
+          {{input class="form-group__input" id="moduloBuscaInstituicao" type="text" value=buscaInstituicao placeholder="Buscar instituição"}}
+          <span>🔍</span>
+        </div>
+        <div class="flex flex-row gap-sm">
+          <button class="btn btn--ghost btn--xxs" type="button" {{action 'selectAllInstituicoes'}}>
+            <span class="btn__label">Selecionar todas</span>
+          </button>
+          <button class="btn btn--text btn--xxs" type="button" {{action 'clearInstituicoes'}}>
+            <span class="btn__label">Limpar seleção</span>
+          </button>
+        </div>
+        <div class="modal__checklist">
+          {{#if instituicoes}}
+            {{#each instituicoesFiltradas as |inst|}}
+              <div class="checkbox">
+                <input class="checkbox__input"
+                       id="modulo-inst-{{inst.id}}"
+                       type="checkbox"
+                       checked={{if (get instituicoesSelecionadas inst.id) true false}}
+                       onchange={{action 'instituicaoChanged' inst.id}} />
+                <label class="checkbox__label" for="modulo-inst-{{inst.id}}">{{inst.name}}</label>
+              </div>
+            {{else}}
+              <p>Nenhuma instituição encontrada.</p>
+            {{/each}}
+          {{else}}
+            <p>Carregando instituições...</p>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="flex flex-col flow-xs">
+        <h4 class="modal__subtitle">Perfis</h4>
+        <div class="modal__checklist modal__checklist--wrap">
+          {{#each perfisDisponiveis as |perfil|}}
+            <div class="checkbox">
+              <input class="checkbox__input"
+                     id="modulo-perfil-{{perfil.valor}}"
+                     type="checkbox"
+                     checked={{if (get perfisSelecionados perfil.valor) true false}}
+                     onchange={{action 'perfilChanged' perfil.valor}} />
+              <label class="checkbox__label" for="modulo-perfil-{{perfil.valor}}">{{perfil.nome}}</label>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+
+      {{#if alunoSelecionado}}
+      <div class="flex flex-col flow-xs">
+        <h4 class="modal__subtitle">Anos</h4>
+        {{#each anosPorSegmento as |segmentoAnos|}}
+          <div class="flex flex-col flow-xxs">
+            <h5 class="title-4">{{segmentoAnos.segmento.titulo}}</h5>
+            <div class="modal__checklist modal__checklist--wrap">
+              {{#each segmentoAnos.anos as |ano|}}
+                <div class="checkbox">
+                  <input class="checkbox__input"
+                         id="modulo-ano-{{ano.id}}"
+                         type="checkbox"
+                         checked={{if (get anosSelecionados ano.id) true false}}
+                         onchange={{action 'platAnoChanged' ano.id}} />
+                  <label class="checkbox__label" for="modulo-ano-{{ano.id}}">{{ano.name}}</label>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      {{/if}}
+
+      <div class="flex flex-col flow-xs">
+        <h4 class="modal__subtitle">
+          Competências <span>({{totalCompetenciasSelecionadas}} {{if (equalstr totalCompetenciasSelecionadas '1') 'selecionada' 'selecionadas'}})</span>
+        </h4>
+        <p>Marque as competências com que o módulo se relaciona e escolha o peso de cada uma (1 a 3).</p>
+        {{#if competencias}}
+          {{#each competenciasPorDominio as |dominio|}}
+            <div class="flex flex-col flow-xxs">
+              <h5 class="title-4">{{dominio.nome}}</h5>
+              <div class="modal__checklist">
+                {{#each dominio.competencias as |competencia|}}
+                  <div class="flex flex-row items-center gap-sm">
+                    <div class="checkbox">
+                      <input class="checkbox__input"
+                             id="modulo-comp-{{competencia.id}}"
+                             type="checkbox"
+                             checked={{if (get competenciasSelecionadas competencia.id) true false}}
+                             onchange={{action 'competenciaChanged' competencia.id}} />
+                      <label class="checkbox__label" for="modulo-comp-{{competencia.id}}">{{competencia.name}}</label>
+                    </div>
+                    {{#if (get competenciasSelecionadas competencia.id)}}
+                      <select class="form-group__input form-group__input--anos" id="modulo-comp-peso-{{competencia.id}}"
+                        aria-label="Peso de {{competencia.name}}"
+                        onchange={{action 'pesoChanged' competencia.id}}>
+                        <option value="" selected={{if (get (get competenciasSelecionadas competencia.id) 'peso') false true}}>Peso</option>
+                        {{#each pesosCompetencia as |peso|}}
+                        <option value={{peso}} selected={{if (equalstr peso (get (get competenciasSelecionadas competencia.id) 'peso')) true false}}>Peso {{peso}}</option>
+                        {{/each}}
+                      </select>
+                    {{/if}}
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <p>Carregando competências...</p>
+        {{/if}}
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="modal__footer">
+    {{#if erro}}
+      <p class="color-error-40 self-center">{{erro}}</p>
+    {{/if}}
+    <button class="btn btn--text" type="button" {{action onClose}}>Cancelar</button>
+    <button class="btn" type="button" disabled={{salvando}} {{action 'save'}}>{{if salvando 'Salvando...' 'Salvar'}}</button>
+  </footer>
+</div>

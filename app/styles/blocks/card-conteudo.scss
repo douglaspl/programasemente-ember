@@ -171,4 +171,11 @@
 
     }
 
+    // Rodapé no fluxo normal (não sobrepõe o conteúdo quando o card cresce)
+    &__rodape {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 1rem 0;
+    }
+
 }
