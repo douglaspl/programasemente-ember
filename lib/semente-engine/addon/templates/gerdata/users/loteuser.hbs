@@ -116,6 +116,24 @@
                 {{/if}}
                 {{/if}}
 
+                {{#if avisosVinculo.length}}
+                <span
+                    class="modal-carga-3__pre-validation modal-carga-3__pre-validation-warn mb-1 animated fadeInDown slow">Novos
+                    vínculos em outra instituição (não impedem o processamento)</span>
+                <table border="1" class="mb-4">
+                    <tr>
+                        <th>Aviso</th>
+                        <th>Linha</th>
+                    </tr>
+                    {{#each avisosVinculo as |aviso|}}
+                    <tr>
+                        <td>{{aviso.erro}}</td>
+                        <td>{{aviso.linha}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
+
 
             </div>
             {{/if}}

@@ -57,4 +57,5 @@ export default DS.Model.extend({
     baseUpdated: DS.attr(),
     updateStatus: DS.attr(),
     pilares: DS.hasMany('pilar', {async: true}),
+    hierarquiaMultinivelHabilitado: DS.attr(),
 });
