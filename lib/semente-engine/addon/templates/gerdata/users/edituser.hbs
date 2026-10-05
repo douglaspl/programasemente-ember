@@ -10,6 +10,9 @@
 
         <div class="modal__body" style="max-height: 75vh;">
             {{user-form changeset=(changeset model.pessoa PessoaValidations) instituicao=instituicao segmentos=model.segmentos action=(action 'save') isEdit=isEdit anoAtual=anoAtual verificarEscolaPrincipal=true pessoaId=model.pessoa.id}}
+            {{#if (and model.pessoa.id (equalstr model.pessoa.role "aluno"))}}
+            {{responsaveis-aluno pessoaId=model.pessoa.id}}
+            {{/if}}
         </div>
     </div>
 </aside>

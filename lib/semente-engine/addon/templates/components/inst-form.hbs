@@ -241,6 +241,15 @@
                             </div>
                             <p id="flag-hierarquia-multinivel-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite organizar a rede em mais de um nível (ex.: nacional, regional, escola). Resultados e listagens desta instituição passam a incluir todas as unidades abaixo dela.</p>
                         </div>
+                        <div class="col-md-6">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_comunicacao_familias_habilitado" type="checkbox"
+                                    checked={{flagComunicacaoFamilias}} onchange={{action (mut flagComunicacaoFamilias) value="target.checked"}}
+                                    aria-describedby="flag-comunicacao-familias-descricao">
+                                <label class="checkbox__label" for="flag_comunicacao_familias_habilitado">Comunicação com famílias (envio de mensagens aos responsáveis)</label>
+                            </div>
+                            <p id="flag-comunicacao-familias-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e secretaria enviem comunicados por e-mail aos responsáveis dos alunos. O cadastro de responsáveis funciona independentemente desta opção.</p>
+                        </div>
                         {{#if flagsQtdDescendentes}}
                         <div class="col-md-12">
                             <div class="checkbox w100">

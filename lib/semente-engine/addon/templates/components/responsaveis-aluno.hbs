@@ -1,0 +1,93 @@
+<h4 class="modal__subtitle mt-5" id="responsaveis-aluno-titulo">Responsáveis (máx. {{maxResponsaveis}})</h4>
+<p class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4; font-size: 0.85em;">
+    Os responsáveis recebem uma conta própria na plataforma, vinculada a este aluno. Eles não veem os resultados do aluno.
+</p>
+
+<div role="status" aria-live="polite">
+    {{#if sucesso}}
+    <p class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4;">{{sucesso}}</p>
+    {{/if}}
+</div>
+
+{{#if carregando}}
+<p style="line-height: 1.4;">Carregando responsáveis...</p>
+{{else if erroLista}}
+<p class="color-error-40" role="alert" style="line-height: 1.4;">{{erroLista}}</p>
+{{else}}
+    {{#if responsaveis.length}}
+    <ul class="w100" aria-labelledby="responsaveis-aluno-titulo" style="list-style: none; padding: 0; margin: 8px 0;">
+        {{#each responsaveis as |r|}}
+        <li class="flex flex-row justify-content-between" style="flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #e3e3e3;">
+            <div style="line-height: 1.4; min-width: 0;">
+                <b>{{r.nome}}</b>{{#unless r.ativo}} <span style="font-size: 0.85em;">(inativo)</span>{{/unless}}<br>
+                <span style="font-size: 0.9em; word-break: break-all;">{{r.email}}</span>{{#if r.telefone}} <span style="font-size: 0.9em;">· {{r.telefone}}</span>{{/if}}<br>
+                <span style="font-size: 0.8em;">Origem: {{r.origemLabel}}</span>
+            </div>
+            <div>
+                {{#if (equalstr confirmandoRemocaoId r.vinculoId)}}
+                <span style="font-size: 0.9em; margin-right: 8px;">Remover o vínculo com {{r.nome}}?</span>
+                <button type="button" class="btn" style="background-color: #b62020; margin-right: 8px;"
+                    disabled={{if removendoId true false}} {{action 'confirmarRemocao' r.vinculoId}}>
+                    {{if (equalstr removendoId r.vinculoId) "Removendo..." "Sim, remover"}}
+                </button>
+                <button type="button" class="btn" disabled={{if removendoId true false}} {{action 'cancelarRemocao'}}>Cancelar</button>
+                {{else}}
+                <button type="button" class="btn" aria-label="Remover responsável {{r.nome}}" {{action 'pedirRemocao' r.vinculoId}}>Remover</button>
+                {{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{#if erroRemocao}}
+    <p class="color-error-40" role="alert" style="line-height: 1.4;">{{erroRemocao}}</p>
+    {{/if}}
+    {{else}}
+    <p style="line-height: 1.4;">Nenhum responsável cadastrado.</p>
+    {{/if}}
+
+    {{#if formAberto}}
+    <form autocomplete="off" class="w100" aria-label="Adicionar responsável" {{action 'adicionar' on='submit'}}>
+        <div class="flex flex-row form-group__usuarios-modal" style="flex-wrap: wrap;">
+            <div class="col-md-4">
+                <div class="flex-col w100 mt1">
+                    <label class="form-group__label" for="responsavel_novo_nome">Nome *</label>
+                    <input data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" id="responsavel_novo_nome" type="text" class="w100" maxlength="200" autocomplete="off"
+                        value={{novoNome}} oninput={{action (mut novoNome) value="target.value"}}
+                        aria-invalid={{if erroNome "true"}} aria-describedby={{if erroNome "responsavel-nome-erro"}}>
+                    {{#if erroNome}}<span id="responsavel-nome-erro" class="color-error-40" style="font-size: 12px">{{erroNome}}</span>{{/if}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flex-col w100 mt1">
+                    <label class="form-group__label" for="responsavel_novo_contato">E-mail *</label>
+                    <input data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" id="responsavel_novo_contato" type="text" inputmode="email" autocapitalize="off" spellcheck="false" class="w100" maxlength="200" autocomplete="off"
+                        value={{novoEmail}} oninput={{action (mut novoEmail) value="target.value"}}
+                        aria-invalid={{if erroEmail "true"}} aria-describedby={{if erroEmail "responsavel-email-erro"}}>
+                    {{#if erroEmail}}<span id="responsavel-email-erro" class="color-error-40" style="font-size: 12px">{{erroEmail}}</span>{{/if}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="flex-col w100 mt1">
+                    <label class="form-group__label" for="responsavel_novo_telefone">Telefone (opcional)</label>
+                    <input data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" id="responsavel_novo_telefone" type="tel" class="w100" maxlength="30" autocomplete="off"
+                        value={{novoTelefone}} oninput={{action (mut novoTelefone) value="target.value"}}>
+                </div>
+            </div>
+        </div>
+        <p class="form__msg form__msg--for-title form__msg--is-show" style="display: block; line-height: 1.4; font-size: 0.85em;">
+            Se o e-mail já tiver conta na plataforma, o aluno é vinculado a essa conta; senão, uma conta de responsável é criada.
+        </p>
+        {{#if erroForm}}
+        <p class="color-error-40" role="alert" style="line-height: 1.4;">{{erroForm}}</p>
+        {{/if}}
+        <div class="flex flex-row justify-content-end" style="gap: 8px; margin-top: 8px;">
+            <button type="button" class="btn" disabled={{salvando}} {{action 'cancelarForm'}}>Cancelar</button>
+            <button type="submit" class="btn btn__add" disabled={{salvando}}>{{if salvando "Salvando..." "Salvar responsável"}}</button>
+        </div>
+    </form>
+    {{else if podeAdicionar}}
+    <div class="flex flex-row justify-content-end" style="margin-top: 8px;">
+        <button type="button" class="btn btn__add" {{action 'abrirForm'}}>Adicionar responsável</button>
+    </div>
+    {{/if}}
+{{/if}}
