@@ -250,6 +250,15 @@
                             </div>
                             <p id="flag-comunicacao-familias-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e secretaria enviem comunicados por e-mail aos responsáveis dos alunos. O cadastro de responsáveis funciona independentemente desta opção.</p>
                         </div>
+                        <div class="col-md-6">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_taxonomia_habilitado" type="checkbox"
+                                    checked={{flagTaxonomia}} onchange={{action (mut flagTaxonomia) value="target.checked"}}
+                                    aria-describedby="flag-taxonomia-descricao">
+                                <label class="checkbox__label" for="flag_taxonomia_habilitado">Taxonomias</label>
+                            </div>
+                            <p id="flag-taxonomia-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite à instituição cadastrar suas matrizes e termos e correlacioná-los às competências Semente.</p>
+                        </div>
                         {{#if flagsQtdDescendentes}}
                         <div class="col-md-12">
                             <div class="checkbox w100">
