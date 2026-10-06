@@ -203,27 +203,27 @@
                 {{#if flagsVisivel}}
                 <h4 class="modal__subtitle mt-5" id="flags-sesi-titulo">Features opcionais</h4>
                 <div class="flex flex-row form-group form-group__usuarios" role="group" aria-labelledby="flags-sesi-titulo">
-                    <div class="row w100">
-                        <div class="col-md-3">
+                    <div class="row w100 flex-1 mb-5 align-center align-center-all">
+                        <div class="col-md-3 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_offline_habilitado" type="checkbox"
                                     checked={{flagOffline}} onchange={{action (mut flagOffline) value="target.checked"}}>
                                 <label class="checkbox__label" for="flag_offline_habilitado">Modo offline</label>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_multi_escola_habilitado" type="checkbox"
                                     checked={{flagMultiEscola}} onchange={{action (mut flagMultiEscola) value="target.checked"}}
                                     disabled={{flagMultiEscolaBloqueado}} aria-disabled={{if flagMultiEscolaBloqueado "true"}}
                                     aria-describedby={{if flagMultiEscolaBloqueado "flag-multi-escola-bloqueio"}}>
-                                <label class="checkbox__label" for="flag_multi_escola_habilitado">Multi escolas</label>
+                                <label class="checkbox__label" for="flag_multi_escola_habilitado">Multi níveis (escolas)</label>
                             </div>
                             {{#if flagMultiEscolaBloqueado}}
                             <p id="flag-multi-escola-bloqueio" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Não pode ser desligado: {{flagsUsuariosMultiEscola}} usuário(s) com vínculo em mais de uma escola.</p>
                             {{/if}}
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_personificacao_habilitado" type="checkbox"
                                     checked={{flagPersonificacao}} onchange={{action (mut flagPersonificacao) value="target.checked"}}
@@ -232,7 +232,7 @@
                             </div>
                             <p id="flag-personificacao-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e professores vejam a plataforma como um usuário de perfil inferior, em modo somente leitura.</p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_hierarquia_multinivel_habilitado" type="checkbox"
                                     checked={{flagHierarquiaMultinivel}} onchange={{action (mut flagHierarquiaMultinivel) value="target.checked"}}
@@ -241,7 +241,7 @@
                             </div>
                             <p id="flag-hierarquia-multinivel-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite organizar a rede em mais de um nível (ex.: nacional, regional, escola). Resultados e listagens desta instituição passam a incluir todas as unidades abaixo dela.</p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_comunicacao_familias_habilitado" type="checkbox"
                                     checked={{flagComunicacaoFamilias}} onchange={{action (mut flagComunicacaoFamilias) value="target.checked"}}
@@ -250,7 +250,7 @@
                             </div>
                             <p id="flag-comunicacao-familias-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e secretaria enviem comunicados por e-mail aos responsáveis dos alunos. O cadastro de responsáveis funciona independentemente desta opção.</p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="checkbox w100">
                                 <input class="checkbox__input" id="flag_taxonomia_habilitado" type="checkbox"
                                     checked={{flagTaxonomia}} onchange={{action (mut flagTaxonomia) value="target.checked"}}
