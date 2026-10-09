@@ -2,7 +2,7 @@
 <div class="modal__content">
   <header class="modal__header">
     <button class="modal__close btn-close icon-x" type="button" {{action onClose}}></button>
-    <h3 class="modal__title">{{if modulo 'Editar módulo' 'Novo módulo'}}</h3>
+    <h3 class="modal__title">{{if modulo 'Editar conteúdo próprio' 'Novo conteúdo próprio'}}</h3>
   </header>
 
   <div class="modal__body">
@@ -12,20 +12,20 @@
         <div class="col-xs-12 col-sm-8">
           <div class="form-group w100">
             <label class="form-group__label" for="moduloTitulo">Título</label>
-            {{input class="form-group__input" id="moduloTitulo" value=titulo placeholder="Título do módulo" maxlength=80}}
+            {{input class="form-group__input" id="moduloTitulo" value=titulo placeholder="Título do conteúdo próprio" maxlength=80}}
           </div>
         </div>
         <div class="col-xs-12 col-sm-4">
           <div class="form-group w100">
             <label class="form-group__label" for="moduloCodigo">Código</label>
-            {{input class="form-group__input" id="moduloCodigo" value=codigo placeholder="Código do módulo" maxlength=40}}
+            {{input class="form-group__input" id="moduloCodigo" value=codigo placeholder="Código do conteúdo próprio" maxlength=40}}
           </div>
         </div>
       </div>
 
       <div class="form-group w100">
         <label class="form-group__label" for="moduloDescricao">Descrição</label>
-        {{textarea class="form-group-descricao" id="moduloDescricao" rows="4" value=descricao placeholder="Descrição do módulo" maxlength=500}}
+        {{textarea class="form-group-descricao" id="moduloDescricao" rows="4" value=descricao placeholder="Descrição do conteúdo próprio" maxlength=500}}
       </div>
 
       <div class="form-group w100">
@@ -129,7 +129,7 @@
         <h4 class="modal__subtitle">
           Competências <span>({{totalCompetenciasSelecionadas}} {{if (equalstr totalCompetenciasSelecionadas '1') 'selecionada' 'selecionadas'}})</span>
         </h4>
-        <p>Marque as competências com que o módulo se relaciona e escolha o peso de cada uma (1 a 3).</p>
+        <p>Marque as competências com que o conteúdo próprio se relaciona e escolha o peso de cada uma (1 a 3).</p>
         {{#if competencias}}
           {{#each competenciasPorDominio as |dominio|}}
             <div class="flex flex-col flow-xxs">
@@ -163,6 +163,20 @@
         {{else}}
           <p>Carregando competências...</p>
         {{/if}}
+      </div>
+
+      <div class="flex flex-col flow-xs">
+        <div class="checkbox">
+          <input class="checkbox__input"
+                 id="moduloIncluirRecomendacao"
+                 type="checkbox"
+                 autocomplete="off"
+                 checked={{incluirRecomendacao}}
+                 onchange={{action (mut incluirRecomendacao) value="target.checked"}}
+                 aria-describedby="moduloIncluirRecomendacao-descricao" />
+          <label class="checkbox__label" for="moduloIncluirRecomendacao">Incluir no motor de recomendação</label>
+        </div>
+        <p id="moduloIncluirRecomendacao-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Quando marcado, este conteúdo próprio passa a ser sugerido automaticamente, em Desenvolvimento Pessoal, às pessoas do público-alvo cujas competências medidas indicarem necessidade. Requer ao menos uma competência marcada.</p>
       </div>
 
     </div>

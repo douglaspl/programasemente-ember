@@ -259,6 +259,15 @@
                             </div>
                             <p id="flag-taxonomia-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite à instituição cadastrar suas matrizes e termos e correlacioná-los às competências Semente.</p>
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_conteudos_proprios_habilitado" type="checkbox"
+                                    checked={{flagConteudosProprios}} onchange={{action (mut flagConteudosProprios) value="target.checked"}}
+                                    aria-describedby="flag-conteudos-proprios-descricao">
+                                <label class="checkbox__label" for="flag_conteudos_proprios_habilitado">Conteúdos próprios</label>
+                            </div>
+                            <p id="flag-conteudos-proprios-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que a instituição disponibilize aos seus usuários os conteúdos e cursos criados por ela (menu Conteúdos > Conteúdos próprios).</p>
+                        </div>
                         {{#if flagsQtdDescendentes}}
                         <div class="col-md-12">
                             <div class="checkbox w100">

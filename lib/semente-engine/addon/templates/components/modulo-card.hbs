@@ -1,6 +1,6 @@
 <div class="card-conteudo">
   <div class="card-conteudo__cabecalho">
-    <div class="card-conteudo__cabecalho-titulo">{{modulo.name}} <span class="fw--3">({{modulo.codigo}})</span></div>
+    <div class="card-conteudo__cabecalho-titulo">{{modulo.name}} <span class="fw--3">({{modulo.codigo}})</span>{{#if modulo.isDesenvolvimento}} <span class="fw--3 color-success-40" title="Incluído no motor de recomendação">Recomendável</span>{{/if}}</div>
   </div>
   <div class="card-conteudo__meio">
     <div class="card-conteudo__meio-seg-ano-aula">
@@ -43,14 +43,16 @@
       <ul>
         <li><span>{{modulo.instituicoes.length}} {{if (equalstr modulo.instituicoes.length '1') 'instituição' 'instituições'}}</span></li>
       </ul>
-      <span>Atividades:</span>
+      <span>Unidades:</span>
       <ul>
         {{#each atividadesOrdenadas as |atividade|}}
         <li>
-          <span>{{atividade.name}} ({{atividade.secoes.length}} {{if (equalstr atividade.secoes.length '1') 'seção' 'seções'}})</span>
+          <span>{{atividade.name}} ({{atividade.secoes.length}} {{if (equalstr atividade.secoes.length '1') 'objeto de aprendizagem' 'objetos de aprendizagem'}})</span>
         </li>
         {{else}}
-        <li><span>Nenhuma atividade.</span></li>
+        <li><span>Nenhuma unidade.</span></li>
+        {{!-- Conteúdo próprio sem unidade não é exibido na plataforma --}}
+        <li><span class="color-error-40">Sem unidades — não aparece para o público. Clique em Gerenciar unidades.</span></li>
         {{/each}}
       </ul>
     </div>
@@ -60,7 +62,7 @@
       <span class="btn__label">Editar</span>
     </button>
     <button class="btn btn--ghost btn--xxs" type="button" {{action onAddConteudo}}>
-      <span class="btn__label">Adicionar conteúdo</span>
+      <span class="btn__label">Gerenciar unidades</span>
     </button>
   </div>
 </div>

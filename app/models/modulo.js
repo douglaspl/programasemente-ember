@@ -21,8 +21,10 @@ export default DS.Model.extend({
     codigo: DS.attr(),
     inicio: DS.attr(), // 'YYYY-MM-DD'
     fim: DS.attr(), // 'YYYY-MM-DD'
-    perfis: DS.attr(), // roles: 'aluno' | 'instrutor' | 'coordenador'
+    perfis: DS.attr(), // roles: 'aluno' | 'instrutor' | 'coordenador' | 'gestor'
     competencias: DS.attr(), // [{ competencia: id, nome, peso (1 a 3) }]
+    isDesenvolvimento: DS.attr('boolean'), // incluir no motor de recomendação (Desenvolvimento Pessoal)
+    dataCriacao: DS.attr(), // ISO; só leitura (vem no GET ?criados=true)
     // inverse: null para não virar o inverso de instituicao.modulos
     instituicoes: DS.hasMany('instituicao', {async: true, inverse: null}),
     plataformaAnos: DS.hasMany('plataforma-ano', {async: true, inverse: null}),

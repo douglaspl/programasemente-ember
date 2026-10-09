@@ -9,7 +9,7 @@
       </li>
       <li>
         <button type="button" class="tabs__tab {{if (equalstr selectedTab 'agrupar') 'tabs__tab--is-active'}}" {{action 'refreshSelectedTab' 'agrupar'}}>
-          <span>Agrupar</span>
+          <span>Conteúdos próprios</span>
         </button>
       </li>
     </ul>
@@ -216,13 +216,13 @@
   {{!-- Aba Agrupar --}}
   <div class="flow-md" hidden={{not (equalstr selectedTab 'agrupar')}}>
     <div class="l-dots-between__header">
-      <h1 class="l-dots-between__side__title-content">Módulos</h1>
+      <h1 class="l-dots-between__side__title-content">Conteúdos próprios</h1>
     </div>
     <div class="l-dots-between">
       <aside class="l-dots-between__side l-dots-between__side--conteudos">
         <div class="flex flex-col flow-md">
           {{#if (equalstr pessoaRole 'admin')}}
-          <button type="button" class="btn btn__ps" {{action "openModuloModal" }}>Cadastrar módulo</button>
+          <button type="button" class="btn btn__ps" {{action "openModuloModal" }}>Cadastrar conteúdo próprio</button>
           {{/if}}
 
           <div class="form-group">
@@ -263,8 +263,8 @@
 
       <section class="l-dots-between__content flow-md">
         <hgroup>
-          <h1 class="sr-only">Lista de módulos</h1>
-          ({{modulosFiltrados.length}} {{if (equalstr modulosFiltrados.length '1') 'módulo' 'módulos'}})
+          <h1 class="sr-only">Lista de conteúdos próprios</h1>
+          ({{modulosFiltrados.length}} {{if (equalstr modulosFiltrados.length '1') 'conteúdo próprio' 'conteúdos próprios'}})
         </hgroup>
 
         <ul class="list list--2-col">
@@ -275,7 +275,7 @@
               onEdit=(action 'openModuloModal' modulo)}}
           </li>
           {{else}}
-          <li>{{if modulosOrdenados.length 'Nenhum módulo encontrado com esses filtros.' 'Nenhum módulo cadastrado.'}}</li>
+          <li>{{if modulosOrdenados.length 'Nenhum conteúdo próprio encontrado com esses filtros.' 'Nenhum conteúdo próprio cadastrado.'}}</li>
           {{/each}}
         </ul>
       </section>
