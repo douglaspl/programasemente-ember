@@ -2,11 +2,14 @@
 
   <nav>
     <ul class="tabs">
+      {{!-- Aba Geral só para admin; os demais perfis (gestor) só gerenciam os próprios conteúdos --}}
+      {{#if isAdmin}}
       <li>
         <button type="button" class="tabs__tab {{if (equalstr selectedTab 'geral') 'tabs__tab--is-active'}}" {{action 'refreshSelectedTab' 'geral'}}>
           <span>Geral</span>
         </button>
       </li>
+      {{/if}}
       <li>
         <button type="button" class="tabs__tab {{if (equalstr selectedTab 'agrupar') 'tabs__tab--is-active'}}" {{action 'refreshSelectedTab' 'agrupar'}}>
           <span>Conteúdos próprios</span>
@@ -16,6 +19,7 @@
   </nav>
 
   {{!-- Aba Geral: usa hidden em vez de #if para preservar o estado dos filtros ao trocar de aba --}}
+  {{#if isAdmin}}
   <div class="flow-md" hidden={{not (equalstr selectedTab 'geral')}}>
     <div class="l-dots-between__header">
       <h1 class="l-dots-between__side__title-content">Conteúdos</h1>
@@ -213,6 +217,8 @@
     </div>
   </div>
 
+  {{/if}}
+
   {{!-- Aba Agrupar --}}
   <div class="flow-md" hidden={{not (equalstr selectedTab 'agrupar')}}>
     <div class="l-dots-between__header">
@@ -221,7 +227,7 @@
     <div class="l-dots-between">
       <aside class="l-dots-between__side l-dots-between__side--conteudos">
         <div class="flex flex-col flow-md">
-          {{#if (equalstr pessoaRole 'admin')}}
+          {{#if podeCriarConteudoProprio}}
           <button type="button" class="btn btn__ps" {{action "openModuloModal" }}>Cadastrar conteúdo próprio</button>
           {{/if}}
 

@@ -1,8 +1,11 @@
-{{header-geral parentController = this.aulasController pessoa=pessoaLogged thisRoute=thisRoute route='administracao'}}
+{{header-geral parentController = this.aulasController pessoa=pessoaLogged thisRoute=thisRoute route=(if modoGestor 'instituicoes' 'administracao')}}
 <main class="main pt-5">
   <div class="institutions flow-md">
     <header class="main__header main__header--has-side-info">
       {{!-- <h1 class="main__title animated fadeInLeftShort faster">Administração</h1> --}}
+      {{#if modoGestor}}
+        <h1 class="main__title animated fadeInLeftShort faster">Instituições</h1>
+      {{/if}}
       {{#if (equalstr pessoaLogged.role "admin")}}
         {{#link-to 'gersistema.createinst'}}
         <button class="btn btn__nova--instituicao animated fadeInLeftShort faster d100">
@@ -44,7 +47,7 @@
 
     <ul id="modelInstList" class="list list--striped animated fadeInLeftShort faster d100">
       {{#each matchInsts as |inst|}}
-      <li class="l-devil-albatross list__linhas">
+      <li class="l-devil-albatross list__linhas{{if modoGestor ' institutions__linha--arvore'}}">
         {{#if (equalstr pessoaLogged.role "admin")}}
           {{#link-to 'gerdata.informations' inst.id}}
             <a class="list__title--instituicao ">
@@ -52,9 +55,10 @@
             </a>
           {{/link-to}}
         {{else}}
+          {{!-- Gestor: recuo pelo nível na árvore (raiz = nível 0) --}}
           {{#link-to 'gerdata.users' inst.id}}
-            <a class="list__title--instituicao">
-              <span class="btn__label">{{inst.name}}</span>
+            <a class="list__title--instituicao" style={{inst.recuo}}>
+              {{#if inst.nivel}}<span class="color-blue-navy-20" aria-hidden="true">└ </span>{{/if}}<span class="btn__label">{{inst.name}}</span>
             </a>
           {{/link-to}}
         {{/if}}
@@ -63,10 +67,13 @@
           <span class="list__etiqueta">{{inst.status}}</span>
         {{/if}}
 
+        {{!-- A árvore do gestor não traz "enabled": sem o switch nesse caso --}}
+        {{#unless modoGestor}}
         <span class=" switch switch--institutions flex-none m-left--auto m-right--auto">
           <input class="switch__checkbox" id="activeInstId{{inst.id}}" type="checkbox" disabled="disabled" checked={{inst.enabled}}>
           <span class="switch__label {{if inst.enabled 'switch__label--habilitado' 'switch__label--desabilitado'}}"></span>
         </span>
+        {{/unless}}
       </li>
       {{/each}}
     </ul>

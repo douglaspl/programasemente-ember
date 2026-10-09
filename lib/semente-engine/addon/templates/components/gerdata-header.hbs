@@ -50,5 +50,20 @@
       {{/link-to}}
     </div>
   </div>
+{{else if gestorComInstituicoes}}
+  <div class="flex flex-row sections__section--adm">
+    <h1 class="main__title main__title--adm animated fadeInRightShort">
+      {{instituicao.name}}
+    </h1>
+    <div>
+      {{#link-to 'gersistema'}}
+        <button class="main__back--adm animated fadeInLeftShort faster"
+          id="back-instituicoes" type="button">
+          <span class="icon-arrow-left"></span>
+          <span class="btn__label">Instituições</span>
+        </button>
+      {{/link-to}}
+    </div>
+  </div>
 {{/if}}
 

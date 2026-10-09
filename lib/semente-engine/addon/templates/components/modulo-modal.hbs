@@ -69,13 +69,15 @@
         <div class="modal__checklist">
           {{#if instituicoes}}
             {{#each instituicoesFiltradas as |inst|}}
-              <div class="checkbox">
+              {{!-- recuo/nivel só existem na lista do gestor (árvore); admin segue sem indentação --}}
+              <div class="checkbox" style={{inst.recuo}}>
                 <input class="checkbox__input"
                        id="modulo-inst-{{inst.id}}"
                        type="checkbox"
+                       autocomplete="off"
                        checked={{if (get instituicoesSelecionadas inst.id) true false}}
                        onchange={{action 'instituicaoChanged' inst.id}} />
-                <label class="checkbox__label" for="modulo-inst-{{inst.id}}">{{inst.name}}</label>
+                <label class="checkbox__label" for="modulo-inst-{{inst.id}}">{{#if inst.nivel}}<span class="color-blue-navy-20" aria-hidden="true">└ </span>{{/if}}{{inst.name}}</label>
               </div>
             {{else}}
               <p>Nenhuma instituição encontrada.</p>

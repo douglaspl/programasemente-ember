@@ -100,6 +100,26 @@
             {{/link-to}}
           {{/if}}
 
+          {{!-- Gestor: itens extras só quando a API libera (conteúdos próprios / instituição com filhas).
+                "Administração" volta para a tela de usuários da própria instituição --}}
+          {{#if gestorTemMenuExtra}}
+            {{#link-to 'gerdata.users' instituicaoLogadaId class=(concatenate "l-user-header__nav-item " (if (equalstr route 'administracao') "l-user-header__nav-item--is-active"))}}
+              <span>Administração</span>
+            {{/link-to}}
+
+            {{#if gestorTemInstituicoesFilhas}}
+              {{#link-to 'gersistema' class=(concatenate "l-user-header__nav-item " (if (equalstr route 'instituicoes') "l-user-header__nav-item--is-active"))}}
+                <span>Instituições</span>
+              {{/link-to}}
+            {{/if}}
+
+            {{#if gestorPodeCriarConteudos}}
+              {{#link-to 'conteudos.index' class=(concatenate "l-user-header__nav-item " (if (equalstr route 'conteudos') "l-user-header__nav-item--is-active"))}}
+                <span>Conteúdos próprios</span>
+              {{/link-to}}
+            {{/if}}
+          {{/if}}
+
           {{!-- {{#if (or (or (equalstr pessoa.role 'secretaria') (equalstr pessoa.role 'gestor')) (equalstr pessoa.role 'recursosHumanos'))}}
             {{#link-to 'gerdata.users' pessoa.instituicao.id class=(concatenate "l-user-header__nav-item " (if (equalstr route 'administracao') "l-user-header__nav-item--is-active"))}}
               <span>Administração</span>
@@ -209,6 +229,18 @@
         {{#if (or (or (equalstr pessoa.role 'secretaria') (equalstr pessoa.role 'gestor')) (equalstr pessoa.role 'recursosHumanos'))}}
           {{#link-to 'gerdata.users' pessoa.instituicao.id class=(concatenate "" (if (equalstr route 'administracao') "l-user-header__optionsMobile-nav-item--is-active"))}}
             <span>Administração</span>
+          {{/link-to}}
+        {{/if}}
+
+        {{#if gestorTemInstituicoesFilhas}}
+          {{#link-to 'gersistema' class=(concatenate "" (if (equalstr route 'instituicoes') "l-user-header__optionsMobile-nav-item--is-active"))}}
+            <span>Instituições</span>
+          {{/link-to}}
+        {{/if}}
+
+        {{#if gestorPodeCriarConteudos}}
+          {{#link-to 'conteudos.index' class=(concatenate "" (if (equalstr route 'conteudos') "l-user-header__optionsMobile-nav-item--is-active"))}}
+            <span>Conteúdos próprios</span>
           {{/link-to}}
         {{/if}}
 

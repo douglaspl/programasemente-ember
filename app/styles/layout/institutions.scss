@@ -3,6 +3,13 @@
   $this: &;
   font-family: poppins, sans-serif;
 
+  // Lista em árvore do gestor (gersistema): sem o switch, o link é o único filho da linha (first e
+  // last-child → order 3) e o ::before do .l-devil-albatross (order 2) fica antes dele, empurrando o
+  // nome para a direita. O recuo vem do nível
+  &__linha--arvore.l-devil-albatross::before {
+    display: none;
+  }
+
   &__header {
     align-items: flex-end;
     display: flex;
