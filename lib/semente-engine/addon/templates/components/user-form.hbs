@@ -245,7 +245,7 @@
                                         data-context="turma">
                                         <option selected="selected" value="">---</option>
                                         {{#each plataformaTurmas as |pt|}}
-                                        {{#if (equalstr pt.plataformaAno.idx '20')}}
+                                        {{#if (equalstr pt.plataformaAno.idx idxAnoAdulto)}}
                                         <option value="{{pt.id}}">{{pt.name}}</option>
                                         {{/if}}
                                         {{/each}}
