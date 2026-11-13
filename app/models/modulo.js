@@ -17,6 +17,17 @@ export default DS.Model.extend({
     pessoas: DS.hasMany('pessoa', {async: true}),
     sistema: DS.belongsTo('sistema', {async: true}),
     acompanhamentosCursoInstituicao: DS.hasMany('acompanhamento-curso-instituicao',{async: true}),
+    // Campos da criação de módulo em Conteúdos > Agrupar
+    codigo: DS.attr(),
+    inicio: DS.attr(), // 'YYYY-MM-DD'
+    fim: DS.attr(), // 'YYYY-MM-DD'
+    perfis: DS.attr(), // roles: 'aluno' | 'instrutor' | 'coordenador' | 'gestor'
+    competencias: DS.attr(), // [{ competencia: id, nome, peso (1 a 3) }]
+    isDesenvolvimento: DS.attr('boolean'), // incluir no motor de recomendação (Desenvolvimento Pessoal)
+    dataCriacao: DS.attr(), // ISO; só leitura (vem no GET ?criados=true)
+    // inverse: null para não virar o inverso de instituicao.modulos
+    instituicoes: DS.hasMany('instituicao', {async: true, inverse: null}),
+    plataformaAnos: DS.hasMany('plataforma-ano', {async: true, inverse: null}),
     backgroundImage: Ember.computed('coverImage', function() {
         return new Ember.String.htmlSafe("background-image: url('" + this.get('coverImage') + "');");
     }),

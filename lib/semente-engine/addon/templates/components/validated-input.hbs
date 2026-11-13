@@ -11,7 +11,7 @@
     <div class="mt0">
         {{#if (get changeset.error propertyName)}}
             {{#each (get (get changeset.error propertyName) 'validation') as |error|}}
-                <span class="color-error-40 ">{{error}}</span>
+                <span class="color-error-40" style="font-size: 12px">{{error}}</span>
             {{/each}}
         {{/if}}
     </div>

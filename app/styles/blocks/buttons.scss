@@ -88,6 +88,10 @@
     background-color: $clickables-bg-color;
   }
 
+  &__ps {
+    border-radius: 0 20px 0 20px;
+  }
+
   &__add {
     width: 10rem;
     
@@ -172,8 +176,8 @@
     color: $clickables-bg-color;
     display: flex;
     font-size: $font-size--md;
-    padding-bottom: $distance--lg;
-    padding-top: $distance--lg;
+    // padding-bottom: $distance--lg;
+    // padding-top: $distance--lg;
     width: 100%;
 
     &:hover:not([disabled]) ,
@@ -438,6 +442,18 @@
       opacity: 1;
     }
 
+  }
+
+  &__filter-content {
+    background-color: #fafafa;
+    border: solid 1px #89BE44;
+    box-shadow: none;
+    color: #808080;
+
+    &.btn--is-active {
+      background-color: #8AB925;
+      color: #fff;
+    }
   }
 
   &--as-filter {

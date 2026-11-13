@@ -1,7 +1,7 @@
 {{gerdata-header pessoa=pessoaLogged informations=true instituicao=model.instituicao}}
 
 <section class="sections__subsection flow-md animated fadeInLeftShort faster d100 m-top--sm">
-  {{inst-form changeset=(changeset model.instituicao InstValidations) action=(action 'save') isEdit=true}}
+  {{inst-form changeset=(changeset model.instituicao InstValidations) instituicoes=model.instituicoes action=(action 'save') isEdit=true}}
 </section>
 
 {{outlet}}

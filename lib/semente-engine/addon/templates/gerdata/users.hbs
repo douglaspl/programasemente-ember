@@ -75,12 +75,19 @@
                             onchange={{action 'selectedInstituicaoFilha' value='target.value' }} data-type="select"
                             data-required="true">
                             <option selected="selected" value="">Todas</option>
+                            {{#if hierarquiaMultinivel}}
+                            {{#each arvoreUnidades as |unidade|}}
+                            <option style="display: block" value="{{unidade.id}}" selected={{if (equalstr unidade.id
+                                selected_instituicao_filha) "selected" }}>{{unidade.label}}</option>
+                            {{/each}}
+                            {{else}}
                             {{#each instituicao.instituicaoFilhas as |instf|}}
                             <option style="display: block" value="{{instf.id}}" selected={{if (equalstr instf
                                 selectedInstFilha) "selected" }}>
                                 {{instf.name}}
                             </option>
                             {{/each}}
+                            {{/if}}
                         </select>
                     </div>
                 </div>
@@ -194,8 +201,16 @@
                                     <strong class="institutions__table-usuarios--title-usuarios capitalized">{{pessoa.nameLower}}</strong>
                                 </p>
                                 <p class='institutions__table-usuarios--title-email'>{{pessoa.userName}}</p>
+                                {{#if hierarquiaMultinivel}}
+                                {{#if pessoa.instituicao.id}}
+                                {{#unless (equalstr pessoa.instituicao.id instituicaoId)}}
+                                <p class="table__inst">{{pessoa.instituicao.name}}</p>
+                                {{/unless}}
+                                {{/if}}
+                                {{else}}
                                 {{#if pessoa.instituicao.instituicaoFilhas}}
                                 <p class="table__inst">{{pessoa.instituicao.name}}</p>
+                                {{/if}}
                                 {{/if}}
                                 {{#if (equalstr pessoa.role 'aluno')}}
                                 <div class="table__school-info">

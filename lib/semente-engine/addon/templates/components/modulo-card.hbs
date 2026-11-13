@@ -1,0 +1,68 @@
+<div class="card-conteudo">
+  <div class="card-conteudo__cabecalho">
+    <div class="card-conteudo__cabecalho-titulo">{{modulo.name}} <span class="fw--3">({{modulo.codigo}})</span>{{#if modulo.isDesenvolvimento}} <span class="fw--3 color-success-40" title="Incluído no motor de recomendação">Recomendável</span>{{/if}}</div>
+  </div>
+  <div class="card-conteudo__meio">
+    <div class="card-conteudo__meio-seg-ano-aula">
+      <span>Período:</span>
+      <ul>
+        <li><span>{{periodo}}</span></li>
+      </ul>
+      {{#if modulo.autor}}
+      <span>Autores:</span>
+      <ul>
+        <li><span>{{modulo.autor}}</span></li>
+      </ul>
+      {{/if}}
+      <span>Perfis:</span>
+      <ul>
+        <li><span>{{perfis}}</span></li>
+      </ul>
+      {{#if competencias.length}}
+      <span>Competências:</span>
+      <ul>
+        {{#each competencias as |competencia|}}
+        <li><span>{{competencia}}</span></li>
+        {{/each}}
+      </ul>
+      {{/if}}
+      {{#if anosPorSegmento.length}}
+      <span>Anos:</span>
+      <ul>
+        {{#each anosPorSegmento as |segmento|}}
+        <li>
+          <span>{{segmento.titulo}}</span>
+          <span>{{segmento.anos}}</span>
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </div>
+    <div class="card-conteudo__meio-seg-ano-aula">
+      <span>Instituições:</span>
+      <ul>
+        <li><span>{{totalInstituicoes}} {{if (equalstr totalInstituicoes '1') 'instituição' 'instituições'}}</span></li>
+      </ul>
+      <span>Unidades:</span>
+      <ul>
+        {{#each atividadesOrdenadas as |atividade|}}
+        <li>
+          <span>{{atividade.name}} ({{atividade.secoes.length}} {{if (equalstr atividade.secoes.length '1') 'objeto de aprendizagem' 'objetos de aprendizagem'}})</span>
+        </li>
+        {{else}}
+        <li><span>Nenhuma unidade.</span></li>
+        {{!-- Conteúdo próprio sem unidade não é exibido na plataforma --}}
+        <li><span class="color-error-40">Sem unidades — não aparece para o público. Clique em Gerenciar unidades.</span></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="card-conteudo__rodape gap-sm">
+    <button class="btn btn--text btn--xxs" type="button" {{action onEdit}}>
+      <span class="btn__label">Editar</span>
+    </button>
+    <button class="btn btn--ghost btn--xxs" type="button" {{action onAddConteudo}}>
+      <span class="btn__label">Gerenciar unidades</span>
+    </button>
+  </div>
+</div>

@@ -9,7 +9,7 @@
         </header>
 
         <div class="modal__body" style="max-height: 75vh;">
-            {{user-form changeset=(changeset model.newUser PessoaValidations) instituicao=model.instituicao segmentos=model.segmentos action=(action 'save') isEdit=isEdit anoAtual=anoAtual}}
+            {{user-form changeset=(changeset model.newUser PessoaValidations) instituicao=model.instituicao segmentos=model.segmentos action=(action 'save') isEdit=isEdit anoAtual=anoAtual verificarVinculo=true instituicaoId=model.instituicao.id onVinculoExistente=(action 'registrarVinculoExistente')}}
         </div>
     </div>
 </aside>

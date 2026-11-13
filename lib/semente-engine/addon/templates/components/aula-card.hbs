@@ -1,42 +1,19 @@
-
 {{#if (or (equalstr situacao selectedSituacao) (equalstr selectedSituacao ""))}}
 <div class="media {{if (not aula.hasContent) 'media--card media--card--is-disabled' 'media--card media--card--fundo'}}">
-  <div class="degrade"></div>
-  <img class="media--card--imagem-aula" id="thumbnail-aula-card{{aula.id}}" src="{{aula.thumbnail}}" alt="{{aula.titulo}}"/>
-  <div class="flex flex-col justify-content-between h100 w100">
-    <div class="flex flex-row justify-content-end w100">
-      {{#if aula.isEssencial}}
-        <p class="etiqueta-superior">ESSENCIAL</p>
-      {{/if}}
-
-      {{#if (or (equalstr pessoa.role 'aluno') (equalstr pessoa.role 'instrutor'))}}
-        {{#if (equalstr situacao "Aplicada")}}
-          {{!-- <p class="etiqueta-situacao">Aplicada em: <span class="fw--4">{{UltimaAplicacao.dataAplicacaoFormatShort}}</span></p> --}}
-        {{else}}
-          <p class="etiqueta-superior">{{situacao}}</p>
-        {{/if}} 
-      {{/if}}
+  <div class="media__body self-stretch media--card--infos-card">
+    <div class="titulo-aula">
+      <div class="flow-xxs">
+        <span class="media__title">{{aula.titulo}}</span>
+      </div>
     </div>
 
-    <div class="media__body flow-md self-stretch media--card--infos-card">
-      <div class="flex flex-row justify-between">
-        <div class="titulo-aula">
-          <div class="flow-xxs">
-            <span class="media__title title-2">{{aula.titulo}}</span>
-          </div>
-        </div>
-      </div>
+    <div class="habilidades">
+      {{#each compsSorted as |competencia|}}
+      <span class="etiquetas">{{competencia.sigla}}</span>
+      {{/each}}
+    </div>
 
-      <div class="descricao-aula">
-        <p class="media__title--nova-descricao-aula">{{aula.descricao}}</p>
-      </div>
-
-      <div class="habilidades">
-        {{#each compsSorted as |competencia|}}
-          <span class="habilidades etiquetas">{{competencia.sigla}}</span>
-        {{/each}}
-      </div>
-
+    <div class="media__ctas">
       <div class="btn-materiais-aula">
         {{#if (not aula.hasContent)}}
         <div class="btn-materiais-aula__btn--disabled novo-btn-materiais-aula">
@@ -45,17 +22,17 @@
         </div>
         {{else}}
         {{#link-to 'aulas.content' aula.id}}
-          <h2 class="btn btn--xxs animated fadeInLeftShort faster d100">Ver materiais</h2>
+        <h2 class="btn btn--xxs animated fadeInLeftShort faster d100">Ver materiais</h2>
         {{/link-to}}
         {{/if}}
       </div>
 
       {{#if (equalstr pessoa.role 'admin')}}
-        <div class="editar-aula">
-          {{#link-to 'aulas.editaula' aula.id class="btn btn__claro btn--xxs"}}
-            <span class="btn__label">Editar</span>
-          {{/link-to}}
-        </div>
+      <div class="editar-aula">
+        {{#link-to 'aulas.editaula' aula.id class="btn btn__claro btn--xxs"}}
+        <span class="btn__label">Editar</span>
+        {{/link-to}}
+      </div>
       {{/if}}
     </div>
   </div>

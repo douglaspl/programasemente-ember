@@ -8,7 +8,7 @@
             <h3 class="modal__title">Nova Instituição</h3>
         </header>
         <div class="modal__body" style="max-height: 75vh;">
-            {{inst-form changeset=(changeset model.newInst InstValidations) segmentos=model.segmentos calendarios=model.calendarios action=(action 'save') isEdit=false}}
+            {{inst-form changeset=(changeset model.newInst InstValidations) segmentos=model.segmentos calendarios=model.calendarios instituicoes=model.instituicoes action=(action 'save') isEdit=false}}
         </div>
     </div>
 </aside>

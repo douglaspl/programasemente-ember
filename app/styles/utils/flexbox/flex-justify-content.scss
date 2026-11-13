@@ -36,3 +36,13 @@ $flex-justify-contents: (
 .justify-content-center {
   justify-content: center;
 }
+
+.align-center {
+  align-content: center;
+}
+
+.align-center-all {
+  > * {
+    align-content: center;
+  }
+}

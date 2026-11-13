@@ -1,29 +1,46 @@
 <!-- new institution step 1 -->
 <form {{action 'submit' on='submit' }}>
-    <div class="flow-lg institutions__step-content institutions__step-content--is-show {{if isEdit 'institutions__table-usuarios' ''}}">
+    <div
+        class="flow-lg institutions__step-content institutions__step-content--is-show {{if isEdit 'institutions__table-usuarios' ''}}">
         <section class="sections__subsection">
             <div class="flex flex-col m-top--sm">
                 <h4 class="modal__subtitle mt-0">Informações gerais</h4>
                 <div class="flex-row justify-between" style="align-items: baseline;">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="w35 form-group form-group__usuarios">
-                                {{validated-input label="Nome" propertyName="name" changeset=changeset}}
+                    <div class="row form-group__usuarios mt-4">
+                        {{!-- {{#unless isEdit}} --}}
+                        <div class="col-md-4 mt-2">
+                            <label class="form-group__label">Instituição "mãe" (para redes e agrupamentos)</label>
+                            <div class="form-group__wrapper form-group__wrapper--select">
+                                <select id="instituicaoMae" name="instituicaoMae" data-type="select"
+                                    class="form-group__input w100">
+                                    <option value="" selected={{unless instituicao.instituicaoPaiId "selected"}}>Nenhuma</option>
+                                    {{#each instituicoesMaeOpcoes as |inst|}}
+                                    <option value="{{inst.id}}" selected={{if (equalstr inst.id
+                                        instituicao.instituicaoPaiId) "selected" }}>{{inst.name}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                         </div>
+                        {{!-- {{/unless}} --}}
+
                         <div class="col-md-3">
+                            <div class="w35 form-group form-group__usuarios">
+                                {{validated-input label="Nome" propertyName="name" changeset=changeset class="w100"}}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
                             <div class="w35 form-group form-group__usuarios">
                                 {{validated-input label="Radical (para códigos)" propertyName="radical"
                                 changeset=changeset}}
                             </div>
 
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <div class="w35 form-group form-group__usuarios">
                                 {{validated-input label="UF" propertyName="uf" changeset=changeset}}
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="w35 form-group form-group__usuarios">
                                 {{validated-input label="Cidade" propertyName="cidade" changeset=changeset}}
                             </div>
@@ -38,30 +55,39 @@
                                 <div class="form-group__wrapper form-group__wrapper--select">
                                     <select id="isEscola" name="isEscola" data-type="select" data-required="true"
                                         class="form-group__input">
-                                        <option value="escola" selected={{if (equalstr instituicao.isEscola "escola") 'selected'}}>Escola</option>
-                                        <option value="empresa" selected={{if (equalstr instituicao.isEscola "empresa") 'selected'}}>Empresa</option>
-                                        <option value="faculdade" selected={{if (equalstr instituicao.isEscola "faculdade") 'selected'}}>Faculdade</option>
-                                        <option value="setor publico" selected={{if (equalstr instituicao.isEscola "setor publico") 'selected'}}>Setor Público</option>
-                                        <option value="outros" selected={{if (equalstr instituicao.isEscola "outros") 'selected'}}>Outros</option>
+                                        <option value="escola" selected={{if (equalstr instituicao.isEscola "escola"
+                                            ) 'selected' }}>Escola</option>
+                                        <option value="empresa" selected={{if (equalstr instituicao.isEscola "empresa"
+                                            ) 'selected' }}>Empresa</option>
+                                        <option value="faculdade" selected={{if (equalstr
+                                            instituicao.isEscola "faculdade" ) 'selected' }}>Faculdade</option>
+                                        <option value="setor publico" selected={{if (equalstr
+                                            instituicao.isEscola "setor publico" ) 'selected' }}>Setor Público</option>
+                                        <option value="outros" selected={{if (equalstr instituicao.isEscola "outros"
+                                            ) 'selected' }}>Outros</option>
                                     </select>
                                 </div>
                             </form>
                         </div>
 
                         <div class="col-md-2">
-                            {{switch-input label="Venda Direta" propertyName="vendaDireta" changeset=changeset classe="vendaDireta" class="form-group__infos"}}
+                            {{switch-input label="Venda Direta" propertyName="vendaDireta" changeset=changeset
+                            classe="vendaDireta" class="form-group__infos"}}
                         </div>
 
                         <div class="col-md-2 ml-1">
-                            {{switch-input label="Termo Aceite" propertyName="statusTermoAceite" changeset=changeset classe="statusTermoAceite" class="form-group__infos"}}
+                            {{switch-input label="Termo Aceite" propertyName="statusTermoAceite" changeset=changeset
+                            classe="statusTermoAceite" class="form-group__infos"}}
                         </div>
 
                         <div class="col-md-2 ml-1">
-                            {{switch-input label="Status" propertyName="enabled" changeset=changeset classe="enabled" class="form-group__infos"}}
+                            {{switch-input label="Status" propertyName="enabled" changeset=changeset classe="enabled"
+                            class="form-group__infos"}}
                         </div>
 
                         <div class="col-md-1 ml-1">
-                            {{switch-input label="Base Atualizada" propertyName="baseUpdated" changeset=changeset classe="baseUpdated" class="form-group__infos"}}
+                            {{switch-input label="Base Atualizada" propertyName="baseUpdated" changeset=changeset
+                            classe="baseUpdated" class="form-group__infos"}}
                         </div>
                     </div>
                 </div>
@@ -72,7 +98,8 @@
                         {{#if isEdit}}
                         {{!-- <div style="display:none;">{{codigos}}</div> --}}
                         <div class="col-md-2 col-sm-12">
-                            {{validated-input label="Professores contratados" propertyName="nrinstrutores" changeset=changeset classe="numeric"}}
+                            {{validated-input label="Professores contratados" propertyName="nrinstrutores"
+                            changeset=changeset classe="numeric"}}
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group__container--medicao">
@@ -86,7 +113,8 @@
                         </div>
 
                         <div class="col-md-2 col-sm-12">
-                            {{validated-input label="Alunos contratados" propertyName="nralunos" changeset=changeset classe="numeric"}}
+                            {{validated-input label="Alunos contratados" propertyName="nralunos" changeset=changeset
+                            classe="numeric"}}
                         </div>
                         <div class="col-md-2 col-sm-12">
                             <div class="form-group__container--medicao">
@@ -99,69 +127,160 @@
                             </div>
                         </div>
                         <div style="display:none;">{{carregaBarras}}</div>
-                        
+
                         <div class="mt-4 ml-4 flex justify-content-between w30">
                             <div class="form-group__container--medicao">
-                                <h2 class="flex">Gestores: <span class="ml-1">{{instituicao.nrgestoresAtivos}}</span></h2>
-                                <h2 class="flex">Coordenadores: <span class="ml-1">{{instituicao.nrcoordenadoresAtivos}}</span></h2>
+                                <h2 class="flex">Gestores: <span class="ml-1">{{instituicao.nrgestoresAtivos}}</span>
+                                </h2>
+                                <h2 class="flex">Coordenadores: <span
+                                        class="ml-1">{{instituicao.nrcoordenadoresAtivos}}</span></h2>
                             </div>
                             <div class="form-group__container--medicao">
-                                <h2 class="flex">Secretaria: <span class="ml-1">{{instituicao.nrsecretariaAtivos}}</span></h2>
-                                <h2 class="flex">Marketing: <span class="ml-1">{{instituicao.nrmarketingAtivos}}</span></h2>
+                                <h2 class="flex">Secretaria: <span
+                                        class="ml-1">{{instituicao.nrsecretariaAtivos}}</span></h2>
+                                <h2 class="flex">Marketing: <span class="ml-1">{{instituicao.nrmarketingAtivos}}</span>
+                                </h2>
                             </div>
                         </div>
                         {{else}}
-                            <div class="col-md-4 col-sm-12">
-                                {{validated-input label="Professores contratados" propertyName="nrinstrutores" changeset=changeset classe="numeric"}}
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                                {{validated-input label="Alunos contratados" propertyName="nralunos" changeset=changeset classe="numeric"}}
-                            </div>
+                        <div class="col-md-4 col-sm-12">
+                            {{validated-input label="Professores contratados" propertyName="nrinstrutores"
+                            changeset=changeset classe="numeric"}}
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            {{validated-input label="Alunos contratados" propertyName="nralunos" changeset=changeset
+                            classe="numeric"}}
+                        </div>
                         {{/if}}
                     </div>
                 </div>
-                
+
 
                 {{#unless isEdit}}
-                    <h4 class="modal__subtitle mt-5">Gestão escolar</h4>
-                    <div class="flex flex-row justify-between form-group__usuarios">
-                        {{#each segmentos as |segmento|}}
-                        {{#unless (equalstr segmento.idx '6')}}
-                            {{switch-input label=segmento.titulo propertyName=(concatenate "segmento_" segmento.id) classe="segmento" class="w20 mr-1 d-flex d-flex--c justify-between"}}
-                        {{/unless}}
-                        {{/each}}
-                    </div>
-                    <div class="flow-sm institutions__filtro-anos--tipo mt-3">
-                        <p>Percurso de medição definido para os adultos: </p>
-                        <div class="form-group">
-                            <div class="form-group__wrapper form-group__wrapper--select-anos ">
-                                <select id="platAnoAdulto" name="percursoadulto" data-type="select" data-required="true"
+                <h4 class="modal__subtitle mt-5">Gestão escolar</h4>
+                <div class="flex flex-row justify-between form-group__usuarios">
+                    {{#each segmentos as |segmento|}}
+                    {{#unless (equalstr segmento.idx '6')}}
+                    {{switch-input label=segmento.titulo propertyName=(concatenate "segmento_" segmento.id)
+                    classe="segmento" class="w20 mr-1 d-flex d-flex--c justify-between"}}
+                    {{/unless}}
+                    {{/each}}
+                </div>
+                <div class="flow-sm institutions__filtro-anos--tipo mt-3">
+                    <p>Percurso de medição definido para os adultos: </p>
+                    <div class="form-group">
+                        <div class="form-group__wrapper form-group__wrapper--select-anos ">
+                            <select id="platAnoAdulto" name="percursoadulto" data-type="select" data-required="true"
                                 data-context="percursoadulto" class="form-group__input form-group__input--anos">
                                 {{#each segmentos as |segmento| }}
                                 {{#if (equalstr segmento.idx '6')}}
                                 {{#each (orderby segmento.plataformaAnos 'idx') as |plataformaAno|}}
-                                <option value="{{plataformaAno.id}}" selected={{if (equalstr plataformaAno.idx '20' ) "selected" }}>{{plataformaAno.name}}</option>
+                                <option value="{{plataformaAno.id}}" selected={{if (equalstr plataformaAno.idx '20'
+                                    ) "selected" }}>{{plataformaAno.name}}</option>
                                 {{/each}}
                                 {{/if}}
-                                {{/each}}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h4 class="modal__subtitle mt-5">Gestão calendário</h4>
-                    <div class="form-group form-group__usuarios flex flex-row justify-start mr2">
-                        <div class="form-group__wrapper form-group__wrapper--select">
-                            <select id="new_inst_calendario" name="calendario" data-type="select" data-required="true"
-                                data-context="calendario" class="form-group__input">
-                                <option selected="selected" value="">---</option>
-                                {{#each calendarios as |calendario|}}
-                                <option value="{{calendario.id}}">{{calendario.ano}} - {{calendario.descricao}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
+                </div>
+
+                <h4 class="modal__subtitle mt-5">Gestão calendário</h4>
+                <div class="form-group form-group__usuarios flex flex-row justify-start mr2">
+                    <div class="form-group__wrapper form-group__wrapper--select">
+                        <select id="new_inst_calendario" name="calendario" data-type="select" data-required="true"
+                            data-context="calendario" class="form-group__input">
+                            <option selected="selected" value="">---</option>
+                            {{#each calendarios as |calendario|}}
+                            <option value="{{calendario.id}}">{{calendario.ano}} - {{calendario.descricao}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
                 {{/unless}}
+
+                {{#if isAdminSemente}}
+                {{#if flagsVisivel}}
+                <h4 class="modal__subtitle mt-5" id="flags-sesi-titulo">Features opcionais</h4>
+                <div class="flex flex-row form-group form-group__usuarios" role="group" aria-labelledby="flags-sesi-titulo">
+                    <div class="row w100 flex-1 mb-5 align-center align-center-all">
+                        <div class="col-md-3 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_offline_habilitado" type="checkbox"
+                                    checked={{flagOffline}} onchange={{action (mut flagOffline) value="target.checked"}}>
+                                <label class="checkbox__label" for="flag_offline_habilitado">Modo offline</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_multi_escola_habilitado" type="checkbox"
+                                    checked={{flagMultiEscola}} onchange={{action (mut flagMultiEscola) value="target.checked"}}
+                                    disabled={{flagMultiEscolaBloqueado}} aria-disabled={{if flagMultiEscolaBloqueado "true"}}
+                                    aria-describedby={{if flagMultiEscolaBloqueado "flag-multi-escola-bloqueio"}}>
+                                <label class="checkbox__label" for="flag_multi_escola_habilitado">Multi níveis (escolas)</label>
+                            </div>
+                            {{#if flagMultiEscolaBloqueado}}
+                            <p id="flag-multi-escola-bloqueio" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Não pode ser desligado: {{flagsUsuariosMultiEscola}} usuário(s) com vínculo em mais de uma escola.</p>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_personificacao_habilitado" type="checkbox"
+                                    checked={{flagPersonificacao}} onchange={{action (mut flagPersonificacao) value="target.checked"}}
+                                    aria-describedby="flag-personificacao-descricao">
+                                <label class="checkbox__label" for="flag_personificacao_habilitado">Personificação de usuário (Ver como)</label>
+                            </div>
+                            <p id="flag-personificacao-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e professores vejam a plataforma como um usuário de perfil inferior, em modo somente leitura.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_hierarquia_multinivel_habilitado" type="checkbox"
+                                    checked={{flagHierarquiaMultinivel}} onchange={{action (mut flagHierarquiaMultinivel) value="target.checked"}}
+                                    aria-describedby="flag-hierarquia-multinivel-descricao">
+                                <label class="checkbox__label" for="flag_hierarquia_multinivel_habilitado">Hierarquia em vários níveis (agrupamentos)</label>
+                            </div>
+                            <p id="flag-hierarquia-multinivel-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite organizar a rede em mais de um nível (ex.: nacional, regional, escola). Resultados e listagens desta instituição passam a incluir todas as unidades abaixo dela.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_comunicacao_familias_habilitado" type="checkbox"
+                                    checked={{flagComunicacaoFamilias}} onchange={{action (mut flagComunicacaoFamilias) value="target.checked"}}
+                                    aria-describedby="flag-comunicacao-familias-descricao">
+                                <label class="checkbox__label" for="flag_comunicacao_familias_habilitado">Comunicação com famílias (envio de mensagens aos responsáveis)</label>
+                            </div>
+                            <p id="flag-comunicacao-familias-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que gestores, coordenadores e secretaria enviem comunicados por e-mail aos responsáveis dos alunos. O cadastro de responsáveis funciona independentemente desta opção.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_taxonomia_habilitado" type="checkbox"
+                                    checked={{flagTaxonomia}} onchange={{action (mut flagTaxonomia) value="target.checked"}}
+                                    aria-describedby="flag-taxonomia-descricao">
+                                <label class="checkbox__label" for="flag_taxonomia_habilitado">Taxonomias</label>
+                            </div>
+                            <p id="flag-taxonomia-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite à instituição cadastrar suas matrizes e termos e correlacioná-los às competências Semente.</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_conteudos_proprios_habilitado" type="checkbox"
+                                    checked={{flagConteudosProprios}} onchange={{action (mut flagConteudosProprios) value="target.checked"}}
+                                    aria-describedby="flag-conteudos-proprios-descricao">
+                                <label class="checkbox__label" for="flag_conteudos_proprios_habilitado">Conteúdos próprios</label>
+                            </div>
+                            <p id="flag-conteudos-proprios-descricao" style="line-height: 1.4; margin-top: 4px; font-size: 0.85em;">Permite que a instituição disponibilize aos seus usuários os conteúdos e cursos criados por ela (menu Conteúdos > Conteúdos próprios).</p>
+                        </div>
+                        {{#if flagsQtdDescendentes}}
+                        <div class="col-md-12">
+                            <div class="checkbox w100">
+                                <input class="checkbox__input" id="flag_aplicar_descendentes" type="checkbox"
+                                    checked={{flagAplicarDescendentes}} onchange={{action (mut flagAplicarDescendentes) value="target.checked"}}>
+                                <label class="checkbox__label" for="flag_aplicar_descendentes">Aplicar também às {{flagsQtdDescendentes}} instituições abaixo desta (escolas/regionais)</label>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+                {{/if}}
+                {{/if}}
 
                 <div class="flex flex-row justify-content-between m-top--sm btn-right">
                     {{!-- {{#if isEdit}}
